@@ -29,8 +29,8 @@ jobs:
       - name: installing
         run: npm install
 
-      - name: creating @MUI component
-        run: npm run generate:storybooks
+      - name: creating @MUI component and build storybook
+        run: npm run build-storybook
 
       - name: linters
         uses: wearerequired/lint-action@v1
@@ -39,4 +39,3 @@ jobs:
           prettier_extensions: ts,tsx,js,jsx,json,md,mdx,css
           continue_on_error: false
           github_token: ${{ secrets.GITHUB_TOKEN }}
-

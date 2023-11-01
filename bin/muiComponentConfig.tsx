@@ -30,6 +30,10 @@ export const componentsConfig: ComponentsConfigProps = {
     }`,
     imports: ["import TextField from '@mui/material/TextField'"],
   },
+  Button: {
+    args: `{children: "Button", color: 'primary', variant: 'contained'}`,
+    imports: [],
+  },
   ButtonGroup: {
     args: `{children: <><Button>One</Button>
     <Button>Two</Button>

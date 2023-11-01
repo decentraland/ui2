@@ -16,7 +16,7 @@ import { Button as DclButton } from "../Button/Button"
 
 const meta: Meta<{subdirectory}Props> = {
   component: {subdirectory},
-  title: "{subdirectory}",
+  title: "Material UI/{subdirectory}",
   tags: ["autodocs"],
   parameters: {
     docs: {
@@ -53,7 +53,7 @@ import { ArgsTable, Title } from "@storybook/blocks"
 
 const meta: Meta<{subdirectory}Props> = {
   component: {subdirectory},
-  title: "{subdirectory}",
+  title: "Material UI/{subdirectory}",
   tags: ["autodocs"],
   parameters: {
     docs: {
