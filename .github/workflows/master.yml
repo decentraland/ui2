@@ -19,9 +19,9 @@ jobs:
       - name: test
         run: npm test
       - name: validate
-        run: npm lint:check
+        run: npm run lint:check
       - name: build
-        run: npm build
+        run: npm run build
       - name: publish packages
         uses: menduz/oddish-action@master
         id: publish_package
