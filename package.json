@@ -48,7 +48,7 @@
     "react-tile-map": "^0.4.1"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.23.2",
+    "@babel/preset-env": "^7.24.5",
     "@babel/preset-react": "^7.22.15",
     "@babel/preset-typescript": "^7.23.2",
     "@dcl/eslint-config": "^1.1.12",
