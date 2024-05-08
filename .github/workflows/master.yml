@@ -3,12 +3,11 @@ name: build and publish
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
   release:
     types:
       - created
-
 
 jobs:
   build-publish:
