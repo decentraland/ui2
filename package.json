@@ -14,6 +14,7 @@
     "build-storybook": "npm run generate:storybooks && npx storybook@7 build",
     "format": "prettier --write '**/*.{ts,tsx,js,jsx,json,md,mdx,css}'",
     "lint": "eslint --ext .ts,.tsx,.js,.jsx ./src",
+    "lint:check": "eslint --ext .ts,.tsx,.js,.jsx ./src",
     "lint:fix": "npm run lint -- --fix",
     "generate:storybooks": "ts-node ./bin/storybookGenerator.ts && npm run lint:fix"
   },
