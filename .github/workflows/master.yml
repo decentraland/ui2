@@ -19,7 +19,7 @@ jobs:
       - name: test
         run: npm test
       - name: validate
-        run: npm lint
+        run: npm lint:check
       - name: build
         run: npm build
       - name: publish packages
