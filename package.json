@@ -41,7 +41,7 @@
     "@dcl/ui-env": "^1.4.0",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
-    "@mui/icons-material": "^5.14.14",
+    "@mui/icons-material": "^5.15.17",
     "@mui/material": "^5.15.17",
     "autoprefixer": "^10.4.16",
     "radash": "^11.0.0",
