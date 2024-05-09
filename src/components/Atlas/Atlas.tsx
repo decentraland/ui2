@@ -2,10 +2,10 @@ import React, { useCallback, useEffect, useMemo, useState } from "react"
 
 import { Coord, Layer, TileMap, TileMapProps } from "react-tile-map"
 
-import { css } from "@emotion/react"
+/* import { css } from "@emotion/react" */
 
 import { getColorByType, getTiles } from "./util"
-import { neutral } from "../../colors"
+/* import { neutral } from "../../colors" */
 
 import "react-tile-map/dist/styles.css"
 
@@ -51,9 +51,7 @@ export type AtlasProps = Omit<TileMapProps, "layers" | "className"> & {
   className?: string
 }
 
-export type AtlasStateProps = {
-  tiles?: Record<string, AtlasTileProps>
-}
+export type AtlasStateProps = Record<string, AtlasTileProps> | undefined
 
 export interface AtlasInterface extends AtlasProps {}
 
@@ -104,10 +102,11 @@ export const Atlas = React.memo((props: AtlasProps) => {
       setTiles(updatedTiles)
     }
   }
-
+  /* 
+  Review this CSS
   const atlasStyle = css({
     background: neutral.softBlack1,
-  })
+  }) */
 
   const layersMemo = useMemo(() => [layer, ...(layers || [])], [layer, layers])
 
@@ -115,7 +114,8 @@ export const Atlas = React.memo((props: AtlasProps) => {
     <TileMap
       {...TileMap.defaultProps}
       {...props}
-      css={atlasStyle}
+      /* Review this CSS */
+      /* css={atlasStyle} */
       layers={layersMemo}
     />
   )

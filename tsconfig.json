@@ -10,7 +10,7 @@
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "strictNullChecks": true,
     "noUnusedParameters": true,
     "noUnusedLocals": true,
@@ -20,7 +20,8 @@
     "skipLibCheck": true,
     "importHelpers": true,
     "module": "esnext",
-    "target": "esnext"
+    "target": "esnext",
+    "jsx": "react-jsx"
   },
-  "exclude": ["node_modules", "dist", "test"]
+  "exclude": ["node_modules", "dist", "test", "bin"]
 }

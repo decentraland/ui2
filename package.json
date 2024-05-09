@@ -2,7 +2,8 @@
   "name": "decentraland-ui2",
   "version": "0.0.0-development",
   "description": "Decentraland's UI components and styles",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "author": "Decentraland",
   "license": "Apache-2.0",
   "scripts": {
