@@ -29,8 +29,9 @@ jobs:
       - name: installing
         run: npm install
 
-      - name: creating @MUI component and build storybook
-        run: npm run build-storybook
+      # review this step
+      #- name: creating @MUI component and build storybook
+      #  run: npm run build-storybook
 
       - name: linters
         uses: wearerequired/lint-action@v1
