@@ -1,8 +1,6 @@
 import { Network } from "@dcl/schemas"
-
 import ManaBalances from "./ManaBalances"
 import { ManaBalancesProps } from "./ManaBalances.types"
-
 import type { Meta, StoryObj } from "@storybook/react"
 
 const balance = {

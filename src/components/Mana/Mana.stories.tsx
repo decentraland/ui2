@@ -1,10 +1,7 @@
 import { Network } from "@dcl/schemas"
-
 import { Typography } from "@mui/material"
-
 import Mana from "./Mana"
 import { ManaProps } from "./Mana.types"
-
 import type { Meta, StoryObj } from "@storybook/react"
 
 const meta: Meta<ManaProps> = {

@@ -1,6 +1,5 @@
 import styled from "@emotion/styled"
 import { ButtonBase as ButtonMui, useTheme } from "@mui/material"
-
 import { ManaProps } from "./Mana.types"
 
 export const ManaButtonContainer = styled(ButtonMui)((

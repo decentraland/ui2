@@ -1,5 +1,4 @@
 import * as React from "react"
-
 import { Network } from "@dcl/schemas/dist/dapps/network"
 
 export type ManaBalancesProps = {

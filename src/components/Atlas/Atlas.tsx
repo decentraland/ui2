@@ -1,11 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react"
-
 import { Coord, Layer, TileMap, TileMapProps } from "react-tile-map"
-
-/* import { css } from "@emotion/react" */
-
 import { getColorByType, getTiles } from "./util"
-/* import { neutral } from "../../colors" */
 
 import "react-tile-map/dist/styles.css"
 

@@ -1,9 +1,8 @@
 import { Network } from "@dcl/schemas"
-
-import { ManaBalancesWrapper } from "./ManaBalances.styled"
-import { ManaBalancesProps } from "./ManaBalances.types"
 import { config } from "../../../config"
 import Mana from "../../Mana/Mana"
+import { ManaBalancesProps } from "./ManaBalances.types"
+import { ManaBalancesWrapper } from "./ManaBalances.styled"
 
 export default function ManaBalances(props: ManaBalancesProps) {
   const { manaBalances, onClickBalance } = props
