@@ -12,7 +12,7 @@
     "start": "storybook dev -p 6006",
     "build": "npm run build:dist",
     "build:dist": "rm -Rf dist && tsc",
-    "build-storybook": "npm run generate:storybooks && npx storybook@7 build",
+    "build-storybook": "npx storybook@7 build",
     "format": "prettier --write '**/*.{ts,tsx,js,jsx,json,md,mdx,css}'",
     "lint": "eslint --ext .ts,.tsx,.js,.jsx ./src",
     "lint:check": "eslint --ext .ts,.tsx,.js,.jsx ./src",
