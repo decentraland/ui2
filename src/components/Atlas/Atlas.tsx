@@ -55,7 +55,7 @@ export type AtlasStateProps = Record<string, AtlasTileProps> | undefined
 
 export interface AtlasInterface extends AtlasProps {}
 
-export const Atlas = React.memo((props: AtlasProps) => {
+export const Atlas = React.memo(function Atlas(props: AtlasProps) {
   const { layers } = props
 
   const [tiles, setTiles] = useState<AtlasStateProps>(props.tiles)

@@ -72,7 +72,7 @@ export const SymbolInline: Story = {
   args: { children: "1,000", inline: true },
   render: (args) => (
     <p>
-      You've voted with <Mana {...args} />.
+      You&apos;ve voted with <Mana {...args} />.
     </p>
   ),
 }
