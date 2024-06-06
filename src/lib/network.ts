@@ -21,5 +21,5 @@ export const getNetworkMANADescription = (
   network: Network
 ): string | undefined => {
   const networkName = getNetworkName(network)
-  return networkName ? `${networkName} MANA` : "MANA"
+  return networkName ? `${networkName} MANA` : `MANA`
 }
