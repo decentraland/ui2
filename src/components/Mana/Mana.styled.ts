@@ -1,10 +1,13 @@
 import styled from "@emotion/styled"
-import { useTheme } from "@mui/material"
+import { ButtonBase as ButtonMui, useTheme } from "@mui/material"
 
-export const Button = styled("div")((props: {
-  inline?: boolean
-  fontSize?: string
-}) => {
+import { ManaProps } from "./Mana.types"
+
+export const ManaButtonContainer = styled(ButtonMui)((
+  props: Pick<ManaProps, "inline" | "href" | "onClick"> & {
+    fontSize?: string
+  }
+) => {
   const theme = useTheme()
 
   let fontSize = "inherit"
@@ -25,6 +28,10 @@ export const Button = styled("div")((props: {
     verticalAlign: "middle",
     fontSize: fontSize,
     lineHeight: "inherit",
+    cursor: !!props.href || !!props.onClick ? "pointer" : "default",
+    "& + &": {
+      marginLeft: "0.3em",
+    },
   }
 })
 
@@ -32,6 +39,7 @@ export const ImageContainer = styled("div")((props: { primary?: boolean }) => {
   const theme = useTheme()
   return {
     display: "flex",
+    paddingRight: "0.3em",
     "& svg path": {
       fill: props.primary ? theme.palette.primary.main : "#000000",
     },

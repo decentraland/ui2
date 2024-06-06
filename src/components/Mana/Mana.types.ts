@@ -7,4 +7,10 @@ export type ManaProps = {
   children?: React.ReactChild
   primary?: boolean
   showTooltip?: boolean
+  href?: string
+  onClick?: React.MouseEventHandler<HTMLButtonElement> &
+    ((
+      event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+      network: Network
+    ) => void)
 }
