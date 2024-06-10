@@ -5,13 +5,9 @@ import { AvatarFaceProps } from "./AvatarFace.types"
 export const AvatarContainer = styled("div")((
   props: Pick<AvatarFaceProps, "inline">
 ) => {
-  let size = {
+  return {
     width: "inherit",
     height: "inherit",
-  }
-
-  return {
-    ...size,
     display: props.inline ? "inline-flex" : "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -23,7 +19,7 @@ export const Avatar = styled(AvatarMui)((
   props: Pick<AvatarFaceProps, "size">
 ) => {
   const theme = useTheme()
-  let size = {
+  const size = {
     width: "32px",
     height: "32px",
   }
