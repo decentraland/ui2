@@ -9,7 +9,7 @@ function theme(type: "light" | "dark"): ThemeOptions {
     palette: createPalette(colorSchemas[type].palette),
     typography: typography,
     shape: {
-      borderRadius: 8,
+      borderRadius: 6,
     },
     components: components,
   }

@@ -1,6 +1,6 @@
 import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon"
 
-export default function ManaPolyIcon(props: SvgIconProps) {
+export default function ManaPolygonIcon(props: SvgIconProps) {
   return (
     <SvgIcon {...props}>
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" {...props}>

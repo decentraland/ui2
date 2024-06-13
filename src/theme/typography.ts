@@ -30,9 +30,9 @@ export const typography = {
   },
   subtitle1: {
     fontFamily: "Inter, Helvetica, Arial, sans-serif",
-    fontWeight: 600,
   },
   subtitle2: {
+    fontFamily: "Inter, Helvetica, Arial, sans-serif",
     fontWeight: 600,
   },
   overline: {
