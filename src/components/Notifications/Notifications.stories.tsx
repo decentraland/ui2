@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { NFTCategory, NotificationType, Rarity } from "@dcl/schemas"
+import { Box } from "@mui/material"
 import Notifications from "./Notifications"
 import { NotificationActiveTab } from "./types"
 import { NotificationsProps } from "./Notifications.types"
@@ -10,11 +11,23 @@ const meta: Meta = {
   title: "Decentraland UI/Notifications Toggle",
   tags: ["autodocs"],
   argTypes: {},
-  /* render: (args) => (
+  render: (args) => (
     <Box sx={{ height: "400px" }}>
-      <ModalContent {...args}>{args.children}</ModalContent>
+      <Notifications
+        isOpen={false}
+        isLoading={false}
+        isOnboarding={false}
+        items={[]}
+        locale="en"
+        activeTab={NotificationActiveTab.NEWEST}
+        onChangeTab={(_e, newTab) => console.log(newTab)}
+        onClick={() => console.log("Toggle button")}
+        onBegin={() => console.log("Begin")}
+        onClose={(_, m) => console.log(m)}
+        {...args}
+      />
     </Box>
-  ), */
+  ),
 }
 
 export default meta
@@ -304,11 +317,13 @@ export const OpenNotLoading: Story = {
   render: (args) => {
     const [tab, setTab] = useState(NotificationActiveTab.NEWEST)
     return (
-      <Notifications
-        {...args}
-        activeTab={tab}
-        onChangeTab={(_e, newTab) => setTab(newTab)}
-      />
+      <Box sx={{ height: "400px" }}>
+        <Notifications
+          {...args}
+          activeTab={tab}
+          onChangeTab={(_e, newTab) => setTab(newTab)}
+        />
+      </Box>
     )
   },
 }
