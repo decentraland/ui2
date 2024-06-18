@@ -3,7 +3,7 @@ import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon"
 export default function ProposalFinishedIcon(props: SvgIconProps) {
   return (
     <SvgIcon {...props}>
-      <svg width="47" height="47" viewBox="0 0 47 47" fill="none" {...props}>
+      <svg viewBox="0 0 47 47" fill="none">
         <circle
           cx="23.5"
           cy="23.5"

@@ -51,9 +51,6 @@ export function ModalContent(
 }
 
 export default function Modal(props: ModalProps) {
-  /* const { children, actions, title, subtitle, onClose, onBack, ...modalProps } =
-    props */
-
   return (
     <Modal {...props}>
       <ModalContent {...props}>{props.children}</ModalContent>
