@@ -207,6 +207,7 @@ export const colorSchemas = {
           },
         },
       },
+      icon: "#000",
     } as PaletteOptions,
   },
   dark: {
@@ -341,6 +342,7 @@ export const colorSchemas = {
       elevation: {
         outlined: "rgba(22, 21, 24, 0.12)",
       },
+      divider: "#67637033",
       _components: {
         avatar: {
           fill: "#716B7C",
@@ -368,6 +370,7 @@ export const colorSchemas = {
           },
         },
       },
+      icon: "#fff",
     } as PaletteOptions,
   },
 }

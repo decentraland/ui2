@@ -1,0 +1,60 @@
+import styled from "@emotion/styled"
+import { Link, Typography, useTheme } from "@mui/material"
+
+export const NotificationItemContainer = styled("div")({
+  display: "flex",
+  flexDirection: "row",
+  alignItems: "center",
+  padding: "16px",
+  justifyContent: "space-between",
+  gap: "16px",
+})
+
+export const NotificationItemImageContainer = styled("div")({
+  marginLeft: "16px",
+  width: "80px",
+  fontSize: "48px",
+})
+
+export const NotificationItemContent = styled("div")({
+  display: "flex",
+  flexDirection: "column",
+  flexGrow: 1,
+})
+
+export const NotificationItemTimestamp = styled(Typography)({
+  fontWeight: 600,
+  fontSize: "12px",
+})
+
+export const NotificationItemTitle = styled(Typography)({
+  fontWeight: 600,
+  fontSize: "14px",
+  marginBottom: 0,
+})
+
+export const NotificationItemDescription = styled(Link)({
+  display: "inline",
+  color: "#a09ba8",
+  margin: "4px 0",
+  gap: "5px",
+  flexWrap: "wrap",
+  alignItems: "center",
+  fontSize: "14px",
+})
+
+export const NotificationItemCountdown = styled("div")({
+  padding: "2px 10px",
+  backgroundColor: "#37333d",
+  width: "fit-content",
+  color: "#fff",
+  borderRadius: "20px",
+  display: "inline",
+})
+
+export const SpanHighlighted = styled("span")(() => {
+  const theme = useTheme()
+  return {
+    color: theme.palette.primary.main,
+  }
+})

@@ -1,5 +1,5 @@
 import { ThemeOptions, createTheme } from "@mui/material/styles"
-import createPalette from "@mui/material/styles/createPalette"
+import createPalette, { Palette } from "@mui/material/styles/createPalette"
 import { colorSchemas } from "./colorSchemes"
 import { components } from "./components"
 import { typography } from "./typography"
@@ -11,7 +11,7 @@ function theme(type: "light" | "dark"): ThemeOptions {
     shape: {
       borderRadius: 6,
     },
-    components: components,
+    components: components(colorSchemas[type].palette as Palette),
   }
 }
 
