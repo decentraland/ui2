@@ -30,6 +30,19 @@ const preview: Preview = {
         order: ["Decentraland UI", "Material UI"],
       },
     },
+    backgrounds: {
+      default: "light",
+      values: [
+        {
+          name: "light",
+          value: "#f0f0f0",
+        },
+        {
+          name: "dark",
+          value: "#161518",
+        },
+      ],
+    },
   },
 }
 

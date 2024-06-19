@@ -1,5 +1,4 @@
 import { memo } from "radash"
-
 import { AtlasColor, AtlasTileProps, AtlasTileType } from "./Atlas"
 
 const TILES_URL = "https://api.decentraland.org/v2/tiles"

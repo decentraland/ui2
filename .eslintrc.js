@@ -1,3 +1,3 @@
 module.exports = {
-  extends: ["@dcl/eslint-config/gatsby"],
+  extends: ["@dcl/eslint-config/ui"],
 }
