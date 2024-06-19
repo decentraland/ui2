@@ -4,7 +4,10 @@ import { useTheme } from "@mui/material"
 import BidAcceptedIcon from "../../../Icon/Notifications/BidAcceptedIcon"
 import Mana from "../../../Mana/Mana"
 import NotificationItem from "../../NotificationItem"
-import { NotificationItemTitle } from "../../NotificationItem.styled"
+import {
+  NotificationItemDescription,
+  NotificationItemTitle,
+} from "../../NotificationItem.styled"
 import NotificationItemNFTLink from "../../NotificationItemNFTLink"
 import {
   BidAcceptedNotificationProps,
@@ -65,7 +68,7 @@ export default function BidAcceptedNotification(
       locale={locale}
     >
       <NotificationItemTitle>{i18N[locale].title}</NotificationItemTitle>
-      <p className="dcl notification-item__content-description">
+      <NotificationItemDescription color="inherit" underline="none">
         {i18N[locale].description(
           <Mana
             inline
@@ -84,7 +87,7 @@ export default function BidAcceptedNotification(
             link={notification.metadata.link}
           />
         )}
-      </p>
+      </NotificationItemDescription>
     </NotificationItem>
   )
 }

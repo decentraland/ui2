@@ -69,6 +69,6 @@ export const NotificationFeedPrevious = styled(Typography)(() => {
     fontWeight: 600,
     paddingLeft: "16px",
     marginBottom: 0,
-    marginTop: "16px",
+    marginTop: "8px",
   }
 })

@@ -5,9 +5,12 @@ export const NotificationItemContainer = styled("div")({
   display: "flex",
   flexDirection: "row",
   alignItems: "center",
-  padding: "16px",
+  padding: "8px 16px",
   justifyContent: "space-between",
   gap: "16px",
+  "&:last-of-type": {
+    padding: "8px 16px 16px",
+  },
 })
 
 export const NotificationItemImageContainer = styled("div")({
