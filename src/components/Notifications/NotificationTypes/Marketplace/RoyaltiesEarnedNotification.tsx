@@ -1,5 +1,6 @@
 import React from "react"
 import { Network } from "@dcl/schemas"
+import { useTheme } from "@mui/material"
 import ManaMainnetIcon from "../../../Icon/Notifications/ManaMainnetIcon"
 import ManaPolygonIcon from "../../../Icon/Notifications/ManaPolygonIcon"
 import Mana from "../../../Mana/Mana"
@@ -55,6 +56,7 @@ export default function RoyaltiesEarnedNotification(
   props: CommonNotificationProps<RoyalitesEarnedNotificationProps>
 ) {
   const { notification, locale } = props
+  const theme = useTheme()
   return (
     <NotificationItem
       image={{
@@ -81,6 +83,7 @@ export default function RoyaltiesEarnedNotification(
                 ? Network.MATIC
                 : Network.ETHEREUM
             }
+            color={theme.palette.text.secondary}
           >
             {formatMana(notification.metadata.royaltiesCut)}
           </Mana>,

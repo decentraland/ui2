@@ -19,12 +19,12 @@ const i18N = {
       reward: RewardAssignedNotificationProps["metadata"]
     ): React.ReactNode => (
       <>
-        This
+        This{" "}
         <NotificationItemNFTLink
           rarity={reward.tokenRarity}
           name={reward.tokenName}
           link={config.get("EXPLORER_URL")}
-        />
+        />{" "}
         is already in your backpack
       </>
     ),
@@ -35,12 +35,12 @@ const i18N = {
       reward: RewardAssignedNotificationProps["metadata"]
     ): React.ReactNode => (
       <>
-        El item
+        El item{" "}
         <NotificationItemNFTLink
           rarity={reward.tokenRarity}
           name={reward.tokenName}
           link={config.get("EXPLORER_URL")}
-        />
+        />{" "}
         ya esta disponible en tu backpack
       </>
     ),
@@ -51,12 +51,12 @@ const i18N = {
       reward: RewardAssignedNotificationProps["metadata"]
     ): React.ReactNode => (
       <>
-        这
+        这{" "}
         <NotificationItemNFTLink
           rarity={reward.tokenRarity}
           name={reward.tokenName}
           link={config.get("EXPLORER_URL")}
-        />
+        />{" "}
         已经在您的背包里
       </>
     ),

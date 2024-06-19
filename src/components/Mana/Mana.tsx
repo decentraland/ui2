@@ -7,10 +7,10 @@ import { ManaProps } from "./Mana.types"
 import { ImageContainer, ManaButtonContainer } from "./Mana.styled"
 
 function ManaButton(props: Omit<ManaProps, "showTooltip">) {
-  const { children, size, network, primary, ...rest } = props
+  const { children, size, network, primary, color, ...rest } = props
   return (
     <ManaButtonContainer fontSize={size} {...rest}>
-      <ImageContainer primary={primary}>
+      <ImageContainer primary={primary} color={color}>
         {!network || network !== Network.MATIC ? (
           <ManaEthIcon fontSize={size || "inherit"} />
         ) : (

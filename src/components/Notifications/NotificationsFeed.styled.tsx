@@ -39,6 +39,10 @@ export const OnboardingWrapper = styled(Paper)({
 
 export const LoadingContainer = styled("div")({
   height: "290px",
+  width: "100%",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
 })
 
 export const NotificationFeedModalContainer = styled(Box)({

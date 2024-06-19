@@ -20,12 +20,13 @@ const i18N = {
       link: string
     ): React.ReactNode => (
       <>
-        Your LAND at
+        Your LAND at{" "}
         <IconBadge
+          inline
           icon={IconBadgeIcon.Places}
           text={coords}
           onClick={() => window.open(link, "_blank")}
-        />
+        />{" "}
         was rented by {tenant}
       </>
     ),
@@ -38,12 +39,13 @@ const i18N = {
       link: string
     ): React.ReactNode => (
       <>
-        Tu LAND en
+        Tu LAND en{" "}
         <IconBadge
+          inline
           icon={IconBadgeIcon.Places}
           text={coords}
           onClick={() => window.open(link, "_blank")}
-        />
+        />{" "}
         fue alquilada por {tenant}
       </>
     ),
@@ -56,12 +58,13 @@ const i18N = {
       link: string
     ): React.ReactNode => (
       <>
-        你的土地
+        你的土地{" "}
         <IconBadge
+          inline
           icon={IconBadgeIcon.Places}
           text={coords}
           onClick={() => window.open(link, "_blank")}
-        />
+        />{" "}
         租了 {tenant}
       </>
     ),

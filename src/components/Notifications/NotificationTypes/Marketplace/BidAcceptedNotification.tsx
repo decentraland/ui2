@@ -1,5 +1,6 @@
 import React from "react"
 import { Network } from "@dcl/schemas"
+import { useTheme } from "@mui/material"
 import BidAcceptedIcon from "../../../Icon/Notifications/BidAcceptedIcon"
 import Mana from "../../../Mana/Mana"
 import NotificationItem from "../../NotificationItem"
@@ -51,6 +52,7 @@ export default function BidAcceptedNotification(
   props: CommonNotificationProps<BidAcceptedNotificationProps>
 ) {
   const { notification, locale } = props
+  const theme = useTheme()
   return (
     <NotificationItem
       image={{
@@ -72,6 +74,7 @@ export default function BidAcceptedNotification(
                 ? Network.MATIC
                 : Network.ETHEREUM
             }
+            color={theme.palette.text.secondary}
           >
             {formatMana(notification.metadata.price)}
           </Mana>,

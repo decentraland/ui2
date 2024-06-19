@@ -12,7 +12,6 @@ export const NotificationItemContainer = styled("div")({
 
 export const NotificationItemImageContainer = styled("div")({
   marginLeft: "16px",
-  width: "80px",
   fontSize: "48px",
 })
 
@@ -44,12 +43,19 @@ export const NotificationItemDescription = styled(Link)({
 })
 
 export const NotificationItemCountdown = styled("div")({
-  padding: "2px 10px",
+  padding: "0 10px",
   backgroundColor: "#37333d",
   width: "fit-content",
   color: "#fff",
   borderRadius: "20px",
-  display: "inline",
+  display: "inline-flex",
+  alignItems: "center",
+  justifyContent: "center",
+  marginTop: "-2px",
+  transform: "translateY(2px)",
+  "& svg": {
+    marginRight: "5px",
+  },
 })
 
 export const SpanHighlighted = styled("span")(() => {

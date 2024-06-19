@@ -9,7 +9,7 @@ export const IconBadgeButtonContainer = styled(ButtonMui)((
 
   return {
     display: props.inline ? "inline-flex" : "flex",
-    backgroundColor: theme.palette.secondary.dark,
+    backgroundColor: theme.palette.secondary.main,
     alignItems: "center",
     justifyContent: "center",
     color: theme.palette.text.primary,
@@ -32,12 +32,12 @@ export const ImageContainer = styled("div")(() => {
     display: "flex",
     paddingRight: "0.3em",
     "& svg path": {
-      fill: theme.palette.secondary.light,
+      fill: theme.palette.text.primary,
     },
   }
 })
 
 export const TextContainer = styled(Typography)({
   fontSize: "inherit",
-  color: "#fff",
+  color: "inherit",
 })

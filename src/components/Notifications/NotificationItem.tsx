@@ -38,7 +38,7 @@ export default function NotificationItem({
         </NotificationItemTimestamp>
       </NotificationItemContent>
       {/* Do we really need this icon that only a red dot? */}
-      {isNew && <NewNotificationIcon width="12px" height="12px" />}
+      {isNew && <NewNotificationIcon fontStyle={12} />}
     </NotificationItemContainer>
   )
 }

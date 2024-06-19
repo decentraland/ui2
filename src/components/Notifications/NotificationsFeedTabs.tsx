@@ -102,7 +102,7 @@ const NotificationHandler = ({
 
 const NoReadNotifications = ({ locale }: { locale: NotificationLocale }) => (
   <EmptyViewContainer>
-    <HistoryIcon />
+    <HistoryIcon sx={{ fontSize: "115px" }} />
     <EmptyViewTitle>{i18N[locale].feed.history.title}</EmptyViewTitle>
     <EmptyViewDescription>
       {i18N[locale].feed.history.description}
@@ -112,7 +112,7 @@ const NoReadNotifications = ({ locale }: { locale: NotificationLocale }) => (
 
 const NoNotifications = ({ locale }: { locale: NotificationLocale }) => (
   <EmptyViewContainer>
-    <EmptyInboxIcon />
+    <EmptyInboxIcon sx={{ fontSize: "115px" }} />
     <EmptyViewTitle>{i18N[locale].feed.empty.title}</EmptyViewTitle>
     <EmptyViewDescription>
       {i18N[locale].feed.empty.description}

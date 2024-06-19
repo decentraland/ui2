@@ -3,13 +3,7 @@ import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon"
 export default function HistoryIcon(props: SvgIconProps) {
   return (
     <SvgIcon {...props}>
-      <svg
-        width="115"
-        height="115"
-        viewBox="0 0 115 115"
-        fill="none"
-        {...props}
-      >
+      <svg width="115" height="115" viewBox="0 0 115 115" fill="none">
         <circle cx="57.5" cy="57.5" r="57.5" fill="#322D36" />
         <path
           d="M50.0208 64.807H63.9792C66.1095 64.807 67.8333 63.1474 67.8333 61.0965C67.8333 59.0456 66.1095 57.386 63.9792 57.386H50.0208C47.8905 57.386 46.1667 59.0456 46.1667 61.0965C46.1667 63.1474 47.8905 64.807 50.0208 64.807Z"

@@ -34,13 +34,21 @@ export const ManaButtonContainer = styled(ButtonMui)((
   }
 })
 
-export const ImageContainer = styled("div")((props: { primary?: boolean }) => {
+export const ImageContainer = styled("div")((props: {
+  primary?: boolean
+  color?: string
+}) => {
   const theme = useTheme()
+
   return {
     display: "flex",
     paddingRight: "0.3em",
     "& svg path": {
-      fill: props.primary ? theme.palette.primary.main : "#000000",
+      fill: props.color
+        ? props.color
+        : props.primary
+          ? theme.palette.primary.main
+          : "#000000",
     },
   }
 })

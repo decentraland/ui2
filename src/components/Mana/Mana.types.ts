@@ -5,6 +5,7 @@ export type ManaProps = {
   inline?: boolean
   network?: Network
   children?: React.ReactChild
+  color?: string
   primary?: boolean
   showTooltip?: boolean
   href?: string

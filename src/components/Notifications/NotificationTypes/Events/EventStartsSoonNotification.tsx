@@ -54,7 +54,7 @@ function Countdown({ startDate }: { startDate: string }) {
 
   return (
     <NotificationItemCountdown>
-      <WatchLaterOutlinedIcon />
+      <WatchLaterOutlinedIcon fontSize="inherit" />
       {`${minutesString}:${secondsString}`}
     </NotificationItemCountdown>
   )
