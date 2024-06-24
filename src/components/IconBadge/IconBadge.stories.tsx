@@ -1,5 +1,5 @@
-import IconBadge from "./IconBadge"
-import ManaEthIcon from "../Icon/ManaEthIcon"
+import { IconBadge } from "./IconBadge"
+import { ManaEthIcon } from "../Icon"
 import { IconBadgeIcon, IconBadgeProps } from "./IconBadge.types"
 import type { Meta, StoryObj } from "@storybook/react"
 
@@ -18,6 +18,7 @@ const meta: Meta<IconBadgeProps> = {
   render: (args) => <IconBadge {...args} />,
 }
 
+// eslint-disable-next-line import/no-default-export
 export default meta
 type Story = StoryObj<IconBadgeProps>
 

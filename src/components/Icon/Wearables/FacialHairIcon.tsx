@@ -1,6 +1,7 @@
+import React from "react"
 import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon"
 
-export default function FacialHairIcon(props: SvgIconProps) {
+const FacialHairIcon = React.memo((props: SvgIconProps) => {
   return (
     <SvgIcon {...props}>
       <svg
@@ -21,4 +22,6 @@ export default function FacialHairIcon(props: SvgIconProps) {
       </svg>
     </SvgIcon>
   )
-}
+})
+
+export { FacialHairIcon }

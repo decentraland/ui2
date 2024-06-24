@@ -1,6 +1,7 @@
+import React from "react"
 import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon"
 
-export default function MuteIcon(props: SvgIconProps) {
+const MuteIcon = React.memo((props: SvgIconProps) => {
   return (
     <SvgIcon {...props}>
       <svg
@@ -17,4 +18,6 @@ export default function MuteIcon(props: SvgIconProps) {
       </svg>
     </SvgIcon>
   )
-}
+})
+
+export { MuteIcon }

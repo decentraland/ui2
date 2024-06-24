@@ -1,6 +1,7 @@
+import React from "react"
 import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon"
 
-export default function EyewearIcon(props: SvgIconProps) {
+const EyewearIcon = React.memo((props: SvgIconProps) => {
   return (
     <SvgIcon {...props}>
       <svg
@@ -19,4 +20,6 @@ export default function EyewearIcon(props: SvgIconProps) {
       </svg>
     </SvgIcon>
   )
-}
+})
+
+export { EyewearIcon }

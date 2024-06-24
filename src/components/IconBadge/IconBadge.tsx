@@ -1,32 +1,35 @@
+import React from "react"
 import RepeatOneRoundedIcon from "@mui/icons-material/RepeatOneRounded"
 import RepeatRoundedIcon from "@mui/icons-material/RepeatRounded"
-import PropsIcon from "../Icon/Emotes/PropsIcon"
-import SoundIcon from "../Icon/Emotes/SoundIcon"
-import PlacesIcon from "../Icon/PlacesIcon"
-import SparklesIcon from "../Icon/SparklesIcon"
-import UtilityIcon from "../Icon/UtilityIcon"
-import BaseFemaleIcon from "../Icon/Wearables/BaseFemaleIcon"
-import BaseMaleIcon from "../Icon/Wearables/BaseMaleIcon"
-import BodyShapeIcon from "../Icon/Wearables/BodyShapeIcon"
-import EarringIcon from "../Icon/Wearables/EarringIcon"
-import EyebrowsIcon from "../Icon/Wearables/EyebrowsIcon"
-import EyesIcon from "../Icon/Wearables/EyesIcon"
-import EyewearIcon from "../Icon/Wearables/EyewearIcon"
-import FacialHairIcon from "../Icon/Wearables/FacialHairIcon"
-import FeetIcon from "../Icon/Wearables/FeetIcon"
-import HairIcon from "../Icon/Wearables/HairIcon"
-import HandsWearIcon from "../Icon/Wearables/HandsWearIcon"
-import HatIcon from "../Icon/Wearables/HatIcon"
-import HelmetIcon from "../Icon/Wearables/HelmetIcon"
-import LowerBodyIcon from "../Icon/Wearables/LowerBodyIcon"
-import MaskIcon from "../Icon/Wearables/MaskIcon"
-import MouthIcon from "../Icon/Wearables/MouthIcon"
-import SkinIcon from "../Icon/Wearables/SkinIcon"
-import SmartWearableIcon from "../Icon/Wearables/SmartWearableIcon"
-import TiaraIcon from "../Icon/Wearables/TiaraIcon"
-import TopHeadIcon from "../Icon/Wearables/TopHeadIcon"
-import UnisexIcon from "../Icon/Wearables/UnisexIcon"
-import UpperBodyIcon from "../Icon/Wearables/UpperBodyIcon"
+import {
+  BaseFemaleIcon,
+  BaseMaleIcon,
+  BodyShapeIcon,
+  EarringIcon,
+  EyebrowsIcon,
+  EyesIcon,
+  EyewearIcon,
+  FacialHairIcon,
+  FeetIcon,
+  HairIcon,
+  HandsWearIcon,
+  HatIcon,
+  HelmetIcon,
+  LowerBodyIcon,
+  MaskIcon,
+  MouthIcon,
+  PlacesIcon,
+  PropsIcon,
+  SkinIcon,
+  SmartWearableIcon,
+  SoundIcon,
+  SparklesIcon,
+  TiaraIcon,
+  TopHeadIcon,
+  UnisexIcon,
+  UpperBodyIcon,
+  UtilityIcon,
+} from "../Icon"
 import { IconBadgeIcon, IconBadgeProps } from "./IconBadge.types"
 import {
   IconBadgeButtonContainer,
@@ -100,7 +103,7 @@ const getIcon = (icon: IconBadgeIcon) => {
   }
 }
 
-export default function IconBadge(props: IconBadgeProps) {
+const IconBadge = React.memo((props: IconBadgeProps) => {
   const { icon, text, children, ...rest } = props
   return (
     <IconBadgeButtonContainer {...rest}>
@@ -110,4 +113,6 @@ export default function IconBadge(props: IconBadgeProps) {
       {text ? <TextContainer>{text}</TextContainer> : null}
     </IconBadgeButtonContainer>
   )
-}
+})
+
+export { IconBadge }

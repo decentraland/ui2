@@ -2,7 +2,7 @@ import styled from "@emotion/styled"
 import { ButtonBase as ButtonMui, Typography, useTheme } from "@mui/material"
 import { IconBadgeProps } from "./IconBadge.types"
 
-export const IconBadgeButtonContainer = styled(ButtonMui)((
+const IconBadgeButtonContainer = styled(ButtonMui)((
   props: Pick<IconBadgeProps, "inline" | "onClick">
 ) => {
   const theme = useTheme()
@@ -26,7 +26,7 @@ export const IconBadgeButtonContainer = styled(ButtonMui)((
   }
 })
 
-export const ImageContainer = styled("div")(() => {
+const ImageContainer = styled("div")(() => {
   const theme = useTheme()
   return {
     display: "flex",
@@ -37,7 +37,9 @@ export const ImageContainer = styled("div")(() => {
   }
 })
 
-export const TextContainer = styled(Typography)({
+const TextContainer = styled(Typography)({
   fontSize: "inherit",
   color: "inherit",
 })
+
+export { IconBadgeButtonContainer, ImageContainer, TextContainer }

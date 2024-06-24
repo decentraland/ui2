@@ -1,6 +1,6 @@
 import React from "react"
 
-export enum IconBadgeIcon {
+enum IconBadgeIcon {
   BaseMale = "BaseMale",
   BaseFemale = "BaseFemale",
   Unisex = "Unisex",
@@ -32,10 +32,12 @@ export enum IconBadgeIcon {
   Utility = "Utility",
 }
 
-export type IconBadgeProps = {
+type IconBadgeProps = {
   icon?: IconBadgeIcon
   text?: string
   inline?: boolean
   onClick?: () => void
   children?: React.ReactNode
 }
+
+export { IconBadgeIcon, IconBadgeProps }
