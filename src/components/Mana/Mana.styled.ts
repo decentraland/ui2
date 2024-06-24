@@ -2,7 +2,7 @@ import styled from "@emotion/styled"
 import { ButtonBase as ButtonMui, useTheme } from "@mui/material"
 import { ManaProps } from "./Mana.types"
 
-export const ManaButtonContainer = styled(ButtonMui)((
+const ManaButtonContainer = styled(ButtonMui)((
   props: Pick<ManaProps, "inline" | "href" | "onClick"> & {
     fontSize?: string
   }
@@ -34,7 +34,7 @@ export const ManaButtonContainer = styled(ButtonMui)((
   }
 })
 
-export const ImageContainer = styled("div")((props: {
+const ImageContainer = styled("div")((props: {
   primary?: boolean
   color?: string
 }) => {
@@ -52,3 +52,5 @@ export const ImageContainer = styled("div")((props: {
     },
   }
 })
+
+export { ImageContainer, ManaButtonContainer }

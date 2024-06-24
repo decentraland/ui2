@@ -1,10 +1,10 @@
 import { Network } from "@dcl/schemas"
 
-export type NetworksNames = {
+type NetworksNames = {
   [key in Network]: string
 }
 
-export const networksNames: NetworksNames = {
+const networksNames: NetworksNames = {
   [Network.ETHEREUM]: "Ethereum",
   [Network.MATIC]: "Polygon",
   [Network.ARBITRUM]: "Arbitrum",
@@ -14,12 +14,17 @@ export const networksNames: NetworksNames = {
   [Network.OPTIMISM]: "Optimism",
 }
 
-export const getNetworkName = (network: Network): string | undefined =>
+const getNetworkName = (network: Network): string | undefined =>
   networksNames[network]
 
-export const getNetworkMANADescription = (
-  network: Network
-): string | undefined => {
+const getNetworkMANADescription = (network: Network): string | undefined => {
   const networkName = getNetworkName(network)
   return networkName ? `${networkName} MANA` : `MANA`
+}
+
+export {
+  getNetworkMANADescription,
+  getNetworkName,
+  NetworksNames,
+  networksNames,
 }

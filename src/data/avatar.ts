@@ -1,6 +1,6 @@
 import { Avatar } from "@dcl/schemas/dist/platform/profile/avatar"
 
-export const avatar: Avatar = {
+const avatar: Avatar = {
   hasClaimedName: true,
   description: "My description",
   tutorialStep: 4095,
@@ -96,3 +96,5 @@ export const avatar: Avatar = {
   hasConnectedWeb3: true,
   muted: [],
 }
+
+export { avatar }

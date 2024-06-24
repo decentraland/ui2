@@ -1,9 +1,9 @@
 import { Typography } from "@mui/material"
-import type { Meta, StoryObj } from "@storybook/react"
-import Mana from "../Mana/Mana"
-import AvatarFace from "./AvatarFace"
+import { AvatarFace } from "./AvatarFace"
 import { avatar } from "../../data/avatar"
+import { Mana } from "../Mana"
 import { AvatarFaceProps } from "./AvatarFace.types"
+import type { Meta, StoryObj } from "@storybook/react"
 
 const meta: Meta<AvatarFaceProps> = {
   component: AvatarFace,
@@ -20,6 +20,7 @@ const meta: Meta<AvatarFaceProps> = {
   render: (args) => <AvatarFace {...args} />,
 }
 
+// eslint-disable-next-line import/no-default-export
 export default meta
 type Story = StoryObj<AvatarFaceProps>
 
@@ -58,8 +59,8 @@ export const InParagraph: Story = {
   },
   render: (args) => (
     <Typography>
-      You've transferred <Mana inline>1,000</Mana> to <AvatarFace {...args} />{" "}
-      <strong>cazala</strong>
+      You&apos;ve transferred <Mana inline>1,000</Mana> to{" "}
+      <AvatarFace {...args} /> <strong>cazala</strong>
     </Typography>
   ),
 }

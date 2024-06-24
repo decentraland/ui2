@@ -1,7 +1,7 @@
 import { ArgTypes, Title } from "@storybook/blocks"
 import styled from "@emotion/styled"
-import { Atlas, AtlasProps, Coord, Layer } from "./Atlas"
 import { getTiles } from "./util"
+import { Atlas, AtlasProps, Coord, Layer } from "./index"
 import type { Meta, StoryObj } from "@storybook/react"
 
 let tiles
@@ -214,6 +214,7 @@ const meta: Meta<AtlasProps> = {
   render: (args, { loaded: { tiles } }) => <Atlas {...args} tiles={tiles} />,
 }
 
+// eslint-disable-next-line import/no-default-export
 export default meta
 type Story = StoryObj<AtlasProps>
 

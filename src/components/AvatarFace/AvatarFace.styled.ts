@@ -2,7 +2,7 @@ import styled from "@emotion/styled"
 import { Avatar as AvatarMui, useTheme } from "@mui/material"
 import { AvatarFaceProps } from "./AvatarFace.types"
 
-export const AvatarContainer = styled("div")((
+const AvatarContainer = styled("div")((
   props: Pick<AvatarFaceProps, "inline">
 ) => {
   return {
@@ -15,9 +15,7 @@ export const AvatarContainer = styled("div")((
   }
 })
 
-export const Avatar = styled(AvatarMui)((
-  props: Pick<AvatarFaceProps, "size">
-) => {
+const Avatar = styled(AvatarMui)((props: Pick<AvatarFaceProps, "size">) => {
   const theme = useTheme()
   const size = {
     width: "32px",
@@ -50,3 +48,5 @@ export const Avatar = styled(AvatarMui)((
     },
   }
 })
+
+export { AvatarContainer, Avatar }

@@ -1,6 +1,6 @@
 import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon"
 
-export default function ManaEthIcon(props: SvgIconProps) {
+const ManaEthIcon = (props: SvgIconProps) => {
   return (
     <SvgIcon {...props}>
       <svg
@@ -15,3 +15,5 @@ export default function ManaEthIcon(props: SvgIconProps) {
     </SvgIcon>
   )
 }
+
+export { ManaEthIcon }

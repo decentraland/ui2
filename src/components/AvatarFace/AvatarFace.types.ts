@@ -1,7 +1,9 @@
 import { Avatar } from "@dcl/schemas"
 
-export type AvatarFaceProps = {
+type AvatarFaceProps = {
   avatar?: Avatar
   size?: "tiny" | "small" | "medium" | "large" | "responsive"
   inline?: boolean
 }
+
+export type { AvatarFaceProps }

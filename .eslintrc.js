@@ -1,3 +1,3 @@
 module.exports = {
-  extends: ["@dcl/eslint-config/ui2"],
+  extends: ["@dcl/eslint-config/ui"],
 }

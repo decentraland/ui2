@@ -1,6 +1,6 @@
 import { PaletteOptions } from "@mui/material"
 
-export const colorSchemas = {
+const colorSchemas = {
   light: {
     palette: {
       text: {
@@ -374,3 +374,5 @@ export const colorSchemas = {
     } as PaletteOptions,
   },
 }
+
+export { colorSchemas }

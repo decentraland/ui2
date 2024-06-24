@@ -1,7 +1,8 @@
+import React from "react"
 import { AvatarFaceProps } from "./AvatarFace.types"
 import { Avatar, AvatarContainer } from "./AvatarFace.styled"
 
-export default function AvatarFace(props: AvatarFaceProps) {
+const AvatarFace = React.memo((props: AvatarFaceProps) => {
   const { avatar, inline, ...avatarProps } = props
 
   let avatarUrl = avatar?.avatar?.snapshots?.face256
@@ -15,4 +16,6 @@ export default function AvatarFace(props: AvatarFaceProps) {
       <Avatar src={avatarUrl} {...avatarProps} />
     </AvatarContainer>
   )
-}
+})
+
+export { AvatarFace }
