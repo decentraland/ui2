@@ -28,6 +28,7 @@ const meta: Meta = {
   ),
 }
 
+// eslint-disable-next-line import/no-default-export
 export default meta
 type Story = StoryObj<ModalProps>
 

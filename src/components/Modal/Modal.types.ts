@@ -1,4 +1,4 @@
-export type ModalProps = {
+type ModalProps = {
   open: boolean
   size?: "tiny" | "small" | "medium" | "large"
   title?: string
@@ -9,3 +9,5 @@ export type ModalProps = {
   onClose?: React.MouseEventHandler<HTMLButtonElement>
   onBack?: React.MouseEventHandler<HTMLButtonElement>
 }
+
+export { ModalProps }

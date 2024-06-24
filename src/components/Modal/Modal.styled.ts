@@ -2,9 +2,7 @@ import styled from "@emotion/styled"
 import { Box as BoxMui, Paper as PaperMui } from "@mui/material"
 import { ModalProps } from "./Modal.types"
 
-export const ModalContainer = styled(PaperMui)((
-  props: Pick<ModalProps, "size">
-) => {
+const ModalContainer = styled(PaperMui)((props: Pick<ModalProps, "size">) => {
   let size = "900px"
   if (props.size === "tiny") {
     size = "540px"
@@ -34,17 +32,17 @@ export const ModalContainer = styled(PaperMui)((
   }
 })
 
-export const ModalTitleContainer = styled(BoxMui)({
+const ModalTitleContainer = styled(BoxMui)({
   display: "flex",
   justifyContent: "space-between",
   padding: "24px",
 })
 
-export const ModalContentContainer = styled(BoxMui)({
+const ModalContentContainer = styled(BoxMui)({
   padding: "24px",
 })
 
-export const ModalActionsContainer = styled(BoxMui)({
+const ModalActionsContainer = styled(BoxMui)({
   display: "flex",
   padding: "24px",
   "& > *": {
@@ -54,3 +52,10 @@ export const ModalActionsContainer = styled(BoxMui)({
     marginRight: "16px",
   },
 })
+
+export {
+  ModalContainer,
+  ModalTitleContainer,
+  ModalContentContainer,
+  ModalActionsContainer,
+}
