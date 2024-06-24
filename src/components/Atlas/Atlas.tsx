@@ -1,11 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react"
-
 import { Coord, Layer, TileMap, TileMapProps } from "react-tile-map"
-
-/* import { css } from "@emotion/react" */
-
 import { getColorByType, getTiles } from "./util"
-/* import { neutral } from "../../colors" */
 
 import "react-tile-map/dist/styles.css"
 
@@ -55,7 +50,7 @@ export type AtlasStateProps = Record<string, AtlasTileProps> | undefined
 
 export interface AtlasInterface extends AtlasProps {}
 
-export const Atlas = React.memo((props: AtlasProps) => {
+export const Atlas = React.memo(function Atlas(props: AtlasProps) {
   const { layers } = props
 
   const [tiles, setTiles] = useState<AtlasStateProps>(props.tiles)

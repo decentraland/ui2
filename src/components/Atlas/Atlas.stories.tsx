@@ -1,9 +1,7 @@
-import styled from "@emotion/styled"
 import { ArgTypes, Title } from "@storybook/blocks"
-
+import styled from "@emotion/styled"
 import { Atlas, AtlasProps, Coord, Layer } from "./Atlas"
 import { getTiles } from "./util"
-
 import type { Meta, StoryObj } from "@storybook/react"
 
 let tiles
