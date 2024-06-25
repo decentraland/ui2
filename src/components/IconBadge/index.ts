@@ -1,4 +1,2 @@
-import { IconBadge } from "./IconBadge"
-import { IconBadgeIcon, IconBadgeProps } from "./IconBadge.types"
-
-export { IconBadge, IconBadgeIcon, IconBadgeProps }
+export * from "./IconBadge"
+export * from "./IconBadge.types"
