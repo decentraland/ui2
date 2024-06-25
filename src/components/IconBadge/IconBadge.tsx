@@ -1,6 +1,7 @@
 import React from "react"
 import RepeatOneRoundedIcon from "@mui/icons-material/RepeatOneRounded"
 import RepeatRoundedIcon from "@mui/icons-material/RepeatRounded"
+import { SvgIconOwnProps } from "@mui/material"
 import {
   BaseFemaleIcon,
   BaseMaleIcon,
@@ -38,66 +39,69 @@ import {
 } from "./IconBadge.styled"
 
 const getIcon = (icon: IconBadgeIcon) => {
-  const color = "inherit"
+  const commonProps: Pick<SvgIconOwnProps, "fontSize" | "color"> = {
+    fontSize: "small",
+    color: "inherit",
+  }
   switch (icon) {
     case IconBadgeIcon.BaseFemale:
-      return <BaseFemaleIcon fontSize={"small"} color={color} />
+      return <BaseFemaleIcon {...commonProps} />
     case IconBadgeIcon.BaseMale:
-      return <BaseMaleIcon fontSize={"small"} color={color} />
+      return <BaseMaleIcon {...commonProps} />
     case IconBadgeIcon.Unisex:
-      return <UnisexIcon fontSize={"small"} color={color} />
+      return <UnisexIcon {...commonProps} />
     case IconBadgeIcon.BodyShape:
-      return <BodyShapeIcon fontSize={"small"} color={color} />
+      return <BodyShapeIcon {...commonProps} />
     case IconBadgeIcon.Earring:
-      return <EarringIcon fontSize={"small"} color={color} />
+      return <EarringIcon {...commonProps} />
     case IconBadgeIcon.Eyebrows:
-      return <EyebrowsIcon fontSize={"small"} color={color} />
+      return <EyebrowsIcon {...commonProps} />
     case IconBadgeIcon.Eyes:
-      return <EyesIcon fontSize={"small"} color={color} />
+      return <EyesIcon {...commonProps} />
     case IconBadgeIcon.Eyewear:
-      return <EyewearIcon fontSize={"small"} color={color} />
+      return <EyewearIcon {...commonProps} />
     case IconBadgeIcon.FacialHair:
-      return <FacialHairIcon fontSize={"small"} color={color} />
+      return <FacialHairIcon {...commonProps} />
     case IconBadgeIcon.Feet:
-      return <FeetIcon fontSize={"small"} color={color} />
+      return <FeetIcon {...commonProps} />
     case IconBadgeIcon.Hair:
-      return <HairIcon fontSize={"small"} color={color} />
+      return <HairIcon {...commonProps} />
     case IconBadgeIcon.Hat:
-      return <HatIcon fontSize={"small"} color={color} />
+      return <HatIcon {...commonProps} />
     case IconBadgeIcon.Helmet:
-      return <HelmetIcon fontSize={"small"} color={color} />
+      return <HelmetIcon {...commonProps} />
     case IconBadgeIcon.LowerBody:
-      return <LowerBodyIcon fontSize={"small"} color={color} />
+      return <LowerBodyIcon {...commonProps} />
     case IconBadgeIcon.Mask:
-      return <MaskIcon fontSize={"small"} color={color} />
+      return <MaskIcon {...commonProps} />
     case IconBadgeIcon.Mouth:
-      return <MouthIcon fontSize={"small"} color={color} />
+      return <MouthIcon {...commonProps} />
     case IconBadgeIcon.Tiara:
-      return <TiaraIcon fontSize={"small"} color={color} />
+      return <TiaraIcon {...commonProps} />
     case IconBadgeIcon.TopHead:
-      return <TopHeadIcon fontSize={"small"} color={color} />
+      return <TopHeadIcon {...commonProps} />
     case IconBadgeIcon.UpperBody:
-      return <UpperBodyIcon fontSize={"small"} color={color} />
+      return <UpperBodyIcon {...commonProps} />
     case IconBadgeIcon.Skin:
-      return <SkinIcon fontSize={"small"} color={color} />
+      return <SkinIcon {...commonProps} />
     case IconBadgeIcon.HandsWear:
-      return <HandsWearIcon fontSize={"small"} color={color} />
+      return <HandsWearIcon {...commonProps} />
     case IconBadgeIcon.PlayOnce:
-      return <RepeatOneRoundedIcon fontSize={"small"} color={color} />
+      return <RepeatOneRoundedIcon {...commonProps} />
     case IconBadgeIcon.PlayLoop:
-      return <RepeatRoundedIcon fontSize={"small"} color={color} />
+      return <RepeatRoundedIcon {...commonProps} />
     case IconBadgeIcon.SmartWearable:
-      return <SmartWearableIcon fontSize={"small"} color={color} />
+      return <SmartWearableIcon {...commonProps} />
     case IconBadgeIcon.Sound:
-      return <SoundIcon fontSize={"small"} color={color} />
+      return <SoundIcon {...commonProps} />
     case IconBadgeIcon.Props:
-      return <PropsIcon fontSize={"small"} color={color} />
+      return <PropsIcon {...commonProps} />
     case IconBadgeIcon.Sparkles:
-      return <SparklesIcon fontSize={"small"} color={color} />
+      return <SparklesIcon {...commonProps} />
     case IconBadgeIcon.Places:
-      return <PlacesIcon fontSize={"small"} color={color} />
+      return <PlacesIcon {...commonProps} />
     case IconBadgeIcon.Utility:
-      return <UtilityIcon fontSize={"small"} color={color} />
+      return <UtilityIcon {...commonProps} />
     default:
       return <></>
   }
