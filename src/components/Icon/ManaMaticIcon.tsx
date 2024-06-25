@@ -1,6 +1,7 @@
+import React from "react"
 import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon"
 
-const ManaMaticIcon = (props: SvgIconProps) => {
+const ManaMaticIcon = React.memo((props: SvgIconProps) => {
   return (
     <SvgIcon {...props}>
       <svg
@@ -19,5 +20,6 @@ const ManaMaticIcon = (props: SvgIconProps) => {
       </svg>
     </SvgIcon>
   )
-}
+})
+
 export { ManaMaticIcon }
