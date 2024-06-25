@@ -19,10 +19,8 @@ const meta: Meta = {
   argTypes: {
     size: {
       description: "Size of the Modal",
-      control: {
-        type: "select",
-        options: ["tiny", "small", "medium", "large"],
-      },
+      control: "radio",
+      options: ["tiny", "small", "medium", "large"],
     },
   },
   render: (args) => (
