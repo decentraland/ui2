@@ -1,6 +1,6 @@
 import { Network } from "@dcl/schemas"
 
-export type ManaProps = {
+type ManaProps = {
   size?: "small" | "medium" | "large"
   inline?: boolean
   network?: Network
@@ -15,3 +15,5 @@ export type ManaProps = {
       network: Network
     ) => void)
 }
+
+export { ManaProps }

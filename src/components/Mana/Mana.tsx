@@ -1,12 +1,12 @@
+import React from "react"
 import { Network } from "@dcl/schemas"
 import { Tooltip } from "@mui/material"
 import { getNetworkMANADescription } from "../../lib/network"
-import ManaEthIcon from "../Icon/ManaEthIcon"
-import ManaMaticIcon from "../Icon/ManaMaticIcon"
+import { ManaEthIcon, ManaMaticIcon } from "../Icon"
 import { ManaProps } from "./Mana.types"
 import { ImageContainer, ManaButtonContainer } from "./Mana.styled"
 
-function ManaButton(props: Omit<ManaProps, "showTooltip">) {
+const ManaButton = React.memo((props: Omit<ManaProps, "showTooltip">) => {
   const { children, size, network, primary, color, ...rest } = props
   return (
     <ManaButtonContainer fontSize={size} {...rest}>
@@ -20,9 +20,9 @@ function ManaButton(props: Omit<ManaProps, "showTooltip">) {
       {children}
     </ManaButtonContainer>
   )
-}
+})
 
-export default function Mana(props: ManaProps) {
+const Mana = React.memo((props: ManaProps) => {
   const { showTooltip, ...manaButtonProps } = props
   return showTooltip ? (
     <Tooltip
@@ -36,4 +36,6 @@ export default function Mana(props: ManaProps) {
   ) : (
     <ManaButton {...manaButtonProps} />
   )
-}
+})
+
+export { Mana }
