@@ -18,11 +18,9 @@ const meta: Meta<IconBadgeProps> = {
   render: (args) => <IconBadge {...args} />,
 }
 
-// eslint-disable-next-line import/no-default-export
-export default meta
 type Story = StoryObj<IconBadgeProps>
 
-export const WithIcon: Story = {
+const WithIcon: Story = {
   name: "With Icon",
   args: {
     icon: IconBadgeIcon.Utility,
@@ -31,7 +29,7 @@ export const WithIcon: Story = {
   },
 }
 
-export const WithCustomIcon: Story = {
+const WithCustomIcon: Story = {
   name: "With Custom Icon",
   args: {
     children: <ManaEthIcon />,
@@ -40,7 +38,7 @@ export const WithCustomIcon: Story = {
   },
 }
 
-export const WithoutText: Story = {
+const WithoutText: Story = {
   name: "Without Text",
   args: {
     icon: IconBadgeIcon.Tiara,
@@ -48,10 +46,14 @@ export const WithoutText: Story = {
   },
 }
 
-export const WithoutIcon: Story = {
+const WithoutIcon: Story = {
   name: "Without Icon",
   args: {
     text: "No Icon",
     onClick: () => console.log("Clicked!"),
   },
 }
+
+// eslint-disable-next-line import/no-default-export
+export default meta
+export { WithIcon, WithCustomIcon, WithoutText, WithoutIcon }

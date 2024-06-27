@@ -20,22 +20,20 @@ const meta: Meta<AvatarFaceProps> = {
   render: (args) => <AvatarFace {...args} />,
 }
 
-// eslint-disable-next-line import/no-default-export
-export default meta
 type Story = StoryObj<AvatarFaceProps>
 
-export const Guest: Story = {
+const Guest: Story = {
   args: {},
 }
 
-export const Simple: Story = {
+const Simple: Story = {
   args: {
     size: "large",
     avatar,
   },
 }
 
-export const Sizes: Story = {
+const Sizes: Story = {
   args: {
     avatar,
   },
@@ -50,7 +48,7 @@ export const Sizes: Story = {
   ),
 }
 
-export const InParagraph: Story = {
+const InParagraph: Story = {
   name: "In a paragraph",
   args: {
     avatar,
@@ -64,3 +62,7 @@ export const InParagraph: Story = {
     </Typography>
   ),
 }
+
+// eslint-disable-next-line import/no-default-export
+export default meta
+export { Guest, Simple, Sizes, InParagraph }

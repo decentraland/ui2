@@ -29,20 +29,18 @@ const meta: Meta<ManaProps> = {
   render: (args) => <Mana {...args} />,
 }
 
-// eslint-disable-next-line import/no-default-export
-export default meta
 type Story = StoryObj<ManaProps>
 
-export const Symbol: Story = {
+const Symbol: Story = {
   args: {},
 }
 
-export const SymbolMana: Story = {
+const SymbolMana: Story = {
   name: "Symbol + MANA",
   args: { children: "MANA" },
 }
 
-export const SymbolVoted: Story = {
+const SymbolVoted: Story = {
   name: "Total voted",
   args: { children: "MANA" },
   render: (args) => (
@@ -53,7 +51,7 @@ export const SymbolVoted: Story = {
   ),
 }
 
-export const SymbolSizes: Story = {
+const SymbolSizes: Story = {
   name: "Sizes",
   args: { children: "1,000" },
   render: (args) => (
@@ -65,7 +63,7 @@ export const SymbolSizes: Story = {
   ),
 }
 
-export const SymbolInline: Story = {
+const SymbolInline: Story = {
   name: "Inline",
   args: { children: "1,000", inline: true },
   render: (args) => (
@@ -75,7 +73,7 @@ export const SymbolInline: Story = {
   ),
 }
 
-export const SymbolMatic: Story = {
+const SymbolMatic: Story = {
   name: "Matic",
   args: {
     children: "1,000",
@@ -89,7 +87,7 @@ export const SymbolMatic: Story = {
   ),
 }
 
-export const SymbolMaticPrimary: Story = {
+const SymbolMaticPrimary: Story = {
   name: "Matic primary",
   args: {
     children: "1,000",
@@ -104,7 +102,7 @@ export const SymbolMaticPrimary: Story = {
   ),
 }
 
-export const SymbolMaticSizes: Story = {
+const SymbolMaticSizes: Story = {
   name: "Matic sizes",
   args: {
     children: "1,000",
@@ -119,7 +117,7 @@ export const SymbolMaticSizes: Story = {
   ),
 }
 
-export const ManaTooltip: Story = {
+const ManaTooltip: Story = {
   name: "Mana + Tooltip",
   args: {
     children: "1,000",
@@ -127,4 +125,18 @@ export const ManaTooltip: Story = {
     showTooltip: true,
     size: "small",
   },
+}
+
+// eslint-disable-next-line import/no-default-export
+export default meta
+export {
+  Symbol,
+  SymbolMana,
+  SymbolVoted,
+  SymbolSizes,
+  SymbolInline,
+  SymbolMatic,
+  SymbolMaticPrimary,
+  SymbolMaticSizes,
+  ManaTooltip,
 }
