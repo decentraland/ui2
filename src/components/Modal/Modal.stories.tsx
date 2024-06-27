@@ -8,7 +8,7 @@ import {
   Typography,
 } from "@mui/material"
 import { ModalContent } from "./Modal"
-import Mana from "../Mana/Mana"
+import { Mana } from "../Mana"
 import { ModalProps } from "./Modal.types"
 import type { Meta, StoryObj } from "@storybook/react"
 
