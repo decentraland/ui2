@@ -15,5 +15,7 @@ function theme(type: "light" | "dark"): ThemeOptions {
   }
 }
 
-export const light = createTheme(theme("light"))
-export const dark = createTheme(theme("dark"))
+const light = createTheme(theme("light"))
+const dark = createTheme(theme("dark"))
+
+export { light, dark }
