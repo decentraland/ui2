@@ -5,7 +5,7 @@ import { i18n } from "./NotificationsFeed.i18n"
 import { NotificationFeedTabs } from "./NotificationsFeedTabs"
 import { NotificationLocale } from "./types"
 import { Time } from "../../lib/time"
-import { Mobile, NotMobile } from "../Media"
+import { Mobile, NotMobile, useMobileMediaQuery } from "../Media"
 import { Modal } from "../Modal"
 import { NotificationsFeedProps } from "./NotificationsFeed.types"
 import {
@@ -26,7 +26,7 @@ const Onboarding = ({
   onBegin: (e: React.MouseEvent<HTMLButtonElement>) => void
 }) => (
   <FeedContainer>
-    <OnboardingWrapper elevation={24} sx={{ bgcolor: "background.default" }}>
+    <OnboardingWrapper>
       <CircleNotificationsRoundedIcon sx={{ fontSize: 120 }} />
       <EmptyViewTitle color="text.primary">
         {i18n[locale].onboarding.title}
@@ -50,11 +50,14 @@ const NotificationsFeed = React.memo((props: NotificationsFeedProps) => {
     isOnboarding,
     activeTab,
     isOpen,
+    anchorEl,
     renderProfile,
     onChangeTab,
     onBegin,
     onClose,
   } = props
+
+  const isMobile = useMobileMediaQuery()
 
   const unreadNotifications = useMemo(
     () => items.filter((notification) => !notification.read),
@@ -101,50 +104,49 @@ const NotificationsFeed = React.memo((props: NotificationsFeedProps) => {
     }
   }, [isOpen])
 
-  if (isOnboarding) {
-    return (
-      <>
-        <Mobile>
-          <Modal open={isOpen} onClose={onClose}>
-            <Onboarding locale={locale} onBegin={onBegin} />
-          </Modal>
-        </Mobile>
-        <NotMobile>
-          <NotificationFeedContainer elevation={24}>
-            <Onboarding locale={locale} onBegin={onBegin} />
-          </NotificationFeedContainer>
-        </NotMobile>
-      </>
-    )
-  }
-
   return (
     <>
       <Mobile>
-        <Modal open={isOpen} onClose={onClose}>
-          <NotificationFeedModalContainer>
-            <NotificationFeedTabs
-              locale={locale}
-              previousNotifications={previousNotifications}
-              readNotifications={readNotifications}
-              unreadNotifications={unreadNotifications}
-              onChangeTab={onChangeTab}
-              activeTab={activeTab}
-              isModal
-              renderProfile={renderProfile}
-            />
-          </NotificationFeedModalContainer>
+        <Modal open={isMobile && isOpen} onClose={onClose}>
+          {isOnboarding ? (
+            <Onboarding locale={locale} onBegin={onBegin} />
+          ) : (
+            <NotificationFeedModalContainer>
+              <NotificationFeedTabs
+                locale={locale}
+                previousNotifications={previousNotifications}
+                readNotifications={readNotifications}
+                unreadNotifications={unreadNotifications}
+                onChangeTab={onChangeTab}
+                activeTab={activeTab}
+                isModal
+                renderProfile={renderProfile}
+              />
+            </NotificationFeedModalContainer>
+          )}
         </Modal>
       </Mobile>
       <NotMobile>
         <NotificationFeedContainer
+          anchorEl={anchorEl}
+          open={!!isOpen}
+          onClose={onClose}
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "center",
+          }}
+          transformOrigin={{
+            vertical: "top",
+            horizontal: "center",
+          }}
           elevation={24}
-          sx={{ bgcolor: "background.default" }}
         >
           {isLoading ? (
             <LoadingContainer>
               <CircularProgress size={20} />
             </LoadingContainer>
+          ) : isOnboarding ? (
+            <Onboarding locale={locale} onBegin={onBegin} />
           ) : (
             <NotificationFeedTabs
               locale={locale}

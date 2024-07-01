@@ -1,8 +1,8 @@
 import styled from "@emotion/styled"
-import { Box, Paper, Typography } from "@mui/material"
+import { Box, Menu, Typography } from "@mui/material"
 
 const FeedContainer = styled("div")({
-  height: "100%",
+  width: "384px",
 })
 
 const EmptyViewContainer = styled("div")({
@@ -20,7 +20,6 @@ const EmptyViewTitle = styled(Typography)({
   fontSize: "18px",
   fontWeight: "600",
   marginBottom: 0,
-  width: "345px",
 })
 
 const EmptyViewDescription = styled(Typography)({
@@ -28,7 +27,7 @@ const EmptyViewDescription = styled(Typography)({
   color: "#a09ba8",
 })
 
-const OnboardingWrapper = styled(Paper)({
+const OnboardingWrapper = styled(Box)({
   display: "flex",
   flexDirection: "column",
   gap: "16px",
@@ -39,7 +38,7 @@ const OnboardingWrapper = styled(Paper)({
 
 const LoadingContainer = styled("div")({
   height: "290px",
-  width: "100%",
+  width: "384px",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
@@ -50,24 +49,11 @@ const NotificationFeedModalContainer = styled(Box)({
   flexDirection: "column",
 })
 
-const NotificationFeedContainer = styled(Paper)({
-  width: "384px",
+const NotificationFeedContainer = styled(Menu)({
+  width: "484px",
   pointerEvents: "visible",
-  display: "flex",
-  flexDirection: "column",
-  position: "absolute",
-  top: "40px",
-  zIndex: 100,
-  borderRadius: "8px",
-  transition: "opacity 0.3s ease",
-  "&::before": {
-    position: "absolute",
-    content: "''",
-    width: "28px",
-    height: "28px",
-    transform: "rotate(-45deg)",
-    top: "-2px",
-    left: "calc(50% - 14px)",
+  "& .MuiPaper-root": {
+    borderRadius: "8px",
   },
 })
 

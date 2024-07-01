@@ -16,6 +16,7 @@ import {
 } from "./NotificationsFeed.styled"
 import {
   NotificationFeedPrevious,
+  NotificationFeedTabsContainer,
   NotificationFeedTabsContent,
   NotificationFeedTabsHeader,
   NotificationFeedTabsListContainer,
@@ -81,7 +82,7 @@ const NotificationFeedTabs = React.memo((props: NotificationsFeedTabsProps) => {
     [onChangeTab]
   )
   return (
-    <>
+    <NotificationFeedTabsContainer>
       <NotificationFeedTabsHeader>
         <NotificationFeedTabsTitle>
           {i18n[locale].feed.title}
@@ -160,7 +161,7 @@ const NotificationFeedTabs = React.memo((props: NotificationsFeedTabsProps) => {
           </NotificationFeedTabsListWrapper>
         </NotificationFeedTabsListContainer>
       </NotificationFeedTabsContent>
-    </>
+    </NotificationFeedTabsContainer>
   )
 })
 

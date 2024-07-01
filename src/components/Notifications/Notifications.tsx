@@ -1,4 +1,4 @@
-import React, { useMemo } from "react"
+import React, { useCallback, useMemo, useState } from "react"
 import { NotificationsFeed } from "./NotificationsFeed"
 import { NotificationBellActiveIcon, NotificationBellIcon } from "../Icon"
 import { NotificationsProps } from "./Notifications.types"
@@ -22,27 +22,42 @@ const Notifications = React.memo((props: NotificationsProps) => {
     return items.filter((notification) => !notification.read).length
   }, [items])
 
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+  const handleClick = useCallback(
+    (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+      onClick(event)
+      setAnchorEl(event.currentTarget)
+    },
+    []
+  )
+
+  const handleClose = useCallback(
+    (event: React.MouseEvent<HTMLElement> | MouseEvent) => {
+      onClose(event)
+      setAnchorEl(null)
+    },
+    []
+  )
+
   return (
-    <div className="dcl notifications">
-      <div>
-        <NotificationIconContainer
-          active={newNotificationsCount > 0}
-          onClick={onClick}
-          badgeContent={newNotificationsCount}
-          color="primary"
-          anchorOrigin={{
-            vertical: "top",
-            horizontal: "right",
-          }}
-          invisible={newNotificationsCount === 0}
-        >
-          {!isOpen ? (
-            <NotificationBellIcon fontSize="large" color="primary" />
-          ) : (
-            <NotificationBellActiveIcon fontSize="large" color="primary" />
-          )}
-        </NotificationIconContainer>
-      </div>
+    <>
+      <NotificationIconContainer
+        active={newNotificationsCount > 0}
+        onClick={handleClick}
+        badgeContent={newNotificationsCount}
+        color="primary"
+        anchorOrigin={{
+          vertical: "top",
+          horizontal: "right",
+        }}
+        invisible={newNotificationsCount === 0}
+      >
+        {!isOpen ? (
+          <NotificationBellIcon fontSize="large" color="primary" />
+        ) : (
+          <NotificationBellActiveIcon fontSize="large" color="primary" />
+        )}
+      </NotificationIconContainer>
       {isOpen && (
         <NotificationsFeed
           isOpen={isOpen}
@@ -53,11 +68,12 @@ const Notifications = React.memo((props: NotificationsProps) => {
           activeTab={activeTab}
           onChangeTab={onChangeTab}
           onBegin={onBegin}
-          onClose={onClose}
+          onClose={handleClose}
           renderProfile={renderProfile}
+          anchorEl={anchorEl}
         />
       )}
-    </div>
+    </>
   )
 })
 

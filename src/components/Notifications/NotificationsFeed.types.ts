@@ -12,6 +12,7 @@ type NotificationsFeedProps = {
   isOnboarding: boolean
   activeTab: NotificationActiveTab
   isOpen: boolean
+  anchorEl: HTMLElement | null
   renderProfile?: (address: string) => JSX.Element | string | null
   onChangeTab: (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>,

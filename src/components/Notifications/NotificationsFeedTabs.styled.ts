@@ -1,6 +1,10 @@
 import styled from "@emotion/styled"
-import { Typography } from "@mui/material"
+import { Box, Typography } from "@mui/material"
 import { NotificationsFeedTabsProps } from "./NotificationsFeedTabs.types"
+
+const NotificationFeedTabsContainer = styled(Box)({
+  width: "384px",
+})
 
 const NotificationFeedTabsHeader = styled("div")({
   display: "flex",
@@ -74,6 +78,7 @@ const NotificationFeedPrevious = styled(Typography)(() => {
 })
 
 export {
+  NotificationFeedTabsContainer,
   NotificationFeedTabsHeader,
   NotificationFeedTabsTitle,
   NotificationFeedTabsContent,
