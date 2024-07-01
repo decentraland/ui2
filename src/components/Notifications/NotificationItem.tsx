@@ -1,7 +1,8 @@
 import React from "react"
+import { formatDistanceToNow } from "date-fns"
+import { enUS, es, zhCN } from "date-fns/locale"
 import { NotificationItemImage } from "./NotificationItemImage"
 import { NotificationLocale } from "./types"
-import { Time } from "../../lib/time"
 import { NewNotificationIcon } from "../Icon"
 import { NotificationItemImageProps } from "./NotificationItemImage.types"
 import {
@@ -21,6 +22,8 @@ interface NotificationItemProps {
 const NotificationItem = React.memo(
   (props: React.PropsWithChildren<NotificationItemProps>) => {
     const { image, timestamp, isNew, children, locale } = props
+    const usedLocale = locale === "en" ? enUS : locale === "es" ? es : zhCN
+
     return (
       <NotificationItemContainer>
         <NotificationItemImageContainer>
@@ -29,10 +32,9 @@ const NotificationItem = React.memo(
         <NotificationItemContent>
           {children}
           <NotificationItemTimestamp>
-            {Time(timestamp).locale(locale).fromNow()}
+            {formatDistanceToNow(timestamp, { locale: usedLocale })}
           </NotificationItemTimestamp>
         </NotificationItemContent>
-        {/* Do we really need this icon that only a red dot? */}
         {isNew && <NewNotificationIcon fontStyle={12} />}
       </NotificationItemContainer>
     )

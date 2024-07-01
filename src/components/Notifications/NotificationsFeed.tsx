@@ -1,10 +1,10 @@
 import React, { useEffect, useMemo } from "react"
 import CircleNotificationsRoundedIcon from "@mui/icons-material/CircleNotificationsRounded"
+import { differenceInHours } from "date-fns"
 import { Button, CircularProgress } from "@mui/material"
 import { i18n } from "./NotificationsFeed.i18n"
 import { NotificationFeedTabs } from "./NotificationsFeedTabs"
 import { NotificationLocale } from "./types"
-import { Time } from "../../lib/time"
 import { Mobile, NotMobile, useMobileMediaQuery } from "../Media"
 import { Modal } from "../Modal"
 import { NotificationsFeedProps } from "./NotificationsFeed.types"
@@ -67,7 +67,7 @@ const NotificationsFeed = React.memo((props: NotificationsFeedProps) => {
   const previousNotifications = useMemo(
     () =>
       items.filter((notification) => {
-        const diff = Time(notification.timestamp).diff(new Date(), "hour")
+        const diff = differenceInHours(notification.timestamp, new Date())
         return notification.read && diff >= -48 && diff <= 0
       }),
     [items]
