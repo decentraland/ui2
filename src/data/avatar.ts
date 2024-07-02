@@ -67,8 +67,9 @@ const avatar: Avatar = {
       },
     ],
     snapshots: {
-      body: "bafkreierlxqaqy2wqjmdf5y46p7xdzg5skpfbeyaixyrzim2hdmimazbce",
-      face256: "bafkreicow7jrxxezwqdkv63lvgahf42khbnuvnm5auam4sp2ph7ghbhyhi",
+      body: "https://peer-ec2.decentraland.org/content/contents/bafkreierlxqaqy2wqjmdf5y46p7xdzg5skpfbeyaixyrzim2hdmimazbce",
+      face256:
+        "https://peer-ec2.decentraland.org/content/contents/bafkreicow7jrxxezwqdkv63lvgahf42khbnuvnm5auam4sp2ph7ghbhyhi",
     },
     eyes: {
       color: {

@@ -214,11 +214,9 @@ const meta: Meta<AtlasProps> = {
   render: (args, { loaded: { tiles } }) => <Atlas {...args} tiles={tiles} />,
 }
 
-// eslint-disable-next-line import/no-default-export
-export default meta
 type Story = StoryObj<AtlasProps>
 
-export const Uncontrolled: Story = {
+const Uncontrolled: Story = {
   args: {},
   loaders: [
     async () => ({
@@ -227,7 +225,7 @@ export const Uncontrolled: Story = {
   ],
 }
 
-export const Controlled: Story = {
+const Controlled: Story = {
   args: {},
   loaders: [
     async () => ({
@@ -236,7 +234,7 @@ export const Controlled: Story = {
   ],
 }
 
-export const ForSale: Story = {
+const ForSale: Story = {
   args: {
     layers: [forSaleLayer],
   },
@@ -247,7 +245,7 @@ export const ForSale: Story = {
   ],
 }
 
-export const ClickToSelect: Story = {
+const ClickToSelect: Story = {
   args: {
     layers: [selectedStrokeLayer, selectedFillLayer],
     onClick: handleClick,
@@ -259,7 +257,7 @@ export const ClickToSelect: Story = {
   ],
 }
 
-export const HoverToHighlight: Story = {
+const HoverToHighlight: Story = {
   args: {
     layers: [hoverStrokeLayer, hoverFillLayer],
     onHover: handleHover,
@@ -271,7 +269,7 @@ export const HoverToHighlight: Story = {
   ],
 }
 
-export const WithZoomControl: Story = {
+const WithZoomControl: Story = {
   args: {
     layers: [hoverStrokeLayer, hoverFillLayer],
     onHover: handleHover,
@@ -282,4 +280,15 @@ export const WithZoomControl: Story = {
       tiles: await getTiles(),
     }),
   ],
+}
+
+// eslint-disable-next-line import/no-default-export
+export default meta
+export {
+  Uncontrolled,
+  Controlled,
+  ForSale,
+  ClickToSelect,
+  HoverToHighlight,
+  WithZoomControl,
 }
