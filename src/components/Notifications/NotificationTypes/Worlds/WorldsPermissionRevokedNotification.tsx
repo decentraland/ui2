@@ -25,7 +25,7 @@ const WorldsPermissionRevokedNotification = React.memo(
 
     return (
       <NotificationItem
-        image={{ image: <Icon fontSize="inherit" /> }}
+        image={{ image: <Icon /> }}
         timestamp={notification.timestamp}
         isNew={!notification.read}
         locale={locale}

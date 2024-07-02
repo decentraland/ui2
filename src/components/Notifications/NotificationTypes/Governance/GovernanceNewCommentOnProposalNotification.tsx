@@ -19,7 +19,7 @@ const GovernanceNewCommentOnProposalNotification = React.memo(
     const { notification, locale } = props
     return (
       <NotificationItem
-        image={{ image: <NewCommentIcon fontSize="inherit" /> }}
+        image={{ image: <NewCommentIcon /> }}
         timestamp={notification.timestamp}
         isNew={!notification.read}
         locale={locale}

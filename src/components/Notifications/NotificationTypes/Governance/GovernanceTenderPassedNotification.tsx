@@ -17,7 +17,7 @@ const GovernanceTenderPassedNotification = React.memo(
 
     return (
       <NotificationItem
-        image={{ image: <TenderIcon fontSize="inherit" /> }}
+        image={{ image: <TenderIcon /> }}
         timestamp={notification.timestamp}
         isNew={!notification.read}
         locale={locale}

@@ -4,6 +4,9 @@ import { Badge as BadgeMui } from "@mui/material"
 const Badge = styled(BadgeMui)({
   height: "48px",
   width: "48px",
+  "& svg.MuiSvgIcon-root": {
+    fontSize: "inherit",
+  },
 })
 
 const ImageContainer = styled("div")((props: { backgroundColor?: string }) => {

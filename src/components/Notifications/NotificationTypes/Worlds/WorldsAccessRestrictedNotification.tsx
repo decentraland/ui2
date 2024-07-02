@@ -16,7 +16,7 @@ const WorldsAccessRestrictedNotification = React.memo(
     const { notification, locale } = props
     return (
       <NotificationItem
-        image={{ image: <AccessRestrictedIcon fontSize="inherit" /> }}
+        image={{ image: <AccessRestrictedIcon /> }}
         timestamp={notification.timestamp}
         isNew={!notification.read}
         locale={locale}

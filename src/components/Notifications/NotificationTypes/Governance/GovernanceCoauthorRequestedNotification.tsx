@@ -19,7 +19,7 @@ const GovernanceCoauthorRequestedNotification = React.memo(
     const { notification, locale } = props
     return (
       <NotificationItem
-        image={{ image: <CoauthorIcon fontSize="inherit" /> }}
+        image={{ image: <CoauthorIcon /> }}
         timestamp={notification.timestamp}
         isNew={!notification.read}
         locale={locale}

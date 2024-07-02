@@ -4,7 +4,7 @@ import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon"
 const AccessRestoredIcon = React.memo((props: SvgIconProps) => {
   return (
     <SvgIcon {...props}>
-      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" {...props}>
+      <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
         <circle cx="24" cy="24" r="24" fill="url(#paint0_linear_602_11507)" />
         <g clipPath="url(#clip0_602_11507)">
           <path

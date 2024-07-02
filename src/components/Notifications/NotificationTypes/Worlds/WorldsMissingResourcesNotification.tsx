@@ -16,7 +16,7 @@ const WorldsMissingResourcesNotification = React.memo(
     const { notification, locale } = props
     return (
       <NotificationItem
-        image={{ image: <MissingResourcesIcon fontSize="inherit" /> }}
+        image={{ image: <MissingResourcesIcon /> }}
         timestamp={notification.timestamp}
         isNew={!notification.read}
         locale={locale}

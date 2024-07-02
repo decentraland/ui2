@@ -1,55 +1,7 @@
-import React, { useEffect, useState } from "react"
-import WatchLaterOutlinedIcon from "@mui/icons-material/WatchLaterOutlined"
+import React from "react"
 import { Link } from "@mui/material"
-import { NotificationItemCountdown } from "../../NotificationItem.styled"
+import { Countdown } from "./Countdown"
 import { EventsStartsSoonNotificationProps } from "../../types"
-
-let interval: NodeJS.Timeout
-
-const Countdown = React.memo(({ startDate }: { startDate: string }) => {
-  const [minutes, setMinutes] = useState<number | undefined>(undefined)
-  const [seconds, setSeconds] = useState<number | undefined>(undefined)
-
-  useEffect(() => {
-    interval = setInterval(() => {
-      const eventStartDate = new Date(startDate).getTime()
-      const distance = eventStartDate - Date.now()
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000)
-
-      setMinutes(minutes)
-      setSeconds(seconds)
-      if (distance < 0) {
-        setMinutes(0)
-        setSeconds(0)
-        clearInterval(interval)
-      }
-    }, 1000)
-    return () => clearInterval(interval)
-  }, [setMinutes, setSeconds])
-
-  const minutesString =
-    minutes !== undefined
-      ? minutes.toLocaleString("en-US", {
-          minimumIntegerDigits: 2,
-          useGrouping: false,
-        })
-      : "--"
-  const secondsString =
-    seconds !== undefined
-      ? seconds.toLocaleString("en-US", {
-          minimumIntegerDigits: 2,
-          useGrouping: false,
-        })
-      : "--"
-
-  return (
-    <NotificationItemCountdown>
-      <WatchLaterOutlinedIcon fontSize="inherit" />
-      {`${minutesString}:${secondsString}`}
-    </NotificationItemCountdown>
-  )
-})
 
 const i18n = {
   en: {

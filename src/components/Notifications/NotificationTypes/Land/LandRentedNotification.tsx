@@ -16,7 +16,7 @@ const LandRentedNotification = React.memo(
     const { notification, locale, renderProfile } = props
     return (
       <NotificationItem
-        image={{ image: <LandRentedIcon fontSize="inherit" /> }}
+        image={{ image: <LandRentedIcon /> }}
         timestamp={notification.timestamp}
         isNew={!notification.read}
         locale={locale}

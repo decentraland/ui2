@@ -39,7 +39,6 @@ const ImageContainer = styled("div")((props: {
   color?: string
 }) => {
   const theme = useTheme()
-  console.log(theme.palette)
   return {
     display: "flex",
     paddingRight: "0.3em",
