@@ -1,6 +1,7 @@
 import React from "react"
 import { i18n } from "./LandRentalEndedNotification.i18n"
 import { RentPeriodEndingIcon } from "../../../Icon"
+import { IconBadge, IconBadgeIcon } from "../../../IconBadge"
 import { NotificationItem } from "../../NotificationItem"
 import {
   NotificationItemDescription,
@@ -23,10 +24,14 @@ const LandRentalEndedNotification = React.memo(
       >
         <NotificationItemTitle>{i18n[locale].title}</NotificationItemTitle>
         <NotificationItemDescription color="inherit" underline="none">
-          {i18n[locale].description(
-            notification.metadata.land,
-            notification.metadata.link
-          )}
+          {i18n[locale].description.start}{" "}
+          <IconBadge
+            inline
+            icon={IconBadgeIcon.Places}
+            text={notification.metadata.land}
+            onClick={() => window.open(notification.metadata.link, "_blank")}
+          />{" "}
+          {i18n[locale].description.end}
         </NotificationItemDescription>
       </NotificationItem>
     )

@@ -97,12 +97,10 @@ const NotificationFeedTabs = React.memo((props: NotificationsFeedTabsProps) => {
           <Tab
             label={i18n[locale].feed.tabs.newest}
             value={NotificationActiveTab.NEWEST}
-            onClick={(e) => onChangeTab(e, NotificationActiveTab.NEWEST)}
           />
           <Tab
             label={i18n[locale].feed.tabs.read}
             value={NotificationActiveTab.READ}
-            onClick={(e) => onChangeTab(e, NotificationActiveTab.READ)}
           />
         </Tabs>
         <NotificationFeedTabsListContainer isModal={isModal}>

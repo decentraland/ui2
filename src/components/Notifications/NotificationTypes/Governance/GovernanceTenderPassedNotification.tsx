@@ -1,10 +1,12 @@
 import React from "react"
+import { Link } from "@mui/material"
 import { i18n } from "./GovernanceTenderPassedNotification.i18n"
 import { TenderIcon } from "../../../Icon"
 import { NotificationItem } from "../../NotificationItem"
 import {
   NotificationItemDescription,
   NotificationItemTitle,
+  SpanHighlighted,
 } from "../../NotificationItem.styled"
 import {
   CommonNotificationProps,
@@ -23,10 +25,17 @@ const GovernanceTenderPassedNotification = React.memo(
         locale={locale}
       >
         <NotificationItemTitle>
-          {i18n[locale].title(notification.metadata.proposalTitle)}
+          {i18n[locale].title.start}{" "}
+          <SpanHighlighted>
+            {notification.metadata.proposalTitle}
+          </SpanHighlighted>{" "}
+          {i18n[locale].title.end}
         </NotificationItemTitle>
         <NotificationItemDescription color="inherit" underline="none">
-          {i18n[locale].description(notification.metadata.link)}
+          {i18n[locale].description.start}{" "}
+          <Link href={notification.metadata.link}>
+            {i18n[locale].description.link_text}
+          </Link>
         </NotificationItemDescription>
       </NotificationItem>
     )

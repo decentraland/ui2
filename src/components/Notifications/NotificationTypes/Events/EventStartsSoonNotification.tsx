@@ -1,4 +1,6 @@
 import React from "react"
+import { Link } from "@mui/material"
+import { Countdown } from "./Countdown"
 import { i18n } from "./EventStartsSoonNotification.i18n"
 import { EventStartsSoonIcon } from "../../../Icon"
 import { NotificationItem } from "../../NotificationItem"
@@ -27,7 +29,24 @@ const EventsStartsSoonNotification = React.memo(
           color="inherit"
           underline="none"
         >
-          {i18n[locale].description(notification.metadata)}
+          {new Date(notification.metadata.startsAt).getTime() > Date.now() ? (
+            <>
+              {i18n[locale].description.aboutToStart.start}{" "}
+              <Link href={notification.metadata.link}>
+                {notification.metadata.name}
+              </Link>{" "}
+              {i18n[locale].description.aboutToStart.end}{" "}
+              <Countdown startDate={notification.metadata.startsAt} />
+            </>
+          ) : (
+            <>
+              {i18n[locale].description.startsInOneHour.start}{" "}
+              <Link href={notification.metadata.link}>
+                {notification.metadata.name}
+              </Link>{" "}
+              {i18n[locale].description.startsInOneHour.end}
+            </>
+          )}
         </NotificationItemDescription>
       </NotificationItem>
     )

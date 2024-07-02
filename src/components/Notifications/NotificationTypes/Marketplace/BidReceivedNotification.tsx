@@ -33,24 +33,24 @@ const BidReceivedNotification = React.memo(
       >
         <NotificationItemTitle>{i18n[locale].title}</NotificationItemTitle>
         <NotificationItemDescription color="inherit" underline="none">
-          {i18n[locale].description(
-            <Mana
-              inline
-              network={
-                notification.metadata.network === "polygon"
-                  ? Network.MATIC
-                  : Network.ETHEREUM
-              }
-              color={theme.palette.text.secondary}
-            >
-              {formatMana(notification.metadata.price)}
-            </Mana>,
-            <NotificationItemNFTLink
-              name={notification.metadata.nftName}
-              rarity={notification.metadata.rarity}
-              link={notification.metadata.link}
-            />
-          )}
+          {i18n[locale].description.start}{" "}
+          <Mana
+            inline
+            network={
+              notification.metadata.network === "polygon"
+                ? Network.MATIC
+                : Network.ETHEREUM
+            }
+            color={theme.palette.text.secondary}
+          >
+            {formatMana(notification.metadata.price)}
+          </Mana>{" "}
+          {i18n[locale].description.middle}{" "}
+          <NotificationItemNFTLink
+            name={notification.metadata.nftName}
+            rarity={notification.metadata.rarity}
+            link={notification.metadata.link}
+          />
         </NotificationItemDescription>
       </NotificationItem>
     )

@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "@mui/material"
 import { i18n } from "./EventStartedNotification.i18n"
 import { EventStartedIcon } from "../../../Icon"
 import { NotificationItem } from "../../NotificationItem"
@@ -27,7 +28,11 @@ const EventsStartedNotification = React.memo(
           color="inherit"
           underline="none"
         >
-          {i18n[locale].description(notification.metadata)}
+          {i18n[locale].description.start}{" "}
+          <Link href={notification.metadata.link}>
+            {notification.metadata.name}
+          </Link>{" "}
+          {i18n[locale].description.end}
         </NotificationItemDescription>
       </NotificationItem>
     )

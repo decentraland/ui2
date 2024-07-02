@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "@mui/material"
 import { i18n } from "./WorldsMissingResourcesNotification.i18n"
 import { MissingResourcesIcon } from "../../../Icon"
 import { NotificationItem } from "../../NotificationItem"
@@ -23,7 +24,11 @@ const WorldsMissingResourcesNotification = React.memo(
       >
         <NotificationItemTitle>{i18n[locale].title}</NotificationItemTitle>
         <NotificationItemDescription color="inherit" underline="none">
-          {i18n[locale].description(notification.metadata.url)}
+          {i18n[locale].description.start}{" "}
+          <Link href={notification.metadata.url}>
+            {i18n[locale].description.link_text}
+          </Link>{" "}
+          {i18n[locale].description.end}
         </NotificationItemDescription>
       </NotificationItem>
     )

@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "@mui/material"
 import { i18n } from "./GovernanceCoauthorRequestedNotification.i18n"
 import { CoauthorIcon } from "../../../Icon"
 import { NotificationItem } from "../../NotificationItem"
@@ -31,7 +32,10 @@ const GovernanceCoauthorRequestedNotification = React.memo(
           </SpanHighlighted>
         </NotificationItemTitle>
         <NotificationItemDescription color="inherit" underline="none">
-          {i18n[locale].description(notification.metadata.link)}
+          {i18n[locale].description.start}{" "}
+          <Link href={notification.metadata.link}>
+            {i18n[locale].description.link_text}
+          </Link>
         </NotificationItemDescription>
       </NotificationItem>
     )
