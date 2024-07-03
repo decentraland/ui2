@@ -22,16 +22,15 @@ const RoyaltiesEarnedNotification = React.memo(
     const theme = useTheme()
     return (
       <NotificationItem
-        image={{
-          image: notification.metadata.image,
-          backgroundColor: getBGColorByRarity(notification.metadata.rarity),
-          icon:
-            notification.metadata.network === "ethereum" ? (
-              <ManaMainnetIcon />
-            ) : (
-              <ManaPolygonIcon />
-            ),
-        }}
+        image={notification.metadata.image}
+        imageBackgroundColor={getBGColorByRarity(notification.metadata.rarity)}
+        badgeIcon={
+          notification.metadata.network === "ethereum" ? (
+            <ManaMainnetIcon />
+          ) : (
+            <ManaPolygonIcon />
+          )
+        }
         timestamp={notification.timestamp}
         isNew={!notification.read}
         locale={locale}

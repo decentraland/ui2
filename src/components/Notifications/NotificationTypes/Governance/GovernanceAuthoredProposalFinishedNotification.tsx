@@ -20,7 +20,7 @@ const GovernanceAuthoredProposalFinishedNotification = React.memo(
     const { notification, locale } = props
     return (
       <NotificationItem
-        image={{ image: <ProposalFinishedIcon /> }}
+        image={<ProposalFinishedIcon />}
         timestamp={notification.timestamp}
         isNew={!notification.read}
         locale={locale}

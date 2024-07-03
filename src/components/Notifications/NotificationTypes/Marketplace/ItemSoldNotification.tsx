@@ -15,11 +15,9 @@ const ItemSoldNotification = React.memo(
     const { notification, locale } = props
     return (
       <NotificationItem
-        image={{
-          image: notification.metadata.image,
-          backgroundColor: getBGColorByRarity(notification.metadata.rarity),
-          icon: <ItemSoldIcon />,
-        }}
+        image={notification.metadata.image}
+        imageBackgroundColor={getBGColorByRarity(notification.metadata.rarity)}
+        badgeIcon={<ItemSoldIcon />}
         timestamp={notification.timestamp}
         isNew={!notification.read}
         locale={locale}

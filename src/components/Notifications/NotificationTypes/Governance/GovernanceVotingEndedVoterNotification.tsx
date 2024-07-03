@@ -20,7 +20,7 @@ const GovernanceVotingEndedVoterNotification = React.memo(
     const { notification, locale } = props
     return (
       <NotificationItem
-        image={{ image: <VotingEndedIcon /> }}
+        image={<VotingEndedIcon />}
         timestamp={notification.timestamp}
         isNew={!notification.read}
         locale={locale}

@@ -33,7 +33,7 @@ const WorldsPermissionGrantedNotification = React.memo(
       : PermissionGrantedIcon
     return (
       <NotificationItem
-        image={{ image: <Icon /> }}
+        image={<Icon />}
         timestamp={notification.timestamp}
         isNew={!notification.read}
         locale={locale}

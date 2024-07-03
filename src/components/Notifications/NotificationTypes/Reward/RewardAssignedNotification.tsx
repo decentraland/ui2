@@ -19,13 +19,11 @@ const RewardAssignedNotification = React.memo(
     const { notification, locale } = props
     return (
       <NotificationItem
-        image={{
-          image: notification.metadata.tokenImage,
-          backgroundColor: getBGColorByRarity(
-            notification.metadata.tokenRarity
-          ),
-          icon: <RewardIcon />,
-        }}
+        image={notification.metadata.tokenImage}
+        imageBackgroundColor={getBGColorByRarity(
+          notification.metadata.tokenRarity
+        )}
+        badgeIcon={<RewardIcon />}
         timestamp={notification.timestamp}
         isNew={!notification.read}
         locale={locale}

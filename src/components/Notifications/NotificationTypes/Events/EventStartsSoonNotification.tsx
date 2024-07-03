@@ -18,7 +18,7 @@ const EventsStartsSoonNotification = React.memo(
     const { notification, locale } = props
     return (
       <NotificationItem
-        image={{ image: <EventStartsSoonIcon /> }}
+        image={<EventStartsSoonIcon />}
         timestamp={notification.timestamp}
         isNew={!notification.read}
         locale={locale}

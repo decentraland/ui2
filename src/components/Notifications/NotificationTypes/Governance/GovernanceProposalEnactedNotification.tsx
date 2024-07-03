@@ -19,7 +19,7 @@ const GovernanceProposalEnactedNotification = React.memo(
     const { notification, locale } = props
     return (
       <NotificationItem
-        image={{ image: <ProjectEnactedIcon /> }}
+        image={<ProjectEnactedIcon />}
         timestamp={notification.timestamp}
         isNew={!notification.read}
         locale={locale}

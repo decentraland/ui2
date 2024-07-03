@@ -1,9 +1,9 @@
 import React from "react"
 
 type NotificationItemImageProps = {
-  backgroundColor?: string
+  imageBackgroundColor?: string
   image: string | React.ReactNode
-  icon?: React.ReactNode
+  badgeIcon?: React.ReactNode
 }
 
 export { NotificationItemImageProps }

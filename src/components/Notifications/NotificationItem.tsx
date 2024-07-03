@@ -2,9 +2,8 @@ import React from "react"
 import { formatDistanceToNow } from "date-fns"
 import { enUS, es, zhCN } from "date-fns/locale"
 import { NotificationItemImage } from "./NotificationItemImage"
-import { NotificationLocale } from "./types"
 import { NewNotificationIcon } from "../Icon"
-import { NotificationItemImageProps } from "./NotificationItemImage.types"
+import { NotificationItemProps } from "./NotificationItem.types"
 import {
   NotificationItemContainer,
   NotificationItemContent,
@@ -12,22 +11,27 @@ import {
   NotificationItemTimestamp,
 } from "./NotificationItem.styled"
 
-interface NotificationItemProps {
-  image: NotificationItemImageProps
-  timestamp: number
-  isNew: boolean
-  locale: NotificationLocale
-}
-
 const NotificationItem = React.memo(
   (props: React.PropsWithChildren<NotificationItemProps>) => {
-    const { image, timestamp, isNew, children, locale } = props
+    const {
+      image,
+      imageBackgroundColor,
+      badgeIcon,
+      timestamp,
+      isNew,
+      children,
+      locale,
+    } = props
     const usedLocale = locale === "en" ? enUS : locale === "es" ? es : zhCN
 
     return (
       <NotificationItemContainer>
         <NotificationItemImageContainer>
-          <NotificationItemImage {...image} />
+          <NotificationItemImage
+            image={image}
+            imageBackgroundColor={imageBackgroundColor}
+            badgeIcon={badgeIcon}
+          />
         </NotificationItemImageContainer>
         <NotificationItemContent>
           {children}

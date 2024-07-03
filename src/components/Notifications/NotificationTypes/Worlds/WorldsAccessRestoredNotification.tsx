@@ -16,7 +16,7 @@ const WorldsAccessRestoredNotification = React.memo(
     const { notification, locale } = props
     return (
       <NotificationItem
-        image={{ image: <AccessRestoredIcon /> }}
+        image={<AccessRestoredIcon />}
         timestamp={notification.timestamp}
         isNew={!notification.read}
         locale={locale}

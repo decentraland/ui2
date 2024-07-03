@@ -21,7 +21,7 @@ const LandRentedNotification = React.memo(
       : notification.metadata.tenant
     return (
       <NotificationItem
-        image={{ image: <LandRentedIcon /> }}
+        image={<LandRentedIcon />}
         timestamp={notification.timestamp}
         isNew={!notification.read}
         locale={locale}

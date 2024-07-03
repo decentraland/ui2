@@ -18,7 +18,7 @@ const GovernancePitchPassedNotification = React.memo(
     const { notification, locale } = props
     return (
       <NotificationItem
-        image={{ image: <PitchIcon /> }}
+        image={<PitchIcon />}
         timestamp={notification.timestamp}
         isNew={!notification.read}
         locale={locale}

@@ -15,7 +15,7 @@ const GovernanceAnnouncementNotification = React.memo(
     const { notification, locale } = props
     return (
       <NotificationItem
-        image={{ image: <GovernanceIcon /> }}
+        image={<GovernanceIcon />}
         timestamp={notification.timestamp}
         isNew={!notification.read}
         locale={locale}
