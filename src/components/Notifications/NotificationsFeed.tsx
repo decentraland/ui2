@@ -80,7 +80,7 @@ const NotificationsFeed = React.memo((props: NotificationsFeedProps) => {
           notification.read &&
           !previousNotifications.find(({ id }) => id === notification.id)
       ),
-    [items]
+    [items, previousNotifications]
   )
 
   useEffect(() => {
