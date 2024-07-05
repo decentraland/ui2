@@ -25,6 +25,13 @@ export const components = (
       },
     },
   },
+  MuiPaper: {
+    styleOverrides: {
+      root: {
+        backgroundColor: palette.background.default,
+      },
+    },
+  },
   MuiTabs: {
     styleOverrides: {
       root: {

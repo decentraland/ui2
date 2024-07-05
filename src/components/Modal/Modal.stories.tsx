@@ -8,7 +8,7 @@ import {
   Typography,
 } from "@mui/material"
 import { ModalContent } from "./Modal"
-import Mana from "../Mana/Mana"
+import { Mana } from "../Mana"
 import { ModalProps } from "./Modal.types"
 import type { Meta, StoryObj } from "@storybook/react"
 
@@ -30,11 +30,9 @@ const meta: Meta = {
   ),
 }
 
-// eslint-disable-next-line import/no-default-export
-export default meta
 type Story = StoryObj<ModalProps>
 
-export const Simple = {
+const Simple = {
   args: {
     open: false,
     title: "Are you sure?",
@@ -57,7 +55,7 @@ export const Simple = {
   },
 }
 
-export const Tiny: Story = {
+const Tiny: Story = {
   args: {
     open: false,
     size: "tiny",
@@ -79,7 +77,7 @@ export const Tiny: Story = {
   },
 }
 
-export const Small: Story = {
+const Small: Story = {
   args: {
     open: false,
     size: "small",
@@ -101,7 +99,7 @@ export const Small: Story = {
   },
 }
 
-export const CustomHeader: Story = {
+const CustomHeader: Story = {
   name: "Custom Header",
   args: {
     open: false,
@@ -138,7 +136,7 @@ export const CustomHeader: Story = {
   },
 }
 
-export const Form: Story = {
+const Form: Story = {
   args: {
     open: false,
     title: "Are you sure?",
@@ -169,7 +167,7 @@ export const Form: Story = {
   },
 }
 
-export const Closable: Story = {
+const Closable: Story = {
   args: {
     open: false,
     title: "Are you sure?",
@@ -201,7 +199,7 @@ export const Closable: Story = {
   },
 }
 
-export const Navigation: Story = {
+const Navigation: Story = {
   args: {
     open: false,
     title: "Are you sure?",
@@ -233,3 +231,7 @@ export const Navigation: Story = {
     ),
   },
 }
+
+// eslint-disable-next-line import/no-default-export
+export default meta
+export { Simple, Tiny, Small, CustomHeader, Form, Closable, Navigation }
