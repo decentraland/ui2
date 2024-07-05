@@ -1,4 +1,4 @@
-export const neutral = {
+const neutral = {
   white: `#FFFFFF`,
   softWhite: `#FCFCFC`,
   gray5: `#ECEBED`,
@@ -12,7 +12,7 @@ export const neutral = {
   black: `#000000`,
 }
 
-export const textOnNeutral: typeof neutral = {
+const textOnNeutral: typeof neutral = {
   white: neutral.softBlack2,
   softWhite: neutral.softBlack2,
   gray5: neutral.softBlack2,
@@ -26,7 +26,7 @@ export const textOnNeutral: typeof neutral = {
   black: neutral.white,
 }
 
-export const base = {
+const base = {
   primary: "#FF2D55",
   primaryLight2: `#FFD8DF`,
   primaryLight1: `#FFBFCB`,
@@ -34,7 +34,7 @@ export const base = {
   primaryAlt: `#FF7439`,
 }
 
-export const textOnBase: typeof base = {
+const textOnBase: typeof base = {
   primary: neutral.white,
   primaryLight2: neutral.black,
   primaryLight1: neutral.black,
@@ -42,7 +42,7 @@ export const textOnBase: typeof base = {
   primaryAlt: neutral.white,
 }
 
-export const state = {
+const state = {
   success: `#34CE76`,
   successDark: `#279E5A`,
   warning: `#FFC95B`,
@@ -51,7 +51,7 @@ export const state = {
   errorDark: `#DA2828`,
 }
 
-export const textOnState: typeof state = {
+const textOnState: typeof state = {
   success: neutral.white,
   successDark: neutral.white,
   warning: neutral.softBlack2,
@@ -60,7 +60,7 @@ export const textOnState: typeof state = {
   errorDark: neutral.white,
 }
 
-export const rarity = {
+const rarity = {
   common: `#73D3D3`,
   uncommon: `#FF8362`,
   rare: `#34CE76`,
@@ -80,7 +80,7 @@ const rarityLight: typeof rarity = {
   unique: `#F3E5CF`,
 }
 
-export const rarityGradient: typeof rarity = {
+const rarityGradient: typeof rarity = {
   common: `radial-gradient(circle, ${rarityLight.common} 0%, ${rarity.common} 100%)`,
   uncommon: `radial-gradient(circle, ${rarityLight.uncommon} 0%, ${rarity.uncommon} 100%)`,
   rare: `radial-gradient(circle, ${rarityLight.rare} 0%, ${rarity.rare} 100%)`,
@@ -90,7 +90,7 @@ export const rarityGradient: typeof rarity = {
   unique: `radial-gradient(circle, ${rarityLight.unique} 0%, ${rarity.unique} 100%)`,
 }
 
-export const textOnRarity: typeof rarity = {
+const textOnRarity: typeof rarity = {
   common: neutral.white,
   uncommon: neutral.white,
   rare: neutral.white,
@@ -100,7 +100,7 @@ export const textOnRarity: typeof rarity = {
   unique: neutral.white,
 }
 
-export const brand = {
+const brand = {
   yellow: `#FFBC5B`,
   melon: `#FFA25A`,
   orange: `#FF7439`,
@@ -110,7 +110,7 @@ export const brand = {
   purpel: `#691FA9`,
 }
 
-export const textOnBrand: typeof brand = {
+const textOnBrand: typeof brand = {
   yellow: neutral.softBlack2,
   melon: neutral.softBlack2,
   orange: neutral.white,
@@ -120,51 +120,72 @@ export const textOnBrand: typeof brand = {
   purpel: neutral.white,
 }
 
-export const gradient = {
+const gradient = {
   ...rarityGradient,
   flare: `linear-gradient(135deg, ${brand.ruby} 0%, ${brand.yellow} 100%)`,
   cerise: `linear-gradient(135deg, ${brand.ruby} 0%, ${brand.lavander} 100%)`,
   amin: `linear-gradient(135deg, ${brand.lavander} 0%, ${brand.purpel} 100%)`,
 }
 
-export const textOnGradient: typeof gradient = {
+const textOnGradient: typeof gradient = {
   ...textOnRarity,
   flare: neutral.white,
   cerise: neutral.white,
   amin: neutral.white,
 }
 
-export const opacity = {
+const opacity = {
   backdrop: 0.6,
   blurry: 0.4,
   soft: 0.2,
   subtle: 0.1,
 }
 
-export const blackTransparent = {
+const blackTransparent = {
   backdrop: `rgba(0, 0, 0, ${opacity.backdrop})`,
   blurry: `rgba(0, 0, 0, ${opacity.blurry})`,
   soft: `rgba(0, 0, 0, ${opacity.soft})`,
   subtle: `rgba(0, 0, 0, ${opacity.subtle})`,
 }
 
-export const textOnBlackTransparent: typeof blackTransparent = {
+const textOnBlackTransparent: typeof blackTransparent = {
   backdrop: neutral.white,
   blurry: neutral.white,
   soft: neutral.black,
   subtle: neutral.black,
 }
 
-export const whiteTransparent: typeof blackTransparent = {
+const whiteTransparent: typeof blackTransparent = {
   backdrop: `rgba(255, 255, 255, ${opacity.backdrop})`,
   blurry: `rgba(255, 255, 255, ${opacity.blurry})`,
   soft: `rgba(255, 255, 255, ${opacity.soft})`,
   subtle: `rgba(255, 255, 255, ${opacity.subtle})`,
 }
 
-export const textOnWhiteTransparent: typeof blackTransparent = {
+const textOnWhiteTransparent: typeof blackTransparent = {
   backdrop: neutral.softBlack2,
   blurry: neutral.softBlack2,
   soft: neutral.softBlack2,
   subtle: neutral.softBlack2,
+}
+
+export {
+  neutral,
+  textOnNeutral,
+  base,
+  textOnBase,
+  state,
+  textOnState,
+  rarity,
+  rarityGradient,
+  textOnRarity,
+  brand,
+  textOnBrand,
+  gradient,
+  textOnGradient,
+  opacity,
+  blackTransparent,
+  textOnBlackTransparent,
+  whiteTransparent,
+  textOnWhiteTransparent,
 }
