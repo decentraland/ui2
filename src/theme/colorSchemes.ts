@@ -252,6 +252,14 @@ const colorSchemas = {
           outlinedBorder: "rgba(226, 224, 231, 0.5)",
         },
       },
+      action: {
+        active: "rgba(255, 255, 255, 0.8)",
+        hover: "rgba(255, 255, 255, 0.2)",
+        selected: "rgba(255, 255, 255, 0.36)",
+        focus: "rgba(255, 255, 255, 0.48)",
+        disabled: "rgba(255, 255, 255,0.15)",
+        disabledBackground: "rgba(255, 255, 255, 0.12)",
+      },
       error: {
         main: "#FB3B3B",
         dark: "#EC303A",

@@ -104,6 +104,10 @@ const MenuContainer = styled(Menu)({
   display: "flex",
   flexDirection: "column",
   justifyContent: "flex-start",
+  "& .MuiPaper-root .MuiList-root": {
+    paddingTop: 0,
+    paddingBottom: 0,
+  },
   "@media (max-width: 991px)": {
     marginLeft: "25px",
     marginRight: "22px",
@@ -150,7 +154,7 @@ const ActionsMenuItem = styled(MenuItem)(() => {
   return {
     borderBottomColor: theme.palette.text.primary,
     borderBottomWidth: "1px",
-    borderBottomStyle: "solid",
+    borderBottomStyle: "solid" as const,
     color: theme.palette.text.primary,
     paddingLeft: 0,
     paddingRight: 0,
