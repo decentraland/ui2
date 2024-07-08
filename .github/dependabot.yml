@@ -5,9 +5,15 @@
 
 version: 2
 updates:
-  - package-ecosystem: "npm" # See documentation for possible values
-    directory: "/" # Location of package manifests
-    open-pull-requests-limit: 20
+  - package-ecosystem: npm
+    directory: "/"
     schedule:
-      interval: "daily"
-      time: "12:00"
+      interval: weekly
+      day: monday
+      time: "09:00"
+    allow:
+      - dependency-name: "@dcl/*"
+      - dependency-name: "dcl-*"
+    versioning-strategy: auto
+    commit-message:
+      prefix: "chore: "
