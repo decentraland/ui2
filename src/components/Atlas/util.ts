@@ -1,9 +1,9 @@
 import { memo } from "radash"
-import { AtlasColor, AtlasTileProps, AtlasTileType } from "./Atlas"
+import { AtlasColor, AtlasTileProps, AtlasTileType } from "./Atlas.types"
 
 const TILES_URL = "https://api.decentraland.org/v2/tiles"
 
-export const getTiles = memo(
+const getTiles = memo(
   async (): Promise<Record<string, AtlasTileProps>> => {
     try {
       const tilesFetch = await fetch(TILES_URL)
@@ -21,7 +21,7 @@ export const getTiles = memo(
   { ttl: 10 * 60 * 1000 } // 10 minutes
 )
 
-export function getColorByType(type: AtlasTileType) {
+const getColorByType = (type: AtlasTileType) => {
   switch (type) {
     case AtlasTileType.OWNED:
       return AtlasColor.OWNED
@@ -35,3 +35,5 @@ export function getColorByType(type: AtlasTileType) {
       return AtlasColor.DISTRICT
   }
 }
+
+export { getTiles, getColorByType }
