@@ -11,7 +11,7 @@ const ModalContainer = styled(PaperMui)((props: Pick<ModalProps, "size">) => {
   }
 
   return {
-    position: "absolute",
+    position: "absolute" as const,
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
