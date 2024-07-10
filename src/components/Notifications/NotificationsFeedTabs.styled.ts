@@ -62,7 +62,7 @@ const NotificationFeedTabsListContainer = styled("div")((
 const NotificationFeedTabsListWrapper = styled("div")(() => {
   return {
     display: "flex",
-    flexDirection: "column",
+    flexDirection: "column" as const,
     width: "100%",
   }
 })
