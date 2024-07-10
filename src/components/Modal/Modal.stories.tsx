@@ -77,7 +77,7 @@ const Actionable = {
   },
   render: (args) => {
     const [open, setOpen] = useState(false)
-    console.log(args)
+
     return (
       <Box sx={{ height: "400px" }}>
         <Button onClick={() => setOpen(true)} variant="contained">
