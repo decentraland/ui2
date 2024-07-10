@@ -1,7 +1,7 @@
 import React from "react"
 import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRounded"
 import CancelRoundedIcon from "@mui/icons-material/CancelRounded"
-import { IconButton, Typography } from "@mui/material"
+import { IconButton, Modal as MuiModal, Typography } from "@mui/material"
 import { ModalProps } from "./Modal.types"
 import {
   ModalActionsContainer,
@@ -64,10 +64,13 @@ const ModalContent = React.memo(
 )
 
 const Modal = React.memo((props: ModalProps) => {
+  const { open, onClose, children, ...modalContentProps } = props
   return (
-    <Modal {...props}>
-      <ModalContent {...props}>{props.children}</ModalContent>
-    </Modal>
+    <MuiModal open={open} onClose={onClose}>
+      <ModalContent {...modalContentProps} onClose={onClose}>
+        {children}
+      </ModalContent>
+    </MuiModal>
   )
 })
 

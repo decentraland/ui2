@@ -1,13 +1,13 @@
+import { useState } from "react"
 import {
   Box,
   Button,
   Checkbox,
   FormControlLabel,
-  Modal,
   TextField,
   Typography,
 } from "@mui/material"
-import { ModalContent } from "./Modal"
+import { Modal, ModalContent } from "./Modal"
 import { Mana } from "../Mana"
 import { ModalProps } from "./Modal.types"
 import type { Meta, StoryObj } from "@storybook/react"
@@ -52,6 +52,40 @@ const Simple = {
         <Button variant="outlined">Cancel</Button>
       </>
     ),
+  },
+}
+
+const Actionable = {
+  args: {
+    title: "Are you sure?",
+    children: (
+      <>
+        <Typography variant="body1">
+          You are about to sell your soul for{" "}
+          <Mana inline={true}>{(2500).toLocaleString()}</Mana>.
+        </Typography>
+      </>
+    ),
+    actions: (
+      <>
+        <Button color="primary" variant="contained">
+          Proceed
+        </Button>
+        <Button variant="outlined">Cancel</Button>
+      </>
+    ),
+  },
+  render: (args) => {
+    const [open, setOpen] = useState(false)
+    console.log(args)
+    return (
+      <Box sx={{ height: "400px" }}>
+        <Button onClick={() => setOpen(true)} variant="contained">
+          Open Modal
+        </Button>
+        <Modal {...args} open={open} onClose={() => setOpen(false)} />
+      </Box>
+    )
   },
 }
 
@@ -234,4 +268,13 @@ const Navigation: Story = {
 
 // eslint-disable-next-line import/no-default-export
 export default meta
-export { Simple, Tiny, Small, CustomHeader, Form, Closable, Navigation }
+export {
+  Simple,
+  Actionable,
+  Tiny,
+  Small,
+  CustomHeader,
+  Form,
+  Closable,
+  Navigation,
+}
