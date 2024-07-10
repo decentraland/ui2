@@ -16,7 +16,7 @@ const IconBadgeButtonContainer = styled(ButtonMui)((
     verticalAlign: "middle",
     fontSize: "13px",
     lineHeight: "inherit",
-    textTransform: "uppercase",
+    textTransform: "uppercase" as const,
     padding: "2px 8px",
     borderRadius: "5px",
     cursor: props.onClick ? "pointer" : "default",
