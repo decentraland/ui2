@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material"
 import { Blockie } from "./Blockie"
-import { shorten } from "../AddressField/utils"
+import { Address } from "../Address"
 import { Mana } from "../Mana"
 import { BlockieProps } from "./Blockie.types"
 import type { Meta, StoryObj } from "@storybook/react"
@@ -14,7 +14,6 @@ const meta: Meta<BlockieProps> = {
   argTypes: {
     seed: {
       description: "Seed used to generate icon data",
-      defaultValue: "",
     },
     color: {
       description: "Icon color",
@@ -38,8 +37,7 @@ const meta: Meta<BlockieProps> = {
       defaultValue: 6,
     },
     className: {
-      description: "Custom class name",
-      defaultValue: "",
+      description: "Custom class names for additional styling",
     },
   },
   render: (args) => <Blockie {...args} />,
@@ -74,8 +72,7 @@ const InAParagraph: Story = {
     <Typography>
       You have transferred <Mana inline>1,000</Mana> to{" "}
       <Blockie scale={3} seed={address}>
-        {shorten(address)}
-        {/* <Address value={address} strong /> */}
+        <Address value={address} strong />
       </Blockie>
       .
     </Typography>
