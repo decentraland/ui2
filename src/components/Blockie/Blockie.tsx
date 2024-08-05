@@ -28,8 +28,8 @@ const Blockie = React.memo((props: BlockieProps) => {
     [seed, color, spotcolor, bgcolor, size, scale]
   )
 
-  const draw = useCallback(() => {
-    if (!canvasRef || !canvasRef.current) return "🦄"
+  const draw = useCallback((): void => {
+    if (!canvasRef || !canvasRef.current) return
 
     const ctx = canvasRef.current.getContext("2d")
     if (ctx) {
