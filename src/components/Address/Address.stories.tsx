@@ -24,9 +24,6 @@ const meta: Meta<AddressProps> = {
     tooltip: {
       description: "Show full address on hover",
     },
-    className: {
-      description: "Custom class names for additional styling",
-    },
   },
   render: (args) => <Address {...args} />,
 }

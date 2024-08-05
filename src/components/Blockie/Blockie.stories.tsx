@@ -36,9 +36,6 @@ const meta: Meta<BlockieProps> = {
       description: "width/height of each block in pixels",
       defaultValue: 6,
     },
-    className: {
-      description: "Custom class names for additional styling",
-    },
   },
   render: (args) => <Blockie {...args} />,
 }

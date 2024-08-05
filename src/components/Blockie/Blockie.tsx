@@ -17,7 +17,7 @@ const Blockie = React.memo((props: BlockieProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
   const getOpts = useCallback(
-    (): Omit<BlockieProps, "className" | "children"> => ({
+    (): Omit<BlockieProps, "children"> => ({
       seed: seed ? seed.toLowerCase() : "",
       color,
       spotcolor,
