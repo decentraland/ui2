@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material"
+import { Box } from "@mui/material"
 import { Blockie } from "./Blockie"
 import { Address } from "../Address"
 import { Mana } from "../Mana"
@@ -69,13 +69,13 @@ const Scales: Story = {
 const InAParagraph: Story = {
   name: "In a paragraph",
   render: () => (
-    <Typography>
+    <Box>
       You have transferred <Mana inline>1,000</Mana> to{" "}
       <Blockie scale={3} seed={address}>
         <Address value={address} strong />
       </Blockie>
       .
-    </Typography>
+    </Box>
   ),
 }
 

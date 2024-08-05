@@ -1,7 +1,8 @@
 import React, { useCallback, useEffect, useRef } from "react"
+import Box from "@mui/material/Box"
 import * as blockies from "ethereum-blockies/blockies"
 import { BlockieProps } from "./Blockie.types"
-import { StyledBlockieWrapper, StyledCanvas } from "./Blockie.styled"
+import { StyledBlockieChildrenWrapper, StyledCanvas } from "./Blockie.styled"
 
 const Blockie = React.memo((props: BlockieProps) => {
   const {
@@ -11,7 +12,6 @@ const Blockie = React.memo((props: BlockieProps) => {
     bgcolor = "#3149de",
     size = 6,
     scale = 6,
-    className = "",
     children,
   } = props
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -42,20 +42,15 @@ const Blockie = React.memo((props: BlockieProps) => {
     draw()
   }, [draw])
 
-  const canvas = (
-    <StyledCanvas
-      className={`dcl blockie ${className}`}
-      scale={scale}
-      size={size}
-      ref={canvasRef}
-    />
-  )
+  const canvas = <StyledCanvas scale={scale} size={size} ref={canvasRef} />
 
   return children ? (
-    <StyledBlockieWrapper>
+    <Box component="span">
       {canvas}
-      <span className="dcl blockie-children">{children}</span>
-    </StyledBlockieWrapper>
+      <StyledBlockieChildrenWrapper component="span">
+        {children}
+      </StyledBlockieChildrenWrapper>
+    </Box>
   ) : (
     canvas
   )

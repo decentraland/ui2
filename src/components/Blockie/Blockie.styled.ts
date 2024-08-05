@@ -1,4 +1,5 @@
 import styled from "@emotion/styled"
+import { Box } from "@mui/material"
 
 const StyledCanvas = styled("canvas")<{
   scale: number
@@ -13,10 +14,8 @@ const StyledCanvas = styled("canvas")<{
   ...(scale * size <= 36 && { borderRadius: 4 }),
 }))
 
-const StyledBlockieWrapper = styled("span")({
-  ".dcl.blockie-children": {
-    marginLeft: "0.5em",
-  },
+const StyledBlockieChildrenWrapper = styled(Box)({
+  marginLeft: "0.5em",
 })
 
-export { StyledCanvas, StyledBlockieWrapper }
+export { StyledBlockieChildrenWrapper, StyledCanvas }

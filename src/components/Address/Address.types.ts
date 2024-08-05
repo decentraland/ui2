@@ -3,7 +3,6 @@ type AddressProps = {
   strong?: boolean
   shorten?: boolean
   tooltip?: boolean
-  className?: string
 }
 
 export { AddressProps }
