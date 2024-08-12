@@ -267,8 +267,8 @@ type CommonNotificationProps<N> = {
   renderProfile?: (address: string) => JSX.Element | string | null
 }
 
-export {
-  NotificationActiveTab,
+export { NotificationActiveTab }
+export type {
   NotificationLocale,
   RawDecentralandNotification,
   ItemSoldNotificationProps,

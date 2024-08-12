@@ -10,4 +10,4 @@ type ModalProps = {
   onBack?: React.MouseEventHandler<HTMLButtonElement>
 }
 
-export { ModalProps }
+export type { ModalProps }

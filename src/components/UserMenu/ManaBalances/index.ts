@@ -1,2 +1,2 @@
 export { ManaBalances } from "./ManaBalances"
-export { ManaBalancesProps } from "./ManaBalances.types"
+export type { ManaBalancesProps } from "./ManaBalances.types"

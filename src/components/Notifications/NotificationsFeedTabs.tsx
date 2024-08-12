@@ -1,11 +1,7 @@
 import React, { useCallback } from "react"
 import { Tab, Tabs } from "@mui/material"
 import { i18n } from "./NotificationsFeedTabs.i18n"
-import {
-  DCLNotificationProps,
-  NotificationActiveTab,
-  NotificationLocale,
-} from "./types"
+import { NotificationActiveTab } from "./types"
 import { NotificationComponentByType } from "./utils"
 import { EmptyInboxIcon, HistoryIcon } from "../Icon"
 import { NotificationsFeedTabsProps } from "./NotificationsFeedTabs.types"
@@ -23,6 +19,7 @@ import {
   NotificationFeedTabsListWrapper,
   NotificationFeedTabsTitle,
 } from "./NotificationsFeedTabs.styled"
+import type { DCLNotificationProps, NotificationLocale } from "./types"
 
 const NotificationHandler = ({
   locale,

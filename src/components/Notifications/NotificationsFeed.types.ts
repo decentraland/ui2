@@ -1,9 +1,6 @@
 import React from "react"
-import {
-  DCLNotificationProps,
-  NotificationActiveTab,
-  NotificationLocale,
-} from "./types"
+import { NotificationActiveTab } from "./types"
+import type { DCLNotificationProps, NotificationLocale } from "./types"
 
 type NotificationsFeedProps = {
   items: DCLNotificationProps[]

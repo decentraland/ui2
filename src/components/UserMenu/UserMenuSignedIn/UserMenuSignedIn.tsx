@@ -5,7 +5,6 @@ import { Badge, Box, IconButton, Typography } from "@mui/material"
 import { config } from "../../../config"
 import { AvatarFace } from "../../AvatarFace"
 import { useTabletAndBelowMediaQuery } from "../../Media"
-import { Notifications } from "../../Notifications"
 import { ManaBalances } from "../ManaBalances"
 import { UserMenuEventId } from "../UserMenu.types"
 import {
@@ -29,6 +28,7 @@ import {
   MenuInformationActionContainer,
   UserMenuSignedInContainer,
 } from "./UserMenuSignedIn.styled"
+import type { Notifications } from "../../Notifications"
 
 const UserMenuActions = (props: UserMenuActionsProps) => {
   const {

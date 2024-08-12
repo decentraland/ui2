@@ -41,6 +41,14 @@ const preview: Preview = {
           name: "dark",
           value: "#161518",
         },
+        {
+          name: "Decentraland default",
+          value: "rgb(24, 20, 26)",
+        },
+        {
+          name: "Decentraland new",
+          value: "#1a091c",
+        },
       ],
     },
   },
