@@ -3,6 +3,7 @@ import { PaletteOptions } from "@mui/material"
 const colorSchemas = {
   light: {
     palette: {
+      mode: "light",
       text: {
         primary: "rgba(22, 21, 24, 0.9)",
         secondary: "rgba(22, 21, 24, 0.6)",
@@ -215,6 +216,7 @@ const colorSchemas = {
   },
   dark: {
     palette: {
+      mode: "dark",
       text: {
         primary: "rgba(240,240,240, 0.9)",
         secondary: "rgba(240,240,240, 0.6)",

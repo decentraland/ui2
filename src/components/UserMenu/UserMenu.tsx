@@ -149,6 +149,7 @@ const UserMenu = React.memo((props: UserMenuProps) => {
           {!isSignedIn ? (
             <SignInButton
               variant="outlined"
+              color="inherit"
               disabled={isSigningIn}
               onClick={handleClickSignIn}
             >

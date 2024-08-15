@@ -22,4 +22,4 @@ type NotificationsProps = {
   ) => void
 }
 
-export { NotificationsProps }
+export type { NotificationsProps }

@@ -25,6 +25,19 @@ export const components = (
       },
     },
   },
+  MuiAppBar: {
+    styleOverrides: {
+      root: {
+        backdropFilter: "saturate(180%) blur(20px);",
+        transition:
+          "box-Shadow 200ms cubic-bezier(0,1, 0.15, 1), background-image 200ms cubic-bezier(0,1, 0.15, 1)",
+        backgroundColor:
+          palette.mode === "dark"
+            ? "rgba(24,20,26, 0.9)"
+            : "rgba(255,255,255, 0.9)",
+      },
+    },
+  },
   MuiPaper: {
     styleOverrides: {
       root: {
