@@ -111,9 +111,11 @@ const IconBadge = React.memo((props: IconBadgeProps) => {
   const { icon, text, children, ...rest } = props
   return (
     <IconBadgeButtonContainer {...rest}>
-      <ImageContainer>
-        {children && icon ? { children } : icon ? getIcon(icon) : null}
-      </ImageContainer>
+      {icon && (
+        <ImageContainer>
+          {children ? { children } : getIcon(icon)}
+        </ImageContainer>
+      )}
       {text ? <TextContainer>{text}</TextContainer> : null}
     </IconBadgeButtonContainer>
   )

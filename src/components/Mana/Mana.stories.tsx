@@ -32,7 +32,9 @@ const meta: Meta<ManaProps> = {
 type Story = StoryObj<ManaProps>
 
 const Symbol: Story = {
-  args: {},
+  args: {
+    primary: true,
+  },
 }
 
 const SymbolMana: Story = {
