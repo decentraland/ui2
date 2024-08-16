@@ -31,6 +31,7 @@ export const components = (
         backdropFilter: "saturate(180%) blur(20px);",
         transition:
           "box-Shadow 200ms cubic-bezier(0,1, 0.15, 1), background-image 200ms cubic-bezier(0,1, 0.15, 1)",
+        backgroundImage: "none",
         backgroundColor:
           palette.mode === "dark"
             ? "rgba(24,20,26, 0.9)"
