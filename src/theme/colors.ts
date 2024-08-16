@@ -1,5 +1,6 @@
 const neutral = {
   white: `#FFFFFF`,
+  trueWhite: `#FFFFFF`,
   softWhite: `#FCFCFC`,
   gray5: `#ECEBED`,
   gray4: `#CFCDD4`,
@@ -14,6 +15,7 @@ const neutral = {
 
 const textOnNeutral: typeof neutral = {
   white: neutral.softBlack2,
+  trueWhite: neutral.trueWhite,
   softWhite: neutral.softBlack2,
   gray5: neutral.softBlack2,
   gray4: neutral.softBlack2,
@@ -28,36 +30,18 @@ const textOnNeutral: typeof neutral = {
 
 const base = {
   primary: "#FF2D55",
-  primaryLight2: `#FFD8DF`,
-  primaryLight1: `#FFBFCB`,
-  primaryDark: `#DF1F43`,
-  primaryAlt: `#FF7439`,
+  primaryDark1: "#F70038",
+  primaryDark2: "#D80029",
+  primaryLight1: `#F8919D`,
+  primaryLight2: `#FFC9D5`,
 }
 
 const textOnBase: typeof base = {
   primary: neutral.white,
-  primaryLight2: neutral.black,
+  primaryDark1: neutral.white,
+  primaryDark2: neutral.white,
   primaryLight1: neutral.black,
-  primaryDark: neutral.white,
-  primaryAlt: neutral.white,
-}
-
-const state = {
-  success: `#34CE76`,
-  successDark: `#279E5A`,
-  warning: `#FFC95B`,
-  warningDark: `#E9AB2E`,
-  error: `#FB3B3B`,
-  errorDark: `#DA2828`,
-}
-
-const textOnState: typeof state = {
-  success: neutral.white,
-  successDark: neutral.white,
-  warning: neutral.softBlack2,
-  warningDark: neutral.softBlack2,
-  error: neutral.white,
-  errorDark: neutral.white,
+  primaryLight2: neutral.black,
 }
 
 const rarity = {
@@ -174,8 +158,6 @@ export {
   textOnNeutral,
   base,
   textOnBase,
-  state,
-  textOnState,
   rarity,
   rarityGradient,
   textOnRarity,

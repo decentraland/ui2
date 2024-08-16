@@ -1,4 +1,5 @@
 import { PaletteOptions } from "@mui/material"
+import { neutral } from "./colors"
 
 const colorSchemas = {
   light: {
@@ -11,7 +12,7 @@ const colorSchemas = {
           hover: "rgba(22, 21, 24, 0.04)",
           selected: "rgba(22, 21, 24, 0.08)",
           focus: "rgba(22, 21, 24, 0.12)",
-          focusVisible: "rgba(22, 21, 24, 0.3)",
+          focusVisible: "rgba(22, 21, 24, 0.16)",
         },
       },
       primary: {
@@ -19,24 +20,24 @@ const colorSchemas = {
         dark: "#F70038",
         light: "#F70038",
         _states: {
-          hover: "rgba(255, 45, 85, 0.04)",
+          hover: "rgba(255, 45, 85, 0.08)",
           selected: "rgba(255, 45, 85, 0.08)",
           focus: "rgba(255, 45, 85, 0.12)",
-          focusVisible: "rgba(255, 45, 85, 0.3)",
-          outlinedBorder: "rgba(255, 45, 85, 0.5)",
+          focusVisible: "rgba(255, 45, 85, 0.16)",
+          outlinedBorder: "rgba(255, 45, 85, 0.32)",
         },
       },
       secondary: {
-        main: "#ECEBED",
-        dark: "#A09BA8",
-        light: "#CFCDD4",
-        contrast: "#5E5B67",
+        main: neutral.gray5,
+        dark: neutral.gray3,
+        light: neutral.gray4,
+        contrast: neutral.gray1,
         _states: {
           hover: "rgba(94, 91, 103, 0.08)",
           selected: "rgba(94, 91, 103, 0.08)",
           focus: "rgba(94, 91, 103, 0.12)",
           focusVisible: "rgba(94, 91, 103, 0.16)",
-          outlinedBorder: "rgba(94, 91, 103, 0.5)",
+          outlinedBorder: "rgba(94, 91, 103, 0.56)",
         },
       },
       action: {
@@ -54,20 +55,20 @@ const colorSchemas = {
         _states: {
           hover: "rgba(251, 59, 59, 0.08)",
           selected: "rgba(251, 59, 59, 0.16)",
-          focusVisible: "rgba(251, 59, 59, 0.24)",
+          focusVisible: "rgba(251, 59, 59, 0.16)",
           outlinedBorder: "rgba(251, 59, 59, 0.48)",
         },
         contrast: "#FFFFFF",
       },
       warning: {
-        main: "#FFBC5B",
-        dark: "#FF9D26",
-        light: "#FFCF89",
+        main: "#FE9C2A",
+        dark: "#F38025",
+        light: "#FFB95B",
         _states: {
           hover: "rgba(244, 130, 33, 0.08)",
           selected: "rgba(244, 130, 33, 0.08)",
-          focusVisible: "rgba(244, 130, 33, 0.3)",
-          outlinedBorder: "rgba(244, 130, 33, 0.5)",
+          focusVisible: "rgba(244, 130, 33, 0.16)",
+          outlinedBorder: "rgba(244, 130, 33, 0.32)",
         },
       },
       info: {
@@ -76,7 +77,7 @@ const colorSchemas = {
         light: "#63B4F6",
         _states: {
           hover: "rgba(33, 150, 243, 0.08)",
-          focusVisible: "rgba(33, 150, 243, 0.32)",
+          focusVisible: "rgba(33, 150, 243, 0.16)",
           outlinedBorder: "rgba(33, 150, 243, 0.48)",
         },
       },
@@ -87,7 +88,7 @@ const colorSchemas = {
         _states: {
           hover: "rgba(52, 206, 119, 0.08)",
           selected: "rgba(52, 206, 119, 0.16)",
-          focusVisible: "rgba(52, 206, 119, 0.24)",
+          focusVisible: "rgba(52, 206, 119, 0.16)",
           outlinedBorder: "rgba(52, 206, 119, 0.32)",
         },
       },
@@ -112,52 +113,6 @@ const colorSchemas = {
       _components: {
         avatar: {
           fill: "#A09BA8",
-        },
-        button: {
-          background: "#321452",
-          contained: {
-            enabled: "#123",
-            hover: "#F70038",
-            pressed: "#F70038",
-            disabled: "#ECEBED",
-          },
-          outlined: {
-            enabled: "#123",
-            enabledBorder: "#123",
-            background: "#321452",
-            hover: "#F70038",
-            pressed: "#F70038",
-            disabled: "#ECEBED",
-          },
-          text: {
-            enabled: "#123",
-            hover: "#F70038",
-            pressed: "#F70038",
-            disabled: "#ECEBED",
-          },
-        },
-        ButtonBase: {
-          background: "#321452",
-          contained: {
-            enabled: "#123",
-            hover: "#F70038",
-            pressed: "#F70038",
-            disabled: "#ECEBED",
-          },
-          outlined: {
-            enabled: "#123",
-            enabledBorder: "#123",
-            background: "#321452",
-            hover: "#F70038",
-            pressed: "#F70038",
-            disabled: "#ECEBED",
-          },
-          text: {
-            enabled: "#123",
-            hover: "#F70038",
-            pressed: "#F70038",
-            disabled: "#ECEBED",
-          },
         },
         input: {
           standard: {
@@ -206,7 +161,10 @@ const colorSchemas = {
         alert: {
           error: {
             color: "#FB3B3B",
-            background: "rgba(204, 29, 44, 0.16)",
+            background: "rgba(251, 59, 59, 0.16)",
+          },
+          success: {
+            background: "#C1EECF",
           },
         },
       },
@@ -216,12 +174,12 @@ const colorSchemas = {
   dark: {
     palette: {
       text: {
-        primary: "rgba(240,240,240, 0.9)",
-        secondary: "rgba(240,240,240, 0.6)",
+        primary: "rgba(240,240,240, 1)",
+        secondary: "rgba(240,240,240, 0.7)",
         disabled: "rgba(240,240,240, 0.38)",
         _states: {
-          hover: "rgba(240,240,240, 0.04)",
-          selected: "rgba(240,240,240, 0.08)",
+          hover: "rgba(240,240,240, 0.08)",
+          selected: "rgba(240,240,240, 0.16)",
           focus: "rgba(240,240,240, 0.12)",
           focusVisible: "rgba(240,240,240, 0.3)",
         },
@@ -235,30 +193,30 @@ const colorSchemas = {
           hover: "rgba(255, 45, 85, 0.08)",
           selected: "rgba(255, 45, 85, 0.16)",
           focus: "rgba(255, 45, 85, 0.12)",
-          focusVisible: "rgba(255, 45, 85, 0.3)",
+          focusVisible: "rgba(255, 45, 85, 0.24)",
           outlinedBorder: "rgba(255, 45, 85, 0.5)",
         },
       },
       secondary: {
-        main: "#5E5B67",
-        dark: "#CFCDD4",
-        light: "#ECEBED",
-        contrast: "#FCFCFC",
+        main: neutral.trueWhite,
+        dark: neutral.gray4,
+        light: neutral.gray4,
+        contrast: neutral.gray1,
         _states: {
           hover: "rgba(226, 224, 231, 0.08)",
           selected: "rgba(226, 224, 231, 0.16)",
           focus: "rgba(226, 224, 231, 0.12)",
-          focusVisible: "rgba(226, 224, 231, 0.3)",
+          focusVisible: "rgba(226, 224, 231, 0.24)",
           outlinedBorder: "rgba(226, 224, 231, 0.5)",
         },
       },
       action: {
-        active: "rgba(255, 255, 255, 0.8)",
-        hover: "rgba(255, 255, 255, 0.2)",
-        selected: "rgba(255, 255, 255, 0.36)",
-        focus: "rgba(255, 255, 255, 0.48)",
-        disabled: "rgba(255, 255, 255,0.15)",
-        disabledBackground: "rgba(255, 255, 255, 0.12)",
+        active: "rgba(256, 256, 256, 0.56)",
+        hover: "rgba(256, 256, 256, 0.08)",
+        selected: "rgba(256, 256, 256, 0.16)",
+        focus: "rgba(256, 256, 256, 0.12)",
+        disabled: "rgba(256, 256, 256, 0.38)",
+        disabledBackground: "rgba(256, 256, 256, 0.12)",
       },
       error: {
         main: "#FB3B3B",
@@ -267,16 +225,16 @@ const colorSchemas = {
         _states: {
           hover: "rgba(251, 59, 59, 0.16)",
           selected: "rgba(251, 59, 59, 0.24)",
-          focusVisible: "rgba(251, 59, 59, 0.32)",
+          focusVisible: "rgba(251, 59, 59, 0.24)",
           outlinedBorder: "rgba(251, 59, 59, 0.48)",
         },
         contrast: "#FFFFFF",
       },
       warning: {
-        main: "#FFBC5B",
-        dark: "#FF9D26",
-        light: "#FFCF89",
-        contrast: "rgba(255, 255, 255, 0.87)",
+        main: "#FE9C2A",
+        dark: "#F38025",
+        light: "#FFB95B",
+        contrast: "#FFFFFF",
         _states: {
           hover: "rgba(244, 130, 33, 0.08)",
           selected: "rgba(244, 130, 33, 0.16)",
@@ -288,7 +246,7 @@ const colorSchemas = {
         main: "#2196F3",
         dark: "#1A75D2",
         light: "#63B4F6",
-        contrast: "rgba(255, 255, 255, 0.87)",
+        contrast: "#FFFFFF",
         _states: {
           hover: "rgba(33, 150, 243, 0.16)",
           selected: "rgba(33, 150, 243, 0.24)",
@@ -300,11 +258,11 @@ const colorSchemas = {
         main: "#34CE77",
         dark: "#00B453",
         light: "#65D890",
-        contrast: "rgba(255, 255, 255, 0.88)",
+        contrast: "#FFFFFF",
         _states: {
           hover: "rgba(52, 206, 119, 0.08)",
           selected: "rgba(52, 206, 119, 0.24)",
-          focusVisible: "rgba(52, 206, 119, 0.32)",
+          focusVisible: "rgba(52, 206, 119, 0.24)",
           outlinedBorder: "rgba(52, 206, 119, 0.48)",
         },
       },
@@ -318,17 +276,42 @@ const colorSchemas = {
           outlinedBorder: "rgba(22, 21, 24, 0.5)",
         },
         white_states: {
-          main: "#FFFFFF",
-          focusVisible: "rgba(255, 255, 255, 0.3)",
+          main: "rgba(255, 255, 255, 0.98)",
+          focusVisible: "rgba(255, 255, 255, 0.16)",
+          outlinedBorder: "rgba(255, 255, 255, 0.32)",
         },
       },
       background: {
-        default: "#18141a",
+        default: "#161518",
+        "paper-elevation-0": "#1D1C20",
+        "paper-elevation-1": "#201F24",
+        "paper-elevation-2": "#242227",
+        "paper-elevation-3": "#27262B",
+        "paper-elevation-4": "#2B292F",
+        "paper-elevation-5": "#2E2C33",
+        "paper-elevation-6": "#322F37",
+        "paper-elevation-7": "#322F37",
+        "paper-elevation-8": "#35333B",
+        "paper-elevation-9": "#35333B",
+        "paper-elevation-10": "#39363E",
+        "paper-elevation-11": "#39363E",
+        "paper-elevation-12": "#3C3942",
+        "paper-elevation-13": "#3C3942",
+        "paper-elevation-14": "#3C3942",
+        "paper-elevation-15": "#3C3942",
+        "paper-elevation-16": "#403D46",
+        "paper-elevation-17": "#403D46",
+        "paper-elevation-18": "#403D46",
+        "paper-elevation-19": "#403D46",
+        "paper-elevation-20": "#43404A",
+        "paper-elevation-21": "#43404A",
+        "paper-elevation-22": "#43404A",
+        "paper-elevation-23": "#43404A",
+        "paper-elevation-24": "#43404A",
       },
       elevation: {
-        outlined: "rgba(22, 21, 24, 0.12)",
+        outlined: "rgba(255, 255, 255, 0.12)",
       },
-      divider: "#67637033",
       _components: {
         avatar: {
           fill: "#716B7C",
@@ -340,19 +323,36 @@ const colorSchemas = {
         rating: {
           activeFill: "#F70038",
         },
+        snackbar: {
+          fill: "#322F37",
+        },
         chip: {
           defaultEnabledBorder: "#43404A",
         },
         tooltip: {
           fill: "#242129",
         },
+        appBar: {
+          defaultFill: "#2B292F",
+        },
         breadcrumbs: {
           collapseFill: "#716B7C",
         },
         alert: {
           error: {
-            color: "#FB3B3B",
-            background: "rgba(204, 29, 44, 0.16)",
+            color: "#F8919D",
+            background: "rgba(204, 29, 44, 0.24)",
+          },
+          warning: {
+            color: "#FFCD88",
+            background: "rgba(236, 113, 34, 0.24)",
+          },
+          info: {
+            color: "#BBDEFB",
+            background: "rgba(23, 100, 192, 0.24)",
+          },
+          success: {
+            background: "rgba(0, 161, 70, 0.24)",
           },
         },
       },

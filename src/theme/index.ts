@@ -1,4 +1,7 @@
-import { ThemeOptions, createTheme } from "@mui/material/styles"
+import {
+  ThemeOptions,
+  experimental_extendTheme as extendTheme,
+} from "@mui/material/styles"
 import createPalette, { Palette } from "@mui/material/styles/createPalette"
 import { colorSchemas } from "./colorSchemes"
 import { components } from "./components"
@@ -15,7 +18,7 @@ function theme(type: "light" | "dark"): ThemeOptions {
   }
 }
 
-const light = createTheme(theme("light"))
-const dark = createTheme(theme("dark"))
+const light = extendTheme(theme("light"))
+const dark = extendTheme(theme("dark"))
 
 export { light, dark }
