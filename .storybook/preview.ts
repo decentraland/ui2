@@ -1,5 +1,6 @@
 import type { Preview } from "@storybook/react"
-import { CssBaseline, ThemeProvider } from "@mui/material"
+import { CssBaseline } from "@mui/material"
+import { Experimental_CssVarsProvider as CssVarsProvider } from "@mui/material/styles"
 import { withThemeFromJSXProvider } from "@storybook/addon-themes"
 import { light, dark } from "../src/theme"
 
@@ -10,7 +11,7 @@ export const decorators = [
       dark: dark,
     },
     defaultTheme: "light",
-    Provider: ThemeProvider,
+    Provider: CssVarsProvider,
     GlobalStyles: CssBaseline,
   }),
 ]
@@ -39,7 +40,7 @@ const preview: Preview = {
         },
         {
           name: "dark",
-          value: "#161518",
+          value: "#1a091c",
         },
         {
           name: "Decentraland default",
@@ -52,6 +53,7 @@ const preview: Preview = {
       ],
     },
   },
+  decorators: decorators,
 }
 
 export default preview
