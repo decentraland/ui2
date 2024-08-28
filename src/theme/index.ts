@@ -8,17 +8,22 @@ import { components } from "./components"
 import { typography } from "./typography"
 
 function theme(type: "light" | "dark"): ThemeOptions {
+  const palette = createPalette(colorSchemas[type].palette)
+
   return {
-    palette: createPalette(colorSchemas[type].palette),
-    typography: typography,
-    shape: {
-      borderRadius: 6,
-    },
-    components: components(colorSchemas[type].palette as Palette),
+    ...extendTheme({
+      palette,
+      typography: typography,
+      shape: {
+        borderRadius: 6,
+      },
+      components: components(colorSchemas[type].palette as Palette),
+    } as ThemeOptions),
+    palette,
   }
 }
 
-const light = extendTheme(theme("light"))
-const dark = extendTheme(theme("dark"))
+const light = theme("light")
+const dark = theme("dark")
 
 export { light, dark }
