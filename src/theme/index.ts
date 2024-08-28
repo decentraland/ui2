@@ -9,16 +9,18 @@ import { typography } from "./typography"
 
 function theme(type: "light" | "dark"): ThemeOptions {
   return {
+    ...extendTheme({
+      typography: typography,
+      shape: {
+        borderRadius: 6,
+      },
+      components: components(colorSchemas[type].palette as Palette),
+    }),
     palette: createPalette(colorSchemas[type].palette),
-    typography: typography,
-    shape: {
-      borderRadius: 6,
-    },
-    components: components(colorSchemas[type].palette as Palette),
   }
 }
 
-const light = extendTheme(theme("light"))
-const dark = extendTheme(theme("dark"))
+const light = theme("light")
+const dark = theme("dark")
 
 export { light, dark }
