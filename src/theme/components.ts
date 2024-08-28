@@ -55,7 +55,6 @@ export const components = (
           borderRadius: "var(--mui-shape-borderRadius)",
           opacity: "1",
           "&:not(.Mui-disabled):not(.Mui-focusVisible):not(:hover)": {
-            color: "var(--mui-palette-action-disabled)",
             background: "#FF2D55",
             boxShadow: "none",
           },
@@ -414,7 +413,6 @@ export const components = (
           borderRadius: "var(--mui-shape-borderRadius)",
           opacity: "1",
           "&:not(.Mui-disabled):not(.Mui-focusVisible):not(:hover)": {
-            color: "var(--mui-palette-action-disabled)",
             background: "#FF2D55",
             boxShadow: "none",
           },
@@ -766,7 +764,6 @@ export const components = (
           borderRadius: "var(--mui-shape-borderRadius)",
           opacity: "1",
           "&:not(.Mui-disabled):not(.Mui-focusVisible):not(:hover)": {
-            color: "var(--mui-palette-action-disabled)",
             background: "#FF2D55",
             boxShadow: "none",
           },
@@ -1115,9 +1112,6 @@ export const components = (
           lineHeight: "24px /* 160% */",
           letterSpacing: "0.46px",
           textTransform: "uppercase",
-          "&:not(.Mui-disabled):not(.Mui-focusVisible):not(:hover)": {
-            color: "var(--mui-palette-action-disabled)",
-          },
           "&:not(.Mui-disabled).Mui-focusVisible:not(:hover)": {
             color: "var(--mui-palette-primary-main)",
             "& .MuiTouchRipple-root": {
@@ -1380,9 +1374,6 @@ export const components = (
           lineHeight: "24px /* 171.429% */",
           letterSpacing: "0.4px",
           textTransform: "uppercase",
-          "&:not(.Mui-disabled):not(.Mui-focusVisible):not(:hover)": {
-            color: "var(--mui-palette-action-disabled)",
-          },
           "&:not(.Mui-disabled).Mui-focusVisible:not(:hover)": {
             color: "var(--mui-palette-primary-main)",
             "& .MuiTouchRipple-root": {
@@ -1638,9 +1629,6 @@ export const components = (
           lineHeight: "24px /* 184.615% */",
           letterSpacing: "0.46px",
           textTransform: "uppercase",
-          "&:not(.Mui-disabled):not(.Mui-focusVisible):not(:hover)": {
-            color: "var(--mui-palette-action-disabled)",
-          },
           "&:not(.Mui-disabled).Mui-focusVisible:not(:hover)": {
             color: "var(--mui-palette-primary-main)",
             "& .MuiTouchRipple-root": {
@@ -1896,9 +1884,6 @@ export const components = (
           lineHeight: "24px /* 171.429% */",
           letterSpacing: "0.4px",
           textTransform: "uppercase",
-          "&:not(.Mui-disabled):not(.Mui-focusVisible):not(:hover)": {
-            color: "var(--mui-palette-action-disabled)",
-          },
           "&:not(.Mui-disabled).Mui-focusVisible:not(:hover)": {
             color: "var(--mui-palette-primary-main)",
             "& .MuiTouchRipple-root": {
@@ -2137,9 +2122,6 @@ export const components = (
           lineHeight: "24px /* 160% */",
           letterSpacing: "0.46px",
           textTransform: "uppercase",
-          "&:not(.Mui-disabled):not(.Mui-focusVisible):not(:hover)": {
-            color: "var(--mui-palette-action-disabled)",
-          },
           "&:not(.Mui-disabled).Mui-focusVisible:not(:hover)": {
             color: "var(--mui-palette-primary-main)",
             "& .MuiTouchRipple-root": {
@@ -2384,9 +2366,6 @@ export const components = (
           lineHeight: "24px /* 184.615% */",
           letterSpacing: "0.46px",
           textTransform: "uppercase",
-          "&:not(.Mui-disabled):not(.Mui-focusVisible):not(:hover)": {
-            color: "var(--mui-palette-action-disabled)",
-          },
           "&:not(.Mui-disabled).Mui-focusVisible:not(:hover)": {
             color: "var(--mui-palette-primary-main)",
             "& .MuiTouchRipple-root": {
