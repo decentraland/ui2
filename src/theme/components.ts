@@ -58,7 +58,6 @@ export const components = (
             color: "var(--mui-palette-action-disabled)",
             background: "#FF2D55",
             boxShadow: "none",
-            display: "none",
           },
           "&:not(.Mui-disabled).Mui-focusVisible:not(:hover)": {
             color: "var(--mui-palette-primary-contrast)",
@@ -418,7 +417,6 @@ export const components = (
             color: "var(--mui-palette-action-disabled)",
             background: "#FF2D55",
             boxShadow: "none",
-            display: "none",
           },
           "&:not(.Mui-disabled).Mui-focusVisible:not(:hover)": {
             color: "var(--mui-palette-primary-contrast)",
@@ -771,7 +769,6 @@ export const components = (
             color: "var(--mui-palette-action-disabled)",
             background: "#FF2D55",
             boxShadow: "none",
-            display: "none",
           },
           "&:not(.Mui-disabled).Mui-focusVisible:not(:hover)": {
             color: "var(--mui-palette-primary-contrast)",
@@ -1120,7 +1117,6 @@ export const components = (
           textTransform: "uppercase",
           "&:not(.Mui-disabled):not(.Mui-focusVisible):not(:hover)": {
             color: "var(--mui-palette-action-disabled)",
-            display: "none",
           },
           "&:not(.Mui-disabled).Mui-focusVisible:not(:hover)": {
             color: "var(--mui-palette-primary-main)",
@@ -1386,7 +1382,6 @@ export const components = (
           textTransform: "uppercase",
           "&:not(.Mui-disabled):not(.Mui-focusVisible):not(:hover)": {
             color: "var(--mui-palette-action-disabled)",
-            display: "none",
           },
           "&:not(.Mui-disabled).Mui-focusVisible:not(:hover)": {
             color: "var(--mui-palette-primary-main)",
@@ -1645,7 +1640,6 @@ export const components = (
           textTransform: "uppercase",
           "&:not(.Mui-disabled):not(.Mui-focusVisible):not(:hover)": {
             color: "var(--mui-palette-action-disabled)",
-            display: "none",
           },
           "&:not(.Mui-disabled).Mui-focusVisible:not(:hover)": {
             color: "var(--mui-palette-primary-main)",
@@ -1904,7 +1898,6 @@ export const components = (
           textTransform: "uppercase",
           "&:not(.Mui-disabled):not(.Mui-focusVisible):not(:hover)": {
             color: "var(--mui-palette-action-disabled)",
-            display: "none",
           },
           "&:not(.Mui-disabled).Mui-focusVisible:not(:hover)": {
             color: "var(--mui-palette-primary-main)",
@@ -2146,7 +2139,6 @@ export const components = (
           textTransform: "uppercase",
           "&:not(.Mui-disabled):not(.Mui-focusVisible):not(:hover)": {
             color: "var(--mui-palette-action-disabled)",
-            display: "none",
           },
           "&:not(.Mui-disabled).Mui-focusVisible:not(:hover)": {
             color: "var(--mui-palette-primary-main)",
@@ -2394,7 +2386,6 @@ export const components = (
           textTransform: "uppercase",
           "&:not(.Mui-disabled):not(.Mui-focusVisible):not(:hover)": {
             color: "var(--mui-palette-action-disabled)",
-            display: "none",
           },
           "&:not(.Mui-disabled).Mui-focusVisible:not(:hover)": {
             color: "var(--mui-palette-primary-main)",
