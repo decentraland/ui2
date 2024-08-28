@@ -50,7 +50,6 @@ Install dependencies and start Storybook:
 
 ```
 $ npm install
-$ npm run generate:storybooks //This will regenerate @MUI components
+$ npm run generate:storybooks // This will regenerate @MUI components
 $ npm run start
 ```
-
