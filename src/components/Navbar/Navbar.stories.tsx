@@ -1,5 +1,10 @@
+import { useState } from "react"
+import { ChainId } from "@dcl/schemas"
 import { Box, Toolbar, Typography } from "@mui/material"
 import { Navbar } from "./Navbar"
+import { avatar } from "../../data/avatar"
+import { itemSoldNotificationPropsData } from "../../data/notifications"
+import { NotificationActiveTab } from "../Notifications"
 import { NavbarPages, NavbarProps } from "./Navbar.types"
 import type { Meta, StoryObj } from "@storybook/react"
 
@@ -106,6 +111,48 @@ const WithScroll: Story = {
   ),
 }
 
+const WithChainSelector: Story = {
+  args: {
+    activePage: NavbarPages.MARKETPLACE,
+    isSignedIn: true,
+    chains: [
+      ChainId.ETHEREUM_MAINNET,
+      ChainId.MATIC_MAINNET,
+      ChainId.ARBITRUM_MAINNET,
+      ChainId.OPTIMISM_MAINNET,
+      ChainId.BSC_MAINNET,
+      ChainId.FANTOM_MAINNET,
+      ChainId.AVALANCHE_MAINNET,
+    ],
+    chainBeingConfirmed: ChainId.MATIC_MAINNET,
+    selectedChain: ChainId.ETHEREUM_MAINNET,
+    onSelectChain: (chain) => console.log("Selected chain", chain),
+    avatar: avatar,
+    onClickSignIn: () => console.log("Clicked on sign in"),
+  },
+  render: (args) => {
+    const [openNotification, setOpenNotification] = useState(false)
+    const [tab, setTab] = useState(NotificationActiveTab.NEWEST)
+    return (
+      <Navbar
+        {...args}
+        notifications={{
+          isOnboarding: false,
+          isOpen: openNotification,
+          isLoading: false,
+          items: [itemSoldNotificationPropsData],
+          locale: "en",
+          activeTab: tab,
+          onBegin: console.log,
+          onChangeTab: (_e, tab) => setTab(tab),
+          onClick: () => setOpenNotification(true),
+          onClose: () => setOpenNotification(false),
+        }}
+      />
+    )
+  },
+}
+
 // eslint-disable-next-line import/no-default-export
 export default meta
-export { Simple, WithScroll }
+export { Simple, WithScroll, WithChainSelector }

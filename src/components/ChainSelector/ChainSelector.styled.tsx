@@ -66,7 +66,7 @@ const ChainButton = styled(CommonButtonStyle)((props: {
   }
 
   return {
-    alignItems: "flex-start",
+    alignItems: "center",
     justifyContent: "flex-start",
     marginBottom: "8px",
     "&.MuiButton-sizeMedium.MuiButton-textSecondary:not(.Mui-disabled):not(.Mui-focusVisible):not(:hover)":

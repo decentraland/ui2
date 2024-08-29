@@ -2,10 +2,12 @@ import React, { useCallback, useState } from "react"
 import { Toolbar } from "@mui/material"
 import { MainMenu } from "./MainMenu/MainMenu"
 import {
+  i18nChainSelectorDefault,
   navbarMainTitlesI18N as i18nNavbarTitlesDefault,
   navbarSubmenu,
 } from "./Navbar.defaults"
 import { SubMenu } from "./SubMenu/SubMenu"
+import { ChainSelector } from "../ChainSelector"
 import { Logo } from "../Logo/Logo"
 import { TabletAndBelow, useTabletAndBelowMediaQuery } from "../Media"
 import { UserMenu } from "../UserMenu"
@@ -13,6 +15,7 @@ import { i18n as i18nUserMenuDefault } from "../UserMenu/UserMenu.i18n"
 import { NavbarPages, NavbarProps } from "./Navbar.types"
 import {
   AppBarDesktopWrapper,
+  AppBarRightWrapper,
   AppBarWrapper,
   DclAppBar,
   LogoLink,
@@ -24,9 +27,14 @@ import {
 const Navbar = React.memo((props: NavbarProps) => {
   const {
     activePage,
+    chains,
+    chainBeingConfirmed,
+    onSelectChain,
+    selectedChain,
     isSignedIn,
     i18nNavbar = i18nNavbarTitlesDefault,
     i18nUserMenu = i18nUserMenuDefault,
+    i18nChainSelector = i18nChainSelectorDefault,
     submenuItems = navbarSubmenu,
     onClickNavbarItem,
     ...userMenuProps
@@ -109,16 +117,30 @@ const Navbar = React.memo((props: NavbarProps) => {
                 isMobile={false}
               />
             </AppBarDesktopWrapper>
-            <UserMenu
-              {...userMenuProps}
-              onClickOpen={
-                isTabletAndBelow
-                  ? handleUserMenuOpen
-                  : userMenuProps.onClickOpen
-              }
-              isSignedIn={isSignedIn}
-              i18n={i18nUserMenu}
-            />
+            <AppBarRightWrapper>
+              {isSignedIn &&
+              onSelectChain &&
+              chains?.length &&
+              selectedChain ? (
+                <ChainSelector
+                  chains={chains}
+                  selectedChain={selectedChain}
+                  chainBeingConfirmed={chainBeingConfirmed}
+                  i18n={i18nChainSelector}
+                  onSelectChain={onSelectChain}
+                />
+              ) : null}
+              <UserMenu
+                {...userMenuProps}
+                onClickOpen={
+                  isTabletAndBelow
+                    ? handleUserMenuOpen
+                    : userMenuProps.onClickOpen
+                }
+                isSignedIn={isSignedIn}
+                i18n={i18nUserMenu}
+              />
+            </AppBarRightWrapper>
           </AppBarWrapper>
         </Toolbar>
       </DclAppBar>

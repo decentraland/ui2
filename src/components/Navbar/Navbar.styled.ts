@@ -49,6 +49,11 @@ const AppBarWrapper = styled(Box)({
   alignItems: "center",
 })
 
+const AppBarRightWrapper = styled(Box)({
+  display: "flex",
+  alignItems: "center",
+})
+
 const MenuIcon = styled(Button)(() => {
   return {
     height: "32px",
@@ -121,6 +126,7 @@ export {
   LogoLink,
   AppBarDesktopWrapper,
   AppBarWrapper,
+  AppBarRightWrapper,
   MenuIcon,
   MenuIconBar,
   MenuModal,
