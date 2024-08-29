@@ -1,4 +1,4 @@
-import { Components, Palette, Theme } from "@mui/material"
+import { Components, Palette, Theme, getOverlayAlpha } from "@mui/material"
 
 export const components = (
   palette: Palette
@@ -2601,7 +2601,157 @@ export const components = (
   MuiPaper: {
     styleOverrides: {
       root: {
-        backgroundColor: palette.background.default,
+        backgroundColor: palette.background.paper,
+      },
+      elevation0: {
+        backgroundImage:
+          palette.mode === "dark"
+            ? `linear-gradient(rgba(255, 255, 255, ${getOverlayAlpha(0)}), rgba(255, 255, 255, ${getOverlayAlpha(0)}))`
+            : "none",
+      },
+      elevation1: {
+        backgroundImage:
+          palette.mode === "dark"
+            ? `linear-gradient(rgba(255, 255, 255, ${getOverlayAlpha(1)}), rgba(255, 255, 255, ${getOverlayAlpha(1)}))`
+            : "none",
+      },
+      elevation2: {
+        backgroundImage:
+          palette.mode === "dark"
+            ? `linear-gradient(rgba(255, 255, 255, ${getOverlayAlpha(2)}), rgba(255, 255, 255, ${getOverlayAlpha(2)}))`
+            : "none",
+      },
+      elevation3: {
+        backgroundImage:
+          palette.mode === "dark"
+            ? `linear-gradient(rgba(255, 255, 255, ${getOverlayAlpha(3)}), rgba(255, 255, 255, ${getOverlayAlpha(3)}))`
+            : "none",
+      },
+      elevation4: {
+        backgroundImage:
+          palette.mode === "dark"
+            ? `linear-gradient(rgba(255, 255, 255, ${getOverlayAlpha(4)}), rgba(255, 255, 255, ${getOverlayAlpha(4)}))`
+            : "none",
+      },
+      elevation5: {
+        backgroundImage:
+          palette.mode === "dark"
+            ? `linear-gradient(rgba(255, 255, 255, ${getOverlayAlpha(5)}), rgba(255, 255, 255, ${getOverlayAlpha(5)}))`
+            : "none",
+      },
+      elevation6: {
+        backgroundImage:
+          palette.mode === "dark"
+            ? `linear-gradient(rgba(255, 255, 255, ${getOverlayAlpha(6)}), rgba(255, 255, 255, ${getOverlayAlpha(6)}))`
+            : "none",
+      },
+      elevation7: {
+        backgroundImage:
+          palette.mode === "dark"
+            ? `linear-gradient(rgba(255, 255, 255, ${getOverlayAlpha(7)}), rgba(255, 255, 255, ${getOverlayAlpha(7)}))`
+            : "none",
+      },
+      elevation8: {
+        backgroundImage:
+          palette.mode === "dark"
+            ? `linear-gradient(rgba(255, 255, 255, ${getOverlayAlpha(8)}), rgba(255, 255, 255, ${getOverlayAlpha(8)}))`
+            : "none",
+      },
+      elevation9: {
+        backgroundImage:
+          palette.mode === "dark"
+            ? `linear-gradient(rgba(255, 255, 255, ${getOverlayAlpha(9)}), rgba(255, 255, 255, ${getOverlayAlpha(9)}))`
+            : "none",
+      },
+      elevation10: {
+        backgroundImage:
+          palette.mode === "dark"
+            ? `linear-gradient(rgba(255, 255, 255, ${getOverlayAlpha(10)}), rgba(255, 255, 255, ${getOverlayAlpha(10)}))`
+            : "none",
+      },
+      elevation11: {
+        backgroundImage:
+          palette.mode === "dark"
+            ? `linear-gradient(rgba(255, 255, 255, ${getOverlayAlpha(11)}), rgba(255, 255, 255, ${getOverlayAlpha(11)}))`
+            : "none",
+      },
+      elevation12: {
+        backgroundImage:
+          palette.mode === "dark"
+            ? `linear-gradient(rgba(255, 255, 255, ${getOverlayAlpha(12)}), rgba(255, 255, 255, ${getOverlayAlpha(12)}))`
+            : "none",
+      },
+      elevation13: {
+        backgroundImage:
+          palette.mode === "dark"
+            ? `linear-gradient(rgba(255, 255, 255, ${getOverlayAlpha(13)}), rgba(255, 255, 255, ${getOverlayAlpha(13)}))`
+            : "none",
+      },
+      elevation14: {
+        backgroundImage:
+          palette.mode === "dark"
+            ? `linear-gradient(rgba(255, 255, 255, ${getOverlayAlpha(14)}), rgba(255, 255, 255, ${getOverlayAlpha(14)}))`
+            : "none",
+      },
+      elevation15: {
+        backgroundImage:
+          palette.mode === "dark"
+            ? `linear-gradient(rgba(255, 255, 255, ${getOverlayAlpha(15)}), rgba(255, 255, 255, ${getOverlayAlpha(15)}))`
+            : "none",
+      },
+      elevation16: {
+        backgroundImage:
+          palette.mode === "dark"
+            ? `linear-gradient(rgba(255, 255, 255, ${getOverlayAlpha(16)}), rgba(255, 255, 255, ${getOverlayAlpha(16)}))`
+            : "none",
+      },
+      elevation17: {
+        backgroundImage:
+          palette.mode === "dark"
+            ? `linear-gradient(rgba(255, 255, 255, ${getOverlayAlpha(17)}), rgba(255, 255, 255, ${getOverlayAlpha(17)}))`
+            : "none",
+      },
+      elevation18: {
+        backgroundImage:
+          palette.mode === "dark"
+            ? `linear-gradient(rgba(255, 255, 255, ${getOverlayAlpha(18)}), rgba(255, 255, 255, ${getOverlayAlpha(18)}))`
+            : "none",
+      },
+      elevation19: {
+        backgroundImage:
+          palette.mode === "dark"
+            ? `linear-gradient(rgba(255, 255, 255, ${getOverlayAlpha(19)}), rgba(255, 255, 255, ${getOverlayAlpha(19)}))`
+            : "none",
+      },
+      elevation20: {
+        backgroundImage:
+          palette.mode === "dark"
+            ? `linear-gradient(rgba(255, 255, 255, ${getOverlayAlpha(20)}), rgba(255, 255, 255, ${getOverlayAlpha(20)}))`
+            : "none",
+      },
+      elevation21: {
+        backgroundImage:
+          palette.mode === "dark"
+            ? `linear-gradient(rgba(255, 255, 255, ${getOverlayAlpha(21)}), rgba(255, 255, 255, ${getOverlayAlpha(21)}))`
+            : "none",
+      },
+      elevation22: {
+        backgroundImage:
+          palette.mode === "dark"
+            ? `linear-gradient(rgba(255, 255, 255, ${getOverlayAlpha(22)}), rgba(255, 255, 255, ${getOverlayAlpha(22)}))`
+            : "none",
+      },
+      elevation23: {
+        backgroundImage:
+          palette.mode === "dark"
+            ? `linear-gradient(rgba(255, 255, 255, ${getOverlayAlpha(23)}), rgba(255, 255, 255, ${getOverlayAlpha(23)}))`
+            : "none",
+      },
+      elevation24: {
+        backgroundImage:
+          palette.mode === "dark"
+            ? `linear-gradient(rgba(255, 255, 255, ${getOverlayAlpha(24)}), rgba(255, 255, 255, ${getOverlayAlpha(24)}))`
+            : "none",
       },
     },
   },
