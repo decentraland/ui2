@@ -8,17 +8,9 @@ const meta: Meta = {
   title: "Decentraland UI/Chain Selector",
   argTypes: {
     chains: {
-      description: "Chain to display",
-      control: "radio",
-      options: [
-        ChainId.ETHEREUM_MAINNET,
-        ChainId.MATIC_MAINNET,
-        ChainId.ARBITRUM_MAINNET,
-        ChainId.OPTIMISM_MAINNET,
-        ChainId.BSC_MAINNET,
-        ChainId.FANTOM_MAINNET,
-        ChainId.AVALANCHE_MAINNET,
-      ],
+      table: {
+        disable: true,
+      },
     },
     i18n: {
       description: "Internationalization",
