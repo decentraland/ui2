@@ -95,7 +95,7 @@ const colorSchemas = {
       },
       common: {
         black_states: {
-          main: "#161518",
+          main: neutral.softBlack1,
           hover: "rgba(22, 21, 24, 0.04)",
           selected: "rgba(22, 21, 24, 0.08)",
           focus: "rgba(22, 21, 24, 0.12)",
@@ -118,7 +118,7 @@ const colorSchemas = {
         input: {
           standard: {
             enabledBorder: "rgba(22, 21, 24, 0.42)",
-            hoverBorder: "#161518",
+            hoverBorder: neutral.softBlack1,
           },
           filled: {
             enabledFill: "rgba(22, 21, 24, 0.06)",
@@ -126,12 +126,12 @@ const colorSchemas = {
           },
           outlined: {
             enabledBorder: "rgba(22, 21, 24, 0.23)",
-            hoverBorder: "#161518",
+            hoverBorder: neutral.softBlack1,
           },
         },
         switch: {
           knobFillEnabled: "#FFFFFF",
-          slideFill: "#161518",
+          slideFill: neutral.softBlack1,
           knowFillDisabled: "#ECEBED",
         },
         rating: {
@@ -142,7 +142,7 @@ const colorSchemas = {
           fill: "#43404A",
         },
         chip: {
-          defaultCloseFill: "#161518",
+          defaultCloseFill: neutral.softBlack1,
           defaultHoverFill: "rgba(22, 21, 24, 0.12)",
           defaultEnabledBorder: "#A09BA8",
           defaultFocusFill: "rgba(22, 21, 24, 0.2)",
@@ -270,7 +270,7 @@ const colorSchemas = {
       },
       common: {
         black_states: {
-          main: "#161518",
+          main: neutral.softBlack1,
           hover: "rgba(22, 21, 24, 0.08)",
           selected: "rgba(22, 21, 24, 0.16)",
           focus: "rgba(22, 21, 24, 0.12)",
@@ -284,32 +284,8 @@ const colorSchemas = {
         },
       },
       background: {
-        default: "#161518",
-        "paper-elevation-0": "#1D1C20",
-        "paper-elevation-1": "#201F24",
-        "paper-elevation-2": "#242227",
-        "paper-elevation-3": "#27262B",
-        "paper-elevation-4": "#2B292F",
-        "paper-elevation-5": "#2E2C33",
-        "paper-elevation-6": "#322F37",
-        "paper-elevation-7": "#322F37",
-        "paper-elevation-8": "#35333B",
-        "paper-elevation-9": "#35333B",
-        "paper-elevation-10": "#39363E",
-        "paper-elevation-11": "#39363E",
-        "paper-elevation-12": "#3C3942",
-        "paper-elevation-13": "#3C3942",
-        "paper-elevation-14": "#3C3942",
-        "paper-elevation-15": "#3C3942",
-        "paper-elevation-16": "#403D46",
-        "paper-elevation-17": "#403D46",
-        "paper-elevation-18": "#403D46",
-        "paper-elevation-19": "#403D46",
-        "paper-elevation-20": "#43404A",
-        "paper-elevation-21": "#43404A",
-        "paper-elevation-22": "#43404A",
-        "paper-elevation-23": "#43404A",
-        "paper-elevation-24": "#43404A",
+        default: neutral.softBlack1,
+        paper: "#1D1C20",
       },
       elevation: {
         outlined: "rgba(255, 255, 255, 0.12)",
