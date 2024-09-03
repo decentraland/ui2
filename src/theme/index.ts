@@ -1,4 +1,5 @@
 import {
+  CssVarsTheme,
   ThemeOptions,
   experimental_extendTheme as extendTheme,
 } from "@mui/material/styles"
@@ -7,7 +8,7 @@ import { colorSchemas } from "./colorSchemes"
 import { components } from "./components"
 import { typography } from "./typography"
 
-function theme(type: "light" | "dark"): ThemeOptions {
+function theme(type: "light" | "dark"): ThemeOptions & Partial<CssVarsTheme> {
   const palette = createPalette(colorSchemas[type].palette)
 
   return {
@@ -18,9 +19,10 @@ function theme(type: "light" | "dark"): ThemeOptions {
         borderRadius: 6,
       },
       components: components(colorSchemas[type].palette as Palette),
-    } as ThemeOptions),
+      getColorSchemeSelector: (type: string) => colorSchemas[type],
+    } as ThemeOptions & Partial<CssVarsTheme>),
     palette,
-  }
+  } as ThemeOptions & Partial<CssVarsTheme>
 }
 
 const light = theme("light")
