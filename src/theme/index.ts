@@ -1,14 +1,12 @@
-import {
-  CssVarsTheme,
-  ThemeOptions,
-  experimental_extendTheme as extendTheme,
-} from "@mui/material/styles"
+import { experimental_extendTheme as extendTheme } from "@mui/material/styles"
 import createPalette, { Palette } from "@mui/material/styles/createPalette"
 import { colorSchemas } from "./colorSchemes"
 import { components } from "./components"
+import { ThemeProvider } from "./provider"
 import { typography } from "./typography"
+import type { Theme } from "./types"
 
-function theme(type: "light" | "dark"): ThemeOptions & Partial<CssVarsTheme> {
+function theme(type: "light" | "dark"): Theme {
   const palette = createPalette(colorSchemas[type].palette)
 
   return {
@@ -20,12 +18,12 @@ function theme(type: "light" | "dark"): ThemeOptions & Partial<CssVarsTheme> {
       },
       components: components(colorSchemas[type].palette as Palette),
       getColorSchemeSelector: (type: string) => colorSchemas[type],
-    } as ThemeOptions & Partial<CssVarsTheme>),
+    } as Theme),
     palette,
-  } as ThemeOptions & Partial<CssVarsTheme>
+  } as Theme
 }
 
 const light = theme("light")
 const dark = theme("dark")
 
-export { light, dark }
+export { light, dark, ThemeProvider }
