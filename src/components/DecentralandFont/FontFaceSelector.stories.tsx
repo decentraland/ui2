@@ -31,7 +31,7 @@ const meta: Meta<typeof Typography> = {
   render: (args) => (
     <Box>
       <Typography
-        sx={{ fontFamily: "DecentralandLogo" }}
+        sx={{ fontFamily: "DecentralandHero" }}
         variant="h1"
         {...args}
       >
@@ -48,40 +48,40 @@ const Simple: Story = {}
 const All: Story = {
   render: () => (
     <Box>
-      <Typography sx={{ fontFamily: "DecentralandLogo" }} variant="h1">
+      <Typography sx={{ fontFamily: "DecentralandHero" }} variant="h1">
         Decentraland
       </Typography>
-      <Typography sx={{ fontFamily: "DecentralandLogo" }} variant="h2">
+      <Typography sx={{ fontFamily: "DecentralandHero" }} variant="h2">
         Decentraland
       </Typography>
-      <Typography sx={{ fontFamily: "DecentralandLogo" }} variant="h3">
+      <Typography sx={{ fontFamily: "DecentralandHero" }} variant="h3">
         Decentraland
       </Typography>
-      <Typography sx={{ fontFamily: "DecentralandLogo" }} variant="h4">
+      <Typography sx={{ fontFamily: "DecentralandHero" }} variant="h4">
         Decentraland
       </Typography>
-      <Typography sx={{ fontFamily: "DecentralandLogo" }} variant="h5">
+      <Typography sx={{ fontFamily: "DecentralandHero" }} variant="h5">
         Decentraland
       </Typography>
-      <Typography sx={{ fontFamily: "DecentralandLogo" }} variant="h6">
+      <Typography sx={{ fontFamily: "DecentralandHero" }} variant="h6">
         Decentraland
       </Typography>
-      <Typography sx={{ fontFamily: "DecentralandLogo" }} variant="subtitle1">
+      <Typography sx={{ fontFamily: "DecentralandHero" }} variant="subtitle1">
         Decentraland
       </Typography>
-      <Typography sx={{ fontFamily: "DecentralandLogo" }} variant="subtitle2">
+      <Typography sx={{ fontFamily: "DecentralandHero" }} variant="subtitle2">
         Decentraland
       </Typography>
-      <Typography sx={{ fontFamily: "DecentralandLogo" }} variant="body1">
+      <Typography sx={{ fontFamily: "DecentralandHero" }} variant="body1">
         Decentraland
       </Typography>
-      <Typography sx={{ fontFamily: "DecentralandLogo" }} variant="body2">
+      <Typography sx={{ fontFamily: "DecentralandHero" }} variant="body2">
         Decentraland
       </Typography>
-      <Typography sx={{ fontFamily: "DecentralandLogo" }} variant="caption">
+      <Typography sx={{ fontFamily: "DecentralandHero" }} variant="caption">
         Decentraland
       </Typography>
-      <Typography sx={{ fontFamily: "DecentralandLogo" }} variant="overline">
+      <Typography sx={{ fontFamily: "DecentralandHero" }} variant="overline">
         Decentraland
       </Typography>
     </Box>

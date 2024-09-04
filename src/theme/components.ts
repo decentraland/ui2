@@ -8,7 +8,7 @@ export const components = (
   MuiCssBaseline: {
     styleOverrides: {
       "@font-face": {
-        fontFamily: "DecentralandLogo",
+        fontFamily: "DecentralandHero",
         src: `url(${RoobertPROBoldttf}) format("truetype"), url(${RoobertPROBoldotf}) format("otf")`,
         fontStyle: "Sans-serif",
         fontWeight: "700",
