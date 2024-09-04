@@ -5,7 +5,7 @@ import type { Meta, StoryObj } from "@storybook/react"
 
 const meta: Meta<IconBadgeProps> = {
   component: IconBadge,
-  title: "Decentraland UI/IconBadge",
+  title: "Decentraland UI/Icon Badge",
   tags: ["autodocs"],
   argTypes: {
     inline: {
