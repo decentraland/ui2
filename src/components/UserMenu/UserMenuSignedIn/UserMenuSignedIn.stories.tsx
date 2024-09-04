@@ -11,7 +11,7 @@ import type { Meta, StoryObj } from "@storybook/react"
 
 const meta: Meta<UserMenuSignedInProps> = {
   component: UserMenuSignedIn,
-  title: "Decentraland UI/UserMenuSignedIn",
+  title: "Decentraland UI/User Menu Signed In",
   argTypes: {},
   args: {
     onClickMarketplaceAuthorization: () => console.log,

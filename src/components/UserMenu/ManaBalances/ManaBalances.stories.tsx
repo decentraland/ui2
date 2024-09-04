@@ -10,7 +10,7 @@ const balance = {
 
 const meta: Meta<ManaBalancesProps> = {
   component: ManaBalances,
-  title: "Decentraland UI/ManaBalances",
+  title: "Decentraland UI/Mana Balances",
   tags: ["autodocs"],
   argTypes: {
     manaBalances: {
