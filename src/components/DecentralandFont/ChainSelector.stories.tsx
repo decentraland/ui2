@@ -45,6 +45,49 @@ type Story = StoryObj
 
 const Simple: Story = {}
 
+const All: Story = {
+  render: () => (
+    <Box>
+      <Typography sx={{ fontFamily: "DecentralandLogo" }} variant="h1">
+        Decentraland
+      </Typography>
+      <Typography sx={{ fontFamily: "DecentralandLogo" }} variant="h2">
+        Decentraland
+      </Typography>
+      <Typography sx={{ fontFamily: "DecentralandLogo" }} variant="h3">
+        Decentraland
+      </Typography>
+      <Typography sx={{ fontFamily: "DecentralandLogo" }} variant="h4">
+        Decentraland
+      </Typography>
+      <Typography sx={{ fontFamily: "DecentralandLogo" }} variant="h5">
+        Decentraland
+      </Typography>
+      <Typography sx={{ fontFamily: "DecentralandLogo" }} variant="h6">
+        Decentraland
+      </Typography>
+      <Typography sx={{ fontFamily: "DecentralandLogo" }} variant="subtitle1">
+        Decentraland
+      </Typography>
+      <Typography sx={{ fontFamily: "DecentralandLogo" }} variant="subtitle2">
+        Decentraland
+      </Typography>
+      <Typography sx={{ fontFamily: "DecentralandLogo" }} variant="body1">
+        Decentraland
+      </Typography>
+      <Typography sx={{ fontFamily: "DecentralandLogo" }} variant="body2">
+        Decentraland
+      </Typography>
+      <Typography sx={{ fontFamily: "DecentralandLogo" }} variant="caption">
+        Decentraland
+      </Typography>
+      <Typography sx={{ fontFamily: "DecentralandLogo" }} variant="overline">
+        Decentraland
+      </Typography>
+    </Box>
+  ),
+}
+
 // eslint-disable-next-line import/no-default-export
 export default meta
-export { Simple }
+export { Simple, All }
