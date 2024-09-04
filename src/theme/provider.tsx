@@ -1,8 +1,7 @@
 import React, { ReactNode } from "react"
-import CssBaseline from "@mui/material/CssBaseline"
-import { ThemeProvider as MUIThemeProvider } from "@mui/material/styles"
-import { GlobalStyles } from "./globalStyles"
-import { Theme } from "./types"
+import { Experimental_CssVarsProvider as CssVarsProvider } from "@mui/material/styles"
+import { CssBaseline } from "@mui/material"
+import type { Theme } from "./types"
 
 export type ThemeProviderProps = {
   theme: Theme
@@ -10,9 +9,9 @@ export type ThemeProviderProps = {
 }
 
 export const ThemeProvider = React.memo((props: ThemeProviderProps) => (
-  <MUIThemeProvider theme={props.theme}>
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  <CssVarsProvider theme={props.theme as any}>
     <CssBaseline />
-    <GlobalStyles theme={props.theme} />
     {props.children}
-  </MUIThemeProvider>
+  </CssVarsProvider>
 ))

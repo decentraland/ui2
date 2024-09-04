@@ -21,8 +21,7 @@ In your main ReactDOM renderer import Theme Provider and the theme you want to u
 ```tsx
 // ./src/index.ts
 ...
-import { ThemeProvider } from '@mui/material/styles'
-import { dark } from 'decentraland-ui2/lib/themes/theme'
+import { dark, ThemeProvider } from 'decentraland-ui2/dist/theme';
 ...
 
       <ThemeProvider theme={dark}>
@@ -50,6 +49,6 @@ Install dependencies and start Storybook:
 
 ```
 $ npm install
-$ npm run generate:storybooks // This will regenerate @MUI components
+$ npm run generate:storybooks //This will regenerate @MUI components
 $ npm run start
 ```
