@@ -11,7 +11,7 @@
     "fix:prettier": "prettier --write ./src",
     "start": "storybook dev -p 6006",
     "build": "npm run build:dist",
-    "build:dist": "rm -Rf dist && tsc",
+    "build:dist": "rm -Rf dist && tsc && cp -R src/theme/fonts dist/theme/fonts && cp -R src/Assets dist/Assets",
     "build-storybook": "npx storybook@7 build",
     "format": "prettier --write '**/*.{ts,tsx,js,jsx,json,md,mdx,css}'",
     "lint": "eslint --ext .ts,.tsx,.js,.jsx ./src",
