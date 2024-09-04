@@ -6,6 +6,9 @@ import {
   allTypeOfNotifications,
   bidAcceptedNotificationData,
   bidReceivedNotificationPropsData,
+  campaignGasPriceHigherThanExpectedNotificationData,
+  campaignOutOfFundsNotificationData,
+  campaignOutOfStockNotificationData,
   eventStartedNotificationData,
   eventStartsSoonFutureStartNotificationData,
   eventStartsSoonPastStartNotificationData,
@@ -22,6 +25,8 @@ import {
   landRentalEndedNotificationData,
   landRentedNotificationData,
   rewardAssignedNotificationData,
+  rewardDelayedNotificationData,
+  rewardInProgressNotificationData,
   royalitesEarnedNotificationPropsData,
   worldsAccessRestoredNotificationData,
   worldsAccessRestrictedNotificationData,
@@ -160,7 +165,14 @@ const MarketplaceNotifications: Story = {
 const RewardsNotifications: Story = {
   name: "Rewards Notifications",
   args: {
-    items: [rewardAssignedNotificationData],
+    items: [
+      rewardAssignedNotificationData,
+      rewardInProgressNotificationData,
+      rewardDelayedNotificationData,
+      campaignOutOfFundsNotificationData,
+      campaignOutOfStockNotificationData,
+      campaignGasPriceHigherThanExpectedNotificationData,
+    ],
   },
 }
 

@@ -15,7 +15,12 @@ import { BidAcceptedNotification } from "./Marketplace/BidAcceptedNotification"
 import { BidReceivedNotification } from "./Marketplace/BidReceivedNotification"
 import { ItemSoldNotification } from "./Marketplace/ItemSoldNotification"
 import { RoyaltiesEarnedNotification } from "./Marketplace/RoyaltiesEarnedNotification"
+import { CampaignGasPriceHigherThanExpectedNotification } from "./Reward/CampaignGasPriceHigherThanExpectedNotification"
+import { CampaignOutOfFundsNotification } from "./Reward/CampaignOutOfFundsNotification"
+import { CampaignOutOfStockNotification } from "./Reward/CampaignOutOfStockNotification"
 import { RewardAssignedNotification } from "./Reward/RewardAssignedNotification"
+import { RewardDelayedNotification } from "./Reward/RewardDelayedNotification"
+import { RewardInProgressNotification } from "./Reward/RewardInProgressNotification"
 import { WorldsAccessRestoredNotification } from "./Worlds/WorldsAccessRestoredNotification"
 import { WorldsAccessRestrictedNotification } from "./Worlds/WorldsAccessRestrictedNotification"
 import { WorldsMissingResourcesNotification } from "./Worlds/WorldsMissingResourcesNotification"
@@ -42,8 +47,13 @@ export {
   LandRentalEndedNotification,
   LandRentedNotification,
   RewardAssignedNotification,
+  RewardInProgressNotification,
+  RewardDelayedNotification,
   EventsStartsSoonNotification,
   EventsStartedNotification,
   WorldsPermissionGrantedNotification,
   WorldsPermissionRevokedNotification,
+  CampaignOutOfStockNotification,
+  CampaignOutOfFundsNotification,
+  CampaignGasPriceHigherThanExpectedNotification,
 }
