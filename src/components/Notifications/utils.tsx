@@ -100,7 +100,7 @@ const NotificationComponentByType: DecentralandNotificationComponentByType<DCLNo
       CampaignOutOfStockNotification,
   }
 
-const CURRENT_AVAILABLE_NOTIFICATIONS = Object.values(NotificationType)
+const CURRENT_AVAILABLE_NOTIFICATIONS = Object.keys(NotificationComponentByType)
 
 const replaceWithValues = (
   str: string,
