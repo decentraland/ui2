@@ -11,7 +11,7 @@
     "fix:prettier": "prettier --write ./src",
     "start": "storybook dev -p 6006",
     "build": "npm run build:dist",
-    "build:dist": "rm -Rf dist && tsc",
+    "build:dist": "rm -Rf dist && tsc && cp -R src/theme/fonts dist/theme/fonts && cp -R src/Assets dist/Assets",
     "build-storybook": "npx storybook@7 build",
     "format": "prettier --write '**/*.{ts,tsx,js,jsx,json,md,mdx,css}'",
     "lint": "eslint --ext .ts,.tsx,.js,.jsx ./src",
@@ -38,7 +38,7 @@
   "homepage": "https://github.com/decentraland/ui2#readme",
   "dependencies": {
     "@dcl/schemas": "^13.8.6",
-    "@dcl/ui-env": "^1.5.0",
+    "@dcl/ui-env": "^1.5.1",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "@mui/icons-material": "^5.16.0",
