@@ -45,12 +45,12 @@ function getBGColorByRarity(rarity: Rarity) {
   return Rarity.getGradient(rarity).join()
 }
 
-type DecentralandNotificationComponentByType<T> = {
+type DecentralandNotificationComponentByType<T> = Partial<{
   [k in NotificationType]: T extends DCLNotificationProps
     ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
       FunctionComponent<CommonNotificationProps<any>> | null
     : never
-}
+}>
 
 const NotificationComponentByType: DecentralandNotificationComponentByType<DCLNotificationProps> =
   {
@@ -92,10 +92,6 @@ const NotificationComponentByType: DecentralandNotificationComponentByType<DCLNo
       WorldsPermissionGrantedNotification,
     [NotificationType.WORLDS_PERMISSION_REVOKED]:
       WorldsPermissionRevokedNotification,
-    [NotificationType.BADGE_GRANTED]: null,
-    [NotificationType.GOVERNANCE_CLIFF_ENDED]: null,
-    [NotificationType.GOVERNANCE_WHALE_VOTE]: null,
-    [NotificationType.GOVERNANCE_VOTED_ON_BEHALF]: null,
     [NotificationType.REWARD_CAMPAIGN_OUT_OF_FUNDS]:
       CampaignOutOfFundsNotification,
     [NotificationType.REWARD_CAMPAIGN_GAS_PRICE_HIGHER_THAN_EXPECTED]:

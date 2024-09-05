@@ -31,14 +31,17 @@ const NotificationHandler = ({
   renderProfile?: (address: string) => JSX.Element | string | null
 }) => {
   const NotificationComponent = NotificationComponentByType[notification.type]
+
+  if (!NotificationComponent) {
+    return null
+  }
+
   return (
-    NotificationComponent && (
-      <NotificationComponent
-        notification={notification}
-        locale={locale}
-        renderProfile={renderProfile}
-      />
-    )
+    <NotificationComponent
+      notification={notification}
+      locale={locale}
+      renderProfile={renderProfile}
+    />
   )
 }
 
