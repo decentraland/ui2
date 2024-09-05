@@ -32,11 +32,13 @@ const NotificationHandler = ({
 }) => {
   const NotificationComponent = NotificationComponentByType[notification.type]
   return (
-    <NotificationComponent
-      notification={notification}
-      locale={locale}
-      renderProfile={renderProfile}
-    />
+    NotificationComponent && (
+      <NotificationComponent
+        notification={notification}
+        locale={locale}
+        renderProfile={renderProfile}
+      />
+    )
   )
 }
 

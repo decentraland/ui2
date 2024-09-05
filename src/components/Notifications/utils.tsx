@@ -48,7 +48,7 @@ function getBGColorByRarity(rarity: Rarity) {
 type DecentralandNotificationComponentByType<T> = {
   [k in NotificationType]: T extends DCLNotificationProps
     ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      FunctionComponent<CommonNotificationProps<any>>
+      FunctionComponent<CommonNotificationProps<any>> | null
     : never
 }
 
