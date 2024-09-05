@@ -72,6 +72,14 @@ type MarketplaceNotificationsProps =
   | BidAcceptedNotificationProps
   | BidReceivedNotificationProps
 
+type RewardsNotificationProps =
+  | RewardAssignedNotificationProps
+  | RewardInProgressNotificationProps
+  | RewardDelayedNotificationProps
+  | CampaignOutOfFundsNotificationProps
+  | CampaignOutOfStockNotificationProps
+  | CampaignGasPriceHigherThanExpectedNotificationProps
+
 // Governance Notifications
 
 type CommonGovernanceNotificationMetadataProps = {
@@ -221,14 +229,48 @@ type LandNotificationsProps =
 
 // Reward Notifications
 
+type CommonRewardsMetadata = {
+  tokenName: string
+  tokenImage: string
+  tokenRarity: Rarity
+}
+
+type CommonCampaignMetadata = {
+  link?: string
+  campaignName: string
+}
+
 type RewardAssignedNotificationProps = RawDecentralandNotification<
   NotificationType.REWARD_ASSIGNED,
-  {
-    tokenName: string
-    tokenImage: string
-    tokenRarity: Rarity
-  }
+  CommonRewardsMetadata
 >
+
+type RewardInProgressNotificationProps = RawDecentralandNotification<
+  NotificationType.REWARD_IN_PROGRESS,
+  CommonRewardsMetadata
+>
+
+type RewardDelayedNotificationProps = RawDecentralandNotification<
+  NotificationType.REWARD_DELAYED,
+  CommonRewardsMetadata
+>
+
+type CampaignOutOfStockNotificationProps = RawDecentralandNotification<
+  NotificationType.REWARD_CAMPAIGN_OUT_OF_STOCK,
+  CommonCampaignMetadata
+>
+
+type CampaignOutOfFundsNotificationProps = RawDecentralandNotification<
+  NotificationType.REWARD_CAMPAIGN_OUT_OF_FUNDS,
+  CommonCampaignMetadata
+>
+
+type CampaignGasPriceHigherThanExpectedNotificationProps =
+  RawDecentralandNotification<
+    NotificationType.REWARD_CAMPAIGN_GAS_PRICE_HIGHER_THAN_EXPECTED,
+    CommonCampaignMetadata
+  >
+
 type CommonEventsMetadataProps = {
   image: string
   link: string
@@ -258,7 +300,7 @@ type DCLNotificationProps =
   | GovernanceNotificationsProps
   | WorldsNotificationsProps
   | LandNotificationsProps
-  | RewardAssignedNotificationProps
+  | RewardsNotificationProps
   | EventsNotificationsProps
 
 type CommonNotificationProps<N> = {
@@ -292,6 +334,11 @@ export {
   LandRentedNotificationProps,
   LandRentalEndedNotificationProps,
   RewardAssignedNotificationProps,
+  RewardInProgressNotificationProps,
+  RewardDelayedNotificationProps,
+  CampaignOutOfStockNotificationProps,
+  CampaignOutOfFundsNotificationProps,
+  CampaignGasPriceHigherThanExpectedNotificationProps,
   EventsStartsSoonNotificationProps,
   EventsStartedNotificationProps,
   DCLNotificationProps,
