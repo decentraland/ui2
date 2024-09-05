@@ -3,6 +3,9 @@ import { NotificationType, Rarity } from "@dcl/schemas"
 import {
   BidAcceptedNotification,
   BidReceivedNotification,
+  CampaignGasPriceHigherThanExpectedNotification,
+  CampaignOutOfFundsNotification,
+  CampaignOutOfStockNotification,
   EventsStartedNotification,
   EventsStartsSoonNotification,
   GovernanceAnnouncementNotification,
@@ -18,6 +21,8 @@ import {
   LandRentalEndedNotification,
   LandRentedNotification,
   RewardAssignedNotification,
+  RewardDelayedNotification,
+  RewardInProgressNotification,
   RoyaltiesEarnedNotification,
   WorldsAccessRestoredNotification,
   WorldsAccessRestrictedNotification,
@@ -79,12 +84,24 @@ const NotificationComponentByType: DecentralandNotificationComponentByType<DCLNo
     [NotificationType.LAND_RENTED]: LandRentedNotification,
     [NotificationType.LAND_RENTAL_ENDED]: LandRentalEndedNotification,
     [NotificationType.REWARD_ASSIGNED]: RewardAssignedNotification,
+    [NotificationType.REWARD_IN_PROGRESS]: RewardInProgressNotification,
+    [NotificationType.REWARD_DELAYED]: RewardDelayedNotification,
     [NotificationType.EVENTS_STARTS_SOON]: EventsStartsSoonNotification,
     [NotificationType.EVENTS_STARTED]: EventsStartedNotification,
     [NotificationType.WORLDS_PERMISSION_GRANTED]:
       WorldsPermissionGrantedNotification,
     [NotificationType.WORLDS_PERMISSION_REVOKED]:
       WorldsPermissionRevokedNotification,
+    [NotificationType.BADGE_GRANTED]: null,
+    [NotificationType.GOVERNANCE_CLIFF_ENDED]: null,
+    [NotificationType.GOVERNANCE_WHALE_VOTE]: null,
+    [NotificationType.GOVERNANCE_VOTED_ON_BEHALF]: null,
+    [NotificationType.REWARD_CAMPAIGN_OUT_OF_FUNDS]:
+      CampaignOutOfFundsNotification,
+    [NotificationType.REWARD_CAMPAIGN_GAS_PRICE_HIGHER_THAN_EXPECTED]:
+      CampaignGasPriceHigherThanExpectedNotification,
+    [NotificationType.REWARD_CAMPAIGN_OUT_OF_STOCK]:
+      CampaignOutOfStockNotification,
   }
 
 const CURRENT_AVAILABLE_NOTIFICATIONS = Object.values(NotificationType)

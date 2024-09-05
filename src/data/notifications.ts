@@ -2,6 +2,9 @@ import { NFTCategory, NotificationType, Rarity } from "@dcl/schemas"
 import {
   BidAcceptedNotificationProps,
   BidReceivedNotificationProps,
+  CampaignGasPriceHigherThanExpectedNotificationProps,
+  CampaignOutOfFundsNotificationProps,
+  CampaignOutOfStockNotificationProps,
   EventsStartedNotificationProps,
   EventsStartsSoonNotificationProps,
   GovernanceAnnouncementNotificationProps,
@@ -17,6 +20,8 @@ import {
   LandRentalEndedNotificationProps,
   LandRentedNotificationProps,
   RewardAssignedNotificationProps,
+  RewardDelayedNotificationProps,
+  RewardInProgressNotificationProps,
   RoyalitesEarnedNotificationProps,
   WorldsAccessRestoredNotificationProps,
   WorldsAccessRestrictedNotificationProps,
@@ -388,6 +393,83 @@ const rewardAssignedNotificationData: RewardAssignedNotificationProps = {
   updated_at: "2023-11-29T12:51:00.600Z",
 }
 
+const rewardInProgressNotificationData: RewardInProgressNotificationProps = {
+  id: NotificationType.REWARD_IN_PROGRESS,
+  read: true,
+  type: NotificationType.REWARD_IN_PROGRESS,
+  address: "0x6b347a82fcac4e6a38d1fc40e3631bd8f9495e9f",
+  timestamp: new Date().getTime(),
+  metadata: {
+    tokenImage:
+      "https://peer.decentraland.org/lambdas/collections/contents/urn:decentraland:ethereum:collections-v1:binance_us_collection:binance_us_upper_body/thumbnail",
+    tokenRarity: Rarity.MYTHIC,
+    tokenName: "NJacket",
+  },
+  created_at: "2023-11-29T12:51:00.600Z",
+  updated_at: "2023-11-29T12:51:00.600Z",
+}
+
+const rewardDelayedNotificationData: RewardDelayedNotificationProps = {
+  id: NotificationType.REWARD_DELAYED,
+  read: true,
+  type: NotificationType.REWARD_DELAYED,
+  address: "0x6b347a82fcac4e6a38d1fc40e3631bd8f9495e9f",
+  timestamp: new Date().getTime(),
+  metadata: {
+    tokenImage:
+      "https://peer.decentraland.org/lambdas/collections/contents/urn:decentraland:ethereum:collections-v1:binance_us_collection:binance_us_upper_body/thumbnail",
+    tokenRarity: Rarity.MYTHIC,
+    tokenName: "NJacket",
+  },
+  created_at: "2023-11-29T12:51:00.600Z",
+  updated_at: "2023-11-29T12:51:00.600Z",
+}
+
+const campaignOutOfFundsNotificationData: CampaignOutOfFundsNotificationProps =
+  {
+    id: NotificationType.REWARD_CAMPAIGN_OUT_OF_FUNDS,
+    read: true,
+    type: NotificationType.REWARD_CAMPAIGN_OUT_OF_FUNDS,
+    address: "0x6b347a82fcac4e6a38d1fc40e3631bd8f9495e9f",
+    timestamp: new Date().getTime(),
+    metadata: {
+      campaignName: "Cool Campaign",
+      link: "https://decentraland.zone/rewards/campaign/?id=e9b39fdb-1bf1-490a-855e-f5e6c63a4525",
+    },
+    created_at: "2023-11-29T12:51:00.600Z",
+    updated_at: "2023-11-29T12:51:00.600Z",
+  }
+
+const campaignOutOfStockNotificationData: CampaignOutOfStockNotificationProps =
+  {
+    id: NotificationType.REWARD_CAMPAIGN_OUT_OF_STOCK,
+    read: true,
+    type: NotificationType.REWARD_CAMPAIGN_OUT_OF_STOCK,
+    address: "0x6b347a82fcac4e6a38d1fc40e3631bd8f9495e9f",
+    timestamp: new Date().getTime(),
+    metadata: {
+      campaignName: "Cool Campaign",
+      link: "https://decentraland.zone/rewards/campaign/?id=e9b39fdb-1bf1-490a-855e-f5e6c63a4525",
+    },
+    created_at: "2023-11-29T12:51:00.600Z",
+    updated_at: "2023-11-29T12:51:00.600Z",
+  }
+
+const campaignGasPriceHigherThanExpectedNotificationData: CampaignGasPriceHigherThanExpectedNotificationProps =
+  {
+    id: NotificationType.REWARD_CAMPAIGN_GAS_PRICE_HIGHER_THAN_EXPECTED,
+    read: true,
+    type: NotificationType.REWARD_CAMPAIGN_GAS_PRICE_HIGHER_THAN_EXPECTED,
+    address: "0x6b347a82fcac4e6a38d1fc40e3631bd8f9495e9f",
+    timestamp: new Date().getTime(),
+    metadata: {
+      campaignName: "Cool Campaign",
+      link: "https://decentraland.zone/rewards/campaign/?id=e9b39fdb-1bf1-490a-855e-f5e6c63a4525",
+    },
+    created_at: "2023-11-29T12:51:00.600Z",
+    updated_at: "2023-11-29T12:51:00.600Z",
+  }
+
 const worldsAccessRestoredNotificationData: WorldsAccessRestoredNotificationProps =
   {
     id: NotificationType.WORLDS_ACCESS_RESTORED,
@@ -492,6 +574,11 @@ const allTypeOfNotifications = [
   itemSoldNotificationPropsData,
   royalitesEarnedNotificationPropsData,
   rewardAssignedNotificationData,
+  rewardInProgressNotificationData,
+  rewardDelayedNotificationData,
+  campaignOutOfFundsNotificationData,
+  campaignOutOfStockNotificationData,
+  campaignGasPriceHigherThanExpectedNotificationData,
   worldsAccessRestoredNotificationData,
   worldsAccessRestrictedNotificationData,
   worldsMissingResourcesNotificationData,
@@ -520,6 +607,11 @@ export {
   itemSoldNotificationPropsData,
   royalitesEarnedNotificationPropsData,
   rewardAssignedNotificationData,
+  rewardInProgressNotificationData,
+  rewardDelayedNotificationData,
+  campaignOutOfFundsNotificationData,
+  campaignOutOfStockNotificationData,
+  campaignGasPriceHigherThanExpectedNotificationData,
   worldsAccessRestoredNotificationData,
   worldsAccessRestrictedNotificationData,
   worldsMissingResourcesNotificationData,
