@@ -50,7 +50,7 @@ const ActionsContainer = styled(Paper)(() => {
     height: "607px",
     width: "561px",
     display: "flex",
-    flexDirection: "row",
+    flexDirection: "row" as const,
     justifyContent: "flex-start",
     overflow: "hidden",
     [theme.breakpoints.down("sm")]: {
@@ -107,7 +107,7 @@ const MenuContainer = styled(Menu)(() => {
     height: "720px",
     width: "561px",
     display: "flex",
-    flexDirection: "column",
+    flexDirection: "column" as const,
     justifyContent: "flex-start",
     "& .MuiPaper-root .MuiList-root": {
       paddingTop: 0,
