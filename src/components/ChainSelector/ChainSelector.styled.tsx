@@ -38,8 +38,9 @@ const CommonButtonStyle = styled(Button)(() => {
 })
 
 const SelectorButton = styled(CommonButtonStyle)(() => {
+  const theme = useTheme()
   return {
-    "@media (max-width: 991px)": {
+    [theme.breakpoints.down("sm")]: {
       "&.MuiButton-sizeMedium.MuiButton-containedSecondary": {
         paddingLeft: "0",
         paddingRight: "0",
@@ -66,7 +67,7 @@ const ChainButton = styled(CommonButtonStyle)((props: {
   }
 
   return {
-    alignItems: "flex-start",
+    alignItems: "center",
     justifyContent: "flex-start",
     marginBottom: "8px",
     "&.MuiButton-sizeMedium.MuiButton-textSecondary:not(.Mui-disabled):not(.Mui-focusVisible):not(:hover)":
@@ -132,6 +133,7 @@ const ChainSelectorModal = styled(Modal)({
 })
 
 const ChainSelectorContainer = styled(Paper)(() => {
+  const theme = useTheme()
   return {
     position: "absolute" as const,
     top: "50%",
@@ -139,7 +141,7 @@ const ChainSelectorContainer = styled(Paper)(() => {
     transform: "translate(-50%, -50%)",
     width: "360px",
     borderRadius: "12px",
-    "@media (max-width: 700px)": {
+    [theme.breakpoints.down("xs")]: {
       minWidth: "100vw",
       maxWidth: "100vw",
       minHeight: "100vh",
@@ -153,13 +155,16 @@ const ChainSelectorContainer = styled(Paper)(() => {
   }
 })
 
-const ChainSelectorWrapper = styled(Box)({
-  display: "flex",
-  flexDirection: "column",
-  margin: "16px",
-  "@media (max-width: 991px)": {
-    padding: "5px",
-  },
+const ChainSelectorWrapper = styled(Box)(() => {
+  const theme = useTheme()
+  return {
+    display: "flex",
+    flexDirection: "column",
+    margin: "16px",
+    [theme.breakpoints.down("sm")]: {
+      padding: "5px",
+    },
+  }
 })
 
 const ChainSelectorModalTitleContainer = styled(Box)({

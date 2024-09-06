@@ -1,7 +1,7 @@
 import { Avatar } from "@dcl/schemas"
-import { NotificationsProps } from "../../Notifications/Notifications.types"
 import { ManaBalancesProps } from "../../UserMenu/ManaBalances/ManaBalances.types"
 import { UserMenuI18N } from "../UserMenu.types"
+import type { NotificationsProps } from "../../Notifications/Notifications.types"
 
 type UserMenuSignedInProps = ManaBalancesProps & {
   avatar?: Avatar
@@ -44,4 +44,4 @@ type UserMenuActionsProps = Pick<
   | "onClickAccount"
 >
 
-export { UserMenuSignedInProps, UserMenuActionsProps }
+export type { UserMenuSignedInProps, UserMenuActionsProps }

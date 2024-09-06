@@ -587,6 +587,7 @@ const allTypeOfNotifications = [
 ]
 
 export {
+  allTypeOfNotifications,
   eventStartedNotificationData,
   eventStartsSoonFutureStartNotificationData,
   eventStartsSoonPastStartNotificationData,
@@ -616,5 +617,4 @@ export {
   worldsMissingResourcesNotificationData,
   worldsPermissionGrantedNotificationPropsData,
   worldsPermissionRevokedNotificationData,
-  allTypeOfNotifications,
 }

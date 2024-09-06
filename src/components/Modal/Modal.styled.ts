@@ -1,8 +1,9 @@
 import styled from "@emotion/styled"
-import { Box as BoxMui, Paper as PaperMui } from "@mui/material"
+import { Box as BoxMui, Paper as PaperMui, useTheme } from "@mui/material"
 import { ModalProps } from "./Modal.types"
 
 const ModalContainer = styled(PaperMui)((props: Pick<ModalProps, "size">) => {
+  const theme = useTheme()
   let size = "900px"
   if (props.size === "tiny") {
     size = "540px"
@@ -18,7 +19,7 @@ const ModalContainer = styled(PaperMui)((props: Pick<ModalProps, "size">) => {
     width: size,
     borderRadius: "12px",
     overflow: "hidden",
-    "@media (max-width: 700px)": {
+    [theme.breakpoints.down("xs")]: {
       minWidth: "100vw",
       maxWidth: "100vw",
       minHeight: "100vh",

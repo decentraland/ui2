@@ -1,6 +1,18 @@
 import * as React from "react"
 import { UserMenuSignedInProps } from "./UserMenuSignedIn/UserMenuSignedIn.types"
 
+type UserMenuI18N = Record<
+  | "myAssets"
+  | "account"
+  | "viewProfile"
+  | "signIn"
+  | "signOut"
+  | "guest"
+  | "marketplaceAuthorizations"
+  | "jumpIn",
+  string
+>
+
 type UserMenuProps = Omit<
   UserMenuSignedInProps,
   "isOpen" | "isClickable" | "trackingId" | "onClickToggle"
@@ -18,18 +30,6 @@ type UserMenuProps = Omit<
   onClickJumpIn?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void
 }
 
-type UserMenuI18N = Record<
-  | "myAssets"
-  | "account"
-  | "viewProfile"
-  | "signIn"
-  | "signOut"
-  | "guest"
-  | "marketplaceAuthorizations"
-  | "jumpIn",
-  string
->
-
 enum UserMenuEventId {
   ACTIVITY = "activity",
   ACCOUNT = "account",
@@ -43,4 +43,5 @@ enum UserMenuEventId {
   BALANCE = "balance",
 }
 
-export { UserMenuProps, UserMenuI18N, UserMenuEventId }
+export type { UserMenuProps, UserMenuI18N }
+export { UserMenuEventId }

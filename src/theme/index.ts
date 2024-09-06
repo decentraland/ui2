@@ -15,6 +15,15 @@ function theme(type: "light" | "dark"): ThemeOptions {
     shape: {
       borderRadius: 6,
     },
+    breakpoints: {
+      values: {
+        xs: 768,
+        sm: 991,
+        md: 1024,
+        lg: 1280,
+        xl: 1500,
+      },
+    },
     components: components(colorSchemas[type].palette as Palette),
   }
 }

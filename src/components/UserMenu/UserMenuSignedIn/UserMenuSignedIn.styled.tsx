@@ -44,19 +44,22 @@ const AvatarFaceContainer = styled(Box)({
   marginRight: "16px",
 })
 
-const ActionsContainer = styled(Paper)({
-  height: "607px",
-  width: "561px",
-  display: "flex",
-  flexDirection: "row",
-  justifyContent: "flex-start",
-  overflow: "hidden",
-  "@media (max-width: 991px)": {
-    marginLeft: "25px",
-    marginRight: "22px",
-    width: "calc(100% - 25px - 22px)",
-    height: "auto",
-  },
+const ActionsContainer = styled(Paper)(() => {
+  const theme = useTheme()
+  return {
+    height: "607px",
+    width: "561px",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    overflow: "hidden",
+    [theme.breakpoints.down("sm")]: {
+      marginLeft: "25px",
+      marginRight: "22px",
+      width: "calc(100% - 25px - 22px)",
+      height: "auto",
+    },
+  }
 })
 
 const AvatarPreviewContainer = styled(Box)({
@@ -98,22 +101,25 @@ const MenuInformationActionContainer = styled(Box)({
   flexDirection: "column",
 })
 
-const MenuContainer = styled(Menu)({
-  height: "720px",
-  width: "561px",
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "flex-start",
-  "& .MuiPaper-root .MuiList-root": {
-    paddingTop: 0,
-    paddingBottom: 0,
-  },
-  "@media (max-width: 991px)": {
-    marginLeft: "25px",
-    marginRight: "22px",
-    width: "calc(100% - 25px - 22px)",
-    height: "auto",
-  },
+const MenuContainer = styled(Menu)(() => {
+  const theme = useTheme()
+  return {
+    height: "720px",
+    width: "561px",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "flex-start",
+    "& .MuiPaper-root .MuiList-root": {
+      paddingTop: 0,
+      paddingBottom: 0,
+    },
+    [theme.breakpoints.down("sm")]: {
+      marginLeft: "25px",
+      marginRight: "22px",
+      width: "calc(100% - 25px - 22px)",
+      height: "auto",
+    },
+  }
 })
 
 const MenuInfoContainer = styled(Box)({

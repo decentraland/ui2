@@ -2,10 +2,12 @@
   "WEARABLE_PREVIEW_URL": "https://wearable-preview.decentraland.today",
   "ACCOUNT_URL": "https://decentraland.today/account",
   "PROFILE_URL": "https://decentraland.today/profile",
-  "MARKETPLACE_URL": "https://decentraland.today/market",
+  "MARKETPLACE_URL": "https://decentraland.today/marketplace",
   "BUILDER_URL": "https://decentraland.today/builder",
   "DAO_URL": "https://decentraland.today/dao",
   "GOVERNANCE_URL": "https://decentraland.today/governance",
-  "EVENTS_URL": "https://decentraland.today/events",
-  "PLACES_URL": "https://decentraland.today/places"
+  "EVENTS_URL": "https://decentraland.zone/events",
+  "PLACES_URL": "https://decentraland.zone/places",
+  "CREATE_URL": "https://decentraland.today/create/",
+  "LEARN_URL": "https://docs.decentraland.org/player/"
 }

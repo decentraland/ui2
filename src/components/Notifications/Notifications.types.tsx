@@ -1,9 +1,6 @@
 import { ModalProps } from "@mui/material"
-import {
-  DCLNotificationProps,
-  NotificationActiveTab,
-  NotificationLocale,
-} from "./types"
+import { NotificationActiveTab } from "../Notifications"
+import type { DCLNotificationProps, NotificationLocale } from "./types"
 
 type NotificationsProps = {
   isOpen: boolean
@@ -25,4 +22,4 @@ type NotificationsProps = {
   ) => void
 }
 
-export { NotificationsProps }
+export type { NotificationsProps }

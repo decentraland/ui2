@@ -1,7 +1,6 @@
 export { Notifications } from "./Notifications"
-export { NotificationsProps } from "./Notifications.types"
-export {
-  NotificationActiveTab,
+export type { NotificationsProps } from "./Notifications.types"
+export type {
   NotificationLocale,
   RawDecentralandNotification,
   ItemSoldNotificationProps,
@@ -30,3 +29,4 @@ export {
   DCLNotificationProps,
   CommonNotificationProps,
 } from "./types"
+export { NotificationActiveTab } from "./types"

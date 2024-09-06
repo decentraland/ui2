@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react"
+import React, { useCallback, useEffect, useRef, useState } from "react"
 import { ChainId, getChainName } from "@dcl/schemas"
 import ClearRoundedIcon from "@mui/icons-material/ClearRounded"
 import { Modal, Typography } from "@mui/material"
@@ -19,7 +19,7 @@ import {
   SelectorButton,
 } from "./ChainSelector.styled"
 
-export const ChainSelector = (props: ChainSelectorProps) => {
+export const ChainSelector = React.memo((props: ChainSelectorProps) => {
   const { chains, selectedChain, chainBeingConfirmed, i18n, onSelectChain } =
     props
 
@@ -106,4 +106,4 @@ export const ChainSelector = (props: ChainSelectorProps) => {
       </Modal>
     </>
   )
-}
+})
