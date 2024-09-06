@@ -78,15 +78,15 @@ const Navbar = React.memo((props: NavbarProps) => {
     [setToggle, setMenuMobileOpen]
   )
 
-  const handleUserMenuOpen = (
-    event: React.MouseEvent<HTMLElement, MouseEvent>,
-    trackingId: string
-  ) => {
-    if (userMenuProps.onClickOpen) {
-      userMenuProps.onClickOpen(event, trackingId)
-    }
-    handleMobileToggle(event, false)
-  }
+  const handleUserMenuOpen = useCallback(
+    (event: React.MouseEvent<HTMLElement, MouseEvent>, trackingId: string) => {
+      if (userMenuProps.onClickOpen) {
+        userMenuProps.onClickOpen(event, trackingId)
+      }
+      handleMobileToggle(event, false)
+    },
+    [userMenuProps.onClickOpen, handleMobileToggle]
+  )
 
   return (
     <>

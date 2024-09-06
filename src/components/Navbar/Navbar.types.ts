@@ -12,14 +12,6 @@ enum NavbarPages {
   GOVERNANCE = "governance",
 }
 
-enum NavbarPagesUrls {
-  MARKETPLACE = "https://decentraland.org/marketplace",
-  CREATE = "https://decentraland.org/create/",
-  EXPLORE = "https://decentraland.org/events/",
-  LEARN = "https://docs.decentraland.org/player/",
-  GOVERNANCE = "https://decentraland.org/governance/",
-}
-
 type NavbarMenuI18nProps = Record<NavbarPages, NavbarPages>
 
 type NavbarSubMenuItemsProps = {
@@ -70,7 +62,7 @@ type NavbarProps = Omit<UserMenuProps, "i18n"> &
     ) => void
   }
 
-export { NavbarPages, NavbarPagesUrls }
+export { NavbarPages }
 export type {
   NavbarMenuI18nProps,
   NavbarSubMenuItemsProps,
