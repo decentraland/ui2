@@ -1,10 +1,11 @@
 import styled from "@emotion/styled"
-import { SvgIcon } from "@mui/material"
+import { SvgIcon, useTheme } from "@mui/material"
 
 const LogoContainer = styled(SvgIcon)(() => {
+  const theme = useTheme()
   return {
     fontSize: "36px",
-    "@media (max-width: 768px)": {
+    [theme.breakpoints.down("xs")]: {
       fontSize: "32px",
     },
   }

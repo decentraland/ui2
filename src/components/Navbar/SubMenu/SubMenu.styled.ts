@@ -9,8 +9,9 @@ import MarketplaceImage from "../../../Assets/Navbar/marketplace-submenu.png"
 import { NavbarPages } from "../Navbar.types"
 
 const SubMenuContainer = styled(Box)(() => {
+  const theme = useTheme()
   return {
-    "@media (max-width: 991px)": {
+    [theme.breakpoints.down("sm")]: {
       position: "absolute" as const,
       zIndex: zIndex.modal,
     },
@@ -136,7 +137,7 @@ const MenuItemContainer = styled(Box)((props: {
       backgroundSize: "auto 90%",
       ...leftImageStyles,
     },
-    "@media (max-width: 991px)": {
+    [theme.breakpoints.down("sm")]: {
       top: "64px",
       left: "150%",
       height: "100vh",
@@ -156,12 +157,13 @@ const MenuItemContainer = styled(Box)((props: {
 })
 
 const SubMenuWrapper = styled(Box)(() => {
+  const theme = useTheme()
   return {
     width: "100%",
     display: "flex",
     alignItems: "flex-start",
     height: "fit-content",
-    "@media (max-width: 991px)": {
+    [theme.breakpoints.down("sm")]: {
       flexDirection: "column" as const,
     },
   }

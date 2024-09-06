@@ -28,7 +28,7 @@ const MenuItemContainer = styled(Box)((props: { active: boolean }) => {
     "& :hover": {
       color: theme.palette.text.primary,
     },
-    "@media (max-width: 991px)": {
+    [theme.breakpoints.down("sm")]: {
       padding: "40px 0 23.66px",
       fontSize: "20px",
       fontStyle: "normal",
@@ -50,7 +50,7 @@ const MenuItemTitle = styled(Typography)(() => {
   return {
     textTransform: "capitalize" as const,
     fontWeight: "inherit",
-    "@media (max-width: 991px)": {
+    [theme.breakpoints.down("sm")]: {
       color: theme.palette.text.primary,
     },
   }

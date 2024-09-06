@@ -33,7 +33,7 @@ const SubMenuItemContainer = styled(Box)((props: { isExternal?: boolean }) => {
       borderBottomColor: theme.palette.text.primary,
       color: theme.palette.text.primary,
     },
-    "@media (max-width: 991px)": {
+    [theme.breakpoints.down("sm")]: {
       color: theme.palette.text.primary,
       borderBottomColor: theme.palette.text.primary,
     },

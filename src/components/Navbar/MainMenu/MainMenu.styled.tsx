@@ -16,7 +16,7 @@ const MainMenuContainer = styled(Box)((props: { isOpenOnMobile?: boolean }) => {
     display: "flex" as const,
     height: "64px",
     marginLeft: "10px",
-    "@media (max-width: 991px)": {
+    [theme.breakpoints.down("sm")]: {
       position: "absolute" as const,
       flexDirection: "column" as const,
       alignItems: "flex-start",

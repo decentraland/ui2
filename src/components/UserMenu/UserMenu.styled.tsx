@@ -1,6 +1,6 @@
 import zIndex from "@mui/material/styles/zIndex"
 import styled from "@emotion/styled"
-import { Box, Button } from "@mui/material"
+import { Box, Button, useTheme } from "@mui/material"
 
 const UserMenuContainer = styled(Box)({
   display: "flex",
@@ -22,12 +22,15 @@ const SignInButton = styled(Button)({
   minWidth: "90px",
 })
 
-const JumpInLink = styled(Button)({
-  height: "46px",
-  marginLeft: "24px",
-  "@media (max-width: 991px)": {
-    display: "none",
-  },
+const JumpInLink = styled(Button)(() => {
+  const theme = useTheme()
+  return {
+    height: "46px",
+    marginLeft: "24px",
+    [theme.breakpoints.down("sm")]: {
+      display: "none",
+    },
+  }
 })
 
 export { UserMenuContainer, UserMenuLoaderContainer, SignInButton, JumpInLink }
