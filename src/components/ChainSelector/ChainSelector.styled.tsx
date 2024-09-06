@@ -159,7 +159,7 @@ const ChainSelectorWrapper = styled(Box)(() => {
   const theme = useTheme()
   return {
     display: "flex",
-    flexDirection: "column",
+    flexDirection: "column" as const,
     margin: "16px",
     [theme.breakpoints.down("sm")]: {
       padding: "5px",
