@@ -1,38 +1,53 @@
 import useMediaQuery from "@mui/material/useMediaQuery"
+import { useTheme } from "@mui/material"
 
 /**
  * Media hook to determine if we're going to be rendering in a desktop environment with big screens.
  */
-const useBigDesktopMediaQuery = (): boolean =>
-  useMediaQuery("(min-width: 1920px)")
+const useBigDesktopMediaQuery = (): boolean => {
+  const theme = useTheme()
+  return useMediaQuery(theme.breakpoints.up("xl"))
+}
 
 /**
  * Media hook to determine if we're going to be rendering in a desktop environment.
  */
-const useDesktopMediaQuery = (): boolean => useMediaQuery("(min-width: 992px)")
+const useDesktopMediaQuery = (): boolean => {
+  const theme = useTheme()
+  return useMediaQuery(theme.breakpoints.up("sm"))
+}
 
 /**
  * Media hook to determine if we're going to be rendering in a tablet environment.
  */
-const useTabletMediaQuery = (): boolean =>
-  useMediaQuery("(min-width: 768px) and (max-width: 991px)")
+const useTabletMediaQuery = (): boolean => {
+  const theme = useTheme()
+  return useMediaQuery(theme.breakpoints.between("xs", "sm"))
+}
 
 /**
  * Media hook to determine if we're going to be rendering in a tablet or below environment.
  */
-const useTabletAndBelowMediaQuery = (): boolean =>
-  useMediaQuery("(max-width: 991px)")
+const useTabletAndBelowMediaQuery = (): boolean => {
+  const theme = useTheme()
+  return useMediaQuery(theme.breakpoints.down("sm"))
+}
 
 /**
  * Media hook to determine if we're going to be rendering in a mobile environment.
  */
-const useMobileMediaQuery = (): boolean => useMediaQuery("(max-width: 767px)")
+const useMobileMediaQuery = (): boolean => {
+  const theme = useTheme()
+  return useMediaQuery(theme.breakpoints.down("xs"))
+}
 
 /**
  * Media hook to determine if we're going to be rendering in an environment that's not mobile.
  */
-const useNotMobileMediaQuery = (): boolean =>
-  useMediaQuery("(min-width: 768px)")
+const useNotMobileMediaQuery = (): boolean => {
+  const theme = useTheme()
+  return useMediaQuery(theme.breakpoints.up("xs"))
+}
 
 /**
  * Renders a component if the screen suits the desktop size.
