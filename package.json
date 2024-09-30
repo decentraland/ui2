@@ -37,7 +37,7 @@
   },
   "homepage": "https://github.com/decentraland/ui2#readme",
   "dependencies": {
-    "@dcl/schemas": "^13.9.0",
+    "@dcl/schemas": "^14.0.0",
     "@dcl/ui-env": "^1.5.1",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
