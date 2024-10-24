@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from "react"
 import { Network } from "@dcl/schemas/dist/dapps/network"
+import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined"
 import { v4 as uuidv4 } from "uuid"
 import { CircularProgress } from "@mui/material"
 import { ManaBalancesProps } from "./ManaBalances"
@@ -9,7 +10,7 @@ import { config } from "../../config"
 import { useTabletAndBelowMediaQuery } from "../Media"
 import { UserMenuEventId, UserMenuProps } from "./UserMenu.types"
 import {
-  JumpInLink,
+  DownloadLink,
   SignInButton,
   UserMenuContainer,
   UserMenuLoaderContainer,
@@ -25,7 +26,7 @@ const UserMenu = React.memo((props: UserMenuProps) => {
     onClickSignIn,
     onClickBalance,
     onClickOpen,
-    onClickJumpIn,
+    onClickDownload,
     onClickUserMenuItem,
     ...signInProps
   } = props
@@ -65,26 +66,26 @@ const UserMenu = React.memo((props: UserMenuProps) => {
     }
   }, [setIsOpen])
 
-  const handleClickJumpIn = useCallback(
+  const handleClickDownload = useCallback(
     (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
       event.preventDefault()
       onClickUserMenuItem &&
         onClickUserMenuItem(event, {
-          type: UserMenuEventId.JUMP_IN,
+          type: UserMenuEventId.DOWNLOAD,
           track_uuid: trackingId || undefined,
-          url: config.get("EXPLORER_URL"),
+          url: config.get("DOWNLOAD_URL"),
         })
 
       setTimeout(
         () => {
-          onClickJumpIn
-            ? onClickJumpIn(event)
-            : window.open(config.get("EXPLORER_URL"), "_blank", "noopener")
+          onClickDownload
+            ? onClickDownload(event)
+            : window.open(config.get("DOWNLOAD_URL"), "_blank", "noopener")
         },
         onClickUserMenuItem ? 300 : 0
       )
     },
-    [onClickJumpIn, onClickUserMenuItem, trackingId]
+    [onClickDownload, onClickUserMenuItem, trackingId]
   )
 
   const handleClickSignIn = useCallback(
@@ -160,15 +161,13 @@ const UserMenu = React.memo((props: UserMenuProps) => {
               )}
             </SignInButton>
           ) : null}
-          {isSignedIn && (
-            <JumpInLink
-              variant="contained"
-              onClick={handleClickJumpIn}
-              href={config.get("EXPLORER_URL")}
-            >
-              {i18n.jumpIn}
-            </JumpInLink>
-          )}
+          <DownloadLink
+            variant="contained"
+            onClick={handleClickDownload}
+            href={config.get("DOWNLOAD_URL")}
+          >
+            <FileDownloadOutlinedIcon /> {i18n.download}
+          </DownloadLink>
         </>
       )}
     </UserMenuContainer>

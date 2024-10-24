@@ -3,11 +3,11 @@ import { ChainSelectori18n } from "../ChainSelector/ChainSelector.types"
 import { NavbarMenuI18nProps, NavbarSubmenuProps } from "./Navbar.types"
 
 const navbarMainTitlesI18N = {
-  marketplace: "marketplace",
+  marketplace: "shop",
   create: "create",
-  explore: "explore",
   learn: "learn",
-  governance: "governance",
+  governance: "vote",
+  explore: "events",
 } as NavbarMenuI18nProps
 
 const i18nChainSelectorDefault = {
@@ -88,7 +88,7 @@ const navbarSubmenu = {
       {
         title: "Scenes",
         description: "Create & publish scenes to LAND or Worlds",
-        url: config.get("BUILDER_SCENES_URL"),
+        url: config.get("CREATORS_HUB_URL"),
         eventTrackingName: "builder_scenes",
       },
     ],

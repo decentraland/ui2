@@ -12,7 +12,7 @@ enum NavbarPages {
   GOVERNANCE = "governance",
 }
 
-type NavbarMenuI18nProps = Record<NavbarPages, NavbarPages>
+type NavbarMenuI18nProps = Record<NavbarPages, string>
 
 type NavbarSubMenuItemsProps = {
   column1Title?: string

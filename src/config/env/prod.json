@@ -9,5 +9,7 @@
   "EVENTS_URL": "https://decentraland.org/events",
   "PLACES_URL": "https://decentraland.org/places",
   "CREATE_URL": "https://decentraland.org/create/",
-  "LEARN_URL": "https://docs.decentraland.org/player/"
+  "LEARN_URL": "https://docs.decentraland.org/player/",
+  "CREATORS_HUB_URL": "https://decentraland.org/download/creator-hub/",
+  "DOWNLOAD_URL": "https://decentraland.org/download/"
 }

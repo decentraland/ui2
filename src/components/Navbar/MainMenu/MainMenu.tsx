@@ -22,12 +22,6 @@ export const MainMenu = (props: MainMenuProps) => {
       />
       <MenuItem
         {...menuItemProps}
-        section={NavbarPages.EXPLORE}
-        title={i18n.explore}
-        mainUrl={config.get("EVENTS_URL")}
-      />
-      <MenuItem
-        {...menuItemProps}
         section={NavbarPages.LEARN}
         title={i18n.learn}
         mainUrl={config.get("LEARN_URL")}
@@ -37,6 +31,12 @@ export const MainMenu = (props: MainMenuProps) => {
         section={NavbarPages.GOVERNANCE}
         title={i18n.governance}
         mainUrl={config.get("GOVERNANCE_URL")}
+      />
+      <MenuItem
+        {...menuItemProps}
+        section={NavbarPages.EXPLORE}
+        title={i18n.explore}
+        mainUrl={config.get("EVENTS_URL")}
       />
     </MainMenuContainer>
   )
