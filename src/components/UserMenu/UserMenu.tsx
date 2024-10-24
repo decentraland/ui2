@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react"
 import { Network } from "@dcl/schemas/dist/dapps/network"
-import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined"
+import Download from "@mui/icons-material/Download"
 import { v4 as uuidv4 } from "uuid"
 import { CircularProgress } from "@mui/material"
 import { ManaBalancesProps } from "./ManaBalances"
@@ -166,7 +166,7 @@ const UserMenu = React.memo((props: UserMenuProps) => {
             onClick={handleClickDownload}
             href={config.get("DOWNLOAD_URL")}
           >
-            <FileDownloadOutlinedIcon /> {i18n.download}
+            <Download /> {i18n.download}
           </DownloadLink>
         </>
       )}
