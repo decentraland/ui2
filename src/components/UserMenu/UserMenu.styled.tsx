@@ -22,7 +22,7 @@ const SignInButton = styled(Button)({
   minWidth: "90px",
 })
 
-const JumpInLink = styled(Button)(() => {
+const DownloadLink = styled(Button)(() => {
   const theme = useTheme()
   return {
     height: "46px",
@@ -33,4 +33,9 @@ const JumpInLink = styled(Button)(() => {
   }
 })
 
-export { UserMenuContainer, UserMenuLoaderContainer, SignInButton, JumpInLink }
+export {
+  UserMenuContainer,
+  UserMenuLoaderContainer,
+  SignInButton,
+  DownloadLink,
+}
