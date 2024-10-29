@@ -7,6 +7,7 @@ import {
   ModalActionsContainer,
   ModalContainer,
   ModalContentContainer,
+  ModalOuterContainer,
   ModalTitleContainer,
 } from "./Modal.styled"
 
@@ -38,35 +39,37 @@ const ModalContent = React.memo(
     } = props
 
     return (
-      <ModalContainer elevation={24} size={size}>
-        {header}
-        {(title || onClose || onBack) && (
-          <ModalTitleContainer>
-            {onBack && (
-              <IconButton aria-label="back" size="large" onClick={onBack}>
-                <ArrowBackIosNewRoundedIcon />
-              </IconButton>
-            )}
-            {title && <Typography variant="h5">{title}</Typography>}
-            {onClose && (
-              <IconButton aria-label="close" size="large" onClick={onClose}>
-                <CancelRoundedIcon />
-              </IconButton>
-            )}
-          </ModalTitleContainer>
-        )}
-        {subtitle && <Typography variant="subtitle1">{subtitle}</Typography>}
-        <ModalContentContainer>{children}</ModalContentContainer>
-        {actions && <ModalActionsContainer>{actions}</ModalActionsContainer>}
-      </ModalContainer>
+      <ModalOuterContainer>
+        <ModalContainer elevation={24} size={size}>
+          {header}
+          {(title || onClose || onBack) && (
+            <ModalTitleContainer>
+              {onBack && (
+                <IconButton aria-label="back" size="large" onClick={onBack}>
+                  <ArrowBackIosNewRoundedIcon />
+                </IconButton>
+              )}
+              {title && <Typography variant="h5">{title}</Typography>}
+              {onClose && (
+                <IconButton aria-label="close" size="large" onClick={onClose}>
+                  <CancelRoundedIcon />
+                </IconButton>
+              )}
+            </ModalTitleContainer>
+          )}
+          {subtitle && <Typography variant="subtitle1">{subtitle}</Typography>}
+          <ModalContentContainer>{children}</ModalContentContainer>
+          {actions && <ModalActionsContainer>{actions}</ModalActionsContainer>}
+        </ModalContainer>
+      </ModalOuterContainer>
     )
   }
 )
 
 const Modal = React.memo((props: ModalProps) => {
-  const { open, onClose, children, ...modalContentProps } = props
+  const { open, onClose, children, className, ...modalContentProps } = props
   return (
-    <MuiModal open={open} onClose={onClose}>
+    <MuiModal open={open} onClose={onClose} className={className}>
       <ModalContent {...modalContentProps} onClose={onClose}>
         {children}
       </ModalContent>

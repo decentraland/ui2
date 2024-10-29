@@ -2,6 +2,19 @@ import styled from "@emotion/styled"
 import { Box as BoxMui, Paper as PaperMui, useTheme } from "@mui/material"
 import { ModalProps } from "./Modal.types"
 
+const ModalOuterContainer = styled("div")({
+  position: "fixed",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  top: 0,
+  left: 0,
+  width: "100vw",
+  height: "100vh",
+  backgroundColor: "rgba(0, 0, 0, 0.5)",
+  zIndex: 1300,
+})
+
 const ModalContainer = styled(PaperMui)((props: Pick<ModalProps, "size">) => {
   const theme = useTheme()
   let size = "900px"
@@ -12,10 +25,6 @@ const ModalContainer = styled(PaperMui)((props: Pick<ModalProps, "size">) => {
   }
 
   return {
-    position: "absolute" as const,
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
     width: size,
     borderRadius: "12px",
     overflow: "hidden",
@@ -26,9 +35,6 @@ const ModalContainer = styled(PaperMui)((props: Pick<ModalProps, "size">) => {
       borderRadius: "0px",
       margin: "0",
       padding: "0",
-      top: "0",
-      left: "0",
-      transform: "translate(0, 0)",
     },
   }
 })
@@ -55,6 +61,7 @@ const ModalActionsContainer = styled(BoxMui)({
 })
 
 export {
+  ModalOuterContainer,
   ModalContainer,
   ModalTitleContainer,
   ModalContentContainer,

@@ -6,6 +6,7 @@ type ModalProps = {
   header?: React.ReactNode
   children: React.ReactNode
   actions?: React.ReactNode
+  className?: string
   onClose?: React.MouseEventHandler<HTMLButtonElement>
   onBack?: React.MouseEventHandler<HTMLButtonElement>
 }
