@@ -1,6 +1,7 @@
 type ModalProps = {
   open: boolean
   size?: "tiny" | "small" | "medium" | "large"
+  className?: string
   title?: string
   subtitle?: string
   header?: React.ReactNode

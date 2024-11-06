@@ -65,9 +65,9 @@ const ModalContent = React.memo(
 )
 
 const Modal = React.memo((props: ModalProps) => {
-  const { open, onClose, children, ...modalContentProps } = props
+  const { open, onClose, children, className, ...modalContentProps } = props
   return (
-    <BaseModal open={open} onClose={onClose}>
+    <BaseModal open={open} onClose={onClose} className={className}>
       <ModalContent {...modalContentProps} onClose={onClose}>
         {children}
       </ModalContent>
