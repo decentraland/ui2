@@ -4,8 +4,16 @@ import { MenuItemProps } from "./MenuItem.types"
 import { MenuItemContainer, MenuItemTitle } from "./MenuItem.styled"
 
 const MenuItem = (props: MenuItemProps) => {
-  const { activePage, section, title, onToggleShowSubMenu, mainUrl, isMobile } =
-    props
+  const {
+    activePage,
+    section,
+    title,
+    onToggleShowSubMenu,
+    mainUrl,
+    isMobile,
+    textColor,
+    backgroundColor,
+  } = props
 
   const mainRedirect = useCallback(() => {
     mainUrl && window.open(mainUrl, "_self")
@@ -19,8 +27,13 @@ const MenuItem = (props: MenuItemProps) => {
       }}
       onMouseEnter={(e) => !isMobile && onToggleShowSubMenu(e, true, section)}
       onMouseLeave={(e) => !isMobile && onToggleShowSubMenu(e, false, section)}
+      backgroundColor={backgroundColor}
     >
-      <MenuItemTitle variant="subtitle1" onClick={mainRedirect}>
+      <MenuItemTitle
+        variant="subtitle1"
+        onClick={mainRedirect}
+        textColor={textColor}
+      >
         {title}
       </MenuItemTitle>
       {isMobile && <ArrowForwardRoundedIcon />}
