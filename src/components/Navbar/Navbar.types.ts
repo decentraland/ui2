@@ -10,6 +10,7 @@ enum NavbarPages {
   EXPLORE = "explore",
   LEARN = "learn",
   GOVERNANCE = "governance",
+  EXTRA = "extra",
 }
 
 type NavbarMenuI18nProps = Record<NavbarPages, string>

@@ -1,8 +1,11 @@
 import styled from "@emotion/styled"
 import { Box, Typography, useTheme } from "@mui/material"
 
-const MenuItemContainer = styled(Box)((props: { active: boolean }) => {
-  const { active } = props
+const MenuItemContainer = styled(Box)((props: {
+  active: boolean
+  backgroundColor?: string
+}) => {
+  const { active, backgroundColor } = props
 
   const theme = useTheme()
 
@@ -15,7 +18,7 @@ const MenuItemContainer = styled(Box)((props: { active: boolean }) => {
   }
 
   return {
-    backgroundColor: "transparent",
+    backgroundColor: backgroundColor ? backgroundColor : "transparent",
     display: "flex",
     cursor: "pointer",
     alignItems: "center",
@@ -45,13 +48,16 @@ const MenuItemContainer = styled(Box)((props: { active: boolean }) => {
   }
 })
 
-const MenuItemTitle = styled(Typography)(() => {
+const MenuItemTitle = styled(Typography)((props: { textColor?: string }) => {
+  const { textColor } = props
   const theme = useTheme()
+
   return {
     textTransform: "capitalize" as const,
     fontWeight: "inherit",
+    color: textColor ? textColor : theme.palette.text.secondary,
     [theme.breakpoints.down("sm")]: {
-      color: theme.palette.text.primary,
+      color: textColor ? textColor : theme.palette.text.primary,
     },
   }
 })
