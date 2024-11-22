@@ -13,6 +13,7 @@ const MenuItem = (props: MenuItemProps) => {
     isMobile,
     textColor,
     backgroundColor,
+    isExtraButton,
   } = props
 
   const mainRedirect = useCallback(() => {
@@ -23,7 +24,7 @@ const MenuItem = (props: MenuItemProps) => {
     <MenuItemContainer
       active={activePage === section}
       onClick={(e) => {
-        isMobile && onToggleShowSubMenu(e, true, section)
+        isMobile && !isExtraButton && onToggleShowSubMenu(e, true, section)
       }}
       onMouseEnter={(e) => !isMobile && onToggleShowSubMenu(e, true, section)}
       onMouseLeave={(e) => !isMobile && onToggleShowSubMenu(e, false, section)}

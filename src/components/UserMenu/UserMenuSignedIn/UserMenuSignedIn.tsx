@@ -264,15 +264,19 @@ const UserMenuSignedIn = React.memo((props: UserMenuSignedInProps) => {
   return (
     <UserMenuSignedInContainer>
       {notifications && <Notifications {...notifications} />}
-      <IconButton aria-label="activity" onClick={handleClickActivity}>
-        <Badge color="secondary" variant="dot" invisible={!hasActivity}>
-          <ActivityIcon />
-        </Badge>
-      </IconButton>
-      <ManaBalances
-        manaBalances={manaBalances}
-        onClickBalance={onClickBalance}
-      />
+      {!isTabletAndBelow && (
+        <IconButton aria-label="activity" onClick={handleClickActivity}>
+          <Badge color="secondary" variant="dot" invisible={!hasActivity}>
+            <ActivityIcon />
+          </Badge>
+        </IconButton>
+      )}
+      {!isTabletAndBelow && (
+        <ManaBalances
+          manaBalances={manaBalances}
+          onClickBalance={onClickBalance}
+        />
+      )}
       <AvatarFaceContainer onClick={handleClickToggle}>
         <AvatarFace size="medium" avatar={avatar} />
       </AvatarFaceContainer>

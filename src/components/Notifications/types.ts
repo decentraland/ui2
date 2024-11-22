@@ -135,6 +135,21 @@ type GovernanceTenderPassedNotificationProps = RawDecentralandNotification<
   CommonGovernanceNotificationMetadataProps
 >
 
+type GovernanceVotedOnBehalfNotification = RawDecentralandNotification<
+  NotificationType.GOVERNANCE_VOTED_ON_BEHALF,
+  CommonGovernanceNotificationMetadataProps
+>
+
+type GovernanceWhaleVoteNotification = RawDecentralandNotification<
+  NotificationType.GOVERNANCE_WHALE_VOTE,
+  CommonGovernanceNotificationMetadataProps
+>
+
+type GovernanceCliffEndedNotification = RawDecentralandNotification<
+  NotificationType.GOVERNANCE_CLIFF_ENDED,
+  CommonGovernanceNotificationMetadataProps
+>
+
 type GovernanceNotificationsProps =
   | GovernanceAnnouncementNotificationProps
   | GovernanceProposalEnactedNotificationProps
@@ -145,6 +160,9 @@ type GovernanceNotificationsProps =
   | GovernanceNewCommentOnProjectUpdateNotificationProps
   | GovernancePitchPassedNotificationProps
   | GovernanceTenderPassedNotificationProps
+  | GovernanceVotedOnBehalfNotification
+  | GovernanceWhaleVoteNotification
+  | GovernanceCliffEndedNotification
 
 // Worlds Notifications
 

@@ -61,7 +61,7 @@ const MenuItemContainer = styled(Box)((props: {
     modifiedStyles = {
       opacity: 1,
       top: 0,
-      zIndex: 10,
+      zIndex: 1099,
       boxShadow: theme.shadows[20],
     }
     mobileModifiedStyles = {
