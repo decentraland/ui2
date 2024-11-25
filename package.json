@@ -6,18 +6,19 @@
   "types": "dist/index.d.ts",
   "author": "Decentraland",
   "license": "Apache-2.0",
+  "type": "module",
   "scripts": {
     "test": "jest",
     "fix:prettier": "prettier --write ./src",
     "start": "storybook dev -p 6006",
     "build": "npm run build:dist",
     "build:dist": "rm -Rf dist && tsc && cp -R src/theme/fonts dist/theme/fonts && cp -R src/Assets dist/Assets",
-    "build-storybook": "npx storybook@7 build",
+    "build-storybook": "npm run generate:storybooks && npx storybook@7 build",
     "format": "prettier --write '**/*.{ts,tsx,js,jsx,json,md,mdx,css}'",
     "lint": "eslint --ext .ts,.tsx,.js,.jsx ./src",
     "lint:check": "eslint --ext .ts,.tsx,.js,.jsx ./src",
     "lint:fix": "npm run lint -- --fix",
-    "generate:storybooks": "ts-node ./bin/storybookGenerator.ts && npm run lint:fix"
+    "generate:storybooks": "node --loader ts-node/esm ./bin/storybookGenerator.ts && npm run lint:fix"
   },
   "repository": {
     "type": "git",
