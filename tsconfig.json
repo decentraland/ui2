@@ -21,7 +21,9 @@
     "importHelpers": true,
     "module": "esnext",
     "target": "esnext",
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "allowImportingTsExtensions": true,
+    "noEmit": true
   },
   "exclude": ["node_modules", "dist", "test", "bin"]
 }
