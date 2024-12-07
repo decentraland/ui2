@@ -54,19 +54,29 @@ const ActionsContainer = styled(Paper)(() => {
     justifyContent: "flex-start",
     overflow: "hidden",
     [theme.breakpoints.down("sm")]: {
-      marginLeft: "25px",
-      marginRight: "22px",
-      width: "calc(100% - 25px - 22px)",
-      height: "auto",
+      position: "fixed" as const,
+      flexDirection: "column-reverse" as const,
+      top: "66px",
+      left: 0,
+      paddingLeft: "25px",
+      paddingRight: "22px",
+      width: "100vw",
+      height: "calc(100vh - 66px)",
     },
   }
 })
 
-const AvatarPreviewContainer = styled(Box)({
-  height: "110%",
-  marginLeft: "-100px",
-  marginBottom: "-100px",
-  width: "330px",
+const AvatarPreviewContainer = styled(Box)(() => {
+  const theme = useTheme()
+  return {
+    height: "110%",
+    marginLeft: "-100px",
+    marginBottom: "-100px",
+    width: "330px",
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
+    },
+  }
 })
 
 const AvatarPreview = styled(Box)((props: { avatar?: Avatar }) => {
@@ -94,11 +104,17 @@ const AvatarPreview = styled(Box)((props: { avatar?: Avatar }) => {
   return styles
 })
 
-const MenuInformationActionContainer = styled(Box)({
-  height: "100%",
-  width: "331px",
-  display: "flex",
-  flexDirection: "column",
+const MenuInformationActionContainer = styled(Box)(() => {
+  const theme = useTheme()
+  return {
+    height: "100%",
+    width: "331px",
+    display: "flex",
+    flexDirection: "column" as const,
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
+    },
+  }
 })
 
 const MenuContainer = styled(Menu)(() => {
@@ -147,12 +163,18 @@ const MenuInfoUnclaimedTypography = styled("span")(() => {
   }
 })
 
-const ActionsWrapper = styled(Box)({
-  height: "330px",
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "flex-start",
-  margin: "0 55px 0 0",
+const ActionsWrapper = styled(Box)(() => {
+  const theme = useTheme()
+  return {
+    height: "330px",
+    display: "flex",
+    flexDirection: "column" as const,
+    justifyContent: "flex-start",
+    margin: "0 55px 0 0",
+    [theme.breakpoints.down("sm")]: {
+      margin: "0",
+    },
+  }
 })
 
 const ActionsMenuItem = styled(MenuItem)(() => {
@@ -196,6 +218,11 @@ const LogoutContainer = styled(Box)(() => {
     cursor: "pointer",
     "& svg": {
       marginLeft: "16px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      position: "absolute" as const,
+      bottom: "0",
+      right: "0",
     },
   }
 })

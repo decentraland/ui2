@@ -153,7 +153,7 @@ const UserMenuActions = (props: UserMenuActionsProps) => {
   )
 
   return (
-    <ActionsContainer elevation={24}>
+    <ActionsContainer elevation={0}>
       <AvatarPreviewContainer>
         <AvatarPreview avatar={avatar} />
       </AvatarPreviewContainer>
@@ -284,26 +284,36 @@ const UserMenuSignedIn = React.memo((props: UserMenuSignedInProps) => {
         onMouseLeave={handleClickClose}
         onScroll={!isTabletAndBelow ? handleClickClose : undefined}
       >
-        <MenuContainer
-          anchorEl={anchorEl}
-          open={!!isOpen}
-          onClose={handleClickClose}
-          anchorOrigin={{
-            vertical: "bottom",
-            horizontal: "right",
-          }}
-          transformOrigin={{
-            vertical: "top",
-            horizontal: "right",
-          }}
-        >
+        {!isTabletAndBelow && (
+          <MenuContainer
+            anchorEl={anchorEl}
+            open={!!isOpen}
+            onClose={handleClickClose}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "right",
+            }}
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+          >
+            <UserMenuActions
+              onClickUserMenuItem={onClickUserMenuItem}
+              avatar={avatar}
+              trackingId={trackingId}
+              {...actionsProps}
+            ></UserMenuActions>
+          </MenuContainer>
+        )}
+        {isTabletAndBelow && isOpen && (
           <UserMenuActions
             onClickUserMenuItem={onClickUserMenuItem}
             avatar={avatar}
             trackingId={trackingId}
             {...actionsProps}
           ></UserMenuActions>
-        </MenuContainer>
+        )}
       </Box>
     </UserMenuSignedInContainer>
   )

@@ -47,6 +47,7 @@ const AppBarWrapper = styled(Box)({
   justifyContent: "space-between",
   width: "100%",
   alignItems: "center",
+  height: "66px",
 })
 
 const AppBarRightWrapper = styled(Box)({

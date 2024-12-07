@@ -1,8 +1,19 @@
 import styled from "@emotion/styled"
-import { Box, Menu, Typography } from "@mui/material"
+import { Box, Menu, Typography, useTheme } from "@mui/material"
+import { Modal } from "../Modal"
 
-const FeedContainer = styled("div")({
-  width: "384px",
+const FeedContainer = styled("div")(() => {
+  const theme = useTheme()
+  return {
+    width: "384px",
+    [theme.breakpoints.down("sm")]: {
+      height: "90vh",
+      display: "flex",
+      alignItems: "center",
+      marginLeft: "auto",
+      marginRight: "auto",
+    },
+  }
 })
 
 const EmptyViewContainer = styled("div")({
@@ -44,6 +55,16 @@ const LoadingContainer = styled("div")({
   alignItems: "center",
 })
 
+const NotificationFeedModal = styled(Modal)(() => {
+  return {
+    alignItems: "flex-end",
+    "& .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded": {
+      borderTopLeftRadius: "16px",
+      borderTopRightRadius: "16px",
+    },
+  }
+})
+
 const NotificationFeedModalContainer = styled(Box)({
   display: "flex",
   flexDirection: "column",
@@ -64,6 +85,7 @@ export {
   EmptyViewDescription,
   OnboardingWrapper,
   LoadingContainer,
+  NotificationFeedModal,
   NotificationFeedModalContainer,
   NotificationFeedContainer,
 }

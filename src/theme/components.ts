@@ -26,7 +26,7 @@ export const components = (
           transition: "color .2s ease",
         },
         "& ::-webkit-scrollbar": {
-          "-webkit-appearance": "none",
+          webkitAppearance: "none",
           width: "10px",
           height: "10px",
         },

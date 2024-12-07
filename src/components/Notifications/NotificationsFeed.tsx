@@ -4,9 +4,9 @@ import { differenceInHours } from "date-fns"
 import { Button, CircularProgress } from "@mui/material"
 import { i18n } from "./NotificationsFeed.i18n"
 import { NotificationFeedTabs } from "./NotificationsFeedTabs"
+import { i18n as i18nTabs } from "./NotificationsFeedTabs.i18n"
 import { NotificationLocale } from "./types"
 import { Mobile, NotMobile, useMobileMediaQuery } from "../Media"
-import { Modal } from "../Modal"
 import { NotificationsFeedProps } from "./NotificationsFeed.types"
 import {
   EmptyViewDescription,
@@ -14,6 +14,7 @@ import {
   FeedContainer,
   LoadingContainer,
   NotificationFeedContainer,
+  NotificationFeedModal,
   NotificationFeedModalContainer,
   OnboardingWrapper,
 } from "./NotificationsFeed.styled"
@@ -107,7 +108,11 @@ const NotificationsFeed = React.memo((props: NotificationsFeedProps) => {
   return (
     <>
       <Mobile>
-        <Modal open={isMobile && isOpen} onClose={onClose}>
+        <NotificationFeedModal
+          open={isMobile && isOpen}
+          onClose={onClose}
+          title={i18nTabs[locale].feed.title}
+        >
           {isOnboarding ? (
             <Onboarding locale={locale} onBegin={onBegin} />
           ) : (
@@ -124,7 +129,7 @@ const NotificationsFeed = React.memo((props: NotificationsFeedProps) => {
               />
             </NotificationFeedModalContainer>
           )}
-        </Modal>
+        </NotificationFeedModal>
       </Mobile>
       <NotMobile>
         <NotificationFeedContainer
