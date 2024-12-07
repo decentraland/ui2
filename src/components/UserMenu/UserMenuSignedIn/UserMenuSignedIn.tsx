@@ -306,7 +306,7 @@ const UserMenuSignedIn = React.memo((props: UserMenuSignedInProps) => {
             ></UserMenuActions>
           </MenuContainer>
         )}
-        {isTabletAndBelow && (
+        {isTabletAndBelow && isOpen && (
           <UserMenuActions
             onClickUserMenuItem={onClickUserMenuItem}
             avatar={avatar}
