@@ -153,7 +153,7 @@ const UserMenuActions = (props: UserMenuActionsProps) => {
   )
 
   return (
-    <ActionsContainer elevation={24}>
+    <ActionsContainer elevation={0}>
       <AvatarPreviewContainer>
         <AvatarPreview avatar={avatar} />
       </AvatarPreviewContainer>
@@ -210,7 +210,7 @@ const UserMenuSignedIn = React.memo((props: UserMenuSignedInProps) => {
     manaBalances,
     avatar,
     hasActivity,
-    isOpen,
+
     trackingId,
     notifications,
     onClickActivity,
@@ -220,6 +220,7 @@ const UserMenuSignedIn = React.memo((props: UserMenuSignedInProps) => {
     onClickToggle,
     ...actionsProps
   } = props
+  const isOpen = true
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
 
@@ -284,26 +285,37 @@ const UserMenuSignedIn = React.memo((props: UserMenuSignedInProps) => {
         onMouseLeave={handleClickClose}
         onScroll={!isTabletAndBelow ? handleClickClose : undefined}
       >
-        <MenuContainer
-          anchorEl={anchorEl}
-          open={!!isOpen}
-          onClose={handleClickClose}
-          anchorOrigin={{
-            vertical: "bottom",
-            horizontal: "right",
-          }}
-          transformOrigin={{
-            vertical: "top",
-            horizontal: "right",
-          }}
-        >
+        {!isTabletAndBelow && (
+          <MenuContainer
+            anchorEl={anchorEl}
+            open={!!isOpen}
+            onClose={handleClickClose}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "right",
+            }}
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+          >
+            kjashdkjahd
+            <UserMenuActions
+              onClickUserMenuItem={onClickUserMenuItem}
+              avatar={avatar}
+              trackingId={trackingId}
+              {...actionsProps}
+            ></UserMenuActions>
+          </MenuContainer>
+        )}
+        {isTabletAndBelow && (
           <UserMenuActions
             onClickUserMenuItem={onClickUserMenuItem}
             avatar={avatar}
             trackingId={trackingId}
             {...actionsProps}
           ></UserMenuActions>
-        </MenuContainer>
+        )}
       </Box>
     </UserMenuSignedInContainer>
   )
