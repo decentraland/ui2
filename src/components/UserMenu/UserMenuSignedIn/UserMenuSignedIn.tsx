@@ -210,7 +210,7 @@ const UserMenuSignedIn = React.memo((props: UserMenuSignedInProps) => {
     manaBalances,
     avatar,
     hasActivity,
-
+    isOpen,
     trackingId,
     notifications,
     onClickActivity,
@@ -220,7 +220,6 @@ const UserMenuSignedIn = React.memo((props: UserMenuSignedInProps) => {
     onClickToggle,
     ...actionsProps
   } = props
-  const isOpen = true
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
 
@@ -299,7 +298,6 @@ const UserMenuSignedIn = React.memo((props: UserMenuSignedInProps) => {
               horizontal: "right",
             }}
           >
-            kjashdkjahd
             <UserMenuActions
               onClickUserMenuItem={onClickUserMenuItem}
               avatar={avatar}
