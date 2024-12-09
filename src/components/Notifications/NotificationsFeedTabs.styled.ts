@@ -35,7 +35,6 @@ const NotificationFeedTabsListContainer = styled("div")((
 ) => {
   let defaultStyles = {
     display: "flex",
-    height: "100%",
     maxHeight: "auto",
     overflowX: "hidden" as const,
     overflowY: "default" as
@@ -52,6 +51,8 @@ const NotificationFeedTabsListContainer = styled("div")((
       | "none"
       | "initial"
       | "unset",
+    width: "90vw",
+    height: "70vh",
   }
 
   if (!props.isModal) {
@@ -63,7 +64,7 @@ const NotificationFeedTabsListContainer = styled("div")((
     }
   }
 
-  return { ...defaultStyles, width: "90vw", height: "70vh" }
+  return { ...defaultStyles }
 })
 
 const NotificationFeedTabsListWrapper = styled("div")(() => {

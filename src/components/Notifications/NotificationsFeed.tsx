@@ -6,7 +6,7 @@ import { i18n } from "./NotificationsFeed.i18n"
 import { NotificationFeedTabs } from "./NotificationsFeedTabs"
 import { i18n as i18nTabs } from "./NotificationsFeedTabs.i18n"
 import { NotificationLocale } from "./types"
-import { Mobile, NotMobile, useMobileMediaQuery } from "../Media"
+import { Mobile, NotMobile } from "../Media"
 import { NotificationsFeedProps } from "./NotificationsFeed.types"
 import {
   EmptyViewDescription,
@@ -58,8 +58,6 @@ const NotificationsFeed = React.memo((props: NotificationsFeedProps) => {
     onClose,
   } = props
 
-  const isMobile = useMobileMediaQuery()
-
   const unreadNotifications = useMemo(
     () => items.filter((notification) => !notification.read),
     [items]
@@ -109,7 +107,7 @@ const NotificationsFeed = React.memo((props: NotificationsFeedProps) => {
     <>
       <Mobile>
         <NotificationFeedModal
-          open={isMobile && isOpen}
+          open={isOpen}
           onClose={onClose}
           title={i18nTabs[locale].feed.title}
         >
