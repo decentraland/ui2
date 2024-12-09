@@ -4,6 +4,7 @@ import { i18n } from "./NotificationsFeedTabs.i18n"
 import { NotificationActiveTab } from "./types"
 import { NotificationComponentByType } from "./utils"
 import { EmptyInboxIcon, HistoryIcon } from "../Icon"
+import { NotMobile } from "../Media"
 import { NotificationsFeedTabsProps } from "./NotificationsFeedTabs.types"
 import {
   EmptyViewContainer,
@@ -85,11 +86,13 @@ const NotificationFeedTabs = React.memo((props: NotificationsFeedTabsProps) => {
   )
   return (
     <NotificationFeedTabsContainer>
-      <NotificationFeedTabsHeader>
-        <NotificationFeedTabsTitle>
-          {i18n[locale].feed.title}
-        </NotificationFeedTabsTitle>
-      </NotificationFeedTabsHeader>
+      <NotMobile>
+        <NotificationFeedTabsHeader>
+          <NotificationFeedTabsTitle>
+            {i18n[locale].feed.title}
+          </NotificationFeedTabsTitle>
+        </NotificationFeedTabsHeader>
+      </NotMobile>
       <NotificationFeedTabsContent>
         <Tabs
           value={activeTab}

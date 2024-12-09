@@ -1,9 +1,16 @@
 import styled from "@emotion/styled"
-import { Box, Typography } from "@mui/material"
+import { Box, Typography, useTheme } from "@mui/material"
 import { NotificationsFeedTabsProps } from "./NotificationsFeedTabs.types"
 
-const NotificationFeedTabsContainer = styled(Box)({
-  width: "384px",
+const NotificationFeedTabsContainer = styled(Box)(() => {
+  const theme = useTheme()
+
+  return {
+    width: "384px",
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
+    },
+  }
 })
 
 const NotificationFeedTabsHeader = styled("div")({
@@ -28,7 +35,6 @@ const NotificationFeedTabsListContainer = styled("div")((
 ) => {
   let defaultStyles = {
     display: "flex",
-    height: "100%",
     maxHeight: "auto",
     overflowX: "hidden" as const,
     overflowY: "default" as
@@ -45,6 +51,8 @@ const NotificationFeedTabsListContainer = styled("div")((
       | "none"
       | "initial"
       | "unset",
+    width: "90vw",
+    height: "70vh",
   }
 
   if (!props.isModal) {
@@ -56,7 +64,7 @@ const NotificationFeedTabsListContainer = styled("div")((
     }
   }
 
-  return defaultStyles
+  return { ...defaultStyles }
 })
 
 const NotificationFeedTabsListWrapper = styled("div")(() => {
