@@ -40,9 +40,17 @@ const SubMenuItemContainer = styled(Box)((props: { isExternal?: boolean }) => {
   }
 })
 
-const SubMenuLink = styled(Link)({
-  textDecoration: "none",
-  color: "inherit",
+const SubMenuLink = styled(Link)((props: { isExternal?: boolean }) => {
+  return {
+    textDecoration: "none",
+    color: "inherit",
+    "&:hover": {
+      color: "inherit",
+    },
+    ...(props.isExternal && {
+      paddingRight: "32px",
+    }),
+  }
 })
 
 const SubMenuItemTitle = styled(Typography)(() => ({
@@ -52,6 +60,9 @@ const SubMenuItemTitle = styled(Typography)(() => ({
   marginBottom: "6px",
   textDecoration: "none",
   color: "inherit",
+  "&:hover": {
+    color: "inherit",
+  },
 }))
 
 const SubMenuItemDescription = styled(Typography)(() => ({
@@ -60,6 +71,9 @@ const SubMenuItemDescription = styled(Typography)(() => ({
   lineHeight: "18px",
   textDecoration: "none",
   color: "inherit",
+  "&:hover": {
+    color: "inherit",
+  },
 }))
 
 const SubMenuItemExternal = styled(ArrowOutwardRoundedIcon)(() => ({
