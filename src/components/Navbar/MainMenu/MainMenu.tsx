@@ -25,36 +25,41 @@ export const MainMenu = (props: MainMenuProps) => {
   }, [extraButton, isMounted, setExtraButton])
 
   return (
-    <MainMenuContainer isOpenOnMobile={isOpenOnMobile}>
+    <MainMenuContainer isOpenOnMobile={isOpenOnMobile} aria-label="main menu">
       <MenuItem
         {...menuItemProps}
         section={NavbarPages.MARKETPLACE}
         title={i18n.marketplace}
         mainUrl={config.get("MARKETPLACE_URL")}
+        aria-label={`${i18n.marketplace} menu item`}
       />
       <MenuItem
         {...menuItemProps}
         section={NavbarPages.CREATE}
         title={i18n.create}
         mainUrl={config.get("CREATE_URL")}
+        aria-label={`${i18n.create} menu item`}
       />
       <MenuItem
         {...menuItemProps}
         section={NavbarPages.LEARN}
         title={i18n.learn}
         mainUrl={config.get("LEARN_URL")}
+        aria-label={`${i18n.learn} menu item`}
       />
       <MenuItem
         {...menuItemProps}
         section={NavbarPages.GOVERNANCE}
         title={i18n.governance}
         mainUrl={config.get("GOVERNANCE_URL")}
+        aria-label={`${i18n.governance} menu item`}
       />
       <MenuItem
         {...menuItemProps}
         section={NavbarPages.EXPLORE}
         title={i18n.explore}
         mainUrl={config.get("EVENTS_URL")}
+        aria-label={`${i18n.explore} menu item`}
       />
       {extraButton && extraButton.visible ? (
         <MenuItem
@@ -65,6 +70,7 @@ export const MainMenu = (props: MainMenuProps) => {
           textColor={extraButton.textColor}
           backgroundColor={extraButton.backgroundColor}
           isExtraButton
+          aria-label={`${extraButton.text} menu item`}
         />
       ) : null}
     </MainMenuContainer>
