@@ -83,8 +83,8 @@ interface MenuIconBarProps {
 
 const MenuIconBar = styled("span", {
   shouldForwardProp: (prop) => prop !== "isOpen" && prop !== "active",
-})((props: MenuIconBarProps) => {
-  const { isOpen } = props
+})<MenuIconBarProps>((props) => {
+  const { isOpen, theme } = props
   let openedStyles
 
   if (isOpen) {
@@ -108,7 +108,7 @@ const MenuIconBar = styled("span", {
     transition: `all 0.3s ease`,
     height: "2px",
     width: "100%",
-    backgroundColor: "text.primary",
+    backgroundColor: theme.palette.text.primary,
     position: "absolute",
     "&:nth-of-type(1)": {
       top: "10.5px",
