@@ -2,9 +2,9 @@ import styled from "@emotion/styled"
 import { Avatar as AvatarMui } from "@mui/material"
 import { AvatarFaceProps } from "./AvatarFace.types"
 
-const AvatarContainer = styled("div")((
-  props: Pick<AvatarFaceProps, "inline">
-) => {
+const AvatarContainer = styled("div", {
+  shouldForwardProp: (prop) => prop !== "inline",
+})<Pick<AvatarFaceProps, "inline">>((props) => {
   return {
     width: "inherit",
     height: "inherit",
