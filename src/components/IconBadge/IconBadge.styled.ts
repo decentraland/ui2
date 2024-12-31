@@ -3,8 +3,10 @@ import { Box, ButtonBase as ButtonMui, Typography } from "@mui/material"
 import { neutral, textOnNeutral } from "../../theme/colors"
 import { IconBadgeProps } from "./IconBadge.types"
 
-const IconBadgeButtonContainer = styled(ButtonMui)((
-  props: Pick<IconBadgeProps, "inline" | "onClick">
+type IconBadgeButtonProps = Pick<IconBadgeProps, "inline" | "onClick">
+
+const IconBadgeButtonContainer = styled(ButtonMui)<IconBadgeButtonProps>((
+  props
 ) => {
   const { inline, onClick } = props
   return {
@@ -16,7 +18,7 @@ const IconBadgeButtonContainer = styled(ButtonMui)((
     verticalAlign: "middle",
     fontSize: "13px",
     lineHeight: "inherit",
-    textTransform: "uppercase" as const,
+    textTransform: "uppercase",
     padding: "2px 8px",
     borderRadius: "5px",
     cursor: onClick ? "pointer" : "default",

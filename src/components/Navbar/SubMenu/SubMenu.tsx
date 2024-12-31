@@ -36,6 +36,7 @@ export const SubMenu = (props: SubMenuProps) => {
             active={selectedMenu === section}
             section={section}
             isMobile={isMobile}
+            aria-label={`${section.toLowerCase()} submenu section`}
           >
             <SubMenuWrapper>
               {isMobile && (
@@ -44,6 +45,7 @@ export const SubMenu = (props: SubMenuProps) => {
                   color="inherit"
                   onClick={(e) => onToggleShowSubMenu(e, false, section)}
                   startIcon={<ArrowBackIosNewRoundedIcon />}
+                  aria-label="back to main menu"
                 >
                   Back
                 </BackButton>

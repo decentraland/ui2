@@ -9,7 +9,12 @@ const Badge = styled(BadgeMui)({
   },
 })
 
-const ImageContainer = styled("div")((props: { backgroundColor?: string }) => {
+interface ImageContainerProps {
+  backgroundColor?: string
+}
+
+const ImageContainer = styled("div")((props: ImageContainerProps) => {
+  const { backgroundColor } = props
   return {
     borderRadius: "100%",
     height: "48px",
@@ -18,8 +23,7 @@ const ImageContainer = styled("div")((props: { backgroundColor?: string }) => {
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "rgba(103, 99, 112, 0.4)",
-    backgroundImage:
-      props.backgroundColor && `radial-gradient(${props.backgroundColor})`,
+    backgroundImage: backgroundColor && `radial-gradient(${backgroundColor})`,
     "& img": {
       width: "80%",
     },

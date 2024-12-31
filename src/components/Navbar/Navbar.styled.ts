@@ -1,11 +1,20 @@
 import zIndex from "@mui/material/styles/zIndex"
 import styled from "@emotion/styled"
-import { AppBar, Box, Button, Link, Modal, useTheme } from "@mui/material"
+import { AppBar, Box, Button, Link, Modal } from "@mui/material"
 
-const DclAppBar = styled(AppBar)((props: {
+interface DclAppBarProps {
   isSubmenuOpen: boolean
   isMobileOpen: boolean
-}) => {
+}
+
+interface LogoLinkProps {
+  isMobile?: boolean
+}
+
+const DclAppBar = styled(AppBar, {
+  shouldForwardProp: (prop) =>
+    !["isSubmenuOpen", "isMobileOpen"].includes(prop as string),
+})<DclAppBarProps>((props) => {
   const { isSubmenuOpen, isMobileOpen } = props
   let openedStyles
 
@@ -19,7 +28,9 @@ const DclAppBar = styled(AppBar)((props: {
   return { ...openedStyles }
 })
 
-const LogoLink = styled(Link)((props: { isMobile?: boolean }) => {
+const LogoLink = styled(Link, {
+  shouldForwardProp: (prop) => prop !== "isMobile",
+})<LogoLinkProps>((props) => {
   const { isMobile } = props
   let mobileStyles
   if (isMobile) {
@@ -55,22 +66,25 @@ const AppBarRightWrapper = styled(Box)({
   alignItems: "center",
 })
 
-const MenuIcon = styled(Button)(() => {
-  return {
-    height: "32px",
-    width: "32px",
-    minWidth: "32px",
-    position: "relative" as const,
-    padding: 0,
-    "&:hover": {
-      backgroundColor: "transparent",
-    },
-  }
+const MenuIcon = styled(Button)({
+  height: "32px",
+  width: "32px",
+  minWidth: "32px",
+  position: "relative",
+  padding: 0,
+  "&:hover": {
+    backgroundColor: "transparent",
+  },
 })
 
-const MenuIconBar = styled("span")((props: { isOpen: boolean }) => {
-  const { isOpen } = props
-  const theme = useTheme()
+interface MenuIconBarProps {
+  isOpen: boolean
+}
+
+const MenuIconBar = styled("span", {
+  shouldForwardProp: (prop) => prop !== "isOpen" && prop !== "active",
+})<MenuIconBarProps>((props) => {
+  const { isOpen, theme } = props
   let openedStyles
 
   if (isOpen) {
@@ -91,17 +105,11 @@ const MenuIconBar = styled("span")((props: { isOpen: boolean }) => {
   }
 
   return {
-    transition: `${theme.transitions.create(
-      ["top", "left", "width", "transform"],
-      {
-        duration: theme.transitions.duration.shorter,
-        easing: theme.transitions.easing.easeInOut,
-      }
-    )}`,
+    transition: `all 0.3s ease`,
     height: "2px",
     width: "100%",
     backgroundColor: theme.palette.text.primary,
-    position: "absolute" as const,
+    position: "absolute",
     "&:nth-of-type(1)": {
       top: "10.5px",
       left: 0,

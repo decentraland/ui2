@@ -1,13 +1,12 @@
 import styled from "@emotion/styled"
-import { Box, Typography, useTheme } from "@mui/material"
+import { Box, Typography } from "@mui/material"
 import { NotificationsFeedTabsProps } from "./NotificationsFeedTabs.types"
 
-const NotificationFeedTabsContainer = styled(Box)(() => {
-  const theme = useTheme()
-
+const NotificationFeedTabsContainer = styled(Box)((props) => {
+  const { theme } = props
   return {
     width: "384px",
-    [theme.breakpoints.down("sm")]: {
+    [theme!.breakpoints.down("sm")]: {
       width: "100%",
     },
   }
@@ -30,49 +29,36 @@ const NotificationFeedTabsContent = styled("div")({
   height: "100%",
 })
 
-const NotificationFeedTabsListContainer = styled("div")((
-  props: Pick<NotificationsFeedTabsProps, "isModal">
-) => {
-  let defaultStyles = {
+type NotificationFeedTabsListProps = Pick<NotificationsFeedTabsProps, "isModal">
+
+const NotificationFeedTabsListContainer = styled(
+  "div"
+)<NotificationFeedTabsListProps>(
+  {
     display: "flex",
     maxHeight: "auto",
-    overflowX: "hidden" as const,
-    overflowY: "default" as
-      | "hidden"
-      | "scroll"
-      | "visible"
-      | "auto"
-      | "inherit"
-      | "initial"
-      | "unset",
-    overscrollBehaviorY: "default" as
-      | "auto"
-      | "contain"
-      | "none"
-      | "initial"
-      | "unset",
+    overflowX: "hidden",
+    overflowY: "default",
+    overscrollBehaviorY: "default",
     width: "90vw",
     height: "70vh",
-  }
+  },
+  (props) =>
+    !props.isModal
+      ? {
+          maxHeight: "290px",
+          overflowY: "auto",
+          overscrollBehaviorY: "contain",
+          width: "auto",
+          height: "auto",
+        }
+      : {}
+)
 
-  if (!props.isModal) {
-    defaultStyles = {
-      ...defaultStyles,
-      maxHeight: "290px",
-      overflowY: "auto",
-      overscrollBehaviorY: "contain",
-    }
-  }
-
-  return { ...defaultStyles }
-})
-
-const NotificationFeedTabsListWrapper = styled("div")(() => {
-  return {
-    display: "flex",
-    flexDirection: "column" as const,
-    width: "100%",
-  }
+const NotificationFeedTabsListWrapper = styled("div")({
+  display: "flex",
+  flexDirection: "column",
+  width: "100%",
 })
 
 const NotificationFeedPrevious = styled(Typography)(() => {

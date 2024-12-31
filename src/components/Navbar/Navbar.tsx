@@ -90,22 +90,27 @@ const Navbar = React.memo((props: NavbarProps) => {
 
   return (
     <>
-      <DclAppBar isSubmenuOpen={toggle} isMobileOpen={menuMobileOpen}>
+      <DclAppBar
+        isSubmenuOpen={toggle}
+        isMobileOpen={menuMobileOpen}
+        aria-label="navigation bar"
+      >
         <Toolbar>
           <AppBarWrapper>
             <TabletAndBelow>
               <MenuIcon
-                aria-label="menu"
+                aria-label="toggle menu"
                 onClick={(e) => handleMobileToggle(e, !menuMobileOpen)}
               >
-                <MenuIconBar isOpen={menuMobileOpen} />
-                <MenuIconBar isOpen={menuMobileOpen} />
+                <MenuIconBar isOpen={menuMobileOpen} aria-label="menu bar" />
+                <MenuIconBar isOpen={menuMobileOpen} aria-label="menu bar" />
               </MenuIcon>
             </TabletAndBelow>
             <AppBarDesktopWrapper>
               <LogoLink
                 isMobile={isTabletAndBelow}
                 href="https://decentraland.org"
+                aria-label="Decentraland home"
               >
                 <Logo />
               </LogoLink>
@@ -115,6 +120,7 @@ const Navbar = React.memo((props: NavbarProps) => {
                 onToggleShowSubMenu={handleToggle}
                 i18n={i18nNavbar}
                 isMobile={false}
+                aria-label="main navigation menu"
               />
             </AppBarDesktopWrapper>
             <AppBarRightWrapper>
@@ -128,6 +134,7 @@ const Navbar = React.memo((props: NavbarProps) => {
                   chainBeingConfirmed={chainBeingConfirmed}
                   i18n={i18nChainSelector}
                   onSelectChain={onSelectChain}
+                  aria-label="blockchain network selector"
                 />
               ) : null}
               <UserMenu
@@ -139,6 +146,7 @@ const Navbar = React.memo((props: NavbarProps) => {
                 }
                 isSignedIn={isSignedIn}
                 i18n={i18nUserMenu}
+                aria-label="user menu"
               />
             </AppBarRightWrapper>
           </AppBarWrapper>
@@ -149,6 +157,7 @@ const Navbar = React.memo((props: NavbarProps) => {
         onToggleShowSubMenu={handleToggle}
         onClickMenuOption={handleClickMenu}
         submenus={submenuItems}
+        aria-label="submenu navigation"
       />
 
       <MenuModal
@@ -156,6 +165,7 @@ const Navbar = React.memo((props: NavbarProps) => {
         onClose={(event: React.MouseEvent<HTMLElement>) =>
           handleMobileToggle(event, false)
         }
+        aria-label="mobile menu"
       >
         <>
           <MainMenu
@@ -164,6 +174,7 @@ const Navbar = React.memo((props: NavbarProps) => {
             isOpenOnMobile={menuMobileOpen}
             i18n={i18nNavbar}
             isMobile
+            aria-label="main mobile navigation menu"
           />
           <SubMenu
             selectedMenu={selectedMenu!}
@@ -171,6 +182,7 @@ const Navbar = React.memo((props: NavbarProps) => {
             onClickMenuOption={handleClickMenu}
             isMobile={isTabletAndBelow}
             submenus={submenuItems}
+            aria-label="mobile submenu navigation"
           />
         </>
       </MenuModal>

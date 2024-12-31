@@ -34,11 +34,18 @@ export const SubMenuItem = (props: SubMenuItemProps) => {
   )
 
   return (
-    <SubMenuItemContainer isExternal={isExternal}>
-      <SubMenuLink href={href} onClick={handleClick}>
-        <SubMenuItemTitle>{title}</SubMenuItemTitle>
-        <SubMenuItemDescription>{description}</SubMenuItemDescription>
-        {isExternal && <SubMenuItemExternal />}
+    <SubMenuItemContainer isExternal={isExternal} aria-label="submenu item">
+      <SubMenuLink
+        href={href}
+        onClick={handleClick}
+        isExternal={isExternal}
+        aria-label={`${title} - ${isExternal ? "opens in new tab" : "opens in same tab"}`}
+      >
+        <SubMenuItemTitle aria-label={title}>{title}</SubMenuItemTitle>
+        <SubMenuItemDescription aria-label={description}>
+          {description}
+        </SubMenuItemDescription>
+        {isExternal && <SubMenuItemExternal aria-label="external link icon" />}
       </SubMenuLink>
     </SubMenuItemContainer>
   )
