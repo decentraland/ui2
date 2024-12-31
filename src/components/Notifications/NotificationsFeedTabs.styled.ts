@@ -1,13 +1,12 @@
 import styled from "@emotion/styled"
-import { Box, Typography, useTheme } from "@mui/material"
+import { Box, Typography } from "@mui/material"
 import { NotificationsFeedTabsProps } from "./NotificationsFeedTabs.types"
 
-const NotificationFeedTabsContainer = styled(Box)(() => {
-  const theme = useTheme()
-
+const NotificationFeedTabsContainer = styled(Box)((props) => {
+  const { theme } = props
   return {
     width: "384px",
-    [theme.breakpoints.down("sm")]: {
+    [theme!.breakpoints.down("sm")]: {
       width: "100%",
     },
   }
@@ -61,6 +60,8 @@ const NotificationFeedTabsListContainer = styled("div")((
       maxHeight: "290px",
       overflowY: "auto",
       overscrollBehaviorY: "contain",
+      width: "auto",
+      height: "auto",
     }
   }
 

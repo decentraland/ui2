@@ -33,6 +33,7 @@ const MenuItemContainer = styled(Box)<MenuItemContainerProps>((props) => {
   const defaultStyles = {
     opacity: 1,
     top: "-200%",
+    width: "100%",
     backgroundSize: "100% 100%",
     backgroundPosition: "0px 0px, 0px 0px",
     position: "fixed" as const,
@@ -40,7 +41,6 @@ const MenuItemContainer = styled(Box)<MenuItemContainerProps>((props) => {
     left: 0,
     paddingLeft: "370px",
     paddingRight: "48px",
-    width: "calc(100% - 370px - 48px)",
     height: "328px",
     minHeight: "calc(390px + 64px)",
     boxShadow: "none",
@@ -143,7 +143,6 @@ const MenuItemContainer = styled(Box)<MenuItemContainerProps>((props) => {
     },
     [theme!.breakpoints.down("lg")]: {
       paddingLeft: "48px",
-      width: "calc(100% - 96px)",
       "&::after": {
         content: "none",
       },
@@ -152,7 +151,6 @@ const MenuItemContainer = styled(Box)<MenuItemContainerProps>((props) => {
       top: "64px",
       left: "150%",
       height: "100vh",
-      width: "calc(100% - 50px)",
       padding: "0 25px",
       margin: 0,
       alignItems: "flex-start",
