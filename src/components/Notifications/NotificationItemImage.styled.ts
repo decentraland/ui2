@@ -13,7 +13,9 @@ interface ImageContainerProps {
   backgroundColor?: string
 }
 
-const ImageContainer = styled("div")((props: ImageContainerProps) => {
+const ImageContainer = styled("div", {
+  shouldForwardProp: (prop) => prop !== "backgroundColor",
+})<ImageContainerProps>((props) => {
   const { backgroundColor } = props
   return {
     borderRadius: "100%",

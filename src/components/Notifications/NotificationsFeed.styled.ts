@@ -52,14 +52,12 @@ const LoadingContainer = styled("div")({
   alignItems: "center",
 })
 
-const NotificationFeedModal = styled(Modal)(() => {
-  return {
-    alignItems: "flex-end",
-    "& .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded": {
-      borderTopLeftRadius: "16px",
-      borderTopRightRadius: "16px",
-    },
-  }
+const NotificationFeedModal = styled(Modal)({
+  alignItems: "flex-end",
+  "& .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded": {
+    borderTopLeftRadius: "16px",
+    borderTopRightRadius: "16px",
+  },
 })
 
 const NotificationFeedModalContainer = styled(Box)({
