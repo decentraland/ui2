@@ -26,6 +26,7 @@ declare module "@emotion/styled" {
       | "inline-block"
       | "none"
       | "inherit"
+      | "inline"
     alignItems?: "center" | "flex-start" | "flex-end" | "stretch"
     justifyContent?: "center" | "flex-start" | "flex-end" | "space-between"
     verticalAlign?: "middle" | "top" | "bottom" | "text-top" | "text-bottom"
