@@ -1,6 +1,6 @@
 import zIndex from "@mui/material/styles/zIndex"
 import styled from "@emotion/styled"
-import { AppBar, Box, Button, Link, Modal, useTheme } from "@mui/material"
+import { AppBar, Box, Button, Link, Modal } from "@mui/material"
 
 const DclAppBar = styled(AppBar)((props: {
   isSubmenuOpen: boolean
@@ -68,9 +68,12 @@ const MenuIcon = styled(Button)(() => {
   }
 })
 
-const MenuIconBar = styled("span")((props: { isOpen: boolean }) => {
+interface MenuIconBarProps {
+  isOpen: boolean
+}
+
+const MenuIconBar = styled("span")((props: MenuIconBarProps) => {
   const { isOpen } = props
-  const theme = useTheme()
   let openedStyles
 
   if (isOpen) {
@@ -91,16 +94,10 @@ const MenuIconBar = styled("span")((props: { isOpen: boolean }) => {
   }
 
   return {
-    transition: `${theme.transitions.create(
-      ["top", "left", "width", "transform"],
-      {
-        duration: theme.transitions.duration.shorter,
-        easing: theme.transitions.easing.easeInOut,
-      }
-    )}`,
+    transition: `all 0.3s ease`,
     height: "2px",
     width: "100%",
-    backgroundColor: theme.palette.text.primary,
+    backgroundColor: "text.primary",
     position: "absolute" as const,
     "&:nth-of-type(1)": {
       top: "10.5px",

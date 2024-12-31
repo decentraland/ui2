@@ -1,6 +1,6 @@
 import zIndex from "@mui/material/styles/zIndex"
 import styled from "@emotion/styled"
-import { Box, Button, useTheme } from "@mui/material"
+import { Box, Button } from "@mui/material"
 import CreateImage from "../../../Assets/Navbar/create-submenu.png"
 import ExploreImage from "../../../Assets/Navbar/explore-submenu.png"
 import GovernanceImage from "../../../Assets/Navbar/governance-submenu.png"
@@ -8,24 +8,24 @@ import LearnImage from "../../../Assets/Navbar/learn-submenu.png"
 import MarketplaceImage from "../../../Assets/Navbar/marketplace-submenu.png"
 import { NavbarPages } from "../Navbar.types"
 
-const SubMenuContainer = styled(Box)(() => {
-  const theme = useTheme()
+interface MenuItemContainerProps {
+  active: boolean
+  section: NavbarPages
+  isMobile?: boolean
+}
+
+const SubMenuContainer = styled(Box)((props) => {
+  const { theme } = props
   return {
-    [theme.breakpoints.down("sm")]: {
+    [theme!.breakpoints.down("sm")]: {
       position: "absolute" as const,
       zIndex: zIndex.modal,
     },
   }
 })
 
-const MenuItemContainer = styled(Box)((props: {
-  active: boolean
-  section: NavbarPages
-  isMobile?: boolean
-}) => {
-  const { active, section } = props
-  const theme = useTheme()
-
+const MenuItemContainer = styled(Box)<MenuItemContainerProps>((props) => {
+  const { active, section, theme } = props
   let modifiedStyles
   let mobileModifiedStyles
   let leftImageStyles
@@ -48,12 +48,12 @@ const MenuItemContainer = styled(Box)((props: {
     display: "flex",
     alignItems: "center",
     paddingTop: "64px",
-    backgroundColor: theme.palette.background.default,
-    transition: `${theme.transitions.create(["box-shadow", "height"], {
-      duration: theme.transitions.duration.shorter,
-      easing: theme.transitions.easing.easeInOut,
-    })}, ${theme.transitions.create(["top", "left"], {
-      duration: theme.transitions.duration.complex,
+    backgroundColor: theme!.palette.background.default,
+    transition: `${theme!.transitions.create(["box-shadow", "height"], {
+      duration: theme!.transitions.duration.shorter,
+      easing: theme!.transitions.easing.easeInOut,
+    })}, ${theme!.transitions.create(["top", "left"], {
+      duration: theme!.transitions.duration.complex,
       easing: "cubic-bezier(1, 0, 0.15, 1)",
     })}`,
   }
@@ -63,7 +63,7 @@ const MenuItemContainer = styled(Box)((props: {
       opacity: 1,
       top: 0,
       zIndex: 1099,
-      boxShadow: theme.shadows[20],
+      boxShadow: theme!.shadows[20],
     }
     mobileModifiedStyles = {
       left: 0,
@@ -137,18 +137,18 @@ const MenuItemContainer = styled(Box)((props: {
       left: 0,
       backgroundSize: "auto 90%",
       ...leftImageStyles,
-      [theme.breakpoints.between("sm", "lg")]: {
+      [theme!.breakpoints.between("sm", "lg")]: {
         backgroundImage: "none",
       },
     },
-    [theme.breakpoints.down("lg")]: {
+    [theme!.breakpoints.down("lg")]: {
       paddingLeft: "48px",
       width: "calc(100% - 96px)",
       "&::after": {
         content: "none",
       },
     },
-    [theme.breakpoints.down("sm")]: {
+    [theme!.breakpoints.down("sm")]: {
       top: "64px",
       left: "150%",
       height: "100vh",
@@ -157,7 +157,7 @@ const MenuItemContainer = styled(Box)((props: {
       margin: 0,
       alignItems: "flex-start",
       boxShadow: "none",
-      backgroundColor: theme.palette.background.default,
+      backgroundColor: theme!.palette.background.default,
       ...mobileModifiedStyles,
       "&::after": {
         content: "none",
@@ -166,14 +166,14 @@ const MenuItemContainer = styled(Box)((props: {
   }
 })
 
-const SubMenuWrapper = styled(Box)(() => {
-  const theme = useTheme()
+const SubMenuWrapper = styled(Box)((props) => {
+  const { theme } = props
   return {
     width: "100%",
     display: "flex",
     alignItems: "flex-start",
     height: "fit-content",
-    [theme.breakpoints.down("sm")]: {
+    [theme!.breakpoints.down("sm")]: {
       flexDirection: "column" as const,
     },
   }

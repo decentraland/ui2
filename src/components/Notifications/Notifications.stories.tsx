@@ -49,9 +49,12 @@ const meta: Meta = {
     return (
       <Box
         sx={{
-          height: "400px",
-          width: "400px",
-          backgroundColor: "lightgray",
+          height: "200px",
+          width: "200px",
+          display: "flex",
+          justifyContent: "center",
+          backgroundColor: ({ palette }) =>
+            palette.mode === "light" ? "#f0f0f0" : "#1a091c",
         }}
       >
         <Notifications

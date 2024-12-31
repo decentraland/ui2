@@ -3,9 +3,10 @@ import {
   Box as BoxMui,
   Modal as MuiModal,
   Paper as PaperMui,
-  useTheme,
 } from "@mui/material"
 import { ModalProps } from "./Modal.types"
+
+interface StyledModalProps extends Pick<ModalProps, "size"> {}
 
 const Modal = styled(MuiModal)({
   display: "flex",
@@ -13,20 +14,20 @@ const Modal = styled(MuiModal)({
   justifyContent: "center",
 })
 
-const ModalContainer = styled(PaperMui)((props: Pick<ModalProps, "size">) => {
-  const theme = useTheme()
-  let size = "900px"
-  if (props.size === "tiny") {
-    size = "540px"
-  } else if (props.size === "small") {
-    size = "720px"
+const ModalContainer = styled(PaperMui)<StyledModalProps>((props) => {
+  const { size, theme } = props
+  let width = "900px"
+  if (size === "tiny") {
+    width = "540px"
+  } else if (size === "small") {
+    width = "720px"
   }
 
   return {
-    width: size,
+    width,
     borderRadius: "12px",
     overflow: "hidden",
-    [theme.breakpoints.down("xs")]: {
+    [theme!.breakpoints.down("xs")]: {
       minWidth: "100vw",
       maxWidth: "100vw",
       minHeight: "100vh",

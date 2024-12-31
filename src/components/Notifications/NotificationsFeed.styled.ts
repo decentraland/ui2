@@ -1,20 +1,17 @@
 import styled from "@emotion/styled"
-import { Box, Menu, Typography, useTheme } from "@mui/material"
+import { Box, Menu, Typography } from "@mui/material"
 import { Modal } from "../Modal"
 
-const FeedContainer = styled("div")(() => {
-  const theme = useTheme()
-  return {
-    width: "384px",
-    [theme.breakpoints.down("sm")]: {
-      height: "90vh",
-      display: "flex",
-      alignItems: "center",
-      marginLeft: "auto",
-      marginRight: "auto",
-    },
-  }
-})
+const FeedContainer = styled("div")(({ theme }) => ({
+  width: "384px",
+  [theme.breakpoints.down("sm")]: {
+    height: "90vh",
+    display: "flex",
+    alignItems: "center",
+    marginLeft: "auto",
+    marginRight: "auto",
+  },
+}))
 
 const EmptyViewContainer = styled("div")({
   height: "100%",
@@ -72,6 +69,7 @@ const NotificationFeedModalContainer = styled(Box)({
 
 const NotificationFeedContainer = styled(Menu)({
   width: "484px",
+  height: "500px",
   pointerEvents: "visible",
   "& .MuiPaper-root": {
     borderRadius: "8px",

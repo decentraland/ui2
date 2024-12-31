@@ -1,12 +1,16 @@
 import ArrowOutwardRoundedIcon from "@mui/icons-material/ArrowOutwardRounded"
 import styled from "@emotion/styled"
-import { Box, Link, Typography, useTheme } from "@mui/material"
+import { Box, Link, Typography } from "@mui/material"
 
-const SubMenuItemContainer = styled(Box)((props: { isExternal?: boolean }) => {
+interface SubMenuItemContainerProps {
+  isExternal?: boolean
+}
+
+const SubMenuItemContainer = styled(Box)<SubMenuItemContainerProps>((props) => {
+  const { isExternal, theme } = props
   let otherStyles = {}
 
-  const theme = useTheme()
-  if (props.isExternal) {
+  if (isExternal) {
     otherStyles = {
       backgroundImage: `url(${ArrowOutwardRoundedIcon})`,
     }
@@ -16,8 +20,8 @@ const SubMenuItemContainer = styled(Box)((props: { isExternal?: boolean }) => {
     display: "flex",
     padding: 0,
     width: "100%",
-    borderBottomColor: theme.palette.text.secondary,
-    color: theme.palette.text.secondary,
+    borderBottomColor: theme!.palette.text.secondary,
+    color: theme!.palette.text.secondary,
     borderBottomStyle: "solid" as const,
     marginBottom: "6px",
     paddingBottom: "16px",
@@ -30,24 +34,29 @@ const SubMenuItemContainer = styled(Box)((props: { isExternal?: boolean }) => {
       marginTop: "32px",
     },
     "&:hover": {
-      borderBottomColor: theme.palette.text.primary,
-      color: theme.palette.text.primary,
+      borderBottomColor: theme!.palette.text.primary,
+      color: theme!.palette.text.primary,
     },
-    [theme.breakpoints.down("sm")]: {
-      color: theme.palette.text.primary,
-      borderBottomColor: theme.palette.text.primary,
+    [theme!.breakpoints.down("sm")]: {
+      color: theme!.palette.text.primary,
+      borderBottomColor: theme!.palette.text.primary,
     },
   }
 })
 
-const SubMenuLink = styled(Link)((props: { isExternal?: boolean }) => {
+interface SubMenuLinkProps {
+  isExternal?: boolean
+}
+
+const SubMenuLink = styled(Link)<SubMenuLinkProps>((props) => {
+  const { isExternal } = props
   return {
     textDecoration: "none",
     color: "inherit",
     "&:hover": {
       color: "inherit",
     },
-    ...(props.isExternal && {
+    ...(isExternal && {
       paddingRight: "32px",
     }),
   }
@@ -76,12 +85,12 @@ const SubMenuItemDescription = styled(Typography)(() => ({
   },
 }))
 
-const SubMenuItemExternal = styled(ArrowOutwardRoundedIcon)(() => ({
-  position: "absolute" as const,
+const SubMenuItemExternal = styled(ArrowOutwardRoundedIcon)({
+  position: "absolute",
   right: 0,
   top: "50%",
   transform: "translateY(-50%)",
-}))
+})
 
 export {
   SubMenuItemContainer,

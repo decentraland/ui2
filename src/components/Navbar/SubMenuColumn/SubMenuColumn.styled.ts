@@ -1,8 +1,8 @@
 import styled from "@emotion/styled"
-import { Box, Typography, useTheme } from "@mui/material"
+import { Box, Typography } from "@mui/material"
 
-const SubMenuColumnContainer = styled(Box)(() => {
-  const theme = useTheme()
+const SubMenuColumnContainer = styled(Box)((props) => {
+  const { theme } = props
   return {
     display: "flex",
     flexFlow: "column nowrap",
@@ -15,7 +15,7 @@ const SubMenuColumnContainer = styled(Box)(() => {
     "&:hover": {
       borderBottomColor: "blue",
     },
-    [theme.breakpoints.down("sm")]: {
+    [theme!.breakpoints.down("sm")]: {
       maxWidth: "100%",
       width: "100%",
     },

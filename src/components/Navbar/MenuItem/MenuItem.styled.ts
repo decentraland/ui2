@@ -1,19 +1,22 @@
 import styled from "@emotion/styled"
-import { Box, Typography, useTheme } from "@mui/material"
+import { Box, Typography } from "@mui/material"
 
-const MenuItemContainer = styled(Box)((props: {
+interface MenuItemContainerProps {
   active: boolean
   backgroundColor?: string
-}) => {
-  const { active, backgroundColor } = props
+}
 
-  const theme = useTheme()
+interface MenuItemTitleProps {
+  textColor?: string
+}
 
+const MenuItemContainer = styled(Box)<MenuItemContainerProps>((props) => {
+  const { active, backgroundColor, theme } = props
   let modifiedStyles
   if (active) {
     modifiedStyles = {
       fontWeight: "bold",
-      color: theme.palette.text.primary,
+      color: "#000",
     }
   }
 
@@ -25,20 +28,20 @@ const MenuItemContainer = styled(Box)((props: {
     margin: "0 0 0 0",
     padding: "0 10px",
     border: 0,
-    color: theme.palette.text.secondary,
+    color: "#666",
     fontWeight: "normal",
     ...modifiedStyles,
     "& :hover": {
-      color: theme.palette.text.primary,
+      color: "#000",
     },
-    [theme.breakpoints.down("sm")]: {
+    [theme!.breakpoints.down("sm")]: {
       padding: "40px 0 23.66px",
       fontSize: "20px",
       fontStyle: "normal",
       fontWeight: "normal",
       lineHeight: "18px",
-      color: theme.palette.text.primary,
-      borderBottomColor: theme.palette.text.primary,
+      color: "#000",
+      borderBottomColor: "#000",
       borderBottomStyle: "solid" as const,
       borderBottomWidth: "1px",
       width: "calc(100% - 50px)",
@@ -48,16 +51,14 @@ const MenuItemContainer = styled(Box)((props: {
   }
 })
 
-const MenuItemTitle = styled(Typography)((props: { textColor?: string }) => {
-  const { textColor } = props
-  const theme = useTheme()
-
+const MenuItemTitle = styled(Typography)<MenuItemTitleProps>((props) => {
+  const { textColor, theme } = props
   return {
     textTransform: "capitalize" as const,
     fontWeight: "inherit",
-    color: textColor ? textColor : theme.palette.text.secondary,
-    [theme.breakpoints.down("sm")]: {
-      color: textColor ? textColor : theme.palette.text.primary,
+    color: textColor ? textColor : "#666",
+    [theme!.breakpoints.down("sm")]: {
+      color: textColor ? textColor : "#000",
     },
   }
 })
