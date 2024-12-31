@@ -6,7 +6,13 @@ interface SubMenuItemContainerProps {
   isExternal?: boolean
 }
 
-const SubMenuItemContainer = styled(Box)<SubMenuItemContainerProps>((props) => {
+interface SubMenuLinkProps {
+  isExternal?: boolean
+}
+
+const SubMenuItemContainer = styled(Box, {
+  shouldForwardProp: (prop) => prop !== "isExternal",
+})<SubMenuItemContainerProps>((props) => {
   const { isExternal, theme } = props
   let otherStyles = {}
 
@@ -44,11 +50,9 @@ const SubMenuItemContainer = styled(Box)<SubMenuItemContainerProps>((props) => {
   }
 })
 
-interface SubMenuLinkProps {
-  isExternal?: boolean
-}
-
-const SubMenuLink = styled(Link)<SubMenuLinkProps>((props) => {
+const SubMenuLink = styled(Link, {
+  shouldForwardProp: (prop) => prop !== "isExternal",
+})<SubMenuLinkProps>((props) => {
   const { isExternal } = props
   return {
     textDecoration: "none",

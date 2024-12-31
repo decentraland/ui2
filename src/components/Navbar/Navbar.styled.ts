@@ -2,10 +2,19 @@ import zIndex from "@mui/material/styles/zIndex"
 import styled from "@emotion/styled"
 import { AppBar, Box, Button, Link, Modal } from "@mui/material"
 
-const DclAppBar = styled(AppBar)((props: {
+interface DclAppBarProps {
   isSubmenuOpen: boolean
   isMobileOpen: boolean
-}) => {
+}
+
+interface LogoLinkProps {
+  isMobile?: boolean
+}
+
+const DclAppBar = styled(AppBar, {
+  shouldForwardProp: (prop) =>
+    !["isSubmenuOpen", "isMobileOpen"].includes(prop as string),
+})<DclAppBarProps>((props) => {
   const { isSubmenuOpen, isMobileOpen } = props
   let openedStyles
 
@@ -19,7 +28,9 @@ const DclAppBar = styled(AppBar)((props: {
   return { ...openedStyles }
 })
 
-const LogoLink = styled(Link)((props: { isMobile?: boolean }) => {
+const LogoLink = styled(Link, {
+  shouldForwardProp: (prop) => prop !== "isMobile",
+})<LogoLinkProps>((props) => {
   const { isMobile } = props
   let mobileStyles
   if (isMobile) {
@@ -70,7 +81,9 @@ interface MenuIconBarProps {
   isOpen: boolean
 }
 
-const MenuIconBar = styled("span")((props: MenuIconBarProps) => {
+const MenuIconBar = styled("span", {
+  shouldForwardProp: (prop) => prop !== "isOpen" && prop !== "active",
+})((props: MenuIconBarProps) => {
   const { isOpen } = props
   let openedStyles
 

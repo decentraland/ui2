@@ -6,7 +6,9 @@ interface MainMenuContainerProps {
   isOpenOnMobile?: boolean
 }
 
-const MainMenuContainer = styled(Box)<MainMenuContainerProps>((props) => {
+const MainMenuContainer = styled(Box, {
+  shouldForwardProp: (prop) => prop !== "isOpenOnMobile",
+})<MainMenuContainerProps>((props) => {
   const { isOpenOnMobile, theme } = props
 
   let mobileOpenedStyles
