@@ -42,7 +42,7 @@ const MenuItemContainer = styled(Box)<MenuItemContainerProps>((props) => {
       lineHeight: "18px",
       color: "#000",
       borderBottomColor: "#000",
-      borderBottomStyle: "solid" as const,
+      borderBottomStyle: "solid",
       borderBottomWidth: "1px",
       width: "calc(100% - 50px)",
       margin: "0 25px",
@@ -54,7 +54,7 @@ const MenuItemContainer = styled(Box)<MenuItemContainerProps>((props) => {
 const MenuItemTitle = styled(Typography)<MenuItemTitleProps>((props) => {
   const { textColor, theme } = props
   return {
-    textTransform: "capitalize" as const,
+    textTransform: "capitalize",
     fontWeight: "inherit",
     color: textColor ? textColor : "#666",
     [theme!.breakpoints.down("sm")]: {

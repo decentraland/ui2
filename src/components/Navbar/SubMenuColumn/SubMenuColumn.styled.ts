@@ -8,7 +8,7 @@ const SubMenuColumnContainer = styled(Box)((props) => {
     flexFlow: "column nowrap",
     justifyContent: "center",
     height: "100%",
-    flexWrap: "nowrap" as const,
+    flexWrap: "nowrap",
     marginRight: "56px",
     flex: 1,
     maxWidth: "350px",

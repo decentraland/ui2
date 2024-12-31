@@ -49,12 +49,12 @@ const ActionsContainer = styled(Paper)((props) => {
     height: "607px",
     width: "561px",
     display: "flex",
-    flexDirection: "row" as const,
+    flexDirection: "row",
     justifyContent: "flex-start",
     overflow: "hidden",
     [theme!.breakpoints.down("sm")]: {
-      position: "fixed" as const,
-      flexDirection: "column-reverse" as const,
+      position: "fixed",
+      flexDirection: "column-reverse",
       top: "66px",
       left: 0,
       paddingLeft: "25px",
@@ -110,7 +110,7 @@ const MenuInformationActionContainer = styled(Box)((props) => {
     height: "100%",
     width: "331px",
     display: "flex",
-    flexDirection: "column" as const,
+    flexDirection: "column",
     [theme!.breakpoints.down("sm")]: {
       width: "100%",
     },
@@ -123,7 +123,7 @@ const MenuContainer = styled(Menu)((props) => {
     height: "720px",
     width: "561px",
     display: "flex",
-    flexDirection: "column" as const,
+    flexDirection: "column",
     justifyContent: "flex-start",
     "& .MuiPaper-root .MuiList-root": {
       paddingTop: 0,
@@ -168,7 +168,7 @@ const ActionsWrapper = styled(Box)((props) => {
   return {
     height: "330px",
     display: "flex",
-    flexDirection: "column" as const,
+    flexDirection: "column",
     justifyContent: "flex-start",
     margin: "0 55px 0 0",
     [theme!.breakpoints.down("sm")]: {
@@ -182,7 +182,7 @@ const ActionsMenuItem = styled(MenuItem)((props) => {
   return {
     borderBottomColor: theme!.palette.text.primary,
     borderBottomWidth: "1px",
-    borderBottomStyle: "solid" as const,
+    borderBottomStyle: "solid",
     color: theme!.palette.text.primary,
     paddingLeft: 0,
     paddingRight: 0,
@@ -220,7 +220,7 @@ const LogoutContainer = styled(Box)((props) => {
       marginLeft: "16px",
     },
     [theme!.breakpoints.down("sm")]: {
-      position: "absolute" as const,
+      position: "absolute",
       bottom: "0",
       right: "0",
     },

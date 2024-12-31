@@ -55,17 +55,15 @@ const AppBarRightWrapper = styled(Box)({
   alignItems: "center",
 })
 
-const MenuIcon = styled(Button)(() => {
-  return {
-    height: "32px",
-    width: "32px",
-    minWidth: "32px",
-    position: "relative" as const,
-    padding: 0,
-    "&:hover": {
-      backgroundColor: "transparent",
-    },
-  }
+const MenuIcon = styled(Button)({
+  height: "32px",
+  width: "32px",
+  minWidth: "32px",
+  position: "relative",
+  padding: 0,
+  "&:hover": {
+    backgroundColor: "transparent",
+  },
 })
 
 interface MenuIconBarProps {
@@ -98,7 +96,7 @@ const MenuIconBar = styled("span")((props: MenuIconBarProps) => {
     height: "2px",
     width: "100%",
     backgroundColor: "text.primary",
-    position: "absolute" as const,
+    position: "absolute",
     "&:nth-of-type(1)": {
       top: "10.5px",
       left: 0,

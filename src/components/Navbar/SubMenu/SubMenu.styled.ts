@@ -18,7 +18,7 @@ const SubMenuContainer = styled(Box)((props) => {
   const { theme } = props
   return {
     [theme!.breakpoints.down("sm")]: {
-      position: "absolute" as const,
+      position: "absolute",
       zIndex: zIndex.modal,
     },
   }
@@ -36,7 +36,7 @@ const MenuItemContainer = styled(Box)<MenuItemContainerProps>((props) => {
     width: "100%",
     backgroundSize: "100% 100%",
     backgroundPosition: "0px 0px, 0px 0px",
-    position: "fixed" as const,
+    position: "fixed",
     zIndex: 0,
     left: 0,
     paddingLeft: "370px",
@@ -128,7 +128,7 @@ const MenuItemContainer = styled(Box)<MenuItemContainerProps>((props) => {
     ...modifiedStyles,
     "&::after": {
       content: '""',
-      position: "absolute" as const,
+      position: "absolute",
       width: "370px",
       height: "calc(100% - 64px)",
       top: "64px",
@@ -172,7 +172,7 @@ const SubMenuWrapper = styled(Box)((props) => {
     alignItems: "flex-start",
     height: "fit-content",
     [theme!.breakpoints.down("sm")]: {
-      flexDirection: "column" as const,
+      flexDirection: "column",
     },
   }
 })

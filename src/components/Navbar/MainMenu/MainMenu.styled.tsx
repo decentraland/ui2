@@ -16,12 +16,12 @@ const MainMenuContainer = styled(Box)<MainMenuContainerProps>((props) => {
     }
   }
   return {
-    display: "flex" as const,
+    display: "flex",
     height: "64px",
     marginLeft: "10px",
     [theme!.breakpoints.down("sm")]: {
-      position: "absolute" as const,
-      flexDirection: "column" as const,
+      position: "absolute",
+      flexDirection: "column",
       alignItems: "flex-start",
       justifyContent: "flex-start",
       backgroundColor: theme!.palette.background.default,

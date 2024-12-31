@@ -9,31 +9,29 @@ interface ChainButtonProps {
   isDisabled?: boolean
 }
 
-const CommonButtonStyle = styled(Button)(() => {
-  return {
-    display: "flex",
-    alignItems: "center",
-    borderRadius: "14px",
-    padding: "8px 10px",
-    color: "green",
-    "&.MuiButton-sizeMedium.MuiButton-containedSecondary": {
-      opacity: "1",
-      "&:not(.Mui-disabled):not(.Mui-focusVisible):not(:hover)": {
-        color: textOnNeutral.gray1,
-        background: neutral.gray1,
-        boxShadow: "none",
-      },
-      "&:not(.Mui-disabled):not(.Mui-focusVisible):hover": {
-        color: textOnNeutral.gray0,
-        background: neutral.gray0,
-      },
+const CommonButtonStyle = styled(Button)({
+  display: "flex",
+  alignItems: "center",
+  borderRadius: "14px",
+  padding: "8px 10px",
+  color: "green",
+  "&.MuiButton-sizeMedium.MuiButton-containedSecondary": {
+    opacity: "1",
+    "&:not(.Mui-disabled):not(.Mui-focusVisible):not(:hover)": {
+      color: textOnNeutral.gray1,
+      background: neutral.gray1,
+      boxShadow: "none",
     },
-    "& span.MuiButton-icon.MuiButton-startIcon.MuiButton-iconSizeMedium": {
-      "& svg": {
-        fontSize: "28px",
-      },
+    "&:not(.Mui-disabled):not(.Mui-focusVisible):hover": {
+      color: textOnNeutral.gray0,
+      background: neutral.gray0,
     },
-  }
+  },
+  "& span.MuiButton-icon.MuiButton-startIcon.MuiButton-iconSizeMedium": {
+    "& svg": {
+      fontSize: "28px",
+    },
+  },
 })
 
 const SelectorButton = styled(CommonButtonStyle)(({ theme }) => ({
@@ -72,7 +70,7 @@ const ChainButton = styled(Button)<ChainButtonProps>((props) => {
 })
 
 const ConnectedLabel = styled(Typography)(({ theme }) => ({
-  position: "absolute" as const,
+  position: "absolute",
   right: "8px",
   paddingRight: "16px",
   fontSize: "14px",
@@ -81,7 +79,7 @@ const ConnectedLabel = styled(Typography)(({ theme }) => ({
     content: '""',
     width: "8px",
     height: "8px",
-    position: "absolute" as const,
+    position: "absolute",
     right: "0",
     top: "calc(50% - 4px)",
     borderRadius: "50%",
@@ -114,7 +112,7 @@ const ChainSelectorModal = styled(Modal)({
 })
 
 const ChainSelectorContainer = styled(Paper)(({ theme }) => ({
-  position: "absolute" as const,
+  position: "absolute",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
@@ -135,7 +133,7 @@ const ChainSelectorContainer = styled(Paper)(({ theme }) => ({
 
 const ChainSelectorWrapper = styled(Box)(({ theme }) => ({
   display: "flex",
-  flexDirection: "column" as const,
+  flexDirection: "column",
   margin: "16px",
   [theme.breakpoints.down("sm")]: {
     padding: "5px",
