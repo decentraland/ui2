@@ -6,7 +6,7 @@ const NotificationFeedTabsContainer = styled(Box)((props) => {
   const { theme } = props
   return {
     width: "384px",
-    [theme!.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("sm")]: {
       width: "100%",
     },
   }
@@ -40,8 +40,8 @@ const NotificationFeedTabsListContainer = styled(
     overflowX: "hidden",
     overflowY: "default",
     overscrollBehaviorY: "default",
-    width: "90vw",
-    height: "70vh",
+    width: "100vw",
+    height: "calc(100vh - 250px)",
   },
   (props) =>
     !props.isModal
