@@ -27,7 +27,7 @@ const ModalContainer = styled(PaperMui)<StyledModalProps>((props) => {
     width,
     borderRadius: "12px",
     overflow: "hidden",
-    [theme!.breakpoints.down("xs")]: {
+    [theme.breakpoints.down("xs")]: {
       minWidth: "100vw",
       maxWidth: "100vw",
       minHeight: "100vh",

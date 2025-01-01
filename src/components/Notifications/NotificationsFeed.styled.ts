@@ -52,12 +52,24 @@ const LoadingContainer = styled("div")({
   alignItems: "center",
 })
 
-const NotificationFeedModal = styled(Modal)({
-  alignItems: "flex-end",
-  "& .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded": {
-    borderTopLeftRadius: "16px",
-    borderTopRightRadius: "16px",
-  },
+const NotificationFeedModal = styled(Modal)(({ theme }) => {
+  return {
+    alignItems: "flex-end",
+    "& .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded": {
+      borderTopLeftRadius: "8px",
+      borderTopRightRadius: "8px",
+      [theme.breakpoints.down("xs")]: {
+        minHeight: "calc(100vh - 70px)",
+        height: "calc(100vh - 70px)",
+      },
+      "& > *:nth-of-type(1)": {
+        padding: "24px 24px 0",
+      },
+      "& > *:nth-of-type(2)": {
+        padding: "0px",
+      },
+    },
+  }
 })
 
 const NotificationFeedModalContainer = styled(Box)({
@@ -67,7 +79,6 @@ const NotificationFeedModalContainer = styled(Box)({
 
 const NotificationFeedContainer = styled(Menu)({
   width: "484px",
-  height: "500px",
   pointerEvents: "visible",
   "& .MuiPaper-root": {
     borderRadius: "8px",

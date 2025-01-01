@@ -37,7 +37,7 @@ const MenuItemContainer = styled(Box)<MenuItemContainerProps>((props) => {
     backgroundSize: "100% 100%",
     backgroundPosition: "0px 0px, 0px 0px",
     position: "fixed",
-    zIndex: 0,
+    zIndex: 1099,
     left: 0,
     paddingLeft: "370px",
     paddingRight: "48px",
