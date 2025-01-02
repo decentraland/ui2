@@ -7,7 +7,6 @@ import { ManaBalancesProps } from "./ManaBalances"
 import { i18n as i18nUserMenu } from "./UserMenu.i18n"
 import { UserMenuSignedIn } from "./UserMenuSignedIn/UserMenuSignedIn"
 import { config } from "../../config"
-import { useTabletAndBelowMediaQuery } from "../Media"
 import { UserMenuEventId, UserMenuProps } from "./UserMenu.types"
 import {
   DownloadLink,
@@ -31,8 +30,6 @@ const UserMenu = React.memo((props: UserMenuProps) => {
     ...signInProps
   } = props
 
-  const isTabletAndBelow = useTabletAndBelowMediaQuery()
-
   const [isOpen, setIsOpen] = useState(false)
   const [trackingId, setTrackingId] = useState<string | undefined>(undefined)
   const handleToggle = useCallback(
@@ -45,14 +42,6 @@ const UserMenu = React.memo((props: UserMenuProps) => {
         if (!prev && onClickOpen) {
           onClickOpen(event, trackId)
         }
-
-        if (isTabletAndBelow && !prev) {
-          window.addEventListener("scroll", noScroll)
-        }
-
-        if (isTabletAndBelow && prev) {
-          window.removeEventListener("scroll", noScroll)
-        }
         return !prev
       })
     },
@@ -61,9 +50,6 @@ const UserMenu = React.memo((props: UserMenuProps) => {
 
   const handleClose = useCallback(() => {
     setIsOpen(false)
-    if (isTabletAndBelow) {
-      window.removeEventListener("scroll", noScroll)
-    }
   }, [setIsOpen])
 
   const handleClickDownload = useCallback(
@@ -173,9 +159,5 @@ const UserMenu = React.memo((props: UserMenuProps) => {
     </UserMenuContainer>
   )
 })
-
-function noScroll() {
-  window.scrollTo(0, 0)
-}
 
 export { UserMenu }
