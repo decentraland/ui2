@@ -4,7 +4,11 @@ import emotionStyled from "@emotion/styled"
 import * as muiIcons from "@mui/icons-material"
 
 // Export Themes
-export { light as lightTheme, dark as darkTheme } from "./theme"
+export {
+  light as lightTheme,
+  dark as darkTheme,
+  ThemeProvider as DclThemeProvider,
+} from "./theme"
 export * as dclColors from "./theme/colors"
 
 export * from "@mui/material"

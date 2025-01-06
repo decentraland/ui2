@@ -3,15 +3,17 @@ import { Experimental_CssVarsProvider as CssVarsProvider } from "@mui/material/s
 import { CssBaseline } from "@mui/material"
 import type { Theme } from "./types"
 
-export type ThemeProviderProps = {
+type ThemeProviderProps = {
   theme: Theme
   children: ReactNode
 }
 
-export const ThemeProvider = React.memo((props: ThemeProviderProps) => (
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  <CssVarsProvider theme={props.theme as any}>
+const ThemeProvider = React.memo((props: ThemeProviderProps) => (
+  <CssVarsProvider theme={props.theme}>
     <CssBaseline />
     {props.children}
   </CssVarsProvider>
 ))
+
+export type { ThemeProviderProps }
+export { ThemeProvider }
