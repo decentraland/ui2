@@ -64,6 +64,7 @@ const NotificationIconWrapper = styled(Box)(({ theme }) => {
       backgroundColor: theme.palette.action.hover,
       borderRadius: "50%",
       cursor: "pointer",
+      height: "35px",
     },
   }
 })
