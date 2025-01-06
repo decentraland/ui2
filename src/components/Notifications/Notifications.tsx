@@ -2,7 +2,10 @@ import React, { useCallback, useMemo, useState } from "react"
 import { NotificationsFeed } from "./NotificationsFeed"
 import { NotificationBellActiveIcon, NotificationBellIcon } from "../Icon"
 import { NotificationsProps } from "./Notifications.types"
-import { NotificationIconContainer } from "./Notifications.styled"
+import {
+  NotificationIconContainer,
+  NotificationIconWrapper,
+} from "./Notifications.styled"
 
 const Notifications = React.memo((props: NotificationsProps) => {
   const {
@@ -53,7 +56,9 @@ const Notifications = React.memo((props: NotificationsProps) => {
         invisible={newNotificationsCount === 0}
       >
         {!isOpen ? (
-          <NotificationBellIcon fontSize="large" color="primary" />
+          <NotificationIconWrapper>
+            <NotificationBellIcon fontSize="large" color="primary" />
+          </NotificationIconWrapper>
         ) : (
           <NotificationBellActiveIcon fontSize="large" color="primary" />
         )}

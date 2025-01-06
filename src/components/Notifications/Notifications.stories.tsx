@@ -49,7 +49,7 @@ const meta: Meta = {
     return (
       <Box
         sx={{
-          height: "200px",
+          height: "35px",
           width: "200px",
           display: "flex",
           justifyContent: "center",
