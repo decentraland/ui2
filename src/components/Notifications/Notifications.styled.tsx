@@ -1,6 +1,6 @@
 import { keyframes } from "@emotion/react"
 import styled from "@emotion/styled"
-import { Badge } from "@mui/material"
+import { Badge, Box } from "@mui/material"
 
 const shake = keyframes`
 0% {
@@ -58,4 +58,14 @@ const NotificationIconContainer = styled(Badge)((props: {
   }
 })
 
-export { NotificationIconContainer }
+const NotificationIconWrapper = styled(Box)(({ theme }) => {
+  return {
+    "&:hover": {
+      backgroundColor: theme.palette.action.hover,
+      borderRadius: "50%",
+      cursor: "pointer",
+    },
+  }
+})
+
+export { NotificationIconContainer, NotificationIconWrapper }
