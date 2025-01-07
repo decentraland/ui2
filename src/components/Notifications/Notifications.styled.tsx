@@ -60,7 +60,7 @@ const NotificationIconContainer = styled(Badge)((props: {
 
 const NotificationIconWrapper = styled(Box)(({ theme }) => {
   return {
-    height: "35px",
+    height: "30.625px",
     "&:hover": {
       backgroundColor: theme.palette.action.hover,
       borderRadius: "50%",
