@@ -1,4 +1,5 @@
 import styled from "@emotion/styled"
+import { Typography } from "@mui/material"
 
 const ManaBalancesWrapper = styled("div")((props) => {
   const { theme } = props
@@ -10,4 +11,8 @@ const ManaBalancesWrapper = styled("div")((props) => {
   }
 })
 
-export { ManaBalancesWrapper }
+const ManaBalanceNumber = styled(Typography)({
+  lineHeight: "inherit",
+})
+
+export { ManaBalancesWrapper, ManaBalanceNumber }
