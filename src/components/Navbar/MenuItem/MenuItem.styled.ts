@@ -60,7 +60,7 @@ const MenuItemTitle = styled(Typography, {
   const { textColor, theme } = props
   return {
     textTransform: "capitalize",
-    fontWeight: "400",
+    fontWeight: "inherit",
     fontSize: "16px",
     color: textColor ? textColor : theme.palette.text.secondary,
     [theme!.breakpoints.down("sm")]: {
