@@ -57,13 +57,13 @@ const useGetContentfulEntry = <
         )
 
         if (!response.ok) {
-          throw new Error("Failed to fetch banner data")
+          throw new Error("Failed to fetch entity data")
         }
 
         const data: ContentfulResponse<T> = await response.json()
 
         if (!data.items || data.items.length === 0) {
-          throw new Error("No banner found with the specified ID")
+          throw new Error("No entity found with the specified ID")
         }
 
         const assetsMap = data.includes.Asset.reduce(
