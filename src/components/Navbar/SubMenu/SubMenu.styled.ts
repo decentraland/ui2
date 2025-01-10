@@ -24,7 +24,10 @@ const SubMenuContainer = styled(Box)((props) => {
   }
 })
 
-const MenuItemContainer = styled(Box)<MenuItemContainerProps>((props) => {
+const MenuItemContainer = styled(Box, {
+  shouldForwardProp: (prop) =>
+    !["active", "section", "isMobile"].includes(prop),
+})<MenuItemContainerProps>((props) => {
   const { active, section, theme } = props
   let modifiedStyles
   let mobileModifiedStyles
