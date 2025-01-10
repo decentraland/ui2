@@ -22,15 +22,20 @@ import {
   Title,
 } from "./MarketingBanner.styled"
 
-export const MarketingBanner: React.FC<MarketingBannerProps> = ({
-  id,
-  environment,
-  token,
-  space,
-  locale = Locales.enUS,
-}) => {
+const BANNER_CONTENT_TYPE = "banner"
+
+export const MarketingBanner: React.FC<MarketingBannerProps> = (
+  props: MarketingBannerProps
+) => {
+  const { id, environment, token, space, locale = Locales.enUS } = props
   const { fields, assets, isLoading, error } =
-    useGetContentfulEntry<IBannerFields>(id, environment, token, space)
+    useGetContentfulEntry<IBannerFields>(
+      id,
+      environment,
+      BANNER_CONTENT_TYPE,
+      token,
+      space
+    )
 
   if (isLoading) {
     return (

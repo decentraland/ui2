@@ -25,6 +25,7 @@ const useGetContentfulEntry = <
 >(
   id: string,
   environment: string,
+  contentType: string,
   token: string,
   space: string
 ): {
@@ -45,7 +46,7 @@ const useGetContentfulEntry = <
           `https://cdn.contentful.com/spaces/${space}/environments/${environment}/entries/?` +
             new URLSearchParams({
               "sys.id": id,
-              content_type: "banner",
+              content_type: contentType,
               locale: "*",
             }),
           {
