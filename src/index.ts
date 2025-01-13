@@ -28,5 +28,6 @@ export * as dclModal from "./components/Modal"
 export * from "./components/Navbar"
 export * from "./components/Notifications"
 export * from "./components/UserMenu"
+export * from "./components/MarketingBanner"
 
 export * as dclNetworkUtils from "./lib/network"
