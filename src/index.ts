@@ -29,5 +29,7 @@ export * from "./components/Navbar"
 export * from "./components/Notifications"
 export * from "./components/UserMenu"
 export * from "./components/MarketingBanner"
+export * from "./components/Banner"
+export * from "./hooks"
 
 export * as dclNetworkUtils from "./lib/network"

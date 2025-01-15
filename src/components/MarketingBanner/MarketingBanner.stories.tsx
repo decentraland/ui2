@@ -1,5 +1,5 @@
 import { MarketingBanner } from "./MarketingBanner"
-import { Locales } from "../../hooks/contenful"
+import { Locales } from "../../hooks/contentful"
 import type { Meta, StoryObj } from "@storybook/react"
 
 const meta = {
