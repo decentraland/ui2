@@ -9,8 +9,7 @@ const LoadingContainer = styled(Box)({
 })
 
 const BannerContainer = styled(Box, {
-  shouldForwardProp: (prop) =>
-    prop !== "background"
+  shouldForwardProp: (prop) => prop !== "background",
 })<{
   background: string
 }>((props) => {

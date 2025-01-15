@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/react"
 import { MarketingBanner } from "./MarketingBanner"
 import { Locales } from "../../hooks/contentful"
+import type { Meta, StoryObj } from "@storybook/react"
 
 const meta = {
   title: "Decentraland UI/MarketingBanner",

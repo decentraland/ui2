@@ -7,9 +7,9 @@ enum ContentfulLocale {
 }
 
 type LocalizedField<T> = {
-  [ContentfulLocale.enUS]: T;
-  [ContentfulLocale.es]?: T;
-  [ContentfulLocale.zh]?: T;
+  [ContentfulLocale.enUS]: T
+  [ContentfulLocale.es]?: T
+  [ContentfulLocale.zh]?: T
 }
 
 type SysAssetLink = {

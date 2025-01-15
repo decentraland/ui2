@@ -1,7 +1,7 @@
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import CircularProgress from "@mui/material/CircularProgress"
-import type { Property } from "csstype"
 import { Locales, getAssetUrl } from "../../hooks/contentful"
+import { useTabletAndBelowMediaQuery } from "../Media"
 import { BannerProps, LowercasedAlignment } from "./Banner.types"
 import {
   BannerContainer,
@@ -13,7 +13,7 @@ import {
   Text,
   Title,
 } from "./Banner.styled"
-import { useTabletAndBelowMediaQuery } from "../Media"
+import type { Property } from "csstype"
 
 const convertAlignmentToFlex = (alignment: Property.TextAlign) => {
   switch (alignment) {
@@ -49,48 +49,48 @@ export const Banner: React.FC<BannerProps> = (props: BannerProps) => {
   const bannerBackgroundImage = getAssetUrl(
     assets,
     Locales.enUS,
-    isMobileOrTablet ? fields.mobileBackground[Locales.enUS] : fields.fullSizeBackground[Locales.enUS]
+    isMobileOrTablet
+      ? fields.mobileBackground[Locales.enUS]
+      : fields.fullSizeBackground[Locales.enUS]
   )
   const title = isMobileOrTablet
     ? fields.mobileTitle[locale]
     : fields.desktopTitle[locale]
-  const titleAlignment = (isMobileOrTablet 
-    ? fields.mobileTitleAlignment[Locales.enUS]
-    : fields.desktopTitleAlignment[Locales.enUS])?.toLowerCase() as LowercasedAlignment
+  const titleAlignment = (
+    isMobileOrTablet
+      ? fields.mobileTitleAlignment[Locales.enUS]
+      : fields.desktopTitleAlignment[Locales.enUS]
+  )?.toLowerCase() as LowercasedAlignment
   const text = isMobileOrTablet
     ? fields.mobileText[locale]
     : fields.desktopText[locale]
-  const textAlignment = (isMobileOrTablet
-    ? fields.mobileTextAlignment[Locales.enUS]
-    : fields.desktopTextAlignment[Locales.enUS])?.toLowerCase() as LowercasedAlignment
-  const buttonAlignment = convertAlignmentToFlex((isMobileOrTablet
-    ? fields.mobileButtonAlignment[Locales.enUS]
-    : fields.desktopButtonAlignment[Locales.enUS])?.toLowerCase() as LowercasedAlignment)
+  const textAlignment = (
+    isMobileOrTablet
+      ? fields.mobileTextAlignment[Locales.enUS]
+      : fields.desktopTextAlignment[Locales.enUS]
+  )?.toLowerCase() as LowercasedAlignment
+  const buttonAlignment = convertAlignmentToFlex(
+    (isMobileOrTablet
+      ? fields.mobileButtonAlignment[Locales.enUS]
+      : fields.desktopButtonAlignment[Locales.enUS]
+    )?.toLowerCase() as LowercasedAlignment
+  )
 
   return (
-    <BannerContainer
-      background={bannerBackgroundImage}
-    >
+    <BannerContainer background={bannerBackgroundImage}>
       <Content>
-        <Title
-          variant="h1"
-          textAlign={titleAlignment}
-        >
-            {title}
+        <Title variant="h1" textAlign={titleAlignment}>
+          {title}
         </Title>
 
-        <Text
-        textAlign={textAlignment}
-        >
+        <Text textAlign={textAlignment}>
           {text ? documentToReactComponents(text) : null}
         </Text>
 
         {fields.showButton[Locales.enUS] &&
         fields.buttonLink?.[Locales.enUS] &&
         fields.buttonsText?.[locale] ? (
-          <ButtonContainer
-            justifyContent={buttonAlignment}
-          >
+          <ButtonContainer justifyContent={buttonAlignment}>
             <Button
               href={fields.buttonLink[Locales.enUS]}
               variant="contained"
