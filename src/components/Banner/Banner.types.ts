@@ -4,7 +4,7 @@ import {
   Locales,
   LocalizedField,
   SysAssetLink,
-} from "hooks/contentful"
+} from "../../hooks/contentful"
 import type { Document } from "@contentful/rich-text-types"
 
 type IBannerFields = {
