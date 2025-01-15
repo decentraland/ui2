@@ -1,5 +1,6 @@
 import styled from "@emotion/styled"
 import { Box, Button as MuiButton, Typography } from "@mui/material"
+import { neutral } from "../../theme/colors"
 
 const LoadingContainer = styled(Box)({
   display: "flex",
@@ -85,7 +86,7 @@ const Text = styled(Box)((props) => {
   const { theme } = props
 
   return {
-    color: "#fff",
+    color: neutral.white,
     fontSize: "19px",
     "& p": {
       margin: 0,
