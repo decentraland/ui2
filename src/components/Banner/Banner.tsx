@@ -1,6 +1,7 @@
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
+import { ContentfulLocale } from "@dcl/schemas"
 import CircularProgress from "@mui/material/CircularProgress"
-import { Locales, getAssetUrl } from "../../hooks/contentful"
+import { getAssetUrl } from "../../hooks/contentful"
 import { useTabletAndBelowMediaQuery } from "../Media"
 import { BannerProps, LowercasedAlignment } from "./Banner.types"
 import {
@@ -29,7 +30,13 @@ const convertAlignmentToFlex = (alignment: Property.TextAlign) => {
 }
 
 export const Banner: React.FC<BannerProps> = (props: BannerProps) => {
-  const { isLoading, fields, assets, locale = Locales.enUS, error } = props
+  const {
+    isLoading,
+    fields,
+    assets,
+    locale = ContentfulLocale.enUS,
+    error,
+  } = props
   const isMobileOrTablet = useTabletAndBelowMediaQuery()
 
   if (isLoading) {
@@ -41,38 +48,38 @@ export const Banner: React.FC<BannerProps> = (props: BannerProps) => {
   }
 
   // If there is no banner fields or the banner is not supposed to be shown, return null
-  if (!fields || !fields.showBanner[Locales.enUS] || error) {
+  if (!fields || error) {
     return null
   }
 
   // Build the parameteres based on the size of the screen
   const bannerBackgroundImage = getAssetUrl(
     assets,
-    Locales.enUS,
+    ContentfulLocale.enUS,
     isMobileOrTablet
-      ? fields.mobileBackground[Locales.enUS]
-      : fields.fullSizeBackground[Locales.enUS]
+      ? fields.mobileBackground[ContentfulLocale.enUS]
+      : fields.fullSizeBackground[ContentfulLocale.enUS]
   )
   const title = isMobileOrTablet
     ? fields.mobileTitle[locale]
     : fields.desktopTitle[locale]
   const titleAlignment = (
     isMobileOrTablet
-      ? fields.mobileTitleAlignment[Locales.enUS]
-      : fields.desktopTitleAlignment[Locales.enUS]
+      ? fields.mobileTitleAlignment[ContentfulLocale.enUS]
+      : fields.desktopTitleAlignment[ContentfulLocale.enUS]
   )?.toLowerCase() as LowercasedAlignment
   const text = isMobileOrTablet
     ? fields.mobileText[locale]
     : fields.desktopText[locale]
   const textAlignment = (
     isMobileOrTablet
-      ? fields.mobileTextAlignment[Locales.enUS]
-      : fields.desktopTextAlignment[Locales.enUS]
+      ? fields.mobileTextAlignment[ContentfulLocale.enUS]
+      : fields.desktopTextAlignment[ContentfulLocale.enUS]
   )?.toLowerCase() as LowercasedAlignment
   const buttonAlignment = convertAlignmentToFlex(
     (isMobileOrTablet
-      ? fields.mobileButtonAlignment[Locales.enUS]
-      : fields.desktopButtonAlignment[Locales.enUS]
+      ? fields.mobileButtonAlignment[ContentfulLocale.enUS]
+      : fields.desktopButtonAlignment[ContentfulLocale.enUS]
     )?.toLowerCase() as LowercasedAlignment
   )
 
@@ -87,12 +94,12 @@ export const Banner: React.FC<BannerProps> = (props: BannerProps) => {
           {text ? documentToReactComponents(text) : null}
         </Text>
 
-        {fields.showButton[Locales.enUS] &&
-        fields.buttonLink?.[Locales.enUS] &&
+        {fields.showButton[ContentfulLocale.enUS] &&
+        fields.buttonLink?.[ContentfulLocale.enUS] &&
         fields.buttonsText?.[locale] ? (
           <ButtonContainer justifyContent={buttonAlignment}>
             <Button
-              href={fields.buttonLink[Locales.enUS]}
+              href={fields.buttonLink[ContentfulLocale.enUS]}
               variant="contained"
               disableElevation
             >
@@ -101,9 +108,13 @@ export const Banner: React.FC<BannerProps> = (props: BannerProps) => {
           </ButtonContainer>
         ) : null}
       </Content>
-      {fields.logo && fields.logo[Locales.enUS] && (
+      {fields.logo && fields.logo[ContentfulLocale.enUS] && (
         <Logo
-          src={getAssetUrl(assets, Locales.enUS, fields.logo[Locales.enUS])}
+          src={getAssetUrl(
+            assets,
+            ContentfulLocale.enUS,
+            fields.logo[ContentfulLocale.enUS]
+          )}
           alt="Banner logo"
         />
       )}

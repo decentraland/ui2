@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react"
 import {
   ContentfulAsset,
+  ContentfulLocale,
   ContentfulResponse,
-  Locales,
   LocalizedField,
   LocalizedFieldType,
-  SysAssetLink,
-} from "./contentful.types"
+  SysLink,
+} from "@dcl/schemas"
 
 const getAssetUrl = (
   assets: Record<string, ContentfulAsset>,
-  locale: Locales,
-  assetLink?: SysAssetLink
+  locale: ContentfulLocale,
+  assetLink?: SysLink<"Asset">
 ): string => {
   if (!assetLink) return ""
   const asset = assets[assetLink.sys.id]
@@ -66,7 +66,7 @@ const useGetContentfulEntry = <
           throw new Error("No entity found with the specified ID")
         }
 
-        const assetsMap = data.includes.Asset.reduce(
+        const assetsMap = (data.includes.Asset ?? []).reduce(
           (acc, asset) => {
             acc[asset.sys.id] = asset
             return acc

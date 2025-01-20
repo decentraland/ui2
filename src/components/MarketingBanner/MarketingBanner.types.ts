@@ -1,11 +1,11 @@
-import { Locales } from "hooks/contentful"
+import { ContentfulLocale } from "@dcl/schemas"
 
 type MarketingBannerProps = {
   id: string
   environment: string
   token: string
   space: string
-  locale?: Locales
+  locale?: ContentfulLocale
 }
 
 export type { MarketingBannerProps }
