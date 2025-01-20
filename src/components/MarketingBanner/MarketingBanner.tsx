@@ -1,6 +1,7 @@
 import React from "react"
-import { Banner, IBannerFields } from "../../components/Banner"
-import { Locales, useGetContentfulEntry } from "../../hooks/contentful"
+import { BannerFields, ContentfulLocale } from "@dcl/schemas"
+import { Banner } from "../../components/Banner"
+import { useGetContentfulEntry } from "../../hooks/contentful"
 import { MarketingBannerProps } from "./MarketingBanner.types"
 
 const BANNER_CONTENT_TYPE = "banner"
@@ -8,9 +9,15 @@ const BANNER_CONTENT_TYPE = "banner"
 export const MarketingBanner: React.FC<MarketingBannerProps> = (
   props: MarketingBannerProps
 ) => {
-  const { id, environment, token, space, locale = Locales.enUS } = props
+  const {
+    id,
+    environment,
+    token,
+    space,
+    locale = ContentfulLocale.enUS,
+  } = props
   const { fields, assets, isLoading, error } =
-    useGetContentfulEntry<IBannerFields>(
+    useGetContentfulEntry<BannerFields>(
       id,
       environment,
       BANNER_CONTENT_TYPE,

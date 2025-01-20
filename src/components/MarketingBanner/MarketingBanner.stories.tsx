@@ -1,5 +1,5 @@
+import { ContentfulLocale } from "@dcl/schemas"
 import { MarketingBanner } from "./MarketingBanner"
-import { Locales } from "../../hooks/contentful"
 import type { Meta, StoryObj } from "@storybook/react"
 
 const meta = {
@@ -25,14 +25,14 @@ const Default: Story = {
 const SpanishLocale: Story = {
   args: {
     ...Default.args,
-    locale: Locales.es,
+    locale: ContentfulLocale.es,
   },
 }
 
 const ChineseLocale: Story = {
   args: {
     ...Default.args,
-    locale: Locales.zh,
+    locale: ContentfulLocale.zh,
   },
 }
 
