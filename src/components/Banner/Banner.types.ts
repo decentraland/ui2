@@ -4,8 +4,9 @@ type BannerProps = {
   fields: BannerFields | null
   assets: Record<string, ContentfulAsset>
   isLoading: boolean
-  locale?: ContentfulLocale
   error: string | null
+  onClick?: React.MouseEventHandler<HTMLButtonElement>
+  locale?: ContentfulLocale
 }
 
 type LowercasedAlignment = "left" | "center" | "right"
