@@ -32,6 +32,7 @@ const convertAlignmentToFlex = (alignment: Property.TextAlign) => {
 export const Banner: React.FC<BannerProps> = (props: BannerProps) => {
   const {
     isLoading,
+    onClick,
     fields,
     assets,
     locale = ContentfulLocale.enUS,
@@ -52,7 +53,7 @@ export const Banner: React.FC<BannerProps> = (props: BannerProps) => {
     return null
   }
 
-  // Build the parameteres based on the size of the screen
+  // Build the parameters based on the size of the screen
   const bannerBackgroundImage = getAssetUrl(
     assets,
     ContentfulLocale.enUS,
@@ -99,6 +100,7 @@ export const Banner: React.FC<BannerProps> = (props: BannerProps) => {
         fields.buttonsText?.[locale] ? (
           <ButtonContainer justifyContent={buttonAlignment}>
             <Button
+              onClick={onClick}
               href={fields.buttonLink[ContentfulLocale.enUS]}
               variant="contained"
               disableElevation
