@@ -35,9 +35,6 @@ const LogoLink = styled(Link, {
   let mobileStyles
   if (isMobile) {
     mobileStyles = {
-      position: "absolute",
-      left: "50%",
-      transform: "translateX(-50%)",
       zIndex: zIndex.appBar,
     }
   }
@@ -47,11 +44,14 @@ const LogoLink = styled(Link, {
   }
 })
 
-const AppBarDesktopWrapper = styled(Box)({
+const AppBarDesktopWrapper = styled(Box)(({ theme }) => ({
   display: "flex",
   justifyContent: "flex-start",
   alignItems: "center",
-})
+  [theme.breakpoints.down("sm")]: {
+    display: "none",
+  },
+}))
 
 const AppBarWrapper = styled(Box)({
   display: "flex",
@@ -59,6 +59,14 @@ const AppBarWrapper = styled(Box)({
   width: "100%",
   alignItems: "center",
   height: "66px",
+})
+
+const AppBarTabletAndBelowWrapper = styled(Box)({
+  width: "85px",
+  display: "flex",
+  alignItems: "center",
+  height: "66px",
+  justifyContent: "space-between",
 })
 
 const AppBarRightWrapper = styled(Box)({
@@ -111,11 +119,11 @@ const MenuIconBar = styled("span", {
     backgroundColor: theme.palette.text.primary,
     position: "absolute",
     "&:nth-of-type(1)": {
-      top: "10.5px",
+      top: "8px",
       left: 0,
     },
     "&:nth-of-type(2)": {
-      top: "21.5px",
+      top: "21px",
       left: 0,
     },
     ...openedStyles,
@@ -135,6 +143,7 @@ export {
   LogoLink,
   AppBarDesktopWrapper,
   AppBarWrapper,
+  AppBarTabletAndBelowWrapper,
   AppBarRightWrapper,
   MenuIcon,
   MenuIconBar,

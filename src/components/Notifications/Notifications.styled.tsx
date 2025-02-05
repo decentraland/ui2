@@ -37,11 +37,12 @@ const shake = keyframes`
     transform: translate(1px, -2px) rotate(-1deg);
   }`
 
-const NotificationIconContainer = styled(Badge)((props: {
-  active: boolean
-}) => {
+const NotificationIconContainer = styled(Badge)<{ active: boolean }>((
+  props
+) => {
+  const { active, theme } = props
   let otherStyles = {}
-  if (props.active) {
+  if (active) {
     otherStyles = {
       animation: `${shake} 0.8s`,
       animationIterationCount: 4,
@@ -54,6 +55,9 @@ const NotificationIconContainer = styled(Badge)((props: {
     },
     "& .MuiBadge-badge": {
       transform: "scale(0.8) translate(40%, 60%)",
+    },
+    [theme.breakpoints.down("sm")]: {
+      marginLeft: "8px",
     },
   }
 })

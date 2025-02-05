@@ -16,6 +16,7 @@ import { NavbarPages, NavbarProps } from "./Navbar.types"
 import {
   AppBarDesktopWrapper,
   AppBarRightWrapper,
+  AppBarTabletAndBelowWrapper,
   AppBarWrapper,
   DclAppBar,
   LogoLink,
@@ -98,17 +99,25 @@ const Navbar = React.memo((props: NavbarProps) => {
         <Toolbar>
           <AppBarWrapper>
             <TabletAndBelow>
-              <MenuIcon
-                aria-label="toggle menu"
-                onClick={(e) => handleMobileToggle(e, !menuMobileOpen)}
-              >
-                <MenuIconBar isOpen={menuMobileOpen} aria-label="menu bar" />
-                <MenuIconBar isOpen={menuMobileOpen} aria-label="menu bar" />
-              </MenuIcon>
+              <AppBarTabletAndBelowWrapper>
+                <LogoLink
+                  isMobile
+                  href="https://decentraland.org"
+                  aria-label="Decentraland home"
+                >
+                  <Logo />
+                </LogoLink>
+                <MenuIcon
+                  aria-label="toggle menu"
+                  onClick={(e) => handleMobileToggle(e, !menuMobileOpen)}
+                >
+                  <MenuIconBar isOpen={menuMobileOpen} aria-label="menu bar" />
+                  <MenuIconBar isOpen={menuMobileOpen} aria-label="menu bar" />
+                </MenuIcon>
+              </AppBarTabletAndBelowWrapper>
             </TabletAndBelow>
             <AppBarDesktopWrapper>
               <LogoLink
-                isMobile={isTabletAndBelow}
                 href="https://decentraland.org"
                 aria-label="Decentraland home"
               >

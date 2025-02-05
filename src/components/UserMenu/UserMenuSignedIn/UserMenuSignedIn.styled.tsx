@@ -9,23 +9,28 @@ import {
   Paper,
   Typography,
 } from "@mui/material"
-import ManDefault from "../../../Assets/man-default.png"
+import ManDefault from "../../../Assets/man-default1.png"
 
 interface AvatarPreviewProps {
   avatar?: Avatar
 }
 
-const UserMenuSignedInContainer = styled(Box)({
-  display: "flex",
-  position: "relative",
-  textAlign: "left",
-  outline: "none",
-  justifyContent: "flex-end",
-  alignItems: "center",
-  height: "66px",
-  "& > *": {
-    marginLeft: "16px",
-  },
+const UserMenuSignedInContainer = styled(Box)((props) => {
+  const { theme } = props
+  return {
+    display: "flex",
+    position: "relative",
+    textAlign: "left",
+    outline: "none",
+    justifyContent: "flex-end",
+    alignItems: "center",
+    height: "66px",
+    [theme!.breakpoints.up("sm")]: {
+      "& > *": {
+        marginLeft: "16px",
+      },
+    },
+  }
 })
 
 const ActivityIcon = styled(HistoryRoundedIcon)((props) => {
@@ -37,10 +42,16 @@ const ActivityIcon = styled(HistoryRoundedIcon)((props) => {
   }
 })
 
-const AvatarFaceContainer = styled(Box)({
-  cursor: "pointer",
-  marginLeft: "16px",
-  marginRight: "16px",
+const AvatarFaceContainer = styled(Box)((props) => {
+  const { theme } = props
+  return {
+    cursor: "pointer",
+    marginLeft: "16px",
+    marginRight: "16px",
+    [theme.breakpoints.down("sm")]: {
+      marginRight: "0",
+    },
+  }
 })
 
 const ActionsContainer = styled(Paper)((props) => {
@@ -68,9 +79,7 @@ const ActionsContainer = styled(Paper)((props) => {
 const AvatarPreviewContainer = styled(Box)((props) => {
   const { theme } = props
   return {
-    height: "110%",
-    marginLeft: "-100px",
-    marginBottom: "-100px",
+    height: "100%",
     width: "330px",
     [theme!.breakpoints.down("sm")]: {
       width: "100%",
@@ -84,11 +93,9 @@ const AvatarPreview = styled(Box)<AvatarPreviewProps>((props) => {
     height: "100%",
     width: "100%",
     backgroundRepeat: "no-repeat",
-    backgroundSize: "55%",
+    backgroundSize: "80%",
     backgroundImage: `url(${ManDefault})`,
-    backgroundPosition: "center",
-    backgroundPositionX: "50px",
-    backgroundPositionY: "70px",
+    backgroundPosition: "bottom center",
   }
 
   if (avatar?.avatar?.snapshots?.body) {
@@ -96,8 +103,6 @@ const AvatarPreview = styled(Box)<AvatarPreviewProps>((props) => {
       ...styles,
       backgroundSize: "contain",
       backgroundImage: `url("${avatar.avatar.snapshots.body}")`,
-      backgroundPositionX: "0px",
-      backgroundPositionY: "0px",
     }
   }
 
