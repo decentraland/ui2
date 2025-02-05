@@ -35,10 +35,6 @@ const LogoLink = styled(Link, {
   let mobileStyles
   if (isMobile) {
     mobileStyles = {
-      /* position: "absolute",
-      top: "50%",
-      transform: "translateY(-50%)",
-      left: "70px", */
       zIndex: zIndex.appBar,
     }
   }

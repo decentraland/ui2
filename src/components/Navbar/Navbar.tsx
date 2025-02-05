@@ -101,7 +101,7 @@ const Navbar = React.memo((props: NavbarProps) => {
             <TabletAndBelow>
               <AppBarTabletAndBelowWrapper>
                 <LogoLink
-                  isMobile={true}
+                  isMobile
                   href="https://decentraland.org"
                   aria-label="Decentraland home"
                 >
@@ -118,7 +118,6 @@ const Navbar = React.memo((props: NavbarProps) => {
             </TabletAndBelow>
             <AppBarDesktopWrapper>
               <LogoLink
-                isMobile={false}
                 href="https://decentraland.org"
                 aria-label="Decentraland home"
               >
