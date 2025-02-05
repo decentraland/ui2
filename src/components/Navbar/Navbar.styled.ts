@@ -36,8 +36,9 @@ const LogoLink = styled(Link, {
   if (isMobile) {
     mobileStyles = {
       position: "absolute",
-      left: "50%",
-      transform: "translateX(-50%)",
+      top: "50%",
+      transform: "translateY(-50%)",
+      left: "70px",
       zIndex: zIndex.appBar,
     }
   }
@@ -111,11 +112,11 @@ const MenuIconBar = styled("span", {
     backgroundColor: theme.palette.text.primary,
     position: "absolute",
     "&:nth-of-type(1)": {
-      top: "10.5px",
+      top: "8px",
       left: 0,
     },
     "&:nth-of-type(2)": {
-      top: "21.5px",
+      top: "21px",
       left: 0,
     },
     ...openedStyles,
