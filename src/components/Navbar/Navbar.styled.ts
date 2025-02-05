@@ -35,10 +35,10 @@ const LogoLink = styled(Link, {
   let mobileStyles
   if (isMobile) {
     mobileStyles = {
-      position: "absolute",
+      /* position: "absolute",
       top: "50%",
       transform: "translateY(-50%)",
-      left: "70px",
+      left: "70px", */
       zIndex: zIndex.appBar,
     }
   }
@@ -48,11 +48,14 @@ const LogoLink = styled(Link, {
   }
 })
 
-const AppBarDesktopWrapper = styled(Box)({
+const AppBarDesktopWrapper = styled(Box)(({ theme }) => ({
   display: "flex",
   justifyContent: "flex-start",
   alignItems: "center",
-})
+  [theme.breakpoints.down("sm")]: {
+    display: "none",
+  },
+}))
 
 const AppBarWrapper = styled(Box)({
   display: "flex",
@@ -60,6 +63,14 @@ const AppBarWrapper = styled(Box)({
   width: "100%",
   alignItems: "center",
   height: "66px",
+})
+
+const AppBarTabletAndBelowWrapper = styled(Box)({
+  width: "85px",
+  display: "flex",
+  alignItems: "center",
+  height: "66px",
+  justifyContent: "space-between",
 })
 
 const AppBarRightWrapper = styled(Box)({
@@ -136,6 +147,7 @@ export {
   LogoLink,
   AppBarDesktopWrapper,
   AppBarWrapper,
+  AppBarTabletAndBelowWrapper,
   AppBarRightWrapper,
   MenuIcon,
   MenuIconBar,
