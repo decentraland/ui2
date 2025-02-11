@@ -1,4 +1,5 @@
-import React, { useCallback, useState } from "react"
+import React, { useCallback, useMemo, useState } from "react"
+import { useAdvancedUserAgentData } from "@dcl/hooks"
 import { Network } from "@dcl/schemas/dist/dapps/network"
 import Download from "@mui/icons-material/Download"
 import { v4 as uuidv4 } from "uuid"
@@ -7,9 +8,18 @@ import { ManaBalancesProps } from "./ManaBalances"
 import { i18n as i18nUserMenu } from "./UserMenu.i18n"
 import { UserMenuSignedIn } from "./UserMenuSignedIn/UserMenuSignedIn"
 import { config } from "../../config"
-import { UserMenuEventId, UserMenuProps } from "./UserMenu.types"
+import { CDNSource, getCDNRelease } from "../../modules/cdnReleases"
+import { triggerFileDownload } from "../../modules/file"
 import {
-  DownloadLink,
+  addQueryParamsToUrlString,
+  updateUrlWithLastValue,
+} from "../../modules/url"
+import { setUserAgentArchitectureDefautlByOs } from "../../modules/userAgent"
+import { DownloadButton, OperativeSystem } from "../DownloadButton"
+import { AppleIcon } from "../Icon/AppleIcon"
+import { WindowsIcon } from "../Icon/WindowsIcon"
+import { DownloadProps, UserMenuEventId, UserMenuProps } from "./UserMenu.types"
+import {
   SignInButton,
   UserMenuContainer,
   UserMenuLoaderContainer,
@@ -32,6 +42,45 @@ const UserMenu = React.memo((props: UserMenuProps) => {
 
   const [isOpen, setIsOpen] = useState(false)
   const [trackingId, setTrackingId] = useState<string | undefined>(undefined)
+
+  const [isLoadingUserAgentData, userAgentData] = useAdvancedUserAgentData()
+
+  const searchParams = new URLSearchParams(window.location.search)
+  const os = searchParams.get("os")
+  if (userAgentData && os) {
+    setUserAgentArchitectureDefautlByOs(userAgentData, os as OperativeSystem)
+  }
+
+  const links = getCDNRelease(CDNSource.LAUNCHER)
+
+  const defaultDownloadOption: DownloadProps | null = useMemo(() => {
+    if (
+      !userAgentData ||
+      !links ||
+      !links[userAgentData.os.name] ||
+      !links[userAgentData.os.name][userAgentData.cpu.architecture]
+    ) {
+      return null
+    }
+
+    if (
+      userAgentData.os.name === OperativeSystem.MACOS &&
+      links[userAgentData.os.name][userAgentData.cpu.architecture]
+    ) {
+      return {
+        icon: <AppleIcon sx={{ path: { fill: "#fff" } }} />,
+        link: links[userAgentData.os.name][userAgentData.cpu.architecture],
+        arch: userAgentData.cpu.architecture,
+      }
+    }
+
+    return {
+      icon: <WindowsIcon sx={{ path: { fill: "#fff" } }} />,
+      link: links[userAgentData.os.name][userAgentData.cpu.architecture],
+      arch: userAgentData.cpu.architecture,
+    }
+  }, [userAgentData, links])
+
   const handleToggle = useCallback(
     (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
       const trackId = uuidv4()
@@ -72,6 +121,42 @@ const UserMenu = React.memo((props: UserMenuProps) => {
       )
     },
     [onClickDownload, onClickUserMenuItem, trackingId]
+  )
+
+  const onClickDownloadOsHandler = useCallback(
+    (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+      event.preventDefault()
+
+      if (!userAgentData || !defaultDownloadOption) return
+
+      onClickUserMenuItem &&
+        onClickUserMenuItem(event, {
+          type: UserMenuEventId.DOWNLOAD,
+          track_uuid: trackingId || undefined,
+          url: config.get("DOWNLOAD_URL"),
+        })
+
+      setTimeout(
+        () => {
+          triggerFileDownload(defaultDownloadOption.link)
+        },
+        onClickUserMenuItem ? 300 : 0
+      )
+
+      const redirectUrl = updateUrlWithLastValue(
+        window.location.href,
+        "os",
+        userAgentData.os.name
+      )
+
+      const finalUrl = addQueryParamsToUrlString(redirectUrl, {
+        arch: userAgentData.cpu.architecture,
+      })
+      setTimeout(() => {
+        window.location.href = finalUrl
+      }, 3000)
+    },
+    [defaultDownloadOption, userAgentData]
   )
 
   const handleClickSignIn = useCallback(
@@ -147,13 +232,27 @@ const UserMenu = React.memo((props: UserMenuProps) => {
               )}
             </SignInButton>
           ) : null}
-          <DownloadLink
-            variant="contained"
-            onClick={handleClickDownload}
-            href={config.get("DOWNLOAD_URL")}
-          >
-            <Download /> {i18n.download}
-          </DownloadLink>
+
+          {(isLoadingUserAgentData || !defaultDownloadOption) &&
+            userAgentData &&
+            !userAgentData.mobile &&
+            !userAgentData.tablet && (
+              <DownloadButton
+                href={config.get("DOWNLOAD_URL")}
+                onClick={handleClickDownload}
+                label={i18n.download}
+                startIcon={<Download />}
+              />
+            )}
+
+          {!isLoadingUserAgentData && defaultDownloadOption && (
+            <DownloadButton
+              href={defaultDownloadOption.link!}
+              onClick={onClickDownloadOsHandler}
+              endIcon={defaultDownloadOption.icon}
+              label={i18n.download}
+            />
+          )}
         </>
       )}
     </UserMenuContainer>
