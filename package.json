@@ -38,7 +38,7 @@
   "homepage": "https://github.com/decentraland/ui2#readme",
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^16.0.1",
-    "@dcl/hooks": "^0.0.0-20250211182735.commit-6dc0bd9",
+    "@dcl/hooks": "^0.0.2",
     "@dcl/schemas": "^15.6.0",
     "@dcl/ui-env": "^1.5.1",
     "@emotion/react": "^11.11.4",
