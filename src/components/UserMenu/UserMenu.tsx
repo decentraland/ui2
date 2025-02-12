@@ -16,8 +16,10 @@ import {
 } from "../../modules/url"
 import { setUserAgentArchitectureDefautlByOs } from "../../modules/userAgent"
 import { DownloadButton, OperativeSystem } from "../DownloadButton"
-import { AppleIcon } from "../Icon/AppleIcon"
-import { WindowsIcon } from "../Icon/WindowsIcon"
+import {
+  DownloadButtonAppleIcon,
+  DownloadButtonWindowsIcon,
+} from "../DownloadButton/DownloadButton.styled"
 import { DownloadProps, UserMenuEventId, UserMenuProps } from "./UserMenu.types"
 import {
   SignInButton,
@@ -68,14 +70,14 @@ const UserMenu = React.memo((props: UserMenuProps) => {
       links[userAgentData.os.name][userAgentData.cpu.architecture]
     ) {
       return {
-        icon: <AppleIcon sx={{ path: { fill: "#fff" } }} />,
+        icon: <DownloadButtonAppleIcon />,
         link: links[userAgentData.os.name][userAgentData.cpu.architecture],
         arch: userAgentData.cpu.architecture,
       }
     }
 
     return {
-      icon: <WindowsIcon sx={{ path: { fill: "#fff" } }} />,
+      icon: <DownloadButtonWindowsIcon />,
       link: links[userAgentData.os.name][userAgentData.cpu.architecture],
       arch: userAgentData.cpu.architecture,
     }

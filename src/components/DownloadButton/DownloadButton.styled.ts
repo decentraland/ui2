@@ -1,5 +1,7 @@
 import styled from "@emotion/styled"
 import { Box, Button } from "@mui/material"
+import { AppleIcon } from "../Icon/AppleIcon"
+import { WindowsIcon } from "../Icon/WindowsIcon"
 
 const DownloadButtonStyled = styled(Button)((props) => {
   const { theme } = props
@@ -47,6 +49,9 @@ const DownloadButtonStyled = styled(Button)((props) => {
         left: "-7.5px",
       },
     },
+    "& span": {
+      fontSize: "14px",
+    },
   }
 })
 
@@ -62,4 +67,23 @@ const DownloadButtonLabelContainer = styled(Box)({
   },
 })
 
-export { DownloadButtonStyled, DownloadButtonLabelContainer }
+const DownloadButtonAppleIcon = styled(AppleIcon)({
+  fontSize: "14px!important",
+  marginTop: "-3px",
+  "& path": {
+    fill: "#fff",
+  },
+})
+
+const DownloadButtonWindowsIcon = styled(WindowsIcon)({
+  "& path": {
+    fill: "#fff",
+  },
+})
+
+export {
+  DownloadButtonStyled,
+  DownloadButtonLabelContainer,
+  DownloadButtonAppleIcon,
+  DownloadButtonWindowsIcon,
+}
