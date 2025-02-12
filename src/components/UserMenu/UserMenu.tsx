@@ -47,7 +47,11 @@ const UserMenu = React.memo((props: UserMenuProps) => {
 
   const [isLoadingUserAgentData, userAgentData] = useAdvancedUserAgentData()
 
-  const searchParams = new URLSearchParams(window.location.search)
+  const windowSearchParams =
+    typeof window !== "undefined"
+      ? new URLSearchParams(window.location.search)
+      : undefined
+  const searchParams = new URLSearchParams(windowSearchParams)
   const os = searchParams.get("os")
   if (userAgentData && os) {
     setUserAgentArchitectureDefautlByOs(userAgentData, os as OperativeSystem)
