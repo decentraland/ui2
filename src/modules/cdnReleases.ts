@@ -1,3 +1,5 @@
+import { OperativeSystem } from "../components/DownloadButton"
+
 enum CDNSource {
   LAUNCHER = "launcher",
   // Add future CDN sources here
@@ -20,10 +22,10 @@ const CDN_CONFIGS: Record<CDNSource, CDNConfig> = {
   [CDNSource.LAUNCHER]: {
     baseUrl: "https://explorer-artifacts.decentraland.org/launcher/dcl",
     fileNamePattern: {
-      Windows: {
+      [OperativeSystem.WINDOWS]: {
         amd64: "Decentraland%20Launcher-win-x64.exe",
       },
-      macOS: {
+      [OperativeSystem.MACOS]: {
         amd64: "Decentraland%20Launcher-mac-x64.dmg",
         arm64: "Decentraland%20Launcher-mac-arm64.dmg",
       },
@@ -39,10 +41,10 @@ const getCDNRelease = (source: CDNSource) => {
   }
 
   return {
-    Windows: {
+    [OperativeSystem.WINDOWS]: {
       amd64: `${config.baseUrl}/${config.fileNamePattern.Windows.amd64}`,
     },
-    macOS: {
+    [OperativeSystem.MACOS]: {
       amd64: `${config.baseUrl}/${config.fileNamePattern.macOS.amd64}`,
       arm64: `${config.baseUrl}/${config.fileNamePattern.macOS.arm64}`,
     },

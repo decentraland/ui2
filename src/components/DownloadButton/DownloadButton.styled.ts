@@ -53,11 +53,12 @@ const DownloadButtonStyled = styled(Button)((props) => {
 const DownloadButtonLabelContainer = styled(Box)({
   display: "flex",
   flexDirection: "column",
+  lineHeight: "20px",
   "& span": {
     display: "block",
     fontSize: "14px",
     fontWeight: 400,
-    lineHeight: "20.02px",
+    lineHeight: "20px",
   },
 })
 
