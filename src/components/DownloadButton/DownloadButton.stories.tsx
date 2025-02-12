@@ -1,6 +1,7 @@
 import Download from "@mui/icons-material/Download"
 import { Box } from "@mui/material"
 import { DownloadButton } from "./DownloadButton"
+import { config } from "../../config"
 import { CDNSource, getCDNRelease } from "../../modules/cdnReleases"
 import { AppleIcon } from "../Icon/AppleIcon"
 import { WindowsIcon } from "../Icon/WindowsIcon"
@@ -58,7 +59,7 @@ type Story = StoryObj<DownloadButtonProps>
 const Basic: Story = {
   name: "Basic",
   args: {
-    href: links!.Windows.amd64,
+    href: config.get("DOWNLOAD_URL"),
     startIcon: <Download />,
   },
 }
