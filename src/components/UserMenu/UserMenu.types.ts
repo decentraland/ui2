@@ -43,5 +43,11 @@ enum UserMenuEventId {
   BALANCE = "balance",
 }
 
-export type { UserMenuProps, UserMenuI18N }
+type DownloadProps = {
+  icon: React.ReactNode
+  link: string
+  arch: string
+}
+
+export type { UserMenuProps, UserMenuI18N, DownloadProps }
 export { UserMenuEventId }

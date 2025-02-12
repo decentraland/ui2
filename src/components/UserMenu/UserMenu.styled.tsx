@@ -22,20 +22,4 @@ const SignInButton = styled(Button)({
   minWidth: "90px",
 })
 
-const DownloadLink = styled(Button)((props) => {
-  const { theme } = props
-  return {
-    height: "46px",
-    marginLeft: "24px",
-    [theme!.breakpoints.down("sm")]: {
-      display: "none",
-    },
-  }
-})
-
-export {
-  UserMenuContainer,
-  UserMenuLoaderContainer,
-  SignInButton,
-  DownloadLink,
-}
+export { UserMenuContainer, UserMenuLoaderContainer, SignInButton }
