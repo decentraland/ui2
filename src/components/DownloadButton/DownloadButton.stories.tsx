@@ -3,9 +3,11 @@ import { Box } from "@mui/material"
 import { DownloadButton } from "./DownloadButton"
 import { config } from "../../config"
 import { CDNSource, getCDNRelease } from "../../modules/cdnReleases"
-import { AppleIcon } from "../Icon/AppleIcon"
-import { WindowsIcon } from "../Icon/WindowsIcon"
 import { DownloadButtonProps } from "./DownloadButton.types"
+import {
+  DownloadButtonAppleIcon,
+  DownloadButtonWindowsIcon,
+} from "./DownloadButton.styled"
 import type { Meta, StoryObj } from "@storybook/react"
 
 const links = getCDNRelease(CDNSource.LAUNCHER)
@@ -40,9 +42,9 @@ const meta: Meta<DownloadButtonProps> = {
     const { endIcon, ...rest } = args
     const icon =
       endIcon === "Windows" ? (
-        <WindowsIcon sx={{ path: { fill: "#fff" } }} />
+        <DownloadButtonWindowsIcon />
       ) : endIcon === "macOS" ? (
-        <AppleIcon sx={{ path: { fill: "#fff" } }} />
+        <DownloadButtonAppleIcon />
       ) : null
     return (
       <DownloadButton
@@ -70,12 +72,12 @@ const WithOS: Story = {
     <Box display="flex" gap={2}>
       <DownloadButton
         href={links!.Windows.amd64}
-        endIcon={<WindowsIcon sx={{ path: { fill: "#fff" } }} />}
+        endIcon={<DownloadButtonWindowsIcon />}
         onClick={() => {}}
       />
       <DownloadButton
         href={links!.macOS.arm64}
-        endIcon={<AppleIcon sx={{ path: { fill: "#fff" } }} />}
+        endIcon={<DownloadButtonAppleIcon />}
         onClick={() => {}}
       />
     </Box>
