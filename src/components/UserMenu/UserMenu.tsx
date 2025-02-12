@@ -146,7 +146,7 @@ const UserMenu = React.memo((props: UserMenuProps) => {
       )
 
       const redirectUrl = updateUrlWithLastValue(
-        window.location.href,
+        config.get("DOWNLOAD_SUCCESS_URL"),
         "os",
         userAgentData.os.name
       )
