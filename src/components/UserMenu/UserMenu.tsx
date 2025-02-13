@@ -136,7 +136,7 @@ const UserMenu = React.memo((props: UserMenuProps) => {
 
       onClickDownload &&
         onClickDownload(event, {
-          href: config.get("DOWNLOAD_URL"),
+          href: defaultDownloadOption.link,
         })
 
       const redirectUrl = updateUrlWithLastValue(
