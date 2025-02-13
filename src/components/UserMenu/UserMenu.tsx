@@ -119,9 +119,7 @@ const UserMenu = React.memo((props: UserMenuProps) => {
 
       setTimeout(
         () => {
-          onClickDownload
-            ? onClickDownload(event)
-            : window.open(config.get("DOWNLOAD_URL"), "_blank", "noopener")
+          window.open(config.get("DOWNLOAD_URL"), "_blank", "noopener")
         },
         onClickUserMenuItem ? 300 : 0
       )
@@ -135,19 +133,10 @@ const UserMenu = React.memo((props: UserMenuProps) => {
 
       if (!userAgentData || !defaultDownloadOption) return
 
-      onClickUserMenuItem &&
-        onClickUserMenuItem(event, {
-          type: UserMenuEventId.DOWNLOAD,
-          track_uuid: trackingId || undefined,
-          url: config.get("DOWNLOAD_URL"),
+      onClickDownload &&
+        onClickDownload(event, {
+          href: config.get("DOWNLOAD_URL"),
         })
-
-      setTimeout(
-        () => {
-          triggerFileDownload(defaultDownloadOption.link)
-        },
-        onClickUserMenuItem ? 300 : 0
-      )
 
       const redirectUrl = updateUrlWithLastValue(
         config.get("DOWNLOAD_SUCCESS_URL"),
@@ -158,9 +147,15 @@ const UserMenu = React.memo((props: UserMenuProps) => {
       const finalUrl = addQueryParamsToUrlString(redirectUrl, {
         arch: userAgentData.cpu.architecture,
       })
-      setTimeout(() => {
-        window.location.href = finalUrl
-      }, 3000)
+
+      setTimeout(
+        () => {
+          triggerFileDownload(defaultDownloadOption.link).then(() => {
+            window.location.href = finalUrl
+          })
+        },
+        onClickDownload ? 300 : 0
+      )
     },
     [defaultDownloadOption, userAgentData]
   )

@@ -27,7 +27,10 @@ type UserMenuProps = Omit<
     event: React.MouseEvent<HTMLElement, MouseEvent>,
     trackingId: string
   ) => void
-  onClickDownload?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void
+  onClickDownload?: (
+    event: React.MouseEvent<HTMLElement, MouseEvent>,
+    options: { href: string }
+  ) => void
 }
 
 enum UserMenuEventId {
