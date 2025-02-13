@@ -7,7 +7,7 @@ const DownloadButtonStyled = styled(Button)((props) => {
   const { theme } = props
   return {
     "&.MuiButton-sizeMedium.MuiButton-containedPrimary": {
-      height: "48px",
+      height: "46px",
       fontSize: "14px",
       fontWeight: 600,
       borderRadius: "6px",
