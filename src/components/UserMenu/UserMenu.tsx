@@ -34,6 +34,7 @@ const UserMenu = React.memo((props: UserMenuProps) => {
     isDisconnecting,
     manaBalances,
     i18n = i18nUserMenu,
+    hideDownloadButton,
     onClickSignIn,
     onClickBalance,
     onClickOpen,
@@ -237,7 +238,8 @@ const UserMenu = React.memo((props: UserMenuProps) => {
           {(isLoadingUserAgentData || !defaultDownloadOption) &&
             userAgentData &&
             !userAgentData.mobile &&
-            !userAgentData.tablet && (
+            !userAgentData.tablet &&
+            !hideDownloadButton && (
               <DownloadButton
                 href={config.get("DOWNLOAD_URL")}
                 onClick={handleClickDownload}
@@ -246,14 +248,16 @@ const UserMenu = React.memo((props: UserMenuProps) => {
               />
             )}
 
-          {!isLoadingUserAgentData && defaultDownloadOption && (
-            <DownloadButton
-              href={defaultDownloadOption.link!}
-              onClick={onClickDownloadOsHandler}
-              endIcon={defaultDownloadOption.icon}
-              label={i18n.download}
-            />
-          )}
+          {!isLoadingUserAgentData &&
+            defaultDownloadOption &&
+            !hideDownloadButton && (
+              <DownloadButton
+                href={defaultDownloadOption.link!}
+                onClick={onClickDownloadOsHandler}
+                endIcon={defaultDownloadOption.icon}
+                label={i18n.download}
+              />
+            )}
         </>
       )}
     </UserMenuContainer>
