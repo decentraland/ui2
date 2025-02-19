@@ -3,7 +3,7 @@ import { MarketingBanner } from "./MarketingBanner"
 import type { Meta, StoryObj } from "@storybook/react"
 
 const meta = {
-  title: "Decentraland UI/MarketingBanner",
+  title: "Decentraland UI/Marketing Banner",
   component: MarketingBanner,
   parameters: {
     layout: "fullscreen",

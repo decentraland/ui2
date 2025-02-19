@@ -32,10 +32,9 @@ const getExtraButton = async () => {
   try {
     const SPACE_ID = config.get("CONTENTFUL_SPACE_ID")
     const ENV = config.get("CONTENTFUL_ENV")
-    const ACCESS_TOKEN = config.get("CONTENTFUL_NAVBAR_ACCESS_TOKEN")
     const ENTRY_ID = config.get("CONTENTFUL_NAVBAR_ENTRY_ID")
     const CONTENTFUL_CDN_URL = config.get("CONTENTFUL_CONTENTFUL_CDN_URL")
-    const CONTENTFUL_URL = `${CONTENTFUL_CDN_URL}/spaces/${SPACE_ID}/environments/${ENV}/entries/${ENTRY_ID}?access_token=${ACCESS_TOKEN}`
+    const CONTENTFUL_URL = `${CONTENTFUL_CDN_URL}/spaces/${SPACE_ID}/environments/${ENV}/entries/${ENTRY_ID}`
     const response = await fetch(CONTENTFUL_URL)
     const entry = await response.json()
     const button = entry.fields as NavbarExtraButton
