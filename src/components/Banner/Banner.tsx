@@ -1,7 +1,7 @@
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { ContentfulLocale } from "@dcl/schemas"
 import CircularProgress from "@mui/material/CircularProgress"
-import { getAssetUrl } from "../../hooks/contentful"
+import { getAssetUrl } from "../../modules/contentful"
 import { useTabletAndBelowMediaQuery } from "../Media"
 import { BannerProps, LowercasedAlignment } from "./Banner.types"
 import {
