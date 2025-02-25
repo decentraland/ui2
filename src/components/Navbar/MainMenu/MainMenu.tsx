@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import { config } from "../../../config"
 import { MenuItem } from "../MenuItem/MenuItem"
 import { NavbarPages } from "../Navbar.types"
@@ -9,20 +9,19 @@ import { MainMenuContainer } from "./MainMenu.styled"
 export const MainMenu = (props: MainMenuProps) => {
   const { i18n, isOpenOnMobile, ...menuItemProps } = props
 
-  const isMounted = useRef(false)
   const [extraButton, setExtraButton] = useState<NavbarExtraButton | null>(null)
   useEffect(() => {
-    isMounted.current = true
+    let isMounted = true
     if (!extraButton) {
       getExtraButton().then((button) => {
-        if (!isMounted.current) return
+        if (!isMounted) return
         setExtraButton(button)
       })
     }
     return () => {
-      isMounted.current = false
+      isMounted = false
     }
-  }, [extraButton, isMounted, setExtraButton])
+  }, [extraButton, setExtraButton])
 
   return (
     <MainMenuContainer isOpenOnMobile={isOpenOnMobile} aria-label="main menu">
