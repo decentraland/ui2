@@ -6,10 +6,13 @@ const getAssetUrl = (
   assetLink?: SysLink<"Asset">
 ): string => {
   if (!assetLink) return ""
-  const asset = assets[assetLink.sys.id]
-  return asset?.fields.file[locale]?.url
-    ? `https:${asset.fields.file[locale].url}`
-    : ""
+  const assetUrl = assets[assetLink.sys.id]?.fields.file[locale]?.url
+  if (assetUrl) {
+    return assetUrl.startsWith("https:") || assetUrl.startsWith("http:")
+      ? assetUrl
+      : `https:${assetUrl}`
+  }
+  return ""
 }
 
 export { getAssetUrl }
