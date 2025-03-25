@@ -1,6 +1,6 @@
 import React from "react"
 import { Network } from "@dcl/schemas"
-import { Tooltip } from "@mui/material"
+import { Box, Tooltip } from "@mui/material"
 import { config } from "../../../config"
 import * as CreditsIcon from "../../Icon/CreditsIcon"
 import { Mana } from "../../Mana"
@@ -17,7 +17,6 @@ import {
 
 const ManaBalances = React.memo((props: ManaBalancesProps) => {
   const { manaBalances, creditsBalance, i18n, onClickBalance } = props
-  console.log("i18n", i18n)
 
   const isCreditsBalanceExpired =
     creditsBalance && creditsBalance.expiresAt < Date.now()
@@ -33,7 +32,7 @@ const ManaBalances = React.memo((props: ManaBalancesProps) => {
 
   return (
     <ManaBalancesWrapper>
-      <div>
+      <Box>
         {manaBalances &&
           Object.keys(manaBalances).map((network) => (
             <Mana
@@ -48,7 +47,7 @@ const ManaBalances = React.memo((props: ManaBalancesProps) => {
               </ManaBalanceNumber>
             </Mana>
           ))}
-      </div>
+      </Box>
       {creditsBalance !== undefined && !isCreditsBalanceExpired && (
         <CreditsBalanceContainer>
           <>
@@ -58,10 +57,7 @@ const ManaBalances = React.memo((props: ManaBalancesProps) => {
                   variant="text"
                   onClick={() => {
                     // TODO: review this link
-                    window.open(
-                      "https://docs.decentraland.org/decentraland/credits/",
-                      "_blank"
-                    )
+                    window.open(config.get("CREDITS_DOCS_URL"), "_blank")
                   }}
                 >
                   {i18n?.getCredits || "Earn Credits"}

@@ -75,7 +75,29 @@ const WithNoCredits: Story = {
   },
 }
 
-export { Simple, WithCredits, WithNoCredits, WithCreditsExpiringSoon }
+const WithCreditsButNotMANA: Story = {
+  args: {
+    manaBalances: undefined,
+    creditsBalance: {
+      balance: 100,
+      expiresAt: Date.now() + 1000 * 60 * 60 * 24 * 30,
+    },
+    i18n: {
+      getCredits: "Earn Credits",
+      creditsExpiringSoon: "Expiring soon",
+      creditsExpiringIn: (value: string) => `Expiring in ${value} days`,
+      creditsValue: "(1 Credit = 1 MANA in value)",
+    },
+  },
+}
+
+export {
+  Simple,
+  WithCredits,
+  WithNoCredits,
+  WithCreditsExpiringSoon,
+  WithCreditsButNotMANA,
+}
 
 // eslint-disable-next-line import/no-default-export
 export default meta

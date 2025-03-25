@@ -1,5 +1,5 @@
 import styled from "@emotion/styled"
-import { Button, Typography } from "@mui/material"
+import { Box, Button, Typography } from "@mui/material"
 
 const ManaBalancesWrapper = styled("div")((props) => {
   const { theme } = props
@@ -41,7 +41,7 @@ const ManaBalanceNumber = styled(Typography)({
   lineHeight: "inherit",
 })
 
-const CreditsBalanceContainer = styled("div")({
+const CreditsBalanceContainer = styled(Box)({
   color: "#A0ABFF",
   fontWeight: 600,
   alignSelf: "flex-end",
@@ -51,7 +51,7 @@ const CreditsBalanceContainer = styled("div")({
   },
 })
 
-const CreditsBalanceValueContainer = styled("div")({
+const CreditsBalanceValueContainer = styled(Box)({
   display: "flex",
   cursor: "pointer",
   alignItems: "center",
