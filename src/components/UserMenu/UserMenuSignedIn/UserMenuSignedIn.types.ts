@@ -9,6 +9,7 @@ type UserMenuSignedInProps = ManaBalancesProps & {
   isOpen?: boolean
   trackingId?: string
   hasActivity?: boolean
+  creditsBalance?: ManaBalancesProps["creditsBalance"]
   notifications?: NotificationsProps
   i18n: UserMenuI18N
   onClickMarketplaceAuthorization?: (

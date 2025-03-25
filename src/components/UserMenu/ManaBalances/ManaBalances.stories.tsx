@@ -26,9 +26,56 @@ const meta: Meta<ManaBalancesProps> = {
 
 type Story = StoryObj<ManaBalancesProps>
 
-// eslint-disable-next-line import/no-default-export
-export default meta
-
-export const Simple: Story = {
+const Simple: Story = {
   args: {},
 }
+
+const WithCredits: Story = {
+  args: {
+    creditsBalance: {
+      balance: 100,
+      expiresAt: Date.now() + 1000 * 60 * 60 * 24 * 30,
+    },
+    i18n: {
+      getCredits: "Earn Credits",
+      creditsExpiringSoon: "Expiring soon",
+      creditsExpiringIn: (value: string) => `Expiring in ${value} days`,
+      creditsValue: "(1 Credit = 1 MANA in value)",
+    },
+  },
+}
+
+const WithCreditsExpiringSoon: Story = {
+  args: {
+    creditsBalance: {
+      balance: 100,
+      expiresAt: Date.now() + 1000 * 60 * 60 * 24 * 3,
+    },
+    i18n: {
+      getCredits: "Earn Credits",
+      creditsExpiringSoon: "Expiring soon",
+      creditsExpiringIn: (value: string) => `Expiring in ${value} days`,
+      creditsValue: "(1 Credit = 1 MANA in value)",
+    },
+  },
+}
+
+const WithNoCredits: Story = {
+  args: {
+    creditsBalance: {
+      balance: 0,
+      expiresAt: Date.now() + 1000 * 60 * 60 * 24 * 30,
+    },
+    i18n: {
+      getCredits: "Earn Credits",
+      creditsExpiringSoon: "Expiring soon",
+      creditsExpiringIn: (value: string) => `Expiring in ${value} days`,
+      creditsValue: "(1 Credit = 1 MANA in value)",
+    },
+  },
+}
+
+export { Simple, WithCredits, WithNoCredits, WithCreditsExpiringSoon }
+
+// eslint-disable-next-line import/no-default-export
+export default meta

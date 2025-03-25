@@ -1,4 +1,5 @@
 import * as React from "react"
+import { ManaBalancesProps } from "./ManaBalances/ManaBalances.types"
 import { UserMenuSignedInProps } from "./UserMenuSignedIn/UserMenuSignedIn.types"
 
 type UserMenuI18N = Record<
@@ -11,7 +12,8 @@ type UserMenuI18N = Record<
   | "marketplaceAuthorizations"
   | "download",
   string
->
+> &
+  ManaBalancesProps["i18n"]
 
 type UserMenuProps = Omit<
   UserMenuSignedInProps,

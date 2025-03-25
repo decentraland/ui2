@@ -208,6 +208,7 @@ const UserMenuActions = (props: UserMenuActionsProps) => {
 const UserMenuSignedIn = React.memo((props: UserMenuSignedInProps) => {
   const {
     manaBalances,
+    creditsBalance,
     avatar,
     hasActivity,
     isOpen,
@@ -274,7 +275,14 @@ const UserMenuSignedIn = React.memo((props: UserMenuSignedInProps) => {
       {!isTabletAndBelow && (
         <ManaBalances
           manaBalances={manaBalances}
+          creditsBalance={creditsBalance}
           onClickBalance={onClickBalance}
+          i18n={{
+            getCredits: actionsProps.i18n?.getCredits,
+            creditsExpiringSoon: actionsProps.i18n?.creditsExpiringSoon,
+            creditsExpiringIn: actionsProps.i18n?.creditsExpiringIn,
+            creditsValue: actionsProps.i18n?.creditsValue,
+          }}
         />
       )}
       <AvatarFaceContainer onClick={handleClickToggle}>
