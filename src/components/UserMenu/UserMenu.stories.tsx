@@ -63,6 +63,10 @@ const Complete: Story = {
   args: {
     avatar: avatar,
     manaBalances: { [Network.ETHEREUM]: 1000, [Network.MATIC]: 2500 },
+    creditsBalance: {
+      balance: 100,
+      expiresAt: Date.now() + 1000 * 60 * 60 * 24 * 30,
+    },
     hasActivity: true,
     isSignedIn: true,
   },

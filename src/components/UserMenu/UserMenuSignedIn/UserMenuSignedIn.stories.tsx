@@ -46,6 +46,10 @@ const SignedIn: Story = {
   name: "Signed in",
   args: {
     manaBalances: { [Network.ETHEREUM]: 1000, [Network.MATIC]: 2500 },
+    creditsBalance: {
+      balance: 20,
+      expiresAt: Date.now() + 1000 * 60 * 60 * 24 * 30,
+    },
   },
 }
 
@@ -53,6 +57,10 @@ const CompleteWithActivity: Story = {
   name: "Complete with activity",
   args: {
     manaBalances: { [Network.ETHEREUM]: 1000, [Network.MATIC]: 2500 },
+    creditsBalance: {
+      balance: 100,
+      expiresAt: Date.now() + 1000 * 60 * 60 * 24 * 3,
+    },
     hasActivity: true,
   },
   render: (args) => {
