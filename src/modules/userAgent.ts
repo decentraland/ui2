@@ -1,7 +1,7 @@
 import { AdvancedNavigatorUAData } from "@dcl/hooks/cjs/hooks/useAdvancedUserAgentData"
 import { OperativeSystem } from "../components/DownloadButton/DownloadButton.types"
 
-const setUserAgentArchitectureDefautlByOs = (
+const setUserAgentArchitectureDefaultByOs = (
   userAgent: AdvancedNavigatorUAData,
   os: OperativeSystem
 ): AdvancedNavigatorUAData => {
@@ -15,4 +15,4 @@ const setUserAgentArchitectureDefautlByOs = (
   return userAgent
 }
 
-export { setUserAgentArchitectureDefautlByOs }
+export { setUserAgentArchitectureDefaultByOs }

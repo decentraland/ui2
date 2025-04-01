@@ -14,7 +14,7 @@ import {
   addQueryParamsToUrlString,
   updateUrlWithLastValue,
 } from "../../modules/url"
-import { setUserAgentArchitectureDefautlByOs } from "../../modules/userAgent"
+import { setUserAgentArchitectureDefaultByOs } from "../../modules/userAgent"
 import { DownloadButton, OperativeSystem } from "../DownloadButton"
 import {
   DownloadButtonAppleIcon,
@@ -55,7 +55,7 @@ const UserMenu = React.memo((props: UserMenuProps) => {
   const searchParams = new URLSearchParams(windowSearchParams)
   const os = searchParams.get("os")
   if (userAgentData && os) {
-    setUserAgentArchitectureDefautlByOs(userAgentData, os as OperativeSystem)
+    setUserAgentArchitectureDefaultByOs(userAgentData, os as OperativeSystem)
   }
 
   const links = getCDNRelease(CDNSource.LAUNCHER)
