@@ -3,13 +3,23 @@ enum OperativeSystem {
   MACOS = "macOS",
 }
 
-type DownloadButtonProps = {
-  href: string
-  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void
+type DownloadOption = {
+  icon: React.ReactNode
+  link: string
+  arch: string
+}
+
+interface DownloadButtonProps {
+  href?: string
+  onClick?: (
+    event: React.MouseEvent<HTMLButtonElement>,
+    options: { type: string; track_uuid?: string; url: string }
+  ) => void
   label?: string
   startIcon?: React.ReactNode
   endIcon?: React.ReactNode
+  trackingId?: string
 }
 
-export type { DownloadButtonProps }
+export type { DownloadButtonProps, DownloadOption }
 export { OperativeSystem }
