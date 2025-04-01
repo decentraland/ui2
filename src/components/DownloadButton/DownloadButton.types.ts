@@ -9,7 +9,7 @@ type DownloadOption = {
   arch: string
 }
 
-interface DownloadButtonProps {
+type DownloadButtonProps = {
   href?: string
   onClick?: (
     event: React.MouseEvent<HTMLButtonElement>,

@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from "react"
+import React, { useCallback, useEffect, useMemo } from "react"
 import { useAdvancedUserAgentData } from "@dcl/hooks"
 import Download from "@mui/icons-material/Download"
 import { config } from "../../config"
@@ -33,7 +33,6 @@ const DownloadButton = React.memo((props: DownloadButtonProps) => {
 
   const [isLoadingUserAgentData, userAgentData] = useAdvancedUserAgentData()
 
-  // Handle OS detection from URL params
   const windowSearchParams =
     typeof window !== "undefined"
       ? new URLSearchParams(window.location.search)
@@ -41,9 +40,11 @@ const DownloadButton = React.memo((props: DownloadButtonProps) => {
   const searchParams = new URLSearchParams(windowSearchParams)
   const os = searchParams.get("os")
 
-  if (userAgentData && os) {
-    setUserAgentArchitectureDefaultByOs(userAgentData, os as OperativeSystem)
-  }
+  useEffect(() => {
+    if (userAgentData && os) {
+      setUserAgentArchitectureDefaultByOs(userAgentData, os as OperativeSystem)
+    }
+  }, [userAgentData, os])
 
   const links = getCDNRelease(CDNSource.LAUNCHER)
 
@@ -79,7 +80,6 @@ const DownloadButton = React.memo((props: DownloadButtonProps) => {
     (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
       event.preventDefault()
 
-      // Execute onClick if provided
       onClick?.(event, {
         type: "DOWNLOAD",
         track_uuid: trackingId,
@@ -87,7 +87,6 @@ const DownloadButton = React.memo((props: DownloadButtonProps) => {
       })
 
       if (!userAgentData || !defaultDownloadOption) {
-        // Generic download for unknown systems
         setTimeout(
           () => {
             window.open(config.get("DOWNLOAD_URL"), "_blank", "noopener")
@@ -97,7 +96,6 @@ const DownloadButton = React.memo((props: DownloadButtonProps) => {
         return
       }
 
-      // OS-specific download
       const redirectUrl = updateUrlWithLastValue(
         config.get("DOWNLOAD_SUCCESS_URL"),
         "os",
@@ -120,11 +118,14 @@ const DownloadButton = React.memo((props: DownloadButtonProps) => {
     [defaultDownloadOption, userAgentData, onClick, trackingId]
   )
 
-  if (isLoadingUserAgentData || !defaultDownloadOption) {
-    if (!userAgentData || userAgentData.mobile || userAgentData.tablet) {
-      return null
-    }
+  if (
+    (isLoadingUserAgentData || !defaultDownloadOption) &&
+    (userAgentData?.mobile || userAgentData?.tablet)
+  ) {
+    return null
+  }
 
+  if (isLoadingUserAgentData || !defaultDownloadOption) {
     return (
       <DownloadButtonStyled
         variant="contained"
