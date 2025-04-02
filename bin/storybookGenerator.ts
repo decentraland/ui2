@@ -1,12 +1,11 @@
 import * as fs from "fs"
 import * as path from "path"
-
-import { componentsConfig, documentComponents } from "./muiComponentConfig"
+import { componentsConfig, documentComponents } from "./muiComponentConfig.tsx"
 import {
   componentTemplate,
   storiesJustArgsTemplate,
   storiesTemplate,
-} from "./templates"
+} from "./templates.ts"
 
 const FOLDER_PATH = "./src/@mui"
 const MATERIAL_PATH = "./node_modules/@mui/material"
