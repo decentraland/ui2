@@ -47,7 +47,7 @@ const CreditsBalanceContainer = styled(Box)({
   alignSelf: "flex-end",
   gap: "8px",
   "& svg": {
-    marginBottom: "3px",
+    marginTop: "0px",
   },
 })
 
@@ -56,6 +56,10 @@ const CreditsBalanceValueContainer = styled(Box)({
   cursor: "pointer",
   alignItems: "center",
   gap: "2px",
+  "& svg": {
+    width: "16px",
+    height: "16px",
+  },
 })
 
 const CreditsBalanceTooltipContainer = styled("div")({
