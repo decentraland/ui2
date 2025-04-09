@@ -12,46 +12,31 @@ type Story = StoryObj<typeof DownloadModal>
 const Default: Story = {
   args: {
     open: true,
+    title: "Default title",
+    description: "Default description text",
+    buttonLabel: "Default button label",
   },
 }
 
-const WithCustomTitle: Story = {
-  args: {
-    open: true,
-    title: "Custom Download Title",
-  },
-}
-
-const WithCustomDescription: Story = {
+const WithCustomTexts: Story = {
   args: {
     open: true,
     title: "Custom Download Title",
     description: "Custom download description text",
-  },
-}
-
-const WithCustomButtonLabel: Story = {
-  args: {
-    open: true,
-    title: "Custom Download Title",
-    description: "Custom download description text",
-    buttonLabel: "Download Now",
+    buttonLabel: "Custom button label",
   },
 }
 
 const WithCustomDownloadHandler: Story = {
   args: {
     open: true,
+    title: "Download Title",
+    description: "download description text",
+    buttonLabel: "Download Now",
     onDownloadClick: () => console.log("Download clicked"),
   },
 }
 
 // eslint-disable-next-line import/no-default-export
 export default meta
-export {
-  Default,
-  WithCustomTitle,
-  WithCustomDescription,
-  WithCustomButtonLabel,
-  WithCustomDownloadHandler,
-}
+export { Default, WithCustomTexts, WithCustomDownloadHandler }
