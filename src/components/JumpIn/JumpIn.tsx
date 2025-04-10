@@ -20,7 +20,6 @@ function JumpIn(props: JumpInProps) {
     compact,
     loading,
     buttonText = "Jump In",
-    trackingData,
     downloadUrl = DEFAULT_DOWNLOAD_URL,
     modalProps,
     desktopAppOptions = {},
@@ -39,10 +38,9 @@ function JumpIn(props: JumpInProps) {
 
       onTrack?.("Jump In", {
         has_launcher: hasLauncher,
-        ...trackingData,
       })
     },
-    [onTrack, trackingData, desktopAppOptions]
+    [onTrack, desktopAppOptions]
   )
 
   const handleDownloadClick = useCallback(

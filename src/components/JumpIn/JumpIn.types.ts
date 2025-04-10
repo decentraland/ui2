@@ -1,8 +1,6 @@
 import { ButtonProps, LinkProps } from "@mui/material"
 import { DownloadModalProps } from "../Modal/DownloadModal/DownloadModal.types"
 
-type TrackingData = Record<string, unknown>
-
 type JumpInBaseProps = {
   /** Position coordinates in format "x,y" or server name for worlds */
   position?: string
@@ -11,11 +9,9 @@ type JumpInBaseProps = {
   /** Whether the component is in loading state */
   loading?: boolean
   /** Optional callback for tracking events with flexible data */
-  onTrack?: (eventName: string, data: TrackingData) => void
+  onTrack?: (eventName: string, data: Record<string, unknown>) => void
   /** Text to display in the button variant */
   buttonText?: string
-  /** Any additional data needed for tracking */
-  trackingData?: TrackingData
   /** URL to open when clicking the download button */
   downloadUrl?: string
   /** Props for the download modal */

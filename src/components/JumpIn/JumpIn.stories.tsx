@@ -152,11 +152,6 @@ const WithTracking: Story = {
   args: {
     variant: "button",
     modalProps: defaultModalProps,
-    trackingData: {
-      placeId: "123",
-      place: "Genesis Plaza",
-      trackingId: "abc",
-    },
   },
   parameters: {
     docs: {
@@ -165,9 +160,6 @@ const WithTracking: Story = {
           "Example with tracking data. Open the console to see tracking events.",
       },
     },
-  },
-  play: async ({ args }) => {
-    console.log("Tracking data:", args.trackingData)
   },
 }
 
