@@ -9,7 +9,7 @@ type JumpInBaseProps = {
   /** Whether the component is in loading state */
   loading?: boolean
   /** Optional callback for tracking events with flexible data */
-  onTrack?: (eventName: string, data: Record<string, unknown>) => void
+  onTrack?: (data: Record<string, unknown>) => void
   /** Text to display in the button variant */
   buttonText?: string
   /** URL to open when clicking the download button */

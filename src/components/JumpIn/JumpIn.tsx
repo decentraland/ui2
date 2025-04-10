@@ -36,7 +36,7 @@ function JumpIn(props: JumpInProps) {
       const hasLauncher = await launchDesktopApp(desktopAppOptions)
       !hasLauncher && setIsModalOpen(true)
 
-      onTrack?.("Jump In", {
+      onTrack?.({
         has_launcher: hasLauncher,
       })
     },
