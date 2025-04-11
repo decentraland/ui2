@@ -3,7 +3,7 @@ import { DownloadModalProps } from "./DownloadModal.types"
 import type { Meta, StoryObj } from "@storybook/react"
 
 const meta: Meta<DownloadModalProps> = {
-  title: "Decentraland UI/DownloadModal",
+  title: "Decentraland UI/Download Modal",
   component: DownloadModal,
   tags: ["autodocs"],
   parameters: {
