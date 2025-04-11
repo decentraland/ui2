@@ -22,7 +22,7 @@ export const components = (
           cursor: "pointer",
           borderRadius: "5px",
           background: "rgba(0, 0, 0, .25)",
-          "-webkit-transition": "color .2s ease",
+          webkitTransition: "color .2s ease",
           transition: "color .2s ease",
         },
         "& ::-webkit-scrollbar": {
