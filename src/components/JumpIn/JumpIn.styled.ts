@@ -1,55 +1,56 @@
 import { styled } from "@mui/material/styles"
 import SvgIcon from "@mui/material/SvgIcon"
-import { Button, Link } from "@mui/material"
+import { Box, Button, Link, Typography } from "@mui/material"
 
-const StyledContainer = styled("div")({
+const StyledContainer = styled(Box)({
   display: "inline-flex",
   flexWrap: "nowrap",
   position: "relative",
   alignItems: "center",
-  gap: "8px",
 })
 
-const StyledPosition = styled("span")<{ compact?: boolean }>(({ compact }) => ({
-  padding: "4px 8px 4px 5px",
-  borderRadius: "4px",
-  backgroundColor: "var(--secondary)",
-  marginRight: "2px",
-  display: "flex",
-  flexWrap: "nowrap",
-  alignItems: "center",
-  height: "24px",
-  gap: "4px",
+const StyledPosition = styled(Typography)<{ compact?: boolean }>(
+  ({ compact, theme }) => ({
+    padding: "4px 8px 4px 5px",
+    borderRadius: "4px",
+    backgroundColor: theme.palette.secondary.main,
+    marginRight: "2px",
+    display: "flex",
+    flexWrap: "nowrap",
+    alignItems: "center",
+    height: "24px",
+    gap: "4px",
 
-  ...(compact && {
-    display: "none",
-    position: "absolute",
-    top: 0,
-    right: "100%",
-    zIndex: 1000,
-    [`${StyledContainer}:hover &`]: {
-      display: "flex",
+    ...(compact && {
+      display: "none",
+      position: "absolute",
+      top: 0,
+      right: "100%",
+      zIndex: 1000,
+      [`${StyledContainer}:hover &`]: {
+        display: "flex",
+      },
+    }),
+
+    "& .MuiTypography-root": {
+      fontSize: "13px",
+      fontWeight: 500,
+      lineHeight: "16px",
+      color: "#736e7d",
     },
-  }),
+  })
+)
 
-  "& span": {
-    fontSize: "13px",
-    fontWeight: 500,
-    lineHeight: "16px",
-    color: "#736e7d",
-  },
-}))
-
-const StyledIcon = styled("span")({
+const StyledIcon = styled(Box)(({ theme }) => ({
   padding: "4px",
   borderRadius: "4px",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  backgroundColor: "var(--primary)",
+  backgroundColor: theme.palette.primary.main,
   width: "24px",
   height: "24px",
-})
+}))
 
 const StyledJumpInButton = styled(Button)({
   display: "inline-flex",
@@ -62,7 +63,7 @@ const StyledJumpInButton = styled(Button)({
   gap: "8px",
   padding: "0 16px",
 
-  "& > span": {
+  "& > .MuiTypography-root": {
     display: "flex",
     alignItems: "center",
   },

@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from "react"
+import { Typography } from "@mui/material"
 import { PrimaryJumpIn } from "./PrimaryJumpIn"
 import { SecondaryPin } from "./SecondaryPin"
 import { launchDesktopApp } from "../../modules/jumpIn"
@@ -14,7 +15,7 @@ import {
 
 const DEFAULT_DOWNLOAD_URL = "https://decentraland.org/download"
 
-function JumpIn(props: JumpInProps) {
+const JumpIn = React.memo((props: JumpInProps) => {
   const {
     position,
     compact,
@@ -86,7 +87,7 @@ function JumpIn(props: JumpInProps) {
         <StyledContainer>
           <StyledPosition compact={compact}>
             {position && <SecondaryPin />}
-            <span>{position}</span>
+            <Typography component="span">{position}</Typography>
           </StyledPosition>
           <StyledIcon>
             <PrimaryJumpIn />
@@ -101,6 +102,6 @@ function JumpIn(props: JumpInProps) {
       />
     </>
   )
-}
+})
 
 export { JumpIn }
