@@ -22,6 +22,7 @@ export * from "./components/DownloadButton"
 export * from "./components/Icon"
 export * from "./components/IconBadge"
 export * from "./components/IconChain"
+export * from "./components/JumpIn"
 export * from "./components/Logo/Logo"
 export * from "./components/Mana"
 export * from "./components/Media"
@@ -33,3 +34,5 @@ export * from "./components/UserMenu"
 export * from "./components/Banner"
 
 export * as dclNetworkUtils from "./lib/network"
+
+export * from "./modules/jumpIn"
