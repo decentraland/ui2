@@ -3,7 +3,7 @@ import { JumpIn } from "./JumpIn"
 import { JumpInProps } from "./JumpIn.types"
 
 const meta = {
-  title: "Decentraland UI/JumpIn",
+  title: "Decentraland UI/Jump In",
   component: JumpIn,
   tags: ["autodocs"],
   parameters: {
