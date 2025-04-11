@@ -2,7 +2,6 @@ import { ButtonProps, LinkProps } from "@mui/material"
 import { DownloadModalProps } from "../Modal/DownloadModal/DownloadModal.types"
 
 type JumpInBaseProps = {
-  className?: string
   /** Position coordinates in format "x,y" or server name for worlds */
   position?: string
   /** Whether to show in compact mode (only icon) */
