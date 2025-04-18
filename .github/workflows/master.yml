@@ -16,7 +16,7 @@ jobs:
     outputs:
       s3_bucket_key: ${{ steps.publish_package.outputs.s3-bucket-key }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@main
       - name: install
         run: npm install
       - name: test
@@ -26,7 +26,7 @@ jobs:
       - name: build
         run: npm run build
       - name: publish packages
-        uses: menduz/oddish-action@master
+        uses: decentraland/oddish-action@master
         id: publish_package
         with:
           registry-url: "https://registry.npmjs.org"
