@@ -39,7 +39,7 @@
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^16.0.1",
     "@dcl/hooks": "^0.0.2",
-    "@dcl/schemas": "^15.6.0",
+    "@dcl/schemas": "^16.6.4",
     "@dcl/ui-env": "^1.5.1",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
