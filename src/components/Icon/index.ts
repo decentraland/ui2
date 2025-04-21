@@ -32,6 +32,7 @@ import { ProjectEnactedIcon } from "./Notifications/ProjectEnactedIcon"
 import { ProposalFinishedIcon } from "./Notifications/ProposalFinishedIcon"
 import { RentPeriodEndingIcon } from "./Notifications/RentPeriodEndingIcon"
 import { RewardIcon } from "./Notifications/RewardIcon"
+import { StreamingIcon } from "./Notifications/StreamingIcon"
 import { TenderIcon } from "./Notifications/TenderIcon"
 import { VotingEndedIcon } from "./Notifications/VotingEndedIcon"
 import { PlacesIcon } from "./PlacesIcon"
@@ -120,6 +121,7 @@ export {
   ProposalFinishedIcon,
   RentPeriodEndingIcon,
   RewardIcon,
+  StreamingIcon,
   TenderIcon,
   VotingEndedIcon,
 }

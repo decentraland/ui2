@@ -24,6 +24,11 @@ import {
   RewardDelayedNotification,
   RewardInProgressNotification,
   RoyaltiesEarnedNotification,
+  StreamingKeyExpiredNotification,
+  StreamingKeyResetNotification,
+  StreamingKeyRevokeNotification,
+  StreamingPlaceUpdatedNotification,
+  StreamingTimeExceededNotification,
   WorldsAccessRestoredNotification,
   WorldsAccessRestrictedNotification,
   WorldsMissingResourcesNotification,
@@ -98,6 +103,13 @@ const NotificationComponentByType: DecentralandNotificationComponentByType<DCLNo
       CampaignGasPriceHigherThanExpectedNotification,
     [NotificationType.REWARD_CAMPAIGN_OUT_OF_STOCK]:
       CampaignOutOfStockNotification,
+    [NotificationType.STREAMING_KEY_RESET]: StreamingKeyResetNotification,
+    [NotificationType.STREAMING_KEY_REVOKE]: StreamingKeyRevokeNotification,
+    [NotificationType.STREAMING_KEY_EXPIRED]: StreamingKeyExpiredNotification,
+    [NotificationType.STREAMING_TIME_EXCEEDED]:
+      StreamingTimeExceededNotification,
+    [NotificationType.STREAMING_PLACE_UPDATED]:
+      StreamingPlaceUpdatedNotification,
   }
 
 const CURRENT_AVAILABLE_NOTIFICATIONS = Object.keys(NotificationComponentByType)
