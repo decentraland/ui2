@@ -6,12 +6,13 @@ const i18n = {
   },
   es: {
     description:
-      "Marketplace Creditos esperan! Salta a completar tus objetivos semanales antes de que se reinicie la semana (23:59 UTC Domingo).",
+      "Marketplace Creditos esperan! Salta a completar tus objetivos semanales antes de que se reinicie la semana (Domingo 23:59 UTC).",
     title: "Salta, Gana Creditos",
   },
   zh: {
-    description: "Marketplace积分即将过期！请在过期前使用它们！",
-    title: "Marketplace积分即将过期",
+    description:
+      "商城积分等你来拿！赶快在本周重置（UTC 时间周日 23:59）之前完成你的每周目标吧。",
+    title: "加入，赢取积分",
   },
 }
 

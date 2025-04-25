@@ -6,7 +6,7 @@ const i18n = {
   },
   es: {
     description:
-      "¡Has ganado Créditos pero aún no los has reclamado! Completa el CAPTCHA en el panel de Recompensas Semanales para reclamar tus Créditos antes de que se reinicie la semana (23:59 UTC Domingo).",
+      "¡Has ganado Créditos pero aún no los has reclamado! Completa el CAPTCHA en el panel de Recompensas Semanales para reclamar tus Créditos antes de que se reinicie la semana (Domingo 23:59 UTC).",
     title: "Reclama Tus Créditos",
   },
   zh: {

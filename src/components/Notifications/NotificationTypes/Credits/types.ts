@@ -1,11 +1,6 @@
 import { NotificationType } from "@dcl/schemas"
 import { RawDecentralandNotification } from "components/Notifications/types"
 
-// type CommonCreditsNotificationMetadataProps = {
-//   title: string
-//   description: string
-// }
-
 type CreditsNotificationsProps =
   | CreditsCompleteYourWeeklyGoalsNotificationProps
   | CreditsDoNotMissOutNotificationProps

@@ -6,7 +6,7 @@ const i18n = {
   },
   es: {
     description:
-      "¡No te pierdas tus Créditos! Completa tus objetivos semanales antes de que se reinicie la semana (23:59 UTC Domingo).",
+      "¡No te pierdas tus Créditos! Completa tus objetivos semanales antes de que se reinicie la semana (Domingo 23:59 UTC).",
     title: "Completa Tus Objetivos Semanales",
   },
   zh: {
