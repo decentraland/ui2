@@ -1,4 +1,5 @@
 import { NFTCategory, NotificationType, Rarity } from "@dcl/schemas"
+import { CreditsCompleteYourWeeklyGoalsNotificationProps, CreditsNotificationsProps } from "./NotificationTypes/Credits/types"
 
 enum NotificationActiveTab {
   NEWEST = "newest",
@@ -365,6 +366,7 @@ type DCLNotificationProps =
   | RewardsNotificationProps
   | EventsNotificationsProps
   | StreamingNotificationsProps
+  | CreditsNotificationsProps
 
 type CommonNotificationProps<N> = {
   notification: N
@@ -412,4 +414,6 @@ export type {
   StreamingNotificationsProps,
   DCLNotificationProps,
   CommonNotificationProps,
+  CreditsNotificationsProps,
+  CreditsCompleteYourWeeklyGoalsNotificationProps,
 }

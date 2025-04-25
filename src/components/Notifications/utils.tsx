@@ -6,6 +6,7 @@ import {
   CampaignGasPriceHigherThanExpectedNotification,
   CampaignOutOfFundsNotification,
   CampaignOutOfStockNotification,
+  CreditsCompleteYourWeeklyGoalsNotification,
   EventsStartedNotification,
   EventsStartsSoonNotification,
   GovernanceAnnouncementNotification,
@@ -110,6 +111,8 @@ const NotificationComponentByType: DecentralandNotificationComponentByType<DCLNo
       StreamingTimeExceededNotification,
     [NotificationType.STREAMING_PLACE_UPDATED]:
       StreamingPlaceUpdatedNotification,
+    [NotificationType.CREDITS_REMINDER_COMPLETE_GOALS]:
+      CreditsCompleteYourWeeklyGoalsNotification,
   }
 
 const CURRENT_AVAILABLE_NOTIFICATIONS = Object.keys(NotificationComponentByType)

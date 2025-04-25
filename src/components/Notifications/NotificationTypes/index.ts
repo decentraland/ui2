@@ -1,3 +1,4 @@
+import { CreditsCompleteYourWeeklyGoalsNotification } from "./Credits/CreditsCompleteYourWeeklyGoalsNotification"
 import { EventsStartedNotification } from "./Events/EventStartedNotification"
 import { EventsStartsSoonNotification } from "./Events/EventStartsSoonNotification"
 import { GovernanceAnnouncementNotification } from "./Governance/GovernanceAnnouncementNotification"
@@ -66,4 +67,5 @@ export {
   WorldsMissingResourcesNotification,
   WorldsPermissionGrantedNotification,
   WorldsPermissionRevokedNotification,
+  CreditsCompleteYourWeeklyGoalsNotification,
 }

@@ -5,6 +5,7 @@ import {
   CampaignGasPriceHigherThanExpectedNotificationProps,
   CampaignOutOfFundsNotificationProps,
   CampaignOutOfStockNotificationProps,
+  CreditsCompleteYourWeeklyGoalsNotificationProps,
   EventsStartedNotificationProps,
   EventsStartsSoonNotificationProps,
   GovernanceAnnouncementNotificationProps,
@@ -658,6 +659,18 @@ const worldsPermissionRevokedNotificationData: WorldsPermissionRevokedNotificati
     updated_at: "2023-11-29T12:51:00.600Z",
   }
 
+const creditsCompleteYourWeeklyGoalsNotificationData: CreditsCompleteYourWeeklyGoalsNotificationProps =
+  {
+    id: NotificationType.CREDITS_REMINDER_COMPLETE_GOALS,
+    type: NotificationType.CREDITS_REMINDER_COMPLETE_GOALS,
+    address: "0x1234567890123456789012345678901234567890",
+    timestamp: new Date().getTime(),
+    read: false,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+    metadata: {},
+  }
+
 const allTypeOfNotifications = [
   bidAcceptedNotificationData,
   bidReceivedNotificationPropsData,
@@ -693,6 +706,7 @@ const allTypeOfNotifications = [
   worldsMissingResourcesNotificationData,
   worldsPermissionGrantedNotificationPropsData,
   worldsPermissionRevokedNotificationData,
+  creditsCompleteYourWeeklyGoalsNotificationData,
 ]
 
 export {
@@ -731,4 +745,5 @@ export {
   worldsMissingResourcesNotificationData,
   worldsPermissionGrantedNotificationPropsData,
   worldsPermissionRevokedNotificationData,
+  creditsCompleteYourWeeklyGoalsNotificationData,
 }

@@ -9,6 +9,7 @@ import {
   campaignGasPriceHigherThanExpectedNotificationData,
   campaignOutOfFundsNotificationData,
   campaignOutOfStockNotificationData,
+  creditsCompleteYourWeeklyGoalsNotificationData,
   eventStartedNotificationData,
   eventStartsSoonFutureStartNotificationData,
   eventStartsSoonPastStartNotificationData,
@@ -184,6 +185,13 @@ const RewardsNotifications: Story = {
   },
 }
 
+const CreditsNotifications: Story = {
+  name: "Credits Notifications",
+  args: {
+    items: [creditsCompleteYourWeeklyGoalsNotificationData],
+  },
+}
+
 const StreamingNotifications: Story = {
   name: "Streaming Notifications",
   args: {
@@ -241,6 +249,7 @@ export {
   LandNotifications,
   MarketplaceNotifications,
   RewardsNotifications,
+  CreditsNotifications,
   StreamingNotifications,
   WorldsNotifications,
   OpenNotLoading,
