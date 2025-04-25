@@ -13,44 +13,45 @@ const CreditsExpireSoonReminderIcon = React.memo((props: SvgIconProps) => {
         xmlnsXlink="http://www.w3.org/1999/xlink"
       >
         <rect
-          x="0.588867"
+          x="0.201172"
           y="0.0332031"
           width="40"
           height="40"
-          fill="url(#paint0_radial_1414_14555)"
+          rx="20"
+          fill="url(#paint0_radial_1376_14710)"
         />
         <rect
-          x="0.588867"
+          x="0.201172"
           y="0.0332031"
           width="39.9998"
           height="40.0015"
-          fill="url(#pattern0_1414_14555)"
+          fill="url(#pattern0_1376_14710)"
         />
         <defs>
           <pattern
-            id="pattern0_1414_14555"
+            id="pattern0_1376_14710"
             patternContentUnits="objectBoundingBox"
             width="1"
             height="1"
           >
             <use
-              xlinkHref="#image0_1414_14555"
+              xlinkHref="#image0_1376_14710"
               transform="translate(-0.267316 -0.265668) scale(0.00323081)"
             />
           </pattern>
           <radialGradient
-            id="paint0_radial_1414_14555"
+            id="paint0_radial_1376_14710"
             cx="0"
             cy="0"
             r="1"
             gradientUnits="userSpaceOnUse"
-            gradientTransform="translate(20.5889 21.2369) rotate(90) scale(44.4259 24.9896)"
+            gradientTransform="translate(20.2012 21.2369) rotate(90) scale(44.4259 24.9896)"
           >
             <stop stopColor="#A0ABFF" />
             <stop offset="1" stopColor="#A0ABFF" />
           </radialGradient>
           <image
-            id="image0_1414_14555"
+            id="image0_1376_14710"
             width="475"
             height="474"
             preserveAspectRatio="none"

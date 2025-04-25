@@ -9,7 +9,11 @@ import {
   campaignGasPriceHigherThanExpectedNotificationData,
   campaignOutOfFundsNotificationData,
   campaignOutOfStockNotificationData,
+  creditsClaimReminderNotificationData,
   creditsCompleteYourWeeklyGoalsNotificationData,
+  creditsDoNotMissOutNotificationData,
+  creditsExpireIn24HrsReminderNotificationData,
+  creditsExpireSoonReminderNotificationData,
   eventStartedNotificationData,
   eventStartsSoonFutureStartNotificationData,
   eventStartsSoonPastStartNotificationData,
@@ -188,7 +192,13 @@ const RewardsNotifications: Story = {
 const CreditsNotifications: Story = {
   name: "Credits Notifications",
   args: {
-    items: [creditsCompleteYourWeeklyGoalsNotificationData],
+    items: [
+      creditsCompleteYourWeeklyGoalsNotificationData,
+      creditsDoNotMissOutNotificationData,
+      creditsClaimReminderNotificationData,
+      creditsExpireSoonReminderNotificationData,
+      creditsExpireIn24HrsReminderNotificationData,
+    ],
   },
 }
 

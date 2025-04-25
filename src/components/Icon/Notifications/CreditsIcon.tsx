@@ -10,47 +10,48 @@ const CreditsIcon = React.memo((props: SvgIconProps) => {
         viewBox="0 0 41 41"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        xlinkHref="http://www.w3.org/1999/xlink"
+        xmlnsXlink="http://www.w3.org/1999/xlink"
       >
         <rect
-          x="0.929688"
+          x="0.400391"
           y="0.0332031"
           width="40"
           height="40"
-          fill="url(#paint0_radial_1414_14545)"
+          rx="20"
+          fill="url(#paint0_radial_1376_14567)"
         />
         <rect
-          x="3.93262"
+          x="3.40332"
           y="4.5332"
           width="33.9926"
           height="31"
-          fill="url(#pattern0_1414_14545)"
+          fill="url(#pattern0_1376_14567)"
         />
         <defs>
           <pattern
-            id="pattern0_1414_14545"
+            id="pattern0_1376_14567"
             patternContentUnits="objectBoundingBox"
             width="1"
             height="1"
           >
             <use
-              xlinkHref="#image0_1414_14545"
+              xlinkHref="#image0_1376_14567"
               transform="matrix(0.00340136 0 0 0.00372971 0 -0.0482679)"
             />
           </pattern>
           <radialGradient
-            id="paint0_radial_1414_14545"
+            id="paint0_radial_1376_14567"
             cx="0"
             cy="0"
             r="1"
             gradientUnits="userSpaceOnUse"
-            gradientTransform="translate(20.9297 21.2369) rotate(90) scale(44.4259 24.9896)"
+            gradientTransform="translate(20.4004 21.2369) rotate(90) scale(44.4259 24.9896)"
           >
             <stop stopColor="#A0ABFF" />
             <stop offset="1" stopColor="#A0ABFF" />
           </radialGradient>
           <image
-            id="image0_1414_14545"
+            id="image0_1376_14567"
             width="294"
             height="294"
             preserveAspectRatio="none"

@@ -5,7 +5,9 @@ import {
   CampaignGasPriceHigherThanExpectedNotificationProps,
   CampaignOutOfFundsNotificationProps,
   CampaignOutOfStockNotificationProps,
+  CreditsClaimReminderNotificationProps,
   CreditsCompleteYourWeeklyGoalsNotificationProps,
+  CreditsDoNotMissOutNotificationProps,
   EventsStartedNotificationProps,
   EventsStartsSoonNotificationProps,
   GovernanceAnnouncementNotificationProps,
@@ -35,6 +37,7 @@ import {
   WorldsPermissionGrantedNotificationProps,
   WorldsPermissionRevokedNotificationProps,
 } from "../components/Notifications/types"
+import { CreditsExpireIn24HrsReminderNotificationProps, CreditsExpireSoonReminderNotificationProps } from "components/Notifications/NotificationTypes/Credits/types"
 
 const futureStartDate = new Date()
 futureStartDate.setSeconds(futureStartDate.getSeconds() + 120)
@@ -671,6 +674,58 @@ const creditsCompleteYourWeeklyGoalsNotificationData: CreditsCompleteYourWeeklyG
     metadata: {},
   }
 
+const creditsDoNotMissOutNotificationData: CreditsDoNotMissOutNotificationProps =
+  {
+    id: NotificationType.CREDITS_REMINDER_DO_NOT_MISS_OUT,
+    type: NotificationType.CREDITS_REMINDER_DO_NOT_MISS_OUT,
+    address: "0x1234567890123456789012345678901234567890",
+    timestamp: new Date().getTime(),
+    read: false,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+    metadata: {},
+  }
+
+const creditsClaimReminderNotificationData: CreditsClaimReminderNotificationProps =
+  {
+    id: NotificationType.CREDITS_REMINDER_CLAIM_CREDITS,
+    type: NotificationType.CREDITS_REMINDER_CLAIM_CREDITS,
+    address: "0x1234567890123456789012345678901234567890",
+    timestamp: new Date().getTime(),
+    read: true,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+    metadata: {},
+  }
+
+const creditsExpireSoonReminderNotificationData: CreditsExpireSoonReminderNotificationProps =
+  {
+    id: NotificationType.CREDITS_REMINDER_USAGE,
+    type: NotificationType.CREDITS_REMINDER_USAGE,
+    address: "0x1234567890123456789012345678901234567890",
+    timestamp: new Date().getTime(),
+    read: true,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+    metadata: {
+      expirationDate: "July 27 at 23:59 UTC",
+    },
+  }
+
+const creditsExpireIn24HrsReminderNotificationData: CreditsExpireIn24HrsReminderNotificationProps =
+  {
+    id: NotificationType.CREDITS_REMINDER_USAGE_24_HOURS,
+    type: NotificationType.CREDITS_REMINDER_USAGE_24_HOURS,
+    address: "0x1234567890123456789012345678901234567890",
+    timestamp: new Date().getTime(),
+    read: true,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+    metadata: {
+      expirationDate: "July 27 at 23:59 UTC",
+    },
+  }
+
 const allTypeOfNotifications = [
   bidAcceptedNotificationData,
   bidReceivedNotificationPropsData,
@@ -707,6 +762,10 @@ const allTypeOfNotifications = [
   worldsPermissionGrantedNotificationPropsData,
   worldsPermissionRevokedNotificationData,
   creditsCompleteYourWeeklyGoalsNotificationData,
+  creditsDoNotMissOutNotificationData,
+  creditsClaimReminderNotificationData,
+  creditsExpireSoonReminderNotificationData,
+  creditsExpireIn24HrsReminderNotificationData,
 ]
 
 export {
@@ -746,4 +805,8 @@ export {
   worldsPermissionGrantedNotificationPropsData,
   worldsPermissionRevokedNotificationData,
   creditsCompleteYourWeeklyGoalsNotificationData,
+  creditsDoNotMissOutNotificationData,
+  creditsClaimReminderNotificationData,
+  creditsExpireSoonReminderNotificationData,
+  creditsExpireIn24HrsReminderNotificationData,
 }
