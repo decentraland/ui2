@@ -10,8 +10,7 @@ const i18n = {
     title: "Completa Tus Objetivos Semanales",
   },
   zh: {
-    description:
-      "不要错过你的积分！在星期日23:59 UTC之前完成你的每周目标。",
+    description: "不要错过你的积分！在星期日23:59 UTC之前完成你的每周目标。",
     title: "完成你的每周目标",
   },
 }
