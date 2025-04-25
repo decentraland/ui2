@@ -1,3 +1,8 @@
+import { CreditsClaimReminderNotification } from "./Credits/CreditsClaimReminderNotification"
+import { CreditsCompleteYourWeeklyGoalsNotification } from "./Credits/CreditsCompleteYourWeeklyGoalsNotification"
+import { CreditsDoNotMissOutNotification } from "./Credits/CreditsDoNotMissOutNotification"
+import { CreditsExpireIn24HrsReminderNotification } from "./Credits/CreditsExpireIn24HrsReminderNotification"
+import { CreditsExpireSoonReminderNotification } from "./Credits/CreditsExpireSoonReminderNotification"
 import { EventsStartedNotification } from "./Events/EventStartedNotification"
 import { EventsStartsSoonNotification } from "./Events/EventStartsSoonNotification"
 import { GovernanceAnnouncementNotification } from "./Governance/GovernanceAnnouncementNotification"
@@ -66,4 +71,9 @@ export {
   WorldsMissingResourcesNotification,
   WorldsPermissionGrantedNotification,
   WorldsPermissionRevokedNotification,
+  CreditsCompleteYourWeeklyGoalsNotification,
+  CreditsDoNotMissOutNotification,
+  CreditsClaimReminderNotification,
+  CreditsExpireSoonReminderNotification,
+  CreditsExpireIn24HrsReminderNotification,
 }
