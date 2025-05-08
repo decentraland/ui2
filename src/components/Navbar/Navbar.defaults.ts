@@ -36,7 +36,7 @@ const navbarSubmenu = {
       {
         title: "Wearables",
         description: "Customize your digital identity",
-        url: config.get("MARKETPLACE_WEARABLES_URL"),
+        url: `${config.get("MARKETPLACE_URL")}/browse?assetType=item&section=wearables&status=on_sale`,
         eventTrackingName: "marketplace_wearables",
       },
       {
@@ -50,7 +50,7 @@ const navbarSubmenu = {
       {
         title: "Emotes",
         description: "Animate your avatar",
-        url: config.get("MARKETPLACE_EMOTES_URL"),
+        url: `${config.get("MARKETPLACE_URL")}/browse?assetType=item&section=emotes&status=on_sale`,
         eventTrackingName: "marketplace_emotes",
       },
       {
