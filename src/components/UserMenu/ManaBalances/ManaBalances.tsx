@@ -56,8 +56,11 @@ const ManaBalances = React.memo((props: ManaBalancesProps) => {
                 <GetCreditsButton
                   variant="text"
                   onClick={() => {
-                    // TODO: review this link
-                    window.open(config.get("CREDITS_DOCS_URL"), "_blank")
+                    window.open(
+                      `${config.get("BLOG_URL")}announcements/marketplace-credits-earn-weekly-rewards-to-power-up-your-look?utm_org=dcl&utm_source=marketplace&utm_medium=organic&utm_campaign=marketplacecredits`,
+                      "_blank",
+                      "noopener noreferrer"
+                    )
                   }}
                 >
                   {i18n?.getCredits || "Earn Credits"}
