@@ -28,7 +28,7 @@ const ManaBalances = React.memo((props: ManaBalancesProps) => {
   // calculates in how much time they expire. This returns days remaining
   const creditsExpiringIn =
     creditsBalance &&
-    Math.ceil((creditsBalance.expiresAt - Date.now()) / (1000 * 60 * 60 * 24))
+    Math.floor((creditsBalance.expiresAt - Date.now()) / (1000 * 60 * 60 * 24))
 
   return (
     <ManaBalancesWrapper>
