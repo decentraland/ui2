@@ -17,6 +17,9 @@ const ManaBalancesWrapper = styled("div")((props) => {
       flexDirection: "row",
       alignItems: "center",
     },
+    [theme.breakpoints.down("sm")]: {
+      alignItems: "flex-start",
+    },
   }
 })
 
@@ -41,14 +44,20 @@ const ManaBalanceNumber = styled(Typography)({
   lineHeight: "inherit",
 })
 
-const CreditsBalanceContainer = styled(Box)({
-  color: "#A0ABFF",
-  fontWeight: 600,
-  alignSelf: "flex-end",
-  gap: "8px",
-  "& svg": {
-    marginTop: "0px",
-  },
+const CreditsBalanceContainer = styled(Box)((props) => {
+  const { theme } = props
+  return {
+    color: "#A0ABFF",
+    fontWeight: 600,
+    alignSelf: "flex-end",
+    gap: "8px",
+    "& svg": {
+      marginTop: "0px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      alignSelf: "flex-start",
+    },
+  }
 })
 
 const CreditsBalanceValueContainer = styled(Box)({

@@ -88,6 +88,11 @@ const CompleteWithActivity: Story = {
             onClick: () => setOpenNotification(true),
             onClose: () => setOpenNotification(false),
           }}
+          manaBalances={{ [Network.ETHEREUM]: 1000, [Network.MATIC]: 2500 }}
+          creditsBalance={{
+            balance: 100,
+            expiresAt: Date.now() + 1000 * 60 * 60 * 24 * 3,
+          }}
           isOpen={open}
           onClickToggle={() => setOpen(true)}
           onClickClose={() => setOpen(false)}
