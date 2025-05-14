@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { ChainId } from "@dcl/schemas"
+import { ChainId, Network } from "@dcl/schemas"
 import { Box, Toolbar, Typography } from "@mui/material"
 import { Navbar } from "./Navbar"
 import { avatar } from "../../data/avatar"
@@ -147,6 +147,11 @@ const WithChainSelector: Story = {
           onChangeTab: (_e, tab) => setTab(tab),
           onClick: () => setOpenNotification(true),
           onClose: () => setOpenNotification(false),
+        }}
+        manaBalances={{ [Network.ETHEREUM]: 1000, [Network.MATIC]: 2500 }}
+        creditsBalance={{
+          balance: 100,
+          expiresAt: Date.now() + 1000 * 60 * 60 * 24 * 100,
         }}
       />
     )

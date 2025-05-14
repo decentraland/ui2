@@ -145,8 +145,9 @@ const MenuContainer = styled(Menu)((props) => {
 
 const MenuInfoContainer = styled(Box)({
   display: "flex",
-  alignItems: "center",
+  alignItems: "flex-start",
   padding: "64px 0 47px",
+  flexDirection: "column",
 })
 
 const MenuInfoTypography = styled(Typography)((props) => {

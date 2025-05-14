@@ -42,7 +42,10 @@ const UserMenuActions = (props: UserMenuActionsProps) => {
     onClickSignOut,
     onClickAccount,
     onClickUserMenuItem,
+    balances,
   } = props
+
+  const isTabletAndBelow = useTabletAndBelowMediaQuery()
 
   const handleClickMyAssets = useCallback(
     (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
@@ -167,6 +170,7 @@ const UserMenuActions = (props: UserMenuActionsProps) => {
               </MenuInfoUnclaimedTypography>
             )}
           </MenuInfoTypography>
+          {isTabletAndBelow && balances}
         </MenuInfoContainer>
         <ActionsWrapper>
           <ActionsMenuItem onClick={handleClickProfile}>
@@ -226,6 +230,22 @@ const UserMenuSignedIn = React.memo((props: UserMenuSignedInProps) => {
 
   const isTabletAndBelow = useTabletAndBelowMediaQuery()
 
+  const balances = useMemo(() => {
+    return (
+      <ManaBalances
+        manaBalances={manaBalances}
+        creditsBalance={creditsBalance}
+        onClickBalance={onClickBalance}
+        i18n={{
+          getCredits: actionsProps.i18n?.getCredits,
+          creditsExpiringSoon: actionsProps.i18n?.creditsExpiringSoon,
+          creditsExpiringIn: actionsProps.i18n?.creditsExpiringIn,
+          creditsValue: actionsProps.i18n?.creditsValue,
+        }}
+      />
+    )
+  }, [manaBalances, creditsBalance])
+
   const handleClickActivity = useCallback(
     (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
       onClickUserMenuItem &&
@@ -272,19 +292,7 @@ const UserMenuSignedIn = React.memo((props: UserMenuSignedInProps) => {
           </Badge>
         </IconButton>
       )}
-      {!isTabletAndBelow && (
-        <ManaBalances
-          manaBalances={manaBalances}
-          creditsBalance={creditsBalance}
-          onClickBalance={onClickBalance}
-          i18n={{
-            getCredits: actionsProps.i18n?.getCredits,
-            creditsExpiringSoon: actionsProps.i18n?.creditsExpiringSoon,
-            creditsExpiringIn: actionsProps.i18n?.creditsExpiringIn,
-            creditsValue: actionsProps.i18n?.creditsValue,
-          }}
-        />
-      )}
+      {!isTabletAndBelow && balances}
       <AvatarFaceContainer onClick={handleClickToggle}>
         <AvatarFace size="medium" avatar={avatar} />
       </AvatarFaceContainer>
@@ -316,6 +324,7 @@ const UserMenuSignedIn = React.memo((props: UserMenuSignedInProps) => {
         )}
         {isTabletAndBelow && isOpen && (
           <UserMenuActions
+            balances={balances}
             onClickUserMenuItem={onClickUserMenuItem}
             avatar={avatar}
             trackingId={trackingId}
