@@ -19,6 +19,7 @@ type DownloadButtonProps = {
   startIcon?: React.ReactNode
   endIcon?: React.ReactNode
   trackingId?: string
+  cdnLinks?: Record<string, Record<string, string>>
 }
 
 export type { DownloadButtonProps, DownloadOption }
