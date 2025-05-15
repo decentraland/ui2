@@ -29,6 +29,7 @@ const DownloadButton = React.memo((props: DownloadButtonProps) => {
     href,
     startIcon,
     endIcon,
+    cdnLinks,
   } = props
 
   const [isLoadingUserAgentData, userAgentData] = useAdvancedUserAgentData()
@@ -46,7 +47,8 @@ const DownloadButton = React.memo((props: DownloadButtonProps) => {
     }
   }, [userAgentData, os])
 
-  const links = getCDNRelease(CDNSource.LAUNCHER)
+  const defaultLinks = getCDNRelease(CDNSource.LAUNCHER)
+  const links = cdnLinks || defaultLinks
 
   const defaultDownloadOption: DownloadOption | null = useMemo(() => {
     if (
