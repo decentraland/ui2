@@ -30,6 +30,7 @@ const DownloadButton = React.memo((props: DownloadButtonProps) => {
     startIcon,
     endIcon,
     cdnLinks,
+    onRedirect,
   } = props
 
   const [isLoadingUserAgentData, userAgentData] = useAdvancedUserAgentData()
@@ -111,13 +112,15 @@ const DownloadButton = React.memo((props: DownloadButtonProps) => {
       setTimeout(
         () => {
           triggerFileDownload(defaultDownloadOption.link).then(() => {
-            window.location.href = finalUrl
+            onRedirect
+              ? onRedirect(finalUrl)
+              : (window.location.href = finalUrl)
           })
         },
         onClick ? 300 : 0
       )
     },
-    [defaultDownloadOption, userAgentData, onClick, trackingId]
+    [defaultDownloadOption, userAgentData, onClick, onRedirect, trackingId]
   )
 
   if (

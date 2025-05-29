@@ -20,6 +20,7 @@ type DownloadButtonProps = {
   endIcon?: React.ReactNode
   trackingId?: string
   cdnLinks?: Record<string, Record<string, string>>
+  onRedirect?: (url: string) => void
 }
 
 export type { DownloadButtonProps, DownloadOption }
