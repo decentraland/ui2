@@ -27,6 +27,7 @@ const UserMenu = React.memo((props: UserMenuProps) => {
     onClickBalance,
     onClickOpen,
     onClickUserMenuItem,
+    loadingCdnLinks = false,
     ...signInProps
   } = props
 
@@ -132,6 +133,7 @@ const UserMenu = React.memo((props: UserMenuProps) => {
               label={i18n.download}
               onClick={onClickUserMenuItem}
               trackingId={trackingId}
+              loadingCdnLinks={loadingCdnLinks}
               cdnLinks={cdnLinks}
             />
           )}
