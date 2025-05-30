@@ -19,6 +19,7 @@ type DownloadButtonProps = {
   startIcon?: React.ReactNode
   endIcon?: React.ReactNode
   trackingId?: string
+  loadingCdnLinks?: boolean
   cdnLinks?: Record<string, Record<string, string>>
   onRedirect?: (url: string) => void
 }

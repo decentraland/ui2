@@ -29,6 +29,7 @@ const DownloadButton = React.memo((props: DownloadButtonProps) => {
     href,
     startIcon,
     endIcon,
+    loadingCdnLinks = false,
     cdnLinks,
     onRedirect,
   } = props
@@ -138,6 +139,7 @@ const DownloadButton = React.memo((props: DownloadButtonProps) => {
         onClick={handleClick}
         startIcon={startIcon || <Download />}
         endIcon={endIcon}
+        loading={loadingCdnLinks}
       >
         <DownloadButtonLabelContainer>{label}</DownloadButtonLabelContainer>
       </DownloadButtonStyled>
@@ -151,6 +153,7 @@ const DownloadButton = React.memo((props: DownloadButtonProps) => {
       onClick={handleClick}
       startIcon={startIcon}
       endIcon={endIcon || defaultDownloadOption.icon}
+      loading={loadingCdnLinks}
     >
       <DownloadButtonLabelContainer>{label}</DownloadButtonLabelContainer>
     </DownloadButtonStyled>
