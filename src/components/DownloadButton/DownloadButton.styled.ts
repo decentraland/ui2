@@ -1,5 +1,6 @@
 import styled from "@emotion/styled"
-import { Box, Button } from "@mui/material"
+import { Box } from "@mui/material"
+import { Button } from "../Button"
 import { AppleIcon } from "../Icon/AppleIcon"
 import { WindowsIcon } from "../Icon/WindowsIcon"
 
