@@ -20,14 +20,14 @@ type CDNConfig = {
 
 const CDN_CONFIGS: Record<CDNSource, CDNConfig> = {
   [CDNSource.LAUNCHER]: {
-    baseUrl: "https://explorer-artifacts.decentraland.org/launcher/dcl",
+    baseUrl: "https://explorer-artifacts.decentraland.org/launcher-rust",
     fileNamePattern: {
       [OperativeSystem.WINDOWS]: {
-        amd64: "Decentraland%20Launcher-win-x64.exe",
+        amd64: "Decentraland_x64-setup.exe",
       },
       [OperativeSystem.MACOS]: {
-        amd64: "Decentraland%20Launcher-mac-x64.dmg",
-        arm64: "Decentraland%20Launcher-mac-arm64.dmg",
+        amd64: "Decentraland_aarch64.dmg",
+        arm64: "Decentraland_aarch64.dmg",
       },
     },
   },
