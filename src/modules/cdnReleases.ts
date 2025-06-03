@@ -6,8 +6,7 @@ enum CDNSource {
 }
 
 type CDNConfig = {
-  baseUrl: string
-  fileNamePattern: {
+  urls: {
     Windows: {
       amd64: string
     }
@@ -17,17 +16,20 @@ type CDNConfig = {
     }
   }
 }
+const LAUNCHER_BASE_URL =
+  "https://explorer-artifacts.decentraland.org/launcher-rust"
+const LAUNCHER_LEGACY_BASE_URL =
+  "https://explorer-artifacts.decentraland.org/launcher/dcl"
 
 const CDN_CONFIGS: Record<CDNSource, CDNConfig> = {
   [CDNSource.LAUNCHER]: {
-    baseUrl: "https://explorer-artifacts.decentraland.org/launcher-rust",
-    fileNamePattern: {
+    urls: {
       [OperativeSystem.WINDOWS]: {
-        amd64: "Decentraland_x64-setup.exe",
+        amd64: `${LAUNCHER_BASE_URL}/Decentraland_x64-setup.exe`,
       },
       [OperativeSystem.MACOS]: {
-        amd64: "Decentraland_aarch64.dmg",
-        arm64: "Decentraland_aarch64.dmg",
+        amd64: `${LAUNCHER_LEGACY_BASE_URL}/Decentraland%20Launcher-mac-x64.dmg`,
+        arm64: `${LAUNCHER_BASE_URL}/Decentraland_aarch64.dmg`,
       },
     },
   },
@@ -42,11 +44,11 @@ const getCDNRelease = (source: CDNSource) => {
 
   return {
     [OperativeSystem.WINDOWS]: {
-      amd64: `${config.baseUrl}/${config.fileNamePattern.Windows.amd64}`,
+      amd64: config.urls.Windows.amd64,
     },
     [OperativeSystem.MACOS]: {
-      amd64: `${config.baseUrl}/${config.fileNamePattern.macOS.amd64}`,
-      arm64: `${config.baseUrl}/${config.fileNamePattern.macOS.arm64}`,
+      amd64: config.urls.macOS.amd64,
+      arm64: config.urls.macOS.arm64,
     },
   }
 }
