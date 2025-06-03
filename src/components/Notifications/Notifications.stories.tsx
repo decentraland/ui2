@@ -9,6 +9,11 @@ import {
   campaignGasPriceHigherThanExpectedNotificationData,
   campaignOutOfFundsNotificationData,
   campaignOutOfStockNotificationData,
+  creditsClaimReminderNotificationData,
+  creditsCompleteYourWeeklyGoalsNotificationData,
+  creditsDoNotMissOutNotificationData,
+  creditsExpireIn24HrsReminderNotificationData,
+  creditsExpireSoonReminderNotificationData,
   eventStartedNotificationData,
   eventStartsSoonFutureStartNotificationData,
   eventStartsSoonPastStartNotificationData,
@@ -28,6 +33,11 @@ import {
   rewardDelayedNotificationData,
   rewardInProgressNotificationData,
   royalitesEarnedNotificationPropsData,
+  streamingKeyExpiredNotificationData,
+  streamingKeyResetNotificationData,
+  streamingKeyRevokeNotificationData,
+  streamingPlaceUpdatedNotificationData,
+  streamingTimeExceededNotificationData,
   worldsAccessRestoredNotificationData,
   worldsAccessRestrictedNotificationData,
   worldsMissingResourcesNotificationData,
@@ -49,9 +59,12 @@ const meta: Meta = {
     return (
       <Box
         sx={{
-          height: "400px",
-          width: "400px",
-          backgroundColor: "lightgray",
+          height: "35px",
+          width: "200px",
+          display: "flex",
+          justifyContent: "center",
+          backgroundColor: ({ palette }) =>
+            palette.mode === "light" ? "#f0f0f0" : "#1a091c",
         }}
       >
         <Notifications
@@ -176,6 +189,32 @@ const RewardsNotifications: Story = {
   },
 }
 
+const CreditsNotifications: Story = {
+  name: "Credits Notifications",
+  args: {
+    items: [
+      creditsCompleteYourWeeklyGoalsNotificationData,
+      creditsDoNotMissOutNotificationData,
+      creditsClaimReminderNotificationData,
+      creditsExpireSoonReminderNotificationData,
+      creditsExpireIn24HrsReminderNotificationData,
+    ],
+  },
+}
+
+const StreamingNotifications: Story = {
+  name: "Streaming Notifications",
+  args: {
+    items: [
+      streamingKeyExpiredNotificationData,
+      streamingKeyResetNotificationData,
+      streamingKeyRevokeNotificationData,
+      streamingPlaceUpdatedNotificationData,
+      streamingTimeExceededNotificationData,
+    ],
+  },
+}
+
 const WorldsNotifications: Story = {
   name: "Worlds Notifications",
   args: {
@@ -220,6 +259,8 @@ export {
   LandNotifications,
   MarketplaceNotifications,
   RewardsNotifications,
+  CreditsNotifications,
+  StreamingNotifications,
   WorldsNotifications,
   OpenNotLoading,
   OnlySeen,

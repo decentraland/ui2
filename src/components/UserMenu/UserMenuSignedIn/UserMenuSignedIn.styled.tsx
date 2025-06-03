@@ -6,114 +6,135 @@ import {
   ListItemIcon,
   Menu,
   MenuItem,
-  Palette,
   Paper,
   Typography,
-  useTheme,
 } from "@mui/material"
-import ManDefault from "../../../Assets/man-default.png"
+import ManDefault from "../../../Assets/man-default1.png"
 
-const UserMenuSignedInContainer = styled(Box)({
-  display: "flex",
-  position: "relative",
-  textAlign: "left",
-  outline: "none",
-  justifyContent: "flex-end",
-  alignItems: "center",
-  height: "66px",
-  "& > *": {
-    marginLeft: "16px",
-  },
-})
+interface AvatarPreviewProps {
+  avatar?: Avatar
+}
 
-const ActivityIcon = styled(HistoryRoundedIcon)(() => {
-  const theme = useTheme<{
-    palette: Palette & { icon: string }
-  }>()
-
+const UserMenuSignedInContainer = styled(Box)((props) => {
+  const { theme } = props
   return {
-    "& path": {
-      fill: theme.palette.icon,
+    display: "flex",
+    position: "relative",
+    textAlign: "left",
+    outline: "none",
+    justifyContent: "flex-end",
+    alignItems: "center",
+    height: "66px",
+    [theme!.breakpoints.up("sm")]: {
+      "& > *": {
+        marginLeft: "16px",
+      },
     },
   }
 })
 
-const AvatarFaceContainer = styled(Box)({
-  cursor: "pointer",
-  marginLeft: "16px",
-  marginRight: "16px",
+const ActivityIcon = styled(HistoryRoundedIcon)((props) => {
+  const { theme } = props
+  return {
+    "& path": {
+      fill: theme!.palette.icon,
+    },
+  }
 })
 
-const ActionsContainer = styled(Paper)(() => {
-  const theme = useTheme()
+const AvatarFaceContainer = styled(Box)((props) => {
+  const { theme } = props
+  return {
+    cursor: "pointer",
+    marginLeft: "16px",
+    marginRight: "16px",
+    [theme.breakpoints.down("sm")]: {
+      marginRight: "0",
+    },
+  }
+})
+
+const ActionsContainer = styled(Paper)((props) => {
+  const { theme } = props
   return {
     height: "607px",
     width: "561px",
     display: "flex",
-    flexDirection: "row" as const,
+    flexDirection: "row",
     justifyContent: "flex-start",
     overflow: "hidden",
-    [theme.breakpoints.down("sm")]: {
-      marginLeft: "25px",
-      marginRight: "22px",
-      width: "calc(100% - 25px - 22px)",
-      height: "auto",
+    [theme!.breakpoints.down("sm")]: {
+      position: "fixed",
+      flexDirection: "column-reverse",
+      top: "66px",
+      left: 0,
+      paddingLeft: "25px",
+      paddingRight: "22px",
+      width: "100vw",
+      height: "calc(100vh - 66px)",
     },
   }
 })
 
-const AvatarPreviewContainer = styled(Box)({
-  height: "110%",
-  marginLeft: "-100px",
-  marginBottom: "-100px",
-  width: "330px",
+const AvatarPreviewContainer = styled(Box)((props) => {
+  const { theme } = props
+  return {
+    height: "100%",
+    width: "330px",
+    [theme!.breakpoints.down("sm")]: {
+      width: "100%",
+    },
+  }
 })
 
-const AvatarPreview = styled(Box)((props: { avatar?: Avatar }) => {
+const AvatarPreview = styled(Box)<AvatarPreviewProps>((props) => {
+  const { avatar } = props
   let styles = {
     height: "100%",
     width: "100%",
     backgroundRepeat: "no-repeat",
-    backgroundSize: "55%",
+    backgroundSize: "80%",
     backgroundImage: `url(${ManDefault})`,
-    backgroundPosition: "center",
-    backgroundPositionX: "50px",
-    backgroundPositionY: "70px",
+    backgroundPosition: "bottom center",
   }
 
-  if (props.avatar?.avatar?.snapshots?.body) {
+  if (avatar?.avatar?.snapshots?.body) {
     styles = {
       ...styles,
       backgroundSize: "contain",
-      backgroundImage: `url("${props.avatar.avatar.snapshots.body}")`,
-      backgroundPositionX: "0px",
-      backgroundPositionY: "0px",
+      backgroundImage: `url("${avatar.avatar.snapshots.body}")`,
     }
   }
 
   return styles
 })
 
-const MenuInformationActionContainer = styled(Box)({
-  height: "100%",
-  width: "331px",
-  display: "flex",
-  flexDirection: "column",
+const MenuInformationActionContainer = styled(Box)((props) => {
+  const { theme } = props
+  return {
+    height: "100%",
+    width: "331px",
+    display: "flex",
+    flexDirection: "column",
+    [theme!.breakpoints.down("sm")]: {
+      width: "100%",
+    },
+  }
 })
 
-const MenuContainer = styled(Menu)(() => {
-  const theme = useTheme()
+const MenuContainer = styled(Menu)((props) => {
+  const { theme } = props
   return {
     height: "720px",
     width: "561px",
     display: "flex",
-    flexDirection: "column" as const,
+    flexDirection: "column",
     justifyContent: "flex-start",
     "& .MuiPaper-root .MuiList-root": {
       paddingTop: 0,
       paddingBottom: 0,
     },
-    [theme.breakpoints.down("sm")]: {
+    [theme!.breakpoints.down("sm")]: {
       marginLeft: "25px",
       marginRight: "22px",
       width: "calc(100% - 25px - 22px)",
@@ -124,21 +145,22 @@ const MenuContainer = styled(Menu)(() => {
 
 const MenuInfoContainer = styled(Box)({
   display: "flex",
-  alignItems: "center",
+  alignItems: "flex-start",
   padding: "64px 0 47px",
+  flexDirection: "column",
 })
 
-const MenuInfoTypography = styled(Typography)(() => {
-  const theme = useTheme()
+const MenuInfoTypography = styled(Typography)((props) => {
+  const { theme } = props
   return {
-    color: theme.palette.text.primary,
+    color: theme!.palette.text.primary,
   }
 })
 
-const MenuInfoUnclaimedTypography = styled("span")(() => {
-  const theme = useTheme()
+const MenuInfoUnclaimedTypography = styled("span")((props) => {
+  const { theme } = props
   return {
-    color: theme.palette.text.secondary,
+    color: theme!.palette.text.secondary,
     marginLeft: "12px",
     fontSize: "20px",
     fontStyle: "normal",
@@ -147,21 +169,27 @@ const MenuInfoUnclaimedTypography = styled("span")(() => {
   }
 })
 
-const ActionsWrapper = styled(Box)({
-  height: "330px",
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "flex-start",
-  margin: "0 55px 0 0",
+const ActionsWrapper = styled(Box)((props) => {
+  const { theme } = props
+  return {
+    height: "330px",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "flex-start",
+    margin: "0 55px 0 0",
+    [theme!.breakpoints.down("sm")]: {
+      margin: "0",
+    },
+  }
 })
 
-const ActionsMenuItem = styled(MenuItem)(() => {
-  const theme = useTheme()
+const ActionsMenuItem = styled(MenuItem)((props) => {
+  const { theme } = props
   return {
-    borderBottomColor: theme.palette.text.primary,
+    borderBottomColor: theme!.palette.text.primary,
     borderBottomWidth: "1px",
-    borderBottomStyle: "solid" as const,
-    color: theme.palette.text.primary,
+    borderBottomStyle: "solid",
+    color: theme!.palette.text.primary,
     paddingLeft: 0,
     paddingRight: 0,
     flex: 1,
@@ -172,20 +200,20 @@ const ActionsMenuItem = styled(MenuItem)(() => {
   }
 })
 
-const ActionsListItemIcon = styled(ListItemIcon)(() => {
-  const theme = useTheme()
+const ActionsListItemIcon = styled(ListItemIcon)((props) => {
+  const { theme } = props
   return {
-    color: theme.palette.text.primary,
+    color: theme!.palette.text.primary,
     "&.MuiListItemIcon-root": {
       minWidth: 0,
     },
   }
 })
 
-const LogoutContainer = styled(Box)(() => {
-  const theme = useTheme()
+const LogoutContainer = styled(Box)((props) => {
+  const { theme } = props
   return {
-    color: theme.palette.text.primary,
+    color: theme!.palette.text.primary,
     fontWeight: "600",
     height: "24px",
     lineHeight: "18px",
@@ -196,6 +224,11 @@ const LogoutContainer = styled(Box)(() => {
     cursor: "pointer",
     "& svg": {
       marginLeft: "16px",
+    },
+    [theme!.breakpoints.down("sm")]: {
+      position: "absolute",
+      bottom: "0",
+      right: "0",
     },
   }
 })

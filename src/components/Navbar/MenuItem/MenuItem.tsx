@@ -29,15 +29,17 @@ const MenuItem = (props: MenuItemProps) => {
       onMouseEnter={(e) => !isMobile && onToggleShowSubMenu(e, true, section)}
       onMouseLeave={(e) => !isMobile && onToggleShowSubMenu(e, false, section)}
       backgroundColor={backgroundColor}
+      aria-label={`${title} menu item`}
     >
       <MenuItemTitle
         variant="subtitle1"
         onClick={mainRedirect}
         textColor={textColor}
+        aria-label={`${title}`}
       >
         {title}
       </MenuItemTitle>
-      {isMobile && <ArrowForwardRoundedIcon />}
+      {isMobile && <ArrowForwardRoundedIcon aria-label="forward arrow icon" />}
     </MenuItemContainer>
   )
 }

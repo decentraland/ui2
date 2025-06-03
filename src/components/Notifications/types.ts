@@ -1,4 +1,12 @@
 import { NFTCategory, NotificationType, Rarity } from "@dcl/schemas"
+import {
+  CreditsClaimReminderNotificationProps,
+  CreditsCompleteYourWeeklyGoalsNotificationProps,
+  CreditsDoNotMissOutNotificationProps,
+  CreditsExpireIn24HrsReminderNotificationProps,
+  CreditsExpireSoonReminderNotificationProps,
+  CreditsNotificationsProps,
+} from "./NotificationTypes/Credits/types"
 
 enum NotificationActiveTab {
   NEWEST = "newest",
@@ -313,6 +321,50 @@ type EventsNotificationsProps =
   | EventsStartsSoonNotificationProps
   | EventsStartedNotificationProps
 
+// Streaming Notifications
+
+type CommonStreamingNotificationMetadataProps = {
+  title: string
+  description: string
+  position: string
+  worldName: string | null
+  isWorld: boolean
+  url: string
+  address: string
+}
+
+type StreamingKeyResetNotificationProps = RawDecentralandNotification<
+  NotificationType.STREAMING_KEY_RESET,
+  CommonStreamingNotificationMetadataProps
+>
+
+type StreamingKeyRevokeNotificationProps = RawDecentralandNotification<
+  NotificationType.STREAMING_KEY_REVOKE,
+  CommonStreamingNotificationMetadataProps
+>
+
+type StreamingKeyExpiredNotificationProps = RawDecentralandNotification<
+  NotificationType.STREAMING_KEY_EXPIRED,
+  CommonStreamingNotificationMetadataProps
+>
+
+type StreamingTimeExceededNotificationProps = RawDecentralandNotification<
+  NotificationType.STREAMING_TIME_EXCEEDED,
+  CommonStreamingNotificationMetadataProps
+>
+
+type StreamingPlaceUpdatedNotificationProps = RawDecentralandNotification<
+  NotificationType.STREAMING_PLACE_UPDATED,
+  CommonStreamingNotificationMetadataProps
+>
+
+type StreamingNotificationsProps =
+  | StreamingKeyResetNotificationProps
+  | StreamingKeyRevokeNotificationProps
+  | StreamingKeyExpiredNotificationProps
+  | StreamingTimeExceededNotificationProps
+  | StreamingPlaceUpdatedNotificationProps
+
 type DCLNotificationProps =
   | MarketplaceNotificationsProps
   | GovernanceNotificationsProps
@@ -320,6 +372,8 @@ type DCLNotificationProps =
   | LandNotificationsProps
   | RewardsNotificationProps
   | EventsNotificationsProps
+  | StreamingNotificationsProps
+  | CreditsNotificationsProps
 
 type CommonNotificationProps<N> = {
   notification: N
@@ -359,6 +413,18 @@ export type {
   CampaignGasPriceHigherThanExpectedNotificationProps,
   EventsStartsSoonNotificationProps,
   EventsStartedNotificationProps,
+  StreamingKeyResetNotificationProps,
+  StreamingKeyRevokeNotificationProps,
+  StreamingKeyExpiredNotificationProps,
+  StreamingTimeExceededNotificationProps,
+  StreamingPlaceUpdatedNotificationProps,
+  StreamingNotificationsProps,
   DCLNotificationProps,
   CommonNotificationProps,
+  CreditsNotificationsProps,
+  CreditsCompleteYourWeeklyGoalsNotificationProps,
+  CreditsDoNotMissOutNotificationProps,
+  CreditsClaimReminderNotificationProps,
+  CreditsExpireSoonReminderNotificationProps,
+  CreditsExpireIn24HrsReminderNotificationProps,
 }

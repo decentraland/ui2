@@ -1,21 +1,21 @@
 import styled from "@emotion/styled"
-import { Box, Typography, useTheme } from "@mui/material"
+import { Box, Typography } from "@mui/material"
 
-const SubMenuColumnContainer = styled(Box)(() => {
-  const theme = useTheme()
+const SubMenuColumnContainer = styled(Box)((props) => {
+  const { theme } = props
   return {
     display: "flex",
     flexFlow: "column nowrap",
     justifyContent: "center",
     height: "100%",
-    flexWrap: "nowrap" as const,
+    flexWrap: "nowrap",
     marginRight: "56px",
     flex: 1,
     maxWidth: "350px",
     "&:hover": {
       borderBottomColor: "blue",
     },
-    [theme.breakpoints.down("sm")]: {
+    [theme!.breakpoints.down("sm")]: {
       maxWidth: "100%",
       width: "100%",
     },

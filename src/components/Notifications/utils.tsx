@@ -6,6 +6,11 @@ import {
   CampaignGasPriceHigherThanExpectedNotification,
   CampaignOutOfFundsNotification,
   CampaignOutOfStockNotification,
+  CreditsClaimReminderNotification,
+  CreditsCompleteYourWeeklyGoalsNotification,
+  CreditsDoNotMissOutNotification,
+  CreditsExpireIn24HrsReminderNotification,
+  CreditsExpireSoonReminderNotification,
   EventsStartedNotification,
   EventsStartsSoonNotification,
   GovernanceAnnouncementNotification,
@@ -24,6 +29,11 @@ import {
   RewardDelayedNotification,
   RewardInProgressNotification,
   RoyaltiesEarnedNotification,
+  StreamingKeyExpiredNotification,
+  StreamingKeyResetNotification,
+  StreamingKeyRevokeNotification,
+  StreamingPlaceUpdatedNotification,
+  StreamingTimeExceededNotification,
   WorldsAccessRestoredNotification,
   WorldsAccessRestrictedNotification,
   WorldsMissingResourcesNotification,
@@ -98,6 +108,23 @@ const NotificationComponentByType: DecentralandNotificationComponentByType<DCLNo
       CampaignGasPriceHigherThanExpectedNotification,
     [NotificationType.REWARD_CAMPAIGN_OUT_OF_STOCK]:
       CampaignOutOfStockNotification,
+    [NotificationType.STREAMING_KEY_RESET]: StreamingKeyResetNotification,
+    [NotificationType.STREAMING_KEY_REVOKE]: StreamingKeyRevokeNotification,
+    [NotificationType.STREAMING_KEY_EXPIRED]: StreamingKeyExpiredNotification,
+    [NotificationType.STREAMING_TIME_EXCEEDED]:
+      StreamingTimeExceededNotification,
+    [NotificationType.STREAMING_PLACE_UPDATED]:
+      StreamingPlaceUpdatedNotification,
+    [NotificationType.CREDITS_REMINDER_COMPLETE_GOALS]:
+      CreditsCompleteYourWeeklyGoalsNotification,
+    [NotificationType.CREDITS_REMINDER_DO_NOT_MISS_OUT]:
+      CreditsDoNotMissOutNotification,
+    [NotificationType.CREDITS_REMINDER_CLAIM_CREDITS]:
+      CreditsClaimReminderNotification,
+    [NotificationType.CREDITS_REMINDER_USAGE]:
+      CreditsExpireSoonReminderNotification,
+    [NotificationType.CREDITS_REMINDER_USAGE_24_HOURS]:
+      CreditsExpireIn24HrsReminderNotification,
   }
 
 const CURRENT_AVAILABLE_NOTIFICATIONS = Object.keys(NotificationComponentByType)

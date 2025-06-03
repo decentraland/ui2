@@ -1,10 +1,15 @@
 import zIndex from "@mui/material/styles/zIndex"
 import styled from "@emotion/styled"
-import { Box, useTheme } from "@mui/material"
+import { Box } from "@mui/material"
 
-const MainMenuContainer = styled(Box)((props: { isOpenOnMobile?: boolean }) => {
-  const { isOpenOnMobile } = props
-  const theme = useTheme()
+interface MainMenuContainerProps {
+  isOpenOnMobile?: boolean
+}
+
+const MainMenuContainer = styled(Box, {
+  shouldForwardProp: (prop) => prop !== "isOpenOnMobile",
+})<MainMenuContainerProps>((props) => {
+  const { isOpenOnMobile, theme } = props
 
   let mobileOpenedStyles
   if (isOpenOnMobile) {
@@ -13,24 +18,24 @@ const MainMenuContainer = styled(Box)((props: { isOpenOnMobile?: boolean }) => {
     }
   }
   return {
-    display: "flex" as const,
+    display: "flex",
     height: "64px",
     marginLeft: "10px",
-    [theme.breakpoints.down("sm")]: {
-      position: "absolute" as const,
-      flexDirection: "column" as const,
+    [theme!.breakpoints.down("sm")]: {
+      position: "absolute",
+      flexDirection: "column",
       alignItems: "flex-start",
       justifyContent: "flex-start",
-      backgroundColor: theme.palette.background.default,
+      backgroundColor: theme!.palette.background.default,
       width: "100vw",
       height: "100vh",
       top: "-150vh",
       left: 0,
       marginLeft: 0,
       zIndex: zIndex.mobileStepper,
-      transition: `${theme.transitions.create(["top"], {
-        duration: theme.transitions.duration.shorter,
-        easing: theme.transitions.easing.easeInOut,
+      transition: `${theme!.transitions.create(["top"], {
+        duration: theme!.transitions.duration.shorter,
+        easing: theme!.transitions.easing.easeInOut,
       })}`,
       ...mobileOpenedStyles,
     },

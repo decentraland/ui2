@@ -38,7 +38,9 @@
   },
   "homepage": "https://github.com/decentraland/ui2#readme",
   "dependencies": {
-    "@dcl/schemas": "^13.9.0",
+    "@contentful/rich-text-react-renderer": "^16.0.1",
+    "@dcl/hooks": "^0.0.2",
+    "@dcl/schemas": "^16.7.0",
     "@dcl/ui-env": "^1.5.1",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
@@ -50,12 +52,14 @@
     "radash": "^11.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-tile-map": "^0.4.1"
+    "react-tile-map": "^0.4.1",
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.24.7",
     "@babel/preset-react": "^7.24.7",
     "@babel/preset-typescript": "^7.24.7",
+    "@contentful/rich-text-types": "^17.0.0",
     "@dcl/eslint-config": "^2.2.1",
     "@storybook/addon-docs": "^7.6.20",
     "@storybook/addon-essentials": "^7.6.20",

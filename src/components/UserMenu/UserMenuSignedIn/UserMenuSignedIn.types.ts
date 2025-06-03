@@ -9,6 +9,7 @@ type UserMenuSignedInProps = ManaBalancesProps & {
   isOpen?: boolean
   trackingId?: string
   hasActivity?: boolean
+  creditsBalance?: ManaBalancesProps["creditsBalance"]
   notifications?: NotificationsProps
   i18n: UserMenuI18N
   onClickMarketplaceAuthorization?: (
@@ -28,6 +29,7 @@ type UserMenuSignedInProps = ManaBalancesProps & {
     event: React.MouseEvent<HTMLElement, MouseEvent>,
     options: { type: string; url?: string; track_uuid?: string }
   ) => void
+  balances?: React.ReactNode
 }
 
 type UserMenuActionsProps = Pick<
@@ -42,6 +44,7 @@ type UserMenuActionsProps = Pick<
   | "onClickProfile"
   | "onClickSignOut"
   | "onClickAccount"
+  | "balances"
 >
 
 export type { UserMenuSignedInProps, UserMenuActionsProps }

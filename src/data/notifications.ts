@@ -1,10 +1,17 @@
 import { NFTCategory, NotificationType, Rarity } from "@dcl/schemas"
 import {
+  CreditsExpireIn24HrsReminderNotificationProps,
+  CreditsExpireSoonReminderNotificationProps,
+} from "components/Notifications/NotificationTypes/Credits/types"
+import {
   BidAcceptedNotificationProps,
   BidReceivedNotificationProps,
   CampaignGasPriceHigherThanExpectedNotificationProps,
   CampaignOutOfFundsNotificationProps,
   CampaignOutOfStockNotificationProps,
+  CreditsClaimReminderNotificationProps,
+  CreditsCompleteYourWeeklyGoalsNotificationProps,
+  CreditsDoNotMissOutNotificationProps,
   EventsStartedNotificationProps,
   EventsStartsSoonNotificationProps,
   GovernanceAnnouncementNotificationProps,
@@ -23,6 +30,11 @@ import {
   RewardDelayedNotificationProps,
   RewardInProgressNotificationProps,
   RoyalitesEarnedNotificationProps,
+  StreamingKeyExpiredNotificationProps,
+  StreamingKeyResetNotificationProps,
+  StreamingKeyRevokeNotificationProps,
+  StreamingPlaceUpdatedNotificationProps,
+  StreamingTimeExceededNotificationProps,
   WorldsAccessRestoredNotificationProps,
   WorldsAccessRestrictedNotificationProps,
   WorldsMissingResourcesNotificationProps,
@@ -35,6 +47,91 @@ futureStartDate.setSeconds(futureStartDate.getSeconds() + 120)
 
 const pastStartDate = new Date()
 pastStartDate.setSeconds(pastStartDate.getSeconds() - 50)
+
+const bidAcceptedNotificationData: BidAcceptedNotificationProps = {
+  id: NotificationType.BID_ACCEPTED,
+  read: true,
+  type: NotificationType.BID_ACCEPTED,
+  address: "0x6b347a82fcac4e6a38d1fc40e3631bd8f9495e9f",
+  timestamp: new Date().getTime(),
+  metadata: {
+    link: "https://market.decentraland.org/contracts/0xa8ee490e4c4da48cc1653502c1a77479d4d818de/tokens/590",
+    image:
+      "https://peer.decentraland.org/lambdas/collections/contents/urn:decentraland:ethereum:collections-v1:binance_us_collection:binance_us_upper_body/thumbnail",
+    rarity: Rarity.UNIQUE,
+    nftName: "Exclusive Binance Hoodie",
+    network: "ethereum",
+    category: NFTCategory.WEARABLE,
+    price: "78960000000000000000",
+  },
+  created_at: "2023-11-29T12:51:00.600Z",
+  updated_at: "2023-11-29T12:51:00.600Z",
+}
+
+const bidReceivedNotificationPropsData: BidReceivedNotificationProps = {
+  id: NotificationType.BID_RECEIVED,
+  read: true,
+  type: NotificationType.BID_RECEIVED,
+  address: "0x6b347a82fcac4e6a38d1fc40e3631bd8f9495e9f",
+  timestamp: new Date().getTime(),
+  metadata: {
+    link: "https://market.decentraland.org/contracts/0xa8ee490e4c4da48cc1653502c1a77479d4d818de/tokens/590",
+    image:
+      "https://peer.decentraland.org/lambdas/collections/contents/urn:decentraland:ethereum:collections-v1:binance_us_collection:binance_us_upper_body/thumbnail",
+    rarity: Rarity.UNIQUE,
+    nftName: "Exclusive Binance Hoodie",
+    network: "polygon",
+    category: NFTCategory.WEARABLE,
+    price: "78960000000000000000",
+  },
+  created_at: "2023-11-29T12:51:00.600Z",
+  updated_at: "2023-11-29T12:51:00.600Z",
+}
+
+const campaignGasPriceHigherThanExpectedNotificationData: CampaignGasPriceHigherThanExpectedNotificationProps =
+  {
+    id: NotificationType.REWARD_CAMPAIGN_GAS_PRICE_HIGHER_THAN_EXPECTED,
+    read: true,
+    type: NotificationType.REWARD_CAMPAIGN_GAS_PRICE_HIGHER_THAN_EXPECTED,
+    address: "0x6b347a82fcac4e6a38d1fc40e3631bd8f9495e9f",
+    timestamp: new Date().getTime(),
+    metadata: {
+      campaignName: "Cool Campaign",
+      link: "https://decentraland.zone/rewards/campaign/?id=e9b39fdb-1bf1-490a-855e-f5e6c63a4525",
+    },
+    created_at: "2023-11-29T12:51:00.600Z",
+    updated_at: "2023-11-29T12:51:00.600Z",
+  }
+
+const campaignOutOfFundsNotificationData: CampaignOutOfFundsNotificationProps =
+  {
+    id: NotificationType.REWARD_CAMPAIGN_OUT_OF_FUNDS,
+    read: true,
+    type: NotificationType.REWARD_CAMPAIGN_OUT_OF_FUNDS,
+    address: "0x6b347a82fcac4e6a38d1fc40e3631bd8f9495e9f",
+    timestamp: new Date().getTime(),
+    metadata: {
+      campaignName: "Cool Campaign",
+      link: "https://decentraland.zone/rewards/campaign/?id=e9b39fdb-1bf1-490a-855e-f5e6c63a4525",
+    },
+    created_at: "2023-11-29T12:51:00.600Z",
+    updated_at: "2023-11-29T12:51:00.600Z",
+  }
+
+const campaignOutOfStockNotificationData: CampaignOutOfStockNotificationProps =
+  {
+    id: NotificationType.REWARD_CAMPAIGN_OUT_OF_STOCK,
+    read: true,
+    type: NotificationType.REWARD_CAMPAIGN_OUT_OF_STOCK,
+    address: "0x6b347a82fcac4e6a38d1fc40e3631bd8f9495e9f",
+    timestamp: new Date().getTime(),
+    metadata: {
+      campaignName: "Cool Campaign",
+      link: "https://decentraland.zone/rewards/campaign/?id=e9b39fdb-1bf1-490a-855e-f5e6c63a4525",
+    },
+    created_at: "2023-11-29T12:51:00.600Z",
+    updated_at: "2023-11-29T12:51:00.600Z",
+  }
 
 const eventStartedNotificationData: EventsStartedNotificationProps = {
   id: NotificationType.EVENTS_STARTED,
@@ -250,6 +347,26 @@ const governanceVotingEndedVoterNotificationData: GovernanceVotingEndedVoterNoti
     updated_at: "2023-11-29T12:51:00.600Z",
   }
 
+const itemSoldNotificationPropsData: ItemSoldNotificationProps = {
+  id: NotificationType.ITEM_SOLD,
+  read: true,
+  type: NotificationType.ITEM_SOLD,
+  address: "0x6b347a82fcac4e6a38d1fc40e3631bd8f9495e9f",
+  timestamp: new Date().getTime(),
+  metadata: {
+    link: "https://market.decentraland.org/contracts/0xa8ee490e4c4da48cc1653502c1a77479d4d818de/tokens/590",
+    image:
+      "https://peer.decentraland.org/lambdas/collections/contents/urn:decentraland:ethereum:collections-v1:binance_us_collection:binance_us_upper_body/thumbnail",
+    rarity: Rarity.LEGENDARY,
+    seller: "0x6b347a82fcac4e6a38d1fc40e3631bd8f9495e9f",
+    nftName: "Exclusive Binance Hoodie",
+    network: "polygon",
+    category: NFTCategory.WEARABLE,
+  },
+  created_at: "2023-11-29T12:51:00.600Z",
+  updated_at: "2023-11-29T12:51:00.600Z",
+}
+
 const landRentalEndedNotificationData: LandRentalEndedNotificationProps = {
   id: NotificationType.LAND_RENTAL_ENDED,
   read: true,
@@ -296,107 +413,10 @@ const landRentedNotificationData: LandRentedNotificationProps = {
   updated_at: "2023-11-29T12:51:00.600Z",
 }
 
-const bidAcceptedNotificationData: BidAcceptedNotificationProps = {
-  id: NotificationType.BID_ACCEPTED,
-  read: true,
-  type: NotificationType.BID_ACCEPTED,
-  address: "0x6b347a82fcac4e6a38d1fc40e3631bd8f9495e9f",
-  timestamp: new Date().getTime(),
-  metadata: {
-    link: "https://market.decentraland.org/contracts/0xa8ee490e4c4da48cc1653502c1a77479d4d818de/tokens/590",
-    image:
-      "https://peer.decentraland.org/lambdas/collections/contents/urn:decentraland:ethereum:collections-v1:binance_us_collection:binance_us_upper_body/thumbnail",
-    rarity: Rarity.UNIQUE,
-    nftName: "Exclusive Binance Hoodie",
-    network: "ethereum",
-    category: NFTCategory.WEARABLE,
-    price: "78960000000000000000",
-  },
-  created_at: "2023-11-29T12:51:00.600Z",
-  updated_at: "2023-11-29T12:51:00.600Z",
-}
-
-const bidReceivedNotificationPropsData: BidReceivedNotificationProps = {
-  id: NotificationType.BID_RECEIVED,
-  read: true,
-  type: NotificationType.BID_RECEIVED,
-  address: "0x6b347a82fcac4e6a38d1fc40e3631bd8f9495e9f",
-  timestamp: new Date().getTime(),
-  metadata: {
-    link: "https://market.decentraland.org/contracts/0xa8ee490e4c4da48cc1653502c1a77479d4d818de/tokens/590",
-    image:
-      "https://peer.decentraland.org/lambdas/collections/contents/urn:decentraland:ethereum:collections-v1:binance_us_collection:binance_us_upper_body/thumbnail",
-    rarity: Rarity.UNIQUE,
-    nftName: "Exclusive Binance Hoodie",
-    network: "polygon",
-    category: NFTCategory.WEARABLE,
-    price: "78960000000000000000",
-  },
-  created_at: "2023-11-29T12:51:00.600Z",
-  updated_at: "2023-11-29T12:51:00.600Z",
-}
-
-const itemSoldNotificationPropsData: ItemSoldNotificationProps = {
-  id: NotificationType.ITEM_SOLD,
-  read: true,
-  type: NotificationType.ITEM_SOLD,
-  address: "0x6b347a82fcac4e6a38d1fc40e3631bd8f9495e9f",
-  timestamp: new Date().getTime(),
-  metadata: {
-    link: "https://market.decentraland.org/contracts/0xa8ee490e4c4da48cc1653502c1a77479d4d818de/tokens/590",
-    image:
-      "https://peer.decentraland.org/lambdas/collections/contents/urn:decentraland:ethereum:collections-v1:binance_us_collection:binance_us_upper_body/thumbnail",
-    rarity: Rarity.LEGENDARY,
-    seller: "0x6b347a82fcac4e6a38d1fc40e3631bd8f9495e9f",
-    nftName: "Exclusive Binance Hoodie",
-    network: "polygon",
-    category: NFTCategory.WEARABLE,
-  },
-  created_at: "2023-11-29T12:51:00.600Z",
-  updated_at: "2023-11-29T12:51:00.600Z",
-}
-
-const royalitesEarnedNotificationPropsData: RoyalitesEarnedNotificationProps = {
-  id: NotificationType.ROYALTIES_EARNED,
-  read: true,
-  type: NotificationType.ROYALTIES_EARNED,
-  address: "0x6b347a82fcac4e6a38d1fc40e3631bd8f9495e9f",
-  timestamp: new Date().getTime(),
-  metadata: {
-    link: "https://market.decentraland.zone/contracts/0xb726634ed82ac04e6bca66b3b97cc41a2c10ec31/tokens/9",
-    image:
-      "https://peer.decentraland.org/lambdas/collections/contents/urn:decentraland:ethereum:collections-v1:binance_us_collection:binance_us_upper_body/thumbnail",
-    rarity: Rarity.MYTHIC,
-    network: "polygon",
-    nftName: "NJacket",
-    category: NFTCategory.WEARABLE,
-    royaltiesCut: "30000000000000000",
-    royaltiesCollector: "0x2a39d4f68133491f0442496f601cde2a945b6d31",
-  },
-  created_at: "2023-11-29T12:51:00.600Z",
-  updated_at: "2023-11-29T12:51:00.600Z",
-}
-
 const rewardAssignedNotificationData: RewardAssignedNotificationProps = {
   id: NotificationType.REWARD_ASSIGNED,
   read: true,
   type: NotificationType.REWARD_ASSIGNED,
-  address: "0x6b347a82fcac4e6a38d1fc40e3631bd8f9495e9f",
-  timestamp: new Date().getTime(),
-  metadata: {
-    tokenImage:
-      "https://peer.decentraland.org/lambdas/collections/contents/urn:decentraland:ethereum:collections-v1:binance_us_collection:binance_us_upper_body/thumbnail",
-    tokenRarity: Rarity.MYTHIC,
-    tokenName: "NJacket",
-  },
-  created_at: "2023-11-29T12:51:00.600Z",
-  updated_at: "2023-11-29T12:51:00.600Z",
-}
-
-const rewardInProgressNotificationData: RewardInProgressNotificationProps = {
-  id: NotificationType.REWARD_IN_PROGRESS,
-  read: true,
-  type: NotificationType.REWARD_IN_PROGRESS,
   address: "0x6b347a82fcac4e6a38d1fc40e3631bd8f9495e9f",
   timestamp: new Date().getTime(),
   metadata: {
@@ -425,46 +445,137 @@ const rewardDelayedNotificationData: RewardDelayedNotificationProps = {
   updated_at: "2023-11-29T12:51:00.600Z",
 }
 
-const campaignOutOfFundsNotificationData: CampaignOutOfFundsNotificationProps =
+const rewardInProgressNotificationData: RewardInProgressNotificationProps = {
+  id: NotificationType.REWARD_IN_PROGRESS,
+  read: true,
+  type: NotificationType.REWARD_IN_PROGRESS,
+  address: "0x6b347a82fcac4e6a38d1fc40e3631bd8f9495e9f",
+  timestamp: new Date().getTime(),
+  metadata: {
+    tokenImage:
+      "https://peer.decentraland.org/lambdas/collections/contents/urn:decentraland:ethereum:collections-v1:binance_us_collection:binance_us_upper_body/thumbnail",
+    tokenRarity: Rarity.MYTHIC,
+    tokenName: "NJacket",
+  },
+  created_at: "2023-11-29T12:51:00.600Z",
+  updated_at: "2023-11-29T12:51:00.600Z",
+}
+
+const royalitesEarnedNotificationPropsData: RoyalitesEarnedNotificationProps = {
+  id: NotificationType.ROYALTIES_EARNED,
+  read: true,
+  type: NotificationType.ROYALTIES_EARNED,
+  address: "0x6b347a82fcac4e6a38d1fc40e3631bd8f9495e9f",
+  timestamp: new Date().getTime(),
+  metadata: {
+    link: "https://market.decentraland.zone/contracts/0xb726634ed82ac04e6bca66b3b97cc41a2c10ec31/tokens/9",
+    image:
+      "https://peer.decentraland.org/lambdas/collections/contents/urn:decentraland:ethereum:collections-v1:binance_us_collection:binance_us_upper_body/thumbnail",
+    rarity: Rarity.MYTHIC,
+    network: "polygon",
+    nftName: "NJacket",
+    category: NFTCategory.WEARABLE,
+    royaltiesCut: "30000000000000000",
+    royaltiesCollector: "0x2a39d4f68133491f0442496f601cde2a945b6d31",
+  },
+  created_at: "2023-11-29T12:51:00.600Z",
+  updated_at: "2023-11-29T12:51:00.600Z",
+}
+
+const streamingKeyExpiredNotificationData: StreamingKeyExpiredNotificationProps =
   {
-    id: NotificationType.REWARD_CAMPAIGN_OUT_OF_FUNDS,
+    id: NotificationType.STREAMING_KEY_EXPIRED,
     read: true,
-    type: NotificationType.REWARD_CAMPAIGN_OUT_OF_FUNDS,
+    type: NotificationType.STREAMING_KEY_EXPIRED,
     address: "0x6b347a82fcac4e6a38d1fc40e3631bd8f9495e9f",
     timestamp: new Date().getTime(),
     metadata: {
-      campaignName: "Cool Campaign",
-      link: "https://decentraland.zone/rewards/campaign/?id=e9b39fdb-1bf1-490a-855e-f5e6c63a4525",
+      title: "Stream Key Expired",
+      description: "Your stream key has expired",
+      position: "5,48",
+      worldName: "test-world.dcl.eth",
+      isWorld: false,
+      url: "https://decentraland.org/world/test-world.dcl.eth",
+      address: "0x6b347a82fcac4e6a38d1fc40e3631bd8f9495e9f",
     },
     created_at: "2023-11-29T12:51:00.600Z",
     updated_at: "2023-11-29T12:51:00.600Z",
   }
 
-const campaignOutOfStockNotificationData: CampaignOutOfStockNotificationProps =
+const streamingKeyResetNotificationData: StreamingKeyResetNotificationProps = {
+  id: NotificationType.STREAMING_KEY_RESET,
+  read: true,
+  type: NotificationType.STREAMING_KEY_RESET,
+  address: "0x6b347a82fcac4e6a38d1fc40e3631bd8f9495e9f",
+  timestamp: new Date().getTime(),
+  metadata: {
+    title: "Stream Key Reset",
+    description: "Your stream key has been reset",
+    position: "5,48",
+    worldName: "test-world.dcl.eth",
+    isWorld: true,
+    url: "https://decentraland.org/world/test-world.dcl.eth",
+    address: "0x6b347a82fcac4e6a38d1fc40e3631bd8f9495e9f",
+  },
+  created_at: "2023-11-29T12:51:00.600Z",
+  updated_at: "2023-11-29T12:51:00.600Z",
+}
+
+const streamingKeyRevokeNotificationData: StreamingKeyRevokeNotificationProps =
   {
-    id: NotificationType.REWARD_CAMPAIGN_OUT_OF_STOCK,
+    id: NotificationType.STREAMING_KEY_REVOKE,
     read: true,
-    type: NotificationType.REWARD_CAMPAIGN_OUT_OF_STOCK,
+    type: NotificationType.STREAMING_KEY_REVOKE,
     address: "0x6b347a82fcac4e6a38d1fc40e3631bd8f9495e9f",
     timestamp: new Date().getTime(),
     metadata: {
-      campaignName: "Cool Campaign",
-      link: "https://decentraland.zone/rewards/campaign/?id=e9b39fdb-1bf1-490a-855e-f5e6c63a4525",
+      title: "Stream Key Revoked",
+      description: "Your stream key has been revoked",
+      position: "5,48",
+      worldName: "test-world.dcl.eth",
+      isWorld: false,
+      url: "https://decentraland.org/world/test-world.dcl.eth",
+      address: "0x6b347a82fcac4e6a38d1fc40e3631bd8f9495e9f",
     },
     created_at: "2023-11-29T12:51:00.600Z",
     updated_at: "2023-11-29T12:51:00.600Z",
   }
 
-const campaignGasPriceHigherThanExpectedNotificationData: CampaignGasPriceHigherThanExpectedNotificationProps =
+const streamingPlaceUpdatedNotificationData: StreamingPlaceUpdatedNotificationProps =
   {
-    id: NotificationType.REWARD_CAMPAIGN_GAS_PRICE_HIGHER_THAN_EXPECTED,
+    id: NotificationType.STREAMING_PLACE_UPDATED,
     read: true,
-    type: NotificationType.REWARD_CAMPAIGN_GAS_PRICE_HIGHER_THAN_EXPECTED,
+    type: NotificationType.STREAMING_PLACE_UPDATED,
     address: "0x6b347a82fcac4e6a38d1fc40e3631bd8f9495e9f",
     timestamp: new Date().getTime(),
     metadata: {
-      campaignName: "Cool Campaign",
-      link: "https://decentraland.zone/rewards/campaign/?id=e9b39fdb-1bf1-490a-855e-f5e6c63a4525",
+      title: "Stream Place Updated",
+      description: "Your stream place has been updated",
+      position: "5,48",
+      worldName: "test-world.dcl.eth",
+      isWorld: true,
+      url: "https://decentraland.org/world/test-world.dcl.eth",
+      address: "0x6b347a82fcac4e6a38d1fc40e3631bd8f9495e9f",
+    },
+    created_at: "2023-11-29T12:51:00.600Z",
+    updated_at: "2023-11-29T12:51:00.600Z",
+  }
+
+const streamingTimeExceededNotificationData: StreamingTimeExceededNotificationProps =
+  {
+    id: NotificationType.STREAMING_TIME_EXCEEDED,
+    read: true,
+    type: NotificationType.STREAMING_TIME_EXCEEDED,
+    address: "0x6b347a82fcac4e6a38d1fc40e3631bd8f9495e9f",
+    timestamp: new Date().getTime(),
+    metadata: {
+      title: "Stream Time Exceeded",
+      description: "Your stream time has been exceeded",
+      position: "5,48",
+      worldName: "test-world.dcl.eth",
+      isWorld: false,
+      url: "https://decentraland.org/world/test-world.dcl.eth",
+      address: "0x6b347a82fcac4e6a38d1fc40e3631bd8f9495e9f",
     },
     created_at: "2023-11-29T12:51:00.600Z",
     updated_at: "2023-11-29T12:51:00.600Z",
@@ -529,7 +640,7 @@ const worldsPermissionGrantedNotificationPropsData: WorldsPermissionGrantedNotif
     timestamp: new Date().getTime(),
     metadata: {
       title: "World notification",
-      description: "Wolrd description",
+      description: "World description",
       permissions: ["deployment"],
       world: "meelrossi.dcl.eth",
     },
@@ -546,7 +657,7 @@ const worldsPermissionRevokedNotificationData: WorldsPermissionRevokedNotificati
     timestamp: new Date().getTime(),
     metadata: {
       title: "World notification",
-      description: "Wolrd description",
+      description: "World description",
       permissions: ["deployment"],
       world: "meelrossi.dcl.eth",
     },
@@ -554,7 +665,76 @@ const worldsPermissionRevokedNotificationData: WorldsPermissionRevokedNotificati
     updated_at: "2023-11-29T12:51:00.600Z",
   }
 
+const creditsCompleteYourWeeklyGoalsNotificationData: CreditsCompleteYourWeeklyGoalsNotificationProps =
+  {
+    id: NotificationType.CREDITS_REMINDER_COMPLETE_GOALS,
+    type: NotificationType.CREDITS_REMINDER_COMPLETE_GOALS,
+    address: "0x1234567890123456789012345678901234567890",
+    timestamp: new Date().getTime(),
+    read: false,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+    metadata: {},
+  }
+
+const creditsDoNotMissOutNotificationData: CreditsDoNotMissOutNotificationProps =
+  {
+    id: NotificationType.CREDITS_REMINDER_DO_NOT_MISS_OUT,
+    type: NotificationType.CREDITS_REMINDER_DO_NOT_MISS_OUT,
+    address: "0x1234567890123456789012345678901234567890",
+    timestamp: new Date().getTime(),
+    read: false,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+    metadata: {},
+  }
+
+const creditsClaimReminderNotificationData: CreditsClaimReminderNotificationProps =
+  {
+    id: NotificationType.CREDITS_REMINDER_CLAIM_CREDITS,
+    type: NotificationType.CREDITS_REMINDER_CLAIM_CREDITS,
+    address: "0x1234567890123456789012345678901234567890",
+    timestamp: new Date().getTime(),
+    read: true,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+    metadata: {},
+  }
+
+const creditsExpireSoonReminderNotificationData: CreditsExpireSoonReminderNotificationProps =
+  {
+    id: NotificationType.CREDITS_REMINDER_USAGE,
+    type: NotificationType.CREDITS_REMINDER_USAGE,
+    address: "0x1234567890123456789012345678901234567890",
+    timestamp: new Date().getTime(),
+    read: true,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+    metadata: {
+      expirationDate: "July 27 at 23:59 UTC",
+    },
+  }
+
+const creditsExpireIn24HrsReminderNotificationData: CreditsExpireIn24HrsReminderNotificationProps =
+  {
+    id: NotificationType.CREDITS_REMINDER_USAGE_24_HOURS,
+    type: NotificationType.CREDITS_REMINDER_USAGE_24_HOURS,
+    address: "0x1234567890123456789012345678901234567890",
+    timestamp: new Date().getTime(),
+    read: true,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+    metadata: {
+      expirationDate: "July 27 at 23:59 UTC",
+    },
+  }
+
 const allTypeOfNotifications = [
+  bidAcceptedNotificationData,
+  bidReceivedNotificationPropsData,
+  campaignGasPriceHigherThanExpectedNotificationData,
+  campaignOutOfFundsNotificationData,
+  campaignOutOfStockNotificationData,
   eventStartedNotificationData,
   eventStartsSoonFutureStartNotificationData,
   eventStartsSoonPastStartNotificationData,
@@ -567,27 +747,37 @@ const allTypeOfNotifications = [
   governanceProposalEnactedNotificationData,
   governanceTenderPassedNotificationData,
   governanceVotingEndedVoterNotificationData,
+  itemSoldNotificationPropsData,
   landRentalEndedNotificationData,
   landRentedNotificationData,
-  bidAcceptedNotificationData,
-  bidReceivedNotificationPropsData,
-  itemSoldNotificationPropsData,
-  royalitesEarnedNotificationPropsData,
   rewardAssignedNotificationData,
-  rewardInProgressNotificationData,
   rewardDelayedNotificationData,
-  campaignOutOfFundsNotificationData,
-  campaignOutOfStockNotificationData,
-  campaignGasPriceHigherThanExpectedNotificationData,
+  rewardInProgressNotificationData,
+  royalitesEarnedNotificationPropsData,
+  streamingKeyExpiredNotificationData,
+  streamingKeyResetNotificationData,
+  streamingKeyRevokeNotificationData,
+  streamingPlaceUpdatedNotificationData,
+  streamingTimeExceededNotificationData,
   worldsAccessRestoredNotificationData,
   worldsAccessRestrictedNotificationData,
   worldsMissingResourcesNotificationData,
   worldsPermissionGrantedNotificationPropsData,
   worldsPermissionRevokedNotificationData,
+  creditsCompleteYourWeeklyGoalsNotificationData,
+  creditsDoNotMissOutNotificationData,
+  creditsClaimReminderNotificationData,
+  creditsExpireSoonReminderNotificationData,
+  creditsExpireIn24HrsReminderNotificationData,
 ]
 
 export {
   allTypeOfNotifications,
+  bidAcceptedNotificationData,
+  bidReceivedNotificationPropsData,
+  campaignGasPriceHigherThanExpectedNotificationData,
+  campaignOutOfFundsNotificationData,
+  campaignOutOfStockNotificationData,
   eventStartedNotificationData,
   eventStartsSoonFutureStartNotificationData,
   eventStartsSoonPastStartNotificationData,
@@ -600,21 +790,26 @@ export {
   governanceProposalEnactedNotificationData,
   governanceTenderPassedNotificationData,
   governanceVotingEndedVoterNotificationData,
+  itemSoldNotificationPropsData,
   landRentalEndedNotificationData,
   landRentedNotificationData,
-  bidAcceptedNotificationData,
-  bidReceivedNotificationPropsData,
-  itemSoldNotificationPropsData,
-  royalitesEarnedNotificationPropsData,
   rewardAssignedNotificationData,
-  rewardInProgressNotificationData,
   rewardDelayedNotificationData,
-  campaignOutOfFundsNotificationData,
-  campaignOutOfStockNotificationData,
-  campaignGasPriceHigherThanExpectedNotificationData,
+  rewardInProgressNotificationData,
+  royalitesEarnedNotificationPropsData,
+  streamingKeyExpiredNotificationData,
+  streamingKeyResetNotificationData,
+  streamingKeyRevokeNotificationData,
+  streamingPlaceUpdatedNotificationData,
+  streamingTimeExceededNotificationData,
   worldsAccessRestoredNotificationData,
   worldsAccessRestrictedNotificationData,
   worldsMissingResourcesNotificationData,
   worldsPermissionGrantedNotificationPropsData,
   worldsPermissionRevokedNotificationData,
+  creditsCompleteYourWeeklyGoalsNotificationData,
+  creditsDoNotMissOutNotificationData,
+  creditsClaimReminderNotificationData,
+  creditsExpireSoonReminderNotificationData,
+  creditsExpireIn24HrsReminderNotificationData,
 }

@@ -12,6 +12,10 @@ const i18n = {
   signIn: "Sign In",
   signOut: "Log Out",
   viewProfile: "View Profile",
+  getCredits: "Earn Credits",
+  creditsExpiringSoon: "Expiring soon",
+  creditsValue: "(1 Credit = 1 MANA in value)",
+  creditsExpiringIn: (value: string) => `Expiring in ${value} days`,
 } as UserMenuI18N
 
 export { i18n }

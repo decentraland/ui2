@@ -1,5 +1,5 @@
 import styled from "@emotion/styled"
-import { Link, Typography, useTheme } from "@mui/material"
+import { Link, Typography } from "@mui/material"
 
 const NotificationItemContainer = styled("div")({
   display: "flex",
@@ -61,10 +61,10 @@ const NotificationItemCountdown = styled("div")({
   },
 })
 
-const SpanHighlighted = styled("span")(() => {
-  const theme = useTheme()
+const SpanHighlighted = styled("span")((props) => {
+  const { theme } = props
   return {
-    color: theme.palette.primary.main,
+    color: theme!.palette.primary.main,
   }
 })
 

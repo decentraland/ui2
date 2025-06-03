@@ -1,16 +1,14 @@
 import React, { useCallback, useState } from "react"
 import { Network } from "@dcl/schemas/dist/dapps/network"
-import Download from "@mui/icons-material/Download"
 import { v4 as uuidv4 } from "uuid"
 import { CircularProgress } from "@mui/material"
 import { ManaBalancesProps } from "./ManaBalances"
 import { i18n as i18nUserMenu } from "./UserMenu.i18n"
 import { UserMenuSignedIn } from "./UserMenuSignedIn/UserMenuSignedIn"
 import { config } from "../../config"
-import { useTabletAndBelowMediaQuery } from "../Media"
+import { DownloadButton } from "../DownloadButton"
 import { UserMenuEventId, UserMenuProps } from "./UserMenu.types"
 import {
-  DownloadLink,
   SignInButton,
   UserMenuContainer,
   UserMenuLoaderContainer,
@@ -23,18 +21,19 @@ const UserMenu = React.memo((props: UserMenuProps) => {
     isDisconnecting,
     manaBalances,
     i18n = i18nUserMenu,
+    hideDownloadButton,
+    cdnLinks,
     onClickSignIn,
     onClickBalance,
     onClickOpen,
-    onClickDownload,
     onClickUserMenuItem,
+    loadingCdnLinks = false,
     ...signInProps
   } = props
 
-  const isTabletAndBelow = useTabletAndBelowMediaQuery()
-
   const [isOpen, setIsOpen] = useState(false)
   const [trackingId, setTrackingId] = useState<string | undefined>(undefined)
+
   const handleToggle = useCallback(
     (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
       const trackId = uuidv4()
@@ -45,14 +44,6 @@ const UserMenu = React.memo((props: UserMenuProps) => {
         if (!prev && onClickOpen) {
           onClickOpen(event, trackId)
         }
-
-        if (isTabletAndBelow && !prev) {
-          window.addEventListener("scroll", noScroll)
-        }
-
-        if (isTabletAndBelow && prev) {
-          window.removeEventListener("scroll", noScroll)
-        }
         return !prev
       })
     },
@@ -61,32 +52,7 @@ const UserMenu = React.memo((props: UserMenuProps) => {
 
   const handleClose = useCallback(() => {
     setIsOpen(false)
-    if (isTabletAndBelow) {
-      window.removeEventListener("scroll", noScroll)
-    }
   }, [setIsOpen])
-
-  const handleClickDownload = useCallback(
-    (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-      event.preventDefault()
-      onClickUserMenuItem &&
-        onClickUserMenuItem(event, {
-          type: UserMenuEventId.DOWNLOAD,
-          track_uuid: trackingId || undefined,
-          url: config.get("DOWNLOAD_URL"),
-        })
-
-      setTimeout(
-        () => {
-          onClickDownload
-            ? onClickDownload(event)
-            : window.open(config.get("DOWNLOAD_URL"), "_blank", "noopener")
-        },
-        onClickUserMenuItem ? 300 : 0
-      )
-    },
-    [onClickDownload, onClickUserMenuItem, trackingId]
-  )
 
   const handleClickSignIn = useCallback(
     (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -161,21 +127,20 @@ const UserMenu = React.memo((props: UserMenuProps) => {
               )}
             </SignInButton>
           ) : null}
-          <DownloadLink
-            variant="contained"
-            onClick={handleClickDownload}
-            href={config.get("DOWNLOAD_URL")}
-          >
-            <Download /> {i18n.download}
-          </DownloadLink>
+
+          {!hideDownloadButton && (
+            <DownloadButton
+              label={i18n.download}
+              onClick={onClickUserMenuItem}
+              trackingId={trackingId}
+              loadingCdnLinks={loadingCdnLinks}
+              cdnLinks={cdnLinks}
+            />
+          )}
         </>
       )}
     </UserMenuContainer>
   )
 })
-
-function noScroll() {
-  window.scrollTo(0, 0)
-}
 
 export { UserMenu }

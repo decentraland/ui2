@@ -1,3 +1,17 @@
-import { CssVarsTheme, ThemeOptions } from "@mui/material"
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { SupportedColorScheme } from "@mui/material"
 
-export type Theme = ThemeOptions & Partial<CssVarsTheme>
+type Theme =
+  | {
+      cssVarPrefix?: string
+      colorSchemes: Record<SupportedColorScheme, Record<string, any>>
+    }
+  | {
+      $$material: {
+        cssVarPrefix?: string
+        colorSchemes: Record<SupportedColorScheme, Record<string, any>>
+      }
+    }
+  | undefined
+
+export type { Theme }
