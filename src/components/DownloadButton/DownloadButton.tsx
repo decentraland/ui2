@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo } from "react"
+import React, { useCallback, useEffect, useMemo, useState } from "react"
 import { useAdvancedUserAgentData } from "@dcl/hooks"
 import Download from "@mui/icons-material/Download"
 import { config } from "../../config"
@@ -33,6 +33,7 @@ const DownloadButton = React.memo((props: DownloadButtonProps) => {
     cdnLinks,
     onRedirect,
   } = props
+  const [isDownloading, setIsDownloading] = useState(false)
 
   const [isLoadingUserAgentData, userAgentData] = useAdvancedUserAgentData()
 
@@ -110,9 +111,13 @@ const DownloadButton = React.memo((props: DownloadButtonProps) => {
         arch: userAgentData.cpu.architecture,
       })
 
+      setIsDownloading(true)
+
       setTimeout(
         () => {
           triggerFileDownload(defaultDownloadOption.link).then(() => {
+            setIsDownloading(false)
+
             onRedirect
               ? onRedirect(finalUrl)
               : (window.location.href = finalUrl)
@@ -121,7 +126,14 @@ const DownloadButton = React.memo((props: DownloadButtonProps) => {
         onClick ? 300 : 0
       )
     },
-    [defaultDownloadOption, userAgentData, onClick, onRedirect, trackingId]
+    [
+      defaultDownloadOption,
+      userAgentData,
+      onClick,
+      onRedirect,
+      trackingId,
+      setIsDownloading,
+    ]
   )
 
   if (
@@ -131,6 +143,8 @@ const DownloadButton = React.memo((props: DownloadButtonProps) => {
     return null
   }
 
+  const isLoading = loadingCdnLinks || isDownloading
+
   if (isLoadingUserAgentData || !defaultDownloadOption) {
     return (
       <DownloadButtonStyled
@@ -139,7 +153,7 @@ const DownloadButton = React.memo((props: DownloadButtonProps) => {
         onClick={handleClick}
         startIcon={startIcon || <Download />}
         endIcon={endIcon}
-        loading={loadingCdnLinks}
+        loading={isLoading}
       >
         <DownloadButtonLabelContainer>{label}</DownloadButtonLabelContainer>
       </DownloadButtonStyled>
@@ -153,7 +167,7 @@ const DownloadButton = React.memo((props: DownloadButtonProps) => {
       onClick={handleClick}
       startIcon={startIcon}
       endIcon={endIcon || defaultDownloadOption.icon}
-      loading={loadingCdnLinks}
+      loading={isLoading}
     >
       <DownloadButtonLabelContainer>{label}</DownloadButtonLabelContainer>
     </DownloadButtonStyled>
