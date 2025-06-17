@@ -1,13 +1,13 @@
 import styled from "@emotion/styled"
 import { Badge as BadgeMui } from "@mui/material"
 
-const Badge = styled(BadgeMui)({
+const Badge = styled(BadgeMui)<{ isImage: boolean }>(({ isImage }) => ({
   height: "48px",
   width: "48px",
   "& svg.MuiSvgIcon-root": {
-    fontSize: "inherit",
+    fontSize: isImage ? "24px" : "inherit",
   },
-})
+}))
 
 interface ImageContainerProps {
   backgroundColor?: string

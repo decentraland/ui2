@@ -365,6 +365,34 @@ type StreamingNotificationsProps =
   | StreamingTimeExceededNotificationProps
   | StreamingPlaceUpdatedNotificationProps
 
+// Referral Notifications
+
+type CommonReferralNotificationMetadataProps = {
+  title: string
+  description: string
+  address: string
+  tier: number
+  url: string
+  image: string
+  invitedUserAddress: string
+  invitedUsers: number
+}
+
+type ReferralNewTierReachedNotificationProps = RawDecentralandNotification<
+  NotificationType.REFERRAL_NEW_TIER_REACHED,
+  CommonReferralNotificationMetadataProps
+>
+
+type ReferralInvitedUsersAcceptedNotificationProps =
+  RawDecentralandNotification<
+    NotificationType.REFERRAL_INVITED_USERS_ACCEPTED,
+    CommonReferralNotificationMetadataProps
+  >
+
+type ReferralNotificationsProps =
+  | ReferralNewTierReachedNotificationProps
+  | ReferralInvitedUsersAcceptedNotificationProps
+
 type DCLNotificationProps =
   | MarketplaceNotificationsProps
   | GovernanceNotificationsProps
@@ -374,6 +402,7 @@ type DCLNotificationProps =
   | EventsNotificationsProps
   | StreamingNotificationsProps
   | CreditsNotificationsProps
+  | ReferralNotificationsProps
 
 type CommonNotificationProps<N> = {
   notification: N
@@ -427,4 +456,6 @@ export type {
   CreditsClaimReminderNotificationProps,
   CreditsExpireSoonReminderNotificationProps,
   CreditsExpireIn24HrsReminderNotificationProps,
+  ReferralNewTierReachedNotificationProps,
+  ReferralInvitedUsersAcceptedNotificationProps,
 }

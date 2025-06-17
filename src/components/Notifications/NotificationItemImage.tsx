@@ -13,6 +13,7 @@ const NotificationItemImage = React.memo(
           horizontal: "left",
         }}
         badgeContent={badgeIcon}
+        isImage={typeof image === "string"}
       >
         {typeof image === "string" ? (
           <ImageContainer backgroundColor={imageBackgroundColor}>

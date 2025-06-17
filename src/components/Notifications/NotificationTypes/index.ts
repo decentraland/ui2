@@ -20,6 +20,8 @@ import { BidAcceptedNotification } from "./Marketplace/BidAcceptedNotification"
 import { BidReceivedNotification } from "./Marketplace/BidReceivedNotification"
 import { ItemSoldNotification } from "./Marketplace/ItemSoldNotification"
 import { RoyaltiesEarnedNotification } from "./Marketplace/RoyaltiesEarnedNotification"
+import { ReferralInvitedUserAcceptedNotification } from "./Referral/ReferralInvitedUserAcceptedNotification"
+import { ReferralNewTierReachedNotification } from "./Referral/ReferralNewTierReachedNotification"
 import { CampaignGasPriceHigherThanExpectedNotification } from "./Reward/CampaignGasPriceHigherThanExpectedNotification"
 import { CampaignOutOfFundsNotification } from "./Reward/CampaignOutOfFundsNotification"
 import { CampaignOutOfStockNotification } from "./Reward/CampaignOutOfStockNotification"
@@ -43,6 +45,11 @@ export {
   CampaignGasPriceHigherThanExpectedNotification,
   CampaignOutOfFundsNotification,
   CampaignOutOfStockNotification,
+  CreditsClaimReminderNotification,
+  CreditsCompleteYourWeeklyGoalsNotification,
+  CreditsDoNotMissOutNotification,
+  CreditsExpireIn24HrsReminderNotification,
+  CreditsExpireSoonReminderNotification,
   EventsStartedNotification,
   EventsStartsSoonNotification,
   GovernanceAnnouncementNotification,
@@ -57,6 +64,8 @@ export {
   ItemSoldNotification,
   LandRentalEndedNotification,
   LandRentedNotification,
+  ReferralInvitedUserAcceptedNotification,
+  ReferralNewTierReachedNotification,
   RewardAssignedNotification,
   RewardDelayedNotification,
   RewardInProgressNotification,
@@ -71,9 +80,4 @@ export {
   WorldsMissingResourcesNotification,
   WorldsPermissionGrantedNotification,
   WorldsPermissionRevokedNotification,
-  CreditsCompleteYourWeeklyGoalsNotification,
-  CreditsDoNotMissOutNotification,
-  CreditsClaimReminderNotification,
-  CreditsExpireSoonReminderNotification,
-  CreditsExpireIn24HrsReminderNotification,
 }

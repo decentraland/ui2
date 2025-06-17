@@ -29,6 +29,8 @@ import {
   itemSoldNotificationPropsData,
   landRentalEndedNotificationData,
   landRentedNotificationData,
+  referralInvitedUserAcceptedNotificationData,
+  referralNewTierReachedNotificationData,
   rewardAssignedNotificationData,
   rewardDelayedNotificationData,
   rewardInProgressNotificationData,
@@ -202,6 +204,16 @@ const CreditsNotifications: Story = {
   },
 }
 
+const ReferralNotifications: Story = {
+  name: "Referral Notifications",
+  args: {
+    items: [
+      referralNewTierReachedNotificationData,
+      referralInvitedUserAcceptedNotificationData,
+    ],
+  },
+}
+
 const StreamingNotifications: Story = {
   name: "Streaming Notifications",
   args: {
@@ -260,6 +272,7 @@ export {
   MarketplaceNotifications,
   RewardsNotifications,
   CreditsNotifications,
+  ReferralNotifications,
   StreamingNotifications,
   WorldsNotifications,
   OpenNotLoading,
