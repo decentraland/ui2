@@ -5,6 +5,7 @@ import { Badge, ImageContainer } from "./NotificationItemImage.styled"
 const NotificationItemImage = React.memo(
   (props: NotificationItemImageProps) => {
     const { image, badgeIcon, imageBackgroundColor } = props
+    const isImage = typeof image === "string"
     return (
       <Badge
         overlap="circular"
@@ -13,8 +14,9 @@ const NotificationItemImage = React.memo(
           horizontal: "left",
         }}
         badgeContent={badgeIcon}
+        isImage={isImage}
       >
-        {typeof image === "string" ? (
+        {isImage ? (
           <ImageContainer backgroundColor={imageBackgroundColor}>
             <img src={image} alt="Notification Image" />
           </ImageContainer>

@@ -2,6 +2,8 @@ import { MuteIcon } from "./Emotes/MuteIcon"
 import { PropsIcon } from "./Emotes/PropsIcon"
 import { SoundIcon } from "./Emotes/SoundIcon"
 import { VolumeIcon } from "./Emotes/VolumeIcon"
+import { JumpInIcon } from "./JumpInIcon"
+import { LocationIcon } from "./LocationIcon"
 import { ManaEthIcon } from "./ManaEthIcon"
 import { ManaMaticIcon } from "./ManaMaticIcon"
 import { AccessRestoredIcon } from "./Notifications/AccessRestoredIcon"
@@ -30,6 +32,7 @@ import { PermissionRevokedIcon } from "./Notifications/PermissionRevokedIcon"
 import { PitchIcon } from "./Notifications/PitchIcon"
 import { ProjectEnactedIcon } from "./Notifications/ProjectEnactedIcon"
 import { ProposalFinishedIcon } from "./Notifications/ProposalFinishedIcon"
+import { ReferralInvitedUserAcceptedIcon } from "./Notifications/ReferralInvitedUserAcceptedIcon"
 import { RentPeriodEndingIcon } from "./Notifications/RentPeriodEndingIcon"
 import { RewardIcon } from "./Notifications/RewardIcon"
 import { StreamingIcon } from "./Notifications/StreamingIcon"
@@ -124,4 +127,7 @@ export {
   StreamingIcon,
   TenderIcon,
   VotingEndedIcon,
+  JumpInIcon,
+  ReferralInvitedUserAcceptedIcon,
+  LocationIcon,
 }

@@ -1,5 +1,4 @@
 import { styled } from "@mui/material/styles"
-import SvgIcon from "@mui/material/SvgIcon"
 import { Box, Button, Link, Typography } from "@mui/material"
 
 const StyledContainer = styled(Box)({
@@ -12,9 +11,10 @@ const StyledContainer = styled(Box)({
 const StyledPosition = styled(Typography)<{ compact?: boolean }>(
   ({ compact, theme }) => ({
     padding: "4px 8px 4px 5px",
-    borderRadius: "4px",
+    borderRadius: "6px",
     backgroundColor: theme.palette.secondary.main,
     marginRight: "2px",
+    marginBottom: "0!important",
     display: "flex",
     flexWrap: "nowrap",
     alignItems: "center",
@@ -43,7 +43,7 @@ const StyledPosition = styled(Typography)<{ compact?: boolean }>(
 
 const StyledIcon = styled(Box)(({ theme }) => ({
   padding: "4px",
-  borderRadius: "4px",
+  borderRadius: "6px",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
@@ -90,19 +90,9 @@ const StyledJumpInLink = styled(Link)({
   },
 })
 
-const StyledPrimaryIcon = styled(SvgIcon)(({ theme }) => ({
-  width: "16px",
-  height: "16px",
-  padding: 0,
-  margin: 0,
-  "& path": {
-    fill: theme.palette.primary.contrastText,
-  },
-}))
-
-const StyledSecondaryIcon = styled(SvgIcon)(({ theme }) => ({
-  width: "16px",
-  height: "16px",
+const LocationIconContainer = styled(Box)(({ theme }) => ({
+  fontSize: "16px",
+  color: "red",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
@@ -117,6 +107,5 @@ export {
   StyledIcon,
   StyledJumpInButton,
   StyledJumpInLink,
-  StyledPrimaryIcon,
-  StyledSecondaryIcon,
+  LocationIconContainer,
 }

@@ -1,11 +1,11 @@
 import React, { useCallback, useState } from "react"
 import { Typography } from "@mui/material"
-import { PrimaryJumpIn } from "./PrimaryJumpIn"
-import { SecondaryPin } from "./SecondaryPin"
 import { launchDesktopApp } from "../../modules/jumpIn"
+import { JumpInIcon, LocationIcon } from "../Icon"
 import { DownloadModal } from "../Modal/DownloadModal"
 import { JumpInProps } from "./JumpIn.types"
 import {
+  LocationIconContainer,
   StyledContainer,
   StyledIcon,
   StyledJumpInButton,
@@ -64,7 +64,7 @@ const JumpIn = React.memo((props: JumpInProps) => {
           variant="contained"
         >
           <span>{buttonText}</span>
-          <PrimaryJumpIn />
+          <JumpInIcon />
         </StyledJumpInButton>
         <DownloadModal
           {...modalProps}
@@ -86,11 +86,15 @@ const JumpIn = React.memo((props: JumpInProps) => {
       >
         <StyledContainer>
           <StyledPosition compact={compact}>
-            {position && <SecondaryPin />}
+            {position && (
+              <LocationIconContainer>
+                <LocationIcon htmlColor="inherit" fontSize="inherit" />
+              </LocationIconContainer>
+            )}
             <Typography component="span">{position}</Typography>
           </StyledPosition>
           <StyledIcon>
-            <PrimaryJumpIn />
+            <JumpInIcon />
           </StyledIcon>
         </StyledContainer>
       </StyledJumpInLink>
