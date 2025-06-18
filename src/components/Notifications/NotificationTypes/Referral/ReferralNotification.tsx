@@ -26,8 +26,8 @@ const ReferralNotification = React.memo(
           )
         }
         imageBackgroundColor={
-          isNewTierReached
-            ? getBGColorByRarity(notification.metadata.rarity!)
+          isNewTierReached && notification.metadata.rarity
+            ? getBGColorByRarity(notification.metadata.rarity)
             : "transparent"
         }
         badgeIcon={isNewTierReached && <RewardIcon />}

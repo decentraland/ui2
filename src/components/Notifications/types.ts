@@ -367,7 +367,7 @@ type StreamingNotificationsProps =
 
 // Referral Notifications
 
-type CommonReferralNotificationMetadataProps = {
+type ReferralNotificationMetadataProps = {
   title: string
   description: string
   address: string
@@ -376,18 +376,21 @@ type CommonReferralNotificationMetadataProps = {
   image: string
   invitedUserAddress: string
   invitedUsers: number
-  rarity?: Rarity
+}
+
+type NewTierReachedNotificationMetadata = ReferralNotificationMetadataProps & {
+  rarity: Rarity
 }
 
 type ReferralNewTierReachedNotificationProps = RawDecentralandNotification<
   NotificationType.REFERRAL_NEW_TIER_REACHED,
-  CommonReferralNotificationMetadataProps
+  NewTierReachedNotificationMetadata
 >
 
 type ReferralInvitedUsersAcceptedNotificationProps =
   RawDecentralandNotification<
     NotificationType.REFERRAL_INVITED_USERS_ACCEPTED,
-    CommonReferralNotificationMetadataProps
+    ReferralNotificationMetadataProps
   >
 
 type ReferralNotificationsProps =
