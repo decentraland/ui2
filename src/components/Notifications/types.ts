@@ -376,6 +376,7 @@ type CommonReferralNotificationMetadataProps = {
   image: string
   invitedUserAddress: string
   invitedUsers: number
+  rarity?: Rarity
 }
 
 type ReferralNewTierReachedNotificationProps = RawDecentralandNotification<

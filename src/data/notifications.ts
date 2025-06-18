@@ -751,6 +751,7 @@ const referralNewTierReachedNotificationData: ReferralNewTierReachedNotification
         "https://peer.decentraland.org/lambdas/collections/contents/urn:decentraland:ethereum:collections-v1:binance_us_collection:binance_us_upper_body/thumbnail",
       invitedUserAddress: "0xabcdef1234567890abcdef1234567890abcdef12",
       invitedUsers: 5,
+      rarity: Rarity.EXOTIC,
     },
   }
 

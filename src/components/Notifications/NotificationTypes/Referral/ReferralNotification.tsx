@@ -1,5 +1,5 @@
 import React from "react"
-import { NotificationType, Rarity } from "@dcl/schemas"
+import { NotificationType } from "@dcl/schemas"
 import { ReferralCommonNotificationProps } from "./types"
 import { ReferralInvitedUserAcceptedIcon, RewardIcon } from "../../../Icon"
 import { NotificationItem } from "../../NotificationItem"
@@ -27,9 +27,7 @@ const ReferralNotification = React.memo(
         }
         imageBackgroundColor={
           isNewTierReached
-            ? getBGColorByRarity(
-                Rarity.LEGENDARY /* notification.metadata.rarity */
-              )
+            ? getBGColorByRarity(notification.metadata.rarity!)
             : "transparent"
         }
         badgeIcon={isNewTierReached && <RewardIcon />}
