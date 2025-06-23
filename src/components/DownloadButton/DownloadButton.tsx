@@ -81,6 +81,10 @@ const DownloadButton = React.memo((props: DownloadButtonProps) => {
     }
   }, [userAgentData, links])
 
+  const finalHref = useMemo(() => {
+    return href || defaultDownloadOption?.link || config.get("DOWNLOAD_URL")
+  }, [href, defaultDownloadOption])
+
   const handleClick = useCallback(
     (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
       event.preventDefault()
@@ -88,7 +92,7 @@ const DownloadButton = React.memo((props: DownloadButtonProps) => {
       onClick?.(event, {
         type: "DOWNLOAD",
         track_uuid: trackingId,
-        url: config.get("DOWNLOAD_URL"),
+        url: finalHref,
       })
 
       if (!userAgentData || !defaultDownloadOption) {
@@ -128,6 +132,7 @@ const DownloadButton = React.memo((props: DownloadButtonProps) => {
     },
     [
       defaultDownloadOption,
+      finalHref,
       userAgentData,
       onClick,
       onRedirect,
@@ -149,7 +154,7 @@ const DownloadButton = React.memo((props: DownloadButtonProps) => {
     return (
       <DownloadButtonStyled
         variant="contained"
-        href={href || config.get("DOWNLOAD_URL")}
+        href={finalHref}
         onClick={handleClick}
         startIcon={startIcon || <Download />}
         endIcon={endIcon}
@@ -163,7 +168,7 @@ const DownloadButton = React.memo((props: DownloadButtonProps) => {
   return (
     <DownloadButtonStyled
       variant="contained"
-      href={href || defaultDownloadOption.link}
+      href={finalHref}
       onClick={handleClick}
       startIcon={startIcon}
       endIcon={endIcon || defaultDownloadOption.icon}
