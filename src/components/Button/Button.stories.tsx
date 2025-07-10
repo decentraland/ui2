@@ -4,7 +4,7 @@ import { ButtonProps } from "./Button.types"
 import type { Meta, StoryObj } from "@storybook/react"
 
 const meta = {
-  title: "Components/Button",
+  title: "Decentraland UI/Button",
   component: Button,
   tags: ["autodocs"],
   argTypes: {
