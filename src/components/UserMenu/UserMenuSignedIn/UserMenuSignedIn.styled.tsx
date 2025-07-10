@@ -200,6 +200,17 @@ const ActionsMenuItem = styled(MenuItem)((props) => {
   }
 })
 
+const InviteFriendsTypography = styled(Typography)({
+  display: "flex",
+  alignItems: "center",
+})
+
+const ReferralInviteFriendsIconContainer = styled(Box)({
+  marginLeft: "12px",
+  display: "flex",
+  alignItems: "center",
+})
+
 const ActionsListItemIcon = styled(ListItemIcon)((props) => {
   const { theme } = props
   return {
@@ -247,6 +258,8 @@ export {
   MenuInfoUnclaimedTypography,
   ActionsWrapper,
   ActionsMenuItem,
+  InviteFriendsTypography,
+  ReferralInviteFriendsIconContainer,
   ActionsListItemIcon,
   LogoutContainer,
 }
