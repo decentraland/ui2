@@ -3,7 +3,7 @@ import { Typography } from "@mui/material"
 import { launchDesktopApp } from "../../modules/jumpIn"
 import { JumpInIcon, LocationIcon } from "../Icon"
 import { DownloadModal } from "../Modal/DownloadModal"
-import { JumpInProps } from "./JumpIn.types"
+import { JumpInProps, JumpInEventType } from "./JumpIn.types"
 import {
   LocationIconContainer,
   StyledContainer,
@@ -37,7 +37,9 @@ const JumpIn = React.memo((props: JumpInProps) => {
       const hasLauncher = await launchDesktopApp(desktopAppOptions)
 
       onTrack?.({
-        type: hasLauncher ? "JUMP_IN" : "OPEN_DOWNLOAD_MODAL",
+        type: hasLauncher
+          ? JumpInEventType.JUMP_IN
+          : JumpInEventType.OPEN_DOWNLOAD_MODAL,
         url: hasLauncher ? undefined : downloadUrl,
         has_launcher: hasLauncher,
       })
@@ -52,16 +54,15 @@ const JumpIn = React.memo((props: JumpInProps) => {
       e.stopPropagation()
       e.preventDefault()
 
-      // Call onClick for tracking if provided
       onTrack?.({
-        type: "DOWNLOAD",
+        type: JumpInEventType.DOWNLOAD,
         url: downloadUrl,
         has_launcher: false,
       })
 
       window.open(downloadUrl, "_blank")
     },
-    [downloadUrl]
+    [onTrack, downloadUrl]
   )
 
   if (props.variant === "button") {
