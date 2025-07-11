@@ -3,7 +3,7 @@ import { Typography } from "@mui/material"
 import { launchDesktopApp } from "../../modules/jumpIn"
 import { JumpInIcon, LocationIcon } from "../Icon"
 import { DownloadModal } from "../Modal/DownloadModal"
-import { JumpInProps, JumpInEventType } from "./JumpIn.types"
+import { JumpInEventType, JumpInProps } from "./JumpIn.types"
 import {
   LocationIconContainer,
   StyledContainer,

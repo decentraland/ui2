@@ -1,14 +1,13 @@
+import { ButtonProps, LinkProps } from "@mui/material"
 import { DownloadModalProps } from "../Modal/DownloadModal/DownloadModal.types"
-import { ButtonProps } from "@mui/material"
-import { LinkProps } from "@mui/material"
 
-export enum JumpInEventType {
+enum JumpInEventType {
   JUMP_IN = "JUMP_IN",
   OPEN_DOWNLOAD_MODAL = "OPEN_DOWNLOAD_MODAL",
   DOWNLOAD = "DOWNLOAD",
 }
 
-export type JumpInTrackingData = {
+type JumpInTrackingData = {
   type: JumpInEventType
   url?: string
   has_launcher: boolean
@@ -48,4 +47,4 @@ type JumpInProps = JumpInBaseProps &
       }
   )
 
-export type { JumpInBaseProps, JumpInProps }
+export { JumpInBaseProps, JumpInProps, JumpInEventType, JumpInTrackingData }
