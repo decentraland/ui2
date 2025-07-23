@@ -84,6 +84,25 @@ const WithOS: Story = {
   ),
 }
 
+const WithCustomFallback: Story = {
+  name: "With Custom Fallback",
+  args: {
+    label: "Download with Fallback",
+    onClick: (event, options) => {
+      console.log("Custom fallback triggered:", event, options)
+      window.open("https://decentraland.org/download", "_blank")
+    },
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Button with custom handler - will try direct download first, then call custom handler if direct download not possible",
+      },
+    },
+  },
+}
+
 // eslint-disable-next-line import/no-default-export
 export default meta
-export { Basic, WithOS }
+export { Basic, WithOS, WithCustomFallback }

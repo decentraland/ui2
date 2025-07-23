@@ -123,7 +123,24 @@ const WithActions: Story = {
   },
 }
 
+const DirectDownload: Story = {
+  args: {
+    ...Default.args,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Modal without custom handler - will try direct download first, fallback to default download page if not possible",
+      },
+    },
+  },
+  render: (args) => {
+    return <DownloadModal {...args} />
+  },
+}
+
 // eslint-disable-next-line import/no-default-export
 export default meta
 
-export { Default, CustomContent, WithActions }
+export { Default, CustomContent, WithActions, DirectDownload }
