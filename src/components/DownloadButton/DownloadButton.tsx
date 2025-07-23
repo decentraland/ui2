@@ -89,8 +89,6 @@ const DownloadButton = React.memo((props: DownloadButtonProps) => {
     (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
       event.preventDefault()
 
-      console.log("handleClick", onClick)
-
       // If we have user agent data and a download option, try direct download
       if (userAgentData && defaultDownloadOption) {
         const redirectUrl = updateUrlWithLastValue(
