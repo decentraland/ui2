@@ -89,46 +89,47 @@ const DownloadButton = React.memo((props: DownloadButtonProps) => {
     (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
       event.preventDefault()
 
-      onClick?.(event, {
-        type: "DOWNLOAD",
-        track_uuid: trackingId,
-        url: finalHref,
-      })
+      // If we have user agent data and a download option, try direct download
+      if (userAgentData && defaultDownloadOption) {
+        const redirectUrl = updateUrlWithLastValue(
+          config.get("DOWNLOAD_SUCCESS_URL"),
+          "os",
+          userAgentData.os.name
+        )
 
-      if (!userAgentData || !defaultDownloadOption) {
+        const finalUrl = addQueryParamsToUrlString(redirectUrl, {
+          arch: userAgentData.cpu.architecture,
+        })
+
+        setIsDownloading(true)
+
         setTimeout(
           () => {
-            window.open(config.get("DOWNLOAD_URL"), "_blank", "noopener")
+            triggerFileDownload(defaultDownloadOption.link).then(() => {
+              setIsDownloading(false)
+
+              onRedirect
+                ? onRedirect(finalUrl)
+                : (window.location.href = finalUrl)
+            })
           },
           onClick ? 300 : 0
         )
         return
       }
 
-      const redirectUrl = updateUrlWithLastValue(
-        config.get("DOWNLOAD_SUCCESS_URL"),
-        "os",
-        userAgentData.os.name
-      )
-
-      const finalUrl = addQueryParamsToUrlString(redirectUrl, {
-        arch: userAgentData.cpu.architecture,
+      // Fallback: call custom onClick handler or open download page
+      onClick?.(event, {
+        type: "DOWNLOAD",
+        track_uuid: trackingId,
+        url: finalHref,
       })
 
-      setIsDownloading(true)
-
-      setTimeout(
-        () => {
-          triggerFileDownload(defaultDownloadOption.link).then(() => {
-            setIsDownloading(false)
-
-            onRedirect
-              ? onRedirect(finalUrl)
-              : (window.location.href = finalUrl)
-          })
-        },
-        onClick ? 300 : 0
-      )
+      if (!onClick) {
+        setTimeout(() => {
+          window.open(config.get("DOWNLOAD_URL"), "_blank", "noopener")
+        }, 0)
+      }
     },
     [
       defaultDownloadOption,
