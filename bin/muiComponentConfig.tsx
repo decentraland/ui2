@@ -1,4 +1,4 @@
-export const documentComponents: string[] = [
+const documentComponents: string[] = [
   "Autocomplete",
   "Button",
   "ButtonGroup",
@@ -15,7 +15,7 @@ type ComponentsConfigProps = Record<
   }
 >
 
-export const componentsConfig: ComponentsConfigProps = {
+const componentsConfig: ComponentsConfigProps = {
   Autocomplete: {
     args: `{
       disablePortal: true,
@@ -76,3 +76,5 @@ export const componentsConfig: ComponentsConfigProps = {
     ],
   },
 }
+
+export { documentComponents, componentsConfig }
