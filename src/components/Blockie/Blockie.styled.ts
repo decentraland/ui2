@@ -1,5 +1,4 @@
 import styled from "@emotion/styled"
-import { Box } from "@mui/material"
 
 const StyledCanvas = styled("canvas")<{
   scale: number
@@ -18,8 +17,9 @@ const StyledCanvas = styled("canvas")<{
   }
 })
 
-const StyledBlockieChildrenWrapper = styled(Box)({
+const StyledBlockieChildrenWrapper = styled("span")({
   marginLeft: "0.5em",
+  display: "inline-block",
 })
 
 export { StyledBlockieChildrenWrapper, StyledCanvas }

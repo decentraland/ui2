@@ -1,4 +1,3 @@
-import zIndex from "@mui/material/styles/zIndex"
 import styled from "@emotion/styled"
 import { AppBar, Box, Button, Link, Modal } from "@mui/material"
 
@@ -35,7 +34,7 @@ const LogoLink = styled(Link, {
   let mobileStyles
   if (isMobile) {
     mobileStyles = {
-      zIndex: zIndex.appBar,
+      zIndex: 1100, // Material-UI's appBar zIndex value
     }
   }
   return {
