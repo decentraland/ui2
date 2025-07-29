@@ -40,6 +40,10 @@ import { StreamingIcon } from "./Notifications/StreamingIcon"
 import { TenderIcon } from "./Notifications/TenderIcon"
 import { VotingEndedIcon } from "./Notifications/VotingEndedIcon"
 import { PlacesIcon } from "./PlacesIcon"
+import { DiscordIcon } from "./Social/DiscordIcon"
+import { GitHubIcon } from "./Social/GitHubIcon"
+import { RedditIcon } from "./Social/RedditIcon"
+import { XIcon } from "./Social/XIcon"
 import { SparklesIcon } from "./SparklesIcon"
 import { UtilityIcon } from "./UtilityIcon"
 import { BaseFemaleIcon } from "./Wearables/BaseFemaleIcon"
@@ -132,4 +136,8 @@ export {
   UtilityIcon,
   VotingEndedIcon,
   VolumeIcon,
+  DiscordIcon,
+  GitHubIcon,
+  RedditIcon,
+  XIcon,
 }
