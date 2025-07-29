@@ -37,5 +37,13 @@
   "DAO_GRANTS_URL": "https://decentraland.zone/dao/grants/",
   "GOVERNANCE_PROJECTS_URL": "https://decentraland.zone/governance/projects/",
   "DOCS_DAO_URL": "https://docs.decentraland.org/player/general/dao/overview/what-is-the-dao/",
-  "MARKETPLACE_SETTINGS_URL": "https://decentraland.zone/marketplace/settings"
+  "MARKETPLACE_SETTINGS_URL": "https://decentraland.zone/marketplace/settings",
+  "DISCORD_URL": "https://dcl.gg/discord",
+  "REDDIT_URL": "https://reddit.com/r/decentraland",
+  "GITHUB_URL": "https://github.com/decentraland",
+  "X_URL": "https://x.com/decentraland",
+  "PRIVACY_POLICY_URL": "https://decentraland.zone/privacy",
+  "TERMS_OF_USE_URL": "https://decentraland.zone/terms",
+  "CONTENT_POLICY_URL": "https://decentraland.zone/content",
+  "CODE_OF_ETHICS_URL": "https://decentraland.zone/ethics"
 }
