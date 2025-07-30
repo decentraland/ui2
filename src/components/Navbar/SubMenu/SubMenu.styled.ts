@@ -1,4 +1,3 @@
-import zIndex from "@mui/material/styles/zIndex"
 import styled from "@emotion/styled"
 import { Box, Button } from "@mui/material"
 import CreateImage from "../../../Assets/Navbar/create-submenu.png"
@@ -19,7 +18,7 @@ const SubMenuContainer = styled(Box)((props) => {
   return {
     [theme!.breakpoints.down("sm")]: {
       position: "absolute",
-      zIndex: zIndex.modal,
+      zIndex: 1300, // Material-UI's modal zIndex value
     },
   }
 })
