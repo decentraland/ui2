@@ -17,6 +17,11 @@ jobs:
       s3_bucket_key: ${{ steps.publish_package.outputs.s3-bucket-key }}
     steps:
       - uses: actions/checkout@main
+      - name: Use Node.js 20.x
+        uses: actions/setup-node@v4.0.1
+        with:
+          node-version: 20.x
+          registry-url: https://registry.npmjs.org/
       - name: install
         run: npm install
       - name: test
