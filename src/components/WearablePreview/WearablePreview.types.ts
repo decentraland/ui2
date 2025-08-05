@@ -9,7 +9,12 @@ import {
   WearableWithBlobs,
 } from "@dcl/schemas/dist/dapps/preview"
 
-type PreviewUnityMode = "authentication" | "builder" | "marketplace" | "profile"
+enum PreviewUnityMode {
+  Authentication = "authentication",
+  Builder = "builder",
+  Marketplace = "marketplace",
+  Profile = "profile",
+}
 
 type WearablePreviewProps = {
   id?: string
@@ -71,4 +76,5 @@ type WearablePreviewState = {
   lastOptions: PreviewOptions | null
 }
 
-export type { PreviewUnityMode, WearablePreviewProps, WearablePreviewState }
+export { PreviewUnityMode }
+export type { WearablePreviewProps, WearablePreviewState }
