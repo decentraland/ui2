@@ -1,5 +1,3 @@
 export { WearablePreview } from "./WearablePreview"
-export type {
-  WearablePreviewProps,
-  PreviewUnityMode,
-} from "./WearablePreview.types"
+export { PreviewUnityMode } from "./WearablePreview.types"
+export type { WearablePreviewProps } from "./WearablePreview.types"
