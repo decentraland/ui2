@@ -157,7 +157,7 @@ export const UsingStaticCamera: Story = {
 
 export const WithoutAutoRotation: Story = {
   args: {
-    profile: "default",
+    profile: `default${Math.floor(Math.random() * 160) + 1}`,
     disableAutoRotate: true,
   },
   render: (args) => (
@@ -169,7 +169,7 @@ export const WithoutAutoRotation: Story = {
 
 export const WithoutBackground: Story = {
   args: {
-    profile: "default",
+    profile: `default${Math.floor(Math.random() * 160) + 1}`,
     disableBackground: true,
   },
   render: (args) => (
@@ -181,7 +181,7 @@ export const WithoutBackground: Story = {
 
 export const WithCustomBackgroundColor: Story = {
   args: {
-    profile: "default",
+    profile: `default${Math.floor(Math.random() * 160) + 1}`,
     background: "ff0000",
   },
   render: (args) => (
@@ -368,7 +368,7 @@ export const UnityModes: Story = {
         itemId: "5",
       },
       profile: {
-        profile: "default",
+        profile: `default${Math.floor(Math.random() * 160) + 1}`,
         contractAddress: undefined,
         itemId: undefined,
       },
@@ -378,7 +378,7 @@ export const UnityModes: Story = {
         disableBackground: true,
       },
       authentication: {
-        profile: "default",
+        profile: `default${Math.floor(Math.random() * 160) + 1}`,
         contractAddress: undefined,
         itemId: undefined,
         disableAutoRotate: true,
