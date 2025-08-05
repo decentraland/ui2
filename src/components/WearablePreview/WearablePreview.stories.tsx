@@ -60,6 +60,10 @@ const meta: Meta<typeof WearablePreview> = {
     disableDefaultEmotes: { control: "boolean" },
     dev: { control: "boolean" },
     unity: { control: "boolean" },
+    unityMode: {
+      control: "select",
+      options: ["marketplace", "profile", "authentication", "builder"],
+    },
   },
 }
 
@@ -345,6 +349,50 @@ export const PreviewFromFile: Story = {
           </div>
         )}
       </div>
+    )
+  },
+}
+
+export const UnityModes: Story = {
+  args: {
+    unity: true,
+    unityMode: "marketplace",
+    contractAddress: "0xee8ae4c668edd43b34b98934d6d2ff82e41e6488",
+    itemId: "5",
+  },
+  render: (args) => {
+    // Different configurations for each Unity mode
+    const modeConfigs = {
+      marketplace: {
+        contractAddress: "0xee8ae4c668edd43b34b98934d6d2ff82e41e6488",
+        itemId: "5",
+      },
+      profile: {
+        profile: "0xc85a0a34d5f9f2239ab0622a41a2c2560ff119c6",
+        contractAddress: undefined,
+        itemId: undefined,
+      },
+      builder: {
+        contractAddress: "0xee8ae4c668edd43b34b98934d6d2ff82e41e6488",
+        itemId: "5",
+        disableBackground: true,
+      },
+      authentication: {
+        profile: "default",
+        contractAddress: undefined,
+        itemId: undefined,
+        disableAutoRotate: true,
+      },
+    }
+
+    const config =
+      modeConfigs[args.unityMode as keyof typeof modeConfigs] ||
+      modeConfigs.marketplace
+
+    return (
+      <WearablePreviewContainer>
+        <WearablePreview {...args} {...config} />
+      </WearablePreviewContainer>
     )
   },
 }
