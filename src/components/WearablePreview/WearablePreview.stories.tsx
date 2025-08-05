@@ -368,7 +368,7 @@ export const UnityModes: Story = {
         itemId: "5",
       },
       profile: {
-        profile: "0x2A39D4F68133491F0442496f601cde2a945b6D31",
+        profile: "default",
         contractAddress: undefined,
         itemId: undefined,
       },
