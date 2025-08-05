@@ -14,6 +14,10 @@ import { Meta, StoryObj } from "@storybook/react"
 import { WearablePreview } from "./WearablePreview"
 import { WearablePreviewContainer } from "./WearablePreview.stories.styled"
 
+const getRandomProfile = () => {
+  return `default${Math.floor(Math.random() * 160) + 1}`
+}
+
 const meta: Meta<typeof WearablePreview> = {
   title: "Decentraland UI/WearablePreview",
   component: WearablePreview,
@@ -157,7 +161,7 @@ export const UsingStaticCamera: Story = {
 
 export const WithoutAutoRotation: Story = {
   args: {
-    profile: `default${Math.floor(Math.random() * 160) + 1}`,
+    profile: getRandomProfile(),
     disableAutoRotate: true,
   },
   render: (args) => (
@@ -169,7 +173,7 @@ export const WithoutAutoRotation: Story = {
 
 export const WithoutBackground: Story = {
   args: {
-    profile: `default${Math.floor(Math.random() * 160) + 1}`,
+    profile: getRandomProfile(),
     disableBackground: true,
   },
   render: (args) => (
@@ -181,7 +185,7 @@ export const WithoutBackground: Story = {
 
 export const WithCustomBackgroundColor: Story = {
   args: {
-    profile: `default${Math.floor(Math.random() * 160) + 1}`,
+    profile: getRandomProfile(),
     background: "ff0000",
   },
   render: (args) => (
@@ -368,7 +372,7 @@ export const UnityModes: Story = {
         itemId: "5",
       },
       profile: {
-        profile: `default${Math.floor(Math.random() * 160) + 1}`,
+        profile: getRandomProfile(),
         contractAddress: undefined,
         itemId: undefined,
       },
@@ -378,7 +382,7 @@ export const UnityModes: Story = {
         disableBackground: true,
       },
       authentication: {
-        profile: `default${Math.floor(Math.random() * 160) + 1}`,
+        profile: getRandomProfile(),
         contractAddress: undefined,
         itemId: undefined,
         disableAutoRotate: true,
