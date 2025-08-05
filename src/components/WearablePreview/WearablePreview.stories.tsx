@@ -12,6 +12,7 @@ import {
 import { BodyShape, Metrics } from "@dcl/schemas/dist/platform/item"
 import { Meta, StoryObj } from "@storybook/react"
 import { WearablePreview } from "./WearablePreview"
+import { PreviewUnityMode } from "./WearablePreview.types"
 import { WearablePreviewContainer } from "./WearablePreview.stories.styled"
 
 const getRandomProfile = () => {
@@ -360,7 +361,7 @@ export const PreviewFromFile: Story = {
 export const UnityModes: Story = {
   args: {
     unity: true,
-    unityMode: "marketplace",
+    unityMode: PreviewUnityMode.Marketplace,
     contractAddress: "0xee8ae4c668edd43b34b98934d6d2ff82e41e6488",
     itemId: "5",
   },
