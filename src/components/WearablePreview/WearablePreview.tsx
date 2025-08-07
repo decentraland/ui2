@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react"
+import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import {
   PreviewMessagePayload,
   PreviewMessageType,
@@ -49,12 +49,12 @@ const WearablePreview = (props: WearablePreviewProps) => {
   const [state, setState] = useState<WearablePreviewState>({
     isReady: false,
     pendingOptions: null,
-    lastOptions: null,
   })
 
   const iframeRef = useRef<HTMLIFrameElement>(null)
+  const lastOptionsRef = useRef<PreviewOptions | null>(null)
 
-  const getUrl = useCallback(() => {
+  const url = useMemo(() => {
     const {
       contractAddress,
       tokenId,
@@ -226,23 +226,25 @@ const WearablePreview = (props: WearablePreviewProps) => {
     return url
   }, [restProps, baseUrl, dev, unity])
 
-  const getOptions = useCallback(() => {
-    const options: PreviewOptions = {}
+  const options = useMemo(() => {
+    const opts: PreviewOptions = {}
 
     for (const key in restProps) {
       if (typeof restProps[key] !== "function") {
-        options[key] = restProps[key]
+        opts[key] = restProps[key]
       }
     }
 
-    return options
+    return opts
   }, [restProps])
 
   const sendUpdate = useCallback(
     (options: PreviewOptions) => {
-      const { lastOptions } = state
+      // Use ref for lastOptions to avoid re-renders
+      const currentLastOptions = lastOptionsRef.current
+
       // only send update if new options are different
-      if (!lastOptions || !equal(options, lastOptions)) {
+      if (!currentLastOptions || !equal(options, currentLastOptions)) {
         // send message to iframe
         if (iframeRef.current?.contentWindow) {
           sendMessage(
@@ -256,75 +258,71 @@ const WearablePreview = (props: WearablePreviewProps) => {
         // callback
         onUpdate(options)
 
-        // store options on state
-        setState((prev) => ({ ...prev, lastOptions: options }))
+        // Always store in ref to avoid re-renders
+        lastOptionsRef.current = options
       }
     },
-    [state, onUpdate]
+    [onUpdate]
   )
 
   const handleUpdate = useCallback(() => {
     if (iframeRef.current) {
       // SSR check
       if (typeof window !== "undefined") {
-        const options = getOptions()
         if (state.isReady) {
           // if the iframe is ready, send the update
           sendUpdate(options)
         } else {
           // otherwise store last update in state until it's ready
-          setState((prev) => ({ ...prev, pendingOptions: options }))
+          setState((prev) => ({ ...prev, pendingOptions: options, url }))
         }
       }
     } else {
       console.warn(`Could not send update, iframe is not referenced`)
     }
-  }, [getOptions, state.isReady, sendUpdate])
+  }, [options, state.isReady, sendUpdate])
 
   const handleMessage = useCallback(
     (event: MessageEvent) => {
       const { origin } = event
-      if (origin === baseUrl) {
-        if (event.data && event.data.type) {
-          const type: PreviewMessageType = event.data.type
-          switch (type) {
-            case PreviewMessageType.LOAD: {
-              onLoad()
-              break
-            }
-            case PreviewMessageType.ERROR: {
-              const payload = event.data
-                .payload as PreviewMessagePayload<PreviewMessageType.ERROR>
-              onError(new Error(payload.message))
-              break
-            }
-            case PreviewMessageType.READY: {
-              const { isReady, pendingOptions } = state
-              // ignore if already flagged as ready
-              if (isReady) {
-                return
-              }
-              if (pendingOptions !== null) {
-                // if there were pending options, flush them and flag as ready
-                sendUpdate(pendingOptions)
-                setState((prev) => ({
-                  ...prev,
-                  isReady: true,
-                  pendingOptions: null,
-                }))
-              } else {
-                // otherwise just flag as ready
-                setState((prev) => ({ ...prev, isReady: true }))
-              }
-              break
-            }
-            default:
-            // do nothing
-          }
+      if (origin !== baseUrl || !event.data?.type) return
+
+      const type: PreviewMessageType = event.data.type
+      switch (type) {
+        case PreviewMessageType.LOAD: {
+          const payload = event.data
+            .payload as PreviewMessagePayload<PreviewMessageType.LOAD>
+          onLoad(payload?.renderer)
+          break
         }
+        case PreviewMessageType.ERROR: {
+          const payload = event.data
+            .payload as PreviewMessagePayload<PreviewMessageType.ERROR>
+          onError(new Error(payload.message))
+          break
+        }
+        case PreviewMessageType.READY: {
+          setState((prev) => {
+            if (prev.isReady) return prev
+
+            if (prev.pendingOptions !== null) {
+              sendUpdate(prev.pendingOptions)
+              return {
+                ...prev,
+                isReady: true,
+                pendingOptions: null,
+              }
+            }
+
+            return { ...prev, isReady: true }
+          })
+          break
+        }
+        default:
+        // do nothing
       }
     },
-    [baseUrl, onLoad, onError, state, sendUpdate]
+    [baseUrl, onLoad, onError, sendUpdate]
   )
 
   useEffect(() => {
@@ -333,11 +331,6 @@ const WearablePreview = (props: WearablePreviewProps) => {
       window.removeEventListener("message", handleMessage, false)
     }
   }, [handleMessage])
-
-  useEffect(() => {
-    // set url in state
-    setState((prev) => ({ ...prev, url: getUrl() }))
-  }, [getUrl])
 
   useEffect(() => {
     // if there's a blob in the props, it can't be passed via URL, so we send it via postMessage
@@ -359,7 +352,7 @@ const WearablePreview = (props: WearablePreviewProps) => {
   return (
     <StyledWearablePreview
       id={props.id}
-      src={state.url}
+      src={url}
       ref={iframeRef}
       allow="autoplay"
     />

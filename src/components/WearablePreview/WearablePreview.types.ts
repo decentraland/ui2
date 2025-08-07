@@ -64,7 +64,7 @@ type WearablePreviewProps = {
   type?: PreviewType
   unityMode?: PreviewUnityMode
   unity?: boolean
-  onLoad?: () => void
+  onLoad?: (renderer?: string) => void
   onError?: (error: Error) => void
   onUpdate?: (options: PreviewOptions) => void
 }
@@ -73,7 +73,6 @@ type WearablePreviewState = {
   url?: string
   isReady: boolean
   pendingOptions: PreviewOptions | null
-  lastOptions: PreviewOptions | null
 }
 
 export { PreviewUnityMode }

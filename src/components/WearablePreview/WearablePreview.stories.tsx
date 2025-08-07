@@ -20,7 +20,7 @@ const getRandomProfile = () => {
 }
 
 const meta: Meta<typeof WearablePreview> = {
-  title: "Decentraland UI/WearablePreview",
+  title: "Decentraland UI/Wearable Preview",
   component: WearablePreview,
   parameters: {
     layout: "fullscreen",
