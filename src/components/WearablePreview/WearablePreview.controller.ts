@@ -57,6 +57,7 @@ function createSendRequest(id: string) {
       | "changeZoom"
       | "panCamera"
       | "changeCameraPosition"
+      | "cleanup"
       | "isPlaying"
       | "goTo"
       | "play"
@@ -64,7 +65,8 @@ function createSendRequest(id: string) {
       | "stop"
       | "enableSound"
       | "disableSound"
-      | "hasSound",
+      | "hasSound"
+      | "setUsername",
     params: any[]
   ) {
     const iframe = document.getElementById(id) as HTMLIFrameElement
@@ -112,6 +114,12 @@ export function createController(id: string): IPreviewController {
       },
       changeCameraPosition: function (position) {
         return sendRequest("scene", "changeCameraPosition", [position])
+      },
+      cleanup() {
+        return sendRequest<void>("scene", "cleanup", [])
+      },
+      setUsername: function (username: string) {
+        return sendRequest<void>("scene", "setUsername", [username])
       },
     },
     emote: {

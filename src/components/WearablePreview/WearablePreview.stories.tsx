@@ -67,7 +67,13 @@ const meta: Meta<typeof WearablePreview> = {
     unity: { control: "boolean" },
     unityMode: {
       control: "select",
-      options: ["marketplace", "profile", "authentication", "builder"],
+      options: [
+        "marketplace",
+        "profile",
+        "authentication",
+        "builder",
+        "configurator",
+      ],
     },
   },
 }
@@ -388,6 +394,12 @@ export const UnityModes: Story = {
         itemId: undefined,
         disableAutoRotate: true,
       },
+      configurator: {
+        contractAddress: "0xee8ae4c668edd43b34b98934d6d2ff82e41e6488",
+        itemId: "5",
+        disableBackground: true,
+        disableAutoRotate: true,
+      },
     }
 
     const config =
@@ -398,6 +410,65 @@ export const UnityModes: Story = {
       <WearablePreviewContainer>
         <WearablePreview {...args} {...config} />
       </WearablePreviewContainer>
+    )
+  },
+}
+
+export const ConfiguratorWithUsernameControl: Story = {
+  render: () => {
+    const [username, setUsername] = useState("player123")
+    const ref = useRef<ReturnType<
+      typeof WearablePreview.createController
+    > | null>(null)
+
+    const updateUsername = useCallback(() => {
+      ref.current?.scene.setUsername(username)
+    }, [username])
+
+    return (
+      <div style={{ padding: "20px" }}>
+        <WearablePreviewContainer>
+          <WearablePreview
+            id="configurator-id"
+            unity={true}
+            unityMode={PreviewUnityMode.Configurator}
+          />
+        </WearablePreviewContainer>
+        <div
+          style={{
+            display: "flex",
+            gap: "10px",
+            justifyContent: "center",
+            alignItems: "center",
+            marginTop: "20px",
+          }}
+        >
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder="Enter username"
+            style={{
+              padding: "8px",
+              borderRadius: "4px",
+              border: "1px solid #ccc",
+            }}
+          />
+          <button
+            onClick={updateUsername}
+            style={{
+              padding: "8px 16px",
+              borderRadius: "4px",
+              border: "none",
+              backgroundColor: "#007bff",
+              color: "white",
+              cursor: "pointer",
+            }}
+          >
+            Update Username
+          </button>
+        </div>
+      </div>
     )
   },
 }

@@ -14,6 +14,7 @@ enum PreviewUnityMode {
   Builder = "builder",
   Marketplace = "marketplace",
   Profile = "profile",
+  Configurator = "configurator",
 }
 
 type WearablePreviewProps = {
