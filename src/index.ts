@@ -32,6 +32,7 @@ export * from "./components/Navbar"
 export * from "./components/Notifications"
 export * from "./components/UserMenu"
 export * from "./components/Banner"
+export * from "./components/WearablePreview"
 
 export * as dclNetworkUtils from "./lib/network"
 
