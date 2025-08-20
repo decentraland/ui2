@@ -8,6 +8,25 @@ export interface {subdirectory}Props extends Mui{subdirectory}Props {}
 export const {subdirectory} = Mui{subdirectory}
 `
 
+const problematicComponentTemplate = `import {
+  default as Mui{subdirectory},
+} from "@mui/material/{subdirectory}"
+import { ComponentProps } from "react"
+
+export interface {subdirectory}Props extends ComponentProps<typeof Mui{subdirectory}> {}
+
+export const {subdirectory} = Mui{subdirectory}
+`
+
+const complexGenericComponentTemplate = `import {
+  default as Mui{subdirectory},
+} from "@mui/material/{subdirectory}"
+
+export interface {subdirectory}Props extends Record<string, any> {}
+
+export const {subdirectory} = Mui{subdirectory}
+`
+
 const storiesTemplate = `import { {subdirectory}, {subdirectory}Props } from "./{subdirectory}"
 {otherImports}
 import { Controls, Primary, Title } from "@storybook/blocks"
@@ -82,4 +101,10 @@ type Story = StoryObj<{subdirectory}Props>
 export const Default: Story = {args: {args}}
 `
 
-export { componentTemplate, storiesTemplate, storiesJustArgsTemplate }
+export {
+  componentTemplate,
+  problematicComponentTemplate,
+  complexGenericComponentTemplate,
+  storiesTemplate,
+  storiesJustArgsTemplate,
+}

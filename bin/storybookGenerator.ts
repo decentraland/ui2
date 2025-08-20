@@ -1,8 +1,16 @@
 import * as fs from "fs"
 import * as path from "path"
-import { componentsConfig, documentComponents } from "./muiComponentConfig.tsx"
 import {
+  complexGenericComponents,
+  componentsConfig,
+  componentsThatNeedReactElements,
+  documentComponents,
+  problematicComponents,
+} from "./muiComponentConfig.tsx"
+import {
+  complexGenericComponentTemplate,
   componentTemplate,
+  problematicComponentTemplate,
   storiesJustArgsTemplate,
   storiesTemplate,
 } from "./templates.ts"
@@ -38,9 +46,20 @@ function createSubdirectoryFiles(subdirectory: string, onlyArgs?: boolean) {
 
   fs.mkdirSync(folderPath, { recursive: true })
 
+  const isProblematicComponent = problematicComponents.includes(subdirectory)
+  const isComplexGenericComponent =
+    complexGenericComponents.includes(subdirectory)
+
+  let template = componentTemplate
+  if (isProblematicComponent) {
+    template = problematicComponentTemplate
+  } else if (isComplexGenericComponent) {
+    template = complexGenericComponentTemplate
+  }
+
   fs.writeFileSync(
     path.join(folderPath, tsxFileName),
-    componentTemplate.replace(/{subdirectory}/g, subdirectory)
+    template.replace(/{subdirectory}/g, subdirectory)
   )
 
   let storyTemplateFile = (
@@ -57,12 +76,16 @@ function createSubdirectoryFiles(subdirectory: string, onlyArgs?: boolean) {
       componentsConfig[subdirectory].imports.join("\n")
     )
   } else {
-    storyTemplateFile = storyTemplateFile.replace(
-      /{args}/g,
-      `{
+    // Use ReactElement children for components that need them, otherwise use string
+    const defaultArgs = componentsThatNeedReactElements[subdirectory]
+      ? `{
+      ${componentsThatNeedReactElements[subdirectory]},
+    }`
+      : `{
       children: "${subdirectory}",
     }`
-    )
+
+    storyTemplateFile = storyTemplateFile.replace(/{args}/g, defaultArgs)
     storyTemplateFile = storyTemplateFile.replace(/{otherImports}/g, "")
   }
 
