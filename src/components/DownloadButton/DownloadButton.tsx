@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo } from "react"
+import React, { useCallback, useEffect, useMemo, useState } from "react"
 import { useAdvancedUserAgentData } from "@dcl/hooks"
 import Download from "@mui/icons-material/Download"
 import { config } from "../../config"
@@ -33,6 +33,7 @@ const DownloadButton = React.memo((props: DownloadButtonProps) => {
     cdnLinks,
     onRedirect,
   } = props
+  const [isDownloading, setIsDownloading] = useState(false)
 
   const [isLoadingUserAgentData, userAgentData] = useAdvancedUserAgentData()
 
@@ -80,48 +81,65 @@ const DownloadButton = React.memo((props: DownloadButtonProps) => {
     }
   }, [userAgentData, links])
 
+  const finalHref = useMemo(() => {
+    return href || defaultDownloadOption?.link || config.get("DOWNLOAD_URL")
+  }, [href, defaultDownloadOption])
+
   const handleClick = useCallback(
     (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
       event.preventDefault()
 
-      onClick?.(event, {
-        type: "DOWNLOAD",
-        track_uuid: trackingId,
-        url: config.get("DOWNLOAD_URL"),
-      })
+      // If we have user agent data and a download option, try direct download
+      if (userAgentData && defaultDownloadOption) {
+        const redirectUrl = updateUrlWithLastValue(
+          config.get("DOWNLOAD_SUCCESS_URL"),
+          "os",
+          userAgentData.os.name
+        )
 
-      if (!userAgentData || !defaultDownloadOption) {
+        const finalUrl = addQueryParamsToUrlString(redirectUrl, {
+          arch: userAgentData.cpu.architecture,
+        })
+
+        setIsDownloading(true)
+
         setTimeout(
           () => {
-            window.open(config.get("DOWNLOAD_URL"), "_blank", "noopener")
+            triggerFileDownload(defaultDownloadOption.link).then(() => {
+              setIsDownloading(false)
+
+              onRedirect
+                ? onRedirect(finalUrl)
+                : (window.location.href = finalUrl)
+            })
           },
           onClick ? 300 : 0
         )
         return
       }
 
-      const redirectUrl = updateUrlWithLastValue(
-        config.get("DOWNLOAD_SUCCESS_URL"),
-        "os",
-        userAgentData.os.name
-      )
-
-      const finalUrl = addQueryParamsToUrlString(redirectUrl, {
-        arch: userAgentData.cpu.architecture,
+      // Fallback: call custom onClick handler or open download page
+      onClick?.(event, {
+        type: "DOWNLOAD",
+        track_uuid: trackingId,
+        url: finalHref,
       })
 
-      setTimeout(
-        () => {
-          triggerFileDownload(defaultDownloadOption.link).then(() => {
-            onRedirect
-              ? onRedirect(finalUrl)
-              : (window.location.href = finalUrl)
-          })
-        },
-        onClick ? 300 : 0
-      )
+      if (!onClick) {
+        setTimeout(() => {
+          window.open(config.get("DOWNLOAD_URL"), "_blank", "noopener")
+        }, 0)
+      }
     },
-    [defaultDownloadOption, userAgentData, onClick, onRedirect, trackingId]
+    [
+      defaultDownloadOption,
+      finalHref,
+      userAgentData,
+      onClick,
+      onRedirect,
+      trackingId,
+      setIsDownloading,
+    ]
   )
 
   if (
@@ -131,15 +149,17 @@ const DownloadButton = React.memo((props: DownloadButtonProps) => {
     return null
   }
 
+  const isLoading = loadingCdnLinks || isDownloading
+
   if (isLoadingUserAgentData || !defaultDownloadOption) {
     return (
       <DownloadButtonStyled
         variant="contained"
-        href={href || config.get("DOWNLOAD_URL")}
+        href={finalHref}
         onClick={handleClick}
         startIcon={startIcon || <Download />}
         endIcon={endIcon}
-        loading={loadingCdnLinks}
+        loading={isLoading}
       >
         <DownloadButtonLabelContainer>{label}</DownloadButtonLabelContainer>
       </DownloadButtonStyled>
@@ -149,11 +169,11 @@ const DownloadButton = React.memo((props: DownloadButtonProps) => {
   return (
     <DownloadButtonStyled
       variant="contained"
-      href={href || defaultDownloadOption.link}
+      href={finalHref}
       onClick={handleClick}
       startIcon={startIcon}
       endIcon={endIcon || defaultDownloadOption.icon}
-      loading={loadingCdnLinks}
+      loading={isLoading}
     >
       <DownloadButtonLabelContainer>{label}</DownloadButtonLabelContainer>
     </DownloadButtonStyled>

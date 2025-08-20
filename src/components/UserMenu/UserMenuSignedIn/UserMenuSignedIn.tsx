@@ -4,6 +4,7 @@ import LogoutIcon from "@mui/icons-material/Logout"
 import { Badge, Box, IconButton, Typography } from "@mui/material"
 import { config } from "../../../config"
 import { AvatarFace } from "../../AvatarFace"
+import { ReferralInviteFriendsIcon } from "../../Icon"
 import { useTabletAndBelowMediaQuery } from "../../Media"
 import { Notifications } from "../../Notifications"
 import { ManaBalances } from "../ManaBalances"
@@ -21,12 +22,14 @@ import {
   AvatarFaceContainer,
   AvatarPreview,
   AvatarPreviewContainer,
+  InviteFriendsTypography,
   LogoutContainer,
   MenuContainer,
   MenuInfoContainer,
   MenuInfoTypography,
   MenuInfoUnclaimedTypography,
   MenuInformationActionContainer,
+  ReferralInviteFriendsIconContainer,
   UserMenuSignedInContainer,
 } from "./UserMenuSignedIn.styled"
 
@@ -138,6 +141,28 @@ const UserMenuActions = (props: UserMenuActionsProps) => {
     [onClickAccount, onClickUserMenuItem, trackingId]
   )
 
+  const handleClickInviteFriends = useCallback(
+    (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
+      onClickUserMenuItem &&
+        onClickUserMenuItem(event, {
+          type: UserMenuEventId.INVITE_FRIENDS,
+          track_uuid: trackingId,
+          url: `${config.get("PROFILE_URL")}/accounts/${userAddress}/referral`,
+        })
+      setTimeout(
+        () => {
+          window.open(
+            `${config.get("PROFILE_URL")}/accounts/${userAddress}/referral`,
+            "_blank",
+            "noopener"
+          )
+        },
+        onClickUserMenuItem ? 300 : 0
+      )
+    },
+    [onClickUserMenuItem, trackingId]
+  )
+
   const handleClickSignOut = useCallback(
     (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
       onClickUserMenuItem &&
@@ -173,6 +198,17 @@ const UserMenuActions = (props: UserMenuActionsProps) => {
           {isTabletAndBelow && balances}
         </MenuInfoContainer>
         <ActionsWrapper>
+          <ActionsMenuItem onClick={handleClickInviteFriends}>
+            <InviteFriendsTypography variant="h6">
+              {i18n.inviteFriends}
+              <ReferralInviteFriendsIconContainer>
+                <ReferralInviteFriendsIcon />
+              </ReferralInviteFriendsIconContainer>
+            </InviteFriendsTypography>
+            <ActionsListItemIcon>
+              <ArrowForwardIcon />
+            </ActionsListItemIcon>
+          </ActionsMenuItem>
           <ActionsMenuItem onClick={handleClickProfile}>
             <Typography variant="h6">{i18n.viewProfile}</Typography>
             <ActionsListItemIcon>

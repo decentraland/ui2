@@ -26,6 +26,8 @@ import {
   ItemSoldNotificationProps,
   LandRentalEndedNotificationProps,
   LandRentedNotificationProps,
+  ReferralInvitedUsersAcceptedNotificationProps,
+  ReferralNewTierReachedNotificationProps,
   RewardAssignedNotificationProps,
   RewardDelayedNotificationProps,
   RewardInProgressNotificationProps,
@@ -665,6 +667,18 @@ const worldsPermissionRevokedNotificationData: WorldsPermissionRevokedNotificati
     updated_at: "2023-11-29T12:51:00.600Z",
   }
 
+const creditsClaimReminderNotificationData: CreditsClaimReminderNotificationProps =
+  {
+    id: NotificationType.CREDITS_REMINDER_CLAIM_CREDITS,
+    type: NotificationType.CREDITS_REMINDER_CLAIM_CREDITS,
+    address: "0x1234567890123456789012345678901234567890",
+    timestamp: new Date().getTime(),
+    read: true,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+    metadata: {},
+  }
+
 const creditsCompleteYourWeeklyGoalsNotificationData: CreditsCompleteYourWeeklyGoalsNotificationProps =
   {
     id: NotificationType.CREDITS_REMINDER_COMPLETE_GOALS,
@@ -689,16 +703,18 @@ const creditsDoNotMissOutNotificationData: CreditsDoNotMissOutNotificationProps 
     metadata: {},
   }
 
-const creditsClaimReminderNotificationData: CreditsClaimReminderNotificationProps =
+const creditsExpireIn24HrsReminderNotificationData: CreditsExpireIn24HrsReminderNotificationProps =
   {
-    id: NotificationType.CREDITS_REMINDER_CLAIM_CREDITS,
-    type: NotificationType.CREDITS_REMINDER_CLAIM_CREDITS,
+    id: NotificationType.CREDITS_REMINDER_USAGE_24_HOURS,
+    type: NotificationType.CREDITS_REMINDER_USAGE_24_HOURS,
     address: "0x1234567890123456789012345678901234567890",
     timestamp: new Date().getTime(),
     read: true,
     created_at: new Date().toISOString(),
     updated_at: new Date().toISOString(),
-    metadata: {},
+    metadata: {
+      expirationDate: "July 27 at 23:59 UTC",
+    },
   }
 
 const creditsExpireSoonReminderNotificationData: CreditsExpireSoonReminderNotificationProps =
@@ -715,17 +731,49 @@ const creditsExpireSoonReminderNotificationData: CreditsExpireSoonReminderNotifi
     },
   }
 
-const creditsExpireIn24HrsReminderNotificationData: CreditsExpireIn24HrsReminderNotificationProps =
+const referralNewTierReachedNotificationData: ReferralNewTierReachedNotificationProps =
   {
-    id: NotificationType.CREDITS_REMINDER_USAGE_24_HOURS,
-    type: NotificationType.CREDITS_REMINDER_USAGE_24_HOURS,
+    id: NotificationType.REFERRAL_NEW_TIER_REACHED,
+    type: NotificationType.REFERRAL_NEW_TIER_REACHED,
     address: "0x1234567890123456789012345678901234567890",
     timestamp: new Date().getTime(),
-    read: true,
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
+    read: false,
+    created_at: "2023-11-29T12:51:00.600Z",
+    updated_at: "2023-11-29T12:51:00.600Z",
     metadata: {
-      expirationDate: "July 27 at 23:59 UTC",
+      title: "Referral Reward Unlocked!",
+      description:
+        "Check the 'Referral Rewards' tab in your web profile to see your prize!",
+      address: "0x1234567890123456789012345678901234567890",
+      tier: 1,
+      url: "https://decentraland.org/referrals",
+      image:
+        "https://peer.decentraland.org/lambdas/collections/contents/urn:decentraland:ethereum:collections-v1:binance_us_collection:binance_us_upper_body/thumbnail",
+      invitedUserAddress: "0xabcdef1234567890abcdef1234567890abcdef12",
+      invitedUsers: 5,
+      rarity: Rarity.EXOTIC,
+    },
+  }
+
+const referralInvitedUserAcceptedNotificationData: ReferralInvitedUsersAcceptedNotificationProps =
+  {
+    id: NotificationType.REFERRAL_INVITED_USERS_ACCEPTED,
+    type: NotificationType.REFERRAL_INVITED_USERS_ACCEPTED,
+    address: "0x1234567890123456789012345678901234567890",
+    timestamp: new Date().getTime(),
+    read: false,
+    created_at: "2023-11-29T12:51:00.600Z",
+    updated_at: "2023-11-29T12:51:00.600Z",
+    metadata: {
+      title: "Referral Completed!",
+      description:
+        "Your friend jumped into Decentraland, so you're closer to unlocking your next reward!",
+      address: "0x1234567890123456789012345678901234567890",
+      tier: 1,
+      url: "https://decentraland.org/referrals",
+      image: "https://example.com/image.png",
+      invitedUserAddress: "0xabcdef1234567890abcdef1234567890abcdef12",
+      invitedUsers: 7,
     },
   }
 
@@ -735,6 +783,11 @@ const allTypeOfNotifications = [
   campaignGasPriceHigherThanExpectedNotificationData,
   campaignOutOfFundsNotificationData,
   campaignOutOfStockNotificationData,
+  creditsClaimReminderNotificationData,
+  creditsCompleteYourWeeklyGoalsNotificationData,
+  creditsDoNotMissOutNotificationData,
+  creditsExpireIn24HrsReminderNotificationData,
+  creditsExpireSoonReminderNotificationData,
   eventStartedNotificationData,
   eventStartsSoonFutureStartNotificationData,
   eventStartsSoonPastStartNotificationData,
@@ -750,6 +803,8 @@ const allTypeOfNotifications = [
   itemSoldNotificationPropsData,
   landRentalEndedNotificationData,
   landRentedNotificationData,
+  referralInvitedUserAcceptedNotificationData,
+  referralNewTierReachedNotificationData,
   rewardAssignedNotificationData,
   rewardDelayedNotificationData,
   rewardInProgressNotificationData,
@@ -764,11 +819,6 @@ const allTypeOfNotifications = [
   worldsMissingResourcesNotificationData,
   worldsPermissionGrantedNotificationPropsData,
   worldsPermissionRevokedNotificationData,
-  creditsCompleteYourWeeklyGoalsNotificationData,
-  creditsDoNotMissOutNotificationData,
-  creditsClaimReminderNotificationData,
-  creditsExpireSoonReminderNotificationData,
-  creditsExpireIn24HrsReminderNotificationData,
 ]
 
 export {
@@ -778,6 +828,11 @@ export {
   campaignGasPriceHigherThanExpectedNotificationData,
   campaignOutOfFundsNotificationData,
   campaignOutOfStockNotificationData,
+  creditsClaimReminderNotificationData,
+  creditsCompleteYourWeeklyGoalsNotificationData,
+  creditsDoNotMissOutNotificationData,
+  creditsExpireIn24HrsReminderNotificationData,
+  creditsExpireSoonReminderNotificationData,
   eventStartedNotificationData,
   eventStartsSoonFutureStartNotificationData,
   eventStartsSoonPastStartNotificationData,
@@ -793,6 +848,8 @@ export {
   itemSoldNotificationPropsData,
   landRentalEndedNotificationData,
   landRentedNotificationData,
+  referralInvitedUserAcceptedNotificationData,
+  referralNewTierReachedNotificationData,
   rewardAssignedNotificationData,
   rewardDelayedNotificationData,
   rewardInProgressNotificationData,
@@ -807,9 +864,4 @@ export {
   worldsMissingResourcesNotificationData,
   worldsPermissionGrantedNotificationPropsData,
   worldsPermissionRevokedNotificationData,
-  creditsCompleteYourWeeklyGoalsNotificationData,
-  creditsDoNotMissOutNotificationData,
-  creditsClaimReminderNotificationData,
-  creditsExpireSoonReminderNotificationData,
-  creditsExpireIn24HrsReminderNotificationData,
 }

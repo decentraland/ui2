@@ -10,7 +10,8 @@ type UserMenuI18N = Record<
   | "signOut"
   | "guest"
   | "marketplaceAuthorizations"
-  | "download",
+  | "download"
+  | "inviteFriends",
   string
 > &
   ManaBalancesProps["i18n"]
@@ -49,6 +50,7 @@ enum UserMenuEventId {
   MARKETPLACE_AUTHORIZATIONS = "marketplace_authorizations",
   DOWNLOAD = "download",
   BALANCE = "balance",
+  INVITE_FRIENDS = "invite_friends",
 }
 
 type DownloadProps = {

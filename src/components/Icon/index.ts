@@ -2,6 +2,8 @@ import { MuteIcon } from "./Emotes/MuteIcon"
 import { PropsIcon } from "./Emotes/PropsIcon"
 import { SoundIcon } from "./Emotes/SoundIcon"
 import { VolumeIcon } from "./Emotes/VolumeIcon"
+import { JumpInIcon } from "./JumpInIcon"
+import { LocationIcon } from "./LocationIcon"
 import { ManaEthIcon } from "./ManaEthIcon"
 import { ManaMaticIcon } from "./ManaMaticIcon"
 import { AccessRestoredIcon } from "./Notifications/AccessRestoredIcon"
@@ -30,6 +32,8 @@ import { PermissionRevokedIcon } from "./Notifications/PermissionRevokedIcon"
 import { PitchIcon } from "./Notifications/PitchIcon"
 import { ProjectEnactedIcon } from "./Notifications/ProjectEnactedIcon"
 import { ProposalFinishedIcon } from "./Notifications/ProposalFinishedIcon"
+import { ReferralInvitedUserAcceptedIcon } from "./Notifications/ReferralInvitedUserAcceptedIcon"
+import { ReferralInviteFriendsIcon } from "./Notifications/ReferralInviteFriendsIcon"
 import { RentPeriodEndingIcon } from "./Notifications/RentPeriodEndingIcon"
 import { RewardIcon } from "./Notifications/RewardIcon"
 import { StreamingIcon } from "./Notifications/StreamingIcon"
@@ -62,54 +66,44 @@ import { UnisexIcon } from "./Wearables/UnisexIcon"
 import { UpperBodyIcon } from "./Wearables/UpperBodyIcon"
 
 export {
-  MuteIcon,
-  PropsIcon,
-  SoundIcon,
-  VolumeIcon,
-  ManaEthIcon,
-  ManaMaticIcon,
-  PlacesIcon,
-  SparklesIcon,
-  UtilityIcon,
+  AccessRestoredIcon,
+  AccessRestrictedIcon,
   BaseFemaleIcon,
   BaseMaleIcon,
+  BidAcceptedIcon,
+  BidReceivedIcon,
   BodyShapeIcon,
+  CoauthorIcon,
   EarringIcon,
+  EmptyInboxIcon,
+  EventCancelledIcon,
+  EventStartedIcon,
+  EventStartsSoonIcon,
   EyebrowsIcon,
   EyesIcon,
   EyewearIcon,
   FacialHairIcon,
   FeetIcon,
+  GovernanceIcon,
   HairIcon,
   HandsWearIcon,
   HatIcon,
   HelmetIcon,
-  LowerBodyIcon,
-  MaskIcon,
-  MouthIcon,
-  SkinIcon,
-  SmartWearableIcon,
-  TiaraIcon,
-  TopHeadIcon,
-  UnisexIcon,
-  UpperBodyIcon,
-  AccessRestoredIcon,
-  AccessRestrictedIcon,
-  BidAcceptedIcon,
-  BidReceivedIcon,
-  CoauthorIcon,
-  EmptyInboxIcon,
-  EventCancelledIcon,
-  EventStartedIcon,
-  EventStartsSoonIcon,
-  GovernanceIcon,
   HistoryIcon,
   ItemAirdroppedIcon,
   ItemSoldIcon,
+  JumpInIcon,
   LandRentedIcon,
+  LocationIcon,
+  LowerBodyIcon,
+  ManaEthIcon,
   ManaMainnetIcon,
+  ManaMaticIcon,
   ManaPolygonIcon,
+  MaskIcon,
   MissingResourcesIcon,
+  MouthIcon,
+  MuteIcon,
   NewCommentIcon,
   NewNotificationIcon,
   NotificationBellActiveIcon,
@@ -117,11 +111,25 @@ export {
   PermissionGrantedIcon,
   PermissionRevokedIcon,
   PitchIcon,
+  PlacesIcon,
   ProjectEnactedIcon,
   ProposalFinishedIcon,
+  PropsIcon,
+  ReferralInvitedUserAcceptedIcon,
+  ReferralInviteFriendsIcon,
   RentPeriodEndingIcon,
   RewardIcon,
+  SkinIcon,
+  SmartWearableIcon,
+  SoundIcon,
+  SparklesIcon,
   StreamingIcon,
   TenderIcon,
+  TiaraIcon,
+  TopHeadIcon,
+  UnisexIcon,
+  UpperBodyIcon,
+  UtilityIcon,
   VotingEndedIcon,
+  VolumeIcon,
 }

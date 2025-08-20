@@ -6,7 +6,7 @@ const triggerFileDownload = (link: string): Promise<void> => {
     document.body.appendChild(a)
     a.click()
     document.body.removeChild(a)
-    setTimeout(resolve, 3000)
+    setTimeout(resolve, 300)
   })
 }
 

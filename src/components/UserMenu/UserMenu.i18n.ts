@@ -12,6 +12,7 @@ const i18n = {
   signIn: "Sign In",
   signOut: "Log Out",
   viewProfile: "View Profile",
+  inviteFriends: "Invite Friends",
   getCredits: "Earn Credits",
   creditsExpiringSoon: "Expiring soon",
   creditsValue: "(1 Credit = 1 MANA in value)",

@@ -24,7 +24,7 @@ const meta: Meta<UserMenuSignedInProps> = {
     trackingId: "",
   },
   render: (args) => {
-    const [open, setOpen] = useState(false)
+    const [open, setOpen] = useState(true)
     return (
       <Box
         sx={{ width: "500px", height: "90vh", backgroundColor: "lightgray" }}

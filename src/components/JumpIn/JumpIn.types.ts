@@ -1,6 +1,18 @@
 import { ButtonProps, LinkProps } from "@mui/material"
 import { DownloadModalProps } from "../Modal/DownloadModal/DownloadModal.types"
 
+enum JumpInEventType {
+  JUMP_IN = "JUMP_IN",
+  OPEN_DOWNLOAD_MODAL = "OPEN_DOWNLOAD_MODAL",
+  DOWNLOAD = "DOWNLOAD",
+}
+
+type JumpInTrackingData = {
+  type: JumpInEventType
+  url?: string
+  has_launcher: boolean
+}
+
 type JumpInBaseProps = {
   /** Position coordinates in format "x,y" or server name for worlds */
   position?: string
@@ -9,7 +21,7 @@ type JumpInBaseProps = {
   /** Whether the component is in loading state */
   loading?: boolean
   /** Optional callback for tracking events with flexible data */
-  onTrack?: (data: Record<string, unknown>) => void
+  onTrack?: (data: JumpInTrackingData) => void
   /** Text to display in the button variant */
   buttonText?: string
   /** URL to open when clicking the download button */
@@ -35,4 +47,4 @@ type JumpInProps = JumpInBaseProps &
       }
   )
 
-export type { JumpInBaseProps, JumpInProps }
+export { JumpInBaseProps, JumpInProps, JumpInEventType, JumpInTrackingData }
