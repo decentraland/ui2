@@ -25,11 +25,11 @@ const CDN_CONFIGS: Record<CDNSource, CDNConfig> = {
   [CDNSource.LAUNCHER]: {
     urls: {
       [OperativeSystem.WINDOWS]: {
-        amd64: `${LAUNCHER_BASE_URL}/Decentraland_x64-setup.exe`,
+        amd64: `${LAUNCHER_BASE_URL}/Decentraland_installer.exe`,
       },
       [OperativeSystem.MACOS]: {
-        amd64: `${LAUNCHER_LEGACY_BASE_URL}/Decentraland%20Launcher-mac-x64.dmg`,
-        arm64: `${LAUNCHER_BASE_URL}/Decentraland_aarch64.dmg`,
+        amd64: `${LAUNCHER_LEGACY_BASE_URL}/Decentraland%20Outdated-mac-x64.dmg`,
+        arm64: `${LAUNCHER_BASE_URL}/Decentraland_installer.dmg`,
       },
     },
   },
