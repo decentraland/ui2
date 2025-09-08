@@ -1,8 +1,8 @@
 import { ReactNode } from "react"
 
-export type MessageVariant = "error" | "warning" | "success" | "info"
+type MessageVariant = "error" | "warning" | "success" | "info"
 
-export interface MessageProps {
+interface MessageProps {
   /**
    * The variant of the message
    */
@@ -34,5 +34,7 @@ export interface MessageProps {
   /**
    * Additional props to pass to the root element
    */
-  [key: string]: any
+  [key: string]: unknown
 }
+
+export { MessageVariant, MessageProps }

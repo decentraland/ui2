@@ -27,10 +27,9 @@ const meta: Meta<typeof Message> = {
   },
 }
 
-export default meta
 type Story = StoryObj<typeof Message>
 
-export const Error: Story = {
+const Error: Story = {
   args: {
     variant: "error",
     visible: true,
@@ -39,7 +38,7 @@ export const Error: Story = {
   },
 }
 
-export const Warning: Story = {
+const Warning: Story = {
   args: {
     variant: "warning",
     visible: true,
@@ -48,7 +47,7 @@ export const Warning: Story = {
   },
 }
 
-export const Success: Story = {
+const Success: Story = {
   args: {
     variant: "success",
     visible: true,
@@ -57,7 +56,7 @@ export const Success: Story = {
   },
 }
 
-export const Info: Story = {
+const Info: Story = {
   args: {
     variant: "info",
     visible: true,
@@ -66,7 +65,7 @@ export const Info: Story = {
   },
 }
 
-export const Dismissible: Story = {
+const Dismissible: Story = {
   args: {
     variant: "error",
     visible: true,
@@ -77,7 +76,7 @@ export const Dismissible: Story = {
   },
 }
 
-export const WithoutHeader: Story = {
+const WithoutHeader: Story = {
   args: {
     variant: "info",
     visible: true,
@@ -85,7 +84,7 @@ export const WithoutHeader: Story = {
   },
 }
 
-export const Hidden: Story = {
+const Hidden: Story = {
   args: {
     variant: "error",
     visible: false,
@@ -93,3 +92,7 @@ export const Hidden: Story = {
     header: "Hidden Message",
   },
 }
+
+// eslint-disable-next-line import/no-default-export
+export default meta
+export { Error, Warning, Success, Info, Dismissible, WithoutHeader, Hidden }
