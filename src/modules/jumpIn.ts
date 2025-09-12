@@ -4,9 +4,11 @@ type JumpInOptions = {
   position?: string
   realm?: string
   timeoutMs?: number
-  fallbackUrl?: string
   userAgentData?: AdvancedNavigatorUAData
 }
+
+type WindowWithProcess = Window & { process: { type: string } }
+type ProcessWithVersions = NodeJS.Process & { versions: { electron?: string } }
 
 function buildDecentralandUrl(opts: JumpInOptions) {
   const params = new URLSearchParams()
@@ -18,15 +20,12 @@ function buildDecentralandUrl(opts: JumpInOptions) {
 function isElectronApp(): boolean {
   return (
     (typeof window !== "undefined" &&
-      typeof (window as unknown as { process: { type: string } }).process ===
-        "object" &&
-      (window as unknown as { process: { type: string } }).process.type ===
-        "renderer") ||
+      typeof (window as unknown as WindowWithProcess).process === "object" &&
+      (window as unknown as WindowWithProcess).process.type === "renderer") ||
     (typeof process !== "undefined" &&
-      typeof (process as unknown as { versions: { electron?: string } })
-        .versions === "object" &&
-      !!(process as unknown as { versions: { electron?: string } }).versions
-        .electron) ||
+      typeof (process as unknown as ProcessWithVersions).versions ===
+        "object" &&
+      !!(process as unknown as ProcessWithVersions).versions.electron) ||
     (typeof navigator === "object" &&
       typeof navigator.userAgent === "string" &&
       navigator.userAgent.includes("Electron"))
@@ -36,18 +35,14 @@ function isElectronApp(): boolean {
 /**
  * Attempts to open the desktop app and resolves:
  *  - true if it detects visibility/focus loss within the timeout
- *  - false if it doesn't detect anything and does fallback (optional)
+ *  - rejects with error if it doesn't detect anything within the timeout
  *
  * IMPORTANT: call within a user gesture (onclick).
  */
 export function launchDesktopApp(opts: JumpInOptions = {}): Promise<boolean> {
-  const { timeoutMs = 1200, fallbackUrl, userAgentData } = opts
+  const { timeoutMs = 1200, userAgentData } = opts
 
-  // Use userAgentData if provided, otherwise fallback to basic checks
-  const isMobile = userAgentData
-    ? userAgentData.mobile || userAgentData.tablet
-    : /Android|iPhone|iPad|iPod/.test(navigator.userAgent) ||
-      (/Macintosh/.test(navigator.userAgent) && navigator.maxTouchPoints > 1)
+  const isMobile = userAgentData?.mobile || userAgentData?.tablet
 
   if (isMobile || isElectronApp()) {
     return Promise.resolve(false)
@@ -74,18 +69,15 @@ export function launchDesktopApp(opts: JumpInOptions = {}): Promise<boolean> {
 
   window.location.assign(target)
 
-  return new Promise<boolean>((resolve) => {
+  return new Promise<boolean>((resolve, reject) => {
     const t = setTimeout(() => {
       cleanup()
       const success = opened
-      if (!success && fallbackUrl) {
-        try {
-          window.location.href = fallbackUrl
-        } catch {
-          // Ignore errors
-        }
+      if (!success) {
+        reject(new Error("Failed to open desktop app"))
+      } else {
+        resolve(success)
       }
-      resolve(success)
     }, timeoutMs)
     if (opened) {
       clearTimeout(t)
