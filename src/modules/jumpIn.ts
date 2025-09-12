@@ -40,7 +40,7 @@ function isElectronApp(): boolean {
  * IMPORTANT: call within a user gesture (onclick).
  */
 export function launchDesktopApp(opts: JumpInOptions = {}): Promise<boolean> {
-  const { timeoutMs = 1200, userAgentData } = opts
+  const { timeoutMs = 750, userAgentData } = opts
 
   const isMobile = userAgentData?.mobile || userAgentData?.tablet
 
