@@ -35,7 +35,7 @@ function isElectronApp(): boolean {
 /**
  * Attempts to open the desktop app and resolves:
  *  - true if it detects visibility/focus loss within the timeout
- *  - rejects with error if it doesn't detect anything within the timeout
+ *  - false if the scheme is not registered, other error occurs, or timeout reached
  *
  * IMPORTANT: call within a user gesture (onclick).
  */
@@ -54,11 +54,13 @@ export function launchDesktopApp(opts: JumpInOptions = {}): Promise<boolean> {
   const onLoseFocus = () => {
     opened = true
   }
+
   const cleanup = () => {
     document.removeEventListener("visibilitychange", onVis)
     window.removeEventListener("pagehide", onLoseFocus)
     window.removeEventListener("blur", onLoseFocus)
   }
+
   const onVis = () => {
     if (document.visibilityState === "hidden") onLoseFocus()
   }
@@ -67,18 +69,24 @@ export function launchDesktopApp(opts: JumpInOptions = {}): Promise<boolean> {
   window.addEventListener("pagehide", onLoseFocus, { passive: true })
   window.addEventListener("blur", onLoseFocus, { passive: true })
 
-  window.location.assign(target)
+  try {
+    window.location.assign(target)
+  } catch (error) {
+    // Handle synchronous errors (like scheme not registered)
+    cleanup()
+    return Promise.resolve(false)
+  }
 
-  return new Promise<boolean>((resolve, reject) => {
+  return new Promise<boolean>((resolve) => {
     const t = setTimeout(() => {
       cleanup()
-      const success = opened
-      if (!success) {
-        reject(new Error("Failed to open desktop app"))
+      if (opened) {
+        resolve(true)
       } else {
-        resolve(success)
+        resolve(false)
       }
     }, timeoutMs)
+
     if (opened) {
       clearTimeout(t)
       cleanup()
