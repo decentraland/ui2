@@ -37,3 +37,4 @@ export * from "./components/WearablePreview"
 export * as dclNetworkUtils from "./lib/network"
 
 export * from "./modules/jumpIn"
+export * as dclTools from "./modules"
