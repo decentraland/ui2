@@ -56,7 +56,7 @@ const Inline: Story = {
   args: { address: "0xdeadbeef", avatar, inline: true },
   render: (args) => (
     <>
-      You sent <Mana inline>1,000</Mana> to <Profile {...args} />
+      You sent <Mana primary inline>1,000</Mana> to <Profile {...args} />
     </>
   ),
 }
@@ -66,7 +66,7 @@ const Decentraland: Story = {
   args: { address: "0xdeadbeef", avatar, inline: true, isDecentraland: true },
   render: (args) => (
     <>
-      You sent <Mana inline>1,000</Mana> to <Profile {...args} />
+      You sent <Mana primary inline>1,000</Mana> to <Profile {...args} />
     </>
   ),
 }
