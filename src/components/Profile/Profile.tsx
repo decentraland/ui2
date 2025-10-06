@@ -2,6 +2,7 @@ import React, { memo, useMemo } from "react"
 import { ProfileContainer } from "./Profile.styled"
 import { ProfileProps } from "./Profile.types"
 import { ProfileImage } from "./ProfileImage"
+import { i18n as i18nProfile } from "./Profile.i18n"
 
 const Profile = memo(<T extends React.ElementType>(props: ProfileProps<T>) => {
   const {
@@ -14,6 +15,7 @@ const Profile = memo(<T extends React.ElementType>(props: ProfileProps<T>) => {
     sliceAddressBy = 6,
     isDecentraland,
     as = React.Fragment,
+    i18n = i18nProfile,
     ...rest
   } = props
 
@@ -42,7 +44,7 @@ const Profile = memo(<T extends React.ElementType>(props: ProfileProps<T>) => {
       )}
       {imageOnly ? null : (
         <Wrapper {...rest}>
-          <span>{isDecentraland ? "Decentraland" : name}</span>
+          <span>{isDecentraland ? i18n.decentraland : name}</span>
         </Wrapper>
       )}
     </ProfileContainer>
