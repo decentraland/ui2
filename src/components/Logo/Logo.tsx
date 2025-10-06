@@ -1,8 +1,8 @@
 import React from "react"
-import { SvgIconProps } from "@mui/material/SvgIcon"
+import { LogoProps } from "./Logo.types"
 import { LogoContainer } from "./Logo.styled"
 
-const Logo = React.memo((props: SvgIconProps) => {
+const Logo = React.memo((props: LogoProps) => {
   return (
     <LogoContainer {...props}>
       <svg

@@ -1,6 +1,8 @@
 import React from "react"
 import { Avatar } from "@dcl/schemas/dist/platform/profile/avatar"
 
+type ProfileSize = "normal" | "large" | "huge" | "massive"
+
 type ProfileBaseProps = {
   address: string
   avatar?: Avatar | null
@@ -9,7 +11,7 @@ type ProfileBaseProps = {
   hasPopup?: boolean
   inline?: boolean
   sliceAddressBy?: number
-  size?: "normal" | "large" | "huge" | "massive"
+  size?: ProfileSize
   isDecentraland?: boolean
   i18n?: {
     defaultName: string
@@ -25,4 +27,4 @@ type ProfileProps<T extends React.ElementType> = ProfileBaseProps & {
   as?: T
 } & Omit<React.ComponentPropsWithoutRef<T>, keyof ProfileBaseProps | "as">
 
-export { ProfileProps, ProfileLogoProps }
+export { ProfileProps, ProfileLogoProps, ProfileBaseProps, ProfileSize }

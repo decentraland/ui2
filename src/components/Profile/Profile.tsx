@@ -1,4 +1,5 @@
 import React, { memo, useMemo } from "react"
+import { Name, ProfileContainer } from "./Profile.styled"
 import { ProfileProps } from "./Profile.types"
 import { ProfileImage } from "./ProfileImage"
 
@@ -8,6 +9,8 @@ const Profile = memo(<T extends React.ElementType>(props: ProfileProps<T>) => {
     avatar,
     textOnly,
     imageOnly,
+    size = "normal",
+    inline = true,
     sliceAddressBy = 6,
     isDecentraland,
     as = React.Fragment,
@@ -31,7 +34,7 @@ const Profile = memo(<T extends React.ElementType>(props: ProfileProps<T>) => {
   const Wrapper = as
 
   return (
-    <span>
+    <ProfileContainer {...props} size={size} inline={inline}>
       {textOnly ? null : (
         <Wrapper {...rest}>
           <ProfileImage {...props} />
@@ -39,10 +42,12 @@ const Profile = memo(<T extends React.ElementType>(props: ProfileProps<T>) => {
       )}
       {imageOnly ? null : (
         <Wrapper {...rest}>
-          <span>{isDecentraland ? "Decentraland" : name}</span>
+          <Name textOnly={textOnly}>
+            {isDecentraland ? "Decentraland" : name}
+          </Name>
         </Wrapper>
       )}
-    </span>
+    </ProfileContainer>
   )
 })
 

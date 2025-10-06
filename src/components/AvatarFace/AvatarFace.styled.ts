@@ -18,33 +18,36 @@ const AvatarContainer = styled("div", {
 const Avatar = styled(AvatarMui)<Pick<AvatarFaceProps, "size">>((props) => {
   const { size, theme } = props
   const dimensions = {
-    width: "32px",
-    height: "32px",
+    width: theme.spacing(4),
+    height: theme.spacing(4),
   }
 
   if (size === "tiny") {
-    dimensions.width = "20px"
-    dimensions.height = "20px"
+    dimensions.width = theme.spacing(2.5)
+    dimensions.height = theme.spacing(2.5)
   } else if (size === "small") {
-    dimensions.width = "32px"
-    dimensions.height = "32px"
+    dimensions.width = theme.spacing(4)
+    dimensions.height = theme.spacing(4)
   } else if (size === "medium") {
-    dimensions.width = "48px"
-    dimensions.height = "48px"
+    dimensions.width = theme.spacing(6)
+    dimensions.height = theme.spacing(6)
   } else if (size === "large") {
-    dimensions.width = "108px"
-    dimensions.height = "108px"
+    dimensions.width = theme.spacing(13.5)
+    dimensions.height = theme.spacing(13.5)
+  } else if (size === "massive") {
+    dimensions.width = theme.spacing(22.5)
+    dimensions.height = theme.spacing(22.5)
   } else if (size === "responsive") {
-    dimensions.width = "93px"
-    dimensions.height = "93px"
+    dimensions.width = theme.spacing(11.625) // TODO: check this sizing
+    dimensions.height = theme.spacing(11.625)
   }
 
   return {
     backgroundColor: theme!.palette.secondary.light,
     ...dimensions,
     "@media (min-width: 1200px)": size === "responsive" && {
-      width: "170px",
-      height: "170px",
+      width: theme.spacing(21.25),
+      height: theme.spacing(21.25),
     },
   }
 })

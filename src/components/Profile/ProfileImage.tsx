@@ -1,33 +1,48 @@
 import React, { memo, useMemo } from "react"
-import { ProfileProps } from "./Profile.types"
+import { ProfileProps, ProfileSize } from "./Profile.types"
 import { Logo } from "../Logo/Logo"
 import { AvatarFace } from "../AvatarFace/AvatarFace"
 import { Blockie } from "../Blockie/Blockie"
+import { AvatarFaceSize } from "components/AvatarFace/AvatarFace.types"
+
+const avatarFaceSizeTranslator: Record<ProfileSize, AvatarFaceSize> = {
+  normal: "tiny",
+  large: "small",
+  huge: "medium",
+  massive: "massive",
+}
+
+const blockieSizeTranslator: Record<ProfileSize, number> = {
+  normal: 3,
+  large: 5,
+  huge: 7,
+  massive: 21,
+}
 
 const ProfileImage = memo(
   <T extends React.ElementType>(props: ProfileProps<T>) => {
-    const { isDecentraland, avatar, inline, address, size, as, ...rest } = props
+    // It's not a good practice to default inline to true, but maybe we should keep it for backwards compatibility
+    const {
+      isDecentraland,
+      avatar,
+      inline = true,
+      address,
+      size = "normal",
+      as,
+      ...rest
+    } = props
 
-    const blockieSize = useMemo(() => {
-      switch (size) {
-        case "large":
-          return 5
-        case "huge":
-          return 7
-        case "massive":
-          return 21
-        case "normal":
-        default:
-          return 3
-      }
-    }, [size])
+    const avatarFaceSize = useMemo(() => avatarFaceSizeTranslator[size], [size])
+    const blockieSize = useMemo(() => blockieSizeTranslator[size], [size])
 
     if (isDecentraland) {
-      return <Logo />
+      return <Logo size={size} />
     }
 
     if (avatar) {
-      return <AvatarFace size="tiny" inline={inline} avatar={avatar} />
+      return (
+        <AvatarFace size={avatarFaceSize} inline={inline} avatar={avatar} />
+      )
     }
 
     return <Blockie seed={address} scale={blockieSize} as={as} {...rest} />

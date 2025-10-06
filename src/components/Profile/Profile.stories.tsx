@@ -5,6 +5,7 @@ import type { Meta, StoryObj } from "@storybook/react"
 import { Mana } from "../Mana/Mana"
 import { Profile } from "./"
 import { ProfileProps } from "./Profile.types"
+import { ProfileList, ProfileSizeList } from "./Profile.stories.styled"
 
 const meta: Meta<ProfileProps<React.ElementType>> = {
   // TODO: use T here?
@@ -73,7 +74,7 @@ const Decentraland: Story = {
 const SlicedAddress: Story = {
   name: "Sliced address",
   render: () => (
-    <div className="ProfileList">
+    <ProfileList>
       <Profile
         address="0x89805E5f0698Cb4dB57f0E389f2a75259f78CCF6"
         sliceAddressBy={10}
@@ -90,14 +91,14 @@ const SlicedAddress: Story = {
         address="0x89805E5f0698Cb4dB57f0E389f2a75259f78CCF6"
         sliceAddressBy={40}
       />
-    </div>
+    </ProfileList>
   ),
 }
 
 const Sizes: Story = {
   name: "Sizes",
   render: () => (
-    <>
+    <ProfileSizeList>
       <Profile
         address="0xdeadbeef"
         avatar={avatar}
@@ -162,7 +163,7 @@ const Sizes: Story = {
       <Profile address="0xdeadbeef" inline={false} size="large" imageOnly />
       <Profile address="0xdeadbeef" inline={false} size="huge" imageOnly />
       <Profile address="0xdeadbeef" inline={false} size="massive" imageOnly />
-    </>
+    </ProfileSizeList>
   ),
 }
 
