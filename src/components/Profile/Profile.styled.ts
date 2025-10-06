@@ -10,4 +10,12 @@ const ProfileContainer = styled("span")<ProfileBaseProps>(
   })
 )
 
-export { ProfileContainer }
+const ProfileName = styled("span")<Pick<ProfileBaseProps, "size">>(
+  ({ theme, size = "normal" }) => ({
+    // TODO: perhaps this should be in typography
+    fontSize: size !== "normal" ? theme.spacing(2.5) : "inherit",
+    lineHeight: size !== "normal" ? theme.spacing(2.75) : "inherit",
+  })
+)
+
+export { ProfileContainer, ProfileName }

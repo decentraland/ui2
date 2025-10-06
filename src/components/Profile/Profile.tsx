@@ -1,5 +1,5 @@
 import React, { memo, useMemo } from "react"
-import { ProfileContainer } from "./Profile.styled"
+import { ProfileContainer, ProfileName } from "./Profile.styled"
 import { ProfileProps } from "./Profile.types"
 import { ProfileImage } from "./ProfileImage"
 import { i18n as i18nProfile } from "./Profile.i18n"
@@ -44,7 +44,9 @@ const Profile = memo(<T extends React.ElementType>(props: ProfileProps<T>) => {
       )}
       {imageOnly ? null : (
         <Wrapper {...rest}>
-          <span>{isDecentraland ? i18n.decentraland : name}</span>
+          <ProfileName size={size}>
+            {isDecentraland ? i18n.decentraland : name}
+          </ProfileName>
         </Wrapper>
       )}
     </ProfileContainer>
