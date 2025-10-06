@@ -1,9 +1,9 @@
 import React, { memo, useMemo } from "react"
-import { ProfileProps, ProfileSize } from "./Profile.types"
-import { Logo } from "../Logo/Logo"
+import { AvatarFaceSize } from "components/AvatarFace/AvatarFace.types"
 import { AvatarFace } from "../AvatarFace/AvatarFace"
 import { Blockie } from "../Blockie/Blockie"
-import { AvatarFaceSize } from "components/AvatarFace/AvatarFace.types"
+import { Logo } from "../Logo/Logo"
+import { ProfileProps, ProfileSize } from "./Profile.types"
 
 const avatarFaceSizeTranslator: Record<ProfileSize, AvatarFaceSize> = {
   normal: "tiny",

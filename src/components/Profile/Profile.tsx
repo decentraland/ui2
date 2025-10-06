@@ -1,8 +1,8 @@
 import React, { memo, useMemo } from "react"
-import { ProfileContainer, ProfileName } from "./Profile.styled"
-import { ProfileProps } from "./Profile.types"
-import { ProfileImage } from "./ProfileImage"
 import { i18n as i18nProfile } from "./Profile.i18n"
+import { ProfileImage } from "./ProfileImage"
+import { ProfileProps } from "./Profile.types"
+import { ProfileContainer, ProfileName } from "./Profile.styled"
 
 const Profile = memo(<T extends React.ElementType>(props: ProfileProps<T>) => {
   const {

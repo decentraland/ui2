@@ -1,11 +1,11 @@
 import React from "react"
-import type { Avatar } from "@dcl/schemas/dist/platform/profile/avatar"
 import { avatar } from "../../data/avatar"
-import type { Meta, StoryObj } from "@storybook/react"
 import { Mana } from "../Mana/Mana"
-import { Profile } from "./"
 import { ProfileProps } from "./Profile.types"
 import { ProfileList, ProfileSizeList } from "./Profile.stories.styled"
+import { Profile } from "./"
+import type { Avatar } from "@dcl/schemas/dist/platform/profile/avatar"
+import type { Meta, StoryObj } from "@storybook/react"
 
 const meta: Meta<ProfileProps<React.ElementType>> = {
   // TODO: use T here?
