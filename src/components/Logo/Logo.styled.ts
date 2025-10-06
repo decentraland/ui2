@@ -13,9 +13,9 @@ const LogoContainer = styled(SvgIcon)<LogoProps>(
   ({ theme, size = "normal" }) => ({
     width: theme.spacing(dimensionsBySize[size]),
     height: theme.spacing(dimensionsBySize[size]),
-    fontSize: theme.spacing(9),
+    fontSize: theme.spacing(4.5),
     [theme.breakpoints.down("xs")]: {
-      fontSize: theme.spacing(8),
+      fontSize: theme.spacing(4),
     },
   })
 )
