@@ -12,7 +12,45 @@ const meta: Meta<ProfileProps<React.ElementType>> = {
   component: Profile,
   title: "Decentraland UI/Profile",
   tags: ["autodocs"],
-  argTypes: {},
+  argTypes: {
+    address: {
+      description: "The address of the profile",
+      control: "text",
+      defaultValue: "0xdeadbeef",
+    },
+    avatar: {
+      description: "The avatar of the profile",
+      control: "object",
+      defaultValue: avatar,
+    },
+    textOnly: {
+      description: "Whether the profile should be displayed as text only",
+      control: "boolean",
+      defaultValue: false,
+    },
+    imageOnly: {
+      description: "Whether the profile should be displayed as image only",
+      control: "boolean",
+      defaultValue: false,
+    },
+    isDecentraland: {
+      description: "Whether the profile should be displayed as Decentraland",
+      control: "boolean",
+      defaultValue: false,
+    },
+    sliceAddressBy: {
+      description:
+        "The number of characters to slice the address by (minimum 6, maximum 42)",
+      control: "number",
+      defaultValue: 6,
+    },
+    size: {
+      description: "The size of the profile",
+      control: "select",
+      options: ["normal", "large", "huge", "massive"],
+      defaultValue: "normal",
+    },
+  },
   render: (args) => <Profile {...args} />,
 }
 
@@ -56,7 +94,11 @@ const Inline: Story = {
   args: { address: "0xdeadbeef", avatar, inline: true },
   render: (args) => (
     <>
-      You sent <Mana primary inline>1,000</Mana> to <Profile {...args} />
+      You sent{" "}
+      <Mana primary inline>
+        1,000
+      </Mana>{" "}
+      to <Profile {...args} />
     </>
   ),
 }
@@ -66,7 +108,11 @@ const Decentraland: Story = {
   args: { address: "0xdeadbeef", avatar, inline: true, isDecentraland: true },
   render: (args) => (
     <>
-      You sent <Mana primary inline>1,000</Mana> to <Profile {...args} />
+      You sent{" "}
+      <Mana primary inline>
+        1,000
+      </Mana>{" "}
+      to <Profile {...args} />
     </>
   ),
 }
