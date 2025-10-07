@@ -47,8 +47,11 @@ function processMessage(event: MessageEvent) {
         }
         case PreviewMessageType.READY: {
           isControllerReady = true
-          pendingMessages.forEach(processMessage)
-          pendingMessages.length = 0
+          const messagesToProcess = pendingMessages.filter(
+            (msg) => msg.data?.type !== PreviewMessageType.READY
+          )
+          messagesToProcess.forEach(processMessage)
+          pendingMessages.splice(0)
           break
         }
         default:
@@ -142,7 +145,7 @@ export function createController(id: string): IPreviewController {
   }
 
   isControllerReady = false
-  pendingMessages.length = 0
+  pendingMessages.splice(0)
   promises.clear()
 
   const events = iframe.contentWindow
