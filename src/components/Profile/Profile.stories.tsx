@@ -37,6 +37,11 @@ const meta: Meta<ProfileProps<React.ElementType>> = {
       control: "boolean",
       defaultValue: false,
     },
+    hasPopup: {
+      description: "Whether the profile should have a popup",
+      control: "boolean",
+      defaultValue: false,
+    },
     isDecentraland: {
       description: "Whether the profile should be displayed as Decentraland",
       control: "boolean",
@@ -117,6 +122,11 @@ const ImageOnly: Story = {
 const TextOnly: Story = {
   name: "Text only",
   args: { address: "0xdeadbeef", avatar, textOnly: true },
+}
+
+const WithPopup: Story = {
+  name: "With popup",
+  args: { address: "0xdeadbeef", avatar, hasPopup: true },
 }
 
 const Inline: Story = {
@@ -289,6 +299,7 @@ export {
   AvatarUnclaimedName,
   ImageOnly,
   TextOnly,
+  WithPopup,
   Inline,
   Decentraland,
   SlicedAddress,

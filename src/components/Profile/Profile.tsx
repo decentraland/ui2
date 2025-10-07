@@ -1,4 +1,5 @@
 import React, { memo, useMemo } from "react"
+import Tooltip from "@mui/material/Tooltip"
 import { i18n as i18nProfile } from "./Profile.i18n"
 import { ProfileImage } from "./ProfileImage"
 import { Address } from "../Address"
@@ -11,6 +12,7 @@ const Profile = memo(<T extends React.ElementType>(props: ProfileProps<T>) => {
     avatar,
     textOnly,
     imageOnly,
+    hasPopup,
     size = "normal",
     inline = true,
     sliceAddressBy = 6,
@@ -43,7 +45,7 @@ const Profile = memo(<T extends React.ElementType>(props: ProfileProps<T>) => {
 
   const Wrapper = as
 
-  return (
+  const content = (
     <ProfileContainer {...props} size={size} inline={inline}>
       {textOnly ? null : (
         <Wrapper {...rest}>
@@ -62,6 +64,18 @@ const Profile = memo(<T extends React.ElementType>(props: ProfileProps<T>) => {
         </Wrapper>
       )}
     </ProfileContainer>
+  )
+
+  return hasPopup ? (
+    <Tooltip
+      title={shouldUseAddressComponent ? address : name}
+      placement="top"
+      arrow
+    >
+      {content}
+    </Tooltip>
+  ) : (
+    content
   )
 })
 
