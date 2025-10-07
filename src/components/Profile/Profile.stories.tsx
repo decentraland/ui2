@@ -48,6 +48,11 @@ const meta: Meta<ProfileProps<React.ElementType>> = {
       control: "number",
       defaultValue: 6,
     },
+    shortenAddress: {
+      description: "Whether the address should be shortened",
+      control: "boolean",
+      defaultValue: false,
+    },
     size: {
       description: "The size of the profile",
       control: "select",
@@ -69,6 +74,14 @@ const NoAvatar: Story = {
   args: { address: "0xdeadbeef" },
 }
 
+const ShortenedAddress: Story = {
+  name: "Shortened address",
+  args: {
+    address: "0x89805E5f0698Cb4dB57f0E389f2a75259f78CCF6",
+    shortenAddress: true,
+  },
+}
+
 const WithAvatar: Story = {
   name: "Avatar",
   args: { address: "0xdeadbeef", avatar },
@@ -79,6 +92,15 @@ const AvatarWithoutName: Story = {
   args: {
     address: "0xdeadbeef",
     avatar: { ...avatar, name: null } as unknown as Avatar,
+  },
+}
+
+const AvatarWithShortenedAddress: Story = {
+  name: "Avatar with shortened address",
+  args: {
+    address: "0x89805E5f0698Cb4dB57f0E389f2a75259f78CCF6",
+    avatar: { ...avatar, name: null } as unknown as Avatar,
+    shortenAddress: true,
   },
 }
 
@@ -260,8 +282,10 @@ const LinkedBlockie: Story = {
 export default meta
 export {
   NoAvatar,
+  ShortenedAddress,
   WithAvatar,
   AvatarWithoutName,
+  AvatarWithShortenedAddress,
   AvatarUnclaimedName,
   ImageOnly,
   TextOnly,

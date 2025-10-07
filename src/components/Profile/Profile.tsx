@@ -1,6 +1,7 @@
 import React, { memo, useMemo } from "react"
 import { i18n as i18nProfile } from "./Profile.i18n"
 import { ProfileImage } from "./ProfileImage"
+import { Address } from "../Address"
 import { ProfileProps } from "./Profile.types"
 import { ProfileContainer, ProfileName } from "./Profile.styled"
 
@@ -13,6 +14,7 @@ const Profile = memo(<T extends React.ElementType>(props: ProfileProps<T>) => {
     size = "normal",
     inline = true,
     sliceAddressBy = 6,
+    shortenAddress = false,
     isDecentraland,
     as = React.Fragment,
     i18n = i18nProfile,
@@ -20,9 +22,15 @@ const Profile = memo(<T extends React.ElementType>(props: ProfileProps<T>) => {
   } = props
 
   const sliceLimit = Math.max(Math.min(sliceAddressBy, 42), 6)
+  const hasAvatarName = avatar && avatar.name
+  const shouldUseAddressComponent = !isDecentraland && !hasAvatarName
   const name = useMemo(() => {
-    if (!avatar || !avatar.name) {
-      return address.slice(0, sliceLimit)
+    if (isDecentraland) {
+      return i18n.decentraland
+    }
+
+    if (!hasAvatarName) {
+      return shortenAddress ? address : address.slice(0, sliceLimit)
     }
 
     if (avatar.hasClaimedName) {
@@ -31,7 +39,7 @@ const Profile = memo(<T extends React.ElementType>(props: ProfileProps<T>) => {
 
     const lastPart = address ? `#${address.slice(-4)}` : ""
     return avatar.name.endsWith(lastPart) ? avatar.name : avatar.name + lastPart
-  }, [avatar, address, sliceLimit])
+  }, [avatar, address, sliceLimit, shortenAddress, isDecentraland])
 
   const Wrapper = as
 
@@ -45,7 +53,11 @@ const Profile = memo(<T extends React.ElementType>(props: ProfileProps<T>) => {
       {imageOnly ? null : (
         <Wrapper {...rest}>
           <ProfileName size={size}>
-            {isDecentraland ? i18n.decentraland : name}
+            {shouldUseAddressComponent ? (
+              <Address value={name} shorten={shortenAddress} />
+            ) : (
+              name
+            )}
           </ProfileName>
         </Wrapper>
       )}
