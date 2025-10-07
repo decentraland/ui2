@@ -13,37 +13,63 @@ import mitt, { Emitter } from "mitt"
 const promises = new Map<string, IFuture<any>>()
 const emoteEvents = new Map<MessageEventSource, Emitter<EmoteEvents>>()
 
-window.onmessage = function handleMessage(event: MessageEvent) {
+let isControllerReady = false
+const pendingMessages: MessageEvent[] = []
+
+function processMessage(event: MessageEvent) {
   if (event.data && event.data.type) {
-    switch (event.data.type as PreviewMessageType) {
-      case PreviewMessageType.CONTROLLER_RESPONSE: {
-        const payload = event.data
-          .payload as PreviewMessagePayload<PreviewMessageType.CONTROLLER_RESPONSE>
-        const { id } = payload
-        const promise = promises.get(id)
-        if (promise) {
-          if (payload.ok) {
-            promise.resolve(payload.result)
-          } else if (payload.ok === false) {
-            promise.reject(new Error(payload.error))
+    try {
+      switch (event.data.type as PreviewMessageType) {
+        case PreviewMessageType.CONTROLLER_RESPONSE: {
+          const payload = event.data
+            .payload as PreviewMessagePayload<PreviewMessageType.CONTROLLER_RESPONSE>
+          const { id } = payload
+          const promise = promises.get(id)
+          if (promise) {
+            promises.delete(id)
+            if (payload.ok) {
+              promise.resolve(payload.result)
+            } else if (payload.ok === false) {
+              promise.reject(new Error(payload.error))
+            }
           }
+          break
         }
-        break
-      }
-      case PreviewMessageType.EMOTE_EVENT: {
-        const payload = event.data
-          .payload as PreviewMessagePayload<PreviewMessageType.EMOTE_EVENT>
-        const { type, payload: eventPayload } = payload
-        const events = event.source ? emoteEvents.get(event.source) : null
-        if (events && type) {
-          events.emit(type, eventPayload)
+        case PreviewMessageType.EMOTE_EVENT: {
+          const payload = event.data
+            .payload as PreviewMessagePayload<PreviewMessageType.EMOTE_EVENT>
+          const { type, payload: eventPayload } = payload
+          const events = event.source ? emoteEvents.get(event.source) : null
+          if (events && type) {
+            events.emit(type, eventPayload)
+          }
+          break
         }
-        break
+        case PreviewMessageType.READY: {
+          isControllerReady = true
+          const messagesToProcess = pendingMessages.filter(
+            (msg) => msg.data?.type !== PreviewMessageType.READY
+          )
+          messagesToProcess.forEach(processMessage)
+          pendingMessages.splice(0)
+          break
+        }
+        default:
+        // nothing to do, invalid message
       }
-      default:
-      // nothing to do, invalid message
+    } catch (error) {
+      console.error("Error processing WearablePreview message:", error)
     }
   }
+}
+
+window.onmessage = function handleMessage(event: MessageEvent) {
+  if (!isControllerReady) {
+    pendingMessages.push(event)
+    return
+  }
+
+  processMessage(event)
 }
 
 let nonce = 0
@@ -70,14 +96,43 @@ function createSendRequest(id: string) {
     params: any[]
   ) {
     const iframe = document.getElementById(id) as HTMLIFrameElement
+    if (!iframe || !iframe.contentWindow) {
+      const error = new Error("iframe not found or not accessible")
+      return Promise.reject(error)
+    }
+
     const messageId = id + "-" + nonce
     const promise = future<T>()
     promises.set(messageId, promise)
     const type = PreviewMessageType.CONTROLLER_REQUEST
     const message = { id: messageId, namespace, method, params }
-    if (iframe.contentWindow) {
-      sendMessage(iframe.contentWindow, type, message)
+
+    const timeout = setTimeout(() => {
+      promises.delete(messageId)
+      promise.reject(new Error(`Request timeout for ${method}`))
+    }, 10000)
+
+    const originalResolve = promise.resolve
+    const originalReject = promise.reject
+    promise.resolve = (value: T) => {
+      clearTimeout(timeout)
+      originalResolve(value)
     }
+    promise.reject = (reason: any) => {
+      clearTimeout(timeout)
+      originalReject(reason)
+    }
+
+    try {
+      sendMessage(iframe.contentWindow, type, message)
+    } catch (error) {
+      const errorMessage =
+        error instanceof Error ? error.message : String(error)
+      promise.reject(new Error(`Failed to send message: ${errorMessage}`))
+      promises.delete(messageId)
+      clearTimeout(timeout)
+    }
+
     nonce++
     return promise
   }
@@ -88,6 +143,10 @@ export function createController(id: string): IPreviewController {
   if (!iframe) {
     throw new Error(`Could not find an iframe with id="${id}"`)
   }
+
+  isControllerReady = false
+  pendingMessages.splice(0)
+  promises.clear()
 
   const events = iframe.contentWindow
     ? emoteEvents.get(iframe.contentWindow) ?? mitt<EmoteEvents>()
