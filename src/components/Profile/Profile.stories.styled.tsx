@@ -1,7 +1,7 @@
 import styled from "@emotion/styled"
 
 const ProfileStoryContainer = styled("div")(({ theme }) => ({
-  "& a": {
+  "& a, & a > span > span": {
     display: "inline-flex",
     gap: theme.spacing(0.5),
     alignItems: "center",
