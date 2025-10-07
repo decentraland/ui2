@@ -2,7 +2,11 @@ import React from "react"
 import { avatar } from "../../data/avatar"
 import { Mana } from "../Mana/Mana"
 import { ProfileProps } from "./Profile.types"
-import { ProfileList, ProfileSizeList } from "./Profile.stories.styled"
+import {
+  ProfileList,
+  ProfileSizeList,
+  ProfileStoryContainer,
+} from "./Profile.stories.styled"
 import { Profile } from "./"
 import type { Avatar } from "@dcl/schemas/dist/platform/profile/avatar"
 import type { Meta, StoryObj } from "@storybook/react"
@@ -51,7 +55,11 @@ const meta: Meta<ProfileProps<React.ElementType>> = {
       defaultValue: "normal",
     },
   },
-  render: (args) => <Profile {...args} />,
+  render: (args) => (
+    <ProfileStoryContainer>
+      <Profile {...args} />
+    </ProfileStoryContainer>
+  ),
 }
 
 type Story = StoryObj<ProfileProps<React.ElementType>>
@@ -120,103 +128,107 @@ const Decentraland: Story = {
 const SlicedAddress: Story = {
   name: "Sliced address",
   render: () => (
-    <ProfileList>
-      <Profile
-        address="0x89805E5f0698Cb4dB57f0E389f2a75259f78CCF6"
-        sliceAddressBy={10}
-      />
-      <Profile
-        address="0x89805E5f0698Cb4dB57f0E389f2a75259f78CCF6"
-        sliceAddressBy={20}
-      />
-      <Profile
-        address="0x89805E5f0698Cb4dB57f0E389f2a75259f78CCF6"
-        sliceAddressBy={30}
-      />
-      <Profile
-        address="0x89805E5f0698Cb4dB57f0E389f2a75259f78CCF6"
-        sliceAddressBy={40}
-      />
-    </ProfileList>
+    <ProfileStoryContainer>
+      <ProfileList>
+        <Profile
+          address="0x89805E5f0698Cb4dB57f0E389f2a75259f78CCF6"
+          sliceAddressBy={10}
+        />
+        <Profile
+          address="0x89805E5f0698Cb4dB57f0E389f2a75259f78CCF6"
+          sliceAddressBy={20}
+        />
+        <Profile
+          address="0x89805E5f0698Cb4dB57f0E389f2a75259f78CCF6"
+          sliceAddressBy={30}
+        />
+        <Profile
+          address="0x89805E5f0698Cb4dB57f0E389f2a75259f78CCF6"
+          sliceAddressBy={40}
+        />
+      </ProfileList>
+    </ProfileStoryContainer>
   ),
 }
 
 const Sizes: Story = {
   name: "Sizes",
   render: () => (
-    <ProfileSizeList>
-      <Profile
-        address="0xdeadbeef"
-        avatar={avatar}
-        inline={false}
-        size="normal"
-        imageOnly
-      />
-      <Profile
-        address="0xdeadbeef"
-        avatar={avatar}
-        inline={false}
-        size="large"
-        imageOnly
-      />
-      <Profile
-        address="0xdeadbeef"
-        avatar={avatar}
-        inline={false}
-        size="huge"
-        imageOnly
-      />
-      <Profile
-        address="0xdeadbeef"
-        avatar={avatar}
-        inline={false}
-        size="massive"
-        imageOnly
-      />
-      <Profile
-        address="0xdeadbeef"
-        avatar={avatar}
-        inline={false}
-        size="normal"
-        imageOnly
-        isDecentraland
-      />
-      <Profile
-        address="0xdeadbeef"
-        avatar={avatar}
-        inline={false}
-        size="large"
-        imageOnly
-        isDecentraland
-      />
-      <Profile
-        address="0xdeadbeef"
-        avatar={avatar}
-        inline={false}
-        size="huge"
-        imageOnly
-        isDecentraland
-      />
-      <Profile
-        address="0xdeadbeef"
-        avatar={avatar}
-        inline={false}
-        size="massive"
-        imageOnly
-        isDecentraland
-      />
-      <Profile address="0xdeadbeef" inline={false} size="normal" imageOnly />
-      <Profile address="0xdeadbeef" inline={false} size="large" imageOnly />
-      <Profile address="0xdeadbeef" inline={false} size="huge" imageOnly />
-      <Profile address="0xdeadbeef" inline={false} size="massive" imageOnly />
-    </ProfileSizeList>
+    <ProfileStoryContainer>
+      <ProfileSizeList>
+        <Profile
+          address="0xdeadbeef"
+          avatar={avatar}
+          inline={false}
+          size="normal"
+          imageOnly
+        />
+        <Profile
+          address="0xdeadbeef"
+          avatar={avatar}
+          inline={false}
+          size="large"
+          imageOnly
+        />
+        <Profile
+          address="0xdeadbeef"
+          avatar={avatar}
+          inline={false}
+          size="huge"
+          imageOnly
+        />
+        <Profile
+          address="0xdeadbeef"
+          avatar={avatar}
+          inline={false}
+          size="massive"
+          imageOnly
+        />
+        <Profile
+          address="0xdeadbeef"
+          avatar={avatar}
+          inline={false}
+          size="normal"
+          imageOnly
+          isDecentraland
+        />
+        <Profile
+          address="0xdeadbeef"
+          avatar={avatar}
+          inline={false}
+          size="large"
+          imageOnly
+          isDecentraland
+        />
+        <Profile
+          address="0xdeadbeef"
+          avatar={avatar}
+          inline={false}
+          size="huge"
+          imageOnly
+          isDecentraland
+        />
+        <Profile
+          address="0xdeadbeef"
+          avatar={avatar}
+          inline={false}
+          size="massive"
+          imageOnly
+          isDecentraland
+        />
+        <Profile address="0xdeadbeef" inline={false} size="normal" imageOnly />
+        <Profile address="0xdeadbeef" inline={false} size="large" imageOnly />
+        <Profile address="0xdeadbeef" inline={false} size="huge" imageOnly />
+        <Profile address="0xdeadbeef" inline={false} size="massive" imageOnly />
+      </ProfileSizeList>
+    </ProfileStoryContainer>
   ),
 }
 
 const LinkedAvatar: Story = {
   name: "Profile with avatar and content linked to another site",
   render: () => (
-    <>
+    <ProfileStoryContainer>
       <Profile
         address="0x89805E5f0698Cb4dB57f0E389f2a75259f78CCF6"
         avatar={avatar}
@@ -225,14 +237,14 @@ const LinkedAvatar: Story = {
         href="https://decentraland.zone/marketplace/accounts/0x89805E5f0698Cb4dB57f0E389f2a75259f78CCF6"
         target="_blank"
       />
-    </>
+    </ProfileStoryContainer>
   ),
 }
 
 const LinkedBlockie: Story = {
   name: "Profile with blockie and content linked to another site",
   render: () => (
-    <>
+    <ProfileStoryContainer>
       <Profile
         address="0x89805E5f0698Cb4dB57f0E389f2a75259f78CCF6"
         inline
@@ -240,7 +252,7 @@ const LinkedBlockie: Story = {
         href="https://decentraland.zone/marketplace/accounts/0x89805E5f0698Cb4dB57f0E389f2a75259f78CCF6"
         target="_blank"
       />
-    </>
+    </ProfileStoryContainer>
   ),
 }
 
