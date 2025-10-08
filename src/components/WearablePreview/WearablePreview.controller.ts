@@ -46,7 +46,6 @@ function processMessage(event: MessageEvent) {
           break
         }
         case PreviewMessageType.LOAD: {
-          console.log(" ++++++ LOAD: ", event)
           isControllerReady = true
           const messagesToProcess = pendingMessages.filter(
             (msg) => msg.data?.type !== PreviewMessageType.LOAD
