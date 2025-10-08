@@ -45,10 +45,11 @@ function processMessage(event: MessageEvent) {
           }
           break
         }
-        case PreviewMessageType.READY: {
+        case PreviewMessageType.LOAD: {
+          console.log(" ++++++ LOAD: ", event)
           isControllerReady = true
           const messagesToProcess = pendingMessages.filter(
-            (msg) => msg.data?.type !== PreviewMessageType.READY
+            (msg) => msg.data?.type !== PreviewMessageType.LOAD
           )
           messagesToProcess.forEach(processMessage)
           pendingMessages.splice(0)
