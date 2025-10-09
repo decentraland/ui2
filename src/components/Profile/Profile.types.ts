@@ -13,6 +13,8 @@ type ProfileBaseProps = {
   hasPopup?: boolean
   inline?: boolean
   sliceAddressBy?: number
+  shortenAddress?: boolean
+  rounded?: boolean
   size?: ProfileSize
   isDecentraland?: boolean
   i18n?: ProfileI18N

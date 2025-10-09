@@ -18,6 +18,7 @@ const Profile = memo(<T extends React.ElementType>(props: ProfileProps<T>) => {
     sliceAddressBy = 6,
     shortenAddress = false,
     isDecentraland,
+    rounded = false,
     as = React.Fragment,
     i18n = i18nProfile,
     ...rest

@@ -13,6 +13,7 @@ const Blockie = React.memo((props: BlockieProps) => {
     size = 6,
     scale = 6,
     children,
+    rounded = false,
   } = props
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
@@ -42,7 +43,7 @@ const Blockie = React.memo((props: BlockieProps) => {
     draw()
   }, [draw])
 
-  const canvas = <StyledCanvas scale={scale} size={size} ref={canvasRef} />
+  const canvas = <StyledCanvas scale={scale} size={size} ref={canvasRef} rounded={rounded} />
 
   return children ? (
     <Box component="span">

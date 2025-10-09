@@ -17,6 +17,12 @@ const meta: Meta<ProfileProps<React.ElementType>> = {
   title: "Decentraland UI/Profile",
   tags: ["autodocs"],
   argTypes: {
+    size: {
+      description: "The size of the profile",
+      control: "select",
+      options: ["normal", "large", "huge", "massive"],
+      defaultValue: "normal",
+    },
     address: {
       description: "The address of the profile",
       control: "text",
@@ -26,6 +32,16 @@ const meta: Meta<ProfileProps<React.ElementType>> = {
       description: "The avatar of the profile",
       control: "object",
       defaultValue: avatar,
+    },
+    shortenAddress: {
+      description: "Whether the address should be shortened",
+      control: "boolean",
+      defaultValue: false,
+    },
+    rounded: {
+      description: "Whether the profile image should be rounded",
+      control: "boolean",
+      defaultValue: false,
     },
     textOnly: {
       description: "Whether the profile should be displayed as text only",
@@ -53,17 +69,6 @@ const meta: Meta<ProfileProps<React.ElementType>> = {
       control: "number",
       defaultValue: 6,
     },
-    shortenAddress: {
-      description: "Whether the address should be shortened",
-      control: "boolean",
-      defaultValue: false,
-    },
-    size: {
-      description: "The size of the profile",
-      control: "select",
-      options: ["normal", "large", "huge", "massive"],
-      defaultValue: "normal",
-    },
   },
   render: (args) => (
     <ProfileStoryContainer>
@@ -85,6 +90,11 @@ const ShortenedAddress: Story = {
     address: "0x89805E5f0698Cb4dB57f0E389f2a75259f78CCF6",
     shortenAddress: true,
   },
+}
+
+const Rounded: Story = {
+  name: "Rounded",
+  args: { address: "0xdeadbeef", rounded: true },
 }
 
 const WithAvatar: Story = {
@@ -248,10 +258,10 @@ const Sizes: Story = {
           imageOnly
           isDecentraland
         />
-        <Profile address="0xdeadbeef" inline={false} size="normal" imageOnly />
-        <Profile address="0xdeadbeef" inline={false} size="large" imageOnly />
-        <Profile address="0xdeadbeef" inline={false} size="huge" imageOnly />
-        <Profile address="0xdeadbeef" inline={false} size="massive" imageOnly />
+        <Profile address="0xdeadbeef" inline={false} size="normal" imageOnly rounded />
+        <Profile address="0xdeadbeef" inline={false} size="large" imageOnly rounded />
+        <Profile address="0xdeadbeef" inline={false} size="huge" imageOnly rounded />
+        <Profile address="0xdeadbeef" inline={false} size="massive" imageOnly rounded />
       </ProfileSizeList>
     </ProfileStoryContainer>
   ),
@@ -293,6 +303,7 @@ export default meta
 export {
   NoAvatar,
   ShortenedAddress,
+  Rounded,
   WithAvatar,
   AvatarWithoutName,
   AvatarWithShortenedAddress,

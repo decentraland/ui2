@@ -15,8 +15,8 @@ const avatarFaceSizeTranslator: Record<ProfileSize, AvatarFaceSize> = {
 const blockieSizeTranslator: Record<ProfileSize, number> = {
   normal: 3,
   large: 5,
-  huge: 7,
-  massive: 21,
+  huge: 8,
+  massive: 30,
 }
 
 const ProfileImage = memo(
@@ -28,6 +28,7 @@ const ProfileImage = memo(
       inline = true,
       address,
       size = "normal",
+      rounded = false,
       as,
       ...rest
     } = props
@@ -45,7 +46,7 @@ const ProfileImage = memo(
       )
     }
 
-    return <Blockie seed={address} scale={blockieSize} as={as} {...rest} />
+    return <Blockie seed={address} scale={blockieSize} rounded={rounded} as={as} {...rest} />
   }
 )
 
