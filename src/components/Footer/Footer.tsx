@@ -10,6 +10,7 @@ import {
   FooterContainer,
   FooterContent,
   FooterLink,
+  FooterSocialLink,
   LanguageSelector,
   LegalLinks,
   SocialLinks,
@@ -93,7 +94,7 @@ const Footer = React.memo((props: FooterProps) => {
           {!hideSocialNetworks && (
             <SocialLinks>
               {defaultSocialLinks.map((social, index) => (
-                <FooterLink
+                <FooterSocialLink
                   key={index}
                   href={social.href}
                   target="_blank"
@@ -101,7 +102,7 @@ const Footer = React.memo((props: FooterProps) => {
                   title={social.name}
                 >
                   {social.icon}
-                </FooterLink>
+                </FooterSocialLink>
               ))}
             </SocialLinks>
           )}

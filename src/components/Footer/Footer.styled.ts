@@ -18,17 +18,17 @@ const FooterContainer = styled(Box)(({ theme }) => ({
   gap: theme.spacing(2),
   minHeight: "60px",
 
-  [theme.breakpoints.down("sm")]: {
+  [theme.breakpoints.down("lg")]: {
     flexDirection: "column",
-    gap: theme.spacing(1),
   },
 }))
 
 const FooterContent = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
+  gap: theme.spacing(2),
 
-  [theme.breakpoints.down("sm")]: {
+  [theme.breakpoints.down("lg")]: {
     flexDirection: "column",
     gap: theme.spacing(1),
   },
@@ -45,7 +45,7 @@ const LegalLinks = styled(Box)(({ theme }) => ({
   gap: theme.spacing(2),
   flexWrap: "wrap",
 
-  [theme.breakpoints.down("sm")]: {
+  [theme.breakpoints.down("lg")]: {
     justifyContent: "center",
     gap: theme.spacing(2),
   },
@@ -69,7 +69,7 @@ const SocialLinks = styled(Box)(({ theme }) => ({
   alignItems: "center",
   gap: theme.spacing(3),
 
-  [theme.breakpoints.down("sm")]: {
+  [theme.breakpoints.down("lg")]: {
     gap: theme.spacing(2),
   },
 }))
@@ -77,11 +77,15 @@ const SocialLinks = styled(Box)(({ theme }) => ({
 const CopyrightText = styled(Typography)(({ theme }) => ({
   color: theme.palette.text.secondary,
   whiteSpace: "nowrap",
-  marginLeft: "24px",
 
-  [theme.breakpoints.down("sm")]: {
+  [theme.breakpoints.down("lg")]: {
     textAlign: "center",
   },
+}))
+
+const FooterSocialLink = styled(FooterLink)(({ theme }) => ({
+  width: theme.spacing(2.5),
+  height: theme.spacing(2.5),
 }))
 
 export {
@@ -91,6 +95,7 @@ export {
   LanguageSelector,
   LegalLinks,
   FooterLink,
+  FooterSocialLink,
   SocialLinks,
   CopyrightText,
 }
