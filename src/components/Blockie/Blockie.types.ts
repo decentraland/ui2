@@ -5,6 +5,7 @@ type BlockieProps = {
   bgcolor?: string
   size?: number
   scale?: number
+  rounded?: boolean
   children?: React.ReactNode
 }
 

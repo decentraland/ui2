@@ -36,6 +36,11 @@ const meta: Meta<BlockieProps> = {
       description: "width/height of each block in pixels",
       defaultValue: 6,
     },
+    rounded: {
+      description: "Whether the blockie should be rounded",
+      control: "boolean",
+      defaultValue: false,
+    },
   },
   render: (args) => <Blockie {...args} />,
 }
@@ -46,6 +51,14 @@ const Single: Story = {
   name: "Single",
   args: {
     seed: address,
+  },
+}
+
+const Rounded: Story = {
+  name: "Rounded",
+  args: {
+    seed: address,
+    rounded: true,
   },
 }
 
@@ -78,4 +91,4 @@ const InAParagraph: Story = {
 
 // eslint-disable-next-line import/no-default-export
 export default meta
-export { Single, Scales, InAParagraph }
+export { Single, Rounded, Scales, InAParagraph }
