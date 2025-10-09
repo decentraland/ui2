@@ -10,13 +10,32 @@ const meta: Meta<typeof Footer> = {
   },
   tags: ["autodocs"],
   argTypes: {
-    isSignedIn: { control: "boolean", description: "Whether the user is signed in" },
-    isSigningIn: { control: "boolean", description: "Whether the user is signing in" },
+    isSignedIn: {
+      control: "boolean",
+      description: "Whether the user is signed in",
+    },
+    isSigningIn: {
+      control: "boolean",
+      description: "Whether the user is signing in",
+    },
     isGuest: { control: "boolean", description: "Whether the user is a guest" },
-    onLanguageChange: { action: "languageChanged", description: "The function to handle the language change" },
-    languages: { control: "object", description: "The languages to display in the footer" },
-    selectedLanguage: { control: "select", description: "The selected language", options: Object.values(SupportedLanguage) },
-    hideSocialNetworks: { control: "boolean", description: "Whether to hide the social networks" },
+    onLanguageChange: {
+      action: "languageChanged",
+      description: "The function to handle the language change",
+    },
+    languages: {
+      control: "object",
+      description: "The languages to display in the footer",
+    },
+    selectedLanguage: {
+      control: "select",
+      description: "The selected language",
+      options: Object.values(SupportedLanguage),
+    },
+    hideSocialNetworks: {
+      control: "boolean",
+      description: "Whether to hide the social networks",
+    },
   },
 }
 
