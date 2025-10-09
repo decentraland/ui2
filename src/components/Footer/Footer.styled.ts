@@ -42,7 +42,7 @@ const LanguageSelector = styled(Box)({
 const LegalLinks = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
-  gap: theme.spacing(3),
+  gap: theme.spacing(2),
   flexWrap: "wrap",
 
   [theme.breakpoints.down("sm")]: {

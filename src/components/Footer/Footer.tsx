@@ -4,7 +4,7 @@ import { config } from "../../config"
 import { DiscordIcon, GitHubIcon, RedditIcon, XIcon } from "../Icon"
 import { LanguageDropdown } from "../LanguageDropdown"
 import { SupportedLanguage } from "../LanguageDropdown/LanguageDropdown.types"
-import type { FooterProps, Language } from "./Footer.types"
+import type { FooterProps, Language, SocialLink } from "./Footer.types"
 import {
   CopyrightText,
   FooterContainer,
@@ -25,7 +25,7 @@ const defaultLanguages: Language[] = [
   { code: SupportedLanguage.JA, name: "日本語", flag: "🇯🇵" },
 ]
 
-const defaultSocialLinks = [
+const defaultSocialLinks: SocialLink[] = [
   {
     name: "Discord",
     href: config.get("DISCORD_URL"),
