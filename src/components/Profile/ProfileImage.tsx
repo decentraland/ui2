@@ -46,7 +46,15 @@ const ProfileImage = memo(
       )
     }
 
-    return <Blockie seed={address} scale={blockieSize} rounded={rounded} as={as} {...rest} />
+    return (
+      <Blockie
+        seed={address}
+        scale={blockieSize}
+        rounded={rounded}
+        as={as}
+        {...rest}
+      />
+    )
   }
 )
 

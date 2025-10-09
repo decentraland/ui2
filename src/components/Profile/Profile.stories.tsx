@@ -258,10 +258,34 @@ const Sizes: Story = {
           imageOnly
           isDecentraland
         />
-        <Profile address="0xdeadbeef" inline={false} size="normal" imageOnly rounded />
-        <Profile address="0xdeadbeef" inline={false} size="large" imageOnly rounded />
-        <Profile address="0xdeadbeef" inline={false} size="huge" imageOnly rounded />
-        <Profile address="0xdeadbeef" inline={false} size="massive" imageOnly rounded />
+        <Profile
+          address="0xdeadbeef"
+          inline={false}
+          size="normal"
+          imageOnly
+          rounded
+        />
+        <Profile
+          address="0xdeadbeef"
+          inline={false}
+          size="large"
+          imageOnly
+          rounded
+        />
+        <Profile
+          address="0xdeadbeef"
+          inline={false}
+          size="huge"
+          imageOnly
+          rounded
+        />
+        <Profile
+          address="0xdeadbeef"
+          inline={false}
+          size="massive"
+          imageOnly
+          rounded
+        />
       </ProfileSizeList>
     </ProfileStoryContainer>
   ),
