@@ -20,15 +20,6 @@ const meta: Meta<typeof Footer> = {
       control: "boolean",
       description: "Whether to hide the social networks",
     },
-    isSignedIn: {
-      control: "boolean",
-      description: "Whether the user is signed in",
-    },
-    isSigningIn: {
-      control: "boolean",
-      description: "Whether the user is signing in",
-    },
-    isGuest: { control: "boolean", description: "Whether the user is a guest" },
     onLanguageChange: {
       action: "languageChanged",
       description: "The function to handle the language change",

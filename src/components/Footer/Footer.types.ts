@@ -18,9 +18,6 @@ interface SocialLink {
 }
 
 interface FooterProps {
-  isSignedIn?: boolean
-  isSigningIn?: boolean
-  isGuest?: boolean
   languages?: Language[]
   selectedLanguage?: SupportedLanguage
   onLanguageChange?: (language: SupportedLanguage) => void
