@@ -74,4 +74,14 @@ const LargeChainsIcons: Story = {
 
 // eslint-disable-next-line import/no-default-export
 export default meta
-export { Arbitrum, Avalanche, Binance, Ethereum, Fantom, Optimism, Polygon, AllChainsIcons, LargeChainsIcons }
+export {
+  Arbitrum,
+  Avalanche,
+  Binance,
+  Ethereum,
+  Fantom,
+  Optimism,
+  Polygon,
+  AllChainsIcons,
+  LargeChainsIcons,
+}

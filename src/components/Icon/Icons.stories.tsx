@@ -61,7 +61,14 @@ const Windows: Story = {
 
 const AllIcons: Story = {
   render: () => (
-    <div style={{ display: "flex", gap: "16px", alignItems: "center", flexWrap: "wrap" }}>
+    <div
+      style={{
+        display: "flex",
+        gap: "16px",
+        alignItems: "center",
+        flexWrap: "wrap",
+      }}
+    >
       <AppleIcon />
       <CreditsIcon />
       <JumpInIcon />
@@ -78,7 +85,14 @@ const AllIcons: Story = {
 
 const LargeIcons: Story = {
   render: () => (
-    <div style={{ display: "flex", gap: "16px", alignItems: "center", flexWrap: "wrap" }}>
+    <div
+      style={{
+        display: "flex",
+        gap: "16px",
+        alignItems: "center",
+        flexWrap: "wrap",
+      }}
+    >
       <AppleIcon fontSize="large" />
       <CreditsIcon fontSize="large" />
       <JumpInIcon fontSize="large" />

@@ -124,7 +124,14 @@ const UpperBody: Story = {
 
 const AllWearablesIcons: Story = {
   render: () => (
-    <div style={{ display: "flex", gap: "16px", alignItems: "center", flexWrap: "wrap" }}>
+    <div
+      style={{
+        display: "flex",
+        gap: "16px",
+        alignItems: "center",
+        flexWrap: "wrap",
+      }}
+    >
       <BaseFemaleIcon />
       <BaseMaleIcon />
       <BodyShapeIcon />
@@ -153,7 +160,14 @@ const AllWearablesIcons: Story = {
 
 const LargeWearablesIcons: Story = {
   render: () => (
-    <div style={{ display: "flex", gap: "16px", alignItems: "center", flexWrap: "wrap" }}>
+    <div
+      style={{
+        display: "flex",
+        gap: "16px",
+        alignItems: "center",
+        flexWrap: "wrap",
+      }}
+    >
       <BaseFemaleIcon fontSize="large" />
       <BaseMaleIcon fontSize="large" />
       <BodyShapeIcon fontSize="large" />

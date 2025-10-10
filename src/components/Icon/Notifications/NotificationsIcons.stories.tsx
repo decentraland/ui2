@@ -176,7 +176,14 @@ const VotingEnded: Story = {
 
 const AllNotificationsIcons: Story = {
   render: () => (
-    <div style={{ display: "flex", gap: "16px", alignItems: "center", flexWrap: "wrap" }}>
+    <div
+      style={{
+        display: "flex",
+        gap: "16px",
+        alignItems: "center",
+        flexWrap: "wrap",
+      }}
+    >
       <AccessRestoredIcon />
       <AccessRestrictedIcon />
       <BidAcceptedIcon />
@@ -216,7 +223,14 @@ const AllNotificationsIcons: Story = {
 
 const LargeNotificationsIcons: Story = {
   render: () => (
-    <div style={{ display: "flex", gap: "16px", alignItems: "center", flexWrap: "wrap" }}>
+    <div
+      style={{
+        display: "flex",
+        gap: "16px",
+        alignItems: "center",
+        flexWrap: "wrap",
+      }}
+    >
       <AccessRestoredIcon fontSize="large" />
       <AccessRestrictedIcon fontSize="large" />
       <BidAcceptedIcon fontSize="large" />
