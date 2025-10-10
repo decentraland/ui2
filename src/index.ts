@@ -34,6 +34,8 @@ export * from "./components/UserMenu"
 export * from "./components/Banner"
 export * from "./components/WearablePreview"
 export * from "./components/Profile"
+export * from "./components/Footer"
+export * from "./components/LanguageDropdown"
 
 export * as dclNetworkUtils from "./lib/network"
 
