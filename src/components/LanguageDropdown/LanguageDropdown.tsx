@@ -51,6 +51,14 @@ const LanguageDropdown = React.memo((props: LanguageDropdownProps) => {
       <Menu
         id="language-menu"
         anchorEl={anchorEl}
+        anchorOrigin={{
+          vertical: "top",
+          horizontal: "left",
+        }}
+        transformOrigin={{
+          vertical: "bottom",
+          horizontal: "left",
+        }}
         open={open}
         onClose={handleClose}
         MenuListProps={{

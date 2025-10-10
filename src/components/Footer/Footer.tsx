@@ -113,4 +113,4 @@ const Footer = React.memo((props: FooterProps) => {
   )
 })
 
-export { Footer }
+export { Footer, defaultLanguages }

@@ -1,8 +1,8 @@
-export { Footer } from "./Footer"
+export { Footer, defaultLanguages } from "./Footer"
+export { SupportedLanguage } from "../LanguageDropdown/LanguageDropdown.types"
 export type {
   FooterProps,
   FooterLink,
   SocialLink,
   Language,
-  SupportedLanguage,
 } from "./Footer.types"
