@@ -5,7 +5,7 @@ import { XIcon } from "./XIcon"
 import type { Meta, StoryObj } from "@storybook/react"
 
 const meta: Meta<typeof DiscordIcon> = {
-  title: "components/Icon/Social",
+  title: "Decentraland UI/Icons/Social",
   component: DiscordIcon,
   parameters: {
     layout: "centered",

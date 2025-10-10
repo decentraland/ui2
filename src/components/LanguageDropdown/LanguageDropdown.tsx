@@ -80,6 +80,4 @@ const LanguageDropdown = React.memo((props: LanguageDropdownProps) => {
   )
 })
 
-LanguageDropdown.displayName = "LanguageDropdown"
-
 export { LanguageDropdown }
