@@ -5,6 +5,7 @@ import { EthereumIcon } from "./EthereumIcon"
 import { FantomIcon } from "./FantomIcon"
 import { OptimismIcon } from "./OptimismIcon"
 import { PolygonIcon } from "./PolygonIcon"
+import { IconsContainer } from "../Icons.stories.styled"
 import type { Meta, StoryObj } from "@storybook/react"
 
 const meta: Meta<typeof ArbitrumIcon> = {
@@ -46,7 +47,7 @@ const Polygon: Story = {
 
 const AllChainsIcons: Story = {
   render: () => (
-    <div style={{ display: "flex", gap: "16px", alignItems: "center" }}>
+    <IconsContainer>
       <ArbitrumIcon />
       <AvalancheIcon />
       <BinanceIcon />
@@ -54,13 +55,13 @@ const AllChainsIcons: Story = {
       <FantomIcon />
       <OptimismIcon />
       <PolygonIcon />
-    </div>
+    </IconsContainer>
   ),
 }
 
 const LargeChainsIcons: Story = {
   render: () => (
-    <div style={{ display: "flex", gap: "16px", alignItems: "center" }}>
+    <IconsContainer>
       <ArbitrumIcon fontSize="large" />
       <AvalancheIcon fontSize="large" />
       <BinanceIcon fontSize="large" />
@@ -68,7 +69,7 @@ const LargeChainsIcons: Story = {
       <FantomIcon fontSize="large" />
       <OptimismIcon fontSize="large" />
       <PolygonIcon fontSize="large" />
-    </div>
+    </IconsContainer>
   ),
 }
 

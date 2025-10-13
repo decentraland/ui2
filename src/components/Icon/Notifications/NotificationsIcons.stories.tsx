@@ -31,6 +31,7 @@ import { RewardIcon } from "./RewardIcon"
 import { StreamingIcon } from "./StreamingIcon"
 import { TenderIcon } from "./TenderIcon"
 import { VotingEndedIcon } from "./VotingEndedIcon"
+import { IconsContainer } from "../Icons.stories.styled"
 import type { Meta, StoryObj } from "@storybook/react"
 
 const meta: Meta<typeof AccessRestoredIcon> = {
@@ -176,14 +177,7 @@ const VotingEnded: Story = {
 
 const AllNotificationsIcons: Story = {
   render: () => (
-    <div
-      style={{
-        display: "flex",
-        gap: "16px",
-        alignItems: "center",
-        flexWrap: "wrap",
-      }}
-    >
+    <IconsContainer>
       <AccessRestoredIcon />
       <AccessRestrictedIcon />
       <BidAcceptedIcon />
@@ -217,20 +211,13 @@ const AllNotificationsIcons: Story = {
       <StreamingIcon />
       <TenderIcon />
       <VotingEndedIcon />
-    </div>
+    </IconsContainer>
   ),
 }
 
 const LargeNotificationsIcons: Story = {
   render: () => (
-    <div
-      style={{
-        display: "flex",
-        gap: "16px",
-        alignItems: "center",
-        flexWrap: "wrap",
-      }}
-    >
+    <IconsContainer>
       <AccessRestoredIcon fontSize="large" />
       <AccessRestrictedIcon fontSize="large" />
       <BidAcceptedIcon fontSize="large" />
@@ -264,7 +251,7 @@ const LargeNotificationsIcons: Story = {
       <StreamingIcon fontSize="large" />
       <TenderIcon fontSize="large" />
       <VotingEndedIcon fontSize="large" />
-    </div>
+    </IconsContainer>
   ),
 }
 

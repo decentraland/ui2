@@ -20,6 +20,7 @@ import { TiaraIcon } from "./TiaraIcon"
 import { TopHeadIcon } from "./TopHeadIcon"
 import { UnisexIcon } from "./UnisexIcon"
 import { UpperBodyIcon } from "./UpperBodyIcon"
+import { IconsContainer } from "../Icons.stories.styled"
 import type { Meta, StoryObj } from "@storybook/react"
 
 const meta: Meta<typeof BaseFemaleIcon> = {
@@ -124,14 +125,7 @@ const UpperBody: Story = {
 
 const AllWearablesIcons: Story = {
   render: () => (
-    <div
-      style={{
-        display: "flex",
-        gap: "16px",
-        alignItems: "center",
-        flexWrap: "wrap",
-      }}
-    >
+    <IconsContainer>
       <BaseFemaleIcon />
       <BaseMaleIcon />
       <BodyShapeIcon />
@@ -154,20 +148,13 @@ const AllWearablesIcons: Story = {
       <TopHeadIcon />
       <UnisexIcon />
       <UpperBodyIcon />
-    </div>
+    </IconsContainer>
   ),
 }
 
 const LargeWearablesIcons: Story = {
   render: () => (
-    <div
-      style={{
-        display: "flex",
-        gap: "16px",
-        alignItems: "center",
-        flexWrap: "wrap",
-      }}
-    >
+    <IconsContainer>
       <BaseFemaleIcon fontSize="large" />
       <BaseMaleIcon fontSize="large" />
       <BodyShapeIcon fontSize="large" />
@@ -190,7 +177,7 @@ const LargeWearablesIcons: Story = {
       <TopHeadIcon fontSize="large" />
       <UnisexIcon fontSize="large" />
       <UpperBodyIcon fontSize="large" />
-    </div>
+    </IconsContainer>
   ),
 }
 

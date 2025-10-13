@@ -8,6 +8,7 @@ import { PlacesIcon } from "./PlacesIcon"
 import { SparklesIcon } from "./SparklesIcon"
 import { UtilityIcon } from "./UtilityIcon"
 import { WindowsIcon } from "./WindowsIcon"
+import { IconsContainer } from "./Icons.stories.styled"
 import type { Meta, StoryObj } from "@storybook/react"
 
 const meta: Meta<typeof AppleIcon> = {
@@ -61,14 +62,7 @@ const Windows: Story = {
 
 const AllIcons: Story = {
   render: () => (
-    <div
-      style={{
-        display: "flex",
-        gap: "16px",
-        alignItems: "center",
-        flexWrap: "wrap",
-      }}
-    >
+    <IconsContainer>
       <AppleIcon />
       <CreditsIcon />
       <JumpInIcon />
@@ -79,20 +73,13 @@ const AllIcons: Story = {
       <SparklesIcon />
       <UtilityIcon />
       <WindowsIcon />
-    </div>
+    </IconsContainer>
   ),
 }
 
 const LargeIcons: Story = {
   render: () => (
-    <div
-      style={{
-        display: "flex",
-        gap: "16px",
-        alignItems: "center",
-        flexWrap: "wrap",
-      }}
-    >
+    <IconsContainer>
       <AppleIcon fontSize="large" />
       <CreditsIcon fontSize="large" />
       <JumpInIcon fontSize="large" />
@@ -103,7 +90,7 @@ const LargeIcons: Story = {
       <SparklesIcon fontSize="large" />
       <UtilityIcon fontSize="large" />
       <WindowsIcon fontSize="large" />
-    </div>
+    </IconsContainer>
   ),
 }
 

@@ -2,6 +2,7 @@ import { MuteIcon } from "./MuteIcon"
 import { PropsIcon } from "./PropsIcon"
 import { SoundIcon } from "./SoundIcon"
 import { VolumeIcon } from "./VolumeIcon"
+import { IconsContainer } from "../Icons.stories.styled"
 import type { Meta, StoryObj } from "@storybook/react"
 
 const meta: Meta<typeof MuteIcon> = {
@@ -34,23 +35,23 @@ const Volume: Story = {
 
 const AllEmotesIcons: Story = {
   render: () => (
-    <div style={{ display: "flex", gap: "16px", alignItems: "center" }}>
+    <IconsContainer>
       <MuteIcon />
       <PropsIcon />
       <SoundIcon />
       <VolumeIcon />
-    </div>
+    </IconsContainer>
   ),
 }
 
 const LargeEmotesIcons: Story = {
   render: () => (
-    <div style={{ display: "flex", gap: "16px", alignItems: "center" }}>
+    <IconsContainer>
       <MuteIcon fontSize="large" />
       <PropsIcon fontSize="large" />
       <SoundIcon fontSize="large" />
       <VolumeIcon fontSize="large" />
-    </div>
+    </IconsContainer>
   ),
 }
 
