@@ -1,7 +1,7 @@
 import { Rarity } from "@dcl/schemas"
 import styled, { CSSObject } from "@emotion/styled"
 import { Chip } from "@mui/material"
-import { hexToRgba } from "../../utils/hexToRgb"
+import { hexToRgba } from "../../utils/colors"
 import { RarityBadgeProps } from "./RarityBadge.types"
 
 const RarityBadge = styled(Chip)<RarityBadgeProps>(({

@@ -1,4 +1,4 @@
-import { hexToRgba } from "./hexToRgb"
+import { hexToRgba } from "./colors"
 
 describe("when converting hexadecimal colors to RGB", () => {
   describe("and the hex color is valid", () => {
@@ -67,6 +67,21 @@ describe("when converting hexadecimal colors to RGB", () => {
         const result = hexToRgba("#Ff0000")
         expect(result).toBe("rgba(255, 0, 0, 1)")
       })
+
+      it("should convert short hex values correctly", () => {
+        const result = hexToRgba("#0F0")
+        expect(result).toBe("rgba(0, 255, 0, 1)")
+      })
+
+      it("should convert lowercase short hex values correctly", () => {
+        const result = hexToRgba("#abc")
+        expect(result).toBe("rgba(170, 187, 204, 1)")
+      })
+
+      it("should convert mixed case short hex values correctly", () => {
+        const result = hexToRgba("#FfF")
+        expect(result).toBe("rgba(255, 255, 255, 1)")
+      })
     })
 
     describe("and alpha is at boundary values", () => {
@@ -84,10 +99,6 @@ describe("when converting hexadecimal colors to RGB", () => {
 
   describe("and the hex color is invalid", () => {
     describe("and hex length is too short", () => {
-      it("should throw error for 3 character hex", () => {
-        expect(() => hexToRgba("#FF0")).toThrow("Invalid hexadecimal color")
-      })
-
       it("should throw error for 4 character hex", () => {
         expect(() => hexToRgba("#FF00")).toThrow("Invalid hexadecimal color")
       })
