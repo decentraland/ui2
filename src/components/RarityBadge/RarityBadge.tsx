@@ -8,6 +8,7 @@ const RarityBadge = React.memo((props: RarityBadgeProps) => {
   const {
     rarity,
     size = "medium",
+    square = false,
     withTooltip = false,
     onClick = () => {},
     i18n = rarityBadgeI18n,
@@ -18,6 +19,7 @@ const RarityBadge = React.memo((props: RarityBadgeProps) => {
       rarity={rarity}
       label={i18n.rarities[rarity]}
       size={size}
+      square={square}
       onClick={onClick}
     />
   )

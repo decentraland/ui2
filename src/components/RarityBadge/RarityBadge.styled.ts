@@ -8,6 +8,7 @@ const RarityBadge = styled(Chip)<RarityBadgeProps>(({
   theme,
   rarity,
   size = "medium",
+  square = false,
 }) => {
   const [lightColor, regularColor] = Rarity.getGradient(rarity)
   const typographyBySize = {
@@ -18,6 +19,12 @@ const RarityBadge = styled(Chip)<RarityBadgeProps>(({
     backgroundColor: hexToRgba(regularColor, 0.2),
     color: lightColor,
     textTransform: "uppercase",
+    ...(square
+      ? {
+          borderRadius: "5px",
+          height: size === "small" ? theme.spacing(3) : theme.spacing(3.25),
+        }
+      : {}),
     ...typographyBySize[size],
     ":hover": {
       backgroundColor: hexToRgba(regularColor, 0.2),

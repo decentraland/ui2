@@ -28,6 +28,11 @@ const meta: Meta<RarityBadgeProps> = {
       options: ["small", "medium"],
       defaultValue: "medium",
     },
+    square: {
+      description: "Whether the badge should have a square shape",
+      control: "boolean",
+      defaultValue: false,
+    },
     withTooltip: {
       description: "Whether the badge should have a tooltip",
       control: "boolean",
@@ -111,10 +116,18 @@ const Unique: Story = {
   },
 }
 
+const Square: Story = {
+  name: "Square",
+  args: {
+    rarity: Rarity.EXOTIC,
+    square: true,
+  },
+}
+
 const WithTooltip: Story = {
   name: "With Tooltip",
   args: {
-    rarity: Rarity.COMMON,
+    rarity: Rarity.UNIQUE,
     withTooltip: true,
   },
 }
@@ -149,6 +162,42 @@ const Small: Story = {
   },
 }
 
+const MediumSquare: Story = {
+  name: "Medium Square",
+  render: () => {
+    return (
+      <RarityBadgeContainer>
+        {Rarity.getRarities().map((rarity) => (
+          <RarityBadge
+            rarity={rarity as Rarity}
+            key={rarity as string}
+            size="medium"
+            square
+          />
+        ))}
+      </RarityBadgeContainer>
+    )
+  },
+}
+
+const SmallSquare: Story = {
+  name: "Small Square",
+  render: () => {
+    return (
+      <RarityBadgeContainer>
+        {Rarity.getRarities().map((rarity) => (
+          <RarityBadge
+            rarity={rarity as Rarity}
+            key={rarity as string}
+            size="small"
+            square
+          />
+        ))}
+      </RarityBadgeContainer>
+    )
+  },
+}
+
 // eslint-disable-next-line import/no-default-export
 export default meta
 export {
@@ -160,7 +209,10 @@ export {
   Exotic,
   Mythic,
   Unique,
+  Square,
   WithTooltip,
   Medium,
   Small,
+  MediumSquare,
+  SmallSquare,
 }
