@@ -1,7 +1,5 @@
-import { Rarity } from "@dcl/schemas"
 import styled, { CSSObject } from "@emotion/styled"
 import { Chip } from "@mui/material"
-import { hexToRgba } from "../../utils/colors"
 import { RarityBadgeProps } from "./RarityBadge.types"
 
 const RarityBadge = styled(Chip)<RarityBadgeProps>(({
@@ -10,14 +8,13 @@ const RarityBadge = styled(Chip)<RarityBadgeProps>(({
   size = "medium",
   square = false,
 }) => {
-  const [lightColor, regularColor] = Rarity.getGradient(rarity)
   const typographyBySize = {
     small: theme.typography.caption,
     medium: theme.typography.body2,
   }
   return {
-    backgroundColor: hexToRgba(regularColor, 0.2),
-    color: lightColor,
+    backgroundColor: theme.palette.rarities[rarity],
+    color: theme.palette.raritiesText[rarity],
     textTransform: "uppercase",
     ...(square
       ? {
@@ -27,7 +24,7 @@ const RarityBadge = styled(Chip)<RarityBadgeProps>(({
       : {}),
     ...typographyBySize[size],
     ":hover": {
-      backgroundColor: hexToRgba(regularColor, 0.2),
+      backgroundColor: theme.palette.rarities[rarity],
     },
   } as CSSObject
 })

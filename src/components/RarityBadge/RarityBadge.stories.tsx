@@ -11,9 +11,6 @@ const meta: Meta<RarityBadgeProps> = {
   tags: ["autodocs"],
   parameters: {
     layout: "centered",
-    backgrounds: {
-      default: "dark",
-    },
   },
   argTypes: {
     rarity: {
