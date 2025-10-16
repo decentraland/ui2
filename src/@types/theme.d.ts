@@ -1,5 +1,4 @@
 import "@emotion/react"
-import "@mui/material/styles"
 import { Theme as MUITheme } from "@mui/material"
 import type { Rarity } from "@dcl/schemas"
 
