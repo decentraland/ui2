@@ -2,6 +2,7 @@ import { DiscordIcon } from "./DiscordIcon"
 import { GitHubIcon } from "./GitHubIcon"
 import { RedditIcon } from "./RedditIcon"
 import { XIcon } from "./XIcon"
+import { IconsContainer } from "../Icons.stories.styled"
 import type { Meta, StoryObj } from "@storybook/react"
 
 const meta: Meta<typeof DiscordIcon> = {
@@ -31,23 +32,23 @@ const X: Story = {
 
 const AllSocialIcons: Story = {
   render: () => (
-    <div style={{ display: "flex", gap: "16px", alignItems: "center" }}>
+    <IconsContainer>
       <DiscordIcon />
       <RedditIcon />
       <GitHubIcon />
       <XIcon />
-    </div>
+    </IconsContainer>
   ),
 }
 
 const LargeSocialIcons: Story = {
   render: () => (
-    <div style={{ display: "flex", gap: "16px", alignItems: "center" }}>
+    <IconsContainer>
       <DiscordIcon fontSize="large" />
       <RedditIcon fontSize="large" />
       <GitHubIcon fontSize="large" />
       <XIcon fontSize="large" />
-    </div>
+    </IconsContainer>
   ),
 }
 
