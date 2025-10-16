@@ -1,16 +1,20 @@
-import styled, { CSSObject } from "@emotion/styled"
+import styled from "@emotion/styled"
 import { Chip } from "@mui/material"
 import { RarityBadgeProps } from "./RarityBadge.types"
 
-const RarityBadge = styled(Chip)<RarityBadgeProps>(({
-  theme,
-  rarity,
-  size = "medium",
-  square = false,
-}) => {
+const RarityBadge = styled(Chip)<RarityBadgeProps>((props) => {
+  const { theme, rarity, size = "medium", square = false } = props
   const typographyBySize = {
-    small: theme.typography.caption,
-    medium: theme.typography.body2,
+    small: {
+      fontSize: theme.typography.caption.fontSize,
+      fontWeight: theme.typography.caption.fontWeight,
+      lineHeight: theme.typography.caption.lineHeight,
+    },
+    medium: {
+      fontSize: theme.typography.body2.fontSize,
+      fontWeight: theme.typography.body2.fontWeight,
+      lineHeight: theme.typography.body2.lineHeight,
+    },
   }
   return {
     backgroundColor: theme.palette.rarities[rarity],
@@ -26,7 +30,7 @@ const RarityBadge = styled(Chip)<RarityBadgeProps>(({
     ":hover": {
       backgroundColor: theme.palette.rarities[rarity],
     },
-  } as CSSObject
+  }
 })
 
 export { RarityBadge }
