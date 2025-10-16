@@ -1,4 +1,4 @@
-import styled, { CSSObject } from "@emotion/styled"
+import styled from "@emotion/styled"
 import { ProfileBaseProps } from "./Profile.types"
 
 const ProfileContainer = styled("span")<ProfileBaseProps>(
@@ -16,8 +16,10 @@ const ProfileName = styled("span")<Pick<ProfileBaseProps, "size">>(({
 }) => {
   const font = size !== "normal" ? theme.typography.h6 : theme.typography.body1
   return {
-    ...font,
-  } as CSSObject
+    fontSize: font.fontSize,
+    fontWeight: font.fontWeight,
+    lineHeight: font.lineHeight,
+  }
 })
 
 export { ProfileContainer, ProfileName }

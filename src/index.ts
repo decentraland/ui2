@@ -36,6 +36,7 @@ export * from "./components/WearablePreview"
 export * from "./components/Profile"
 export * from "./components/Footer"
 export * from "./components/LanguageDropdown"
+export * from "./components/RarityBadge"
 
 export * as dclNetworkUtils from "./lib/network"
 
