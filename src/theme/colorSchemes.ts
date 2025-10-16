@@ -1,5 +1,6 @@
 import { PaletteOptions } from "@mui/material"
-import { neutral } from "./colors"
+import { neutral, rarity, rarityLightTheme } from "./colors"
+import { hexToRgba } from "../utils/colors"
 
 const colorSchemas = {
   light: {
@@ -170,6 +171,26 @@ const colorSchemas = {
           },
         },
       },
+      rarities: {
+        common: rarityLightTheme.common,
+        uncommon: rarityLightTheme.uncommon,
+        rare: rarityLightTheme.rare,
+        epic: rarityLightTheme.epic,
+        legendary: rarityLightTheme.legendary,
+        exotic: rarityLightTheme.exotic,
+        mythic: rarityLightTheme.mythic,
+        unique: rarityLightTheme.unique,
+      },
+      raritiesText: {
+        common: "#FFFFFF",
+        uncommon: "#FFFFFF",
+        rare: "#FFFFFF",
+        epic: "#FFFFFF",
+        legendary: "#FFFFFF",
+        exotic: "#FFFFFF",
+        mythic: "#FFFFFF",
+        unique: "#FFFFFF",
+      },
       icon: "#000",
     } as PaletteOptions,
   },
@@ -335,6 +356,26 @@ const colorSchemas = {
             background: "rgba(0, 161, 70, 0.24)",
           },
         },
+      },
+      rarities: {
+        common: hexToRgba(rarity.common, 0.2),
+        uncommon: hexToRgba(rarity.uncommon, 0.2),
+        rare: hexToRgba(rarity.rare, 0.2),
+        epic: hexToRgba(rarity.epic, 0.2),
+        legendary: hexToRgba(rarity.legendary, 0.2),
+        exotic: hexToRgba(rarity.exotic, 0.2),
+        mythic: hexToRgba(rarity.mythic, 0.2),
+        unique: hexToRgba(rarity.unique, 0.2),
+      },
+      raritiesText: {
+        common: rarity.common,
+        uncommon: rarity.uncommon,
+        rare: rarity.rare,
+        epic: rarity.epic,
+        legendary: rarity.legendary,
+        exotic: rarity.exotic,
+        mythic: rarity.mythic,
+        unique: rarity.unique,
       },
       icon: "#fff",
     } as PaletteOptions,

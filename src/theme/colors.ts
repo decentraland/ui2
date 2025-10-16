@@ -1,3 +1,5 @@
+import { Rarity } from "@dcl/schemas"
+
 const neutral = {
   white: `#FFFFFF`,
   trueWhite: `#FFFFFF`,
@@ -44,12 +46,13 @@ const textOnBase: typeof base = {
   primaryLight2: neutral.black,
 }
 
-const rarity = {
+const rarity: Record<Rarity, string> = {
   common: `#73D3D3`,
   uncommon: `#FF8362`,
   rare: `#34CE76`,
   epic: `#438FFF`,
   legendary: `#A14BF3`,
+  exotic: `#9BD141`,
   mythic: `#FF4BED`,
   unique: `#FEA217`,
 }
@@ -60,8 +63,20 @@ const rarityLight: typeof rarity = {
   rare: `#C1F2D6`,
   epic: `#C0D3EF`,
   legendary: `#E1C1FF`,
+  exotic: `#D1E989`,
   mythic: `#FDC4F7`,
   unique: `#F3E5CF`,
+}
+
+const rarityLightTheme: typeof rarity = {
+  common: `#49B7B7`,
+  uncommon: `#FF8362`,
+  rare: `#34CE76`,
+  epic: `#438FFF`,
+  legendary: `#A14BF3`,
+  exotic: `#9BD141`,
+  mythic: `#FF4BED`,
+  unique: `#FEA217`,
 }
 
 const rarityGradient: typeof rarity = {
@@ -70,6 +85,7 @@ const rarityGradient: typeof rarity = {
   rare: `radial-gradient(circle, ${rarityLight.rare} 0%, ${rarity.rare} 100%)`,
   epic: `radial-gradient(circle, ${rarityLight.epic} 0%, ${rarity.epic} 100%)`,
   legendary: `radial-gradient(circle, ${rarityLight.legendary} 0%, ${rarity.legendary} 100%)`,
+  exotic: `radial-gradient(circle, ${rarityLight.exotic} 0%, ${rarity.exotic} 100%)`,
   mythic: `radial-gradient(circle, ${rarityLight.mythic} 0%, ${rarity.mythic} 100%)`,
   unique: `radial-gradient(circle, ${rarityLight.unique} 0%, ${rarity.unique} 100%)`,
 }
@@ -81,6 +97,7 @@ const textOnRarity: typeof rarity = {
   epic: neutral.white,
   legendary: neutral.white,
   mythic: neutral.white,
+  exotic: neutral.white,
   unique: neutral.white,
 }
 
@@ -159,6 +176,8 @@ export {
   base,
   textOnBase,
   rarity,
+  rarityLight,
+  rarityLightTheme,
   rarityGradient,
   textOnRarity,
   brand,

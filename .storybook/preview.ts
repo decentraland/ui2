@@ -33,8 +33,16 @@ const preview: Preview = {
       },
     },
     backgrounds: {
-      default: "light",
+      default: "Theme background",
       values: [
+        {
+          name: "Theme background",
+          value: "var(--mui-palette-background-default, #f0f0f0)",
+        },
+        {
+          name: "Theme surface",
+          value: "var(--mui-palette-background-paper, #ffffff)",
+        },
         {
           name: "light",
           value: "#f0f0f0",
