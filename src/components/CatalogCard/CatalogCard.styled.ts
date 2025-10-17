@@ -18,7 +18,7 @@ const CatalogCardContainer = styled(Card)(({ theme }) => ({
   "&:hover": {
     padding: theme.spacing(0),
     borderRadius: theme.spacing(1),
-    boxShadow: `0px 0px 20px 6px ${hexToRgba(theme.palette.common.white, 0.37)}`,
+    boxShadow: `0px 0px 20px 6px ${hexToRgba(theme.palette.mode === "dark" ? theme.palette.common.white : theme.palette.common.black, 0.37)}`,
     "& .ExtraInformationContainer, & .CatalogItemInformationContainer": {
       height: "auto",
       opacity: 1,
@@ -43,7 +43,8 @@ const CardContentContainer = styled(CardContent)(({ theme }) => ({
   flexDirection: "column",
   flexFlow: "column nowrap",
   alignItems: "flex-start",
-  gap: theme.spacing(0.5),
+  gap: theme.spacing(0.25),
+  minHeight: theme.spacing(20),
 }))
 
 const AssetHeaderContainer = styled(Box)({
@@ -67,6 +68,7 @@ const AssetTitle = styled(Typography)({
 const AssetAddress = styled(Address)(({ theme }) => ({
   fontSize: theme.typography.body2.fontSize,
   fontWeight: theme.typography.body2.fontWeight,
+  lineHeight: theme.typography.body2.lineHeight,
   color: theme.palette.text.secondary,
 }))
 

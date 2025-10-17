@@ -11,9 +11,6 @@ const meta: Meta<CatalogCardProps> = {
   tags: ["autodocs"],
   parameters: {
     layout: "centered",
-    backgrounds: {
-      default: "dark",
-    },
   },
 }
 
