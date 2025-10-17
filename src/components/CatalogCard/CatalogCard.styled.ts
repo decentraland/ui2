@@ -4,37 +4,13 @@ import { Address } from "../../components/Address"
 import { hexToRgba } from "../../utils/colors"
 import { AssetImage } from "../AssetImage"
 
-const CatalogCardContainer = styled(Card)(({ theme }) => ({
-  height: theme.spacing(45),
-  transition: "transform 0.1s ease-in-out, box-shadow 0.3s ease-in-out",
-  borderRadius: theme.spacing(1),
-  width: theme.spacing(36),
-  maxWidth: "100%",
-  position: "relative",
-  display: "flex",
-  flexDirection: "column",
-  padding: 0,
-  overflow: "hidden",
-  "&:hover": {
-    padding: theme.spacing(0),
-    borderRadius: theme.spacing(1),
-    boxShadow: `0px 0px 20px 6px ${hexToRgba(theme.palette.mode === "dark" ? theme.palette.common.white : theme.palette.common.black, 0.37)}`,
-    "& .ExtraInformationContainer, & .CatalogItemInformationContainer": {
-      height: "auto",
-      opacity: 1,
-      transition: "height 0.3s ease-in-out, opacity 0.6s ease-in-out",
-    },
-    "& .AssetImageContainer": {
-      height: theme.spacing(20),
-      transition: "height 0.1s ease-in-out",
-    },
-  },
-}))
-
 const AssetImageContainer = styled(AssetImage)(({ theme }) => ({
   borderRadius: `${theme.spacing(1)} ${theme.spacing(1)} 0 0`,
   height: theme.spacing(26),
   transition: "height 0.3s ease-in-out",
+  [theme.breakpoints.down("sm")]: {
+    height: theme.spacing(15),
+  },
 }))
 
 const CardContentContainer = styled(CardContent)(({ theme }) => ({
@@ -73,13 +49,16 @@ const AssetAddress = styled(Address)(({ theme }) => ({
 }))
 
 const CatalogItemInformationContainer = styled(Box)(({ theme }) => ({
+  flex: 1,
   display: "flex",
   alignItems: "center",
   gap: theme.spacing(0.5),
-  height: "0px",
-  opacity: 0,
-  overflow: "hidden",
-  transition: "height 0.1s ease-in-out, opacity 0.6s ease-in-out",
+  [theme.breakpoints.up("sm")]: {
+    height: theme.spacing(0),
+    opacity: 0,
+    overflow: "hidden",
+    transition: "height 0.1s ease-in-out, opacity 0.6s ease-in-out",
+  },
 }))
 
 const CatalogCardPriceContainer = styled(Box)({
@@ -88,12 +67,42 @@ const CatalogCardPriceContainer = styled(Box)({
   alignItems: "center",
 })
 
-const ExtraInformationContainer = styled(Box)({
-  height: "0px",
-  opacity: 0,
+const ExtraInformationContainer = styled(Box)(({ theme }) => ({
+  flex: 1,
+  [theme.breakpoints.up("sm")]: {
+    height: theme.spacing(0),
+    opacity: 0,
+    overflow: "hidden",
+    transition: "height 0.1s ease-in-out, opacity 0.6s ease-in-out",
+  },
+}))
+
+const CatalogCardContainer = styled(Card)(({ theme }) => ({
+  height: theme.spacing(45),
+  transition: "transform 0.1s ease-in-out, box-shadow 0.3s ease-in-out",
+  borderRadius: theme.spacing(1),
+  width: theme.spacing(36),
+  maxWidth: "100%",
+  position: "relative",
+  display: "flex",
+  flexDirection: "column",
+  padding: 0,
   overflow: "hidden",
-  transition: "height 0.1s ease-in-out, opacity 0.6s ease-in-out",
-})
+  "&:hover": {
+    padding: theme.spacing(0),
+    borderRadius: theme.spacing(1),
+    boxShadow: `0px 0px 20px 6px ${hexToRgba(theme.palette.mode === "dark" ? theme.palette.common.white : theme.palette.common.black, 0.37)}`,
+    [`${ExtraInformationContainer}, ${CatalogItemInformationContainer}`]: {
+      height: "auto",
+      opacity: 1,
+      transition: "height 0.3s ease-in-out, opacity 0.6s ease-in-out",
+    },
+    [`${AssetImageContainer}`]: {
+      height: theme.spacing(20),
+      transition: "height 0.1s ease-in-out",
+    },
+  },
+}))
 
 export {
   CatalogCardContainer,
