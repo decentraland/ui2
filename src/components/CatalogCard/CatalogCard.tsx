@@ -24,9 +24,10 @@ const CatalogCard = React.memo((props: CatalogCardProps) => {
     extraInformation,
     action,
     actionIcon,
+    withShadow,
   } = props
   return (
-    <CatalogCardContainer>
+    <CatalogCardContainer withShadow={withShadow}>
       <AssetImageContainer
         className="AssetImageContainer"
         name={asset.name}

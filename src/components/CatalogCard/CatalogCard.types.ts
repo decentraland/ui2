@@ -8,6 +8,7 @@ type CatalogCardProps = {
   imageSrc: string
   extraInformation: React.ReactNode
   notForSale: boolean
+  withShadow: boolean
   price?: string
   owners?: string
   i18n?: RarityBadgeI18N

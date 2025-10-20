@@ -3,6 +3,7 @@ import { Box, Card, CardContent, Typography } from "@mui/material"
 import { Address } from "../../components/Address"
 import { hexToRgba } from "../../utils/colors"
 import { AssetImage } from "../AssetImage"
+import { CatalogCardProps } from "./CatalogCard.types"
 
 const AssetImageContainer = styled(AssetImage)(({ theme }) => ({
   borderRadius: `${theme.spacing(1)} ${theme.spacing(1)} 0 0`,
@@ -77,32 +78,40 @@ const ExtraInformationContainer = styled(Box)(({ theme }) => ({
   },
 }))
 
-const CatalogCardContainer = styled(Card)(({ theme }) => ({
-  height: theme.spacing(45),
-  transition: "transform 0.1s ease-in-out, box-shadow 0.3s ease-in-out",
-  borderRadius: theme.spacing(1),
-  width: theme.spacing(36),
-  maxWidth: "100%",
-  position: "relative",
-  display: "flex",
-  flexDirection: "column",
-  padding: 0,
-  overflow: "hidden",
-  "&:hover": {
-    padding: theme.spacing(0),
+const CatalogCardContainer = styled(Card)<Pick<CatalogCardProps, "withShadow">>(
+  ({ theme, withShadow }) => ({
+    height: theme.spacing(45),
+    transition:
+      "transform 0.1s ease-in-out, box-shadow 0.3s ease-in-out, height 0.1s ease-in-out",
     borderRadius: theme.spacing(1),
-    boxShadow: `0px 0px 20px 6px ${hexToRgba(theme.palette.mode === "dark" ? theme.palette.common.white : theme.palette.common.black, 0.37)}`,
-    [`${ExtraInformationContainer}, ${CatalogItemInformationContainer}`]: {
-      height: "auto",
-      opacity: 1,
-      transition: "height 0.3s ease-in-out, opacity 0.6s ease-in-out",
+    width: theme.spacing(36),
+    maxWidth: "100%",
+    position: "relative",
+    display: "flex",
+    flexDirection: "column",
+    padding: 0,
+    overflow: "hidden",
+    "&:hover": {
+      transition:
+        "transform 0.1s ease-in-out, box-shadow 0.3s ease-in-out, height 0.3s ease-in-out",
+      height: theme.spacing(46),
+      padding: theme.spacing(0),
+      borderRadius: theme.spacing(1),
+      boxShadow: withShadow
+        ? `0px 0px 20px 6px ${hexToRgba(theme.palette.mode === "dark" ? theme.palette.common.white : theme.palette.common.black, 0.37)}`
+        : "none",
+      [`${ExtraInformationContainer}, ${CatalogItemInformationContainer}`]: {
+        height: "auto",
+        opacity: 1,
+        transition: "height 0.3s ease-in-out, opacity 0.6s ease-in-out",
+      },
+      [`${AssetImageContainer}`]: {
+        height: theme.spacing(20),
+        transition: "height 0.1s ease-in-out",
+      },
     },
-    [`${AssetImageContainer}`]: {
-      height: theme.spacing(20),
-      transition: "height 0.1s ease-in-out",
-    },
-  },
-}))
+  })
+)
 
 export {
   CatalogCardContainer,
