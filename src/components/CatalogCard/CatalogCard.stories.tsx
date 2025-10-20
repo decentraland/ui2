@@ -2,6 +2,7 @@ import { Typography } from "@mui/material"
 import { CatalogCard } from "./CatalogCard"
 import { item } from "../../data/item"
 import { MintIcon } from "../Icon"
+import { i18n as rarityBadgeI18n } from "../RarityBadge/RarityBadge.i18n"
 import { CatalogCardProps } from "./CatalogCard.types"
 import type { Meta, StoryObj } from "@storybook/react"
 
@@ -53,6 +54,11 @@ const meta: Meta<CatalogCardProps> = {
       control: false,
       table: { disable: true },
     },
+    i18n: {
+      description: "Internationalization object",
+      control: "object",
+      defaultValue: rarityBadgeI18n,
+    },
   },
   render: (args) => <CatalogCard {...args} />,
 }
@@ -70,6 +76,7 @@ const Default: Story = {
     action: "Buy directly from creator",
     actionIcon: <MintIcon fontSize="small" />,
     extraInformation: <Typography variant="body2">1 listing</Typography>,
+    i18n: rarityBadgeI18n,
   },
 }
 

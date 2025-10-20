@@ -25,6 +25,7 @@ const CatalogCard = React.memo((props: CatalogCardProps) => {
     action,
     actionIcon,
     withShadow,
+    i18n,
   } = props
   return (
     <CatalogCardContainer withShadow={withShadow}>
@@ -51,7 +52,7 @@ const CatalogCard = React.memo((props: CatalogCardProps) => {
             {extraInformation}
           </ExtraInformationContainer>
         )}
-        <RarityBadge square rarity={asset.rarity} />
+        <RarityBadge square rarity={asset.rarity} i18n={i18n} />
       </CardContentContainer>
     </CatalogCardContainer>
   )
