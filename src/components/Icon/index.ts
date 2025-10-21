@@ -6,6 +6,7 @@ import { JumpInIcon } from "./JumpInIcon"
 import { LocationIcon } from "./LocationIcon"
 import { ManaEthIcon } from "./ManaEthIcon"
 import { ManaMaticIcon } from "./ManaMaticIcon"
+import { MintIcon } from "./MintIcon"
 import { AccessRestoredIcon } from "./Notifications/AccessRestoredIcon"
 import { AccessRestrictedIcon } from "./Notifications/AccessRestrictedIcon"
 import { BidAcceptedIcon } from "./Notifications/BidAcceptedIcon"
@@ -140,4 +141,5 @@ export {
   GitHubIcon,
   RedditIcon,
   XIcon,
+  MintIcon,
 }

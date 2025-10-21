@@ -63,6 +63,7 @@
     "@babel/preset-typescript": "^7.24.7",
     "@contentful/rich-text-types": "^17.0.0",
     "@dcl/eslint-config": "^2.2.1",
+    "@emotion/babel-plugin": "^11.13.5",
     "@storybook/addon-docs": "^7.6.20",
     "@storybook/addon-essentials": "^7.6.20",
     "@storybook/addon-links": "^7.6.20",

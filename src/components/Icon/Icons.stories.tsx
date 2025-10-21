@@ -4,6 +4,7 @@ import { JumpInIcon } from "./JumpInIcon"
 import { LocationIcon } from "./LocationIcon"
 import { ManaEthIcon } from "./ManaEthIcon"
 import { ManaMaticIcon } from "./ManaMaticIcon"
+import { MintIcon } from "./MintIcon"
 import { PlacesIcon } from "./PlacesIcon"
 import { SparklesIcon } from "./SparklesIcon"
 import { UtilityIcon } from "./UtilityIcon"
@@ -60,6 +61,10 @@ const Windows: Story = {
   render: () => <WindowsIcon />,
 }
 
+const Mint: Story = {
+  render: () => <MintIcon />,
+}
+
 const AllIcons: Story = {
   render: () => (
     <IconsContainer>
@@ -73,6 +78,7 @@ const AllIcons: Story = {
       <SparklesIcon />
       <UtilityIcon />
       <WindowsIcon />
+      <MintIcon />
     </IconsContainer>
   ),
 }
@@ -90,6 +96,7 @@ const LargeIcons: Story = {
       <SparklesIcon fontSize="large" />
       <UtilityIcon fontSize="large" />
       <WindowsIcon fontSize="large" />
+      <MintIcon fontSize="large" />
     </IconsContainer>
   ),
 }
@@ -107,6 +114,7 @@ export {
   Sparkles,
   Utility,
   Windows,
+  Mint,
   AllIcons,
   LargeIcons,
 }
