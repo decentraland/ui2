@@ -6,7 +6,15 @@ import {
 } from "@mui/material"
 import { ModalProps } from "./Modal.types"
 
-interface StyledModalProps extends Pick<ModalProps, "size"> {}
+interface StyledModalProps
+  extends Pick<
+    ModalProps,
+    | "size"
+    | "backgroundImage"
+    | "backgroundSize"
+    | "backgroundPosition"
+    | "backgroundRepeat"
+  > {}
 
 const Modal = styled(MuiModal)({
   display: "flex",
@@ -15,7 +23,14 @@ const Modal = styled(MuiModal)({
 })
 
 const ModalContainer = styled(PaperMui)<StyledModalProps>((props) => {
-  const { size, theme } = props
+  const {
+    size,
+    theme,
+    backgroundImage,
+    backgroundSize,
+    backgroundPosition,
+    backgroundRepeat,
+  } = props
   let width = "900px"
   if (size === "tiny") {
     width = "540px"
@@ -27,6 +42,10 @@ const ModalContainer = styled(PaperMui)<StyledModalProps>((props) => {
     width,
     borderRadius: "12px",
     overflow: "hidden",
+    backgroundImage: backgroundImage && `url(${backgroundImage})`,
+    backgroundSize: backgroundImage && backgroundSize,
+    backgroundPosition: backgroundImage && backgroundPosition,
+    backgroundRepeat: backgroundImage && backgroundRepeat,
     [theme.breakpoints.down("xs")]: {
       minWidth: "100vw",
       maxWidth: "100vw",

@@ -24,6 +24,10 @@ const ModalContent = React.memo(
         | "size"
         | "onClose"
         | "onBack"
+        | "backgroundImage"
+        | "backgroundSize"
+        | "backgroundPosition"
+        | "backgroundRepeat"
       >
     >
   ) => {
@@ -36,10 +40,21 @@ const ModalContent = React.memo(
       size,
       onClose,
       onBack,
+      backgroundImage,
+      backgroundSize,
+      backgroundPosition,
+      backgroundRepeat,
     } = props
 
     return (
-      <ModalContainer elevation={24} size={size}>
+      <ModalContainer
+        elevation={24}
+        size={size}
+        backgroundImage={backgroundImage}
+        backgroundSize={backgroundSize}
+        backgroundPosition={backgroundPosition}
+        backgroundRepeat={backgroundRepeat}
+      >
         {header}
         {(title || onClose || onBack) && (
           <ModalTitleContainer>

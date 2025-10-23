@@ -9,6 +9,17 @@ type ModalProps = {
   actions?: React.ReactNode
   onClose?: React.MouseEventHandler<HTMLButtonElement>
   onBack?: React.MouseEventHandler<HTMLButtonElement>
+  backgroundImage?: string
+  backgroundSize?: "cover" | "contain" | "auto" | "initial" | "inherit"
+  backgroundPosition?:
+    | "center"
+    | "top"
+    | "bottom"
+    | "left"
+    | "right"
+    | "initial"
+    | "inherit"
+  backgroundRepeat?: "no-repeat" | "repeat" | "repeat-x" | "repeat-y"
 }
 
 export type { ModalProps }
