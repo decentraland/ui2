@@ -49,7 +49,7 @@ const WithCreditsExpiringSoon: Story = {
   args: {
     creditsBalance: {
       balance: 100,
-      expiresAt: Date.now() + 1000 * 60 * 60 * 24 * 3,
+      expiresAt: Date.now() + 1000 * 60 * 60 * 23,
     },
     i18n: {
       getCredits: "Earn Credits",
