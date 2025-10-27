@@ -5,6 +5,7 @@ type CreditsNotificationsProps =
   | CreditsCompleteYourWeeklyGoalsNotificationProps
   | CreditsDoNotMissOutNotificationProps
   | CreditsClaimReminderNotificationProps
+  | CreditsOnDemandGrantedNotificationProps
   | CreditsExpireSoonReminderNotificationProps
   | CreditsExpireIn24HrsReminderNotificationProps
 
@@ -39,6 +40,11 @@ type CreditsExpireIn24HrsReminderNotificationProps =
     CreditsExpirationCommonProps
   >
 
+type CreditsOnDemandGrantedNotificationProps = RawDecentralandNotification<
+  NotificationType.CREDITS_ON_DEMAND_GRANTED,
+  { creditsGranted: number }
+>
+
 export type {
   CreditsNotificationsProps,
   CreditsCompleteYourWeeklyGoalsNotificationProps,
@@ -46,4 +52,5 @@ export type {
   CreditsClaimReminderNotificationProps,
   CreditsExpireSoonReminderNotificationProps,
   CreditsExpireIn24HrsReminderNotificationProps,
+  CreditsOnDemandGrantedNotificationProps,
 }
