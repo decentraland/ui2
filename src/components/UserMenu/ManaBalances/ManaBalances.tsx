@@ -25,10 +25,15 @@ const ManaBalances = React.memo((props: ManaBalancesProps) => {
     creditsBalance &&
     creditsBalance.expiresAt < Date.now() + 1000 * 60 * 60 * 24 * 5 // 5 days
 
-  // calculates in how much time they expire. This returns days remaining
-  const creditsExpiringIn =
-    creditsBalance &&
-    Math.floor((creditsBalance.expiresAt - Date.now()) / (1000 * 60 * 60 * 24))
+  // calculates in how much time they expire. This returns days remaining (can be 0 if less than 24h)
+  const creditsExpiringIn = creditsBalance
+    ? Math.max(
+        0,
+        Math.floor(
+          (creditsBalance.expiresAt - Date.now()) / (1000 * 60 * 60 * 24)
+        )
+      )
+    : undefined
 
   return (
     <ManaBalancesWrapper>
@@ -75,13 +80,15 @@ const ManaBalances = React.memo((props: ManaBalancesProps) => {
                 {creditsExpiringSoon && (
                   <ExperingSoon>{i18n?.creditsExpiringSoon}</ExperingSoon>
                 )}
-                {creditsExpiringIn && (
+                {creditsExpiringIn !== undefined && (
                   <Tooltip
                     title={
                       <CreditsBalanceTooltipContainer>
                         <span>
                           {i18n?.creditsExpiringIn(
-                            creditsExpiringIn.toString()
+                            creditsExpiringIn === 0
+                              ? "< 1"
+                              : creditsExpiringIn.toString()
                           )}
                         </span>
                         <span>{i18n?.creditsValue}</span>
