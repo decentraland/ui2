@@ -11,7 +11,10 @@ import {
 } from "@dcl/schemas/dist/dapps/preview"
 import { BodyShape, Metrics } from "@dcl/schemas/dist/platform/item"
 import { Meta, StoryObj } from "@storybook/react"
+import { EmoteControls } from "./EmoteControls"
+import { TranslationControls, VerticalPosition } from "./TranslationControls"
 import { WearablePreview } from "./WearablePreview"
+import { Position, ZoomControls } from "./ZoomControls"
 import { PreviewUnityMode } from "./WearablePreview.types"
 import { WearablePreviewContainer } from "./WearablePreview.stories.styled"
 
@@ -468,6 +471,129 @@ export const ConfiguratorWithUsernameControl: Story = {
             Update Username
           </button>
         </div>
+      </div>
+    )
+  },
+}
+
+export const WithEmoteControls: Story = {
+  render: () => {
+    const previewId = "emote-preview"
+
+    const handleLoad = useCallback(() => {
+      console.log("model loaded")
+    }, [])
+
+    return (
+      <div style={{ padding: "20px" }}>
+        <WearablePreviewContainer>
+          <WearablePreview
+            id={previewId}
+            profile={getRandomProfile()}
+            emote={PreviewEmote.DANCE}
+            onLoad={handleLoad}
+          />
+          <EmoteControls wearablePreviewId={previewId} />
+        </WearablePreviewContainer>
+      </div>
+    )
+  },
+}
+
+export const WithZoomControls: Story = {
+  render: () => {
+    const previewId = "zoom-preview"
+
+    const handleLoad = useCallback(() => {
+      console.log("model loaded")
+    }, [])
+
+    return (
+      <div style={{ padding: "20px" }}>
+        <WearablePreviewContainer>
+          <WearablePreview
+            id={previewId}
+            profile={getRandomProfile()}
+            disableAutoRotate
+            onLoad={handleLoad}
+            zoom={100}
+            wheelZoom={2}
+          />
+          <ZoomControls
+            wearablePreviewId={previewId}
+            position={Position.LEFT}
+          />
+        </WearablePreviewContainer>
+      </div>
+    )
+  },
+}
+
+export const WithTranslationControls: Story = {
+  render: () => {
+    const previewId = "translation-preview"
+    const ref = useRef<IPreviewController | null>(null)
+
+    const handleLoad = useCallback(() => {
+      ref.current = WearablePreview.createController(previewId)
+    }, [])
+
+    return (
+      <div style={{ padding: "20px" }}>
+        <WearablePreviewContainer>
+          <WearablePreview
+            id={previewId}
+            profile={getRandomProfile()}
+            disableAutoRotate
+            onLoad={handleLoad}
+          />
+          <TranslationControls
+            wearablePreviewId={previewId}
+            vertical
+            verticalPosition={VerticalPosition.RIGHT}
+            wearablePreviewController={ref.current ?? undefined}
+          />
+        </WearablePreviewContainer>
+      </div>
+    )
+  },
+}
+
+export const WithAllControls: Story = {
+  render: () => {
+    const previewId = "all-controls-preview"
+    const ref = useRef<IPreviewController | null>(null)
+
+    const handleLoad = useCallback(() => {
+      ref.current = WearablePreview.createController(previewId)
+    }, [])
+
+    return (
+      <div style={{ padding: "20px" }}>
+        <WearablePreviewContainer>
+          <WearablePreview
+            id={previewId}
+            profile={getRandomProfile()}
+            emote={PreviewEmote.FASHION}
+            disableAutoRotate
+            onLoad={handleLoad}
+          />
+          <EmoteControls
+            wearablePreviewId={previewId}
+            wearablePreviewController={ref.current ?? undefined}
+          />
+          <ZoomControls
+            wearablePreviewId={previewId}
+            position={Position.LEFT}
+            wearablePreviewController={ref.current ?? undefined}
+          />
+          <TranslationControls
+            wearablePreviewId={previewId}
+            vertical
+            verticalPosition={VerticalPosition.RIGHT}
+            wearablePreviewController={ref.current ?? undefined}
+          />
+        </WearablePreviewContainer>
       </div>
     )
   },
