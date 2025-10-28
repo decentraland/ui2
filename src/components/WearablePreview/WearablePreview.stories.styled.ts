@@ -1,7 +1,7 @@
 import styled from "@emotion/styled"
 
 const WearablePreviewContainer = styled("div")({
-  width: "512px",
+  width: "100%",
   height: "512px",
   margin: "20px auto",
 })
