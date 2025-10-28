@@ -8,7 +8,6 @@ import {
 } from "./Navbar.defaults"
 import { SubMenu } from "./SubMenu/SubMenu"
 import { ChainSelector } from "../ChainSelector"
-import { Logo } from "../Logo/Logo"
 import { TabletAndBelow, useTabletAndBelowMediaQuery } from "../Media"
 import { UserMenu } from "../UserMenu"
 import { i18n as i18nUserMenuDefault } from "../UserMenu/UserMenu.i18n"
@@ -19,6 +18,7 @@ import {
   AppBarTabletAndBelowWrapper,
   AppBarWrapper,
   DclAppBar,
+  Logo,
   LogoLink,
   MenuIcon,
   MenuIconBar,
