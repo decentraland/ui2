@@ -105,7 +105,7 @@ const Navbar = React.memo((props: NavbarProps) => {
                   href="https://decentraland.org"
                   aria-label="Decentraland home"
                 >
-                  <Logo />
+                  <Logo size="large" />
                 </LogoLink>
                 <MenuIcon
                   aria-label="toggle menu"
@@ -121,7 +121,7 @@ const Navbar = React.memo((props: NavbarProps) => {
                 href="https://decentraland.org"
                 aria-label="Decentraland home"
               >
-                <Logo />
+                <Logo size="navbar" />
               </LogoLink>
 
               <MainMenu
