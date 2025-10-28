@@ -13,8 +13,9 @@ import mitt, { Emitter } from "mitt"
 const promises = new Map<string, IFuture<any>>()
 const emoteEvents = new Map<MessageEventSource, Emitter<EmoteEvents>>()
 
-let isControllerReady = false
-const pendingMessages: MessageEvent[] = []
+// Track readiness per iframe contentWindow
+const controllerReadyMap = new Map<MessageEventSource, boolean>()
+const pendingMessagesBySource = new Map<MessageEventSource, MessageEvent[]>()
 
 function processMessage(event: MessageEvent) {
   if (event.data && event.data.type) {
@@ -46,12 +47,21 @@ function processMessage(event: MessageEvent) {
           break
         }
         case PreviewMessageType.LOAD: {
-          isControllerReady = true
-          const messagesToProcess = pendingMessages.filter(
-            (msg) => msg.data?.type !== PreviewMessageType.LOAD
-          )
-          messagesToProcess.forEach(processMessage)
-          pendingMessages.splice(0)
+          if (event.source) {
+            // Mark this iframe as ready
+            controllerReadyMap.set(event.source, true)
+
+            // Process any pending messages for this iframe
+            const pendingMessages =
+              pendingMessagesBySource.get(event.source) || []
+            const messagesToProcess = pendingMessages.filter(
+              (msg) => msg.data?.type !== PreviewMessageType.LOAD
+            )
+            messagesToProcess.forEach(processMessage)
+
+            // Clear pending messages for this iframe
+            pendingMessagesBySource.delete(event.source)
+          }
           break
         }
         default:
@@ -63,13 +73,31 @@ function processMessage(event: MessageEvent) {
   }
 }
 
-window.onmessage = function handleMessage(event: MessageEvent) {
-  if (!isControllerReady) {
-    pendingMessages.push(event)
+const handleControllerMessage = (event: MessageEvent) => {
+  // Always process LOAD messages to initialize the controller
+  if (event.data?.type === PreviewMessageType.LOAD) {
+    processMessage(event)
     return
   }
 
+  // Check if this specific iframe is ready
+  const isReady = event.source ? controllerReadyMap.get(event.source) : false
+
+  // Queue messages if this iframe's controller is not ready
+  if (!isReady && event.source) {
+    const pending = pendingMessagesBySource.get(event.source) || []
+    pending.push(event)
+    pendingMessagesBySource.set(event.source, pending)
+    return
+  }
+
+  // Process messages when controller is ready
   processMessage(event)
+}
+
+// Use addEventListener to allow multiple message listeners to coexist
+if (typeof window !== "undefined") {
+  window.addEventListener("message", handleControllerMessage, false)
 }
 
 let nonce = 0
@@ -144,8 +172,8 @@ export function createController(id: string): IPreviewController {
     throw new Error(`Could not find an iframe with id="${id}"`)
   }
 
-  isControllerReady = false
-  pendingMessages.splice(0)
+  // Don't reset global state - use per-iframe tracking instead
+  // Only clean up promises as they're keyed by iframe id
   promises.clear()
 
   const events = iframe.contentWindow
