@@ -5,7 +5,6 @@ import { LogoProps } from "./Logo.types"
 const dimensionsBySize = {
   normal: 2.5,
   large: 4,
-  navbar: 4.5,
   huge: 6,
   massive: 22.5,
 }

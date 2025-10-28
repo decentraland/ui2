@@ -1,6 +1,7 @@
 import zIndex from "@mui/material/styles/zIndex"
 import styled from "@emotion/styled"
 import { AppBar, Box, Button, Link, Modal } from "@mui/material"
+import { Logo as LogoComponent } from "../Logo/Logo"
 
 interface DclAppBarProps {
   isSubmenuOpen: boolean
@@ -138,6 +139,15 @@ const MenuModal = styled(Modal)(() => {
   }
 })
 
+const Logo = styled(LogoComponent)(({ theme }) => ({
+  width: theme.spacing(4.5),
+  height: theme.spacing(4.5),
+  [theme.breakpoints.down("sm")]: {
+    width: theme.spacing(4),
+    height: theme.spacing(4),
+  },
+}))
+
 export {
   DclAppBar,
   LogoLink,
@@ -148,4 +158,5 @@ export {
   MenuIcon,
   MenuIconBar,
   MenuModal,
+  Logo,
 }
