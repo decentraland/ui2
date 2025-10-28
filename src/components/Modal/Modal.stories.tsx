@@ -8,6 +8,7 @@ import {
   Typography,
 } from "@mui/material"
 import { Modal, ModalContent } from "./Modal"
+import CustomWelcomeBackground from "../../Assets/custom-welcome-background.webp"
 import { Mana } from "../Mana"
 import { ModalProps } from "./Modal.types"
 import type { Meta, StoryObj } from "@storybook/react"
@@ -266,6 +267,43 @@ const Navigation: Story = {
   },
 }
 
+const BackgroundImage: Story = {
+  args: {
+    open: false,
+    backgroundImage: CustomWelcomeBackground,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    title: "Are you sure?",
+    onClose: () => alert("Close!"),
+    onBack: () => alert("Back!"),
+    children: (
+      <>
+        <Box sx={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+          <TextField label="Name" variant="standard" placeholder="Luis XVII" />
+          <TextField
+            label="Email"
+            variant="standard"
+            placeholder="luigi@mail.com"
+          />
+          <FormControlLabel
+            control={<Checkbox defaultChecked />}
+            label="Check me"
+          />
+        </Box>
+      </>
+    ),
+    actions: (
+      <>
+        <Button color="primary" variant="contained">
+          Proceed
+        </Button>
+        <Button variant="outlined">Cancel</Button>
+      </>
+    ),
+  },
+}
+
 // eslint-disable-next-line import/no-default-export
 export default meta
 export {
@@ -277,4 +315,5 @@ export {
   Form,
   Closable,
   Navigation,
+  BackgroundImage,
 }

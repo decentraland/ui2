@@ -1,5 +1,5 @@
 import styled from "@emotion/styled"
-import { SvgIcon } from "@mui/material"
+import { Box, SvgIcon } from "@mui/material"
 import { LogoProps } from "./Logo.types"
 
 const dimensionsBySize = {
@@ -21,4 +21,18 @@ const LogoContainer = styled(SvgIcon)<LogoProps>(
   })
 )
 
-export { LogoContainer }
+const StoryContainer = styled(Box)(() => ({
+  display: "flex",
+  alignItems: "center",
+  gap: 32,
+  justifyContent: "center",
+}))
+
+const StoryItemContainer = styled(Box)({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  gap: 8,
+})
+
+export { LogoContainer, StoryContainer, StoryItemContainer }
