@@ -1,7 +1,6 @@
-import React, { useCallback, useEffect, useRef } from "react"
-import { IPreviewController } from "@dcl/schemas"
+import React, { useCallback } from "react"
 import SwapHorizIcon from "@mui/icons-material/SwapHoriz"
-import { WearablePreview } from "../WearablePreview"
+import { useWearablePreviewController } from "../useWearablePreviewController"
 import {
   TranslationControlsProps,
   VerticalPosition,
@@ -20,26 +19,17 @@ export const TranslationControls: React.FC<TranslationControlsProps> = ({
   verticalPosition = VerticalPosition.RIGHT,
   wearablePreviewController,
 }) => {
-  const previewControllerRef = useRef<IPreviewController | null>(null)
-
-  useEffect(() => {
-    const previewController =
-      wearablePreviewController ??
-      WearablePreview.createController(wearablePreviewId)
-
-    previewControllerRef.current = previewController
-
-    return () => {
-      previewControllerRef.current = null
-    }
-  }, [wearablePreviewId, wearablePreviewController])
+  const { controllerRef } = useWearablePreviewController(
+    wearablePreviewId,
+    wearablePreviewController
+  )
 
   const handleControlVerticalTranslation = useCallback(
     async (event: React.ChangeEvent<HTMLInputElement>) => {
       const value = Number(event.target.value)
-      await previewControllerRef.current?.scene.panCamera({ y: value * -1 })
+      await controllerRef.current?.scene.panCamera({ y: value * -1 })
     },
-    []
+    [controllerRef]
   )
 
   return (
