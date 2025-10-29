@@ -1,36 +1,39 @@
 import styled from "@emotion/styled"
+import { Box } from "@mui/material"
 import { Button } from "../../Button"
 
-const StyledEmoteControlsContainer = styled("div")({
+const StyledEmoteControlsContainer = styled(Box)(({ theme }) => ({
   display: "flex",
-  margin: "16px 0",
-  padding: "0 24px",
   position: "absolute",
-  bottom: 0,
   width: "100%",
-})
-
-const StyledPlayButton = styled(Button)({
-  width: "56px",
-  height: "44px",
-  padding: 0,
-  minWidth: "unset",
-  marginRight: "16px",
-  background: "rgba(0, 0, 0, 0.64) !important",
-  "& svg": {
-    marginLeft: "4px",
-  },
-})
-
-const StyledSoundButton = styled(Button)<{ muted?: boolean }>(({ muted }) => ({
-  marginLeft: "20px",
-  minWidth: "25px",
-  background: "none",
-  padding: 0,
-  opacity: muted ? 0.5 : 1,
+  bottom: 0,
+  margin: `${theme.spacing(2)} 0`,
+  padding: `0 ${theme.spacing(3)}`,
+  gap: theme.spacing(2),
 }))
 
-const StyledRangeInput = styled("input")({
+const StyledPlayButton = styled(Button)(({ theme }) => ({
+  width: 56,
+  height: 44,
+  padding: 0,
+  minWidth: "unset",
+  background: "rgba(0, 0, 0, 0.64) !important",
+  "& svg": {
+    marginLeft: theme.spacing(0.5),
+  },
+}))
+
+const StyledSoundButton = styled(Button)<{ muted?: boolean }>(
+  ({ theme, muted }) => ({
+    marginLeft: theme.spacing(2.5),
+    minWidth: 25,
+    background: "none",
+    padding: 0,
+    opacity: muted ? 0.5 : 1,
+  })
+)
+
+const StyledRangeInput = styled("input")(({ theme }) => ({
   flex: 1,
   width: "100%",
   background: "none",
@@ -40,47 +43,47 @@ const StyledRangeInput = styled("input")({
   },
   "&::-webkit-slider-thumb": {
     WebkitAppearance: "none",
-    width: "24px",
-    height: "24px",
-    borderRadius: "10px",
+    width: 24,
+    height: 24,
+    borderRadius: 10,
     backgroundColor: "#736e7d",
     overflow: "visible",
     cursor: "pointer",
-    paddingBottom: "5px",
-    marginTop: "-4px",
+    paddingBottom: theme.spacing(0.625),
+    marginTop: theme.spacing(-0.5),
   },
   "&::-moz-range-thumb": {
-    width: "24px",
-    height: "24px",
-    borderRadius: "20px",
+    width: 24,
+    height: 24,
+    borderRadius: 20,
     backgroundColor: "#736e7d",
     overflow: "visible",
     cursor: "pointer",
     border: "none",
   },
   "&::-ms-thumb": {
-    width: "24px",
-    height: "24px",
-    borderRadius: "20px",
+    width: 24,
+    height: 24,
+    borderRadius: 20,
     backgroundColor: "#736e7d",
     overflow: "visible",
     cursor: "pointer",
   },
   "&::-webkit-slider-runnable-track": {
-    width: "300px",
-    height: "15px",
+    width: 300,
+    height: 15,
     background: "rgba(115, 110, 125, 0.32)",
     border: "none",
-    borderRadius: "10px",
+    borderRadius: 10,
   },
   "&::-moz-range-track": {
     width: "100%",
-    height: "15px",
-    borderRadius: "10px",
+    height: 15,
+    borderRadius: 10,
     cursor: "pointer",
     background: "rgba(115, 110, 125, 0.32)",
   },
-})
+}))
 
 const StyledFrameControl = styled("div")({
   display: "flex",
@@ -88,14 +91,13 @@ const StyledFrameControl = styled("div")({
 })
 
 const StyledFrameInput = styled("input")({
-  width: "56px",
-  height: "44px",
-  borderRadius: "5px",
+  width: 56,
+  height: 44,
+  borderRadius: 5,
   background: "transparent",
   border: "1px solid rgba(115, 110, 125, 0.4)",
   color: "white",
   textAlign: "center",
-  marginLeft: "16px",
   "&:focus-visible": {
     outline: "1px solid",
   },

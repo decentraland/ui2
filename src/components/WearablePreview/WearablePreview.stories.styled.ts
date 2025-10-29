@@ -1,9 +1,9 @@
 import styled from "@emotion/styled"
 
-const WearablePreviewContainer = styled("div")({
+const WearablePreviewContainer = styled("div")(({ theme }) => ({
   width: "100%",
-  height: "512px",
-  margin: "20px auto",
-})
+  height: 512,
+  margin: `${theme.spacing(2.5)} auto`,
+}))
 
 export { WearablePreviewContainer }
