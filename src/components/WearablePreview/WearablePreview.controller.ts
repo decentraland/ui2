@@ -17,6 +17,14 @@ const emoteEvents = new Map<MessageEventSource, Emitter<EmoteEvents>>()
 const controllerReadyMap = new Map<MessageEventSource, boolean>()
 const pendingMessagesBySource = new Map<MessageEventSource, MessageEvent[]>()
 
+function isControllerReady(id: string): boolean {
+  const iframe = document.getElementById(id) as HTMLIFrameElement
+  if (!iframe || !iframe.contentWindow) {
+    return false
+  }
+  return controllerReadyMap.get(iframe.contentWindow) ?? false
+}
+
 function processMessage(event: MessageEvent) {
   if (event.data && event.data.type) {
     try {
@@ -166,7 +174,7 @@ function createSendRequest(id: string) {
   }
 }
 
-export function createController(id: string): IPreviewController {
+function createController(id: string): IPreviewController {
   const iframe = document.getElementById(id) as HTMLIFrameElement
   if (!iframe) {
     throw new Error(`Could not find an iframe with id="${id}"`)
@@ -241,3 +249,5 @@ export function createController(id: string): IPreviewController {
     },
   }
 }
+
+export { isControllerReady, createController }
