@@ -1,12 +1,11 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import React, { useCallback, useEffect, useRef, useState } from "react"
-import { IPreviewController } from "@dcl/schemas/dist/dapps/preview"
+import React, { useCallback, useEffect, useState } from "react"
 import { PreviewEmoteEventType } from "@dcl/schemas/dist/dapps/preview/preview-emote-event-type"
 import PauseIcon from "@mui/icons-material/Pause"
 import PlayArrowIcon from "@mui/icons-material/PlayArrow"
 import VolumeOffIcon from "@mui/icons-material/VolumeOff"
 import VolumeUpIcon from "@mui/icons-material/VolumeUp"
-import { WearablePreview } from "../WearablePreview"
+import { useWearablePreviewController } from "../useWearablePreviewController"
 import { EmoteControlsProps } from "./EmoteControls.types"
 import {
   StyledEmoteControlsContainer,
@@ -30,8 +29,11 @@ export const EmoteControls: React.FC<EmoteControlsProps> = ({
   renderProgressBar,
   renderFrameInput,
 }) => {
-  const previewControllerRef = useRef<IPreviewController | null>(null)
-  const [isControllerReady, setIsControllerReady] = useState(false)
+  const { controllerRef, isReady } = useWearablePreviewController(
+    wearablePreviewId,
+    wearablePreviewController
+  )
+
   const [frame, setFrame] = useState(0)
   const [isPlaying, setIsPlaying] = useState(false)
   const [length, setLength] = useState<number | undefined>(undefined)
@@ -59,13 +61,13 @@ export const EmoteControls: React.FC<EmoteControlsProps> = ({
   const handleAnimationPlay = useCallback(async () => {
     if (!isChangingFrame) {
       let emoteLength = length
-      if (!length && previewControllerRef.current) {
-        emoteLength = await previewControllerRef.current.emote.getLength()
+      if (!length && controllerRef.current) {
+        emoteLength = await controllerRef.current.emote.getLength()
       }
       setIsPlaying(true)
       setLength(emoteLength)
     }
-  }, [length, isChangingFrame])
+  }, [length, isChangingFrame, controllerRef])
 
   const handleAnimationPlaying = useCallback(
     ({ length: playingLength }: { length: number }) => {
@@ -75,69 +77,60 @@ export const EmoteControls: React.FC<EmoteControlsProps> = ({
   )
 
   useEffect(() => {
-    const previewController =
-      wearablePreviewController ??
-      WearablePreview.createController(wearablePreviewId)
+    const controller = controllerRef.current
+    if (!controller) {
+      return
+    }
 
-    previewController.emote.events.on(
+    controller.emote.events.on(
       PreviewEmoteEventType.ANIMATION_PLAY,
       handleAnimationPlay
     )
 
-    previewController.emote.events.on(
+    controller.emote.events.on(
       PreviewEmoteEventType.ANIMATION_PLAYING,
       handleAnimationPlaying
     )
 
-    previewController.emote.events.on(
+    controller.emote.events.on(
       PreviewEmoteEventType.ANIMATION_END,
       handleAnimationEnd
     )
 
-    previewController.emote.events.on(
+    controller.emote.events.on(
       PreviewEmoteEventType.ANIMATION_PAUSE,
       handleAnimationPause
     )
 
-    previewController.emote.events.on(
+    controller.emote.events.on(
       PreviewEmoteEventType.ANIMATION_LOOP,
       handleAnimationLoop
     )
 
-    previewControllerRef.current = previewController
-
-    // Wait a bit for the controller to be fully initialized
-    const initTimeout = setTimeout(() => {
-      setIsControllerReady(true)
-    }, 100)
-
     return () => {
-      clearTimeout(initTimeout)
-      setIsControllerReady(false)
-      previewController.emote.events.off(
+      controller.emote.events.off(
         PreviewEmoteEventType.ANIMATION_PLAY,
         handleAnimationPlay
       )
-      previewController.emote.events.off(
+      controller.emote.events.off(
         PreviewEmoteEventType.ANIMATION_PLAYING,
         handleAnimationPlaying
       )
-      previewController.emote.events.off(
+      controller.emote.events.off(
         PreviewEmoteEventType.ANIMATION_END,
         handleAnimationEnd
       )
-      previewController.emote.events.off(
+      controller.emote.events.off(
         PreviewEmoteEventType.ANIMATION_PAUSE,
         handleAnimationPause
       )
-      previewController.emote.events.off(
+      controller.emote.events.off(
         PreviewEmoteEventType.ANIMATION_LOOP,
         handleAnimationLoop
       )
     }
   }, [
-    wearablePreviewId,
-    wearablePreviewController,
+    controllerRef,
     handleAnimationPlay,
     handleAnimationPlaying,
     handleAnimationEnd,
@@ -146,12 +139,8 @@ export const EmoteControls: React.FC<EmoteControlsProps> = ({
   ])
 
   useEffect(() => {
-    if (
-      hasSound === undefined &&
-      isControllerReady &&
-      previewControllerRef.current
-    ) {
-      previewControllerRef.current.emote
+    if (hasSound === undefined && isReady && controllerRef.current) {
+      controllerRef.current.emote
         .hasSound()
         .then((soundExists) => setHasSound(soundExists))
         .catch((error) => {
@@ -159,31 +148,29 @@ export const EmoteControls: React.FC<EmoteControlsProps> = ({
           setHasSound(false)
         })
     }
-  }, [hasSound, isControllerReady])
+  }, [hasSound, isReady, controllerRef])
 
   const handlePlay = useCallback(async () => {
-    if (!isControllerReady || !previewControllerRef.current) {
-      console.warn("Controller not ready yet")
+    if (!controllerRef.current) {
       return
     }
     try {
-      await previewControllerRef.current.emote.play()
+      await controllerRef.current.emote.play()
     } catch (error) {
       console.error("Error playing emote:", error)
     }
-  }, [isControllerReady])
+  }, [controllerRef])
 
   const handlePause = useCallback(async () => {
-    if (!isControllerReady || !previewControllerRef.current) {
-      console.warn("Controller not ready yet")
+    if (!controllerRef.current) {
       return
     }
     try {
-      await previewControllerRef.current.emote.pause()
+      await controllerRef.current.emote.pause()
     } catch (error) {
       console.error("Error pausing emote:", error)
     }
-  }, [isControllerReady])
+  }, [controllerRef])
 
   const handlePlayPause = useCallback(async () => {
     if (isPlaying) {
@@ -195,16 +182,16 @@ export const EmoteControls: React.FC<EmoteControlsProps> = ({
 
   const handleSoundToggle = useCallback(() => {
     if (isSoundEnabled) {
-      previewControllerRef.current?.emote.disableSound()
+      controllerRef.current?.emote.disableSound()
     } else {
-      previewControllerRef.current?.emote.enableSound()
+      controllerRef.current?.emote.enableSound()
     }
     setIsSoundEnabled(!isSoundEnabled)
-  }, [isSoundEnabled])
+  }, [isSoundEnabled, controllerRef])
 
   const handleFrameChange = useCallback(
     async (value: number) => {
-      if (isNaN(value) || !isControllerReady || !previewControllerRef.current) {
+      if (isNaN(value) || !controllerRef.current) {
         return
       }
       let targetValue = value
@@ -216,32 +203,28 @@ export const EmoteControls: React.FC<EmoteControlsProps> = ({
       setIsChangingFrame(true)
       try {
         if (isPlaying) {
-          await previewControllerRef.current.emote.pause()
+          await controllerRef.current.emote.pause()
           setShouldResumePlaying(true)
         }
-        await previewControllerRef.current.emote.goTo(targetValue / 100)
+        await controllerRef.current.emote.goTo(targetValue / 100)
       } catch (error) {
         console.error("Error changing frame:", error)
       }
     },
-    [length, isPlaying, isControllerReady]
+    [length, isPlaying, controllerRef]
   )
 
   const handleMouseUp = useCallback(async () => {
     setIsChangingFrame(false)
-    if (
-      shouldResumePlaying &&
-      isControllerReady &&
-      previewControllerRef.current
-    ) {
+    if (shouldResumePlaying && controllerRef.current) {
       try {
-        await previewControllerRef.current.emote.play()
+        await controllerRef.current.emote.play()
       } catch (error) {
         console.error("Error resuming play:", error)
       }
       setShouldResumePlaying(false)
     }
-  }, [shouldResumePlaying, isControllerReady])
+  }, [shouldResumePlaying, controllerRef])
 
   return (
     <StyledEmoteControlsContainer className={className}>
