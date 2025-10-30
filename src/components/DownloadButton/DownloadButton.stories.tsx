@@ -11,6 +11,7 @@ import {
 import type { Meta, StoryObj } from "@storybook/react"
 
 const links = getCDNRelease(CDNSource.LAUNCHER)
+const linksAutoSigning = getCDNRelease(CDNSource.AUTO_SIGNING, "1234567890")
 
 const meta: Meta<DownloadButtonProps> = {
   component: DownloadButton,
@@ -20,7 +21,13 @@ const meta: Meta<DownloadButtonProps> = {
     href: {
       description: "URL to download",
       control: "select",
-      options: [links!.Windows.amd64, links!.macOS.arm64, links!.macOS.amd64],
+      options: [
+        links!.Windows.amd64,
+        links!.macOS.arm64,
+        links!.macOS.amd64,
+        linksAutoSigning!.Windows.amd64,
+        linksAutoSigning!.macOS.arm64,
+      ],
     },
     label: {
       description: "Button label text",

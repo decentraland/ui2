@@ -31,6 +31,7 @@ const DownloadButton = React.memo((props: DownloadButtonProps) => {
     endIcon,
     loadingCdnLinks = false,
     cdnLinks,
+    identityId,
     onRedirect,
   } = props
   const [isDownloading, setIsDownloading] = useState(false)
@@ -50,7 +51,9 @@ const DownloadButton = React.memo((props: DownloadButtonProps) => {
     }
   }, [userAgentData, os])
 
-  const defaultLinks = getCDNRelease(CDNSource.LAUNCHER)
+  const defaultLinks = identityId
+    ? getCDNRelease(CDNSource.AUTO_SIGNING, identityId)
+    : getCDNRelease(CDNSource.LAUNCHER)
   const links = cdnLinks || defaultLinks
 
   const defaultDownloadOption: DownloadOption | null = useMemo(() => {
