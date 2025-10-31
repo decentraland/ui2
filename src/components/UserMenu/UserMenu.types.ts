@@ -26,8 +26,10 @@ type UserMenuProps = Omit<
   isActivity?: boolean
   i18n?: UserMenuI18N
   hideDownloadButton?: boolean
+  hideSignInButton?: boolean
   loadingCdnLinks?: boolean
   cdnLinks?: Record<string, Record<string, string>>
+  identityId?: string
   onClickSignIn?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void
   onClickOpen?: (
     event: React.MouseEvent<HTMLElement, MouseEvent>,

@@ -22,7 +22,9 @@ const UserMenu = React.memo((props: UserMenuProps) => {
     manaBalances,
     i18n = i18nUserMenu,
     hideDownloadButton,
+    hideSignInButton,
     cdnLinks,
+    identityId,
     onClickSignIn,
     onClickBalance,
     onClickOpen,
@@ -100,7 +102,7 @@ const UserMenu = React.memo((props: UserMenuProps) => {
         </UserMenuLoaderContainer>
       ) : (
         <>
-          {isSignedIn && (
+          {!hideSignInButton && isSignedIn && (
             <UserMenuSignedIn
               {...signInProps}
               manaBalances={manaBalances}
@@ -113,7 +115,7 @@ const UserMenu = React.memo((props: UserMenuProps) => {
               onClickBalance={handleClickBalance}
             />
           )}
-          {!isSignedIn ? (
+          {!hideSignInButton && !isSignedIn ? (
             <SignInButton
               variant="outlined"
               color="inherit"
@@ -135,6 +137,7 @@ const UserMenu = React.memo((props: UserMenuProps) => {
               trackingId={trackingId}
               loadingCdnLinks={loadingCdnLinks}
               cdnLinks={cdnLinks}
+              identityId={identityId}
             />
           )}
         </>
