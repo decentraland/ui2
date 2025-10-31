@@ -38,10 +38,10 @@ const CDN_CONFIGS: Record<CDNSource, CDNConfig> = {
   [CDNSource.AUTO_SIGNING]: {
     urls: {
       [OperativeSystem.WINDOWS]: {
-        amd64: `${AUTO_SIGNING_BASE_URL}/:token/decentraland.exe`,
+        amd64: `${AUTO_SIGNING_BASE_URL}/:identityId/decentraland.exe`,
       },
       [OperativeSystem.MACOS]: {
-        arm64: `${AUTO_SIGNING_BASE_URL}/:token/decentraland.dmg`,
+        arm64: `${AUTO_SIGNING_BASE_URL}/:identityId/decentraland.dmg`,
       },
     },
   },
@@ -51,7 +51,7 @@ const CDN_CONFIGS: Record<CDNSource, CDNConfig> = {
 interface GetCDNRelease {
   (
     source: CDNSource.AUTO_SIGNING,
-    token: string
+    identityId: string
   ): {
     [OperativeSystem.WINDOWS]: { amd64: string | undefined }
     [OperativeSystem.MACOS]: {
