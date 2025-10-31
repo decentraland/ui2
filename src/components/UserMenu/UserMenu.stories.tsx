@@ -100,6 +100,21 @@ const Complete: Story = {
   },
 }
 
+const WithSignInButtonHidden: Story = {
+  name: "With Sign In Button Hidden",
+  args: {
+    hideSignInButton: true,
+  },
+}
+
 // eslint-disable-next-line import/no-default-export
 export default meta
-export { SignedOut, SignedIn, SigningIn, Disconnecting, Guest, Complete }
+export {
+  SignedOut,
+  SignedIn,
+  SigningIn,
+  Disconnecting,
+  Guest,
+  Complete,
+  WithSignInButtonHidden,
+}
