@@ -21,6 +21,7 @@ type DownloadButtonProps = {
   trackingId?: string
   loadingCdnLinks?: boolean
   cdnLinks?: Record<string, Record<string, string>>
+  identityId?: string
   onRedirect?: (url: string) => void
 }
 
