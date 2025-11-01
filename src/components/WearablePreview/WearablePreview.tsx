@@ -272,7 +272,7 @@ const WearablePreview = (props: WearablePreviewProps) => {
         if (state.isReady) {
           // if the iframe is ready, send the update
           sendUpdate(options)
-        } else {
+        } else if (!equal(state.pendingOptions, options)) {
           // otherwise store last update in state until it's ready
           setState((prev) => ({ ...prev, pendingOptions: options, url }))
         }
@@ -280,7 +280,7 @@ const WearablePreview = (props: WearablePreviewProps) => {
     } else {
       console.warn(`Could not send update, iframe is not referenced`)
     }
-  }, [options, state.isReady, sendUpdate])
+  }, [options, state.pendingOptions, state.isReady, sendUpdate])
 
   const handleMessage = useCallback(
     (event: MessageEvent) => {

@@ -11,7 +11,10 @@ import {
 } from "@dcl/schemas/dist/dapps/preview"
 import { BodyShape, Metrics } from "@dcl/schemas/dist/platform/item"
 import { Meta, StoryObj } from "@storybook/react"
+import { EmoteControls } from "./EmoteControls"
+import { TranslationControls, VerticalPosition } from "./TranslationControls"
 import { WearablePreview } from "./WearablePreview"
+import { Position, ZoomControls } from "./ZoomControls"
 import { PreviewUnityMode } from "./WearablePreview.types"
 import { WearablePreviewContainer } from "./WearablePreview.stories.styled"
 
@@ -469,6 +472,129 @@ export const ConfiguratorWithUsernameControl: Story = {
           </button>
         </div>
       </div>
+    )
+  },
+}
+
+export const WithEmoteControls: Story = {
+  render: () => {
+    const previewId = "emote-preview"
+
+    return (
+      <WearablePreviewContainer>
+        <WearablePreview
+          id={previewId}
+          profile="default"
+          emote={PreviewEmote.DANCE}
+          disableAutoRotate
+          disableFace
+          disableDefaultWearables
+          skin="000000"
+        />
+        <EmoteControls wearablePreviewId={previewId} />
+      </WearablePreviewContainer>
+    )
+  },
+}
+
+export const WithSound: Story = {
+  render: () => {
+    const previewId = "emote-preview"
+
+    return (
+      <WearablePreviewContainer>
+        <WearablePreview
+          id={previewId}
+          profile="default"
+          contractAddress="0x0c956c74518ed34afb7b137d9ddfdaea7ca13751"
+          itemId="0"
+          disableAutoRotate
+          disableFace
+          disableDefaultWearables
+          skin="000000"
+        />
+        <EmoteControls wearablePreviewId={previewId} />
+      </WearablePreviewContainer>
+    )
+  },
+}
+
+export const WithZoomControls: Story = {
+  render: () => {
+    const previewId = "zoom-preview"
+
+    return (
+      <WearablePreviewContainer>
+        <WearablePreview
+          id={previewId}
+          profile={getRandomProfile()}
+          disableAutoRotate
+          zoom={100}
+          wheelZoom={2}
+        />
+        <ZoomControls wearablePreviewId={previewId} position={Position.LEFT} />
+      </WearablePreviewContainer>
+    )
+  },
+}
+
+export const WithTranslationControls: Story = {
+  render: () => {
+    const previewId = "translation-preview"
+
+    return (
+      <WearablePreviewContainer>
+        <WearablePreview
+          id={previewId}
+          profile={getRandomProfile()}
+          disableAutoRotate
+        />
+        <TranslationControls
+          wearablePreviewId={previewId}
+          vertical
+          verticalPosition={VerticalPosition.RIGHT}
+        />
+      </WearablePreviewContainer>
+    )
+  },
+}
+
+export const WithAllControls: Story = {
+  render: () => {
+    const previewId = "all-controls-preview"
+    const ref = useRef<IPreviewController | null>(null)
+
+    const handleLoad = useCallback(() => {
+      ref.current = WearablePreview.createController(previewId)
+    }, [])
+
+    return (
+      <WearablePreviewContainer>
+        <WearablePreview
+          id={previewId}
+          profile={getRandomProfile()}
+          emote={PreviewEmote.FASHION}
+          disableAutoRotate
+          zoom={100}
+          wheelZoom={2}
+          onLoad={handleLoad}
+        />
+        <EmoteControls
+          wearablePreviewId={previewId}
+          wearablePreviewController={ref.current ?? undefined}
+        />
+        <ZoomControls
+          wearablePreviewId={previewId}
+          position={Position.LEFT}
+          wearablePreviewController={ref.current ?? undefined}
+        />
+        <TranslationControls
+          wearablePreviewId={previewId}
+          vertical
+          verticalPosition={VerticalPosition.RIGHT}
+          wearablePreviewController={ref.current ?? undefined}
+        />
+      </WearablePreviewContainer>
     )
   },
 }
