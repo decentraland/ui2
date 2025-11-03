@@ -29,7 +29,7 @@ type UserMenuProps = Omit<
   hideSignInButton?: boolean
   loadingCdnLinks?: boolean
   cdnLinks?: Record<string, Record<string, string>>
-  identityId?: string
+  getIdentityId?: () => Promise<string | undefined>
   onClickSignIn?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void
   onClickOpen?: (
     event: React.MouseEvent<HTMLElement, MouseEvent>,
