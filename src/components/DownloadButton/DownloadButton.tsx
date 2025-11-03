@@ -88,14 +88,11 @@ const DownloadButton = React.memo((props: DownloadButtonProps) => {
     }
   }, [userAgentData, os])
 
-  // Use LAUNCHER by default (without identityId) until user clicks
-  const links = useMemo(() => {
-    return cdnLinks || getCDNRelease(CDNSource.LAUNCHER)
-  }, [cdnLinks])
-
   const defaultDownloadOption: DownloadOption | null = useMemo(() => {
+    const links = cdnLinks || getCDNRelease(CDNSource.LAUNCHER)
+
     return createDownloadOption(links, userAgentData)
-  }, [userAgentData, links])
+  }, [userAgentData, cdnLinks])
 
   const finalHref = useMemo(() => {
     return href || defaultDownloadOption?.link || config.get("DOWNLOAD_URL")
@@ -107,23 +104,27 @@ const DownloadButton = React.memo((props: DownloadButtonProps) => {
 
       setIsDownloading(true)
 
-      // Always try to get identityId on-demand when clicking
-      let currentIdentityId: string | undefined
-      if (getIdentityId) {
-        try {
-          currentIdentityId = await getIdentityId()
-        } catch (error) {
-          console.error("Failed to generate identityId:", error)
-          // Continue with fallback behavior
+      // If cdnLinks is provided, use it directly without any processing
+      let currentLinks: CDNLinks
+      if (cdnLinks) {
+        currentLinks = cdnLinks
+      } else {
+        // Only process identityId and getCDNRelease if cdnLinks is not available
+        let currentIdentityId: string | undefined
+        if (getIdentityId) {
+          try {
+            currentIdentityId = await getIdentityId()
+          } catch (error) {
+            console.error("Failed to generate identityId:", error)
+            // Continue with fallback behavior
+          }
         }
-      }
 
-      // Recalculate links with the identityId (if available) or use LAUNCHER as fallback
-      const currentLinks =
-        cdnLinks ||
-        (currentIdentityId
+        // Recalculate links with the identityId (if available) or use LAUNCHER as fallback
+        currentLinks = currentIdentityId
           ? getCDNRelease(CDNSource.AUTO_SIGNING, currentIdentityId)
-          : getCDNRelease(CDNSource.LAUNCHER))
+          : getCDNRelease(CDNSource.LAUNCHER)
+      }
 
       // Calculate download option with current links
       const currentDownloadOption = createDownloadOption(
