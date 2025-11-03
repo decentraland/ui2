@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react"
 import { useAdvancedUserAgentData } from "@dcl/hooks"
+import { AdvancedNavigatorUAData } from "@dcl/hooks/cjs/hooks/useAdvancedUserAgentData"
 import Download from "@mui/icons-material/Download"
 import { config } from "../../config"
 import { CDNSource, getCDNRelease } from "../../modules/cdnReleases"
@@ -21,6 +22,42 @@ import {
   DownloadButtonWindowsIcon,
 } from "./DownloadButton.styled"
 
+type CDNLinks = Record<string, Record<string, string | undefined>> | null
+
+// Helper function to create download option from links and user agent data
+const createDownloadOption = (
+  links?: CDNLinks,
+  userAgentData?: AdvancedNavigatorUAData
+): DownloadOption | null => {
+  if (
+    !userAgentData ||
+    !links ||
+    !links[userAgentData.os.name] ||
+    !links[userAgentData.os.name][userAgentData.cpu.architecture]
+  ) {
+    return null
+  }
+
+  const link = links[userAgentData.os.name][userAgentData.cpu.architecture]
+  if (!link) {
+    return null
+  }
+
+  if (userAgentData.os.name === OperativeSystem.MACOS) {
+    return {
+      icon: <DownloadButtonAppleIcon />,
+      link,
+      arch: userAgentData.cpu.architecture,
+    }
+  }
+
+  return {
+    icon: <DownloadButtonWindowsIcon />,
+    link,
+    arch: userAgentData.cpu.architecture,
+  }
+}
+
 const DownloadButton = React.memo((props: DownloadButtonProps) => {
   const {
     onClick,
@@ -31,7 +68,7 @@ const DownloadButton = React.memo((props: DownloadButtonProps) => {
     endIcon,
     loadingCdnLinks = false,
     cdnLinks,
-    identityId,
+    getIdentityId,
     onRedirect,
   } = props
   const [isDownloading, setIsDownloading] = useState(false)
@@ -51,37 +88,13 @@ const DownloadButton = React.memo((props: DownloadButtonProps) => {
     }
   }, [userAgentData, os])
 
-  const defaultLinks = identityId
-    ? getCDNRelease(CDNSource.AUTO_SIGNING, identityId)
-    : getCDNRelease(CDNSource.LAUNCHER)
-  const links = cdnLinks || defaultLinks
+  // Use LAUNCHER by default (without identityId) until user clicks
+  const links = useMemo(() => {
+    return cdnLinks || getCDNRelease(CDNSource.LAUNCHER)
+  }, [cdnLinks])
 
   const defaultDownloadOption: DownloadOption | null = useMemo(() => {
-    if (
-      !userAgentData ||
-      !links ||
-      !links[userAgentData.os.name] ||
-      !links[userAgentData.os.name][userAgentData.cpu.architecture]
-    ) {
-      return null
-    }
-
-    if (
-      userAgentData.os.name === OperativeSystem.MACOS &&
-      links[userAgentData.os.name][userAgentData.cpu.architecture]
-    ) {
-      return {
-        icon: <DownloadButtonAppleIcon />,
-        link: links[userAgentData.os.name][userAgentData.cpu.architecture],
-        arch: userAgentData.cpu.architecture,
-      }
-    }
-
-    return {
-      icon: <DownloadButtonWindowsIcon />,
-      link: links[userAgentData.os.name][userAgentData.cpu.architecture],
-      arch: userAgentData.cpu.architecture,
-    }
+    return createDownloadOption(links, userAgentData)
   }, [userAgentData, links])
 
   const finalHref = useMemo(() => {
@@ -89,11 +102,37 @@ const DownloadButton = React.memo((props: DownloadButtonProps) => {
   }, [href, defaultDownloadOption])
 
   const handleClick = useCallback(
-    (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
       event.preventDefault()
 
+      setIsDownloading(true)
+
+      // Always try to get identityId on-demand when clicking
+      let currentIdentityId: string | undefined
+      if (getIdentityId) {
+        try {
+          currentIdentityId = await getIdentityId()
+        } catch (error) {
+          console.error("Failed to generate identityId:", error)
+          // Continue with fallback behavior
+        }
+      }
+
+      // Recalculate links with the identityId (if available) or use LAUNCHER as fallback
+      const currentLinks =
+        cdnLinks ||
+        (currentIdentityId
+          ? getCDNRelease(CDNSource.AUTO_SIGNING, currentIdentityId)
+          : getCDNRelease(CDNSource.LAUNCHER))
+
+      // Calculate download option with current links
+      const currentDownloadOption = createDownloadOption(
+        currentLinks,
+        userAgentData
+      )
+
       // If we have user agent data and a download option, try direct download
-      if (userAgentData && defaultDownloadOption) {
+      if (userAgentData && currentDownloadOption) {
         const redirectUrl = updateUrlWithLastValue(
           config.get("DOWNLOAD_SUCCESS_URL"),
           "os",
@@ -104,22 +143,24 @@ const DownloadButton = React.memo((props: DownloadButtonProps) => {
           arch: userAgentData.cpu.architecture,
         })
 
-        setIsDownloading(true)
+        // Initiate download immediately
+        triggerFileDownload(currentDownloadOption.link).then(() => {
+          setIsDownloading(false)
 
-        setTimeout(
-          () => {
-            triggerFileDownload(defaultDownloadOption.link).then(() => {
-              setIsDownloading(false)
-
-              onRedirect
-                ? onRedirect(finalUrl)
-                : (window.location.href = finalUrl)
-            })
-          },
-          onClick ? 300 : 0
-        )
+          // Wait additional time before redirect to ensure download has started
+          setTimeout(() => {
+            if (onRedirect) {
+              onRedirect(finalUrl)
+            } else {
+              // Use window.open instead of window.location.href to avoid canceling download
+              window.open(finalUrl, "_blank", "noopener")
+            }
+          }, 1000) // Wait 1 second after download initiation before redirect
+        })
         return
       }
+
+      setIsDownloading(false)
 
       // Fallback: call custom onClick handler or open download page
       onClick?.(event, {
@@ -135,6 +176,8 @@ const DownloadButton = React.memo((props: DownloadButtonProps) => {
       }
     },
     [
+      getIdentityId,
+      cdnLinks,
       defaultDownloadOption,
       finalHref,
       userAgentData,

@@ -24,7 +24,7 @@ const UserMenu = React.memo((props: UserMenuProps) => {
     hideDownloadButton,
     hideSignInButton,
     cdnLinks,
-    identityId,
+    getIdentityId,
     onClickSignIn,
     onClickBalance,
     onClickOpen,
@@ -137,7 +137,7 @@ const UserMenu = React.memo((props: UserMenuProps) => {
               trackingId={trackingId}
               loadingCdnLinks={loadingCdnLinks}
               cdnLinks={cdnLinks}
-              identityId={identityId}
+              getIdentityId={getIdentityId}
             />
           )}
         </>
