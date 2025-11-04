@@ -11,9 +11,11 @@ import {
 } from "@dcl/schemas/dist/dapps/preview"
 import { BodyShape, Metrics } from "@dcl/schemas/dist/platform/item"
 import { Meta, StoryObj } from "@storybook/react"
+import { AnimationControls } from "./AnimationControls/AnimationControls"
 import { EmoteControls } from "./EmoteControls"
 import { TranslationControls, VerticalPosition } from "./TranslationControls"
 import { WearablePreview } from "./WearablePreview"
+import { IPreviewControllerWithSocialEmotes } from "./WearablePreview.controller"
 import { Position, ZoomControls } from "./ZoomControls"
 import { PreviewUnityMode } from "./WearablePreview.types"
 import { WearablePreviewContainer } from "./WearablePreview.stories.styled"
@@ -349,7 +351,12 @@ export const PreviewFromFile: Story = {
       <div style={{ padding: "20px" }}>
         {file ? (
           <WearablePreviewContainer>
-            <WearablePreview blob={toWearableWithBlobs(file)} />
+            <WearablePreview
+              id="some-id"
+              profile="default"
+              blob={toWearableWithBlobs(file)}
+            />
+            <AnimationControls wearablePreviewId="some-id" />
           </WearablePreviewContainer>
         ) : (
           <div style={{ textAlign: "center", padding: "50px" }}>
@@ -562,7 +569,7 @@ export const WithTranslationControls: Story = {
 export const WithAllControls: Story = {
   render: () => {
     const previewId = "all-controls-preview"
-    const ref = useRef<IPreviewController | null>(null)
+    const ref = useRef<IPreviewControllerWithSocialEmotes | null>(null)
 
     const handleLoad = useCallback(() => {
       ref.current = WearablePreview.createController(previewId)
