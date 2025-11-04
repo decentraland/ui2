@@ -1,14 +1,23 @@
-import { IPreviewController } from "@dcl/schemas"
+import { IPreviewControllerWithSocialEmotes } from "../WearablePreview.controller"
 
-export type TranslationControlsProps = {
-  wearablePreviewId: string
-  vertical?: boolean
-  className?: string
-  verticalPosition?: VerticalPosition
-  wearablePreviewController?: IPreviewController
+enum HorizontalPosition {
+  TOP = "top",
+  BOTTOM = "bottom",
+  CENTER = "center",
 }
 
-export enum VerticalPosition {
+enum VerticalPosition {
   LEFT = "left",
   RIGHT = "right",
 }
+
+type TranslationControlsProps = {
+  wearablePreviewId: string
+  vertical?: boolean
+  className?: string
+  horizontalPosition?: HorizontalPosition
+  verticalPosition?: VerticalPosition
+  wearablePreviewController?: IPreviewControllerWithSocialEmotes
+}
+
+export { HorizontalPosition, VerticalPosition, TranslationControlsProps }

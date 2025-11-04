@@ -1,10 +1,10 @@
-import { IPreviewController } from "@dcl/schemas"
+import { IPreviewControllerWithSocialEmotes } from "../WearablePreview.controller"
 
 export type ZoomControlsProps = {
   wearablePreviewId: string
   className?: string
   position?: Position
-  wearablePreviewController?: IPreviewController
+  wearablePreviewController?: IPreviewControllerWithSocialEmotes
   zoomDelta?: number
 }
 

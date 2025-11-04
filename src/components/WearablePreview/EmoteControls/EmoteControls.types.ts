@@ -1,5 +1,5 @@
 import React from "react"
-import { IPreviewController } from "@dcl/schemas/dist/dapps/preview"
+import { IPreviewControllerWithSocialEmotes } from "../WearablePreview.controller"
 
 export type EmoteControlsProps = {
   wearablePreviewId: string
@@ -8,7 +8,7 @@ export type EmoteControlsProps = {
   hideProgressInput?: boolean
   hidePlayButton?: boolean
   hideSoundButton?: boolean
-  wearablePreviewController?: IPreviewController
+  wearablePreviewController?: IPreviewControllerWithSocialEmotes
   renderPlayButton?: (props: {
     isPlaying: boolean
     onPlay: () => Promise<void>
