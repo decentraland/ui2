@@ -1,21 +1,19 @@
 import { useEffect, useRef, useState } from "react"
+import { PreviewMessageType } from "@dcl/schemas/dist/dapps/preview"
 import {
-  IPreviewController,
-  PreviewMessageType,
-} from "@dcl/schemas/dist/dapps/preview"
-import {
+  IPreviewControllerWithSocialEmotes,
   createController,
   isControllerReady,
 } from "./WearablePreview.controller"
 
 export const useWearablePreviewController = (
   previewId: string,
-  externalController?: IPreviewController
+  externalController?: IPreviewControllerWithSocialEmotes
 ): {
-  controllerRef: React.RefObject<IPreviewController | null>
+  controllerRef: React.RefObject<IPreviewControllerWithSocialEmotes | null>
   isReady: boolean
 } => {
-  const controllerRef = useRef<IPreviewController | null>(null)
+  const controllerRef = useRef<IPreviewControllerWithSocialEmotes | null>(null)
   const [isReady, setIsReady] = useState(false)
 
   useEffect(() => {

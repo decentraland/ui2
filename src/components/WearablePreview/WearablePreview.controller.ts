@@ -1,11 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   EmoteEvents,
+  IEmoteController,
   IPreviewController,
   PreviewMessagePayload,
   PreviewMessageType,
   sendMessage,
 } from "@dcl/schemas/dist/dapps/preview"
+import { ArmatureId, EmoteClip } from "@dcl/schemas/dist/platform/item/emote"
 import { Metrics } from "@dcl/schemas/dist/platform/item/metrics"
 import { IFuture, default as future } from "fp-future"
 import mitt, { Emitter } from "mitt"
@@ -128,7 +130,9 @@ function createSendRequest(id: string) {
       | "enableSound"
       | "disableSound"
       | "hasSound"
-      | "setUsername",
+      | "setUsername"
+      | "isSocialEmote"
+      | "getSocialEmoteAnimations",
     params: any[]
   ) {
     const iframe = document.getElementById(id) as HTMLIFrameElement
@@ -160,7 +164,7 @@ function createSendRequest(id: string) {
     }
 
     try {
-      sendMessage(iframe.contentWindow, type, message)
+      sendMessage(iframe.contentWindow, type, message as any)
     } catch (error) {
       const errorMessage =
         error instanceof Error ? error.message : String(error)
@@ -174,7 +178,26 @@ function createSendRequest(id: string) {
   }
 }
 
-function createController(id: string): IPreviewController {
+// TODO: Move these types to @dcl/schemas
+
+type SocialEmoteAnimation = {
+  title: string
+  loop: boolean
+  audio?: string
+} & {
+  [key in ArmatureId]?: EmoteClip
+}
+
+interface IEmoteControllerWithEmote extends IEmoteController {
+  isSocialEmote(): Promise<boolean>
+  getSocialEmoteAnimations: () => Promise<SocialEmoteAnimation[] | null>
+}
+
+interface IPreviewControllerWithSocialEmotes extends IPreviewController {
+  emote: IEmoteControllerWithEmote
+}
+
+function createController(id: string): IPreviewControllerWithSocialEmotes {
   const iframe = document.getElementById(id) as HTMLIFrameElement
   if (!iframe) {
     throw new Error(`Could not find an iframe with id="${id}"`)
@@ -245,9 +268,24 @@ function createController(id: string): IPreviewController {
       hasSound() {
         return sendRequest<boolean>("emote", "hasSound", [])
       },
+      isSocialEmote() {
+        return sendRequest<boolean>("emote", "isSocialEmote", [])
+      },
+      getSocialEmoteAnimations() {
+        return sendRequest<SocialEmoteAnimation[] | null>(
+          "emote",
+          "getSocialEmoteAnimations",
+          []
+        )
+      },
       events,
     },
   }
 }
 
-export { isControllerReady, createController }
+export {
+  isControllerReady,
+  createController,
+  IPreviewControllerWithSocialEmotes,
+  SocialEmoteAnimation,
+}
