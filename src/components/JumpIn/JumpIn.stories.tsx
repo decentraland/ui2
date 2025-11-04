@@ -170,10 +170,9 @@ const WithTracking: Story = {
   },
 }
 
-const TryItOn: Story = {
+const IconHidden: Story = {
   args: {
     variant: "button",
-    buttonText: "Try It On In-World",
     hideIcon: true,
     modalProps: defaultModalProps,
   },
@@ -221,6 +220,6 @@ export {
   WorldLink,
   CustomModal,
   WithTracking,
-  TryItOn,
+  IconHidden,
   AllVariants,
 }
