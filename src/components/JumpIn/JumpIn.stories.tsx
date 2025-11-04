@@ -58,6 +58,13 @@ const meta = {
         defaultValue: { summary: "https://decentraland.org/download" },
       },
     },
+    hideIcon: {
+      control: "boolean",
+      description: "Whether to hide the icon",
+      table: {
+        defaultValue: { summary: false },
+      },
+    },
     desktopAppOptions: {
       control: "object",
       description: "Options for the desktop app (position, realm)",
@@ -163,6 +170,14 @@ const WithTracking: Story = {
   },
 }
 
+const IconHidden: Story = {
+  args: {
+    variant: "button",
+    hideIcon: true,
+    modalProps: defaultModalProps,
+  },
+}
+
 const AllVariants: Story = {
   args: {
     variant: "button",
@@ -205,5 +220,6 @@ export {
   WorldLink,
   CustomModal,
   WithTracking,
+  IconHidden,
   AllVariants,
 }

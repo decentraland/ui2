@@ -24,6 +24,7 @@ const JumpIn = React.memo((props: JumpInProps) => {
     downloadUrl = DEFAULT_DOWNLOAD_URL,
     modalProps,
     desktopAppOptions = {},
+    hideIcon = false,
     onTrack,
   } = props
 
@@ -76,7 +77,7 @@ const JumpIn = React.memo((props: JumpInProps) => {
           variant="contained"
         >
           <span>{buttonText}</span>
-          <JumpInIcon />
+          {!hideIcon && <JumpInIcon />}
         </StyledJumpInButton>
         <DownloadModal
           {...modalProps}

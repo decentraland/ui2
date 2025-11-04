@@ -57,11 +57,15 @@ const StyledJumpInButton = styled(Button)({
   justifyContent: "center",
   alignItems: "center",
   width: "100%",
-  fontSize: "13px",
-  fontWeight: 600,
   height: "46px",
   gap: "8px",
   padding: "0 16px",
+
+  // This custom class selector is for increasing specificity to override the default font size and weight
+  "&&.MuiButton-sizeSmall.MuiButton-containedPrimary": {
+    fontSize: "13px",
+    fontWeight: 600,
+  },
 
   "& > .MuiTypography-root": {
     display: "flex",

@@ -26,6 +26,8 @@ type JumpInBaseProps = {
   buttonText?: string
   /** URL to open when clicking the download button */
   downloadUrl?: string
+  /** Whether to hide the icon */
+  hideIcon?: boolean
   /** Props for the download modal */
   modalProps: Omit<DownloadModalProps, "open" | "onClose" | "onDownloadClick">
   /** Options for the desktop app */
