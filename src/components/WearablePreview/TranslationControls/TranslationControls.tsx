@@ -1,5 +1,5 @@
 import React, { useCallback } from "react"
-import SwapHorizIcon from "@mui/icons-material/SwapHoriz"
+import SwapVertIcon from "@mui/icons-material/SwapVert"
 import { useWearablePreviewController } from "../useWearablePreviewController"
 import {
   TranslationControlsProps,
@@ -7,7 +7,7 @@ import {
 } from "./TranslationControls.types"
 import {
   StyledIconWrapper,
-  StyledRangeInput,
+  StyledSlider,
   StyledTranslationControlsContainer,
   StyledVerticalSliderContainer,
 } from "./TranslationControls.styled"
@@ -23,28 +23,31 @@ export const TranslationControls: React.FC<TranslationControlsProps> = ({
     wearablePreviewId,
     wearablePreviewController
   )
-
-  const handleControlVerticalTranslation = useCallback(
-    async (event: React.ChangeEvent<HTMLInputElement>) => {
-      const value = Number(event.target.value)
-      await controllerRef.current?.scene.panCamera({ y: value * -1 })
+  const handleControlTranslation = useCallback(
+    (_event: Event, value: number | number[]) => {
+      const _value = Array.isArray(value) ? value[0] : value
+      controllerRef.current?.scene.panCamera({ y: _value * -1 })
     },
     [controllerRef]
   )
 
   return (
-    <StyledTranslationControlsContainer className={className}>
+    <StyledTranslationControlsContainer
+      className={className}
+      verticalPosition={verticalPosition}
+    >
       {vertical ? (
-        <StyledVerticalSliderContainer verticalPosition={verticalPosition}>
+        <StyledVerticalSliderContainer>
           <StyledIconWrapper>
-            <SwapHorizIcon />
+            <SwapVertIcon />
           </StyledIconWrapper>
-          <StyledRangeInput
-            type="range"
+          <StyledSlider
+            orientation="vertical"
+            defaultValue={0}
             step={0.1}
             min={-2}
             max={2}
-            onChange={handleControlVerticalTranslation}
+            onChange={handleControlTranslation}
           />
         </StyledVerticalSliderContainer>
       ) : null}
