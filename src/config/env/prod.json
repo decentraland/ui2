@@ -45,5 +45,6 @@
   "PRIVACY_POLICY_URL": "https://decentraland.org/privacy",
   "TERMS_OF_USE_URL": "https://decentraland.org/terms",
   "CONTENT_POLICY_URL": "https://decentraland.org/content",
-  "CODE_OF_ETHICS_URL": "https://decentraland.org/ethics"
+  "CODE_OF_ETHICS_URL": "https://decentraland.org/ethics",
+  "AUTO_SIGNING_BASE_URL": "https://download-gateway.decentraland.org"
 }
