@@ -258,6 +258,7 @@ function createController(id: string): IPreviewController {
           []
         )
       },
+      emote: null,
       events,
     },
   }

@@ -376,7 +376,7 @@ export const PreviewFromFile: Story = {
 export const UnityModes: Story = {
   args: {
     unity: true,
-    unityMode: PreviewUnityMode.Marketplace,
+    unityMode: PreviewUnityMode.MARKETPLACE,
     contractAddress: "0xee8ae4c668edd43b34b98934d6d2ff82e41e6488",
     itemId: "5",
   },
@@ -440,7 +440,7 @@ export const ConfiguratorWithUsernameControl: Story = {
           <WearablePreview
             id="configurator-id"
             unity={true}
-            unityMode={PreviewUnityMode.Configurator}
+            unityMode={PreviewUnityMode.CONFIG}
           />
         </WearablePreviewContainer>
         <div
