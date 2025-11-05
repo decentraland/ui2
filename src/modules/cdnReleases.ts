@@ -1,5 +1,5 @@
-import { config } from "config"
 import { OperativeSystem } from "../components/DownloadButton"
+import { config } from "../config"
 
 enum CDNSource {
   LAUNCHER = "launcher",
