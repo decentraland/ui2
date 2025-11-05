@@ -1,3 +1,4 @@
+import { config } from "config"
 import { OperativeSystem } from "../components/DownloadButton"
 
 enum CDNSource {
@@ -21,7 +22,7 @@ const LAUNCHER_BASE_URL =
   "https://explorer-artifacts.decentraland.org/launcher-rust"
 const LAUNCHER_LEGACY_BASE_URL =
   "https://explorer-artifacts.decentraland.org/launcher/dcl"
-const AUTO_SIGNING_BASE_URL = "https://download-gateway.decentraland.org"
+const AUTO_SIGNING_BASE_URL = config.get("AUTO_SIGNING_BASE_URL")
 
 const CDN_CONFIGS: Record<CDNSource, CDNConfig> = {
   [CDNSource.LAUNCHER]: {
