@@ -1,4 +1,5 @@
 import type { StorybookConfig } from "@storybook/react-webpack5"
+import path from "path"
 
 // white all posible options for StorybookConfig
 // https://storybook.js.org/docs/react/configure/typescript#mainjs-configuration
@@ -46,6 +47,16 @@ const config: StorybookConfig = {
   docs: {
     autodocs: "tag",
     defaultName: "Documentation",
+  },
+  webpackFinal: async (config) => {
+    if (!config.resolve) {
+      config.resolve = {}
+    }
+    if (!config.resolve.alias) {
+      config.resolve.alias = {}
+    }
+    config.resolve.alias["config"] = path.resolve(__dirname, "../src/config")
+    return config
   },
 }
 export default config
