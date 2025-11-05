@@ -6,16 +6,10 @@ import {
   PreviewOptions,
   PreviewProjection,
   PreviewType,
+  PreviewUnityMode,
   WearableWithBlobs,
 } from "@dcl/schemas/dist/dapps/preview"
-
-enum PreviewUnityMode {
-  Authentication = "authentication",
-  Builder = "builder",
-  Marketplace = "marketplace",
-  Profile = "profile",
-  Configurator = "configurator",
-}
+import { SocialEmoteAnimation } from "@dcl/schemas/dist/dapps/preview/social-emote-animation"
 
 type WearablePreviewProps = {
   id?: string
@@ -65,6 +59,7 @@ type WearablePreviewProps = {
   type?: PreviewType
   unityMode?: PreviewUnityMode
   unity?: boolean
+  socialEmote?: SocialEmoteAnimation
   onLoad?: (renderer?: string) => void
   onError?: (error: Error) => void
   onUpdate?: (options: PreviewOptions) => void
@@ -76,5 +71,4 @@ type WearablePreviewState = {
   pendingOptions: PreviewOptions | null
 }
 
-export { PreviewUnityMode }
 export type { WearablePreviewProps, WearablePreviewState }
