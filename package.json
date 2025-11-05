@@ -39,7 +39,7 @@
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^16.0.1",
     "@dcl/hooks": "^0.0.4",
-    "@dcl/schemas": "^19.4.0",
+    "@dcl/schemas": "https://sdk-team-cdn.decentraland.org/@dcl/schemas/branch/feat/update-preview-schema/dcl-schemas-19.6.1-19072355765.commit-3297e27.tgz",
     "@dcl/ui-env": "^1.5.1",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",

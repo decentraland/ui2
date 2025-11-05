@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react"
+import { SocialEmoteAnimation } from "@dcl/schemas/dist/dapps/preview/social-emote-animation"
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown"
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp"
 import ButtonGroup from "@mui/material/ButtonGroup"
@@ -8,7 +9,6 @@ import MenuList from "@mui/material/MenuList"
 import Paper from "@mui/material/Paper"
 import Popper from "@mui/material/Popper"
 import { useWearablePreviewController } from "../useWearablePreviewController"
-import { SocialEmoteAnimation } from "../WearablePreview.controller"
 import { AnimationControlsProps } from "./AnimationControls.types"
 import {
   StyledAnimationButton,

@@ -1,4 +1,4 @@
-import { ArmatureId, BodyShape, EmoteClip } from "@dcl/schemas"
+import { BodyShape } from "@dcl/schemas"
 import {
   EmoteWithBlobs,
   PreviewCamera,
@@ -6,24 +6,10 @@ import {
   PreviewOptions,
   PreviewProjection,
   PreviewType,
+  PreviewUnityMode,
   WearableWithBlobs,
 } from "@dcl/schemas/dist/dapps/preview"
-
-enum PreviewUnityMode {
-  Authentication = "authentication",
-  Builder = "builder",
-  Marketplace = "marketplace",
-  Profile = "profile",
-  Configurator = "configurator",
-}
-
-type SocialEmoteAnimation = {
-  title: string
-  loop: boolean
-  audio?: string
-} & {
-  [key in ArmatureId]?: EmoteClip
-}
+import { SocialEmoteAnimation } from "@dcl/schemas/dist/dapps/preview/social-emote-animation"
 
 type WearablePreviewProps = {
   id?: string
@@ -85,5 +71,4 @@ type WearablePreviewState = {
   pendingOptions: PreviewOptions | null
 }
 
-export { PreviewUnityMode }
-export type { WearablePreviewProps, WearablePreviewState, SocialEmoteAnimation }
+export type { WearablePreviewProps, WearablePreviewState }

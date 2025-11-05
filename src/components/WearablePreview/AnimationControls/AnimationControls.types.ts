@@ -1,12 +1,10 @@
-import {
-  IPreviewControllerWithSocialEmotes,
-  SocialEmoteAnimation,
-} from "../WearablePreview.controller"
+import { IPreviewController } from "@dcl/schemas"
+import { SocialEmoteAnimation } from "@dcl/schemas/dist/dapps/preview/social-emote-animation"
 
 export type AnimationControlsProps = {
   wearablePreviewId: string
   className?: string
-  wearablePreviewController?: IPreviewControllerWithSocialEmotes
+  wearablePreviewController?: IPreviewController
   selectedAnimation?: SocialEmoteAnimation
   onSelectAnimation?: (animation: SocialEmoteAnimation) => void
   renderAnimationSelector?: (props: {

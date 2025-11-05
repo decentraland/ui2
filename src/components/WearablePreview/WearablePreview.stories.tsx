@@ -7,6 +7,7 @@ import {
   PreviewCamera,
   PreviewEmote,
   PreviewProjection,
+  PreviewUnityMode,
   WearableWithBlobs,
 } from "@dcl/schemas/dist/dapps/preview"
 import { BodyShape, Metrics } from "@dcl/schemas/dist/platform/item"
@@ -15,9 +16,7 @@ import { AnimationControls } from "./AnimationControls/AnimationControls"
 import { EmoteControls } from "./EmoteControls"
 import { TranslationControls, VerticalPosition } from "./TranslationControls"
 import { WearablePreview } from "./WearablePreview"
-import { IPreviewControllerWithSocialEmotes } from "./WearablePreview.controller"
 import { Position, ZoomControls } from "./ZoomControls"
-import { PreviewUnityMode } from "./WearablePreview.types"
 import { WearablePreviewContainer } from "./WearablePreview.stories.styled"
 
 const getRandomProfile = () => {
@@ -569,7 +568,7 @@ export const WithTranslationControls: Story = {
 export const WithAllControls: Story = {
   render: () => {
     const previewId = "all-controls-preview"
-    const ref = useRef<IPreviewControllerWithSocialEmotes | null>(null)
+    const ref = useRef<IPreviewController | null>(null)
 
     const handleLoad = useCallback(() => {
       ref.current = WearablePreview.createController(previewId)

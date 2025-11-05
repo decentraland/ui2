@@ -1,13 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   EmoteEvents,
-  IEmoteController,
   IPreviewController,
   PreviewMessagePayload,
   PreviewMessageType,
   sendMessage,
 } from "@dcl/schemas/dist/dapps/preview"
-import { ArmatureId, EmoteClip } from "@dcl/schemas/dist/platform/item/emote"
+import { SocialEmoteAnimation } from "@dcl/schemas/dist/dapps/preview/social-emote-animation"
 import { Metrics } from "@dcl/schemas/dist/platform/item/metrics"
 import { IFuture, default as future } from "fp-future"
 import mitt, { Emitter } from "mitt"
@@ -178,26 +177,7 @@ function createSendRequest(id: string) {
   }
 }
 
-// TODO: Move these types to @dcl/schemas
-
-type SocialEmoteAnimation = {
-  title: string
-  loop: boolean
-  audio?: string
-} & {
-  [key in ArmatureId]?: EmoteClip
-}
-
-interface IEmoteControllerWithEmote extends IEmoteController {
-  isSocialEmote(): Promise<boolean>
-  getSocialEmoteAnimations: () => Promise<SocialEmoteAnimation[] | null>
-}
-
-interface IPreviewControllerWithSocialEmotes extends IPreviewController {
-  emote: IEmoteControllerWithEmote
-}
-
-function createController(id: string): IPreviewControllerWithSocialEmotes {
+function createController(id: string): IPreviewController {
   const iframe = document.getElementById(id) as HTMLIFrameElement
   if (!iframe) {
     throw new Error(`Could not find an iframe with id="${id}"`)
@@ -283,9 +263,4 @@ function createController(id: string): IPreviewControllerWithSocialEmotes {
   }
 }
 
-export {
-  isControllerReady,
-  createController,
-  IPreviewControllerWithSocialEmotes,
-  SocialEmoteAnimation,
-}
+export { isControllerReady, createController }
