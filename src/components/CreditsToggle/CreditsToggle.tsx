@@ -4,8 +4,8 @@ import CreditsIcon from "../../Assets/icon-credits.svg"
 import { CreditsToggleProps } from "./CreditsToggle.types"
 import {
   Container,
-  LeftSection,
   LearnMoreButton,
+  LeftSection,
   PopupContainer,
   StyledAmount,
   StyledIcon,
