@@ -1,24 +1,20 @@
 import React, { useCallback, useMemo } from "react"
-import { Switch } from "@mui/material"
-import CreditsIcon from "../../Assets/icon-credits.svg"
+import Lottie from "lottie-react"
+import toggleAnimation from "./toggleAnimation.json"
+import { formatEther } from "../../utils/format"
+import { CreditsIcon } from "../Icon/CreditsIcon"
 import { CreditsToggleProps } from "./CreditsToggle.types"
 import {
+  AnimationContainer,
   Container,
   LearnMoreButton,
   LeftSection,
   PopupContainer,
   StyledAmount,
-  StyledIcon,
   StyledNumber,
+  StyledSwitch,
   StyledText,
 } from "./CreditsToggle.styled"
-
-// Helper to convert Wei to ETH
-const formatEther = (value: string | number): string => {
-  const wei = BigInt(value.toString())
-  const eth = Number(wei) / 1e18
-  return eth.toString()
-}
 
 const CreditsToggle: React.FC<CreditsToggleProps> = ({
   totalCredits,
@@ -65,9 +61,9 @@ const CreditsToggle: React.FC<CreditsToggleProps> = ({
   // Show the GET CREDITS button
   if (!hasCredits && showLearnMore) {
     return (
-      <Container className={className}>
+      <Container showLearnMore className={className}>
         <LeftSection>
-          <StyledIcon src={CreditsIcon} alt="Credits" />
+          <CreditsIcon sx={{ fontSize: 18 }} />
           <StyledText>{label || "Get with Credits"}</StyledText>
         </LeftSection>
         <StyledAmount>
@@ -81,30 +77,24 @@ const CreditsToggle: React.FC<CreditsToggleProps> = ({
 
   return (
     <Container active={useCredits} className={className}>
-      <LeftSection>
-        <Switch
-          checked={useCredits}
-          onChange={handleToggleCredits}
-          sx={{
-            "& .MuiSwitch-thumb": {
-              backgroundColor: useCredits ? "#a0abff" : undefined,
-            },
-            "& .Mui-checked + .MuiSwitch-track": {
-              backgroundColor: useCredits ? "#a0abff" : undefined,
-            },
-          }}
-        />
+      <LeftSection active={useCredits}>
+        <AnimationContainer show={useCredits}>
+          {useCredits && (
+            <Lottie animationData={toggleAnimation} loop={false} />
+          )}
+        </AnimationContainer>
+        <StyledSwitch checked={useCredits} onChange={handleToggleCredits} />
         <StyledText active={useCredits}>{label || "Use Credits"}</StyledText>
       </LeftSection>
       <StyledAmount active={useCredits}>
         {showTooltip ? (
           <PopupContainer title={tooltipContent || "Credits value"}>
-            <StyledIcon src={CreditsIcon} alt="Credits" />
+            <CreditsIcon sx={{ fontSize: 18, marginLeft: 1.5 }} />
             <StyledNumber>{creditsToUseInEth}</StyledNumber>
           </PopupContainer>
         ) : (
           <PopupContainer>
-            <StyledIcon src={CreditsIcon} alt="Credits" />
+            <CreditsIcon sx={{ fontSize: 18, marginLeft: 1.5 }} />
             <StyledNumber>{creditsToUseInEth}</StyledNumber>
           </PopupContainer>
         )}
