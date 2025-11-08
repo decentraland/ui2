@@ -32,10 +32,10 @@ export const ZoomControls: React.FC<ZoomControlsProps> = ({
 
   return (
     <StyledZoomControlsContainer className={className} position={position}>
-      <StyledZoomButton onClick={handleControlZoomIn}>
+      <StyledZoomButton className="ZoomIn" onClick={handleControlZoomIn}>
         <AddIcon />
       </StyledZoomButton>
-      <StyledZoomButton onClick={handleControlZoomOut}>
+      <StyledZoomButton className="ZoomOut" onClick={handleControlZoomOut}>
         <RemoveIcon />
       </StyledZoomButton>
     </StyledZoomControlsContainer>
