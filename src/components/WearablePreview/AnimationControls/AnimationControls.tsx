@@ -1,4 +1,13 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react"
+import {
+  FC,
+  Fragment,
+  MouseEvent as ReactMouseEvent,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react"
 import { SocialEmoteAnimation } from "@dcl/schemas/dist/dapps/preview/social-emote-animation"
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown"
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp"
@@ -16,19 +25,20 @@ import {
   StyledAnimationGrow,
 } from "./AnimationControls.styled"
 
-export const AnimationControls: React.FC<AnimationControlsProps> = ({
+export const AnimationControls: FC<AnimationControlsProps> = ({
   wearablePreviewId,
   className,
   wearablePreviewController,
   selectedAnimation,
   onSelectAnimation,
+  renderAnimationSelector,
 }) => {
   const { controllerRef, isReady } = useWearablePreviewController(
     wearablePreviewId,
     wearablePreviewController
   )
-  const [open, setOpen] = React.useState(false)
-  const anchorRef = React.useRef<HTMLDivElement>(null)
+  const [open, setOpen] = useState(false)
+  const anchorRef = useRef<HTMLDivElement>(null)
   const [socialEmoteAnimations, setSocialEmoteAnimations] = useState<
     SocialEmoteAnimation[] | null | undefined
   >(undefined)
@@ -60,7 +70,7 @@ export const AnimationControls: React.FC<AnimationControlsProps> = ({
   }, [socialEmoteAnimations, isReady, controllerRef])
 
   const handleMenuItemClick = useCallback(
-    (_event: React.MouseEvent<HTMLLIElement, MouseEvent>, index: number) => {
+    (_event: ReactMouseEvent<HTMLLIElement, MouseEvent>, index: number) => {
       setOpen(false)
       onSelectAnimation?.(socialEmoteAnimations![index])
     },
@@ -89,8 +99,20 @@ export const AnimationControls: React.FC<AnimationControlsProps> = ({
     return null
   }
 
+  if (renderAnimationSelector && onSelectAnimation) {
+    return (
+      <>
+        {renderAnimationSelector({
+          socialEmoteAnimations,
+          selectedAnimation: selectedAnimation ?? socialEmoteAnimations[0],
+          onSelectAnimation,
+        })}
+      </>
+    )
+  }
+
   return (
-    <React.Fragment>
+    <Fragment>
       <ButtonGroup
         className={className}
         variant="contained"
@@ -138,6 +160,6 @@ export const AnimationControls: React.FC<AnimationControlsProps> = ({
           </StyledAnimationGrow>
         )}
       </Popper>
-    </React.Fragment>
+    </Fragment>
   )
 }
