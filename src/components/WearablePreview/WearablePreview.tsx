@@ -98,6 +98,7 @@ const WearablePreview = (props: WearablePreviewProps) => {
       nftServerUrl,
       type,
       unityMode,
+      username,
       socialEmote,
     } = restProps
 
@@ -172,6 +173,7 @@ const WearablePreview = (props: WearablePreviewProps) => {
     const envParam = safeEncodeParam("env", dev ? "dev" : undefined)
     const unityParam = safeEncodeParam("unity", unity)
     const unityModeParam = safeEncodeParam("mode", unityMode)
+    const usernameParam = safeEncodeParam("username", username)
     const socialEmoteParam = safeEncodeParam("socialEmote", socialEmote)
 
     const url =
@@ -222,6 +224,7 @@ const WearablePreview = (props: WearablePreviewProps) => {
         envParam,
         unityParam,
         unityModeParam,
+        usernameParam,
         socialEmoteParam,
       ]
         .filter((param) => !!param)
