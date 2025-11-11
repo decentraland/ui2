@@ -33,6 +33,7 @@ import { StreamingKeyResetNotification } from "./Streaming/StreamingKeyResetNoti
 import { StreamingKeyRevokeNotification } from "./Streaming/StreamingKeyRevokeNotification"
 import { StreamingPlaceUpdatedNotification } from "./Streaming/StreamingPlaceUpdatedNotification"
 import { StreamingTimeExceededNotification } from "./Streaming/StreamingTimeExceededNotification"
+import { GiftNotification } from "./Transfer/GiftNotification"
 import { WorldsAccessRestoredNotification } from "./Worlds/WorldsAccessRestoredNotification"
 import { WorldsAccessRestrictedNotification } from "./Worlds/WorldsAccessRestrictedNotification"
 import { WorldsMissingResourcesNotification } from "./Worlds/WorldsMissingResourcesNotification"
@@ -52,6 +53,7 @@ export {
   CreditsExpireSoonReminderNotification,
   EventsStartedNotification,
   EventsStartsSoonNotification,
+  GiftNotification,
   GovernanceAnnouncementNotification,
   GovernanceAuthoredProposalFinishedNotification,
   GovernanceCoauthorRequestedNotification,
