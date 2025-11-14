@@ -44,6 +44,7 @@ import { PlacesIcon } from "./PlacesIcon"
 import { DiscordIcon } from "./Social/DiscordIcon"
 import { GitHubIcon } from "./Social/GitHubIcon"
 import { RedditIcon } from "./Social/RedditIcon"
+import { TiktokIcon } from "./Social/TiktokIcon"
 import { XIcon } from "./Social/XIcon"
 import { SparklesIcon } from "./SparklesIcon"
 import { UtilityIcon } from "./UtilityIcon"
@@ -140,6 +141,7 @@ export {
   DiscordIcon,
   GitHubIcon,
   RedditIcon,
+  TiktokIcon,
   XIcon,
   MintIcon,
 }
