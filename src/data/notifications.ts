@@ -14,6 +14,7 @@ import {
   CreditsDoNotMissOutNotificationProps,
   EventsStartedNotificationProps,
   EventsStartsSoonNotificationProps,
+  GiftNotificationProps,
   GovernanceAnnouncementNotificationProps,
   GovernanceAuthoredProposalFinishedNotificationProps,
   GovernanceCoauthorRequestedNotificationProps,
@@ -777,6 +778,21 @@ const referralInvitedUserAcceptedNotificationData: ReferralInvitedUsersAcceptedN
     },
   }
 
+const giftNotificationData: GiftNotificationProps = {
+  id: NotificationType.TRANSFER_RECEIVED,
+  read: false,
+  type: NotificationType.TRANSFER_RECEIVED,
+  address: "0x6b347a82fcac4e6a38d1fc40e3631bd8f9495e9f",
+  timestamp: new Date().getTime(),
+  metadata: {
+    from: "0x24e5f44999c151f08609f8e27b2238c773c4d020",
+    to: "0x6b347a82fcac4e6a38d1fc40e3631bd8f9495e9f",
+    itemName: "Exclusive Decentraland Hoodie",
+  },
+  created_at: "2023-11-29T12:51:00.600Z",
+  updated_at: "2023-11-29T12:51:00.600Z",
+}
+
 const allTypeOfNotifications = [
   bidAcceptedNotificationData,
   bidReceivedNotificationPropsData,
@@ -819,6 +835,7 @@ const allTypeOfNotifications = [
   worldsMissingResourcesNotificationData,
   worldsPermissionGrantedNotificationPropsData,
   worldsPermissionRevokedNotificationData,
+  giftNotificationData,
 ]
 
 export {
@@ -864,4 +881,5 @@ export {
   worldsMissingResourcesNotificationData,
   worldsPermissionGrantedNotificationPropsData,
   worldsPermissionRevokedNotificationData,
+  giftNotificationData,
 }
