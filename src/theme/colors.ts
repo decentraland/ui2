@@ -106,9 +106,9 @@ const brand = {
   melon: `#FFA25A`,
   orange: `#FF7439`,
   ruby: `#FF2D55`,
-  lavander: `#C640CD`,
-  voilet: `#A524B3`,
-  purpel: `#691FA9`,
+  lavender: `#C640CD`,
+  violet: `#A524B3`,
+  purple: `#691FA9`,
 }
 
 const textOnBrand: typeof brand = {
@@ -116,16 +116,16 @@ const textOnBrand: typeof brand = {
   melon: neutral.softBlack2,
   orange: neutral.white,
   ruby: neutral.white,
-  lavander: neutral.white,
-  voilet: neutral.white,
-  purpel: neutral.white,
+  lavender: neutral.white,
+  violet: neutral.white,
+  purple: neutral.white,
 }
 
 const gradient = {
   ...rarityGradient,
   flare: `linear-gradient(135deg, ${brand.ruby} 0%, ${brand.yellow} 100%)`,
-  cerise: `linear-gradient(135deg, ${brand.ruby} 0%, ${brand.lavander} 100%)`,
-  amin: `linear-gradient(135deg, ${brand.lavander} 0%, ${brand.purpel} 100%)`,
+  cerise: `linear-gradient(135deg, ${brand.ruby} 0%, ${brand.lavender} 100%)`,
+  amin: `linear-gradient(135deg, ${brand.lavender} 0%, ${brand.purple} 100%)`,
 }
 
 const textOnGradient: typeof gradient = {
