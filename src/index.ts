@@ -45,5 +45,5 @@ export * as dclNetworkUtils from "./lib/network"
 export * from "./modules/jumpIn"
 export * as dclTools from "./modules"
 
-export { getCDNRelease, CDNConfig } from "./modules/cdnReleases"
-export type { CDNSource } from "./modules/cdnReleases"
+export { getCDNRelease, CDNSource } from "./modules/cdnReleases"
+export type { CDNConfig } from "./modules/cdnReleases"
