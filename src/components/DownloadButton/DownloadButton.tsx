@@ -70,6 +70,7 @@ const DownloadButton = React.memo((props: DownloadButtonProps) => {
     cdnLinks,
     getIdentityId,
     onRedirect,
+    shouldDownloadBeforeRedirect = true,
   } = props
   const [isDownloading, setIsDownloading] = useState(false)
 
@@ -132,7 +133,7 @@ const DownloadButton = React.memo((props: DownloadButtonProps) => {
         userAgentData
       )
 
-      // If we have user agent data and a download option, try direct download
+      // If we have user agent data and a download option, handle download/redirect
       if (userAgentData && currentDownloadOption) {
         const redirectUrl = updateUrlWithLastValue(
           config.get("DOWNLOAD_SUCCESS_URL"),
@@ -144,20 +145,30 @@ const DownloadButton = React.memo((props: DownloadButtonProps) => {
           arch: userAgentData.cpu.architecture,
         })
 
-        // Initiate download immediately
-        triggerFileDownload(currentDownloadOption.link).then(() => {
-          setIsDownloading(false)
+        if (shouldDownloadBeforeRedirect) {
+          // Initiate download immediately, then redirect
+          triggerFileDownload(currentDownloadOption.link).then(() => {
+            setIsDownloading(false)
 
-          // Wait additional time before redirect to ensure download has started
-          setTimeout(() => {
-            if (onRedirect) {
-              onRedirect(finalUrl)
-            } else {
-              // Use window.open instead of window.location.href to avoid canceling download
-              window.open(finalUrl, "_blank", "noopener")
-            }
-          }, 1000) // Wait 1 second after download initiation before redirect
-        })
+            // Wait additional time before redirect to ensure download has started
+            setTimeout(() => {
+              if (onRedirect) {
+                onRedirect(finalUrl)
+              } else {
+                // Use window.open instead of window.location.href to avoid canceling download
+                window.open(finalUrl, "_blank", "noopener")
+              }
+            }, 1000) // Wait 1 second after download initiation before redirect
+          })
+        } else {
+          // Only redirect without downloading
+          setIsDownloading(false)
+          if (onRedirect) {
+            onRedirect(finalUrl)
+          } else {
+            window.open(finalUrl, "_blank", "noopener")
+          }
+        }
         return
       }
 
@@ -184,6 +195,7 @@ const DownloadButton = React.memo((props: DownloadButtonProps) => {
       userAgentData,
       onClick,
       onRedirect,
+      shouldDownloadBeforeRedirect,
       trackingId,
       setIsDownloading,
     ]
