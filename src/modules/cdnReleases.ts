@@ -94,3 +94,4 @@ const getCDNRelease: GetCDNRelease = (
 }
 
 export { getCDNRelease, CDNSource }
+export type { CDNConfig }
