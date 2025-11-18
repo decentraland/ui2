@@ -12,7 +12,14 @@ import type { Meta, StoryObj } from "@storybook/react"
 const meta: Meta<UserMenuProps> = {
   component: UserMenu,
   title: "Decentraland UI/UserMenu",
-  argTypes: {},
+  argTypes: {
+    shouldDownloadBeforeRedirect: {
+      description:
+        "If true, downloads the file before redirecting. If false, only redirects without downloading.",
+      control: "boolean",
+      defaultValue: true,
+    },
+  },
   args: {
     i18n: i18n,
   },
@@ -107,6 +114,23 @@ const WithSignInButtonHidden: Story = {
   },
 }
 
+const WithRedirectOnly: Story = {
+  name: "Redirect Only (No Download Before Redirect)",
+  args: {
+    avatar: avatar,
+    isSignedIn: true,
+    shouldDownloadBeforeRedirect: false,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "UserMenu with download button that redirects without downloading the file first. The download will happen on the success page.",
+      },
+    },
+  },
+}
+
 // eslint-disable-next-line import/no-default-export
 export default meta
 export {
@@ -117,4 +141,5 @@ export {
   Guest,
   Complete,
   WithSignInButtonHidden,
+  WithRedirectOnly,
 }

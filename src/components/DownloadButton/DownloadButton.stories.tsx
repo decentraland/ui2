@@ -52,7 +52,7 @@ const meta: Meta<DownloadButtonProps> = {
     },
   },
   render: (args) => {
-    const { endIcon, ...rest } = args
+    const { endIcon, shouldDownloadBeforeRedirect, ...rest } = args
     const icon =
       endIcon === "Windows" ? (
         <DownloadButtonWindowsIcon />
@@ -63,6 +63,7 @@ const meta: Meta<DownloadButtonProps> = {
       <DownloadButton
         {...rest}
         endIcon={icon}
+        shouldDownloadBeforeRedirect={shouldDownloadBeforeRedirect}
         startIcon={!icon && <Download />}
       />
     )
