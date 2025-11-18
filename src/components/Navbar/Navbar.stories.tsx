@@ -8,11 +8,18 @@ import { NotificationActiveTab } from "../Notifications"
 import { NavbarPages, NavbarProps } from "./Navbar.types"
 import type { Meta, StoryObj } from "@storybook/react"
 
-const meta: Meta = {
+const meta: Meta<NavbarProps> = {
   component: Navbar,
   title: "Decentraland UI/Navbar",
-  argTypes: {},
-  render: (args) => <Navbar activePage={NavbarPages.MARKETPLACE} {...args} />,
+  argTypes: {
+    shouldDownloadBeforeRedirect: {
+      description:
+        "If true, downloads the file before redirecting. If false, only redirects without downloading.",
+      control: "boolean",
+      defaultValue: true,
+    },
+  },
+  render: (args) => <Navbar {...args} activePage={NavbarPages.MARKETPLACE} />,
 }
 
 type Story = StoryObj<NavbarProps>
@@ -158,6 +165,24 @@ const WithChainSelector: Story = {
   },
 }
 
+const WithRedirectOnly: Story = {
+  name: "Redirect Only (No Download Before Redirect)",
+  args: {
+    activePage: NavbarPages.MARKETPLACE,
+    isSignedIn: true,
+    avatar: avatar,
+    shouldDownloadBeforeRedirect: false,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Navbar with download button that redirects without downloading the file first. The download will happen on the success page.",
+      },
+    },
+  },
+}
+
 // eslint-disable-next-line import/no-default-export
 export default meta
-export { Simple, WithScroll, WithChainSelector }
+export { Simple, WithScroll, WithChainSelector, WithRedirectOnly }

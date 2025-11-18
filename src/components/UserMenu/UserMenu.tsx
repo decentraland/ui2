@@ -30,6 +30,7 @@ const UserMenu = React.memo((props: UserMenuProps) => {
     onClickOpen,
     onClickUserMenuItem,
     loadingCdnLinks = false,
+    shouldDownloadBeforeRedirect,
     ...signInProps
   } = props
 
@@ -138,6 +139,7 @@ const UserMenu = React.memo((props: UserMenuProps) => {
               loadingCdnLinks={loadingCdnLinks}
               cdnLinks={cdnLinks}
               getIdentityId={getIdentityId}
+              shouldDownloadBeforeRedirect={shouldDownloadBeforeRedirect}
             />
           )}
         </>
