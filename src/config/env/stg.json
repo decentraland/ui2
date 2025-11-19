@@ -42,9 +42,18 @@
   "REDDIT_URL": "https://reddit.com/r/decentraland",
   "GITHUB_URL": "https://github.com/decentraland",
   "X_URL": "https://x.com/decentraland",
+  "INSTAGRAM_URL": "https://instagram.com/decentraland",
+  "YOUTUBE_URL": "https://youtube.com/@decentraland",
+  "TIKTOK_URL": "https://tiktok.com/@decentraland",
+  "LINKEDIN_URL": "https://linkedin.com/company/decentraland",
   "PRIVACY_POLICY_URL": "https://decentraland.org/privacy",
   "TERMS_OF_USE_URL": "https://decentraland.org/terms",
   "CONTENT_POLICY_URL": "https://decentraland.org/content",
   "CODE_OF_ETHICS_URL": "https://decentraland.org/ethics",
-  "AUTO_SIGNING_BASE_URL": "https://download-gateway.decentraland.zone"
+  "AUTO_SIGNING_BASE_URL": "https://download-gateway.decentraland.zone",
+  "SUPPORT_URL": "https://support.decentraland.org",
+  "EMAIL_HELLO_URL": "mailto:hello@decentraland.org",
+  "FAQ_URL": "https://docs.decentraland.org/faq",
+  "DOCS_URL": "https://docs.decentraland.org",
+  "BEEHIV_SUBSCRIPTION_URL": "https://embeds.beehiiv.com/ff89783d-748b-4ba3-8700-4759f6f62831?slim=true"
 }

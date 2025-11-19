@@ -23,6 +23,7 @@ type DownloadButtonProps = {
   cdnLinks?: Record<string, Record<string, string>>
   getIdentityId?: () => Promise<string | undefined>
   onRedirect?: (url: string) => void
+  shouldDownloadBeforeRedirect?: boolean
 }
 
 export type { DownloadButtonProps, DownloadOption }

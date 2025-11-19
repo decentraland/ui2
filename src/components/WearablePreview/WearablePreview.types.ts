@@ -5,6 +5,7 @@ import {
   PreviewEmote,
   PreviewOptions,
   PreviewProjection,
+  PreviewRenderer,
   PreviewType,
   PreviewUnityMode,
   WearableWithBlobs,
@@ -59,8 +60,9 @@ type WearablePreviewProps = {
   type?: PreviewType
   unityMode?: PreviewUnityMode
   unity?: boolean
+  username?: string
   socialEmote?: SocialEmoteAnimation
-  onLoad?: (renderer?: string) => void
+  onLoad?: (renderer?: PreviewRenderer) => void
   onError?: (error: Error) => void
   onUpdate?: (options: PreviewOptions) => void
 }

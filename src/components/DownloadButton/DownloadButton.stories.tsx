@@ -44,9 +44,15 @@ const meta: Meta<DownloadButtonProps> = {
     onClick: {
       description: "Click handler",
     },
+    shouldDownloadBeforeRedirect: {
+      description:
+        "If true, downloads the file before redirecting. If false, only redirects without downloading.",
+      control: "boolean",
+      defaultValue: true,
+    },
   },
   render: (args) => {
-    const { endIcon, ...rest } = args
+    const { endIcon, shouldDownloadBeforeRedirect, ...rest } = args
     const icon =
       endIcon === "Windows" ? (
         <DownloadButtonWindowsIcon />
@@ -57,6 +63,7 @@ const meta: Meta<DownloadButtonProps> = {
       <DownloadButton
         {...rest}
         endIcon={icon}
+        shouldDownloadBeforeRedirect={shouldDownloadBeforeRedirect}
         startIcon={!icon && <Download />}
       />
     )
@@ -110,6 +117,22 @@ const WithCustomFallback: Story = {
   },
 }
 
+const WithoutDownloadBeforeRedirect: Story = {
+  name: "Redirect Only (No Download)",
+  args: {
+    label: "Redirect Only",
+    shouldDownloadBeforeRedirect: false,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Button that redirects without downloading the file first. Use this when you only want to redirect to the download page.",
+      },
+    },
+  },
+}
+
 // eslint-disable-next-line import/no-default-export
 export default meta
-export { Basic, WithOS, WithCustomFallback }
+export { Basic, WithOS, WithCustomFallback, WithoutDownloadBeforeRedirect }
