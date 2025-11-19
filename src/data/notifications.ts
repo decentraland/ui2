@@ -785,9 +785,7 @@ const giftNotificationData: GiftNotificationProps = {
   address: "0x6b347a82fcac4e6a38d1fc40e3631bd8f9495e9f",
   timestamp: new Date().getTime(),
   metadata: {
-    from: "0x24e5f44999c151f08609f8e27b2238c773c4d020",
-    to: "0x6b347a82fcac4e6a38d1fc40e3631bd8f9495e9f",
-    itemName: "Exclusive Decentraland Hoodie",
+    senderAddress: "0xD8041DC1a844477603ecB8ef8c47AC09cb7ea6Dd",
   },
   created_at: "2023-11-29T12:51:00.600Z",
   updated_at: "2023-11-29T12:51:00.600Z",

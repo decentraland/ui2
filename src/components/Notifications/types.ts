@@ -255,9 +255,7 @@ type LandNotificationsProps =
 
 // Transfer Notifications
 type TransferNotificationMetadataProps = {
-  from: string
-  to: string
-  itemName: string
+  senderAddress: string
 }
 
 type GiftNotificationProps = RawDecentralandNotification<

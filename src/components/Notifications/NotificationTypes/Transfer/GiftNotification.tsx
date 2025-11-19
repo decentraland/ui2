@@ -7,10 +7,14 @@ import {
   NotificationItemTitle,
 } from "../../NotificationItem.styled"
 import { CommonNotificationProps, GiftNotificationProps } from "../../types"
+import { replaceWithValues } from "../../utils"
 
 const GiftNotification = React.memo(
   (props: CommonNotificationProps<GiftNotificationProps>) => {
     const { notification, locale, renderProfile } = props
+    const sender =
+      renderProfile?.(notification.metadata.senderAddress) ??
+      notification.metadata.senderAddress
     return (
       <NotificationItem
         image={<GiftIcon width={48} height={48} />}
@@ -18,15 +22,11 @@ const GiftNotification = React.memo(
         isNew={!notification.read}
         locale={locale}
       >
-        <NotificationItemTitle>{i18n[locale].title}</NotificationItemTitle>
+        <NotificationItemTitle>
+          {replaceWithValues(i18n[locale].title, { sender })}
+        </NotificationItemTitle>
         <NotificationItemDescription color="inherit" underline="none">
-          {i18n[locale].description.start}
-          {notification.metadata.itemName}
-          {` ${i18n[locale].description.middle} `}
-          {renderProfile
-            ? renderProfile(notification.metadata.from)
-            : notification.metadata.from}
-          {i18n[locale].description.end}
+          {i18n[locale].description}
         </NotificationItemDescription>
       </NotificationItem>
     )

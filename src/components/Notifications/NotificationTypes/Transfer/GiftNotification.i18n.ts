@@ -1,27 +1,15 @@
 const i18n = {
   en: {
-    description: {
-      start: "You received ",
-      middle: "from",
-      end: "",
-    },
-    title: "Gift Received",
+    description: "Open your backpack to check it out.",
+    title: "{sender} Sent You a Gift",
   },
   es: {
-    description: {
-      start: "Recibiste ",
-      middle: "de",
-      end: "",
-    },
-    title: "Regalo Recibido",
+    description: "Abre tu mochila para verlo.",
+    title: "{sender} Te Envió un Regalo",
   },
   zh: {
-    description: {
-      start: "您收到了 ",
-      middle: "来自",
-      end: "",
-    },
-    title: "收到礼物",
+    description: "打开你的背包查看。",
+    title: "{sender} 给你送了一份礼物",
   },
 }
 
