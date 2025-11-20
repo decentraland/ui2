@@ -16,6 +16,7 @@ import { EmptyInboxIcon } from "./Notifications/EmptyInboxIcon"
 import { EventCancelledIcon } from "./Notifications/EventCancelledIcon"
 import { EventStartedIcon } from "./Notifications/EventStartedIcon"
 import { EventStartsSoonIcon } from "./Notifications/EventStartsSoonIcon"
+import { GiftIcon } from "./Notifications/GiftIcon"
 import { GovernanceIcon } from "./Notifications/GovernanceIcon"
 import { HistoryIcon } from "./Notifications/HistoryIcon"
 import { ItemAirdroppedIcon } from "./Notifications/ItemAirdroppedIcon"
@@ -144,4 +145,5 @@ export {
   TiktokIcon,
   XIcon,
   MintIcon,
+  GiftIcon,
 }

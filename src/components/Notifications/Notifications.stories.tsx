@@ -17,6 +17,7 @@ import {
   eventStartedNotificationData,
   eventStartsSoonFutureStartNotificationData,
   eventStartsSoonPastStartNotificationData,
+  giftNotificationData,
   governanceAnnouncementNotificationData,
   governanceAuthoredProposalFinishedNotificationData,
   governanceCoauthorRequestedNotificationData,
@@ -165,6 +166,14 @@ const LandNotifications: Story = {
   },
 }
 
+const TransferNotifications: Story = {
+  name: "Transfer Notifications",
+  args: {
+    items: [giftNotificationData],
+    renderProfile: (address: string) => shorten(address),
+  },
+}
+
 const MarketplaceNotifications: Story = {
   name: "Marketplace Notifications",
   args: {
@@ -269,6 +278,7 @@ export {
   EventsNotifications,
   GovernanceNotifications,
   LandNotifications,
+  TransferNotifications,
   MarketplaceNotifications,
   RewardsNotifications,
   CreditsNotifications,

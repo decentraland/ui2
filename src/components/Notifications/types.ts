@@ -253,6 +253,18 @@ type LandNotificationsProps =
   | LandRentedNotificationProps
   | LandRentalEndedNotificationProps
 
+// Transfer Notifications
+type TransferNotificationMetadataProps = {
+  senderAddress: string
+}
+
+type GiftNotificationProps = RawDecentralandNotification<
+  NotificationType.TRANSFER_RECEIVED,
+  TransferNotificationMetadataProps
+>
+
+type TransferNotificationsProps = GiftNotificationProps
+
 // Reward Notifications
 
 type CommonRewardsMetadata = {
@@ -402,6 +414,7 @@ type DCLNotificationProps =
   | GovernanceNotificationsProps
   | WorldsNotificationsProps
   | LandNotificationsProps
+  | TransferNotificationsProps
   | RewardsNotificationProps
   | EventsNotificationsProps
   | StreamingNotificationsProps
@@ -438,6 +451,8 @@ export type {
   WorldsPermissionRevokedNotificationProps,
   LandRentedNotificationProps,
   LandRentalEndedNotificationProps,
+  GiftNotificationProps,
+  TransferNotificationsProps,
   RewardAssignedNotificationProps,
   RewardInProgressNotificationProps,
   RewardDelayedNotificationProps,

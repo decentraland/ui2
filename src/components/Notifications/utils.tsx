@@ -13,6 +13,7 @@ import {
   CreditsExpireSoonReminderNotification,
   EventsStartedNotification,
   EventsStartsSoonNotification,
+  GiftNotification,
   GovernanceAnnouncementNotification,
   GovernanceAuthoredProposalFinishedNotification,
   GovernanceCoauthorRequestedNotification,
@@ -80,6 +81,7 @@ const NotificationComponentByType: DecentralandNotificationComponentByType<DCLNo
       CreditsExpireIn24HrsReminderNotification,
     [NotificationType.EVENTS_STARTED]: EventsStartedNotification,
     [NotificationType.EVENTS_STARTS_SOON]: EventsStartsSoonNotification,
+    [NotificationType.TRANSFER_RECEIVED]: GiftNotification,
     [NotificationType.GOVERNANCE_ANNOUNCEMENT]:
       GovernanceAnnouncementNotification,
     [NotificationType.GOVERNANCE_AUTHORED_PROPOSAL_FINISHED]:
