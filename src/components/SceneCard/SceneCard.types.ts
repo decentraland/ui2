@@ -1,3 +1,4 @@
+import { ReactNode } from "react"
 import { Avatar } from "@dcl/schemas"
 
 export interface SceneCardProps {
@@ -6,4 +7,6 @@ export interface SceneCardProps {
   avatar?: Avatar
   coordinates: string
   withShadow?: boolean
+  leftBadge?: string | ReactNode
+  rightBadge?: string | ReactNode
 }

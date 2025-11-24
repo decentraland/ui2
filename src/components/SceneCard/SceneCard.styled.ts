@@ -2,6 +2,7 @@ import {
   Box,
   Card,
   CardActionArea,
+  CardContent,
   CardMedia,
   Chip,
   Theme,
@@ -16,12 +17,7 @@ const CardContainer = styled(Card)<{ withShadow?: boolean }>(
     overflow: "visible",
     "&:hover": {
       boxShadow: withShadow
-        ? `0px 0px 20px 6px ${hexToRgba(
-            theme.palette.mode === "dark"
-              ? theme.palette.common.white
-              : theme.palette.common.black,
-            0.37
-          )}`
+        ? `0px 0px 20px 6px ${hexToRgba("#DD56FF", 0.37)}`
         : "none",
       transition: "box-shadow 0.3s ease-in-out",
     },
@@ -34,6 +30,10 @@ const StyledCardActionArea = styled(CardActionArea)({
   },
 })
 
+const MediaContainer = styled(Box)({
+  position: "relative",
+})
+
 const StyledCardMedia = styled(CardMedia)(({ theme }: { theme: Theme }) => ({
   height: theme.spacing(35),
   transition: "height 0.3s ease-in-out",
@@ -42,6 +42,50 @@ const StyledCardMedia = styled(CardMedia)(({ theme }: { theme: Theme }) => ({
     height: theme.spacing(28.125),
   },
 }))
+
+const LeftBadge = styled(Box)(({ theme }: { theme: Theme }) => ({
+  position: "absolute",
+  top: theme.spacing(2),
+  left: theme.spacing(2),
+  padding: theme.spacing(1, 2),
+  minWidth: theme.spacing(6),
+  minHeight: theme.spacing(6),
+  backgroundColor: theme.palette.background.default,
+  color: theme.palette.text.primary,
+  borderRadius: theme.spacing(2),
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  fontSize: theme.typography.h6.fontSize,
+  fontWeight: theme.typography.fontWeightBold,
+  zIndex: 1,
+}))
+
+const RightBadge = styled(Box)(({ theme }: { theme: Theme }) => ({
+  position: "absolute",
+  top: theme.spacing(2),
+  right: theme.spacing(2),
+  padding: theme.spacing(1, 2),
+  height: theme.spacing(5.25),
+  backgroundColor: theme.palette.background.default,
+  color: theme.palette.text.primary,
+  borderRadius: theme.spacing(1),
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  fontSize: theme.typography.body1.fontSize,
+  zIndex: 1,
+}))
+
+const StyledCardContent = styled(CardContent)(
+  ({ theme }: { theme: Theme }) => ({
+    backgroundColor:
+      theme.palette.mode === "dark"
+        ? "rgba(0, 0, 0, 0.4)"
+        : "rgba(255, 255, 255, 0.4)",
+    borderRadius: `0 0 ${theme.spacing(2)} ${theme.spacing(2)}`,
+  })
+)
 
 const ContentContainer = styled(Box)(({ theme }: { theme: Theme }) => ({
   display: "flex",
@@ -93,9 +137,13 @@ export {
   AvatarContainer,
   CardContainer,
   ContentContainer,
+  LeftBadge,
   LocationChip,
   LocationChipContainer,
   JumpInButtonContainer,
+  MediaContainer,
+  RightBadge,
   StyledCardActionArea,
+  StyledCardContent,
   StyledCardMedia,
 }
