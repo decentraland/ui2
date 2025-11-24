@@ -1,5 +1,4 @@
 import { memo } from "react"
-import CardContent from "@mui/material/CardContent"
 import Typography from "@mui/material/Typography"
 import { Box, Link, useTheme } from "@mui/material"
 import { AvatarFace } from "../AvatarFace"
@@ -11,22 +10,38 @@ import {
   CardContainer,
   ContentContainer,
   JumpInButtonContainer,
+  LeftBadge,
   LocationChip,
   LocationChipContainer,
+  MediaContainer,
+  RightBadge,
   StyledCardActionArea,
+  StyledCardContent,
   StyledCardMedia,
 } from "./SceneCard.styled"
 
 const SceneCard = memo(
-  ({ image, sceneName, avatar, coordinates, withShadow }: SceneCardProps) => {
+  ({
+    image,
+    sceneName,
+    avatar,
+    coordinates,
+    withShadow,
+    leftBadge,
+    rightBadge,
+  }: SceneCardProps) => {
     const theme = useTheme()
     const iconColor = theme.palette.text.primary
 
     return (
       <CardContainer withShadow={withShadow}>
         <StyledCardActionArea>
-          <StyledCardMedia image={image} />
-          <CardContent>
+          <MediaContainer>
+            <StyledCardMedia image={image} />
+            {leftBadge !== undefined && <LeftBadge>{leftBadge}</LeftBadge>}
+            {rightBadge !== undefined && <RightBadge>{rightBadge}</RightBadge>}
+          </MediaContainer>
+          <StyledCardContent>
             <Box>
               <Typography gutterBottom variant="h6" component="div">
                 {sceneName}
@@ -40,6 +55,7 @@ const SceneCard = memo(
                   <Link
                     href={`https://decentraland.org/profile/accounts/${avatar?.ethAddress}`}
                     underline="none"
+                    fontWeight={theme.typography.fontWeightBold}
                   >
                     {avatar?.name}
                   </Link>
@@ -70,7 +86,7 @@ const SceneCard = memo(
                 }}
               />
             </JumpInButtonContainer>
-          </CardContent>
+          </StyledCardContent>
         </StyledCardActionArea>
       </CardContainer>
     )

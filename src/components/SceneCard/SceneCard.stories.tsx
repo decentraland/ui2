@@ -1,6 +1,7 @@
 import { Avatar } from "@dcl/schemas"
 import { SceneCard } from "./SceneCard"
 import sceneThumbnail from "../../Assets/scene-thumbnail.png"
+import { Mana } from "../Mana/Mana"
 import type { Meta, StoryObj } from "@storybook/react"
 
 const exampleAvatar: Avatar = {
@@ -122,9 +123,23 @@ const Default: Story = {
     coordinates: "alelevyyyy.eth.dcl",
     avatar: exampleAvatar,
     withShadow: true,
+    leftBadge: "1",
+    rightBadge: <Mana inline>1.5k</Mana>,
+  },
+}
+
+const WithIcon: Story = {
+  args: {
+    image: sceneThumbnail,
+    sceneName: "Featured Scene",
+    coordinates: "featured.eth.dcl",
+    avatar: exampleAvatar,
+    withShadow: true,
+    leftBadge: "🏆",
+    rightBadge: "New Scene!",
   },
 }
 
 // eslint-disable-next-line import/no-default-export
 export default meta
-export { Default }
+export { Default, WithIcon }
