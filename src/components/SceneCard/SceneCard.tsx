@@ -3,13 +3,21 @@ import CardActionArea from "@mui/material/CardActionArea"
 import CardContent from "@mui/material/CardContent"
 import CardMedia from "@mui/material/CardMedia"
 import Typography from "@mui/material/Typography"
-import { Box } from "@mui/material"
+import { Box, Chip, Link, useTheme } from "@mui/material"
 import { AvatarFace } from "../AvatarFace"
+import { LocationIcon } from "../Icon"
 import { SceneCardProps } from "./SceneCard.types"
-import { CardContainer } from "./SceneCard.styled"
+import {
+  AvatarContainer,
+  CardContainer,
+  ContentContainer,
+} from "./SceneCard.styled"
 
 const SceneCard = memo(
-  ({ image, sceneName, creator, avatar }: SceneCardProps) => {
+  ({ image, sceneName, avatar, coordinates }: SceneCardProps) => {
+    const theme = useTheme()
+    const iconColor = theme.palette.text.primary
+
     return (
       <CardContainer>
         <CardActionArea>
@@ -25,10 +33,31 @@ const SceneCard = memo(
                 {sceneName}
               </Typography>
             </Box>
-            <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-              <AvatarFace size="small" avatar={avatar} />
-              <Typography variant="body2">by {creator}</Typography>
-            </Box>
+            <ContentContainer>
+              <AvatarContainer>
+                <AvatarFace size="small" avatar={avatar} />
+                <Typography variant="body2">
+                  by{" "}
+                  <Link
+                    href={`https://decentraland.org/profile/accounts/${avatar?.ethAddress}`}
+                    underline="none"
+                  >
+                    {avatar?.name}
+                  </Link>
+                </Typography>
+              </AvatarContainer>
+              <Chip
+                label={coordinates}
+                size="small"
+                icon={<LocationIcon htmlColor={iconColor} />}
+                onClick={() => {
+                  window.open(
+                    `https://decentraland.org/profile/accounts/${avatar?.ethAddress}`,
+                    "_blank"
+                  )
+                }}
+              />
+            </ContentContainer>
           </CardContent>
         </CardActionArea>
       </CardContainer>

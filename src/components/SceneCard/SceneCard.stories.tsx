@@ -119,7 +119,7 @@ const Default: Story = {
   args: {
     image: sceneThumbnail,
     sceneName: "My Galaxy World",
-    creator: "alelevy",
+    coordinates: "alelevyyyy.eth.dcl",
     avatar: exampleAvatar,
   },
 }
