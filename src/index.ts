@@ -35,10 +35,12 @@ export * from "./components/Banner"
 export * from "./components/WearablePreview"
 export * from "./components/Profile"
 export * from "./components/Footer"
+export * from "./components/FooterLanding"
 export * from "./components/LanguageDropdown"
 export * from "./components/RarityBadge"
 export * from "./components/CatalogCard"
 export * from "./components/CreditsToggle"
+export * from "./components/SceneCard"
 
 export * as dclNetworkUtils from "./lib/network"
 
