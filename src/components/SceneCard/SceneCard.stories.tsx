@@ -121,6 +121,7 @@ const Default: Story = {
     sceneName: "My Galaxy World",
     coordinates: "alelevyyyy.eth.dcl",
     avatar: exampleAvatar,
+    withShadow: true,
   },
 }
 

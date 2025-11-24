@@ -1,32 +1,31 @@
 import { memo } from "react"
-import CardActionArea from "@mui/material/CardActionArea"
 import CardContent from "@mui/material/CardContent"
-import CardMedia from "@mui/material/CardMedia"
 import Typography from "@mui/material/Typography"
-import { Box, Chip, Link, useTheme } from "@mui/material"
+import { Box, Link, useTheme } from "@mui/material"
 import { AvatarFace } from "../AvatarFace"
 import { LocationIcon } from "../Icon"
+import { JumpIn } from "../JumpIn/JumpIn"
 import { SceneCardProps } from "./SceneCard.types"
 import {
   AvatarContainer,
   CardContainer,
   ContentContainer,
+  JumpInButtonContainer,
+  LocationChip,
+  LocationChipContainer,
+  StyledCardActionArea,
+  StyledCardMedia,
 } from "./SceneCard.styled"
 
 const SceneCard = memo(
-  ({ image, sceneName, avatar, coordinates }: SceneCardProps) => {
+  ({ image, sceneName, avatar, coordinates, withShadow }: SceneCardProps) => {
     const theme = useTheme()
     const iconColor = theme.palette.text.primary
 
     return (
-      <CardContainer>
-        <CardActionArea>
-          <CardMedia
-            component="img"
-            height="280"
-            image={image}
-            alt="scene thumbnail"
-          />
+      <CardContainer withShadow={withShadow}>
+        <StyledCardActionArea>
+          <StyledCardMedia image={image} />
           <CardContent>
             <Box>
               <Typography gutterBottom variant="h6" component="div">
@@ -46,20 +45,33 @@ const SceneCard = memo(
                   </Link>
                 </Typography>
               </AvatarContainer>
-              <Chip
-                label={coordinates}
-                size="small"
-                icon={<LocationIcon htmlColor={iconColor} />}
-                onClick={() => {
-                  window.open(
-                    `https://decentraland.org/profile/accounts/${avatar?.ethAddress}`,
-                    "_blank"
-                  )
+              <LocationChipContainer>
+                <LocationChip
+                  label={coordinates}
+                  size="small"
+                  icon={<LocationIcon htmlColor={iconColor} />}
+                  onClick={() => {
+                    window.open(
+                      `https://decentraland.org/profile/accounts/${avatar?.ethAddress}`,
+                      "_blank"
+                    )
+                  }}
+                />
+              </LocationChipContainer>
+            </ContentContainer>
+            <JumpInButtonContainer>
+              <JumpIn
+                position={coordinates}
+                variant="button"
+                modalProps={{
+                  title: "Jump In",
+                  description: "Jump In to the scene",
+                  buttonLabel: "Jump In",
                 }}
               />
-            </ContentContainer>
+            </JumpInButtonContainer>
           </CardContent>
-        </CardActionArea>
+        </StyledCardActionArea>
       </CardContainer>
     )
   }

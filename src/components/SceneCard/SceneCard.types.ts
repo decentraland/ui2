@@ -5,4 +5,5 @@ export interface SceneCardProps {
   sceneName: string
   avatar?: Avatar
   coordinates: string
+  withShadow?: boolean
 }
