@@ -7,6 +7,8 @@ import { JumpIn } from "../JumpIn/JumpIn"
 import { SceneCardHoverElement, SceneCardProps } from "./SceneCard.types"
 import {
   AvatarContainer,
+  AvatarTextContainer,
+  BadgesContainer,
   CardContainer,
   ContentContainer,
   JumpInButtonContainer,
@@ -45,15 +47,19 @@ const SceneCard = memo(
               image={image}
               shrinkOnHover={shouldShowOnHover("jumpInButton")}
             />
-            {leftBadge !== undefined && (
-              <LeftBadge showOnHover={shouldShowOnHover("leftBadge")}>
-                {leftBadge}
-              </LeftBadge>
-            )}
-            {rightBadge !== undefined && (
-              <RightBadge showOnHover={shouldShowOnHover("rightBadge")}>
-                {rightBadge}
-              </RightBadge>
+            {(leftBadge !== undefined || rightBadge !== undefined) && (
+              <BadgesContainer>
+                {leftBadge !== undefined && (
+                  <LeftBadge showOnHover={shouldShowOnHover("leftBadge")}>
+                    <Box component="span">{leftBadge}</Box>
+                  </LeftBadge>
+                )}
+                {rightBadge !== undefined && (
+                  <RightBadge showOnHover={shouldShowOnHover("rightBadge")}>
+                    <Box component="span">{rightBadge}</Box>
+                  </RightBadge>
+                )}
+              </BadgesContainer>
             )}
           </MediaContainer>
           <StyledCardContent>
@@ -65,16 +71,18 @@ const SceneCard = memo(
             <ContentContainer>
               <AvatarContainer showOnHover={shouldShowOnHover("avatar")}>
                 <AvatarFace size="small" avatar={avatar} />
-                <Typography variant="body2">
-                  by{" "}
-                  <Link
-                    href={`https://decentraland.org/profile/accounts/${avatar?.ethAddress}`}
-                    underline="none"
-                    fontWeight={theme.typography.fontWeightBold}
-                  >
-                    {avatar?.name}
-                  </Link>
-                </Typography>
+                <AvatarTextContainer>
+                  <Typography variant="body2">
+                    by{" "}
+                    <Link
+                      href={`https://decentraland.org/profile/accounts/${avatar?.ethAddress}`}
+                      underline="none"
+                      fontWeight={theme.typography.fontWeightBold}
+                    >
+                      {avatar?.name}
+                    </Link>
+                  </Typography>
+                </AvatarTextContainer>
               </AvatarContainer>
               <LocationChipContainer
                 showOnHover={shouldShowOnHover("location")}
