@@ -4,7 +4,7 @@ import { Box, Link, useTheme } from "@mui/material"
 import { AvatarFace } from "../AvatarFace"
 import { LocationIcon } from "../Icon"
 import { JumpIn } from "../JumpIn/JumpIn"
-import { SceneCardProps } from "./SceneCard.types"
+import { SceneCardHoverElement, SceneCardProps } from "./SceneCard.types"
 import {
   AvatarContainer,
   CardContainer,
@@ -29,17 +29,32 @@ const SceneCard = memo(
     withShadow,
     leftBadge,
     rightBadge,
+    showOnHover = [],
   }: SceneCardProps) => {
     const theme = useTheme()
     const iconColor = theme.palette.text.primary
+
+    const shouldShowOnHover = (element: SceneCardHoverElement) =>
+      showOnHover.includes(element)
 
     return (
       <CardContainer withShadow={withShadow}>
         <StyledCardActionArea>
           <MediaContainer>
-            <StyledCardMedia image={image} />
-            {leftBadge !== undefined && <LeftBadge>{leftBadge}</LeftBadge>}
-            {rightBadge !== undefined && <RightBadge>{rightBadge}</RightBadge>}
+            <StyledCardMedia
+              image={image}
+              shrinkOnHover={shouldShowOnHover("jumpInButton")}
+            />
+            {leftBadge !== undefined && (
+              <LeftBadge showOnHover={shouldShowOnHover("leftBadge")}>
+                {leftBadge}
+              </LeftBadge>
+            )}
+            {rightBadge !== undefined && (
+              <RightBadge showOnHover={shouldShowOnHover("rightBadge")}>
+                {rightBadge}
+              </RightBadge>
+            )}
           </MediaContainer>
           <StyledCardContent>
             <Box>
@@ -48,7 +63,7 @@ const SceneCard = memo(
               </Typography>
             </Box>
             <ContentContainer>
-              <AvatarContainer>
+              <AvatarContainer showOnHover={shouldShowOnHover("avatar")}>
                 <AvatarFace size="small" avatar={avatar} />
                 <Typography variant="body2">
                   by{" "}
@@ -61,7 +76,9 @@ const SceneCard = memo(
                   </Link>
                 </Typography>
               </AvatarContainer>
-              <LocationChipContainer>
+              <LocationChipContainer
+                showOnHover={shouldShowOnHover("location")}
+              >
                 <LocationChip
                   label={coordinates}
                   size="small"
@@ -75,7 +92,9 @@ const SceneCard = memo(
                 />
               </LocationChipContainer>
             </ContentContainer>
-            <JumpInButtonContainer>
+            <JumpInButtonContainer
+              showOnHover={shouldShowOnHover("jumpInButton")}
+            >
               <JumpIn
                 position={coordinates}
                 variant="button"

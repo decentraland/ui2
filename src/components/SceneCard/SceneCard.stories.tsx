@@ -125,6 +125,7 @@ const Default: Story = {
     withShadow: true,
     leftBadge: "1",
     rightBadge: <Mana inline>1.5k</Mana>,
+    showOnHover: ["location", "jumpInButton"],
   },
 }
 
@@ -137,9 +138,22 @@ const WithIcon: Story = {
     withShadow: true,
     leftBadge: "🏆",
     rightBadge: "New Scene!",
+    showOnHover: ["location", "jumpInButton"],
+  },
+}
+
+const AllVisible: Story = {
+  args: {
+    image: sceneThumbnail,
+    sceneName: "All Elements Visible",
+    coordinates: "allvisible.eth.dcl",
+    avatar: exampleAvatar,
+    withShadow: true,
+    leftBadge: "2",
+    rightBadge: <Mana inline>2.3k</Mana>,
   },
 }
 
 // eslint-disable-next-line import/no-default-export
 export default meta
-export { Default, WithIcon }
+export { Default, WithIcon, AllVisible }
