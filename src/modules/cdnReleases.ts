@@ -1,9 +1,7 @@
 import { OperativeSystem } from "../components/DownloadButton"
-import { config } from "../config"
 
 enum CDNSource {
   LAUNCHER = "launcher",
-  AUTO_SIGNING = "auto-signing",
   // Add future CDN sources here
 }
 
@@ -13,7 +11,7 @@ type CDNConfig = {
       amd64: string
     }
     macOS: {
-      amd64?: string
+      amd64: string
       arm64: string
     }
   }
@@ -22,7 +20,6 @@ const LAUNCHER_BASE_URL =
   "https://explorer-artifacts.decentraland.org/launcher-rust"
 const LAUNCHER_LEGACY_BASE_URL =
   "https://explorer-artifacts.decentraland.org/launcher/dcl"
-const AUTO_SIGNING_BASE_URL = config.get("AUTO_SIGNING_BASE_URL")
 
 const CDN_CONFIGS: Record<CDNSource, CDNConfig> = {
   [CDNSource.LAUNCHER]: {
@@ -36,59 +33,40 @@ const CDN_CONFIGS: Record<CDNSource, CDNConfig> = {
       },
     },
   },
-  [CDNSource.AUTO_SIGNING]: {
-    urls: {
-      [OperativeSystem.WINDOWS]: {
-        amd64: `${AUTO_SIGNING_BASE_URL}/:identityId/decentraland.exe`,
-      },
-      [OperativeSystem.MACOS]: {
-        arm64: `${AUTO_SIGNING_BASE_URL}/:identityId/decentraland.dmg`,
-      },
-    },
-  },
   // Add more CDN configurations here as needed
 }
 
-interface GetCDNRelease {
-  (
-    source: CDNSource.AUTO_SIGNING,
-    identityId: string
-  ): {
-    [OperativeSystem.WINDOWS]: { amd64: string | undefined }
-    [OperativeSystem.MACOS]: {
-      arm64: string | undefined
-    }
-  } | null
-  (source: CDNSource.LAUNCHER): {
-    [OperativeSystem.WINDOWS]: { amd64: string | undefined }
-    [OperativeSystem.MACOS]: {
-      amd64: string | undefined
-      arm64: string | undefined
-    }
-  } | null
-}
-
-const getCDNRelease: GetCDNRelease = (
-  source: CDNSource,
+const getCDNRelease = (
+  source: CDNSource = CDNSource.LAUNCHER,
   identityId?: string
-) => {
+): {
+  [OperativeSystem.WINDOWS]: { amd64: string }
+  [OperativeSystem.MACOS]: {
+    amd64: string
+    arm64: string
+  }
+} | null => {
   const config = CDN_CONFIGS[source]
   if (!config) {
     return null
   }
 
-  const replaceIdentityId = (url?: string) => {
+  const addIdentityIdQueryParam = (url: string) => {
     if (!url) return url
-    return identityId ? url.replace(":identityId", identityId) : url
+    if (!identityId) return url
+
+    const urlObj = new URL(url)
+    urlObj.searchParams.set("identityId", identityId)
+    return urlObj.toString()
   }
 
   return {
     [OperativeSystem.WINDOWS]: {
-      amd64: replaceIdentityId(config.urls.Windows.amd64),
+      amd64: addIdentityIdQueryParam(config.urls.Windows.amd64),
     },
     [OperativeSystem.MACOS]: {
-      amd64: replaceIdentityId(config.urls.macOS.amd64),
-      arm64: replaceIdentityId(config.urls.macOS.arm64),
+      amd64: config.urls.macOS.amd64,
+      arm64: addIdentityIdQueryParam(config.urls.macOS.arm64),
     },
   }
 }

@@ -122,9 +122,7 @@ const DownloadButton = React.memo((props: DownloadButtonProps) => {
         }
 
         // Recalculate links with the identityId (if available) or use LAUNCHER as fallback
-        currentLinks = currentIdentityId
-          ? getCDNRelease(CDNSource.AUTO_SIGNING, currentIdentityId)
-          : getCDNRelease(CDNSource.LAUNCHER)
+        currentLinks = getCDNRelease(CDNSource.LAUNCHER, currentIdentityId)
       }
 
       // Calculate download option with current links
