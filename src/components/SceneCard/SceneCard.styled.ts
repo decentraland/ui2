@@ -47,14 +47,24 @@ const StyledCardMedia = styled(CardMedia)<{ shrinkOnHover?: boolean }>(
   })
 )
 
+const BadgesContainer = styled(Box)(({ theme }: { theme: Theme }) => ({
+  position: "absolute",
+  top: theme.spacing(2),
+  left: theme.spacing(2),
+  right: theme.spacing(2),
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+  gap: theme.spacing(1),
+  zIndex: 1,
+}))
+
 const LeftBadge = styled(Box)<{ showOnHover?: boolean }>(
   ({ theme, showOnHover }: { theme: Theme; showOnHover?: boolean }) => ({
-    position: "absolute",
-    top: theme.spacing(2),
-    left: theme.spacing(2),
     padding: theme.spacing(1, 2),
     minWidth: theme.spacing(6),
     minHeight: theme.spacing(6),
+    maxWidth: "45%",
     backgroundColor: theme.palette.background.default,
     color: theme.palette.text.primary,
     borderRadius: theme.spacing(2),
@@ -63,11 +73,17 @@ const LeftBadge = styled(Box)<{ showOnHover?: boolean }>(
     justifyContent: "center",
     fontSize: theme.typography.h6.fontSize,
     fontWeight: theme.typography.fontWeightBold,
-    zIndex: 1,
+    overflow: "hidden",
+    "& > *": {
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+      whiteSpace: "nowrap",
+      minWidth: 0,
+      maxWidth: "100%",
+    },
     ...(showOnHover && {
       opacity: 0,
       height: 0,
-      overflow: "hidden",
       transition: "opacity 0.3s ease-in-out, height 0.3s ease-in-out",
       ".MuiCardActionArea-root:hover &": {
         opacity: 1,
@@ -79,11 +95,9 @@ const LeftBadge = styled(Box)<{ showOnHover?: boolean }>(
 
 const RightBadge = styled(Box)<{ showOnHover?: boolean }>(
   ({ theme, showOnHover }: { theme: Theme; showOnHover?: boolean }) => ({
-    position: "absolute",
-    top: theme.spacing(2),
-    right: theme.spacing(2),
     padding: theme.spacing(1, 2),
     height: theme.spacing(5.25),
+    maxWidth: "45%",
     backgroundColor: theme.palette.background.default,
     color: theme.palette.text.primary,
     borderRadius: theme.spacing(1),
@@ -91,11 +105,17 @@ const RightBadge = styled(Box)<{ showOnHover?: boolean }>(
     alignItems: "center",
     justifyContent: "center",
     fontSize: theme.typography.body1.fontSize,
-    zIndex: 1,
+    overflow: "hidden",
+    "& > *": {
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+      whiteSpace: "nowrap",
+      minWidth: 0,
+      maxWidth: "100%",
+    },
     ...(showOnHover && {
       opacity: 0,
       height: 0,
-      overflow: "hidden",
       transition: "opacity 0.3s ease-in-out, height 0.3s ease-in-out",
       ".MuiCardActionArea-root:hover &": {
         opacity: 1,
@@ -128,10 +148,13 @@ const AvatarContainer = styled(Box)<{ showOnHover?: boolean }>(
     display: "flex",
     gap: theme.spacing(1),
     alignItems: "center",
+    flex: "1 1 auto",
+    minWidth: 0,
+    maxWidth: "50%",
+    overflow: "hidden",
     ...(showOnHover && {
       opacity: 0,
       height: 0,
-      overflow: "hidden",
       transition: "opacity 0.3s ease-in-out, height 0.3s ease-in-out",
       ".MuiCardActionArea-root:hover &": {
         opacity: 1,
@@ -141,16 +164,35 @@ const AvatarContainer = styled(Box)<{ showOnHover?: boolean }>(
   })
 )
 
+const AvatarTextContainer = styled(Box)({
+  flex: 1,
+  minWidth: 0,
+  overflow: "hidden",
+  "& .MuiTypography-root": {
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
+  },
+})
+
 const LocationChipContainer = styled(Box)<{ showOnHover?: boolean }>(
   ({ showOnHover }) => ({
+    flex: "1 1 auto",
+    minWidth: 0,
+    maxWidth: "50%",
+    display: "flex",
+    justifyContent: "flex-end",
     ...(showOnHover && {
       opacity: 0,
       height: 0,
       overflow: "hidden",
-      transition: "opacity 0.3s ease-in-out, height 0.3s ease-in-out",
+      transform: "translateX(20px)",
+      transition:
+        "opacity 0.3s ease-in-out, height 0.3s ease-in-out, transform 0.3s ease-in-out",
       ".MuiCardActionArea-root:hover &": {
         opacity: 1,
         height: "auto",
+        transform: "translateX(0)",
       },
     }),
   })
@@ -159,9 +201,17 @@ const LocationChipContainer = styled(Box)<{ showOnHover?: boolean }>(
 const LocationChip = styled(Chip)(({ theme }: { theme: Theme }) => ({
   backgroundColor:
     theme.palette.mode === "dark"
-      ? theme.palette.grey[800]
-      : theme.palette.grey[200],
+      ? "rgba(0, 0, 0, 0.4)"
+      : "rgba(255, 255, 255, 0.4)",
   color: theme.palette.text.primary,
+  cursor: "pointer",
+  borderRadius: theme.spacing(0.5),
+  maxWidth: "100%",
+  "& .MuiChip-label": {
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
+  },
 }))
 
 const JumpInButtonContainer = styled(Box)<{ showOnHover?: boolean }>(
@@ -170,12 +220,14 @@ const JumpInButtonContainer = styled(Box)<{ showOnHover?: boolean }>(
       opacity: 0,
       height: 0,
       overflow: "hidden",
+      transform: "translateY(20px)",
       transition:
-        "opacity 0.3s ease-in-out, height 0.3s ease-in-out, margin-top 0.3s ease-in-out",
+        "opacity 0.3s ease-in-out, height 0.3s ease-in-out, margin-top 0.3s ease-in-out, transform 0.3s ease-in-out",
       ".MuiCardActionArea-root:hover &": {
         opacity: 1,
         height: "auto",
         marginTop: theme.spacing(4),
+        transform: "translateY(0)",
       },
     }),
   })
@@ -183,6 +235,8 @@ const JumpInButtonContainer = styled(Box)<{ showOnHover?: boolean }>(
 
 export {
   AvatarContainer,
+  AvatarTextContainer,
+  BadgesContainer,
   CardContainer,
   ContentContainer,
   LeftBadge,

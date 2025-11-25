@@ -137,7 +137,7 @@ const WithIcon: Story = {
     avatar: exampleAvatar,
     withShadow: true,
     leftBadge: "🏆",
-    rightBadge: "New Scene!",
+    rightBadge: "New Scene with long text",
     showOnHover: ["location", "jumpInButton"],
   },
 }
