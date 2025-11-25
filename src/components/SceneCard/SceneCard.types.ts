@@ -1,7 +1,14 @@
 import { ReactNode } from "react"
 import { Avatar } from "@dcl/schemas"
 
-export interface SceneCardProps {
+type SceneCardHoverElement =
+  | "leftBadge"
+  | "rightBadge"
+  | "avatar"
+  | "location"
+  | "jumpInButton"
+
+interface SceneCardProps {
   image: string
   sceneName: string
   avatar?: Avatar
@@ -9,4 +16,7 @@ export interface SceneCardProps {
   withShadow?: boolean
   leftBadge?: string | ReactNode
   rightBadge?: string | ReactNode
+  showOnHover?: SceneCardHoverElement[]
 }
+
+export type { SceneCardHoverElement, SceneCardProps }
