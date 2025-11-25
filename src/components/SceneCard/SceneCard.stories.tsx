@@ -154,6 +154,20 @@ const AllVisible: Story = {
   },
 }
 
+const WithBorder: Story = {
+  args: {
+    image: sceneThumbnail,
+    sceneName: "Scene With Border",
+    coordinates: "border.eth.dcl",
+    avatar: exampleAvatar,
+    withBorder: true,
+    withShadow: true,
+    leftBadge: "1",
+    rightBadge: <Mana inline>1.5k</Mana>,
+    showOnHover: ["location", "jumpInButton"],
+  },
+}
+
 // eslint-disable-next-line import/no-default-export
 export default meta
-export { Default, WithIcon, AllVisible }
+export { Default, WithIcon, AllVisible, WithBorder }
