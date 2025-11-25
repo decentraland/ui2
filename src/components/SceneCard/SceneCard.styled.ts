@@ -10,11 +10,26 @@ import {
 } from "@mui/material"
 import { hexToRgba } from "../../utils/colors"
 
-const CardContainer = styled(Card)<{ withShadow?: boolean }>(
-  ({ theme, withShadow }: { theme: Theme; withShadow?: boolean }) => ({
+const CardContainer = styled(Card)<{
+  withShadow?: boolean
+  withBorder?: boolean
+}>(
+  ({
+    theme,
+    withShadow,
+    withBorder,
+  }: {
+    theme: Theme
+    withShadow?: boolean
+    withBorder?: boolean
+  }) => ({
     borderRadius: theme.spacing(2),
     maxWidth: theme.spacing(43.125),
     overflow: "visible",
+    ...(withBorder && {
+      padding: theme.spacing(0.5),
+      background: "linear-gradient(to bottom, #FF2D55, #FFBC5B)",
+    }),
     "&:hover": {
       boxShadow: withShadow
         ? `0px 0px 20px 6px ${hexToRgba("#DD56FF", 0.37)}`
@@ -24,11 +39,16 @@ const CardContainer = styled(Card)<{ withShadow?: boolean }>(
   })
 )
 
-const StyledCardActionArea = styled(CardActionArea)({
-  "&:hover .MuiCardActionArea-focusHighlight": {
-    opacity: 0,
-  },
-})
+const StyledCardActionArea = styled(CardActionArea)(
+  ({ theme }: { theme: Theme }) => ({
+    borderRadius: theme.spacing(2),
+    overflow: "hidden",
+    backgroundColor: theme.palette.background.paper,
+    "&:hover .MuiCardActionArea-focusHighlight": {
+      opacity: 0,
+    },
+  })
+)
 
 const MediaContainer = styled(Box)({
   position: "relative",
@@ -205,7 +225,7 @@ const LocationChip = styled(Chip)(({ theme }: { theme: Theme }) => ({
       : "rgba(255, 255, 255, 0.4)",
   color: theme.palette.text.primary,
   cursor: "pointer",
-  borderRadius: theme.spacing(0.5),
+  borderRadius: theme.spacing(1),
   maxWidth: "100%",
   "& .MuiChip-label": {
     overflow: "hidden",

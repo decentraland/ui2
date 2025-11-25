@@ -29,6 +29,7 @@ const SceneCard = memo(
     avatar,
     coordinates,
     withShadow,
+    withBorder,
     leftBadge,
     rightBadge,
     showOnHover = [],
@@ -40,7 +41,7 @@ const SceneCard = memo(
       showOnHover.includes(element)
 
     return (
-      <CardContainer withShadow={withShadow}>
+      <CardContainer withShadow={withShadow} withBorder={withBorder}>
         <StyledCardActionArea>
           <MediaContainer>
             <StyledCardMedia
