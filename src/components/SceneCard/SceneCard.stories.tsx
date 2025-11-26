@@ -1,4 +1,5 @@
 import { Avatar } from "@dcl/schemas"
+import { Box, Typography } from "@mui/material"
 import { SceneCard } from "./SceneCard"
 import sceneThumbnail from "../../Assets/scene-thumbnail.png"
 import { Mana } from "../Mana/Mana"
@@ -168,6 +169,159 @@ const WithBorder: Story = {
   },
 }
 
+const BadgeVariations: Story = {
+  render: () => (
+    <Box
+      sx={{
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+        gap: 3,
+        width: "100%",
+        alignItems: "flex-start",
+      }}
+    >
+      <SceneCard
+        image={sceneThumbnail}
+        sceneName="Simple Numbers"
+        coordinates="numbers.eth.dcl"
+        avatar={exampleAvatar}
+        withShadow
+        leftBadge="1"
+        rightBadge={<Mana inline>1.5k</Mana>}
+        showOnHover={["location", "jumpInButton"]}
+      />
+      <SceneCard
+        image={sceneThumbnail}
+        sceneName="Emoji Badges"
+        coordinates="emojis.eth.dcl"
+        avatar={exampleAvatar}
+        withShadow
+        leftBadge="🏆"
+        rightBadge="🔥"
+        showOnHover={["location", "jumpInButton"]}
+      />
+      <SceneCard
+        image={sceneThumbnail}
+        sceneName="Custom Components"
+        coordinates="custom.eth.dcl"
+        avatar={exampleAvatar}
+        withShadow
+        leftBadge={
+          <Typography variant="caption" fontWeight="bold">
+            TOP
+          </Typography>
+        }
+        rightBadge={
+          <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
+            <Typography variant="caption">⭐</Typography>
+            <Typography variant="caption" fontWeight="bold">
+              4.8
+            </Typography>
+          </Box>
+        }
+        showOnHover={["location", "jumpInButton"]}
+      />
+      <SceneCard
+        image={sceneThumbnail}
+        sceneName="Featured Scene"
+        coordinates="featured.eth.dcl"
+        avatar={exampleAvatar}
+        withShadow
+        leftBadge="⭐"
+        rightBadge={<Mana inline>8.2k</Mana>}
+        showOnHover={["location", "jumpInButton"]}
+      />
+      <SceneCard
+        image={sceneThumbnail}
+        sceneName="New Release"
+        coordinates="newrelease.eth.dcl"
+        avatar={exampleAvatar}
+        withShadow
+        leftBadge={
+          <Typography
+            variant="caption"
+            fontWeight="bold"
+            sx={{ fontSize: "10px" }}
+          >
+            NEW
+          </Typography>
+        }
+        rightBadge={<Mana inline>890</Mana>}
+        showOnHover={["location", "jumpInButton"]}
+      />
+      <SceneCard
+        image={sceneThumbnail}
+        sceneName="Popular Place"
+        coordinates="popular.eth.dcl"
+        avatar={exampleAvatar}
+        withShadow
+        leftBadge="2"
+        rightBadge={<Mana inline>15.7k</Mana>}
+        showOnHover={["location", "jumpInButton"]}
+      />
+    </Box>
+  ),
+}
+
+const RealWorldExamples: Story = {
+  render: () => (
+    <Box
+      sx={{
+        display: "flex",
+        gap: 3,
+        flexWrap: "wrap",
+        alignItems: "flex-start",
+      }}
+    >
+      <SceneCard
+        image={sceneThumbnail}
+        sceneName="Top Ranking Scene"
+        coordinates="top-ranking.dcl.eth"
+        avatar={exampleAvatar}
+        withBorder
+        withShadow
+        leftBadge="1"
+        rightBadge={<Mana inline>25.3k</Mana>}
+        showOnHover={["location", "jumpInButton"]}
+      />
+      <SceneCard
+        image={sceneThumbnail}
+        sceneName="Featured by DCL"
+        coordinates="featured.dcl.eth"
+        avatar={exampleAvatar}
+        withShadow
+        leftBadge="⭐"
+        showOnHover={["location", "jumpInButton"]}
+      />
+      <SceneCard
+        image={sceneThumbnail}
+        sceneName="New Release"
+        coordinates="newrelease.eth.dcl"
+        avatar={exampleAvatar}
+        withShadow
+        leftBadge={
+          <Typography
+            variant="caption"
+            fontWeight="bold"
+            sx={{ fontSize: "10px" }}
+          >
+            NEW
+          </Typography>
+        }
+        rightBadge={<Mana inline>890</Mana>}
+        showOnHover={["location", "jumpInButton"]}
+      />
+    </Box>
+  ),
+}
+
 // eslint-disable-next-line import/no-default-export
 export default meta
-export { Default, WithIcon, AllVisible, WithBorder }
+export {
+  Default,
+  WithIcon,
+  AllVisible,
+  WithBorder,
+  BadgeVariations,
+  RealWorldExamples,
+}
