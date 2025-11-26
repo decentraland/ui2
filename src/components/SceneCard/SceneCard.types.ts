@@ -12,7 +12,7 @@ interface SceneCardProps {
   image: string
   sceneName: string
   avatar?: Avatar
-  coordinates: string
+  coordinates?: string
   withShadow?: boolean
   withBorder?: boolean
   leftBadge?: string | ReactNode
