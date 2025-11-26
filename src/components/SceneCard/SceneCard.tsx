@@ -42,28 +42,30 @@ const SceneCard = memo(
     const shouldShowOnHover = (element: SceneCardHoverElement) =>
       showOnHover.includes(element)
 
+    const hasVisibleButton = !shouldShowOnHover("jumpInButton")
+
     return (
       <CardContainer withShadow={withShadow} withBorder={withBorder}>
-        <StyledCardActionArea>
+        <StyledCardActionArea hasVisibleButton={hasVisibleButton}>
+          {(leftBadge !== undefined || rightBadge !== undefined) && (
+            <BadgesContainer>
+              {leftBadge !== undefined && (
+                <LeftBadge showOnHover={shouldShowOnHover("leftBadge")}>
+                  <Box component="span">{leftBadge}</Box>
+                </LeftBadge>
+              )}
+              {rightBadge !== undefined && (
+                <RightBadge showOnHover={shouldShowOnHover("rightBadge")}>
+                  <Box component="span">{rightBadge}</Box>
+                </RightBadge>
+              )}
+            </BadgesContainer>
+          )}
           <MediaContainer>
             <StyledCardMedia
               image={image}
               shrinkOnHover={shouldShowOnHover("jumpInButton")}
             />
-            {(leftBadge !== undefined || rightBadge !== undefined) && (
-              <BadgesContainer>
-                {leftBadge !== undefined && (
-                  <LeftBadge showOnHover={shouldShowOnHover("leftBadge")}>
-                    <Box component="span">{leftBadge}</Box>
-                  </LeftBadge>
-                )}
-                {rightBadge !== undefined && (
-                  <RightBadge showOnHover={shouldShowOnHover("rightBadge")}>
-                    <Box component="span">{rightBadge}</Box>
-                  </RightBadge>
-                )}
-              </BadgesContainer>
-            )}
           </MediaContainer>
           <StyledCardContent>
             <Box>

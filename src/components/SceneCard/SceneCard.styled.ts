@@ -24,50 +24,85 @@ const CardContainer = styled(Card)<{
     withBorder?: boolean
   }) => ({
     borderRadius: theme.spacing(2),
+    boxSizing: "border-box",
     maxWidth: theme.spacing(43.125),
-    overflow: "visible",
+    position: "relative",
+    overflow: "hidden",
+    transition:
+      "transform 0.1s ease-in-out, box-shadow 0.3s ease-in-out, height 0.2s ease-in-out, min-height 0.2s ease-in-out",
+
     ...(withBorder && {
-      padding: theme.spacing(0.5),
-      background: "linear-gradient(to bottom, #FF2D55, #FFBC5B)",
+      borderRadius: theme.spacing(2),
+      border: `${theme.spacing(0.5)} solid transparent`,
+
+      backgroundImage: `
+        linear-gradient(${theme.palette.background.paper}, ${theme.palette.background.paper}),
+        linear-gradient(to bottom, #FF2D55, #FFBC5B)
+      `,
+      backgroundOrigin: "border-box",
+      backgroundClip: "padding-box, border-box",
     }),
+
     [theme.breakpoints.up("sm")]: {
       "&:hover": {
         boxShadow: withShadow
           ? `0px 0px 20px 6px ${hexToRgba("#DD56FF", 0.37)}`
           : "none",
-        transition: "box-shadow 0.3s ease-in-out",
+
+        transition:
+          "transform 0.1s ease-in-out, box-shadow 0.3s ease-in-out, height 0.3s ease-in-out, min-height 0.3s ease-in-out",
       },
     },
   })
 )
 
-const StyledCardActionArea = styled(CardActionArea)(
-  ({ theme }: { theme: Theme }) => ({
+const StyledCardActionArea = styled(CardActionArea)<{
+  hasVisibleButton?: boolean
+}>(
+  ({
+    theme,
+    hasVisibleButton,
+  }: {
+    theme: Theme
+    hasVisibleButton?: boolean
+  }) => ({
     borderRadius: theme.spacing(2),
     overflow: "hidden",
+    height: hasVisibleButton ? theme.spacing(52) : theme.spacing(42),
+    display: "flex",
+    flexDirection: "column",
+    position: "relative",
     backgroundColor: theme.palette.background.paper,
     "&:hover .MuiCardActionArea-focusHighlight": {
       opacity: 0,
+    },
+    [theme.breakpoints.down("sm")]: {
+      height: "auto",
     },
   })
 )
 
 const MediaContainer = styled(Box)({
   position: "relative",
+  flexShrink: 0,
+  width: "100%",
 })
 
 const StyledCardMedia = styled(CardMedia)<{ shrinkOnHover?: boolean }>(
   ({ theme, shrinkOnHover }: { theme: Theme; shrinkOnHover?: boolean }) => ({
-    height: theme.spacing(35),
+    height: shrinkOnHover ? theme.spacing(28) : theme.spacing(32),
+    width: "100%",
     borderRadius: `${theme.spacing(2)} ${theme.spacing(2)} 0 0`,
+
     ...(shrinkOnHover && {
       [theme.breakpoints.up("sm")]: {
         transition: "height 0.3s ease-in-out",
         ".MuiCardActionArea-root:hover &": {
-          height: theme.spacing(28.125),
+          height: theme.spacing(22),
         },
       },
     }),
+
     [theme.breakpoints.down("sm")]: {
       height: theme.spacing(25),
     },
@@ -83,7 +118,11 @@ const BadgesContainer = styled(Box)(({ theme }: { theme: Theme }) => ({
   alignItems: "center",
   justifyContent: "space-between",
   gap: theme.spacing(1),
-  zIndex: 1,
+  zIndex: 10,
+  pointerEvents: "none",
+  "& > *": {
+    pointerEvents: "auto",
+  },
 }))
 
 const LeftBadge = styled(Box)<{ showOnHover?: boolean }>(
@@ -166,6 +205,8 @@ const StyledCardContent = styled(CardContent)(
         ? "rgba(0, 0, 0, 0.4)"
         : "rgba(255, 255, 255, 0.4)",
     borderRadius: `0 0 ${theme.spacing(2)} ${theme.spacing(2)}`,
+    width: "100%",
+    flex: "1 1 auto",
   })
 )
 
