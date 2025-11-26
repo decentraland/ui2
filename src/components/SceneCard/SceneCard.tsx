@@ -38,6 +38,10 @@ const SceneCard = memo(
     const theme = useTheme()
     const isMobile = useMediaQuery(theme.breakpoints.down("sm"))
     const iconColor = theme.palette.text.primary
+    const isWorld = coordinates?.includes(".eth.dcl")
+    const jumpInUrl = isWorld
+      ? `https://decentraland.org/jump?realm=${coordinates}`
+      : `https://decentraland.org/jump?position=${coordinates}`
 
     const shouldShowOnHover = (element: SceneCardHoverElement) =>
       showOnHover.includes(element)
@@ -99,10 +103,7 @@ const SceneCard = memo(
                       size="small"
                       icon={<LocationIcon htmlColor={iconColor} />}
                       onClick={() => {
-                        window.open(
-                          `https://decentraland.org/profile/accounts/${avatar?.ethAddress}`,
-                          "_blank"
-                        )
+                        window.open(jumpInUrl, "_blank")
                       }}
                     />
                   </LocationChipContainer>

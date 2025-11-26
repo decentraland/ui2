@@ -203,7 +203,7 @@ const BadgeVariations: Story = {
       <SceneCard
         image={sceneThumbnail}
         sceneName="Emoji Badges"
-        coordinates="emojis.eth.dcl"
+        coordinates="1,95"
         avatar={exampleAvatar}
         withShadow
         leftBadge="🏆"
@@ -213,7 +213,7 @@ const BadgeVariations: Story = {
       <SceneCard
         image={sceneThumbnail}
         sceneName="Custom Components"
-        coordinates="custom.eth.dcl"
+        coordinates="104,6"
         avatar={exampleAvatar}
         withShadow
         leftBadge={
