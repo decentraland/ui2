@@ -90,21 +90,23 @@ const SceneCard = memo(
                     </Typography>
                   </AvatarTextContainer>
                 </AvatarContainer>
-                <LocationChipContainer
-                  showOnHover={shouldShowOnHover("location")}
-                >
-                  <LocationChip
-                    label={coordinates}
-                    size="small"
-                    icon={<LocationIcon htmlColor={iconColor} />}
-                    onClick={() => {
-                      window.open(
-                        `https://decentraland.org/profile/accounts/${avatar?.ethAddress}`,
-                        "_blank"
-                      )
-                    }}
-                  />
-                </LocationChipContainer>
+                {coordinates && (
+                  <LocationChipContainer
+                    showOnHover={shouldShowOnHover("location")}
+                  >
+                    <LocationChip
+                      label={coordinates}
+                      size="small"
+                      icon={<LocationIcon htmlColor={iconColor} />}
+                      onClick={() => {
+                        window.open(
+                          `https://decentraland.org/profile/accounts/${avatar?.ethAddress}`,
+                          "_blank"
+                        )
+                      }}
+                    />
+                  </LocationChipContainer>
+                )}
               </AvatarAndLocationRow>
               <JumpInButtonContainer
                 showOnHover={shouldShowOnHover("jumpInButton")}

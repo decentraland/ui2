@@ -6,84 +6,85 @@ import { Mana } from "../Mana/Mana"
 import type { Meta, StoryObj } from "@storybook/react"
 
 const exampleAvatar: Avatar = {
-  hasClaimedName: false,
+  hasClaimedName: true,
   description: "",
   tutorialStep: 256,
-  name: "alelevy",
+  name: "alelevyyyy",
   userId: "0xe3fc7040653768efb2941a6c26fdb868ed36ca99",
   email: "",
   ethAddress: "0xe3fc7040653768efb2941a6c26fdb868ed36ca99",
-  version: 3,
+  version: 5,
   avatar: {
     bodyShape: "urn:decentraland:off-chain:base-avatars:BaseFemale",
     wearables: [
-      "urn:decentraland:off-chain:base-avatars:denimdungareesblue",
-      "urn:decentraland:off-chain:base-avatars:sport_blue_shoes",
-      "urn:decentraland:off-chain:base-avatars:blue_star_earring",
-      "urn:decentraland:off-chain:base-avatars:hair_anime_01",
-      "urn:decentraland:off-chain:base-avatars:eyes_04",
-      "urn:decentraland:off-chain:base-avatars:mouth_03",
+      "urn:decentraland:off-chain:base-avatars:black_top",
+      "urn:decentraland:off-chain:base-avatars:kilt",
+      "urn:decentraland:off-chain:base-avatars:SchoolShoes",
+      "urn:decentraland:off-chain:base-avatars:matrix_sunglasses",
+      "urn:decentraland:off-chain:base-avatars:thunder_02_earring",
+      "urn:decentraland:off-chain:base-avatars:hair_undere",
+      "urn:decentraland:off-chain:base-avatars:f_eyes_06",
     ],
     forceRender: [],
     emotes: [
       {
         slot: 0,
-        urn: "clap",
+        urn: "handsair",
       },
       {
         slot: 1,
-        urn: "crafting",
+        urn: "wave",
       },
       {
         slot: 2,
-        urn: "cry",
-      },
-      {
-        slot: 3,
-        urn: "dab",
-      },
-      {
-        slot: 4,
-        urn: "dance",
-      },
-      {
-        slot: 5,
-        urn: "disco",
-      },
-      {
-        slot: 6,
-        urn: "dontsee",
-      },
-      {
-        slot: 7,
         urn: "fistpump",
       },
       {
+        slot: 3,
+        urn: "dance",
+      },
+      {
+        slot: 4,
+        urn: "raiseHand",
+      },
+      {
+        slot: 5,
+        urn: "clap",
+      },
+      {
+        slot: 6,
+        urn: "money",
+      },
+      {
+        slot: 7,
+        urn: "kiss",
+      },
+      {
         slot: 8,
-        urn: "hammer",
+        urn: "headexplode",
       },
       {
         slot: 9,
-        urn: "handsair",
+        urn: "shrug",
       },
     ],
     snapshots: {
       face256:
-        "https://profile-images-bucket-43d0c58.s3.us-east-1.amazonaws.com/v1/entities/bafkreidfx4h4hw4jlyi2q53c3rqwgdx72brntgcketsvs4qwrwbf2ui6zm/face.png",
-      body: "https://profile-images-bucket-43d0c58.s3.us-east-1.amazonaws.com/v1/entities/bafkreidfx4h4hw4jlyi2q53c3rqwgdx72brntgcketsvs4qwrwbf2ui6zm/body.png",
+        "https://profile-images.decentraland.org/entities/bafkreietha7mzh7q3lk4j236vut2znwqhbiapihg46p6yrv3j4lbwlzd34/face.png",
+      body: "https://profile-images.decentraland.org/entities/bafkreietha7mzh7q3lk4j236vut2znwqhbiapihg46p6yrv3j4lbwlzd34/body.png",
     },
     eyes: {
       color: {
-        r: 0.7490196228027344,
-        g: 0.6196078658103943,
-        b: 0.3529411852359772,
+        r: 0.2235294133424759,
+        g: 0.48627451062202454,
+        b: 0.6901960968971252,
       },
     },
     hair: {
       color: {
-        r: 0.10980392247438431,
-        g: 0.10980392247438431,
-        b: 0.10980392247438431,
+        r: 0.32549020648002625,
+        g: 0.2352941334247589,
+        b: 0.1764705926179886,
       },
     },
     skin: {
@@ -97,6 +98,18 @@ const exampleAvatar: Avatar = {
   blocked: [],
   interests: [],
   hasConnectedWeb3: true,
+  country: "",
+  employmentStatus: "",
+  gender: "",
+  pronouns: "",
+  relationshipStatus: "",
+  sexualOrientation: "",
+  language: "",
+  profession: "",
+  realName: "",
+  hobbies: "",
+  birthdate: 0,
+  links: [],
 }
 
 const meta: Meta<typeof SceneCard> = {
@@ -183,11 +196,8 @@ const BadgeVariations: Story = {
       <SceneCard
         image={sceneThumbnail}
         sceneName="Simple Numbers"
-        coordinates="numbers.eth.dcl"
         avatar={exampleAvatar}
         withShadow
-        leftBadge="1"
-        rightBadge={<Mana inline>1.5k</Mana>}
         showOnHover={["location", "jumpInButton"]}
       />
       <SceneCard
