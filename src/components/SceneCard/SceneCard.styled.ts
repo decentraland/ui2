@@ -26,21 +26,28 @@ const CardContainer = styled(Card)<{
     borderRadius: theme.spacing(2),
     boxSizing: "border-box",
     maxWidth: theme.spacing(43.125),
+    backgroundColor: "transparent",
     position: "relative",
     overflow: "hidden",
     transition:
       "transform 0.1s ease-in-out, box-shadow 0.3s ease-in-out, height 0.2s ease-in-out, min-height 0.2s ease-in-out",
 
     ...(withBorder && {
-      borderRadius: theme.spacing(2),
-      border: `${theme.spacing(0.5)} solid transparent`,
-
-      backgroundImage: `
-        linear-gradient(${theme.palette.background.paper}, ${theme.palette.background.paper}),
-        linear-gradient(to bottom, #FF2D55, #FFBC5B)
-      `,
-      backgroundOrigin: "border-box",
-      backgroundClip: "padding-box, border-box",
+      padding: theme.spacing(0.5),
+      "&::before": {
+        content: '""',
+        position: "absolute",
+        inset: 0,
+        borderRadius: theme.spacing(2),
+        padding: theme.spacing(0.5),
+        background: "linear-gradient(to bottom, #FF2D55, #FFBC5B)",
+        WebkitMask:
+          "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+        WebkitMaskComposite: "xor",
+        maskComposite: "exclude",
+        pointerEvents: "none",
+        zIndex: -1,
+      },
     }),
 
     [theme.breakpoints.up("sm")]: {
@@ -72,7 +79,7 @@ const StyledCardActionArea = styled(CardActionArea)<{
     display: "flex",
     flexDirection: "column",
     position: "relative",
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: "transparent",
     "&:hover .MuiCardActionArea-focusHighlight": {
       opacity: 0,
     },
