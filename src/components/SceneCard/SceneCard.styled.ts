@@ -33,20 +33,19 @@ const CardContainer = styled(Card)<{
       "transform 0.1s ease-in-out, box-shadow 0.3s ease-in-out, height 0.2s ease-in-out, min-height 0.2s ease-in-out",
 
     ...(withBorder && {
-      padding: theme.spacing(0.5),
       "&::before": {
         content: '""',
         position: "absolute",
         inset: 0,
         borderRadius: theme.spacing(2),
-        padding: theme.spacing(0.5),
         background: "linear-gradient(to bottom, #FF2D55, #FFBC5B)",
-        WebkitMask:
-          "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+        mask: `linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)`,
+        WebkitMask: `linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)`,
         WebkitMaskComposite: "xor",
         maskComposite: "exclude",
+        padding: theme.spacing(0.5),
         pointerEvents: "none",
-        zIndex: -1,
+        zIndex: 1,
       },
     }),
 
@@ -157,11 +156,11 @@ const LeftBadge = styled(Box)<{ showOnHover?: boolean }>(
     ...(showOnHover && {
       [theme.breakpoints.up("sm")]: {
         opacity: 0,
-        height: 0,
-        transition: "opacity 0.3s ease-in-out, height 0.3s ease-in-out",
+        visibility: "hidden",
+        transition: "opacity 0.3s ease-in-out, visibility 0.3s ease-in-out",
         ".MuiCardActionArea-root:hover &": {
           opacity: 1,
-          height: "auto",
+          visibility: "visible",
         },
       },
     }),
@@ -194,11 +193,11 @@ const RightBadge = styled(Box)<{ showOnHover?: boolean }>(
     ...(showOnHover && {
       [theme.breakpoints.up("sm")]: {
         opacity: 0,
-        height: 0,
-        transition: "opacity 0.3s ease-in-out, height 0.3s ease-in-out",
+        visibility: "hidden",
+        transition: "opacity 0.3s ease-in-out, visibility 0.3s ease-in-out",
         ".MuiCardActionArea-root:hover &": {
           opacity: 1,
-          height: "auto",
+          visibility: "visible",
         },
       },
     }),
@@ -235,7 +234,7 @@ const AvatarContainer = styled(Box)<{ showOnHover?: boolean }>(
     alignItems: "center",
     flex: "1 1 auto",
     minWidth: 0,
-    maxWidth: "65%",
+    maxWidth: "50%",
     overflow: "hidden",
     [theme.breakpoints.down("sm")]: {
       maxWidth: "100%",
@@ -278,7 +277,7 @@ const LocationChipContainer = styled(Box)<{ showOnHover?: boolean }>(
   ({ theme, showOnHover }: { theme: Theme; showOnHover?: boolean }) => ({
     flex: "1 1 auto",
     minWidth: 0,
-    maxWidth: "35%",
+    maxWidth: "50%",
     display: "flex",
     justifyContent: "flex-end",
     ...(showOnHover && {
