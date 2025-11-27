@@ -25,7 +25,7 @@ const CardContainer = styled(Card)<{
   }) => ({
     borderRadius: theme.spacing(2),
     boxSizing: "border-box",
-    maxWidth: theme.spacing(43.125),
+    maxWidth: theme.spacing(50.625),
     backgroundColor: "transparent",
     position: "relative",
     overflow: "hidden",
@@ -99,6 +99,8 @@ const StyledCardMedia = styled(CardMedia)<{ shrinkOnHover?: boolean }>(
     height: shrinkOnHover ? theme.spacing(28) : theme.spacing(32),
     width: "100%",
     borderRadius: `${theme.spacing(2)} ${theme.spacing(2)} 0 0`,
+    backgroundSize: "cover",
+    paddingBottom: "50%",
 
     ...(shrinkOnHover && {
       [theme.breakpoints.up("sm")]: {
