@@ -12,7 +12,7 @@ import { replaceWithValues } from "../../utils"
 const GiftNotification = React.memo(
   (props: CommonNotificationProps<GiftNotificationProps>) => {
     const { notification, locale, renderProfile } = props
-    const sender =
+    const player =
       renderProfile?.(notification.metadata.senderAddress) ??
       notification.metadata.senderAddress
     return (
@@ -23,7 +23,7 @@ const GiftNotification = React.memo(
         locale={locale}
       >
         <NotificationItemTitle>
-          {replaceWithValues(i18n[locale].title, { sender })}
+          {replaceWithValues(i18n[locale].title, { player })}
         </NotificationItemTitle>
         <NotificationItemDescription color="inherit" underline="none">
           {i18n[locale].description}
