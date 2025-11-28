@@ -30,6 +30,7 @@ const IconBadgeButtonContainer = styled(ButtonMui)<IconBadgeButtonProps>((
 
 const ImageContainer = styled(Box)({
   display: "flex",
+  marginRight: "0.3em",
   "& svg path": {
     fill: textOnNeutral.gray1,
   },
@@ -38,9 +39,6 @@ const ImageContainer = styled(Box)({
 const TextContainer = styled(Typography)({
   fontSize: "inherit",
   color: "inherit",
-  ":not(:first-child)": {
-    paddingLeft: "0.3em",
-  },
 })
 
 export { IconBadgeButtonContainer, ImageContainer, TextContainer }

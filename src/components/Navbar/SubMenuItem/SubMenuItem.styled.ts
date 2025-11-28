@@ -36,7 +36,7 @@ const SubMenuItemContainer = styled(Box, {
     marginTop: "52px",
     position: "relative",
     ...otherStyles,
-    "&:not(:first-child)": {
+    "&:nth-child(n+2)": {
       marginTop: "32px",
     },
     "&:hover": {
