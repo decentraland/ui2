@@ -74,7 +74,7 @@ const StyledCardActionArea = styled(CardActionArea)<{
   }) => ({
     borderRadius: theme.spacing(2),
     overflow: "hidden",
-    height: hasVisibleButton ? theme.spacing(52) : theme.spacing(42),
+    height: hasVisibleButton ? theme.spacing(56) : theme.spacing(47),
     display: "flex",
     flexDirection: "column",
     position: "relative",
@@ -106,7 +106,7 @@ const StyledCardMedia = styled(CardMedia)<{ shrinkOnHover?: boolean }>(
       [theme.breakpoints.up("sm")]: {
         transition: "height 0.3s ease-in-out",
         ".MuiCardActionArea-root:hover &": {
-          height: theme.spacing(22),
+          height: theme.spacing(24),
         },
       },
     }),
@@ -213,15 +213,27 @@ const StyledCardContent = styled(CardContent)(
         ? "rgba(0, 0, 0, 0.4)"
         : "rgba(255, 255, 255, 0.4)",
     borderRadius: `0 0 ${theme.spacing(2)} ${theme.spacing(2)}`,
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
     width: "100%",
     flex: "1 1 auto",
   })
 )
 
+const SceneTitle = styled(Box)({
+  display: "-webkit-box",
+  WebkitLineClamp: 2,
+  WebkitBoxOrient: "vertical",
+  overflow: "hidden",
+  textOverflow: "ellipsis",
+  wordBreak: "break-word",
+})
+
 const ContentContainer = styled(Box)(({ theme }: { theme: Theme }) => ({
   display: "flex",
   flexDirection: "column",
-  gap: theme.spacing(2),
+  gap: theme.spacing(1),
   [theme.breakpoints.down("sm")]: {
     flexDirection: "row",
     alignItems: "center",
@@ -344,12 +356,13 @@ export {
   BadgesContainer,
   CardContainer,
   ContentContainer,
+  JumpInButtonContainer,
   LeftBadge,
   LocationChip,
   LocationChipContainer,
-  JumpInButtonContainer,
   MediaContainer,
   RightBadge,
+  SceneTitle,
   StyledCardActionArea,
   StyledCardContent,
   StyledCardMedia,
