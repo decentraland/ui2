@@ -1,6 +1,7 @@
 import { memo } from "react"
 import Typography from "@mui/material/Typography"
-import { Box, Link, useMediaQuery, useTheme } from "@mui/material"
+import { useTheme } from "@emotion/react"
+import { Box, Link, useMediaQuery } from "@mui/material"
 import { AvatarFace } from "../AvatarFace"
 import { LocationIcon } from "../Icon"
 import { JumpIn } from "../JumpIn/JumpIn"

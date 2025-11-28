@@ -5,7 +5,6 @@ import {
   CardContent,
   CardMedia,
   Chip,
-  Theme,
   styled,
 } from "@mui/material"
 import { hexToRgba } from "../../utils/colors"
@@ -13,80 +12,80 @@ import { hexToRgba } from "../../utils/colors"
 const CardContainer = styled(Card)<{
   withShadow?: boolean
   withBorder?: boolean
-}>(
-  ({
-    theme,
-    withShadow,
-    withBorder,
-  }: {
-    theme: Theme
-    withShadow?: boolean
-    withBorder?: boolean
-  }) => ({
-    borderRadius: theme.spacing(2),
-    boxSizing: "border-box",
-    maxWidth: theme.spacing(50.625),
-    backgroundColor: "transparent",
-    position: "relative",
-    overflow: "hidden",
-    transition:
-      "transform 0.1s ease-in-out, box-shadow 0.3s ease-in-out, height 0.2s ease-in-out, min-height 0.2s ease-in-out",
-
-    ...(withBorder && {
-      "&::before": {
-        content: '""',
-        position: "absolute",
-        inset: 0,
-        borderRadius: theme.spacing(2),
-        background: "linear-gradient(to bottom, #FF2D55, #FFBC5B)",
-        mask: `linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)`,
-        WebkitMask: `linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)`,
-        WebkitMaskComposite: "xor",
-        maskComposite: "exclude",
-        padding: theme.spacing(0.5),
-        pointerEvents: "none",
-        zIndex: 1,
-      },
+}>(({ theme, withShadow, withBorder }) => ({
+  borderRadius: theme.spacing(2),
+  boxSizing: "border-box",
+  maxWidth: theme.spacing(50.625),
+  backgroundColor: "transparent",
+  position: "relative",
+  overflow: "hidden",
+  transition: [
+    theme.transitions.create("transform", {
+      duration: theme.transitions.duration.complex,
     }),
+    theme.transitions.create("box-shadow", {
+      duration: theme.transitions.duration.complex,
+    }),
+    theme.transitions.create(["height", "min-height"], {
+      duration: theme.transitions.duration.complex,
+    }),
+  ],
+  // transition:
+  //   "transform 0.1s ease-in-out, box-shadow 0.3s ease-in-out, height 0.2s ease-in-out, min-height 0.2s ease-in-out",
 
-    [theme.breakpoints.up("sm")]: {
-      "&:hover": {
-        boxShadow: withShadow
-          ? `0px 0px 20px 6px ${hexToRgba("#DD56FF", 0.37)}`
-          : "none",
-
-        transition:
-          "transform 0.1s ease-in-out, box-shadow 0.3s ease-in-out, height 0.3s ease-in-out, min-height 0.3s ease-in-out",
-      },
+  ...(withBorder && {
+    "&::before": {
+      content: '""',
+      position: "absolute",
+      inset: 0,
+      borderRadius: theme.spacing(2),
+      background: "linear-gradient(to bottom, #FF2D55, #FFBC5B)",
+      mask: `linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)`,
+      maskComposite: "exclude",
+      padding: theme.spacing(0.5),
+      pointerEvents: "none",
+      zIndex: 1,
     },
-  })
-)
+  }),
+
+  [theme.breakpoints.up("sm")]: {
+    "&:hover": {
+      boxShadow: withShadow
+        ? `0px 0px 20px 6px ${hexToRgba("#DD56FF", 0.37)}`
+        : "none",
+
+      transition: [
+        theme.transitions.create("transform", {
+          duration: theme.transitions.duration.complex,
+        }),
+        theme.transitions.create("box-shadow", {
+          duration: theme.transitions.duration.complex,
+        }),
+        theme.transitions.create(["height", "min-height"], {
+          duration: theme.transitions.duration.complex,
+        }),
+      ].join(", "),
+    },
+  },
+}))
 
 const StyledCardActionArea = styled(CardActionArea)<{
   hasVisibleButton?: boolean
-}>(
-  ({
-    theme,
-    hasVisibleButton,
-  }: {
-    theme: Theme
-    hasVisibleButton?: boolean
-  }) => ({
-    borderRadius: theme.spacing(2),
-    overflow: "hidden",
-    height: hasVisibleButton ? theme.spacing(56) : theme.spacing(47),
-    display: "flex",
-    flexDirection: "column",
-    position: "relative",
-    backgroundColor: "transparent",
-    "&:hover .MuiCardActionArea-focusHighlight": {
-      opacity: 0,
-    },
-    [theme.breakpoints.down("sm")]: {
-      height: "auto",
-    },
-  })
-)
+}>(({ theme, hasVisibleButton }) => ({
+  borderRadius: theme.spacing(2),
+  overflow: "hidden",
+  height: hasVisibleButton ? theme.spacing(56) : theme.spacing(47),
+  display: "flex",
+  flexDirection: "column",
+  position: "relative",
+  backgroundColor: "transparent",
+  "&:hover .MuiCardActionArea-focusHighlight": {
+    opacity: 0,
+  },
+  [theme.breakpoints.down("sm")]: {
+    height: "auto",
+  },
+}))
 
 const MediaContainer = styled(Box)({
   position: "relative",
@@ -95,7 +94,7 @@ const MediaContainer = styled(Box)({
 })
 
 const StyledCardMedia = styled(CardMedia)<{ shrinkOnHover?: boolean }>(
-  ({ theme, shrinkOnHover }: { theme: Theme; shrinkOnHover?: boolean }) => ({
+  ({ theme, shrinkOnHover }) => ({
     height: shrinkOnHover ? theme.spacing(28) : theme.spacing(32),
     width: "100%",
     borderRadius: `${theme.spacing(2)} ${theme.spacing(2)} 0 0`,
@@ -104,7 +103,9 @@ const StyledCardMedia = styled(CardMedia)<{ shrinkOnHover?: boolean }>(
 
     ...(shrinkOnHover && {
       [theme.breakpoints.up("sm")]: {
-        transition: "height 0.3s ease-in-out",
+        transition: theme.transitions.create("height", {
+          duration: theme.transitions.duration.complex,
+        }),
         ".MuiCardActionArea-root:hover &": {
           height: theme.spacing(24),
         },
@@ -117,7 +118,7 @@ const StyledCardMedia = styled(CardMedia)<{ shrinkOnHover?: boolean }>(
   })
 )
 
-const BadgesContainer = styled(Box)(({ theme }: { theme: Theme }) => ({
+const BadgesContainer = styled(Box)(({ theme }) => ({
   position: "absolute",
   top: theme.spacing(2),
   left: theme.spacing(2),
@@ -134,7 +135,7 @@ const BadgesContainer = styled(Box)(({ theme }: { theme: Theme }) => ({
 }))
 
 const LeftBadge = styled(Box)<{ showOnHover?: boolean }>(
-  ({ theme, showOnHover }: { theme: Theme; showOnHover?: boolean }) => ({
+  ({ theme, showOnHover }) => ({
     padding: theme.spacing(1, 2),
     minWidth: theme.spacing(6),
     height: theme.spacing(6),
@@ -159,7 +160,14 @@ const LeftBadge = styled(Box)<{ showOnHover?: boolean }>(
       [theme.breakpoints.up("sm")]: {
         opacity: 0,
         visibility: "hidden",
-        transition: "opacity 0.3s ease-in-out, visibility 0.3s ease-in-out",
+        transition: [
+          theme.transitions.create("opacity", {
+            duration: theme.transitions.duration.complex,
+          }),
+          theme.transitions.create("visibility", {
+            duration: theme.transitions.duration.complex,
+          }),
+        ].join(", "),
         ".MuiCardActionArea-root:hover &": {
           opacity: 1,
           visibility: "visible",
@@ -173,7 +181,7 @@ const LeftBadge = styled(Box)<{ showOnHover?: boolean }>(
 )
 
 const RightBadge = styled(Box)<{ showOnHover?: boolean }>(
-  ({ theme, showOnHover }: { theme: Theme; showOnHover?: boolean }) => ({
+  ({ theme, showOnHover }) => ({
     padding: theme.spacing(1, 2),
     height: theme.spacing(4),
     maxWidth: "45%",
@@ -196,7 +204,14 @@ const RightBadge = styled(Box)<{ showOnHover?: boolean }>(
       [theme.breakpoints.up("sm")]: {
         opacity: 0,
         visibility: "hidden",
-        transition: "opacity 0.3s ease-in-out, visibility 0.3s ease-in-out",
+        transition: [
+          theme.transitions.create("opacity", {
+            duration: theme.transitions.duration.complex,
+          }),
+          theme.transitions.create("visibility", {
+            duration: theme.transitions.duration.complex,
+          }),
+        ].join(", "),
         ".MuiCardActionArea-root:hover &": {
           opacity: 1,
           visibility: "visible",
@@ -206,20 +221,18 @@ const RightBadge = styled(Box)<{ showOnHover?: boolean }>(
   })
 )
 
-const StyledCardContent = styled(CardContent)(
-  ({ theme }: { theme: Theme }) => ({
-    backgroundColor:
-      theme.palette.mode === "dark"
-        ? "rgba(0, 0, 0, 0.4)"
-        : "rgba(255, 255, 255, 0.4)",
-    borderRadius: `0 0 ${theme.spacing(2)} ${theme.spacing(2)}`,
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-between",
-    width: "100%",
-    flex: "1 1 auto",
-  })
-)
+const StyledCardContent = styled(CardContent)(({ theme }) => ({
+  backgroundColor:
+    theme.palette.mode === "dark"
+      ? "rgba(0, 0, 0, 0.4)"
+      : "rgba(255, 255, 255, 0.4)",
+  borderRadius: `0 0 ${theme.spacing(2)} ${theme.spacing(2)}`,
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "space-between",
+  width: "100%",
+  flex: "1 1 auto",
+}))
 
 const SceneTitle = styled(Box)({
   display: "-webkit-box",
@@ -230,7 +243,7 @@ const SceneTitle = styled(Box)({
   wordBreak: "break-word",
 })
 
-const ContentContainer = styled(Box)(({ theme }: { theme: Theme }) => ({
+const ContentContainer = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   gap: theme.spacing(1),
@@ -242,7 +255,7 @@ const ContentContainer = styled(Box)(({ theme }: { theme: Theme }) => ({
 }))
 
 const AvatarContainer = styled(Box)<{ showOnHover?: boolean }>(
-  ({ theme, showOnHover }: { theme: Theme; showOnHover?: boolean }) => ({
+  ({ theme, showOnHover }) => ({
     display: "flex",
     gap: theme.spacing(1),
     alignItems: "center",
@@ -257,7 +270,14 @@ const AvatarContainer = styled(Box)<{ showOnHover?: boolean }>(
       [theme.breakpoints.up("sm")]: {
         opacity: 0,
         height: 0,
-        transition: "opacity 0.3s ease-in-out, height 0.3s ease-in-out",
+        transition: [
+          theme.transitions.create("opacity", {
+            duration: theme.transitions.duration.complex,
+          }),
+          theme.transitions.create("height", {
+            duration: theme.transitions.duration.complex,
+          }),
+        ].join(", "),
         ".MuiCardActionArea-root:hover &": {
           opacity: 1,
           height: "auto",
@@ -278,7 +298,7 @@ const AvatarTextContainer = styled(Box)({
   },
 })
 
-const AvatarAndLocationRow = styled(Box)(({ theme }: { theme: Theme }) => ({
+const AvatarAndLocationRow = styled(Box)(({ theme }) => ({
   display: "flex",
   gap: theme.spacing(1),
   alignItems: "center",
@@ -288,7 +308,7 @@ const AvatarAndLocationRow = styled(Box)(({ theme }: { theme: Theme }) => ({
 }))
 
 const LocationChipContainer = styled(Box)<{ showOnHover?: boolean }>(
-  ({ theme, showOnHover }: { theme: Theme; showOnHover?: boolean }) => ({
+  ({ theme, showOnHover }) => ({
     flex: "1 1 auto",
     minWidth: 0,
     maxWidth: "50%",
@@ -299,8 +319,17 @@ const LocationChipContainer = styled(Box)<{ showOnHover?: boolean }>(
       height: 0,
       overflow: "hidden",
       transform: "translateX(20px)",
-      transition:
-        "opacity 0.3s ease-in-out, height 0.3s ease-in-out, transform 0.3s ease-in-out",
+      transition: [
+        theme.transitions.create("opacity", {
+          duration: theme.transitions.duration.complex,
+        }),
+        theme.transitions.create("height", {
+          duration: theme.transitions.duration.complex,
+        }),
+        theme.transitions.create("transform", {
+          duration: theme.transitions.duration.complex,
+        }),
+      ].join(", "),
       ".MuiCardActionArea-root:hover &": {
         opacity: 1,
         height: "auto",
@@ -313,7 +342,7 @@ const LocationChipContainer = styled(Box)<{ showOnHover?: boolean }>(
   })
 )
 
-const LocationChip = styled(Chip)(({ theme }: { theme: Theme }) => ({
+const LocationChip = styled(Chip)(({ theme }) => ({
   backgroundColor:
     theme.palette.mode === "dark"
       ? "rgba(0, 0, 0, 0.4)"
@@ -330,15 +359,24 @@ const LocationChip = styled(Chip)(({ theme }: { theme: Theme }) => ({
 }))
 
 const JumpInButtonContainer = styled(Box)<{ showOnHover?: boolean }>(
-  ({ theme, showOnHover }: { theme: Theme; showOnHover?: boolean }) => ({
+  ({ theme, showOnHover }) => ({
     ...(showOnHover && {
       [theme.breakpoints.up("sm")]: {
         opacity: 0,
         height: 0,
         overflow: "hidden",
         transform: "translateY(20px)",
-        transition:
-          "opacity 0.3s ease-in-out, height 0.3s ease-in-out, transform 0.3s ease-in-out",
+        transition: [
+          theme.transitions.create("opacity", {
+            duration: theme.transitions.duration.complex,
+          }),
+          theme.transitions.create("height", {
+            duration: theme.transitions.duration.complex,
+          }),
+          theme.transitions.create("transform", {
+            duration: theme.transitions.duration.complex,
+          }),
+        ].join(", "),
         ".MuiCardActionArea-root:hover &": {
           opacity: 1,
           height: "auto",
