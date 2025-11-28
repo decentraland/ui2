@@ -18,6 +18,7 @@ import {
   LocationChipContainer,
   MediaContainer,
   RightBadge,
+  SceneTitle,
   StyledCardActionArea,
   StyledCardContent,
   StyledCardMedia,
@@ -72,11 +73,11 @@ const SceneCard = memo(
             />
           </MediaContainer>
           <StyledCardContent>
-            <Box>
+            <SceneTitle>
               <Typography gutterBottom variant="h6" component="div">
                 {sceneName}
               </Typography>
-            </Box>
+            </SceneTitle>
             <ContentContainer>
               <AvatarAndLocationRow>
                 <AvatarContainer showOnHover={shouldShowOnHover("avatar")}>

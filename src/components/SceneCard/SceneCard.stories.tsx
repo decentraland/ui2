@@ -195,7 +195,7 @@ const BadgeVariations: Story = {
     >
       <SceneCard
         image={sceneThumbnail}
-        sceneName="Simple Numbers"
+        sceneName="Simple Numbers and the text title is long and 2 lines"
         avatar={exampleAvatar}
         withShadow
         showOnHover={["location", "jumpInButton"]}
@@ -388,7 +388,7 @@ const ShowOnHoverVariations: Story = {
       />
       <SceneCard
         image={sceneThumbnail}
-        sceneName="Button on Hover"
+        sceneName="Button on Hover and Long text Title"
         coordinates="button-hover.dcl.eth"
         avatar={exampleAvatar}
         withShadow
@@ -398,7 +398,7 @@ const ShowOnHoverVariations: Story = {
       />
       <SceneCard
         image={sceneThumbnail}
-        sceneName="Both Badges on Hover"
+        sceneName="Both Badges on Hover and Long text Title"
         coordinates="badges-hover.dcl.eth"
         avatar={exampleAvatar}
         withShadow
