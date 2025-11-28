@@ -113,7 +113,7 @@ const exampleAvatar: Avatar = {
 }
 
 const meta: Meta<typeof SceneCard> = {
-  title: "Decentraland UI/SceneCard",
+  title: "Decentraland UI/Cards/Scene Card",
   component: SceneCard,
   parameters: {
     layout: "padded",
