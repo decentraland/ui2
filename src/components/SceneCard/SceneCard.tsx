@@ -1,7 +1,6 @@
 import { memo } from "react"
 import Typography from "@mui/material/Typography"
-import { useTheme } from "@emotion/react"
-import { Box, useMediaQuery } from "@mui/material"
+import { Box } from "@mui/material"
 import { AvatarFace } from "../AvatarFace"
 import { LocationIcon } from "../Icon"
 import { JumpIn } from "../JumpIn/JumpIn"
@@ -15,6 +14,7 @@ import {
   CardContainer,
   ContentContainer,
   JumpInButtonContainer,
+  JumpInMobileButton,
   LeftBadge,
   LocationChip,
   LocationChipContainer,
@@ -38,8 +38,6 @@ const SceneCard = memo(
     rightBadge,
     showOnHover = [],
   }: SceneCardProps) => {
-    const theme = useTheme()
-    const isMobile = useMediaQuery(theme.breakpoints.down("sm"))
     const isWorld = coordinates?.includes(".eth.dcl")
     const jumpInUrl = isWorld
       ? `https://decentraland.org/jump?realm=${coordinates}`
@@ -74,50 +72,60 @@ const SceneCard = memo(
             />
           </MediaContainer>
           <StyledCardContent>
-            <SceneTitle>
-              <Typography gutterBottom variant="h6" component="div">
-                {sceneName}
-              </Typography>
-            </SceneTitle>
             <ContentContainer>
-              <AvatarAndLocationRow>
-                <AvatarContainer showOnHover={shouldShowOnHover("avatar")}>
-                  <AvatarFace size="small" avatar={avatar} />
-                  <AvatarTextContainer>
-                    <Typography variant="body2">
-                      by{" "}
-                      <AvatarLink
-                        href={`https://decentraland.org/profile/accounts/${avatar?.ethAddress}`}
-                      >
-                        {avatar?.name}
-                      </AvatarLink>
-                    </Typography>
-                  </AvatarTextContainer>
-                </AvatarContainer>
-                {coordinates && (
-                  <LocationChipContainer
-                    showOnHover={shouldShowOnHover("location")}
-                  >
-                    <LocationChip
-                      label={coordinates}
-                      size="small"
-                      icon={<LocationIcon />}
-                      onClick={() => {
-                        window.open(jumpInUrl, "_blank")
+              <Box sx={{ width: "100%" }}>
+                <SceneTitle>
+                  <Typography variant="h6" component="div" gutterBottom>
+                    {sceneName}
+                  </Typography>
+                </SceneTitle>
+                <AvatarAndLocationRow>
+                  <AvatarContainer showOnHover={shouldShowOnHover("avatar")}>
+                    <AvatarFace size="small" avatar={avatar} />
+                    <AvatarTextContainer>
+                      <Typography variant="body2">
+                        by{" "}
+                        <AvatarLink
+                          href={`https://decentraland.org/profile/accounts/${avatar?.ethAddress}`}
+                        >
+                          {avatar?.name}
+                        </AvatarLink>
+                      </Typography>
+                    </AvatarTextContainer>
+                  </AvatarContainer>
+                  {coordinates && (
+                    <LocationChipContainer
+                      showOnHover={shouldShowOnHover("location")}
+                    >
+                      <LocationChip
+                        label={coordinates}
+                        size="small"
+                        icon={<LocationIcon />}
+                        onClick={() => {
+                          window.open(jumpInUrl, "_blank")
+                        }}
+                      />
+                    </LocationChipContainer>
+                  )}
+                  <JumpInMobileButton>
+                    <JumpIn
+                      position={coordinates}
+                      variant="button"
+                      modalProps={{
+                        title: "Jump In",
+                        description: "Jump In to the scene",
+                        buttonLabel: "Jump In",
                       }}
                     />
-                  </LocationChipContainer>
-                )}
-              </AvatarAndLocationRow>
+                  </JumpInMobileButton>
+                </AvatarAndLocationRow>
+              </Box>
               <JumpInButtonContainer
                 showOnHover={shouldShowOnHover("jumpInButton")}
               >
                 <JumpIn
                   position={coordinates}
                   variant="button"
-                  buttonProps={
-                    isMobile ? { sx: { height: theme.spacing(4) } } : undefined
-                  }
                   modalProps={{
                     title: "Jump In",
                     description: "Jump In to the scene",

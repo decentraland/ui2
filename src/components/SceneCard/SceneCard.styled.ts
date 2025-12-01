@@ -247,6 +247,8 @@ const SceneTitle = styled(Box)({
 const ContentContainer = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
+  height: "100%",
+  justifyContent: "space-between",
   gap: theme.spacing(1),
   [theme.breakpoints.down("sm")]: {
     flexDirection: "row",
@@ -261,7 +263,6 @@ const AvatarContainer = styled(Box)<{ showOnHover?: boolean }>(
     gap: theme.spacing(1),
     alignItems: "center",
     flex: "1 1 auto",
-    minWidth: 0,
     maxWidth: "50%",
     overflow: "hidden",
     [theme.breakpoints.down("sm")]: {
@@ -396,8 +397,23 @@ const JumpInButtonContainer = styled(Box)<{ showOnHover?: boolean }>(
         },
       },
     }),
+    [theme.breakpoints.down("sm")]: {
+      display: "none",
+    },
   })
 )
+
+const JumpInMobileButton = styled(Box)(({ theme }) => ({
+  display: "none",
+  [theme.breakpoints.down("sm")]: {
+    display: "flex",
+    width: "fit-content",
+    flexShrink: 0,
+  },
+  "& .MuiButton-root": {
+    height: "fit-content",
+  },
+}))
 
 export {
   AvatarAndLocationRow,
@@ -408,6 +424,7 @@ export {
   CardContainer,
   ContentContainer,
   JumpInButtonContainer,
+  JumpInMobileButton,
   LeftBadge,
   LocationChip,
   LocationChipContainer,
