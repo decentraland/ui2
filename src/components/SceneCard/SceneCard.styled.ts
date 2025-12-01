@@ -75,7 +75,7 @@ const StyledCardActionArea = styled(CardActionArea)<{
 }>(({ theme, hasVisibleButton }) => ({
   borderRadius: theme.spacing(2),
   overflow: "hidden",
-  height: hasVisibleButton ? theme.spacing(56) : theme.spacing(47),
+  height: hasVisibleButton ? theme.spacing(56) : theme.spacing(48.5),
   display: "flex",
   flexDirection: "column",
   position: "relative",
