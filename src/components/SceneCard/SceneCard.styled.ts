@@ -5,6 +5,7 @@ import {
   CardContent,
   CardMedia,
   Chip,
+  Link,
   styled,
 } from "@mui/material"
 import { hexToRgba } from "../../utils/colors"
@@ -298,6 +299,14 @@ const AvatarTextContainer = styled(Box)({
   },
 })
 
+const AvatarLink = styled(Link)(({ theme }) => ({
+  textDecoration: "none",
+  fontWeight: theme.typography.fontWeightBold,
+  "&:hover": {
+    textDecoration: "none",
+  },
+}))
+
 const AvatarAndLocationRow = styled(Box)(({ theme }) => ({
   display: "flex",
   gap: theme.spacing(1),
@@ -356,6 +365,9 @@ const LocationChip = styled(Chip)(({ theme }) => ({
     textOverflow: "ellipsis",
     whiteSpace: "nowrap",
   },
+  "& path:last-child": {
+    fill: theme.palette.text.primary,
+  },
 }))
 
 const JumpInButtonContainer = styled(Box)<{ showOnHover?: boolean }>(
@@ -390,6 +402,7 @@ const JumpInButtonContainer = styled(Box)<{ showOnHover?: boolean }>(
 export {
   AvatarAndLocationRow,
   AvatarContainer,
+  AvatarLink,
   AvatarTextContainer,
   BadgesContainer,
   CardContainer,

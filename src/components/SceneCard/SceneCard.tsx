@@ -1,7 +1,7 @@
 import { memo } from "react"
 import Typography from "@mui/material/Typography"
 import { useTheme } from "@emotion/react"
-import { Box, Link, useMediaQuery } from "@mui/material"
+import { Box, useMediaQuery } from "@mui/material"
 import { AvatarFace } from "../AvatarFace"
 import { LocationIcon } from "../Icon"
 import { JumpIn } from "../JumpIn/JumpIn"
@@ -9,6 +9,7 @@ import { SceneCardHoverElement, SceneCardProps } from "./SceneCard.types"
 import {
   AvatarAndLocationRow,
   AvatarContainer,
+  AvatarLink,
   AvatarTextContainer,
   BadgesContainer,
   CardContainer,
@@ -39,7 +40,6 @@ const SceneCard = memo(
   }: SceneCardProps) => {
     const theme = useTheme()
     const isMobile = useMediaQuery(theme.breakpoints.down("sm"))
-    const iconColor = theme.palette.text.primary
     const isWorld = coordinates?.includes(".eth.dcl")
     const jumpInUrl = isWorld
       ? `https://decentraland.org/jump?realm=${coordinates}`
@@ -86,13 +86,11 @@ const SceneCard = memo(
                   <AvatarTextContainer>
                     <Typography variant="body2">
                       by{" "}
-                      <Link
+                      <AvatarLink
                         href={`https://decentraland.org/profile/accounts/${avatar?.ethAddress}`}
-                        underline="none"
-                        fontWeight={theme.typography.fontWeightBold}
                       >
                         {avatar?.name}
-                      </Link>
+                      </AvatarLink>
                     </Typography>
                   </AvatarTextContainer>
                 </AvatarContainer>
@@ -103,7 +101,7 @@ const SceneCard = memo(
                     <LocationChip
                       label={coordinates}
                       size="small"
-                      icon={<LocationIcon htmlColor={iconColor} />}
+                      icon={<LocationIcon />}
                       onClick={() => {
                         window.open(jumpInUrl, "_blank")
                       }}
