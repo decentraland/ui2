@@ -54,5 +54,6 @@
   "EMAIL_HELLO_URL": "mailto:hello@decentraland.org",
   "FAQ_URL": "https://docs.decentraland.org/faq",
   "DOCS_URL": "https://docs.decentraland.org",
-  "BEEHIV_SUBSCRIPTION_URL": "https://embeds.beehiiv.com/ff89783d-748b-4ba3-8700-4759f6f62831?slim=true"
+  "BEEHIV_SUBSCRIPTION_URL": "https://embeds.beehiiv.com/ff89783d-748b-4ba3-8700-4759f6f62831?slim=true",
+  "AUTO_SIGNING_BASE_URL": "https://download-gateway.decentraland.zone"
 }
