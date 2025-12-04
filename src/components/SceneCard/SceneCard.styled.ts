@@ -31,8 +31,6 @@ const CardContainer = styled(Card)<{
       duration: theme.transitions.duration.complex,
     }),
   ],
-  // transition:
-  //   "transform 0.1s ease-in-out, box-shadow 0.3s ease-in-out, height 0.2s ease-in-out, min-height 0.2s ease-in-out",
 
   ...(withBorder && {
     "&::before": {
@@ -137,17 +135,17 @@ const BadgesContainer = styled(Box)(({ theme }) => ({
 
 const LeftBadge = styled(Box)<{ showOnHover?: boolean }>(
   ({ theme, showOnHover }) => ({
-    padding: theme.spacing(1, 2),
-    minWidth: theme.spacing(6),
-    height: theme.spacing(6),
+    padding: theme.spacing(1, 1),
+    minWidth: theme.spacing(4),
+    height: theme.spacing(4),
     maxWidth: "45%",
     backgroundColor: theme.palette.background.default,
     color: theme.palette.text.primary,
-    borderRadius: theme.spacing(2),
+    borderRadius: theme.spacing(1),
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    fontSize: theme.typography.h6.fontSize,
+    fontSize: theme.typography.subtitle1.fontSize,
     fontWeight: theme.typography.fontWeightBold,
     overflow: "hidden",
     "& > *": {
@@ -175,9 +173,6 @@ const LeftBadge = styled(Box)<{ showOnHover?: boolean }>(
         },
       },
     }),
-    [theme.breakpoints.down("sm")]: {
-      height: theme.spacing(4.5),
-    },
   })
 )
 
@@ -188,7 +183,7 @@ const RightBadge = styled(Box)<{ showOnHover?: boolean }>(
     maxWidth: "45%",
     backgroundColor: theme.palette.background.default,
     color: theme.palette.text.primary,
-    borderRadius: theme.spacing(1),
+    borderRadius: theme.spacing(1.5),
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -233,6 +228,7 @@ const StyledCardContent = styled(CardContent)(({ theme }) => ({
   justifyContent: "space-between",
   width: "100%",
   flex: "1 1 auto",
+  minHeight: theme.spacing(17),
 }))
 
 const SceneTitle = styled(Box)({
@@ -415,6 +411,10 @@ const JumpInMobileButton = styled(Box)(({ theme }) => ({
   },
 }))
 
+const SceneInfoContainer = styled(Box)({
+  width: "100%",
+})
+
 export {
   AvatarAndLocationRow,
   AvatarContainer,
@@ -430,6 +430,7 @@ export {
   LocationChipContainer,
   MediaContainer,
   RightBadge,
+  SceneInfoContainer,
   SceneTitle,
   StyledCardActionArea,
   StyledCardContent,
