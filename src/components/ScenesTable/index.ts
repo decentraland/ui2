@@ -1,2 +1,2 @@
 export { ScenesTable } from "./ScenesTable"
-export type { ScenesTableProps } from "./ScenesTable.types"
+export type { ScenesTableProps, SceneRowData } from "./ScenesTable.types"

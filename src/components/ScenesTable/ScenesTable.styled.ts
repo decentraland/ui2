@@ -22,13 +22,13 @@ const StyledTableHead = styled(TableHead)(({ theme }) => ({
   },
 }))
 
-const StyledTableHeadRow = styled(TableRow)({
+const StyledTableHeadRow = styled(TableRow)(({ theme }) => ({
   height: "20px",
   "& .MuiTableCell-root": {
-    padding: "8px 8px",
+    padding: `${theme.spacing(1)} ${theme.spacing(2)}`,
     borderBottom: "none",
   },
-})
+}))
 
 const StyledTableBody = styled(TableBody)(({ theme }) => ({
   borderTop: `${theme.spacing(1)} solid transparent`,
