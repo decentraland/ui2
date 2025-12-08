@@ -104,10 +104,28 @@ const StyledTableCell = styled(TableCell, {
   },
 }))
 
+type StyledTableRowProps = {
+  mobileClickable?: boolean
+}
+
+const StyledTableRow = styled(TableRow, {
+  shouldForwardProp: (prop) => prop !== "mobileClickable",
+})<StyledTableRowProps>(({ theme, mobileClickable }) => ({
+  ...(mobileClickable && {
+    [theme.breakpoints.down("sm")]: {
+      cursor: "pointer",
+      "&:active": {
+        opacity: 0.7,
+      },
+    },
+  }),
+}))
+
 export {
   StyledTable,
   StyledTableBody,
   StyledTableCell,
   StyledTableHead,
   StyledTableHeadRow,
+  StyledTableRow,
 }

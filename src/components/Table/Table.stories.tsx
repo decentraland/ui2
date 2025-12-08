@@ -71,7 +71,16 @@ const WithoutHoverEffect: Story = {
   },
 }
 
+const WithMobileClick: Story = {
+  args: {
+    columns: exampleColumns,
+    rows: exampleRows,
+    getRowKey: (row) => String(row.id),
+    onMobileRowClick: (row) => alert(`Clicked on ${row.name}`),
+  },
+}
+
 // eslint-disable-next-line import/no-default-export
 export default meta
-export { Default, WithoutHoverEffect }
+export { Default, WithMobileClick, WithoutHoverEffect }
 

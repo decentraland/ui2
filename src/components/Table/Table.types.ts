@@ -14,6 +14,7 @@ type TableProps<T> = {
   rows: T[]
   getRowKey: (row: T, index: number) => string
   hoverEffect?: boolean
+  onMobileRowClick?: (row: T, index: number) => void
 }
 
 export type { Column, TableProps }

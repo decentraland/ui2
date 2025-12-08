@@ -1,7 +1,8 @@
-import { memo } from "react"
+import { memo, useCallback } from "react"
+import useMediaQuery from "@mui/material/useMediaQuery"
+import { useTheme } from "@mui/material/styles"
 import Paper from "@mui/material/Paper"
 import TableContainer from "@mui/material/TableContainer"
-import TableRow from "@mui/material/TableRow"
 import { TableProps } from "./Table.types"
 import {
   StyledTable,
@@ -9,10 +10,29 @@ import {
   StyledTableCell,
   StyledTableHead,
   StyledTableHeadRow,
+  StyledTableRow,
 } from "./Table.styled"
 
 const TableComponent = <T,>(props: TableProps<T>) => {
-  const { columns, rows, getRowKey, hoverEffect = true } = props
+  const {
+    columns,
+    rows,
+    getRowKey,
+    hoverEffect = true,
+    onMobileRowClick,
+  } = props
+
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"))
+
+  const handleRowClick = useCallback(
+    (row: T, index: number) => {
+      if (isMobile && onMobileRowClick) {
+        onMobileRowClick(row, index)
+      }
+    },
+    [isMobile, onMobileRowClick]
+  )
 
   return (
     <TableContainer component={Paper}>
@@ -33,7 +53,11 @@ const TableComponent = <T,>(props: TableProps<T>) => {
         </StyledTableHead>
         <StyledTableBody hoverEffect={hoverEffect}>
           {rows.map((row, index) => (
-            <TableRow key={getRowKey(row, index)}>
+            <StyledTableRow
+              key={getRowKey(row, index)}
+              mobileClickable={!!onMobileRowClick}
+              onClick={() => handleRowClick(row, index)}
+            >
               {columns.map((column) => (
                 <StyledTableCell
                   key={column.id}
@@ -44,7 +68,7 @@ const TableComponent = <T,>(props: TableProps<T>) => {
                   {column.render(row, index)}
                 </StyledTableCell>
               ))}
-            </TableRow>
+            </StyledTableRow>
           ))}
         </StyledTableBody>
       </StyledTable>
