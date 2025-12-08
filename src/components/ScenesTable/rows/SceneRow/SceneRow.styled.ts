@@ -4,6 +4,8 @@ const SceneRowContainer = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   gap: theme.spacing(2),
+  minWidth: 0,
+  overflow: "hidden",
 }))
 
 const SceneThumbnail = styled("img")(({ theme }) => ({
@@ -11,8 +13,10 @@ const SceneThumbnail = styled("img")(({ theme }) => ({
   height: theme.spacing(10),
   borderRadius: `${theme.spacing(2)} 0 0 ${theme.spacing(2)}`,
   objectFit: "cover",
+  flexShrink: 0,
   [theme.breakpoints.down("sm")]: {
     height: 60,
+    width: 60,
   },
 }))
 
@@ -20,6 +24,9 @@ const SceneContentContainer = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   gap: theme.spacing(0.5),
+  flex: 1,
+  minWidth: 0,
+  overflow: "hidden",
 }))
 
 const SceneName = styled(Typography)(({ theme }) => ({
@@ -40,6 +47,8 @@ const MobileInfoRow = styled(Box)(({ theme }) => ({
     alignItems: "center",
     gap: theme.spacing(1),
     fontSize: "12px",
+    minWidth: 0,
+    overflow: "hidden",
   },
 }))
 
@@ -47,13 +56,15 @@ const MobileAvatarContainer = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   gap: theme.spacing(0.5),
+  minWidth: 0,
+  overflow: "hidden",
+  flexShrink: 1,
 }))
 
 const MobileAvatarName = styled(Link)(({ theme }) => ({
   fontSize: "12px",
   textDecoration: "none",
   fontWeight: theme.typography.fontWeightBold,
-  maxWidth: "12ch",
   overflow: "hidden",
   textOverflow: "ellipsis",
   whiteSpace: "nowrap",
@@ -68,6 +79,9 @@ const MobileLocation = styled(Box)(({ theme }) => ({
   gap: theme.spacing(0.5),
   fontSize: "12px",
   color: theme.palette.text.secondary,
+  minWidth: 0,
+  overflow: "hidden",
+  flexShrink: 1,
   "& path:last-child": {
     fill: theme.palette.text.primary,
   },
@@ -75,7 +89,6 @@ const MobileLocation = styled(Box)(({ theme }) => ({
 
 const MobileLocationText = styled(Typography)({
   fontSize: "12px",
-  maxWidth: "10ch",
   overflow: "hidden",
   textOverflow: "ellipsis",
   whiteSpace: "nowrap",

@@ -7,6 +7,7 @@ import { AvatarRow, LocationRow, PositionChangeRow, SceneRow } from "./rows"
 import { JumpIn } from "../JumpIn"
 import { ScenesTableProps } from "./ScenesTable.types"
 import {
+  ActionCell,
   ActionCellContainer,
   HideOnMobileCell,
   SceneCell,
@@ -24,7 +25,7 @@ const ScenesTable = memo((props: ScenesTableProps) => {
       <StyledTable aria-label="table">
         <StyledTableHead>
           <StyledTableHeadRow>
-            <TableCell>Scene Name</TableCell>
+            <SceneCell>Scene Name</SceneCell>
             <TableCell>Creator</TableCell>
             <TableCell>Location</TableCell>
             <TableCell></TableCell>
@@ -47,7 +48,7 @@ const ScenesTable = memo((props: ScenesTableProps) => {
               <HideOnMobileCell>
                 <LocationRow location={row.location} />
               </HideOnMobileCell>
-              <TableCell>
+              <ActionCell>
                 <ActionCellContainer>
                   <PositionChangeRow change={row.positionChange} />
                   <JumpIn
@@ -66,7 +67,7 @@ const ScenesTable = memo((props: ScenesTableProps) => {
                     }
                   />
                 </ActionCellContainer>
-              </TableCell>
+              </ActionCell>
             </TableRow>
           ))}
         </StyledTableBody>

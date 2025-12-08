@@ -11,6 +11,7 @@ import { hexToRgba } from "../../utils/colors"
 
 const StyledTable = styled(Table)(({ theme }) => ({
   width: "100%",
+  tableLayout: "fixed",
   borderCollapse: "separate",
   borderSpacing: `0 ${theme.spacing(1)}`,
 }))
@@ -72,13 +73,25 @@ const StyledTableBody = styled(TableBody)(({ theme }) => ({
   },
 }))
 
-const SceneCell = styled(TableCell)({
+const SceneCell = styled(TableCell)(({ theme }) => ({
   padding: 0,
-})
+  overflow: "hidden",
+  width: "40%",
+  [theme.breakpoints.down("sm")]: {
+    width: "auto",
+  },
+}))
 
 const HideOnMobileCell = styled(TableCell)(({ theme }) => ({
   [theme.breakpoints.down("sm")]: {
     display: "none",
+  },
+}))
+
+const ActionCell = styled(TableCell)(({ theme }) => ({
+  [theme.breakpoints.down("sm")]: {
+    width: 50,
+    padding: theme.spacing(1),
   },
 }))
 
@@ -88,7 +101,7 @@ const ActionCellContainer = styled(Box)(({ theme }) => ({
   justifyContent: "flex-end",
   position: "relative",
   width: "100%",
-  minWidth: 100,
+  minWidth: theme.spacing(16),
   "& .jump-in-button": {
     opacity: 0,
     visibility: "hidden",
@@ -105,6 +118,7 @@ const ActionCellContainer = styled(Box)(({ theme }) => ({
   },
   [theme.breakpoints.down("sm")]: {
     minWidth: "auto",
+    justifyContent: "center",
     "& .jump-in-button": {
       display: "none",
     },
@@ -112,6 +126,7 @@ const ActionCellContainer = styled(Box)(({ theme }) => ({
 }))
 
 export {
+  ActionCell,
   ActionCellContainer,
   HideOnMobileCell,
   SceneCell,

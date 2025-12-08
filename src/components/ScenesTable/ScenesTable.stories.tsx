@@ -89,7 +89,7 @@ const exampleRows = [
     positionChange: 3,
   },
   {
-    sceneName: "My Galaxy World and more and more",
+    sceneName: "My Galaxy World and more and more and this is anoter",
     thumbnail: sceneThumbnail,
     creator: exampleAvatar,
     location: "-17,5",
@@ -120,6 +120,13 @@ const meta: Meta<typeof ScenesTable> = {
       backgrounds: { value: "red" },
     },
   },
+  decorators: [
+    (Story) => (
+      <div style={{ width: "100%", padding: "16px" }}>
+        <Story />
+      </div>
+    ),
+  ],
 }
 
 type Story = StoryObj<typeof ScenesTable>
