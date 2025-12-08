@@ -399,18 +399,6 @@ const JumpInButtonContainer = styled(Box)<{ showOnHover?: boolean }>(
   })
 )
 
-const JumpInMobileButton = styled(Box)(({ theme }) => ({
-  display: "none",
-  [theme.breakpoints.down("sm")]: {
-    display: "flex",
-    width: "fit-content",
-    flexShrink: 0,
-  },
-  "& .MuiButton-root": {
-    height: "fit-content",
-  },
-}))
-
 const SceneInfoContainer = styled(Box)({
   width: "100%",
 })
@@ -424,7 +412,6 @@ export {
   CardContainer,
   ContentContainer,
   JumpInButtonContainer,
-  JumpInMobileButton,
   LeftBadge,
   LocationChip,
   LocationChipContainer,

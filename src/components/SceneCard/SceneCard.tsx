@@ -14,7 +14,6 @@ import {
   CardContainer,
   ContentContainer,
   JumpInButtonContainer,
-  JumpInMobileButton,
   LeftBadge,
   LocationChip,
   LocationChipContainer,
@@ -109,17 +108,6 @@ const SceneCard = memo((props: SceneCardProps) => {
                     />
                   </LocationChipContainer>
                 )}
-                <JumpInMobileButton>
-                  <JumpIn
-                    position={coordinates}
-                    variant="button"
-                    modalProps={{
-                      title: "Jump In",
-                      description: "Jump In to the scene",
-                      buttonLabel: "Jump In",
-                    }}
-                  />
-                </JumpInMobileButton>
               </AvatarAndLocationRow>
             </SceneInfoContainer>
             <JumpInButtonContainer
@@ -130,8 +118,8 @@ const SceneCard = memo((props: SceneCardProps) => {
                 variant="button"
                 modalProps={{
                   title: "Jump In",
-                  description: "Jump In to the scene",
-                  buttonLabel: "Jump In",
+                  description: "Jump in to the scene",
+                  buttonLabel: "Jump in",
                 }}
               />
             </JumpInButtonContainer>
