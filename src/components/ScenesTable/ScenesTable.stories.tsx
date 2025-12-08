@@ -86,18 +86,21 @@ const exampleRows = [
     thumbnail: sceneThumbnail,
     creator: exampleAvatar,
     location: "alelevyyyy.eth.dcl",
+    positionChange: 3,
   },
   {
     sceneName: "My Galaxy World",
     thumbnail: sceneThumbnail,
     creator: exampleAvatar,
     location: "-17,5",
+    positionChange: -1,
   },
   {
     sceneName: "Eclair",
     thumbnail: sceneThumbnail,
     creator: exampleAvatar,
     location: "alelevyyyy.eth.dcl",
+    positionChange: 5,
   },
   {
     sceneName: "Cupcake",

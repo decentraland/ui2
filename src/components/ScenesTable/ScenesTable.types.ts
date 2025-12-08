@@ -5,6 +5,7 @@ type SceneRowData = {
   creator: Avatar
   location: string
   thumbnail: string
+  positionChange?: number
 }
 
 type ScenesTableProps = {

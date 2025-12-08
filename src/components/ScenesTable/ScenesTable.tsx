@@ -3,9 +3,11 @@ import Paper from "@mui/material/Paper"
 import TableCell from "@mui/material/TableCell"
 import TableContainer from "@mui/material/TableContainer"
 import TableRow from "@mui/material/TableRow"
-import { AvatarRow, LocationRow, SceneRow } from "./rows"
+import { AvatarRow, LocationRow, PositionChangeRow, SceneRow } from "./rows"
+import { JumpIn } from "../JumpIn"
 import { ScenesTableProps } from "./ScenesTable.types"
 import {
+  ActionCellContainer,
   SceneCell,
   StyledTable,
   StyledTableBody,
@@ -39,7 +41,26 @@ const ScenesTable = memo((props: ScenesTableProps) => {
               <TableCell>
                 <LocationRow location={row.location} />
               </TableCell>
-              <TableCell></TableCell>
+              <TableCell>
+                <ActionCellContainer>
+                  <PositionChangeRow change={row.positionChange} />
+                  <JumpIn
+                    variant="button"
+                    buttonProps={{ className: "jump-in-button" }}
+                    modalProps={{
+                      title: "Download Decentraland",
+                      description:
+                        "To jump into this scene, you need to download the Decentraland desktop app.",
+                      buttonLabel: "Download",
+                    }}
+                    desktopAppOptions={
+                      row.location.includes(".dcl")
+                        ? { realm: row.location }
+                        : { position: row.location }
+                    }
+                  />
+                </ActionCellContainer>
+              </TableCell>
             </TableRow>
           ))}
         </StyledTableBody>
