@@ -1,4 +1,11 @@
-import { Table, TableBody, TableHead, TableRow, styled } from "@mui/material"
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+  styled,
+} from "@mui/material"
 
 const StyledTable = styled(Table)(({ theme }) => ({
   width: "100%",
@@ -45,4 +52,14 @@ const StyledTableBody = styled(TableBody)(({ theme }) => ({
   },
 }))
 
-export { StyledTable, StyledTableHead, StyledTableHeadRow, StyledTableBody }
+const SceneCell = styled(TableCell)({
+  padding: 0,
+})
+
+export {
+  SceneCell,
+  StyledTable,
+  StyledTableBody,
+  StyledTableHead,
+  StyledTableHeadRow,
+}

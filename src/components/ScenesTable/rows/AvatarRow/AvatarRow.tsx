@@ -2,7 +2,7 @@ import { memo } from "react"
 import { Typography } from "@mui/material"
 import { AvatarFace } from "../../../AvatarFace/AvatarFace"
 import { AvatarRowProps } from "./AvatarRow.types"
-import { AvatarRowContainer } from "./AvatarRow.styled"
+import { AvatarLink, AvatarRowContainer } from "./AvatarRow.styled"
 
 const AvatarRow = memo((props: AvatarRowProps) => {
   const { avatar } = props
@@ -10,7 +10,14 @@ const AvatarRow = memo((props: AvatarRowProps) => {
   return (
     <AvatarRowContainer>
       <AvatarFace avatar={avatar} />
-      <Typography variant="body2">By {avatar.name}</Typography>
+      <Typography variant="body2">
+        By{" "}
+        <AvatarLink
+          href={`https://decentraland.org/profile/accounts/${avatar?.ethAddress}`}
+        >
+          {avatar.name}
+        </AvatarLink>
+      </Typography>
     </AvatarRowContainer>
   )
 })

@@ -1,5 +1,6 @@
 import { Avatar } from "@dcl/schemas"
 import { ScenesTable } from "./ScenesTable"
+import sceneThumbnail from "../../Assets/scene-thumbnail.png"
 import type { Meta, StoryObj } from "@storybook/react"
 
 const exampleAvatar: Avatar = {
@@ -81,29 +82,28 @@ const exampleAvatar: Avatar = {
 
 const exampleRows = [
   {
-    name: "My Galaxy World",
+    sceneName: "My Galaxy World",
+    thumbnail: sceneThumbnail,
     creator: exampleAvatar,
     location: "alelevyyyy.eth.dcl",
   },
   {
-    name: "My Galaxy World",
+    sceneName: "My Galaxy World",
+    thumbnail: sceneThumbnail,
+    creator: exampleAvatar,
+    location: "-17,5",
+  },
+  {
+    sceneName: "Eclair",
+    thumbnail: sceneThumbnail,
     creator: exampleAvatar,
     location: "alelevyyyy.eth.dcl",
   },
   {
-    name: "Eclair",
+    sceneName: "Cupcake",
+    thumbnail: sceneThumbnail,
     creator: exampleAvatar,
-    location: "alelevyyyy.eth.dcl",
-  },
-  {
-    name: "Cupcake",
-    creator: exampleAvatar,
-    location: "alelevyyyy.eth.dcl",
-  },
-  {
-    name: "Gingerbread",
-    creator: exampleAvatar,
-    location: "alelevyyyy.eth.dcl",
+    location: "87,56",
   },
 ]
 

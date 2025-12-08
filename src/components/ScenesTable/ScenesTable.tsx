@@ -3,9 +3,10 @@ import Paper from "@mui/material/Paper"
 import TableCell from "@mui/material/TableCell"
 import TableContainer from "@mui/material/TableContainer"
 import TableRow from "@mui/material/TableRow"
-import { AvatarRow } from "./rows"
+import { AvatarRow, LocationRow, SceneRow } from "./rows"
 import { ScenesTableProps } from "./ScenesTable.types"
 import {
+  SceneCell,
   StyledTable,
   StyledTableBody,
   StyledTableHead,
@@ -28,14 +29,16 @@ const ScenesTable = memo((props: ScenesTableProps) => {
         </StyledTableHead>
         <StyledTableBody>
           {rows.map((row, index) => (
-            <TableRow key={`${row.name}-${index}`}>
-              <TableCell component="th" scope="row">
-                {row.name}
-              </TableCell>
+            <TableRow key={`${row.sceneName}-${index}`}>
+              <SceneCell component="th" scope="row">
+                <SceneRow name={row.sceneName} thumbnail={row.thumbnail} />
+              </SceneCell>
               <TableCell>
                 <AvatarRow avatar={row.creator} />
               </TableCell>
-              <TableCell>{row.location}</TableCell>
+              <TableCell>
+                <LocationRow location={row.location} />
+              </TableCell>
               <TableCell></TableCell>
             </TableRow>
           ))}

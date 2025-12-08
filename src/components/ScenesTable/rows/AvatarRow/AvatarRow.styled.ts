@@ -1,4 +1,4 @@
-import { Box, styled } from "@mui/material"
+import { Box, Link, styled } from "@mui/material"
 
 const AvatarRowContainer = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -6,4 +6,11 @@ const AvatarRowContainer = styled(Box)(({ theme }) => ({
   gap: theme.spacing(1),
 }))
 
-export { AvatarRowContainer }
+const AvatarLink = styled(Link)({
+  textDecoration: "none",
+  "&:hover": {
+    textDecoration: "none",
+  },
+})
+
+export { AvatarRowContainer, AvatarLink }

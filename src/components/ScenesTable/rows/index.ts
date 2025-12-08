@@ -1,2 +1,6 @@
 export { AvatarRow } from "./AvatarRow"
 export type { AvatarRowProps } from "./AvatarRow"
+export { LocationRow } from "./LocationRow"
+export type { LocationRowProps } from "./LocationRow"
+export { SceneRow } from "./SceneRow"
+export type { SceneRowProps } from "./SceneRow"

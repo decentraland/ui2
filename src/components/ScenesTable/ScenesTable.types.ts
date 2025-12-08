@@ -1,9 +1,10 @@
 import { Avatar } from "@dcl/schemas"
 
 type SceneRowData = {
-  name: string
+  sceneName: string
   creator: Avatar
   location: string
+  thumbnail: string
 }
 
 type ScenesTableProps = {
