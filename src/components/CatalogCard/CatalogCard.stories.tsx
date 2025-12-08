@@ -8,7 +8,7 @@ import type { Meta, StoryObj } from "@storybook/react"
 
 const meta: Meta<CatalogCardProps> = {
   component: CatalogCard,
-  title: "Decentraland UI/Catalog Card",
+  title: "Decentraland UI/Cards/Catalog Card",
   tags: ["autodocs"],
   parameters: {
     layout: "centered",
