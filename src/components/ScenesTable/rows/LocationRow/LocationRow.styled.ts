@@ -13,6 +13,9 @@ const LocationLink = styled(Link)(({ theme }) => ({
   textDecoration: "none",
   color: theme.palette.primary.main,
   fontWeight: theme.typography.fontWeightBold,
+  overflow: "hidden",
+  textOverflow: "ellipsis",
+  whiteSpace: "nowrap",
   "&:hover": {
     textDecoration: "none",
   },

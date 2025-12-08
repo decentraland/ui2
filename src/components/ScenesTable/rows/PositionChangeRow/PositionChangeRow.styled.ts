@@ -15,6 +15,11 @@ const PositionChangeContainer = styled(Box)(({ theme }) => ({
   "tr:hover &": {
     opacity: 0,
   },
+  [theme.breakpoints.down("sm")]: {
+    "tr:hover &": {
+      opacity: 1,
+    },
+  },
 }))
 
 const PositionContent = styled(Box)<{ isPositive: boolean }>(({
@@ -29,6 +34,7 @@ const PositionContent = styled(Box)<{ isPositive: boolean }>(({
     display: "flex",
     alignItems: "center",
     color,
+    fontSize: "12px",
     fontWeight: theme.typography.fontWeightBold,
     "& .MuiSvgIcon-root": {
       fill: color,

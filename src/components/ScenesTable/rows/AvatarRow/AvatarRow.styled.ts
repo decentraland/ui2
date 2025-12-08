@@ -8,6 +8,9 @@ const AvatarRowContainer = styled(Box)(({ theme }) => ({
 
 const AvatarLink = styled(Link)({
   textDecoration: "none",
+  overflow: "hidden",
+  textOverflow: "ellipsis",
+  whiteSpace: "nowrap",
   "&:hover": {
     textDecoration: "none",
   },

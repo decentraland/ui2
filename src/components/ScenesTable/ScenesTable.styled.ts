@@ -29,6 +29,9 @@ const StyledTableHead = styled(TableHead)(({ theme }) => ({
   "& .MuiTableCell-root:last-of-type": {
     borderRadius: `0 ${theme.spacing(2)} ${theme.spacing(2)} 0`,
   },
+  [theme.breakpoints.down("sm")]: {
+    display: "none",
+  },
 }))
 
 const StyledTableHeadRow = styled(TableRow)(({ theme }) => ({
@@ -62,11 +65,22 @@ const StyledTableBody = styled(TableBody)(({ theme }) => ({
       boxShadow: `0px 0px 20px 6px ${hexToRgba("#DD56FF", 0.37)}`,
     },
   },
+  [theme.breakpoints.down("sm")]: {
+    "& tr:hover": {
+      boxShadow: "none",
+    },
+  },
 }))
 
 const SceneCell = styled(TableCell)({
   padding: 0,
 })
+
+const HideOnMobileCell = styled(TableCell)(({ theme }) => ({
+  [theme.breakpoints.down("sm")]: {
+    display: "none",
+  },
+}))
 
 const ActionCellContainer = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -89,10 +103,17 @@ const ActionCellContainer = styled(Box)(({ theme }) => ({
     opacity: 1,
     visibility: "visible",
   },
+  [theme.breakpoints.down("sm")]: {
+    minWidth: "auto",
+    "& .jump-in-button": {
+      display: "none",
+    },
+  },
 }))
 
 export {
   ActionCellContainer,
+  HideOnMobileCell,
   SceneCell,
   StyledTable,
   StyledTableBody,

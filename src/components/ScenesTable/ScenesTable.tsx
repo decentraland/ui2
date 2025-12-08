@@ -8,6 +8,7 @@ import { JumpIn } from "../JumpIn"
 import { ScenesTableProps } from "./ScenesTable.types"
 import {
   ActionCellContainer,
+  HideOnMobileCell,
   SceneCell,
   StyledTable,
   StyledTableBody,
@@ -33,14 +34,19 @@ const ScenesTable = memo((props: ScenesTableProps) => {
           {rows.map((row, index) => (
             <TableRow key={`${row.sceneName}-${index}`}>
               <SceneCell component="th" scope="row">
-                <SceneRow name={row.sceneName} thumbnail={row.thumbnail} />
+                <SceneRow
+                  name={row.sceneName}
+                  thumbnail={row.thumbnail}
+                  creator={row.creator}
+                  location={row.location}
+                />
               </SceneCell>
-              <TableCell>
+              <HideOnMobileCell>
                 <AvatarRow avatar={row.creator} />
-              </TableCell>
-              <TableCell>
+              </HideOnMobileCell>
+              <HideOnMobileCell>
                 <LocationRow location={row.location} />
-              </TableCell>
+              </HideOnMobileCell>
               <TableCell>
                 <ActionCellContainer>
                   <PositionChangeRow change={row.positionChange} />

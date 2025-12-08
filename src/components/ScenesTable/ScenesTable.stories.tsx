@@ -82,14 +82,14 @@ const exampleAvatar: Avatar = {
 
 const exampleRows = [
   {
-    sceneName: "My Galaxy World",
+    sceneName: "My Galaxy World and mor things",
     thumbnail: sceneThumbnail,
     creator: exampleAvatar,
-    location: "alelevyyyy.eth.dcl",
+    location: "alelevyyyyworldamazing.eth.dcl",
     positionChange: 3,
   },
   {
-    sceneName: "My Galaxy World",
+    sceneName: "My Galaxy World and more and more",
     thumbnail: sceneThumbnail,
     creator: exampleAvatar,
     location: "-17,5",
