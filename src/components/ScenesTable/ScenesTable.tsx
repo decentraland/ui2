@@ -1,79 +1,73 @@
-import { memo } from "react"
-import Paper from "@mui/material/Paper"
-import TableCell from "@mui/material/TableCell"
-import TableContainer from "@mui/material/TableContainer"
-import TableRow from "@mui/material/TableRow"
+import { memo, useMemo } from "react"
 import { AvatarRow, LocationRow, PositionChangeRow, SceneRow } from "./rows"
 import { JumpIn } from "../JumpIn"
-import { ScenesTableProps } from "./ScenesTable.types"
-import {
-  ActionCell,
-  ActionCellContainer,
-  HideOnMobileCell,
-  SceneCell,
-  StyledTable,
-  StyledTableBody,
-  StyledTableHead,
-  StyledTableHeadRow,
-} from "./ScenesTable.styled"
+import { Column, Table } from "../Table"
+import { SceneRowData, ScenesTableProps } from "./ScenesTable.types"
+import { ActionCellContainer } from "./ScenesTable.styled"
 
 const ScenesTable = memo((props: ScenesTableProps) => {
   const { rows } = props
 
-  return (
-    <TableContainer component={Paper}>
-      <StyledTable aria-label="table">
-        <StyledTableHead>
-          <StyledTableHeadRow>
-            <SceneCell>Scene Name</SceneCell>
-            <TableCell>Creator</TableCell>
-            <TableCell>Location</TableCell>
-            <TableCell></TableCell>
-          </StyledTableHeadRow>
-        </StyledTableHead>
-        <StyledTableBody>
-          {rows.map((row, index) => (
-            <TableRow key={`${row.sceneName}-${index}`}>
-              <SceneCell component="th" scope="row">
-                <SceneRow
-                  name={row.sceneName}
-                  thumbnail={row.thumbnail}
-                  creator={row.creator}
-                  location={row.location}
-                />
-              </SceneCell>
-              <HideOnMobileCell>
-                <AvatarRow avatar={row.creator} />
-              </HideOnMobileCell>
-              <HideOnMobileCell>
-                <LocationRow location={row.location} />
-              </HideOnMobileCell>
-              <ActionCell>
-                <ActionCellContainer>
-                  <PositionChangeRow change={row.positionChange} />
-                  <JumpIn
-                    variant="button"
-                    buttonProps={{ className: "jump-in-button" }}
-                    modalProps={{
-                      title: "Download Decentraland",
-                      description:
-                        "To jump into this scene, you need to download the Decentraland desktop app.",
-                      buttonLabel: "Download",
-                    }}
-                    desktopAppOptions={
-                      row.location.includes(".dcl")
-                        ? { realm: row.location }
-                        : { position: row.location }
-                    }
-                  />
-                </ActionCellContainer>
-              </ActionCell>
-            </TableRow>
-          ))}
-        </StyledTableBody>
-      </StyledTable>
-    </TableContainer>
+  const columns: Column<SceneRowData>[] = useMemo(
+    () => [
+      {
+        id: "scene",
+        header: "Scene Name",
+        width: "40%",
+        cellPadding: 0,
+        render: (row) => (
+          <SceneRow
+            name={row.sceneName}
+            thumbnail={row.thumbnail}
+            creator={row.creator}
+            location={row.location}
+          />
+        ),
+      },
+      {
+        id: "creator",
+        header: "Creator",
+        hideOnMobile: true,
+        render: (row) => <AvatarRow avatar={row.creator} />,
+      },
+      {
+        id: "location",
+        header: "Location",
+        hideOnMobile: true,
+        render: (row) => <LocationRow location={row.location} />,
+      },
+      {
+        id: "action",
+        header: "",
+        render: (row) => (
+          <ActionCellContainer>
+            <PositionChangeRow change={row.positionChange} />
+            <JumpIn
+              variant="button"
+              buttonProps={{ className: "jump-in-button" }}
+              modalProps={{
+                title: "Download Decentraland",
+                description:
+                  "To jump into this scene, you need to download the Decentraland desktop app.",
+                buttonLabel: "Download",
+              }}
+              desktopAppOptions={
+                row.location.includes(".dcl")
+                  ? { realm: row.location }
+                  : { position: row.location }
+              }
+            />
+          </ActionCellContainer>
+        ),
+      },
+    ],
+    []
   )
+
+  const getRowKey = (row: SceneRowData, index: number) =>
+    `${row.sceneName}-${index}`
+
+  return <Table columns={columns} rows={rows} getRowKey={getRowKey} />
 })
 
 ScenesTable.displayName = "ScenesTable"
