@@ -82,24 +82,16 @@ const StyledTableBody = styled(TableBody, {
 
 type StyledTableCellProps = {
   cellWidth?: string | number
-  hideOnMobile?: boolean
   cellPadding?: number | string
 }
 
 const StyledTableCell = styled(TableCell, {
-  shouldForwardProp: (prop) =>
-    prop !== "cellWidth" && prop !== "hideOnMobile" && prop !== "cellPadding",
-})<StyledTableCellProps>(({ theme, cellWidth, hideOnMobile, cellPadding }) => ({
+  shouldForwardProp: (prop) => prop !== "cellWidth" && prop !== "cellPadding",
+})<StyledTableCellProps>(({ theme, cellWidth, cellPadding }) => ({
   overflow: "hidden",
   ...(cellWidth && { width: cellWidth }),
   ...(cellPadding !== undefined && { padding: cellPadding }),
-  ...(hideOnMobile && {
-    [theme.breakpoints.down("sm")]: {
-      display: "none",
-    },
-  }),
   [theme.breakpoints.down("sm")]: {
-    ...(hideOnMobile && { display: "none" }),
     width: "auto",
   },
 }))

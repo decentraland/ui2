@@ -42,6 +42,7 @@ const exampleColumns: Column<ExampleRow>[] = [
     id: "name",
     header: "Name",
     width: "30%",
+    hideOnMobile: true,
     render: (row) => row.name,
   },
   {
@@ -52,7 +53,6 @@ const exampleColumns: Column<ExampleRow>[] = [
   {
     id: "role",
     header: "Role",
-    hideOnMobile: true,
     render: (row) => row.role,
   },
 ]

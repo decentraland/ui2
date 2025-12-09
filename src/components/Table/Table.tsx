@@ -20,6 +20,10 @@ const TableComponent = <T extends BaseRow>(props: TableProps<T>) => {
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"))
 
+  const visibleColumns = isMobile
+    ? columns.filter((col) => !col.hideOnMobile)
+    : columns
+
   const handleRowClick = useCallback(
     (row: T, index: number) => {
       if (isMobile && onMobileRowClick) {
@@ -34,11 +38,10 @@ const TableComponent = <T extends BaseRow>(props: TableProps<T>) => {
       <StyledTable aria-label="table">
         <StyledTableHead>
           <StyledTableHeadRow>
-            {columns.map((column) => (
+            {visibleColumns.map((column) => (
               <StyledTableCell
                 key={column.id}
                 cellWidth={column.width}
-                hideOnMobile={column.hideOnMobile}
                 cellPadding={column.cellPadding}
               >
                 {column.header}
@@ -54,14 +57,13 @@ const TableComponent = <T extends BaseRow>(props: TableProps<T>) => {
               withBorder={!!row.borderColor}
               onClick={() => handleRowClick(row, index)}
             >
-              {columns.map((column, colIndex) => (
+              {visibleColumns.map((column, colIndex) => (
                 <StyledTableCell
                   key={column.id}
                   cellWidth={column.width}
-                  hideOnMobile={column.hideOnMobile}
                   cellPadding={column.cellPadding}
                 >
-                  {row.borderColor && (
+                  {colIndex === 0 && row.borderColor && (
                     <BorderOverlay borderColor={row.borderColor} />
                   )}
                   {column.render(row, index)}
