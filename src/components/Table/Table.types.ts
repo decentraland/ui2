@@ -1,6 +1,11 @@
 import { ReactNode } from "react"
 
-type Column<T> = {
+type BaseRow = {
+  key: string
+  borderColor?: string
+}
+
+type Column<T extends BaseRow> = {
   id: string
   header?: string
   width?: string | number
@@ -9,14 +14,11 @@ type Column<T> = {
   render: (row: T, index: number) => ReactNode
 }
 
-type TableProps<T> = {
+type TableProps<T extends BaseRow> = {
   columns: Column<T>[]
   rows: T[]
-  getRowKey: (row: T, index: number) => string
   hoverEffect?: boolean
   onMobileRowClick?: (row: T, index: number) => void
-  hasRowBorder?: (row: T, index: number) => boolean
-  rowBorderColor?: string
 }
 
-export type { Column, TableProps }
+export type { BaseRow, Column, TableProps }

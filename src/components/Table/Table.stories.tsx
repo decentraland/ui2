@@ -1,42 +1,40 @@
 import { Table } from "./Table"
-import { Column } from "./Table.types"
+import { BaseRow, Column } from "./Table.types"
 import type { Meta, StoryObj } from "@storybook/react"
 
 const GOLD_GRADIENT =
   "linear-gradient(90deg, #FFE395, #824E00, #FFEBB7, #814E00)"
 
-type ExampleRow = {
-  id: number
+type ExampleRow = BaseRow & {
   name: string
   email: string
   role: string
-  hasBorder?: boolean
 }
 
 const exampleRows: ExampleRow[] = [
-  { id: 1, name: "John Doe", email: "john@example.com", role: "Admin" },
-  { id: 2, name: "Jane Smith", email: "jane@example.com", role: "User" },
-  { id: 3, name: "Bob Johnson", email: "bob@example.com", role: "Editor" },
-  { id: 4, name: "Alice Brown", email: "alice@example.com", role: "User" },
+  { key: "1", name: "John Doe", email: "john@example.com", role: "Admin" },
+  { key: "2", name: "Jane Smith", email: "jane@example.com", role: "User" },
+  { key: "3", name: "Bob Johnson", email: "bob@example.com", role: "Editor" },
+  { key: "4", name: "Alice Brown", email: "alice@example.com", role: "User" },
 ]
 
 const exampleRowsWithBorders: ExampleRow[] = [
   {
-    id: 1,
+    key: "1",
     name: "John Doe",
     email: "john@example.com",
     role: "Admin",
-    hasBorder: true,
+    borderColor: GOLD_GRADIENT,
   },
-  { id: 2, name: "Jane Smith", email: "jane@example.com", role: "User" },
+  { key: "2", name: "Jane Smith", email: "jane@example.com", role: "User" },
   {
-    id: 3,
+    key: "3",
     name: "Bob Johnson",
     email: "bob@example.com",
     role: "Editor",
-    hasBorder: true,
+    borderColor: GOLD_GRADIENT,
   },
-  { id: 4, name: "Alice Brown", email: "alice@example.com", role: "User" },
+  { key: "4", name: "Alice Brown", email: "alice@example.com", role: "User" },
 ]
 
 const exampleColumns: Column<ExampleRow>[] = [
@@ -81,7 +79,6 @@ const Default: Story = {
   args: {
     columns: exampleColumns,
     rows: exampleRows,
-    getRowKey: (row) => String(row.id),
   },
 }
 
@@ -89,7 +86,6 @@ const WithoutHoverEffect: Story = {
   args: {
     columns: exampleColumns,
     rows: exampleRows,
-    getRowKey: (row) => String(row.id),
     hoverEffect: false,
   },
 }
@@ -98,7 +94,6 @@ const WithMobileClick: Story = {
   args: {
     columns: exampleColumns,
     rows: exampleRows,
-    getRowKey: (row) => String(row.id),
     onMobileRowClick: (row) => alert(`Clicked on ${row.name}`),
   },
 }
@@ -107,9 +102,6 @@ const WithGoldBorder: Story = {
   args: {
     columns: exampleColumns,
     rows: exampleRowsWithBorders,
-    getRowKey: (row) => String(row.id),
-    hasRowBorder: (row) => row.hasBorder ?? false,
-    rowBorderColor: GOLD_GRADIENT,
     hoverEffect: false,
   },
 }

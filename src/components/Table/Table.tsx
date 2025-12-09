@@ -3,7 +3,7 @@ import Paper from "@mui/material/Paper"
 import { useTheme } from "@mui/material/styles"
 import TableContainer from "@mui/material/TableContainer"
 import useMediaQuery from "@mui/material/useMediaQuery"
-import { TableProps } from "./Table.types"
+import { BaseRow, TableProps } from "./Table.types"
 import {
   BorderOverlay,
   StyledTable,
@@ -14,16 +14,8 @@ import {
   StyledTableRow,
 } from "./Table.styled"
 
-const TableComponent = <T,>(props: TableProps<T>) => {
-  const {
-    columns,
-    rows,
-    getRowKey,
-    hoverEffect = true,
-    onMobileRowClick,
-    hasRowBorder,
-    rowBorderColor,
-  } = props
+const TableComponent = <T extends BaseRow>(props: TableProps<T>) => {
+  const { columns, rows, hoverEffect = true, onMobileRowClick } = props
 
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"))
@@ -55,31 +47,28 @@ const TableComponent = <T,>(props: TableProps<T>) => {
           </StyledTableHeadRow>
         </StyledTableHead>
         <StyledTableBody hoverEffect={hoverEffect}>
-          {rows.map((row, index) => {
-            const showBorder = hasRowBorder?.(row, index)
-            return (
-              <StyledTableRow
-                key={getRowKey(row, index)}
-                mobileClickable={!!onMobileRowClick}
-                withBorder={showBorder}
-                onClick={() => handleRowClick(row, index)}
-              >
-                {columns.map((column, colIndex) => (
-                  <StyledTableCell
-                    key={column.id}
-                    cellWidth={column.width}
-                    hideOnMobile={column.hideOnMobile}
-                    cellPadding={column.cellPadding}
-                  >
-                    {colIndex === 0 && showBorder && rowBorderColor && (
-                      <BorderOverlay borderColor={rowBorderColor} />
-                    )}
-                    {column.render(row, index)}
-                  </StyledTableCell>
-                ))}
-              </StyledTableRow>
-            )
-          })}
+          {rows.map((row, index) => (
+            <StyledTableRow
+              key={row.key}
+              mobileClickable={!!onMobileRowClick}
+              withBorder={!!row.borderColor}
+              onClick={() => handleRowClick(row, index)}
+            >
+              {columns.map((column, colIndex) => (
+                <StyledTableCell
+                  key={column.id}
+                  cellWidth={column.width}
+                  hideOnMobile={column.hideOnMobile}
+                  cellPadding={column.cellPadding}
+                >
+                  {row.borderColor && (
+                    <BorderOverlay borderColor={row.borderColor} />
+                  )}
+                  {column.render(row, index)}
+                </StyledTableCell>
+              ))}
+            </StyledTableRow>
+          ))}
         </StyledTableBody>
       </StyledTable>
     </TableContainer>
