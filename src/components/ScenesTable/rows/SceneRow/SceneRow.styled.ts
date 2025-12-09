@@ -10,7 +10,7 @@ const SceneRowContainer = styled(Box)(({ theme }) => ({
 
 const SceneThumbnail = styled("img")(({ theme }) => ({
   width: "auto",
-  height: theme.spacing(10),
+  height: theme.spacing(8.75),
   borderRadius: `${theme.spacing(2)} 0 0 ${theme.spacing(2)}`,
   objectFit: "cover",
   flexShrink: 0,

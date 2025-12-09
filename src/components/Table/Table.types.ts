@@ -26,4 +26,4 @@ type TableProps<T extends BaseRow> = {
   onMobileRowClick?: (row: T, index: number) => void
 }
 
-export type { BaseRow, Column, TableProps }
+export type { BaseRow, Column, ResponsiveWidth, TableProps }

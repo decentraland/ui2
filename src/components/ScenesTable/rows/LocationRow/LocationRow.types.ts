@@ -3,4 +3,3 @@ type LocationRowProps = {
 }
 
 export type { LocationRowProps }
-

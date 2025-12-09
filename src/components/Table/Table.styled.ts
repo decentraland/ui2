@@ -38,7 +38,7 @@ const StyledTableHead = styled(TableHead)(({ theme }) => ({
 const StyledTableHeadRow = styled(TableRow)(({ theme }) => ({
   height: "20px",
   "& .MuiTableCell-root": {
-    padding: `${theme.spacing(1)} ${theme.spacing(2)}`,
+    padding: `${theme.spacing(0.5)} ${theme.spacing(2)}`,
     borderBottom: "none",
   },
 }))

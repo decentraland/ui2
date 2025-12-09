@@ -41,6 +41,8 @@ export * from "./components/RarityBadge"
 export * from "./components/CatalogCard"
 export * from "./components/CreditsToggle"
 export * from "./components/SceneCard"
+export * from "./components/ScenesTable"
+export * as dclTable from "./components/Table"
 
 export * as dclNetworkUtils from "./lib/network"
 

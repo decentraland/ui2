@@ -24,4 +24,3 @@ const LocationRow = memo((props: LocationRowProps) => {
 LocationRow.displayName = "LocationRow"
 
 export { LocationRow }
-
