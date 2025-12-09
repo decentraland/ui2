@@ -82,6 +82,7 @@ const exampleAvatar: Avatar = {
 
 const exampleRows = [
   {
+    key: "1",
     sceneName: "My Galaxy World and mor things",
     thumbnail: sceneThumbnail,
     creator: exampleAvatar,
@@ -89,6 +90,7 @@ const exampleRows = [
     positionChange: 3,
   },
   {
+    key: "2",
     sceneName: "My Galaxy World and more and more and this is anoter",
     thumbnail: sceneThumbnail,
     creator: exampleAvatar,
@@ -96,6 +98,7 @@ const exampleRows = [
     positionChange: -1,
   },
   {
+    key: "3",
     sceneName: "Eclair",
     thumbnail: sceneThumbnail,
     creator: exampleAvatar,
@@ -103,6 +106,7 @@ const exampleRows = [
     positionChange: 5,
   },
   {
+    key: "4",
     sceneName: "Cupcake",
     thumbnail: sceneThumbnail,
     creator: exampleAvatar,
