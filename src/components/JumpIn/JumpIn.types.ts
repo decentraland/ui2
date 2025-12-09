@@ -34,6 +34,7 @@ type JumpInBaseProps = {
   desktopAppOptions?: {
     position?: string
     realm?: string
+    communityId?: string
   }
 }
 
