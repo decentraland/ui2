@@ -1,10 +1,11 @@
 import { memo, useCallback } from "react"
-import useMediaQuery from "@mui/material/useMediaQuery"
-import { useTheme } from "@mui/material/styles"
 import Paper from "@mui/material/Paper"
+import { useTheme } from "@mui/material/styles"
 import TableContainer from "@mui/material/TableContainer"
+import useMediaQuery from "@mui/material/useMediaQuery"
 import { TableProps } from "./Table.types"
 import {
+  BorderOverlay,
   StyledTable,
   StyledTableBody,
   StyledTableCell,
@@ -20,6 +21,8 @@ const TableComponent = <T,>(props: TableProps<T>) => {
     getRowKey,
     hoverEffect = true,
     onMobileRowClick,
+    hasRowBorder,
+    rowBorderColor,
   } = props
 
   const theme = useTheme()
@@ -52,24 +55,31 @@ const TableComponent = <T,>(props: TableProps<T>) => {
           </StyledTableHeadRow>
         </StyledTableHead>
         <StyledTableBody hoverEffect={hoverEffect}>
-          {rows.map((row, index) => (
-            <StyledTableRow
-              key={getRowKey(row, index)}
-              mobileClickable={!!onMobileRowClick}
-              onClick={() => handleRowClick(row, index)}
-            >
-              {columns.map((column) => (
-                <StyledTableCell
-                  key={column.id}
-                  cellWidth={column.width}
-                  hideOnMobile={column.hideOnMobile}
-                  cellPadding={column.cellPadding}
-                >
-                  {column.render(row, index)}
-                </StyledTableCell>
-              ))}
-            </StyledTableRow>
-          ))}
+          {rows.map((row, index) => {
+            const showBorder = hasRowBorder?.(row, index)
+            return (
+              <StyledTableRow
+                key={getRowKey(row, index)}
+                mobileClickable={!!onMobileRowClick}
+                withBorder={showBorder}
+                onClick={() => handleRowClick(row, index)}
+              >
+                {columns.map((column, colIndex) => (
+                  <StyledTableCell
+                    key={column.id}
+                    cellWidth={column.width}
+                    hideOnMobile={column.hideOnMobile}
+                    cellPadding={column.cellPadding}
+                  >
+                    {colIndex === 0 && showBorder && rowBorderColor && (
+                      <BorderOverlay borderColor={rowBorderColor} />
+                    )}
+                    {column.render(row, index)}
+                  </StyledTableCell>
+                ))}
+              </StyledTableRow>
+            )
+          })}
         </StyledTableBody>
       </StyledTable>
     </TableContainer>
@@ -81,4 +91,3 @@ TableComponent.displayName = "Table"
 const Table = memo(TableComponent) as typeof TableComponent
 
 export { Table }
-

@@ -1,4 +1,5 @@
 import {
+  Box,
   Table,
   TableBody,
   TableCell,
@@ -55,11 +56,10 @@ const StyledTableBody = styled(TableBody, {
     borderBottom: "none",
     textAlign: "left",
   },
-  "& tr td:first-child, & tr th:first-child": {
+  "& tr td:first-of-type, & tr th:first-of-type": {
     borderRadius: `${theme.spacing(2)} 0 0 ${theme.spacing(2)}`,
-    overflow: "hidden",
   },
-  "& tr td:last-child, & tr th:last-child": {
+  "& tr td:last-of-type, & tr th:last-of-type": {
     borderRadius: `0 ${theme.spacing(2)} ${theme.spacing(2)} 0`,
   },
   "& tr": {
@@ -106,11 +106,13 @@ const StyledTableCell = styled(TableCell, {
 
 type StyledTableRowProps = {
   mobileClickable?: boolean
+  withBorder?: boolean
 }
 
 const StyledTableRow = styled(TableRow, {
-  shouldForwardProp: (prop) => prop !== "mobileClickable",
-})<StyledTableRowProps>(({ theme, mobileClickable }) => ({
+  shouldForwardProp: (prop) =>
+    prop !== "mobileClickable" && prop !== "withBorder",
+})<StyledTableRowProps>(({ theme, mobileClickable, withBorder }) => ({
   ...(mobileClickable && {
     [theme.breakpoints.down("sm")]: {
       cursor: "pointer",
@@ -119,9 +121,38 @@ const StyledTableRow = styled(TableRow, {
       },
     },
   }),
+  ...(withBorder && {
+    position: "relative",
+  }),
+}))
+
+type BorderOverlayProps = {
+  borderColor?: string
+}
+
+const BorderOverlay = styled(Box, {
+  shouldForwardProp: (prop) => prop !== "borderColor",
+})<BorderOverlayProps>(({ theme, borderColor }) => ({
+  position: "absolute",
+  inset: 0,
+  borderRadius: theme.spacing(2),
+  pointerEvents: "none",
+  zIndex: 1,
+  "&::before": {
+    content: '""',
+    position: "absolute",
+    inset: 0,
+    borderRadius: theme.spacing(2),
+    padding: "3px",
+    background: borderColor,
+    mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+    maskComposite: "exclude",
+    pointerEvents: "none",
+  },
 }))
 
 export {
+  BorderOverlay,
   StyledTable,
   StyledTableBody,
   StyledTableCell,

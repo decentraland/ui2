@@ -15,7 +15,8 @@ type TableProps<T> = {
   getRowKey: (row: T, index: number) => string
   hoverEffect?: boolean
   onMobileRowClick?: (row: T, index: number) => void
+  hasRowBorder?: (row: T, index: number) => boolean
+  rowBorderColor?: string
 }
 
 export type { Column, TableProps }
-
