@@ -3,6 +3,7 @@ import { AdvancedNavigatorUAData } from "@dcl/hooks/cjs/hooks/useAdvancedUserAge
 type JumpInOptions = {
   position?: string
   realm?: string
+  communityId?: string
   timeoutMs?: number
   userAgentData?: AdvancedNavigatorUAData
 }
@@ -14,6 +15,7 @@ function buildDecentralandUrl(opts: JumpInOptions) {
   const params = new URLSearchParams()
   if (opts.position) params.set("position", opts.position)
   if (opts.realm) params.set("realm", opts.realm)
+  if (opts.communityId) params.set("community", opts.communityId)
   return `decentraland://?${params.toString()}`
 }
 
