@@ -11,7 +11,7 @@ const ScenesTable = memo((props: ScenesTableProps) => {
       {
         id: "scene",
         header: "Scene Name",
-        width: "40%",
+        width: { desktop: "40%", mobile: "100%" },
         cellPadding: 0,
         render: (row) => (
           <SceneRow
@@ -37,6 +37,7 @@ const ScenesTable = memo((props: ScenesTableProps) => {
       {
         id: "action",
         header: "",
+        width: { mobile: 50 },
         render: (row) => (
           <ActionRow
             positionChange={row.positionChange}

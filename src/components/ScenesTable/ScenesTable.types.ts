@@ -7,6 +7,7 @@ type SceneRowData = {
   location: string
   thumbnail: string
   positionChange?: number
+  borderColor?: string
 }
 
 type ScenesTableProps = {

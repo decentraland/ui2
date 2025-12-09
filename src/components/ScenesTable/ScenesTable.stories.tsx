@@ -80,6 +80,13 @@ const exampleAvatar: Avatar = {
   links: [],
 }
 
+const GOLD_GRADIENT =
+  "linear-gradient(90deg, #F3C66B 0%, #9D7526 25%, #F6E59B 50%, #9D7526 75%, #F3C66B 100%)"
+const BRONZE_GRADIENT =
+  "linear-gradient(90deg, #FC801A 0%, #AF4300 25%, #FDCAA5 50%, #AF4300 75%, #FC801A 100%)"
+const SILVER_GRADIENT =
+  "linear-gradient(90deg, #5E5E5E 0%, #626262 25%, #FFFFFF 50%, #6D6D6D 75%, #5E5E5E 100%)"
+
 const exampleRows = [
   {
     key: "1",
@@ -114,6 +121,43 @@ const exampleRows = [
   },
 ]
 
+const exampleRowsWithBorders = [
+  {
+    key: "1",
+    sceneName: "Gold Border Scene",
+    thumbnail: sceneThumbnail,
+    creator: exampleAvatar,
+    location: "alelevyyyyworldamazing.eth.dcl",
+    positionChange: 3,
+    borderColor: GOLD_GRADIENT,
+  },
+  {
+    key: "2",
+    sceneName: "Silver Border Scene",
+    thumbnail: sceneThumbnail,
+    creator: exampleAvatar,
+    location: "-17,5",
+    positionChange: -1,
+    borderColor: SILVER_GRADIENT,
+  },
+  {
+    key: "3",
+    sceneName: "Bronze Border Scene",
+    thumbnail: sceneThumbnail,
+    creator: exampleAvatar,
+    location: "alelevyyyy.eth.dcl",
+    positionChange: 5,
+    borderColor: BRONZE_GRADIENT,
+  },
+  {
+    key: "4",
+    sceneName: "No Border Scene",
+    thumbnail: sceneThumbnail,
+    creator: exampleAvatar,
+    location: "87,56",
+  },
+]
+
 const meta: Meta<typeof ScenesTable> = {
   title: "Decentraland UI/Tables/Scenes Table",
   component: ScenesTable,
@@ -141,6 +185,12 @@ const Default: Story = {
   },
 }
 
+const WithColorBorders: Story = {
+  args: {
+    rows: exampleRowsWithBorders,
+  },
+}
+
 // eslint-disable-next-line import/no-default-export
 export default meta
-export { Default }
+export { Default, WithColorBorders }

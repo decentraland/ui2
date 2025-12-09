@@ -80,21 +80,38 @@ const StyledTableBody = styled(TableBody, {
   },
 }))
 
+type ResponsiveWidth =
+  | string
+  | number
+  | { mobile?: string | number; desktop?: string | number }
+
 type StyledTableCellProps = {
-  cellWidth?: string | number
+  cellWidth?: ResponsiveWidth
   cellPadding?: number | string
 }
 
+const isResponsiveWidth = (
+  value: ResponsiveWidth
+): value is { mobile?: string | number; desktop?: string | number } =>
+  typeof value === "object" && ("mobile" in value || "desktop" in value)
+
 const StyledTableCell = styled(TableCell, {
   shouldForwardProp: (prop) => prop !== "cellWidth" && prop !== "cellPadding",
-})<StyledTableCellProps>(({ theme, cellWidth, cellPadding }) => ({
-  overflow: "hidden",
-  ...(cellWidth && { width: cellWidth }),
-  ...(cellPadding !== undefined && { padding: cellPadding }),
-  [theme.breakpoints.down("sm")]: {
-    width: "auto",
-  },
-}))
+})<StyledTableCellProps>(({ theme, cellWidth, cellPadding }) => {
+  const desktopWidth =
+    cellWidth && isResponsiveWidth(cellWidth) ? cellWidth.desktop : cellWidth
+  const mobileWidth =
+    cellWidth && isResponsiveWidth(cellWidth) ? cellWidth.mobile : undefined
+
+  return {
+    overflow: "hidden",
+    ...(desktopWidth && { width: desktopWidth }),
+    ...(cellPadding !== undefined && { padding: cellPadding }),
+    [theme.breakpoints.down("sm")]: {
+      width: mobileWidth ?? "auto",
+    },
+  }
+})
 
 type StyledTableRowProps = {
   mobileClickable?: boolean

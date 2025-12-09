@@ -5,10 +5,15 @@ type BaseRow = {
   borderColor?: string
 }
 
+type ResponsiveWidth =
+  | string
+  | number
+  | { mobile?: string | number; desktop?: string | number }
+
 type Column<T extends BaseRow> = {
   id: string
   header?: string
-  width?: string | number
+  width?: ResponsiveWidth
   hideOnMobile?: boolean
   cellPadding?: number | string
   render: (row: T, index: number) => ReactNode
