@@ -1,14 +1,12 @@
 import { memo, useCallback } from "react"
-import Paper from "@mui/material/Paper"
-import { useTheme } from "@mui/material/styles"
-import TableContainer from "@mui/material/TableContainer"
-import useMediaQuery from "@mui/material/useMediaQuery"
+import { useMobileMediaQuery } from "../Media"
 import { BaseRow, TableProps } from "./Table.types"
 import {
   BorderOverlay,
   StyledTable,
   StyledTableBody,
   StyledTableCell,
+  StyledTableContainer,
   StyledTableHead,
   StyledTableHeadRow,
   StyledTableRow,
@@ -17,8 +15,7 @@ import {
 const TableComponent = <T extends BaseRow>(props: TableProps<T>) => {
   const { columns, rows, hoverEffect = true, onMobileRowClick } = props
 
-  const theme = useTheme()
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"))
+  const isMobile = useMobileMediaQuery()
 
   const visibleColumns = isMobile
     ? columns.filter((col) => !col.hideOnMobile)
@@ -34,7 +31,7 @@ const TableComponent = <T extends BaseRow>(props: TableProps<T>) => {
   )
 
   return (
-    <TableContainer component={Paper}>
+    <StyledTableContainer>
       <StyledTable aria-label="table">
         <StyledTableHead>
           <StyledTableHeadRow>
@@ -73,7 +70,7 @@ const TableComponent = <T extends BaseRow>(props: TableProps<T>) => {
           ))}
         </StyledTableBody>
       </StyledTable>
-    </TableContainer>
+    </StyledTableContainer>
   )
 }
 

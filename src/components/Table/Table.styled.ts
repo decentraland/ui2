@@ -3,11 +3,17 @@ import {
   Table,
   TableBody,
   TableCell,
+  TableContainer,
   TableHead,
   TableRow,
   styled,
 } from "@mui/material"
 import { hexToRgba } from "../../utils/colors"
+
+const StyledTableContainer = styled(TableContainer)(({ theme }) => ({
+  padding: theme.spacing(1.5),
+  backgroundImage: "none",
+}))
 
 const StyledTable = styled(Table)(({ theme }) => ({
   width: "100%",
@@ -165,6 +171,7 @@ export {
   StyledTable,
   StyledTableBody,
   StyledTableCell,
+  StyledTableContainer,
   StyledTableHead,
   StyledTableHeadRow,
   StyledTableRow,
