@@ -126,6 +126,11 @@ const gradient = {
   flare: `linear-gradient(135deg, ${brand.ruby} 0%, ${brand.yellow} 100%)`,
   cerise: `linear-gradient(135deg, ${brand.ruby} 0%, ${brand.lavender} 100%)`,
   amin: `linear-gradient(135deg, ${brand.lavender} 0%, ${brand.purple} 100%)`,
+  gold: "linear-gradient(90deg, #F3C66B 0%, #9D7526 25%, #F6E59B 50%, #9D7526 75%, #F3C66B 100%)",
+  silver:
+    "linear-gradient(90deg, #5E5E5E 0%, #626262 25%, #FFFFFF 50%, #6D6D6D 75%, #5E5E5E 100%)",
+  bronze:
+    "linear-gradient(90deg, #FC801A 0%, #AF4300 25%, #FDCAA5 50%, #AF4300 75%, #FC801A 100%)",
 }
 
 const textOnGradient: typeof gradient = {
@@ -133,6 +138,9 @@ const textOnGradient: typeof gradient = {
   flare: neutral.white,
   cerise: neutral.white,
   amin: neutral.white,
+  gold: neutral.softBlack2,
+  silver: neutral.softBlack2,
+  bronze: neutral.softBlack2,
 }
 
 const opacity = {
