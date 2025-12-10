@@ -1,11 +1,11 @@
 import { memo } from "react"
-import { CreatorInfo } from "../../../CreatorInfo"
+import { UserLabel } from "../../../UserLabel"
 import { AvatarRowProps } from "./AvatarRow.types"
 
 const AvatarRow = memo((props: AvatarRowProps) => {
   const { avatar } = props
 
-  return <CreatorInfo avatar={avatar} />
+  return <UserLabel avatar={avatar} />
 })
 
 AvatarRow.displayName = "AvatarRow"

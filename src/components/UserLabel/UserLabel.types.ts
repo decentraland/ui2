@@ -1,7 +1,7 @@
 import { Avatar } from "@dcl/schemas"
 
-type CreatorInfoProps = {
+type UserLabelProps = {
   avatar: Avatar
 }
 
-export type { CreatorInfoProps }
+export type { UserLabelProps }

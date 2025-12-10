@@ -1,5 +1,5 @@
 import { Avatar } from "@dcl/schemas"
-import { CreatorInfo } from "./CreatorInfo"
+import { UserLabel } from "./UserLabel"
 import type { Meta, StoryObj } from "@storybook/react"
 
 const exampleAvatar: Avatar = {
@@ -79,16 +79,16 @@ const exampleAvatar: Avatar = {
   links: [],
 }
 
-const meta: Meta<typeof CreatorInfo> = {
-  title: "Decentraland UI/CreatorInfo",
-  component: CreatorInfo,
+const meta: Meta<typeof UserLabel> = {
+  title: "Decentraland UI/UserLabel",
+  component: UserLabel,
   tags: ["autodocs"],
   parameters: {
     layout: "centered",
   },
 }
 
-type Story = StoryObj<typeof CreatorInfo>
+type Story = StoryObj<typeof UserLabel>
 
 const Default: Story = {
   args: {

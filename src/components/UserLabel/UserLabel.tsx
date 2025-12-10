@@ -1,27 +1,27 @@
 import { memo } from "react"
 import { Typography } from "@mui/material"
 import { AvatarFace } from "../AvatarFace/AvatarFace"
-import { CreatorInfoProps } from "./CreatorInfo.types"
-import { CreatorInfoContainer, CreatorLink } from "./CreatorInfo.styled"
+import { UserLabelProps } from "./UserLabel.types"
+import { UserLabelContainer, UserLabelLink } from "./UserLabel.styled"
 
-const CreatorInfo = memo((props: CreatorInfoProps) => {
+const UserLabel = memo((props: UserLabelProps) => {
   const { avatar } = props
 
   return (
-    <CreatorInfoContainer>
+    <UserLabelContainer>
       <AvatarFace avatar={avatar} />
       <Typography variant="body2">
         By{" "}
-        <CreatorLink
+        <UserLabelLink
           href={`https://decentraland.org/profile/accounts/${avatar?.ethAddress}`}
         >
           {avatar.name}
-        </CreatorLink>
+        </UserLabelLink>
       </Typography>
-    </CreatorInfoContainer>
+    </UserLabelContainer>
   )
 })
 
-CreatorInfo.displayName = "CreatorInfo"
+UserLabel.displayName = "UserLabel"
 
-export { CreatorInfo }
+export { UserLabel }

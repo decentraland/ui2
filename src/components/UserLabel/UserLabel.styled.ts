@@ -1,12 +1,12 @@
 import { Box, Link, styled } from "@mui/material"
 
-const CreatorInfoContainer = styled(Box)(({ theme }) => ({
+const UserLabelContainer = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   gap: theme.spacing(1),
 }))
 
-const CreatorLink = styled(Link)({
+const UserLabelLink = styled(Link)({
   textDecoration: "none",
   overflow: "hidden",
   textOverflow: "ellipsis",
@@ -16,4 +16,4 @@ const CreatorLink = styled(Link)({
   },
 })
 
-export { CreatorInfoContainer, CreatorLink }
+export { UserLabelContainer, UserLabelLink }
