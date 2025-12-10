@@ -25,10 +25,10 @@ const StyledTableHead = styled(TableHead)(({ theme }) => ({
     color: theme.palette.text.primary,
   },
   "& .MuiTableCell-root:first-of-type": {
-    borderRadius: `${theme.spacing(2)} 0 0 ${theme.spacing(2)}`,
+    borderRadius: theme.spacing(2, 0, 0, 2),
   },
   "& .MuiTableCell-root:last-of-type": {
-    borderRadius: `0 ${theme.spacing(2)} ${theme.spacing(2)} 0`,
+    borderRadius: theme.spacing(0, 2, 2, 0),
   },
   [theme.breakpoints.down("sm")]: {
     display: "none",
@@ -38,7 +38,7 @@ const StyledTableHead = styled(TableHead)(({ theme }) => ({
 const StyledTableHeadRow = styled(TableRow)(({ theme }) => ({
   height: "20px",
   "& .MuiTableCell-root": {
-    padding: `${theme.spacing(0.5)} ${theme.spacing(2)}`,
+    padding: theme.spacing(0.5, 2),
     borderBottom: "none",
   },
 }))
@@ -57,10 +57,10 @@ const StyledTableBody = styled(TableBody, {
     textAlign: "left",
   },
   "& tr td:first-of-type, & tr th:first-of-type": {
-    borderRadius: `${theme.spacing(2)} 0 0 ${theme.spacing(2)}`,
+    borderRadius: theme.spacing(2, 0, 0, 2),
   },
   "& tr td:last-of-type, & tr th:last-of-type": {
-    borderRadius: `0 ${theme.spacing(2)} ${theme.spacing(2)} 0`,
+    borderRadius: theme.spacing(0, 2, 2, 0),
   },
   "& tr": {
     borderRadius: theme.spacing(2),

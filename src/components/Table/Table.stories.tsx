@@ -1,13 +1,7 @@
 import { Table } from "./Table"
+import { gradient } from "../../theme/colors"
 import { BaseRow, Column } from "./Table.types"
 import type { Meta, StoryObj } from "@storybook/react"
-
-const GOLD_GRADIENT =
-  "linear-gradient(90deg, #F3C66B 0%, #9D7526 25%, #F6E59B 50%, #9D7526 75%, #F3C66B 100%)"
-const BRONZE_GRADIENT =
-  "linear-gradient(90deg, #FC801A 0%, #AF4300 25%, #FDCAA5 50%, #AF4300 75%, #FC801A 100%)"
-const SILVER_GRADIENT =
-  "linear-gradient(90deg, #5E5E5E 0%, #626262 25%, #FFFFFF 50%, #6D6D6D 75%, #5E5E5E 100%)"
 
 type ExampleRow = BaseRow & {
   scene: string
@@ -48,21 +42,21 @@ const exampleRowsWithBorders: ExampleRow[] = [
     scene: "Genesis Plaza",
     creator: "Decentraland",
     location: "0,0",
-    borderColor: GOLD_GRADIENT,
+    borderColor: gradient.gold,
   },
   {
     key: "2",
     scene: "Metaverse HQ",
     creator: "DCL Team",
     location: "-10,15",
-    borderColor: SILVER_GRADIENT,
+    borderColor: gradient.silver,
   },
   {
     key: "3",
     scene: "Art Gallery",
     creator: "CryptoArtist",
     location: "world.dcl.eth",
-    borderColor: BRONZE_GRADIENT,
+    borderColor: gradient.bronze,
   },
   {
     key: "4",
