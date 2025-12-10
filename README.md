@@ -43,7 +43,7 @@ export const CustomButton = (props) => {
 
 ## Development
 
-Prerequisites: Node.js 16 React 17|18 (or compatible)
+Prerequisites: Node.js 16+ and React 18
 
 Install dependencies and start Storybook:
 
