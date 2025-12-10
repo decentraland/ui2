@@ -1,12 +1,12 @@
 import { Box, Link, styled } from "@mui/material"
 
-const AvatarRowContainer = styled(Box)(({ theme }) => ({
+const CreatorInfoContainer = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   gap: theme.spacing(1),
 }))
 
-const AvatarLink = styled(Link)({
+const CreatorLink = styled(Link)({
   textDecoration: "none",
   overflow: "hidden",
   textOverflow: "ellipsis",
@@ -16,4 +16,4 @@ const AvatarLink = styled(Link)({
   },
 })
 
-export { AvatarRowContainer, AvatarLink }
+export { CreatorInfoContainer, CreatorLink }
