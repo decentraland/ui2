@@ -56,7 +56,9 @@ type WearablePreviewProps = {
   dev?: boolean
   baseUrl?: string
   peerUrl?: string
+  /** @deprecated Use marketplaceServerUrl instead. This prop will be removed in a future version. */
   nftServerUrl?: string
+  marketplaceServerUrl?: string
   type?: PreviewType
   unityMode?: PreviewUnityMode
   unity?: boolean
