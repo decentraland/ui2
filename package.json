@@ -39,7 +39,7 @@
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^16.0.1",
     "@dcl/hooks": "^0.3.0",
-    "@dcl/schemas": "https://sdk-team-cdn.decentraland.org/@dcl/schemas/branch/feat/add-emote-controller-method/dcl-schemas-20.3.3-20148008160.commit-2a848cc.tgz",
+    "@dcl/schemas": "^20.3.3",
     "@dcl/ui-env": "^1.5.1",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
