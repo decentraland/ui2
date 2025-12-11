@@ -96,6 +96,7 @@ const WearablePreview = (props: WearablePreviewProps) => {
       lockRadius,
       peerUrl,
       nftServerUrl,
+      marketplaceServerUrl,
       type,
       unityMode,
       username,
@@ -164,7 +165,11 @@ const WearablePreview = (props: WearablePreviewProps) => {
       showThumbnailBoundaries
     )
     const peerUrlParam = safeEncodeParam("peerUrl", peerUrl)
-    const nftServerUrlParam = safeEncodeParam("nftServerUrl", nftServerUrl)
+    const serverUrl = marketplaceServerUrl ?? nftServerUrl
+    const marketplaceServerUrlParam = safeEncodeParam(
+      "marketplaceServerUrl",
+      serverUrl
+    )
     const typeParam = safeEncodeParam("type", type)
     const panningParam = safeEncodeParam("panning", panning)
     const lockAlphaParam = safeEncodeParam("lockAlpha", lockAlpha)
@@ -215,7 +220,7 @@ const WearablePreview = (props: WearablePreviewProps) => {
         showSceneBoundariesParam,
         showThumbnailBoundariesParam,
         peerUrlParam,
-        nftServerUrlParam,
+        marketplaceServerUrlParam,
         typeParam,
         panningParam,
         lockAlphaParam,
