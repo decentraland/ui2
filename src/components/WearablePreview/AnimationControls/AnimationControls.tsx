@@ -56,10 +56,14 @@ export const AnimationControls: FC<AnimationControlsProps> = ({
   useEffect(() => {
     if (isReady && controllerRef.current) {
       if (socialEmoteAnimations === undefined) {
-        controllerRef.current.emote
-          .getSocialEmoteAnimations()
-          .then((socialEmoteAnimations) => {
+        Promise.all([
+          controllerRef.current.emote.getSocialEmoteAnimations(),
+          controllerRef.current.emote.getPlayingSocialEmoteAnimation(),
+        ])
+          .then(([socialEmoteAnimations, playingSocialEmoteAnimation]) => {
             setSocialEmoteAnimations(socialEmoteAnimations)
+            playingSocialEmoteAnimation &&
+              onSelectAnimation?.(playingSocialEmoteAnimation)
           })
           .catch((error) => {
             console.error("Error checking social emote:", error)
