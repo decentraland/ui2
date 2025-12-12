@@ -4,7 +4,6 @@ import {
   MouseEvent as ReactMouseEvent,
   useCallback,
   useEffect,
-  useMemo,
   useRef,
   useState,
 } from "react"
@@ -42,37 +41,56 @@ export const AnimationControls: FC<AnimationControlsProps> = ({
   const [socialEmoteAnimations, setSocialEmoteAnimations] = useState<
     SocialEmoteAnimation[] | null | undefined
   >(undefined)
+  const [selectedIndex, setSelectedIndex] = useState(0)
 
-  const selectedIndex = useMemo(() => {
+  // Sync selectedIndex when selectedAnimation prop changes (controlled mode)
+  useEffect(() => {
     if (!socialEmoteAnimations || !selectedAnimation) {
-      return 0
+      return
     }
     const index = socialEmoteAnimations.findIndex(
       (anim) => anim.title === selectedAnimation.title
     )
-    return index >= 0 ? index : 0
+    setSelectedIndex(index >= 0 ? index : 0)
   }, [socialEmoteAnimations, selectedAnimation])
 
   useEffect(() => {
-    if (isReady && controllerRef.current) {
-      if (socialEmoteAnimations === undefined) {
-        controllerRef.current.emote
-          .getSocialEmoteAnimations()
-          .then((socialEmoteAnimations) => {
-            setSocialEmoteAnimations(socialEmoteAnimations)
-          })
-          .catch((error) => {
-            console.error("Error checking social emote:", error)
-            setSocialEmoteAnimations(null)
-          })
-      }
+    if (
+      !isReady ||
+      !controllerRef.current ||
+      socialEmoteAnimations !== undefined
+    ) {
+      return
     }
-  }, [socialEmoteAnimations, isReady, controllerRef])
+
+    Promise.all([
+      controllerRef.current.emote.getSocialEmoteAnimations(),
+      controllerRef.current.emote.getPlayingSocialEmoteAnimation(),
+    ])
+      .then(([animations, playingAnimation]) => {
+        setSocialEmoteAnimations(animations)
+        if (playingAnimation) {
+          onSelectAnimation?.(playingAnimation)
+          const index =
+            animations?.findIndex(
+              (anim) => anim.title === playingAnimation.title
+            ) ?? -1
+          setSelectedIndex(index >= 0 ? index : 0)
+        }
+      })
+      .catch((error) => {
+        console.error("Error checking social emote:", error)
+        setSocialEmoteAnimations(null)
+      })
+  }, [socialEmoteAnimations, isReady, controllerRef, onSelectAnimation])
 
   const handleMenuItemClick = useCallback(
     (_event: ReactMouseEvent<HTMLLIElement, MouseEvent>, index: number) => {
       setOpen(false)
-      onSelectAnimation?.(socialEmoteAnimations![index])
+      setSelectedIndex(index)
+      if (socialEmoteAnimations?.[index]) {
+        onSelectAnimation?.(socialEmoteAnimations[index])
+      }
     },
     [socialEmoteAnimations, onSelectAnimation]
   )
@@ -81,34 +99,23 @@ export const AnimationControls: FC<AnimationControlsProps> = ({
     setOpen((prevOpen) => !prevOpen)
   }, [])
 
-  const handleClose = useCallback(
-    (event: Event) => {
-      if (
-        anchorRef.current &&
-        anchorRef.current.contains(event.target as HTMLElement)
-      ) {
-        return
-      }
+  const handleClose = useCallback((event: Event) => {
+    if (anchorRef.current?.contains(event.target as HTMLElement)) {
+      return
+    }
+    setOpen(false)
+  }, [])
 
-      setOpen(false)
-    },
-    [anchorRef]
-  )
-
-  if (!socialEmoteAnimations) {
+  if (!socialEmoteAnimations || socialEmoteAnimations.length === 0) {
     return null
   }
 
   if (renderAnimationSelector && onSelectAnimation) {
-    return (
-      <>
-        {renderAnimationSelector({
-          socialEmoteAnimations,
-          selectedAnimation: selectedAnimation ?? socialEmoteAnimations[0],
-          onSelectAnimation,
-        })}
-      </>
-    )
+    return renderAnimationSelector({
+      socialEmoteAnimations,
+      selectedAnimation: selectedAnimation ?? socialEmoteAnimations[0],
+      onSelectAnimation,
+    })
   }
 
   return (
