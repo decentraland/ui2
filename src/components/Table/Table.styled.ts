@@ -11,7 +11,7 @@ import {
 import { hexToRgba } from "../../utils/colors"
 
 const StyledTableContainer = styled(TableContainer)(({ theme }) => ({
-  padding: theme.spacing(1.5),
+  padding: theme.spacing(0, 3, 3, 3),
   backgroundImage: "none",
 }))
 
@@ -30,10 +30,13 @@ const StyledTableHead = styled(TableHead)(({ theme }) => ({
     fontSize: "12px",
     color: theme.palette.text.primary,
   },
-  "& .MuiTableCell-root:first-of-type": {
+  "& .MuiTableCell-root:only-of-type": {
+    borderRadius: theme.spacing(2),
+  },
+  "& .MuiTableCell-root:first-of-type:not(:only-of-type)": {
     borderRadius: theme.spacing(2, 0, 0, 2),
   },
-  "& .MuiTableCell-root:last-of-type": {
+  "& .MuiTableCell-root:last-of-type:not(:only-of-type)": {
     borderRadius: theme.spacing(0, 2, 2, 0),
   },
   [theme.breakpoints.down("sm")]: {
@@ -62,10 +65,15 @@ const StyledTableBody = styled(TableBody, {
     borderBottom: "none",
     textAlign: "left",
   },
-  "& tr td:first-of-type, & tr th:first-of-type": {
+  "& tr td:only-of-type, & tr th:only-of-type": {
+    borderRadius: theme.spacing(2),
+  },
+  ["& tr td:first-of-type:not(:only-of-type)," +
+  " & tr th:first-of-type:not(:only-of-type)"]: {
     borderRadius: theme.spacing(2, 0, 0, 2),
   },
-  "& tr td:last-of-type, & tr th:last-of-type": {
+  ["& tr td:last-of-type:not(:only-of-type)," +
+  " & tr th:last-of-type:not(:only-of-type)"]: {
     borderRadius: theme.spacing(0, 2, 2, 0),
   },
   "& tr": {

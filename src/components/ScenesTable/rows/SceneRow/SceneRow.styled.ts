@@ -14,9 +14,9 @@ const SceneThumbnail = styled("img")(({ theme }) => ({
   borderRadius: `${theme.spacing(2)} 0 0 ${theme.spacing(2)}`,
   objectFit: "cover",
   flexShrink: 0,
-  [theme.breakpoints.down("sm")]: {
-    height: 60,
-    width: 60,
+  [theme.breakpoints.down("xs")]: {
+    height: theme.spacing(7.5),
+    width: "auto",
   },
 }))
 
