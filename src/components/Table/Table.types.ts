@@ -23,6 +23,7 @@ type TableProps<T extends BaseRow> = {
   columns: Column<T>[]
   rows: T[]
   hoverEffect?: boolean
+  headerVisible?: boolean
   onMobileRowClick?: (row: T, index: number) => void
 }
 

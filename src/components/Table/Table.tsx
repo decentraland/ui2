@@ -45,7 +45,13 @@ const TableCellBorder = ({ borderColor }: TableCellBorderProps) => {
 }
 
 const TableComponent = <T extends BaseRow>(props: TableProps<T>) => {
-  const { columns, rows, hoverEffect = true, onMobileRowClick } = props
+  const {
+    columns,
+    rows,
+    hoverEffect = true,
+    headerVisible = true,
+    onMobileRowClick,
+  } = props
 
   const isMobile = useMobileMediaQuery()
 
@@ -65,19 +71,21 @@ const TableComponent = <T extends BaseRow>(props: TableProps<T>) => {
   return (
     <StyledTableContainer>
       <StyledTable aria-label="table">
-        <StyledTableHead>
-          <StyledTableHeadRow>
-            {visibleColumns.map((column) => (
-              <StyledTableCell
-                key={column.id}
-                $cellWidth={column.width}
-                $cellPadding={column.cellPadding}
-              >
-                {column.header}
-              </StyledTableCell>
-            ))}
-          </StyledTableHeadRow>
-        </StyledTableHead>
+        {headerVisible && (
+          <StyledTableHead>
+            <StyledTableHeadRow>
+              {visibleColumns.map((column) => (
+                <StyledTableCell
+                  key={column.id}
+                  $cellWidth={column.width}
+                  $cellPadding={column.cellPadding}
+                >
+                  {column.header}
+                </StyledTableCell>
+              ))}
+            </StyledTableHeadRow>
+          </StyledTableHead>
+        )}
         <StyledTableBody hoverEffect={hoverEffect}>
           {rows.map((row, index) => (
             <StyledTableRow

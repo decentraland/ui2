@@ -218,6 +218,14 @@ const SingleColumn: Story = {
   },
 }
 
+const WithoutHeader: Story = {
+  args: {
+    columns: exampleColumns,
+    rows: exampleRows,
+    headerVisible: false,
+  },
+}
+
 // eslint-disable-next-line import/no-default-export
 export default meta
 export {
@@ -226,5 +234,6 @@ export {
   MobileChangeLayout,
   SingleColumn,
   WithBorders,
+  WithoutHeader,
   WithoutHoverEffect,
 }
