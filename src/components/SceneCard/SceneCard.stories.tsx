@@ -171,7 +171,7 @@ const AllVisible: Story = {
 const WithBorder: Story = {
   args: {
     image: sceneThumbnail,
-    sceneName: "Scene With Border",
+    sceneName: "Scene With Border and long name and more text",
     coordinates: "border.eth.dcl",
     avatar: exampleAvatar,
     withBorder: true,
