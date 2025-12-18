@@ -2,6 +2,7 @@ import { Avatar } from "@dcl/schemas"
 import { Box, Typography } from "@mui/material"
 import { SceneCard } from "./SceneCard"
 import sceneThumbnail from "../../Assets/scene-thumbnail.png"
+import { gradient } from "../../theme/colors"
 import { Mana } from "../Mana/Mana"
 import type { Meta, StoryObj } from "@storybook/react"
 
@@ -174,12 +175,60 @@ const WithBorder: Story = {
     sceneName: "Scene With Border and long name and more text",
     coordinates: "border.eth.dcl",
     avatar: exampleAvatar,
-    withBorder: true,
+    borderColor: gradient.gold,
     withShadow: true,
     leftBadge: "1",
     rightBadge: <Mana inline>1.5k</Mana>,
     showOnHover: ["location", "jumpInButton"],
   },
+}
+
+const BorderColors: Story = {
+  render: () => (
+    <Box
+      sx={{
+        display: "grid",
+        gridTemplateColumns: "repeat(3, 1fr)",
+        gap: 3,
+        width: "100%",
+        alignItems: "flex-start",
+      }}
+    >
+      <SceneCard
+        image={sceneThumbnail}
+        sceneName="Gold Border - 1st Place"
+        coordinates="gold.eth.dcl"
+        avatar={exampleAvatar}
+        borderColor={gradient.gold}
+        withShadow
+        leftBadge="🥇"
+        rightBadge={<Mana inline>10k</Mana>}
+        showOnHover={["location", "jumpInButton"]}
+      />
+      <SceneCard
+        image={sceneThumbnail}
+        sceneName="Silver Border - 2nd Place"
+        coordinates="silver.eth.dcl"
+        avatar={exampleAvatar}
+        borderColor={gradient.silver}
+        withShadow
+        leftBadge="🥈"
+        rightBadge={<Mana inline>7.5k</Mana>}
+        showOnHover={["location", "jumpInButton"]}
+      />
+      <SceneCard
+        image={sceneThumbnail}
+        sceneName="Bronze Border - 3rd Place"
+        coordinates="bronze.eth.dcl"
+        avatar={exampleAvatar}
+        borderColor={gradient.bronze}
+        withShadow
+        leftBadge="🥉"
+        rightBadge={<Mana inline>5k</Mana>}
+        showOnHover={["location", "jumpInButton"]}
+      />
+    </Box>
+  ),
 }
 
 const BadgeVariations: Story = {
@@ -288,7 +337,7 @@ const RealWorldExamples: Story = {
         sceneName="Top Ranking Scene"
         coordinates="top-ranking.dcl.eth"
         avatar={exampleAvatar}
-        withBorder
+        borderColor={gradient.gold}
         withShadow
         leftBadge="1"
         rightBadge={<Mana inline>25.3k</Mana>}
@@ -457,7 +506,7 @@ const ShowOnHoverVariations: Story = {
         sceneName="Only Title Visible"
         coordinates="title-only.dcl.eth"
         avatar={exampleAvatar}
-        withBorder
+        borderColor={gradient.bronze}
         withShadow
         leftBadge={
           <Typography
@@ -488,6 +537,7 @@ export {
   WithIcon,
   AllVisible,
   WithBorder,
+  BorderColors,
   BadgeVariations,
   RealWorldExamples,
   ShowOnHoverVariations,

@@ -33,7 +33,7 @@ const SceneCard = memo((props: SceneCardProps) => {
     avatar,
     coordinates,
     withShadow,
-    withBorder,
+    borderColor,
     leftBadge,
     rightBadge,
     showOnHover = [],
@@ -50,7 +50,7 @@ const SceneCard = memo((props: SceneCardProps) => {
   const hasVisibleButton = !shouldShowOnHover("jumpInButton")
 
   return (
-    <CardContainer withShadow={withShadow} withBorder={withBorder}>
+    <CardContainer withShadow={withShadow} borderColor={borderColor}>
       <StyledCardActionArea hasVisibleButton={hasVisibleButton}>
         {(leftBadge !== undefined || rightBadge !== undefined) && (
           <BadgesContainer>

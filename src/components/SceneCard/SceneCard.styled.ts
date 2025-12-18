@@ -12,8 +12,8 @@ import { hexToRgba } from "../../utils/colors"
 
 const CardContainer = styled(Card)<{
   withShadow?: boolean
-  withBorder?: boolean
-}>(({ theme, withShadow, withBorder }) => ({
+  borderColor?: string
+}>(({ theme, withShadow, borderColor }) => ({
   borderRadius: theme.spacing(2),
   boxSizing: "border-box",
   maxWidth: theme.spacing(75),
@@ -32,13 +32,13 @@ const CardContainer = styled(Card)<{
     }),
   ],
 
-  ...(withBorder && {
+  ...(borderColor && {
     "&::before": {
       content: '""',
       position: "absolute",
       inset: 0,
       borderRadius: theme.spacing(2),
-      background: "linear-gradient(to bottom, #FF2D55, #FFBC5B)",
+      background: borderColor,
       mask: `linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)`,
       maskComposite: "exclude",
       padding: theme.spacing(0.5),
