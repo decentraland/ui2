@@ -4,7 +4,7 @@ import { Column, Table } from "../Table"
 import { SceneRowData, ScenesTableProps } from "./ScenesTable.types"
 
 const ScenesTable = memo((props: ScenesTableProps) => {
-  const { rows } = props
+  const { rows, headerVisible = true } = props
 
   const columns: Column<SceneRowData>[] = useMemo(
     () => [
@@ -49,7 +49,7 @@ const ScenesTable = memo((props: ScenesTableProps) => {
     []
   )
 
-  return <Table columns={columns} rows={rows} />
+  return <Table columns={columns} rows={rows} headerVisible={headerVisible} />
 })
 
 ScenesTable.displayName = "ScenesTable"

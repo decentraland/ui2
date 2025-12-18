@@ -12,6 +12,7 @@ type SceneRowData = {
 
 type ScenesTableProps = {
   rows: SceneRowData[]
+  headerVisible?: boolean
 }
 
 export type { SceneRowData, ScenesTableProps }
