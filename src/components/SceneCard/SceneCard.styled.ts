@@ -19,7 +19,7 @@ const CardContainer = styled(Card)<{
   maxWidth: theme.spacing(75),
   backgroundColor: "transparent",
   position: "relative",
-  overflow: "hidden",
+  overflow: "visible",
   transition: [
     theme.transitions.create("transform", {
       duration: theme.transitions.duration.complex,
@@ -116,6 +116,56 @@ const StyledCardMedia = styled(CardMedia)<{ shrinkOnHover?: boolean }>(
   })
 )
 
+const CornerBadge = styled(Box)<{ isImage?: boolean }>(
+  ({ theme, isImage }) => ({
+    position: "absolute",
+    top: -15,
+    left: -15,
+    width: isImage ? 70 : 50,
+    height: isImage ? 70 : 50,
+    borderRadius: isImage ? 0 : 16,
+    backgroundColor: isImage ? "transparent" : theme.palette.background.default,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    fontSize: 20,
+    fontWeight: theme.typography.fontWeightBold,
+    color: theme.palette.text.primary,
+    zIndex: 11,
+    ...(!isImage && {
+      "&::before": {
+        content: '""',
+        position: "absolute",
+        inset: 0,
+        borderRadius: 16,
+        padding: 3,
+        background: "linear-gradient(180deg, #FF2D55 0%, #FFBC5B 100%)",
+        mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+        maskComposite: "exclude",
+        pointerEvents: "none",
+      },
+    }),
+    [theme.breakpoints.down("sm")]: {
+      top: -8,
+      left: -8,
+      width: isImage ? 54 : 38,
+      height: isImage ? 54 : 38,
+      fontSize: 16,
+      ...(!isImage && {
+        "&::before": {
+          borderRadius: 12,
+        },
+      }),
+    },
+  })
+)
+
+const CornerBadgeImage = styled("img")(() => ({
+  width: "100%",
+  height: "100%",
+  objectFit: "contain",
+}))
+
 const BadgesContainer = styled(Box)(({ theme }) => ({
   position: "absolute",
   top: theme.spacing(2),
@@ -177,6 +227,7 @@ const LeftBadge = styled(Box)<{ showOnHover?: boolean }>(
 
 const RightBadge = styled(Box)<{ showOnHover?: boolean }>(
   ({ theme, showOnHover }) => ({
+    marginLeft: "auto",
     padding: theme.spacing(1, 2),
     height: theme.spacing(4),
     maxWidth: "45%",
@@ -415,6 +466,8 @@ export {
   LocationChip,
   LocationChipContainer,
   MediaContainer,
+  CornerBadge,
+  CornerBadgeImage,
   RightBadge,
   SceneInfoContainer,
   SceneTitle,
