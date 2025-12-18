@@ -100,8 +100,9 @@ type ResponsiveWidth =
   | { mobile?: string | number; desktop?: string | number }
 
 type StyledTableCellProps = {
-  cellWidth?: ResponsiveWidth
-  cellPadding?: number | string
+  $cellWidth?: ResponsiveWidth
+  $cellPadding?: number | string
+  $hasBorder?: boolean
 }
 
 const isResponsiveWidth = (
@@ -109,21 +110,29 @@ const isResponsiveWidth = (
 ): value is { mobile?: string | number; desktop?: string | number } =>
   typeof value === "object" && ("mobile" in value || "desktop" in value)
 
-const StyledTableCell = styled(TableCell, {
-  shouldForwardProp: (prop) => prop !== "cellWidth" && prop !== "cellPadding",
-})<StyledTableCellProps>(({ theme, cellWidth, cellPadding }) => {
+const StyledTableCell = styled(TableCell)<StyledTableCellProps>(({
+  theme,
+  $cellWidth,
+  $cellPadding,
+  $hasBorder,
+}) => {
   const desktopWidth =
-    cellWidth && isResponsiveWidth(cellWidth) ? cellWidth.desktop : cellWidth
+    $cellWidth && isResponsiveWidth($cellWidth)
+      ? $cellWidth.desktop
+      : $cellWidth
   const mobileWidth =
-    cellWidth && isResponsiveWidth(cellWidth) ? cellWidth.mobile : undefined
+    $cellWidth && isResponsiveWidth($cellWidth) ? $cellWidth.mobile : undefined
 
   return {
-    overflow: "hidden",
+    overflow: $hasBorder ? "visible" : "hidden",
     ...(desktopWidth && { width: desktopWidth }),
-    ...(cellPadding !== undefined && { padding: cellPadding }),
+    ...($cellPadding !== undefined && { padding: $cellPadding }),
     [theme.breakpoints.down("sm")]: {
       width: mobileWidth ?? "auto",
     },
+    ...($hasBorder && {
+      position: "relative",
+    }),
   }
 })
 
@@ -149,33 +158,43 @@ const StyledTableRow = styled(TableRow, {
   }),
 }))
 
-type BorderOverlayProps = {
-  borderColor?: string
+type TableCellBorderContainerProps = {
+  $borderColor: string
+  $width: number
 }
 
-const BorderOverlay = styled(Box, {
-  shouldForwardProp: (prop) => prop !== "borderColor",
-})<BorderOverlayProps>(({ theme, borderColor }) => ({
-  position: "absolute",
-  inset: 0,
-  borderRadius: theme.spacing(2),
-  pointerEvents: "none",
-  zIndex: 1,
-  "&::before": {
-    content: '""',
+const TableCellBorderContainer = styled(Box)<TableCellBorderContainerProps>(
+  ({ theme, $borderColor, $width }) => ({
     position: "absolute",
-    inset: 0,
+    top: 0,
+    left: 0,
+    width: $width || "100%",
+    height: "100%",
     borderRadius: theme.spacing(2),
-    padding: "3px",
-    background: borderColor,
-    mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-    maskComposite: "exclude",
     pointerEvents: "none",
-  },
-}))
+    zIndex: 1,
+    "&::before": {
+      content: '""',
+      position: "absolute",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
+      borderRadius: theme.spacing(2),
+      padding: "3px",
+      boxSizing: "border-box",
+      background: $borderColor,
+      WebkitMask:
+        "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+      mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+      WebkitMaskComposite: "xor",
+      maskComposite: "exclude",
+      pointerEvents: "none",
+    },
+  })
+)
 
 export {
-  BorderOverlay,
   StyledTable,
   StyledTableBody,
   StyledTableCell,
@@ -183,4 +202,5 @@ export {
   StyledTableHead,
   StyledTableHeadRow,
   StyledTableRow,
+  TableCellBorderContainer,
 }

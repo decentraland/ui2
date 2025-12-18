@@ -1,8 +1,7 @@
-import { memo, useCallback } from "react"
+import { memo, useCallback, useEffect, useRef, useState } from "react"
 import { useMobileMediaQuery } from "../Media"
 import { BaseRow, TableProps } from "./Table.types"
 import {
-  BorderOverlay,
   StyledTable,
   StyledTableBody,
   StyledTableCell,
@@ -10,7 +9,40 @@ import {
   StyledTableHead,
   StyledTableHeadRow,
   StyledTableRow,
+  TableCellBorderContainer,
 } from "./Table.styled"
+
+type TableCellBorderProps = {
+  borderColor: string
+}
+
+const TableCellBorder = ({ borderColor }: TableCellBorderProps) => {
+  const ref = useRef<HTMLDivElement>(null)
+  const [rowWidth, setRowWidth] = useState(0)
+
+  useEffect(() => {
+    const updateWidth = () => {
+      const cell = ref.current?.closest("td")
+      const row = cell?.closest("tr")
+      if (row) {
+        setRowWidth(row.offsetWidth)
+      }
+    }
+
+    updateWidth()
+
+    window.addEventListener("resize", updateWidth)
+    return () => window.removeEventListener("resize", updateWidth)
+  }, [])
+
+  return (
+    <TableCellBorderContainer
+      ref={ref}
+      $borderColor={borderColor}
+      $width={rowWidth}
+    />
+  )
+}
 
 const TableComponent = <T extends BaseRow>(props: TableProps<T>) => {
   const { columns, rows, hoverEffect = true, onMobileRowClick } = props
@@ -38,8 +70,8 @@ const TableComponent = <T extends BaseRow>(props: TableProps<T>) => {
             {visibleColumns.map((column) => (
               <StyledTableCell
                 key={column.id}
-                cellWidth={column.width}
-                cellPadding={column.cellPadding}
+                $cellWidth={column.width}
+                $cellPadding={column.cellPadding}
               >
                 {column.header}
               </StyledTableCell>
@@ -57,11 +89,12 @@ const TableComponent = <T extends BaseRow>(props: TableProps<T>) => {
               {visibleColumns.map((column, colIndex) => (
                 <StyledTableCell
                   key={column.id}
-                  cellWidth={column.width}
-                  cellPadding={column.cellPadding}
+                  $cellWidth={column.width}
+                  $cellPadding={column.cellPadding}
+                  $hasBorder={colIndex === 0 && !!row.borderColor}
                 >
                   {colIndex === 0 && row.borderColor && (
-                    <BorderOverlay borderColor={row.borderColor} />
+                    <TableCellBorder borderColor={row.borderColor} />
                   )}
                   {column.render(row, index)}
                 </StyledTableCell>
