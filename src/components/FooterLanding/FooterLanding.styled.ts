@@ -100,9 +100,13 @@ const SubscribeContainer = styled(Box)(({ theme }) => ({
 
 const SubscribeSubtitle = styled(Typography)(({ theme }) => ({
   color: theme.palette.text.disabled,
+  [theme.breakpoints.down("md")]: {
+    fontSize: "1.25rem",
+  },
   [theme.breakpoints.down("xs")]: {
     paddingLeft: theme.spacing(1),
     paddingRight: theme.spacing(1),
+    fontSize: "1.5rem",
   },
 }))
 
@@ -110,10 +114,14 @@ const SubscribeTitle = styled(Typography)(({ theme }) => ({
   color: "#fff",
   marginBottom: theme.spacing(2),
   fontFamily: "DecentralandHero",
+  [theme.breakpoints.down("md")]: {
+    fontSize: "2rem",
+  },
   [theme.breakpoints.down("xs")]: {
     paddingLeft: theme.spacing(1),
     paddingRight: theme.spacing(1),
     marginBottom: theme.spacing(3),
+    fontSize: "2.5rem",
   },
 }))
 
