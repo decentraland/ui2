@@ -131,7 +131,8 @@ function createSendRequest(id: string) {
       | "hasSound"
       | "setUsername"
       | "isSocialEmote"
-      | "getSocialEmoteAnimations",
+      | "getSocialEmoteAnimations"
+      | "getPlayingSocialEmoteAnimation",
     params: any[]
   ) {
     const iframe = document.getElementById(id) as HTMLIFrameElement
@@ -255,6 +256,13 @@ function createController(id: string): IPreviewController {
         return sendRequest<SocialEmoteAnimation[] | null>(
           "emote",
           "getSocialEmoteAnimations",
+          []
+        )
+      },
+      getPlayingSocialEmoteAnimation() {
+        return sendRequest<SocialEmoteAnimation | null>(
+          "emote",
+          "getPlayingSocialEmoteAnimation",
           []
         )
       },

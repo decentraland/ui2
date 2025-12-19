@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react"
-import { useAdvancedUserAgentData } from "@dcl/hooks"
-import { AdvancedNavigatorUAData } from "@dcl/hooks/cjs/hooks/useAdvancedUserAgentData"
+import { AdvancedNavigatorUAData, useAdvancedUserAgentData } from "@dcl/hooks"
 import Download from "@mui/icons-material/Download"
 import { config } from "../../config"
 import { CDNSource, getCDNRelease } from "../../modules/cdnReleases"

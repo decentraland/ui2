@@ -1,7 +1,9 @@
 import { Avatar } from "@dcl/schemas"
 import { Box, Typography } from "@mui/material"
 import { SceneCard } from "./SceneCard"
+import positionStar1 from "../../Assets/position-star-1.png"
 import sceneThumbnail from "../../Assets/scene-thumbnail.png"
+import { gradient } from "../../theme/colors"
 import { Mana } from "../Mana/Mana"
 import type { Meta, StoryObj } from "@storybook/react"
 
@@ -171,15 +173,159 @@ const AllVisible: Story = {
 const WithBorder: Story = {
   args: {
     image: sceneThumbnail,
-    sceneName: "Scene With Border",
+    sceneName: "Scene With Border and long name and more text",
     coordinates: "border.eth.dcl",
     avatar: exampleAvatar,
-    withBorder: true,
+    borderColor: gradient.gold,
     withShadow: true,
     leftBadge: "1",
     rightBadge: <Mana inline>1.5k</Mana>,
     showOnHover: ["location", "jumpInButton"],
   },
+}
+
+const BorderColors: Story = {
+  render: () => (
+    <Box
+      sx={{
+        display: "grid",
+        gridTemplateColumns: "repeat(3, 1fr)",
+        gap: 3,
+        width: "100%",
+        alignItems: "flex-start",
+      }}
+    >
+      <SceneCard
+        image={sceneThumbnail}
+        sceneName="Gold Border - 1st Place"
+        coordinates="gold.eth.dcl"
+        avatar={exampleAvatar}
+        borderColor={gradient.gold}
+        withShadow
+        cornerBadge={1}
+        rightBadge={<Mana inline>10k</Mana>}
+        showOnHover={["location", "jumpInButton"]}
+      />
+      <SceneCard
+        image={sceneThumbnail}
+        sceneName="Silver Border - 2nd Place"
+        coordinates="silver.eth.dcl"
+        avatar={exampleAvatar}
+        borderColor={gradient.silver}
+        withShadow
+        cornerBadge={2}
+        rightBadge={<Mana inline>7.5k</Mana>}
+        showOnHover={["location", "jumpInButton"]}
+      />
+      <SceneCard
+        image={sceneThumbnail}
+        sceneName="Bronze Border - 3rd Place"
+        coordinates="bronze.eth.dcl"
+        avatar={exampleAvatar}
+        borderColor={gradient.bronze}
+        withShadow
+        cornerBadge={3}
+        rightBadge={<Mana inline>5k</Mana>}
+        showOnHover={["location", "jumpInButton"]}
+      />
+    </Box>
+  ),
+}
+
+const CornerBadgeVariations: Story = {
+  render: () => (
+    <Box
+      sx={{
+        display: "grid",
+        gridTemplateColumns: "repeat(3, 1fr)",
+        gap: 3,
+        width: "100%",
+        alignItems: "flex-start",
+        padding: 2,
+      }}
+    >
+      <SceneCard
+        image={sceneThumbnail}
+        sceneName="With Image Badge"
+        coordinates="image.eth.dcl"
+        avatar={exampleAvatar}
+        withShadow
+        borderColor={gradient.gold}
+        cornerBadgeImage={positionStar1}
+        rightBadge={<Mana inline>10k</Mana>}
+        showOnHover={["location", "jumpInButton"]}
+      />
+      <SceneCard
+        image={sceneThumbnail}
+        sceneName="Number Badge (no card border)"
+        coordinates="number.eth.dcl"
+        avatar={exampleAvatar}
+        withShadow
+        cornerBadge={4}
+        rightBadge={<Mana inline>7.5k</Mana>}
+        showOnHover={["location", "jumpInButton"]}
+      />
+      <SceneCard
+        image={sceneThumbnail}
+        sceneName="Number Badge with Card Border"
+        coordinates="number2.eth.dcl"
+        avatar={exampleAvatar}
+        withShadow
+        borderColor={gradient.gold}
+        cornerBadge={3}
+        rightBadge={<Mana inline>5k</Mana>}
+        showOnHover={["location", "jumpInButton"]}
+      />
+    </Box>
+  ),
+}
+
+const WithLeftBadge: Story = {
+  render: () => (
+    <Box
+      sx={{
+        display: "grid",
+        gridTemplateColumns: "repeat(3, 1fr)",
+        gap: 3,
+        width: "100%",
+        alignItems: "flex-start",
+      }}
+    >
+      <SceneCard
+        image={sceneThumbnail}
+        sceneName="1st Place"
+        coordinates="first.eth.dcl"
+        avatar={exampleAvatar}
+        withShadow
+        borderColor={gradient.gold}
+        leftBadge="1"
+        rightBadge={<Mana inline>10k</Mana>}
+        showOnHover={["location", "jumpInButton"]}
+      />
+      <SceneCard
+        image={sceneThumbnail}
+        sceneName="2nd Place"
+        coordinates="second.eth.dcl"
+        avatar={exampleAvatar}
+        withShadow
+        borderColor={gradient.silver}
+        leftBadge="2"
+        rightBadge={<Mana inline>7.5k</Mana>}
+        showOnHover={["location", "jumpInButton"]}
+      />
+      <SceneCard
+        image={sceneThumbnail}
+        sceneName="3rd Place"
+        coordinates="third.eth.dcl"
+        avatar={exampleAvatar}
+        withShadow
+        borderColor={gradient.bronze}
+        leftBadge="3"
+        rightBadge={<Mana inline>5k</Mana>}
+        showOnHover={["location", "jumpInButton"]}
+      />
+    </Box>
+  ),
 }
 
 const BadgeVariations: Story = {
@@ -288,7 +434,7 @@ const RealWorldExamples: Story = {
         sceneName="Top Ranking Scene"
         coordinates="top-ranking.dcl.eth"
         avatar={exampleAvatar}
-        withBorder
+        borderColor={gradient.gold}
         withShadow
         leftBadge="1"
         rightBadge={<Mana inline>25.3k</Mana>}
@@ -457,7 +603,7 @@ const ShowOnHoverVariations: Story = {
         sceneName="Only Title Visible"
         coordinates="title-only.dcl.eth"
         avatar={exampleAvatar}
-        withBorder
+        borderColor={gradient.bronze}
         withShadow
         leftBadge={
           <Typography
@@ -488,6 +634,9 @@ export {
   WithIcon,
   AllVisible,
   WithBorder,
+  BorderColors,
+  CornerBadgeVariations,
+  WithLeftBadge,
   BadgeVariations,
   RealWorldExamples,
   ShowOnHoverVariations,
