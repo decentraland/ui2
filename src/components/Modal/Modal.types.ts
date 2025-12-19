@@ -7,7 +7,10 @@ type ModalProps = {
   header?: React.ReactNode
   children: React.ReactNode
   actions?: React.ReactNode
-  onClose?: React.MouseEventHandler<HTMLButtonElement>
+  onClose?: (
+    event: React.MouseEvent<HTMLButtonElement>,
+    reason: "backdropClick" | "escapeKeyDown"
+  ) => void
   onBack?: React.MouseEventHandler<HTMLButtonElement>
   backgroundImage?: string
   backgroundSize?: "cover" | "contain" | "auto" | "initial" | "inherit"
