@@ -15,8 +15,7 @@ interface SceneCardProps {
   coordinates?: string
   withShadow?: boolean
   borderColor?: string
-  cornerBadge?: string | number
-  cornerBadgeImage?: string
+  cornerBadge?: ReactNode
   leftBadge?: string | ReactNode
   rightBadge?: string | ReactNode
   showOnHover?: SceneCardHoverElement[]

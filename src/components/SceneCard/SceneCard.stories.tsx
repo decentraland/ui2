@@ -1,9 +1,9 @@
 import { Avatar } from "@dcl/schemas"
 import { Box, Typography } from "@mui/material"
 import { SceneCard } from "./SceneCard"
-import positionStar1 from "../../Assets/position-star-1.png"
 import sceneThumbnail from "../../Assets/scene-thumbnail.png"
 import { gradient } from "../../theme/colors"
+import { NumberBadge, TextBadge } from "../Badges"
 import { Mana } from "../Mana/Mana"
 import type { Meta, StoryObj } from "@storybook/react"
 
@@ -202,7 +202,7 @@ const BorderColors: Story = {
         avatar={exampleAvatar}
         borderColor={gradient.gold}
         withShadow
-        cornerBadge={1}
+        cornerBadge={<NumberBadge value="1" />}
         rightBadge={<Mana inline>10k</Mana>}
         showOnHover={["location", "jumpInButton"]}
       />
@@ -213,7 +213,7 @@ const BorderColors: Story = {
         avatar={exampleAvatar}
         borderColor={gradient.silver}
         withShadow
-        cornerBadge={2}
+        cornerBadge={<NumberBadge value="2" />}
         rightBadge={<Mana inline>7.5k</Mana>}
         showOnHover={["location", "jumpInButton"]}
       />
@@ -224,7 +224,7 @@ const BorderColors: Story = {
         avatar={exampleAvatar}
         borderColor={gradient.bronze}
         withShadow
-        cornerBadge={3}
+        cornerBadge={<NumberBadge value="3" />}
         rightBadge={<Mana inline>5k</Mana>}
         showOnHover={["location", "jumpInButton"]}
       />
@@ -246,33 +246,32 @@ const CornerBadgeVariations: Story = {
     >
       <SceneCard
         image={sceneThumbnail}
-        sceneName="With Image Badge"
-        coordinates="image.eth.dcl"
+        sceneName="With Text Badge"
+        coordinates="text.eth.dcl"
         avatar={exampleAvatar}
         withShadow
-        borderColor={gradient.gold}
-        cornerBadgeImage={positionStar1}
+        cornerBadge={<TextBadge text="Best New" />}
         rightBadge={<Mana inline>10k</Mana>}
         showOnHover={["location", "jumpInButton"]}
       />
       <SceneCard
         image={sceneThumbnail}
-        sceneName="Number Badge (no card border)"
+        sceneName="Ranking Badge (no card border)"
         coordinates="number.eth.dcl"
         avatar={exampleAvatar}
         withShadow
-        cornerBadge={4}
+        cornerBadge={<NumberBadge value="4" />}
         rightBadge={<Mana inline>7.5k</Mana>}
         showOnHover={["location", "jumpInButton"]}
       />
       <SceneCard
         image={sceneThumbnail}
-        sceneName="Number Badge with Card Border"
+        sceneName="Ranking Badge with Card Border"
         coordinates="number2.eth.dcl"
         avatar={exampleAvatar}
         withShadow
         borderColor={gradient.gold}
-        cornerBadge={3}
+        cornerBadge={<NumberBadge value="3" />}
         rightBadge={<Mana inline>5k</Mana>}
         showOnHover={["location", "jumpInButton"]}
       />
@@ -627,6 +626,42 @@ const ShowOnHoverVariations: Story = {
   ),
 }
 
+const TextBadgeExamples: Story = {
+  render: () => (
+    <Box
+      sx={{
+        display: "grid",
+        gridTemplateColumns: "repeat(2, 1fr)",
+        gap: 4,
+        width: "100%",
+        alignItems: "flex-start",
+        padding: 3,
+      }}
+    >
+      <SceneCard
+        image={sceneThumbnail}
+        sceneName="Text Badge - Best New"
+        coordinates="featured.eth.dcl"
+        avatar={exampleAvatar}
+        withShadow
+        cornerBadge={<TextBadge text="Best New" />}
+        rightBadge={<Mana inline>5k</Mana>}
+        showOnHover={["location", "jumpInButton"]}
+      />
+      <SceneCard
+        image={sceneThumbnail}
+        sceneName="Text Badge - Featured"
+        coordinates="featured2.eth.dcl"
+        avatar={exampleAvatar}
+        withShadow
+        cornerBadge={<TextBadge text="Featured" />}
+        rightBadge={<Mana inline>10k</Mana>}
+        showOnHover={["location", "jumpInButton"]}
+      />
+    </Box>
+  ),
+}
+
 // eslint-disable-next-line import/no-default-export
 export default meta
 export {
@@ -636,6 +671,7 @@ export {
   WithBorder,
   BorderColors,
   CornerBadgeVariations,
+  TextBadgeExamples,
   WithLeftBadge,
   BadgeVariations,
   RealWorldExamples,
