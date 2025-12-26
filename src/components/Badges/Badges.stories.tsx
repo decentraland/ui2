@@ -3,7 +3,8 @@ import { NumberBadge, TextBadge } from "./Badges"
 import type { Meta, StoryObj } from "@storybook/react"
 
 const meta: Meta = {
-  title: "Decentraland UI/Badges",
+  title: "Decentraland UI/Badges/SceneCardBadges",
+  tags: ["autodocs"],
   parameters: {
     layout: "centered",
   },

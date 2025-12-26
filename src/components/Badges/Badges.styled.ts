@@ -1,11 +1,12 @@
 import { styled } from "@mui/material/styles"
 import { Box, Typography } from "@mui/material"
+import { gradient } from "../../theme/colors"
 
 const NumberBadgeWrapper = styled(Box)(({ theme }) => ({
   width: 50,
   height: 50,
   borderRadius: theme.spacing(2),
-  background: "linear-gradient(180deg, #FF2D55 0%, #FFBC5B 100%)",
+  background: gradient.flare,
   padding: 3,
   [theme.breakpoints.down("sm")]: {
     width: 38,
@@ -32,7 +33,7 @@ const NumberBadgeInner = styled(Box)(({ theme }) => ({
 }))
 
 const TextBadgeWrapper = styled(Box)(({ theme }) => ({
-  background: "linear-gradient(135deg, #FF2D55 0%, #C640CD 100%)",
+  background: gradient.cerise,
   borderRadius: 12,
   padding: theme.spacing(1, 1.5),
   display: "flex",
@@ -43,9 +44,12 @@ const TextBadgeWrapper = styled(Box)(({ theme }) => ({
 const TextBadgeLabel = styled(Typography)(({ theme }) => ({
   color: "#fff",
   fontWeight: theme.typography.fontWeightBold,
-  fontSize: theme.typography.caption.fontSize,
+  fontSize: 20,
   textTransform: "uppercase",
   letterSpacing: theme.typography.overline.letterSpacing,
+  [theme.breakpoints.down("sm")]: {
+    fontSize: 14,
+  },
 }))
 
 export {
