@@ -1,13 +1,13 @@
 import { Rarity } from "@dcl/schemas"
-import { RarityBadge } from "./RarityBadge"
-import { i18n as rarityBadgeI18n } from "./RarityBadge.i18n"
-import { RarityBadgeProps } from "./RarityBadge.types"
+import { RarityBadge } from "../RarityBadge/RarityBadge"
+import { i18n as rarityBadgeI18n } from "../RarityBadge/RarityBadge.i18n"
+import { RarityBadgeProps } from "../RarityBadge/RarityBadge.types"
 import { RarityBadgeContainer } from "./RarityBadge.stories.styled"
 import type { Meta, StoryObj } from "@storybook/react"
 
 const meta: Meta<RarityBadgeProps> = {
   component: RarityBadge,
-  title: "Decentraland UI/Rarity Badge",
+  title: "Decentraland UI/Badges/Rarity Badge",
   tags: ["autodocs"],
   parameters: {
     layout: "centered",

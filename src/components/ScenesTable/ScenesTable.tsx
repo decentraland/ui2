@@ -37,7 +37,7 @@ const ScenesTable = memo((props: ScenesTableProps) => {
       {
         id: "action",
         header: "",
-        width: { mobile: 50 },
+        hideOnMobile: true,
         render: (row) => (
           <ActionRow
             positionChange={row.positionChange}

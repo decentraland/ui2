@@ -13,8 +13,7 @@ import {
   BadgesContainer,
   CardContainer,
   ContentContainer,
-  CornerBadge,
-  CornerBadgeImage,
+  CornerBadgeContainer,
   JumpInButtonContainer,
   LeftBadge,
   LocationChip,
@@ -35,9 +34,8 @@ const SceneCard = memo((props: SceneCardProps) => {
     avatar,
     coordinates,
     withShadow,
-    borderColor,
     cornerBadge,
-    cornerBadgeImage,
+    borderColor,
     leftBadge,
     rightBadge,
     showOnHover = [],
@@ -55,14 +53,8 @@ const SceneCard = memo((props: SceneCardProps) => {
 
   return (
     <CardContainer withShadow={withShadow} borderColor={borderColor}>
-      {(cornerBadge !== undefined || cornerBadgeImage) && (
-        <CornerBadge isImage={!!cornerBadgeImage}>
-          {cornerBadgeImage ? (
-            <CornerBadgeImage src={cornerBadgeImage} alt="corner badge" />
-          ) : (
-            cornerBadge
-          )}
-        </CornerBadge>
+      {cornerBadge && (
+        <CornerBadgeContainer>{cornerBadge}</CornerBadgeContainer>
       )}
       <StyledCardActionArea hasVisibleButton={hasVisibleButton}>
         {(leftBadge !== undefined || rightBadge !== undefined) && (
