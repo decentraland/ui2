@@ -38,6 +38,7 @@ import {
   StreamingKeyRevokeNotificationProps,
   StreamingPlaceUpdatedNotificationProps,
   StreamingTimeExceededNotificationProps,
+  TipNotificationProps,
   WorldsAccessRestoredNotificationProps,
   WorldsAccessRestrictedNotificationProps,
   WorldsMissingResourcesNotificationProps,
@@ -791,6 +792,21 @@ const giftNotificationData: GiftNotificationProps = {
   updated_at: "2023-11-29T12:51:00.600Z",
 }
 
+const tipNotificationData: TipNotificationProps = {
+  id: NotificationType.TIP_RECEIVED,
+  read: false,
+  type: NotificationType.TIP_RECEIVED,
+  address: "0x6b347a82fcac4e6a38d1fc40e3631bd8f9495e9f",
+  timestamp: new Date().getTime(),
+  metadata: {
+    senderAddress: "0xD8041DC1a844477603ecB8ef8c47AC09cb7ea6Dd",
+    manaAmount: "100000000000000000000",
+    sceneName: "My Awesome Scene",
+  },
+  created_at: "2023-11-29T12:51:00.600Z",
+  updated_at: "2023-11-29T12:51:00.600Z",
+}
+
 const allTypeOfNotifications = [
   bidAcceptedNotificationData,
   bidReceivedNotificationPropsData,
@@ -834,6 +850,7 @@ const allTypeOfNotifications = [
   worldsPermissionGrantedNotificationPropsData,
   worldsPermissionRevokedNotificationData,
   giftNotificationData,
+  tipNotificationData,
 ]
 
 export {
@@ -880,4 +897,5 @@ export {
   worldsPermissionGrantedNotificationPropsData,
   worldsPermissionRevokedNotificationData,
   giftNotificationData,
+  tipNotificationData,
 }

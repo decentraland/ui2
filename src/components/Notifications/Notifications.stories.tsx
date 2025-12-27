@@ -41,6 +41,7 @@ import {
   streamingKeyRevokeNotificationData,
   streamingPlaceUpdatedNotificationData,
   streamingTimeExceededNotificationData,
+  tipNotificationData,
   worldsAccessRestoredNotificationData,
   worldsAccessRestrictedNotificationData,
   worldsMissingResourcesNotificationData,
@@ -169,7 +170,7 @@ const LandNotifications: Story = {
 const TransferNotifications: Story = {
   name: "Transfer Notifications",
   args: {
-    items: [giftNotificationData],
+    items: [giftNotificationData, tipNotificationData],
     renderProfile: (address: string) => shorten(address),
   },
 }

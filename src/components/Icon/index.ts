@@ -40,6 +40,7 @@ import { RentPeriodEndingIcon } from "./Notifications/RentPeriodEndingIcon"
 import { RewardIcon } from "./Notifications/RewardIcon"
 import { StreamingIcon } from "./Notifications/StreamingIcon"
 import { TenderIcon } from "./Notifications/TenderIcon"
+import { TipIcon } from "./Notifications/TipIcon"
 import { VotingEndedIcon } from "./Notifications/VotingEndedIcon"
 import { PlacesIcon } from "./PlacesIcon"
 import { DiscordIcon } from "./Social/DiscordIcon"
@@ -146,4 +147,5 @@ export {
   XIcon,
   MintIcon,
   GiftIcon,
+  TipIcon,
 }
