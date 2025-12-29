@@ -13,6 +13,7 @@ type SceneRowData = {
 type ScenesTableProps = {
   rows: SceneRowData[]
   headerVisible?: boolean
+  onMobileRowClick?: (row: SceneRowData, index: number) => void
 }
 
 export type { SceneRowData, ScenesTableProps }
