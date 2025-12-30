@@ -15,7 +15,7 @@ type ScenesTableProps = {
   rows: SceneRowData[]
   headerVisible?: boolean
   onMobileRowClick?: (row: SceneRowData, index: number) => void
-  onJumpInTrack?: (data: JumpInTrackingData) => void
+  onJumpInTrack?: (data: JumpInTrackingData, row: SceneRowData) => void
 }
 
 export type { SceneRowData, ScenesTableProps }
