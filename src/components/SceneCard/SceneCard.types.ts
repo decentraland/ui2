@@ -21,6 +21,7 @@ interface SceneCardProps {
   rightBadge?: string | ReactNode
   showOnHover?: SceneCardHoverElement[]
   onJumpInTrack?: (data: JumpInTrackingData) => void
+  onClick?: () => void
 }
 
 export type { SceneCardHoverElement, SceneCardProps }

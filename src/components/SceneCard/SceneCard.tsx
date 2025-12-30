@@ -39,8 +39,8 @@ const SceneCard = memo((props: SceneCardProps) => {
     leftBadge,
     rightBadge,
     showOnHover = [],
-
     onJumpInTrack,
+    onClick,
   } = props
 
   const isWorld = coordinates?.includes(".eth.dcl")
@@ -58,7 +58,10 @@ const SceneCard = memo((props: SceneCardProps) => {
       {cornerBadge && (
         <CornerBadgeContainer>{cornerBadge}</CornerBadgeContainer>
       )}
-      <StyledCardActionArea hasVisibleButton={hasVisibleButton}>
+      <StyledCardActionArea
+        hasVisibleButton={hasVisibleButton}
+        onClick={onClick}
+      >
         {(leftBadge !== undefined || rightBadge !== undefined) && (
           <BadgesContainer>
             {leftBadge !== undefined && (
