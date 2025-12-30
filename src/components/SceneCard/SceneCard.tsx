@@ -39,6 +39,8 @@ const SceneCard = memo((props: SceneCardProps) => {
     leftBadge,
     rightBadge,
     showOnHover = [],
+    onJumpInTrack,
+    onClick,
   } = props
 
   const isWorld = coordinates?.includes(".eth.dcl")
@@ -56,7 +58,10 @@ const SceneCard = memo((props: SceneCardProps) => {
       {cornerBadge && (
         <CornerBadgeContainer>{cornerBadge}</CornerBadgeContainer>
       )}
-      <StyledCardActionArea hasVisibleButton={hasVisibleButton}>
+      <StyledCardActionArea
+        hasVisibleButton={hasVisibleButton}
+        onClick={onClick}
+      >
         {(leftBadge !== undefined || rightBadge !== undefined) && (
           <BadgesContainer>
             {leftBadge !== undefined && (
@@ -121,10 +126,12 @@ const SceneCard = memo((props: SceneCardProps) => {
               <JumpIn
                 position={coordinates}
                 variant="button"
+                onTrack={onJumpInTrack}
                 modalProps={{
-                  title: "Jump In",
-                  description: "Jump in to the scene",
-                  buttonLabel: "Jump in",
+                  title: "Download Decentraland to Jump In",
+                  description:
+                    "Once you've installed and launched Decentraland, you can jump straight to the scene in-world!",
+                  buttonLabel: "Download",
                 }}
               />
             </JumpInButtonContainer>

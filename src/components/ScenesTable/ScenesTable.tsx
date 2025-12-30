@@ -4,7 +4,7 @@ import { Column, Table } from "../Table"
 import { SceneRowData, ScenesTableProps } from "./ScenesTable.types"
 
 const ScenesTable = memo((props: ScenesTableProps) => {
-  const { rows, headerVisible = true, onMobileRowClick } = props
+  const { rows, headerVisible = true, onMobileRowClick, onJumpInTrack } = props
 
   const columns: Column<SceneRowData>[] = useMemo(
     () => [
@@ -42,11 +42,12 @@ const ScenesTable = memo((props: ScenesTableProps) => {
           <ActionRow
             positionChange={row.positionChange}
             location={row.location}
+            onJumpInTrack={onJumpInTrack}
           />
         ),
       },
     ],
-    []
+    [onJumpInTrack]
   )
 
   return (

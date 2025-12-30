@@ -10,7 +10,7 @@ import {
 } from "./ActionRow.styled"
 
 const ActionRow = memo((props: ActionRowProps) => {
-  const { positionChange, location } = props
+  const { positionChange, location, onJumpInTrack } = props
 
   const hasPositionChange = positionChange !== undefined && positionChange !== 0
   const isPositive = positionChange !== undefined && positionChange > 0
@@ -29,10 +29,11 @@ const ActionRow = memo((props: ActionRowProps) => {
       <JumpIn
         variant="button"
         buttonProps={{ className: "jump-in-button" }}
+        onTrack={onJumpInTrack}
         modalProps={{
-          title: "Download Decentraland",
+          title: "Download Decentraland to Jump In",
           description:
-            "To jump into this scene, you need to download the Decentraland desktop app.",
+            "Once you've installed and launched Decentraland, you can jump straight to the scene in-world!",
           buttonLabel: "Download",
         }}
         desktopAppOptions={
