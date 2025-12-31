@@ -42,7 +42,7 @@ const ScenesTable = memo((props: ScenesTableProps) => {
           <ActionRow
             positionChange={row.positionChange}
             location={row.location}
-            onJumpInTrack={onJumpInTrack}
+            onJumpInTrack={(data) => onJumpInTrack?.(data, row)}
           />
         ),
       },
