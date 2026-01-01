@@ -69,6 +69,12 @@ const meta: Meta<ProfileProps<React.ElementType>> = {
       control: "number",
       defaultValue: 6,
     },
+    showBothNameAndAddress: {
+      description:
+        "Whether to display both name and address (address shown below name with copy icon)",
+      control: "boolean",
+      defaultValue: false,
+    },
   },
   render: (args) => (
     <ProfileStoryContainer>
@@ -322,6 +328,16 @@ const LinkedBlockie: Story = {
   ),
 }
 
+const WithNameAndShortenedAddress: Story = {
+  name: "Show both name and shortened address",
+  args: {
+    address: "0x89805E5f0698Cb4dB57f0E389f2a75259f78CCF6",
+    avatar,
+    showBothNameAndAddress: true,
+    shortenAddress: true,
+  },
+}
+
 // eslint-disable-next-line import/no-default-export
 export default meta
 export {
@@ -341,4 +357,5 @@ export {
   Sizes,
   LinkedAvatar,
   LinkedBlockie,
+  WithNameAndShortenedAddress,
 }

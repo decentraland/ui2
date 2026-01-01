@@ -258,12 +258,23 @@ type TransferNotificationMetadataProps = {
   senderAddress: string
 }
 
+type TipNotificationMetadataProps = {
+  senderAddress: string
+  manaAmount: string
+  sceneName: string
+}
+
 type GiftNotificationProps = RawDecentralandNotification<
   NotificationType.TRANSFER_RECEIVED,
   TransferNotificationMetadataProps
 >
 
-type TransferNotificationsProps = GiftNotificationProps
+type TipNotificationProps = RawDecentralandNotification<
+  NotificationType.TIP_RECEIVED,
+  TipNotificationMetadataProps
+>
+
+type TransferNotificationsProps = GiftNotificationProps | TipNotificationProps
 
 // Reward Notifications
 
@@ -452,6 +463,7 @@ export type {
   LandRentedNotificationProps,
   LandRentalEndedNotificationProps,
   GiftNotificationProps,
+  TipNotificationProps,
   TransferNotificationsProps,
   RewardAssignedNotificationProps,
   RewardInProgressNotificationProps,

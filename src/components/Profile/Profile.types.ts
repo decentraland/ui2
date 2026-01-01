@@ -14,6 +14,7 @@ type ProfileBaseProps = {
   inline?: boolean
   sliceAddressBy?: number
   shortenAddress?: boolean
+  showBothNameAndAddress?: boolean
   rounded?: boolean
   size?: ProfileSize
   isDecentraland?: boolean
