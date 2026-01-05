@@ -1,13 +1,9 @@
 import React from "react"
 import { NotificationType } from "@dcl/schemas"
-import { ReferralCommonNotificationProps } from "./types"
 import { ReferralInvitedUserAcceptedIcon, RewardIcon } from "../../../Icon"
-import { NotificationItem } from "../../NotificationItem"
-import {
-  NotificationItemDescription,
-  NotificationItemTitle,
-} from "../../NotificationItem.styled"
+import { NotificationItemText } from "../../NotificationItem"
 import { getBGColorByRarity } from "../../utils"
+import { ReferralCommonNotificationProps } from "./Referral.types"
 
 const ReferralNotification = React.memo(
   (props: ReferralCommonNotificationProps) => {
@@ -17,7 +13,7 @@ const ReferralNotification = React.memo(
       notification.type === NotificationType.REFERRAL_NEW_TIER_REACHED
 
     return (
-      <NotificationItem
+      <NotificationItemText
         image={
           isNewTierReached ? (
             notification.metadata.image
@@ -31,15 +27,11 @@ const ReferralNotification = React.memo(
             : "transparent"
         }
         badgeIcon={isNewTierReached && <RewardIcon />}
-        timestamp={notification.timestamp}
-        isNew={!notification.read}
         locale={locale}
-      >
-        <NotificationItemTitle>{i18n[locale].title}</NotificationItemTitle>
-        <NotificationItemDescription color="inherit" underline="none">
-          {i18n[locale].description}
-        </NotificationItemDescription>
-      </NotificationItem>
+        notification={notification}
+        title={i18n[locale].title}
+        description={i18n[locale].description}
+      />
     )
   }
 )

@@ -1,13 +1,9 @@
 import React from "react"
-import { CampaignsCommonNotificationProps } from "./types"
 import { RewardIcon } from "../../../Icon"
-import { NotificationItem } from "../../NotificationItem"
-import {
-  NotificationItemDescription,
-  NotificationItemTitle,
-} from "../../NotificationItem.styled"
+import { NotificationItemText } from "../../NotificationItem"
+import { CampaignNotificationProps } from "./Reward.types"
 
-const CampaignName = (props: CampaignsCommonNotificationProps) => {
+const CampaignName = (props: CampaignNotificationProps) => {
   const { metadata } = props.notification
 
   if (metadata.link) {
@@ -17,24 +13,22 @@ const CampaignName = (props: CampaignsCommonNotificationProps) => {
   return <strong>{metadata.campaignName}</strong>
 }
 
-const CampaignNotification = React.memo(
-  (props: CampaignsCommonNotificationProps) => {
-    const { notification, locale, i18n } = props
-    return (
-      <NotificationItem
-        image={<RewardIcon width={48} height={48} />}
-        timestamp={notification.timestamp}
-        isNew={!notification.read}
-        locale={locale}
-      >
-        <NotificationItemTitle>{i18n[locale].title}</NotificationItemTitle>
-        <NotificationItemDescription color="inherit" underline="none">
+const CampaignNotification = React.memo((props: CampaignNotificationProps) => {
+  const { notification, locale, i18n } = props
+  return (
+    <NotificationItemText
+      image={<RewardIcon width={48} height={48} />}
+      locale={locale}
+      notification={notification}
+      title={i18n[locale].title}
+      description={
+        <>
           {i18n[locale].description.start} <CampaignName {...props} />{" "}
           {i18n[locale].description.end}
-        </NotificationItemDescription>
-      </NotificationItem>
-    )
-  }
-)
+        </>
+      }
+    />
+  )
+})
 
 export { CampaignNotification }

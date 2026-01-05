@@ -1,30 +1,21 @@
 import React from "react"
-import { CommonNotificationProps } from "components/Notifications/types"
-import { i18n } from "./CreditsDoNotMissOutNotification.i18n"
-import { CreditsDoNotMissOutNotificationProps } from "./types"
+import { creditsDoNotMissOutI18n } from "./Credits.i18n"
 import { CreditsIcon } from "../../../Icon/Notifications/CreditsIcon"
-import { NotificationItem } from "../../NotificationItem"
-import {
-  NotificationItemDescription,
-  NotificationItemTitle,
-} from "../../NotificationItem.styled"
+import { NotificationItemText } from "../../NotificationItem"
+import { CommonNotificationProps } from "../../Notifications.types"
+import { CreditsDoNotMissOutNotificationProps } from "./Credits.types"
 
 const CreditsDoNotMissOutNotification = React.memo(
   (props: CommonNotificationProps<CreditsDoNotMissOutNotificationProps>) => {
     const { notification, locale } = props
-    console.log("rendering CreditsDoNotMissOutNotification", notification)
     return (
-      <NotificationItem
+      <NotificationItemText
         image={<CreditsIcon width={48} height={48} />}
-        timestamp={notification.timestamp}
-        isNew={!notification.read}
         locale={locale}
-      >
-        <NotificationItemTitle>{i18n[locale].title}</NotificationItemTitle>
-        <NotificationItemDescription color="inherit" underline="none">
-          {i18n[locale].description}
-        </NotificationItemDescription>
-      </NotificationItem>
+        notification={notification}
+        title={creditsDoNotMissOutI18n[locale].title}
+        description={creditsDoNotMissOutI18n[locale].description}
+      />
     )
   }
 )

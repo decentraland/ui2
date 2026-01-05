@@ -1,15 +1,11 @@
 import React from "react"
-import { i18n } from "./WorldsPermissionRevokedNotification.i18n"
+import { worldsPermissionRevokedI18n } from "./Worlds.i18n"
 import { AccessRestrictedIcon, PermissionRevokedIcon } from "../../../Icon"
-import { NotificationItem } from "../../NotificationItem"
-import {
-  NotificationItemDescription,
-  NotificationItemTitle,
-} from "../../NotificationItem.styled"
+import { NotificationItemText } from "../../NotificationItem"
 import {
   CommonNotificationProps,
   WorldsPermissionRevokedNotificationProps,
-} from "../../types"
+} from "../../Notifications.types"
 import { replaceWithValues } from "../../utils"
 
 const WorldsPermissionRevokedNotification = React.memo(
@@ -24,21 +20,22 @@ const WorldsPermissionRevokedNotification = React.memo(
       : PermissionRevokedIcon
 
     return (
-      <NotificationItem
+      <NotificationItemText
         image={<Icon />}
-        timestamp={notification.timestamp}
-        isNew={!notification.read}
         locale={locale}
-      >
-        <NotificationItemTitle>
-          {isAccessNotification ? i18n[locale].accessTitle : i18n[locale].title}
-        </NotificationItemTitle>
-        <NotificationItemDescription color="inherit" underline="none">
-          {replaceWithValues(i18n[locale][permission], {
+        notification={notification}
+        title={
+          isAccessNotification
+            ? worldsPermissionRevokedI18n[locale].accessTitle
+            : worldsPermissionRevokedI18n[locale].title
+        }
+        description={replaceWithValues(
+          worldsPermissionRevokedI18n[locale][permission],
+          {
             world: <strong>{notification.metadata.world}</strong>,
-          })}
-        </NotificationItemDescription>
-      </NotificationItem>
+          }
+        )}
+      />
     )
   }
 )

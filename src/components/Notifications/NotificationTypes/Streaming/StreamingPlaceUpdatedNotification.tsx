@@ -1,14 +1,14 @@
 import React from "react"
+import { streamingPlaceUpdatedI18n } from "./Streaming.i18n"
 import { StreamingNotification } from "./StreamingNotification"
-import { i18n } from "./StreamingPlaceUpdatedNotification.i18n"
 import {
   CommonNotificationProps,
   StreamingPlaceUpdatedNotificationProps,
-} from "../../types"
+} from "../../Notifications.types"
 
 const StreamingPlaceUpdatedNotification = React.memo(
   (props: CommonNotificationProps<StreamingPlaceUpdatedNotificationProps>) => {
-    return <StreamingNotification {...props} i18n={i18n} />
+    return <StreamingNotification {...props} i18n={streamingPlaceUpdatedI18n} />
   }
 )
 

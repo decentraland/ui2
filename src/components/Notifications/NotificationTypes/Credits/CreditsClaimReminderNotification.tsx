@@ -1,29 +1,21 @@
 import React from "react"
-import { CommonNotificationProps } from "components/Notifications/types"
-import { i18n } from "./CreditsClaimReminderNotification.i18n"
-import { CreditsClaimReminderNotificationProps } from "./types"
+import { creditsClaimReminderI18n } from "./Credits.i18n"
 import { CreditsIcon } from "../../../Icon/Notifications/CreditsIcon"
-import { NotificationItem } from "../../NotificationItem"
-import {
-  NotificationItemDescription,
-  NotificationItemTitle,
-} from "../../NotificationItem.styled"
+import { NotificationItemText } from "../../NotificationItem"
+import { CommonNotificationProps } from "../../Notifications.types"
+import { CreditsClaimReminderNotificationProps } from "./Credits.types"
 
 const CreditsClaimReminderNotification = React.memo(
   (props: CommonNotificationProps<CreditsClaimReminderNotificationProps>) => {
     const { notification, locale } = props
     return (
-      <NotificationItem
+      <NotificationItemText
         image={<CreditsIcon width={48} height={48} />}
-        timestamp={notification.timestamp}
-        isNew={!notification.read}
         locale={locale}
-      >
-        <NotificationItemTitle>{i18n[locale].title}</NotificationItemTitle>
-        <NotificationItemDescription color="inherit" underline="none">
-          {i18n[locale].description}
-        </NotificationItemDescription>
-      </NotificationItem>
+        notification={notification}
+        title={creditsClaimReminderI18n[locale].title}
+        description={creditsClaimReminderI18n[locale].description}
+      />
     )
   }
 )

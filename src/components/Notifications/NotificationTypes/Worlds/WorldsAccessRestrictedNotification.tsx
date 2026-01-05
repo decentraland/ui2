@@ -1,36 +1,32 @@
 import React from "react"
 import { Link } from "@mui/material"
-import { i18n } from "./WorldsAccessRestrictedNotification.i18n"
+import { worldsAccessRestrictedI18n } from "./Worlds.i18n"
 import { AccessRestrictedIcon } from "../../../Icon"
-import { NotificationItem } from "../../NotificationItem"
-import {
-  NotificationItemDescription,
-  NotificationItemTitle,
-} from "../../NotificationItem.styled"
+import { NotificationItemText } from "../../NotificationItem"
 import {
   CommonNotificationProps,
   WorldsAccessRestrictedNotificationProps,
-} from "../../types"
+} from "../../Notifications.types"
 
 const WorldsAccessRestrictedNotification = React.memo(
   (props: CommonNotificationProps<WorldsAccessRestrictedNotificationProps>) => {
     const { notification, locale } = props
     return (
-      <NotificationItem
+      <NotificationItemText
         image={<AccessRestrictedIcon />}
-        timestamp={notification.timestamp}
-        isNew={!notification.read}
         locale={locale}
-      >
-        <NotificationItemTitle>{i18n[locale].title}</NotificationItemTitle>
-        <NotificationItemDescription color="inherit" underline="none">
-          {i18n[locale].description.start}{" "}
-          <Link href={notification.metadata.url}>
-            {i18n[locale].description.link_text}
-          </Link>
-          .
-        </NotificationItemDescription>
-      </NotificationItem>
+        notification={notification}
+        title={worldsAccessRestrictedI18n[locale].title}
+        description={
+          <>
+            {worldsAccessRestrictedI18n[locale].description.start}{" "}
+            <Link href={notification.metadata.url}>
+              {worldsAccessRestrictedI18n[locale].description.link_text}
+            </Link>
+            .
+          </>
+        }
+      />
     )
   }
 )
