@@ -1,16 +1,12 @@
 import React from "react"
-import { i18n } from "./LandRentedNotification.i18n"
+import { landRentedI18n } from "./Land.i18n"
 import { LandRentedIcon } from "../../../Icon"
 import { IconBadge, IconBadgeIcon } from "../../../IconBadge"
-import { NotificationItem } from "../../NotificationItem"
-import {
-  NotificationItemDescription,
-  NotificationItemTitle,
-} from "../../NotificationItem.styled"
+import { NotificationItemText } from "../../NotificationItem"
 import {
   CommonNotificationProps,
   LandRentedNotificationProps,
-} from "../../types"
+} from "../../Notifications.types"
 
 const LandRentedNotification = React.memo(
   (props: CommonNotificationProps<LandRentedNotificationProps>) => {
@@ -20,24 +16,24 @@ const LandRentedNotification = React.memo(
       ? renderProfile(notification.metadata.tenant)!
       : notification.metadata.tenant
     return (
-      <NotificationItem
+      <NotificationItemText
         image={<LandRentedIcon />}
-        timestamp={notification.timestamp}
-        isNew={!notification.read}
         locale={locale}
-      >
-        <NotificationItemTitle>{i18n[locale].title}</NotificationItemTitle>
-        <NotificationItemDescription color="inherit" underline="none">
-          {i18n[locale].description.start}{" "}
-          <IconBadge
-            inline
-            icon={IconBadgeIcon.Places}
-            text={notification.metadata.land}
-            onClick={() => window.open(notification.metadata.link, "_blank")}
-          />{" "}
-          {i18n[locale].description.end} {tenant}
-        </NotificationItemDescription>
-      </NotificationItem>
+        notification={notification}
+        title={landRentedI18n[locale].title}
+        description={
+          <>
+            {landRentedI18n[locale].description.start}{" "}
+            <IconBadge
+              inline
+              icon={IconBadgeIcon.Places}
+              text={notification.metadata.land}
+              onClick={() => window.open(notification.metadata.link, "_blank")}
+            />{" "}
+            {landRentedI18n[locale].description.end} {tenant}
+          </>
+        }
+      />
     )
   }
 )

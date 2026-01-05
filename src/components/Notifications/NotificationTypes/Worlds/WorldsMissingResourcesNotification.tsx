@@ -1,36 +1,32 @@
 import React from "react"
 import { Link } from "@mui/material"
-import { i18n } from "./WorldsMissingResourcesNotification.i18n"
+import { worldsMissingResourcesI18n } from "./Worlds.i18n"
 import { MissingResourcesIcon } from "../../../Icon"
-import { NotificationItem } from "../../NotificationItem"
-import {
-  NotificationItemDescription,
-  NotificationItemTitle,
-} from "../../NotificationItem.styled"
+import { NotificationItemText } from "../../NotificationItem"
 import {
   CommonNotificationProps,
   WorldsMissingResourcesNotificationProps,
-} from "../../types"
+} from "../../Notifications.types"
 
 const WorldsMissingResourcesNotification = React.memo(
   (props: CommonNotificationProps<WorldsMissingResourcesNotificationProps>) => {
     const { notification, locale } = props
     return (
-      <NotificationItem
+      <NotificationItemText
         image={<MissingResourcesIcon />}
-        timestamp={notification.timestamp}
-        isNew={!notification.read}
         locale={locale}
-      >
-        <NotificationItemTitle>{i18n[locale].title}</NotificationItemTitle>
-        <NotificationItemDescription color="inherit" underline="none">
-          {i18n[locale].description.start}{" "}
-          <Link href={notification.metadata.url}>
-            {i18n[locale].description.link_text}
-          </Link>{" "}
-          {i18n[locale].description.end}
-        </NotificationItemDescription>
-      </NotificationItem>
+        notification={notification}
+        title={worldsMissingResourcesI18n[locale].title}
+        description={
+          <>
+            {worldsMissingResourcesI18n[locale].description.start}{" "}
+            <Link href={notification.metadata.url}>
+              {worldsMissingResourcesI18n[locale].description.link_text}
+            </Link>{" "}
+            {worldsMissingResourcesI18n[locale].description.end}
+          </>
+        }
+      />
     )
   }
 )

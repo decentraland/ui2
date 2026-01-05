@@ -1,39 +1,35 @@
 import React from "react"
-import { i18n } from "./LandRentalEndedNotification.i18n"
+import { landRentalEndedI18n } from "./Land.i18n"
 import { RentPeriodEndingIcon } from "../../../Icon"
 import { IconBadge, IconBadgeIcon } from "../../../IconBadge"
-import { NotificationItem } from "../../NotificationItem"
-import {
-  NotificationItemDescription,
-  NotificationItemTitle,
-} from "../../NotificationItem.styled"
+import { NotificationItemText } from "../../NotificationItem"
 import {
   CommonNotificationProps,
   LandRentalEndedNotificationProps,
-} from "../../types"
+} from "../../Notifications.types"
 
 const LandRentalEndedNotification = React.memo(
   (props: CommonNotificationProps<LandRentalEndedNotificationProps>) => {
     const { notification, locale } = props
     return (
-      <NotificationItem
+      <NotificationItemText
         image={<RentPeriodEndingIcon />}
-        timestamp={notification.timestamp}
-        isNew={!notification.read}
         locale={locale}
-      >
-        <NotificationItemTitle>{i18n[locale].title}</NotificationItemTitle>
-        <NotificationItemDescription color="inherit" underline="none">
-          {i18n[locale].description.start}{" "}
-          <IconBadge
-            inline
-            icon={IconBadgeIcon.Places}
-            text={notification.metadata.land}
-            onClick={() => window.open(notification.metadata.link, "_blank")}
-          />{" "}
-          {i18n[locale].description.end}
-        </NotificationItemDescription>
-      </NotificationItem>
+        notification={notification}
+        title={landRentalEndedI18n[locale].title}
+        description={
+          <>
+            {landRentalEndedI18n[locale].description.start}{" "}
+            <IconBadge
+              inline
+              icon={IconBadgeIcon.Places}
+              text={notification.metadata.land}
+              onClick={() => window.open(notification.metadata.link, "_blank")}
+            />{" "}
+            {landRentalEndedI18n[locale].description.end}
+          </>
+        }
+      />
     )
   }
 )

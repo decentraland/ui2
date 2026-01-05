@@ -1,5 +1,5 @@
-export { Notifications } from "./Notifications"
-export type { NotificationsProps } from "./Notifications.types"
+export { Notifications } from "./NotificationsToggle"
+export type { NotificationsProps } from "./NotificationsToggle"
 export type {
   BidAcceptedNotificationProps,
   BidReceivedNotificationProps,
@@ -30,5 +30,5 @@ export type {
   WorldsMissingResourcesNotificationProps,
   WorldsPermissionGrantedNotificationProps,
   WorldsPermissionRevokedNotificationProps,
-} from "./types"
-export { NotificationActiveTab } from "./types"
+} from "./Notifications.types"
+export { NotificationActiveTab } from "./Notifications.types"

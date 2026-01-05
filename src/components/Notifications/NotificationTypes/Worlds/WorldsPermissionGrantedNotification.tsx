@@ -1,17 +1,13 @@
 import React from "react"
 import { Link } from "@mui/material"
-import { i18n } from "./WorldsPermissionGrantedNotification.i18n"
+import { worldsPermissionGrantedI18n } from "./Worlds.i18n"
 import { config } from "../../../../config"
 import { AccessRestoredIcon, PermissionGrantedIcon } from "../../../Icon"
-import { NotificationItem } from "../../NotificationItem"
-import {
-  NotificationItemDescription,
-  NotificationItemTitle,
-} from "../../NotificationItem.styled"
+import { NotificationItemText } from "../../NotificationItem"
 import {
   CommonNotificationProps,
   WorldsPermissionGrantedNotificationProps,
-} from "../../types"
+} from "../../Notifications.types"
 import { replaceWithValues } from "../../utils"
 
 const WORLDS_COLLABORATOR_URL = `${config.get(
@@ -32,17 +28,18 @@ const WorldsPermissionGrantedNotification = React.memo(
       ? AccessRestoredIcon
       : PermissionGrantedIcon
     return (
-      <NotificationItem
+      <NotificationItemText
         image={<Icon />}
-        timestamp={notification.timestamp}
-        isNew={!notification.read}
         locale={locale}
-      >
-        <NotificationItemTitle>
-          {isAccessNotification ? i18n[locale].accessTitle : i18n[locale].title}
-        </NotificationItemTitle>
-        <NotificationItemDescription color="inherit" underline="none">
-          {replaceWithValues(i18n[locale][permission], {
+        notification={notification}
+        title={
+          isAccessNotification
+            ? worldsPermissionGrantedI18n[locale].accessTitle
+            : worldsPermissionGrantedI18n[locale].title
+        }
+        description={replaceWithValues(
+          worldsPermissionGrantedI18n[locale][permission],
+          {
             world: (
               <Link
                 href={
@@ -56,9 +53,9 @@ const WorldsPermissionGrantedNotification = React.memo(
                 {world}
               </Link>
             ),
-          })}
-        </NotificationItemDescription>
-      </NotificationItem>
+          }
+        )}
+      />
     )
   }
 )

@@ -1,14 +1,14 @@
 import React from "react"
+import { streamingTimeExceededI18n } from "./Streaming.i18n"
 import { StreamingNotification } from "./StreamingNotification"
-import { i18n } from "./StreamingTimeExceededNotification.i18n"
 import {
   CommonNotificationProps,
   StreamingTimeExceededNotificationProps,
-} from "../../types"
+} from "../../Notifications.types"
 
 const StreamingTimeExceededNotification = React.memo(
   (props: CommonNotificationProps<StreamingTimeExceededNotificationProps>) => {
-    return <StreamingNotification {...props} i18n={i18n} />
+    return <StreamingNotification {...props} i18n={streamingTimeExceededI18n} />
   }
 )
 

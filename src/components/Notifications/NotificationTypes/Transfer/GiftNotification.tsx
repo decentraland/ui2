@@ -1,12 +1,11 @@
 import React from "react"
-import { i18n } from "./GiftNotification.i18n"
+import { giftI18n } from "./Transfer.i18n"
 import { GiftIcon } from "../../../Icon"
-import { NotificationItem } from "../../NotificationItem"
+import { NotificationItemText } from "../../NotificationItem"
 import {
-  NotificationItemDescription,
-  NotificationItemTitle,
-} from "../../NotificationItem.styled"
-import { CommonNotificationProps, GiftNotificationProps } from "../../types"
+  CommonNotificationProps,
+  GiftNotificationProps,
+} from "../../Notifications.types"
 import { replaceWithValues } from "../../utils"
 
 const GiftNotification = React.memo(
@@ -15,20 +14,15 @@ const GiftNotification = React.memo(
     const player =
       renderProfile?.(notification.metadata.senderAddress) ??
       notification.metadata.senderAddress
+
     return (
-      <NotificationItem
+      <NotificationItemText
         image={<GiftIcon width={48} height={48} />}
-        timestamp={notification.timestamp}
-        isNew={!notification.read}
         locale={locale}
-      >
-        <NotificationItemTitle>
-          {replaceWithValues(i18n[locale].title, { player })}
-        </NotificationItemTitle>
-        <NotificationItemDescription color="inherit" underline="none">
-          {i18n[locale].description}
-        </NotificationItemDescription>
-      </NotificationItem>
+        notification={notification}
+        title={replaceWithValues(giftI18n[locale].title, { player })}
+        description={giftI18n[locale].description}
+      />
     )
   }
 )
