@@ -43,6 +43,7 @@ export * from "./components/CatalogCard"
 export * from "./components/CreditsToggle"
 export * from "./components/SceneCard"
 export * from "./components/ScenesTable"
+export * from "./components/Badges"
 export * as dclTable from "./components/Table"
 
 export * as dclNetworkUtils from "./lib/network"

@@ -1,31 +1,23 @@
 import React from "react"
-import { i18n } from "./WorldsAccessRestoredNotification.i18n"
+import { worldsAccessRestoredI18n } from "./Worlds.i18n"
 import { AccessRestoredIcon } from "../../../Icon"
-import { NotificationItem } from "../../NotificationItem"
-import {
-  NotificationItemDescription,
-  NotificationItemTitle,
-} from "../../NotificationItem.styled"
+import { NotificationItemText } from "../../NotificationItem"
 import {
   CommonNotificationProps,
   WorldsAccessRestoredNotificationProps,
-} from "../../types"
+} from "../../Notifications.types"
 
 const WorldsAccessRestoredNotification = React.memo(
   (props: CommonNotificationProps<WorldsAccessRestoredNotificationProps>) => {
     const { notification, locale } = props
     return (
-      <NotificationItem
+      <NotificationItemText
         image={<AccessRestoredIcon />}
-        timestamp={notification.timestamp}
-        isNew={!notification.read}
         locale={locale}
-      >
-        <NotificationItemTitle>{i18n[locale].title}</NotificationItemTitle>
-        <NotificationItemDescription color="inherit" underline="none">
-          {i18n[locale].description}
-        </NotificationItemDescription>
-      </NotificationItem>
+        notification={notification}
+        title={worldsAccessRestoredI18n[locale].title}
+        description={worldsAccessRestoredI18n[locale].description}
+      />
     )
   }
 )

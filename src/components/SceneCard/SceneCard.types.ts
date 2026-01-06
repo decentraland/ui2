@@ -1,5 +1,6 @@
 import { ReactNode } from "react"
 import { Avatar } from "@dcl/schemas"
+import { JumpInTrackingData } from "../JumpIn/JumpIn.types"
 
 type SceneCardHoverElement =
   | "leftBadge"
@@ -15,11 +16,12 @@ interface SceneCardProps {
   coordinates?: string
   withShadow?: boolean
   borderColor?: string
-  cornerBadge?: string | number
-  cornerBadgeImage?: string
+  cornerBadge?: ReactNode
   leftBadge?: string | ReactNode
   rightBadge?: string | ReactNode
   showOnHover?: SceneCardHoverElement[]
+  onJumpInTrack?: (data: JumpInTrackingData) => void
+  onClick?: () => void
 }
 
 export type { SceneCardHoverElement, SceneCardProps }

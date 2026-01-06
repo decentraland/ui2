@@ -40,6 +40,9 @@ jobs:
       - name: validate
         run: npm run lint:check
 
+      - name: build
+        run: npm run build
+
       - name: linters
         uses: wearerequired/lint-action@v1
         with:

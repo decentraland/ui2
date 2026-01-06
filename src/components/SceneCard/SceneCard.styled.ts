@@ -116,54 +116,15 @@ const StyledCardMedia = styled(CardMedia)<{ shrinkOnHover?: boolean }>(
   })
 )
 
-const CornerBadge = styled(Box)<{ isImage?: boolean }>(
-  ({ theme, isImage }) => ({
-    position: "absolute",
-    top: -15,
-    left: -15,
-    width: isImage ? 70 : 50,
-    height: isImage ? 70 : 50,
-    borderRadius: isImage ? 0 : 16,
-    backgroundColor: isImage ? "transparent" : theme.palette.background.default,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    fontSize: 20,
-    fontWeight: theme.typography.fontWeightBold,
-    color: theme.palette.text.primary,
-    zIndex: 11,
-    ...(!isImage && {
-      "&::before": {
-        content: '""',
-        position: "absolute",
-        inset: 0,
-        borderRadius: 16,
-        padding: 3,
-        background: "linear-gradient(180deg, #FF2D55 0%, #FFBC5B 100%)",
-        mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-        maskComposite: "exclude",
-        pointerEvents: "none",
-      },
-    }),
-    [theme.breakpoints.down("sm")]: {
-      top: -8,
-      left: -8,
-      width: isImage ? 54 : 38,
-      height: isImage ? 54 : 38,
-      fontSize: 16,
-      ...(!isImage && {
-        "&::before": {
-          borderRadius: 12,
-        },
-      }),
-    },
-  })
-)
-
-const CornerBadgeImage = styled("img")(() => ({
-  width: "100%",
-  height: "100%",
-  objectFit: "contain",
+const CornerBadgeContainer = styled(Box)(({ theme }) => ({
+  position: "absolute",
+  top: -15,
+  left: -15,
+  zIndex: 11,
+  [theme.breakpoints.down("sm")]: {
+    top: -8,
+    left: -8,
+  },
 }))
 
 const BadgesContainer = styled(Box)(({ theme }) => ({
@@ -461,13 +422,12 @@ export {
   BadgesContainer,
   CardContainer,
   ContentContainer,
+  CornerBadgeContainer,
   JumpInButtonContainer,
   LeftBadge,
   LocationChip,
   LocationChipContainer,
   MediaContainer,
-  CornerBadge,
-  CornerBadgeImage,
   RightBadge,
   SceneInfoContainer,
   SceneTitle,

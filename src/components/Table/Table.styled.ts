@@ -11,8 +11,12 @@ import {
 import { hexToRgba } from "../../utils/colors"
 
 const StyledTableContainer = styled(TableContainer)(({ theme }) => ({
-  padding: theme.spacing(0, 3, 3, 3),
-  backgroundImage: "none",
+  paddingLeft: theme.spacing(3),
+  paddingRight: theme.spacing(3),
+  [theme.breakpoints.down("sm")]: {
+    paddingLeft: theme.spacing(1),
+    paddingRight: theme.spacing(1),
+  },
 }))
 
 const StyledTable = styled(Table)(({ theme }) => ({
@@ -39,7 +43,7 @@ const StyledTableHead = styled(TableHead)(({ theme }) => ({
   "& .MuiTableCell-root:last-of-type:not(:only-of-type)": {
     borderRadius: theme.spacing(0, 2, 2, 0),
   },
-  [theme.breakpoints.down("sm")]: {
+  [theme.breakpoints.down("xs")]: {
     display: "none",
   },
 }))
@@ -87,7 +91,7 @@ const StyledTableBody = styled(TableBody, {
       },
     }),
   },
-  [theme.breakpoints.down("sm")]: {
+  [theme.breakpoints.down("xs")]: {
     "& tr:hover": {
       boxShadow: "none",
     },
@@ -127,7 +131,7 @@ const StyledTableCell = styled(TableCell)<StyledTableCellProps>(({
     overflow: $hasBorder ? "visible" : "hidden",
     ...(desktopWidth && { width: desktopWidth }),
     ...($cellPadding !== undefined && { padding: $cellPadding }),
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("xs")]: {
       width: mobileWidth ?? "auto",
     },
     ...($hasBorder && {

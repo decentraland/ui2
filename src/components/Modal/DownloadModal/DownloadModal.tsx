@@ -22,9 +22,12 @@ function DownloadModal(props: DownloadModalProps) {
   } = props
 
   const handleClose = useCallback(
-    (event: React.MouseEvent<HTMLButtonElement>) => {
+    (
+      event: React.MouseEvent<HTMLButtonElement>,
+      reason: "backdropClick" | "escapeKeyDown"
+    ) => {
       if (onClose) {
-        onClose(event)
+        onClose(event, reason)
       }
     },
     [onClose]

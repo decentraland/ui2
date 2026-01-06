@@ -44,7 +44,10 @@ import {
   WorldsPermissionGrantedNotification,
   WorldsPermissionRevokedNotification,
 } from "./NotificationTypes"
-import { CommonNotificationProps, DCLNotificationProps } from "./types"
+import {
+  CommonNotificationProps,
+  DCLNotificationProps,
+} from "./Notifications.types"
 
 const MAXIMUM_FRACTION_DIGITS = 2
 

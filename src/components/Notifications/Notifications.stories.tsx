@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Box } from "@mui/material"
-import { Notifications } from "./Notifications"
-import { NotificationActiveTab } from "./types"
+import { Notifications } from "./NotificationsToggle"
+import { NotificationsProps } from "./NotificationsToggle/Notifications.types"
 import {
   allTypeOfNotifications,
   bidAcceptedNotificationData,
@@ -49,7 +49,7 @@ import {
   worldsPermissionRevokedNotificationData,
 } from "../../data/notifications"
 import { shorten } from "../AddressField/utils"
-import { NotificationsProps } from "./Notifications.types"
+import { NotificationActiveTab } from "./Notifications.types"
 import type { Meta, StoryObj } from "@storybook/react"
 
 const meta: Meta = {

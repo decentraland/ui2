@@ -65,7 +65,11 @@ const ModalContent = React.memo(
             )}
             {title && <Typography variant="h5">{title}</Typography>}
             {onClose && (
-              <IconButton aria-label="close" size="large" onClick={onClose}>
+              <IconButton
+                aria-label="close"
+                size="large"
+                onClick={(event) => onClose(event, "escapeKeyDown")}
+              >
                 <CancelRoundedIcon />
               </IconButton>
             )}

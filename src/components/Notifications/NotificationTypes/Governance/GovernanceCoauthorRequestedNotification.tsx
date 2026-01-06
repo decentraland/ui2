@@ -1,17 +1,13 @@
 import React from "react"
 import { Link } from "@mui/material"
-import { i18n } from "./GovernanceCoauthorRequestedNotification.i18n"
+import { governanceCoauthorRequestedI18n } from "./Governance.i18n"
 import { CoauthorIcon } from "../../../Icon"
-import { NotificationItem } from "../../NotificationItem"
-import {
-  NotificationItemDescription,
-  NotificationItemTitle,
-  SpanHighlighted,
-} from "../../NotificationItem.styled"
+import { NotificationItemText } from "../../NotificationItem"
+import { SpanHighlighted } from "../../NotificationItem/NotificationItem.styled"
 import {
   CommonNotificationProps,
   GovernanceCoauthorRequestedNotificationProps,
-} from "../../types"
+} from "../../Notifications.types"
 
 const GovernanceCoauthorRequestedNotification = React.memo(
   (
@@ -19,25 +15,27 @@ const GovernanceCoauthorRequestedNotification = React.memo(
   ) => {
     const { notification, locale } = props
     return (
-      <NotificationItem
+      <NotificationItemText
         image={<CoauthorIcon />}
-        timestamp={notification.timestamp}
-        isNew={!notification.read}
         locale={locale}
-      >
-        <NotificationItemTitle>
-          {i18n[locale].title}{" "}
-          <SpanHighlighted>
-            {notification.metadata.proposalTitle}
-          </SpanHighlighted>
-        </NotificationItemTitle>
-        <NotificationItemDescription color="inherit" underline="none">
-          {i18n[locale].description.start}{" "}
-          <Link href={notification.metadata.link}>
-            {i18n[locale].description.link_text}
-          </Link>
-        </NotificationItemDescription>
-      </NotificationItem>
+        notification={notification}
+        title={
+          <>
+            {governanceCoauthorRequestedI18n[locale].title}{" "}
+            <SpanHighlighted>
+              {notification.metadata.proposalTitle}
+            </SpanHighlighted>
+          </>
+        }
+        description={
+          <>
+            {governanceCoauthorRequestedI18n[locale].description.start}{" "}
+            <Link href={notification.metadata.link}>
+              {governanceCoauthorRequestedI18n[locale].description.link_text}
+            </Link>
+          </>
+        }
+      />
     )
   }
 )
