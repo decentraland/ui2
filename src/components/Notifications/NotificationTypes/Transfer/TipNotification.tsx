@@ -1,23 +1,22 @@
 import React from "react"
 import { Link } from "@mui/material"
-import { i18n } from "./TipNotification.i18n"
+import { tipI18n } from "./Transfer.i18n"
 import { config } from "../../../../config"
 import { TipIcon } from "../../../Icon"
-import { NotificationItem } from "../../NotificationItem"
+import { NotificationItemText } from "../../NotificationItem"
 import {
-  NotificationItemDescription,
-  NotificationItemTitle,
-} from "../../NotificationItem.styled"
-import { CommonNotificationProps, TipNotificationProps } from "../../types"
+  CommonNotificationProps,
+  TipNotificationProps,
+} from "../../Notifications.types"
 import { formatMana, replaceWithValues } from "../../utils"
 
 const TipNotification = React.memo(
   (props: CommonNotificationProps<TipNotificationProps>) => {
     const { notification, locale, renderProfile } = props
+
     const senderAddress = notification.metadata.senderAddress
     const playerName = renderProfile?.(senderAddress) ?? senderAddress
     const manaAmount = formatMana(notification.metadata.manaAmount)
-    const sceneName = notification.metadata.sceneName
     const profileUrl = `${config.get("PROFILE_URL")}/accounts/${senderAddress}`
     const marketplaceActivityUrl = `${config.get("MARKETPLACE_URL")}/activity`
 
@@ -44,23 +43,16 @@ const TipNotification = React.memo(
     )
 
     return (
-      <NotificationItem
+      <NotificationItemText
         image={<TipIcon width={48} height={48} />}
-        timestamp={notification.timestamp}
-        isNew={!notification.read}
         locale={locale}
-      >
-        <NotificationItemTitle>
-          {replaceWithValues(i18n[locale].title, {
-            playerName: playerLink,
-            manaAmount: manaAmountLink,
-            sceneName: sceneName,
-          })}
-        </NotificationItemTitle>
-        <NotificationItemDescription color="inherit" underline="none">
-          {i18n[locale].description}
-        </NotificationItemDescription>
-      </NotificationItem>
+        notification={notification}
+        title={replaceWithValues(tipI18n[locale].title, {
+          playerName: playerLink,
+          manaAmount: manaAmountLink,
+        })}
+        description={tipI18n[locale].description}
+      />
     )
   }
 )
