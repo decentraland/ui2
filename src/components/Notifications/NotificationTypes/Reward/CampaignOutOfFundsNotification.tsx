@@ -1,14 +1,14 @@
 import React from "react"
 import { CampaignNotification } from "./CampaignNotification"
-import { i18n } from "./CampaignOutOfFundsNotification.i18n"
+import { campaignOutOfFundsI18n } from "./Reward.i18n"
 import {
   CampaignOutOfFundsNotificationProps,
   CommonNotificationProps,
-} from "../../types"
+} from "../../Notifications.types"
 
 const CampaignOutOfFundsNotification = React.memo(
   (props: CommonNotificationProps<CampaignOutOfFundsNotificationProps>) => {
-    return <CampaignNotification {...props} i18n={i18n} />
+    return <CampaignNotification {...props} i18n={campaignOutOfFundsI18n} />
   }
 )
 

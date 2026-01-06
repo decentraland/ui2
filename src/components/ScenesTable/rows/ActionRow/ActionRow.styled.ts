@@ -13,9 +13,6 @@ const ActionRowContainer = styled(Box)(({ theme }) => ({
     position: "absolute",
     right: 0,
     height: 40,
-    transition: theme.transitions.create(["opacity", "visibility"], {
-      duration: theme.transitions.duration.shortest,
-    }),
   },
   "tr:hover & .jump-in-button": {
     opacity: 1,
@@ -39,9 +36,6 @@ const PositionChangeContainer = styled(Box)(({ theme }) => ({
   borderRadius: theme.spacing(1),
   backgroundColor: "rgba(0, 0, 0, 0.5)",
   fontWeight: theme.typography.fontWeightBold,
-  transition: theme.transitions.create("opacity", {
-    duration: theme.transitions.duration.shorter,
-  }),
   "tr:hover &": {
     opacity: 0,
   },

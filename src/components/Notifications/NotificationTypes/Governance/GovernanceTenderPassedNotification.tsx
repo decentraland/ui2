@@ -1,43 +1,40 @@
 import React from "react"
 import { Link } from "@mui/material"
-import { i18n } from "./GovernanceTenderPassedNotification.i18n"
+import { governanceTenderPassedI18n } from "./Governance.i18n"
 import { TenderIcon } from "../../../Icon"
-import { NotificationItem } from "../../NotificationItem"
-import {
-  NotificationItemDescription,
-  NotificationItemTitle,
-  SpanHighlighted,
-} from "../../NotificationItem.styled"
+import { NotificationItemText } from "../../NotificationItem"
+import { SpanHighlighted } from "../../NotificationItem/NotificationItem.styled"
 import {
   CommonNotificationProps,
   GovernanceTenderPassedNotificationProps,
-} from "../../types"
+} from "../../Notifications.types"
 
 const GovernanceTenderPassedNotification = React.memo(
   (props: CommonNotificationProps<GovernanceTenderPassedNotificationProps>) => {
     const { notification, locale } = props
-
     return (
-      <NotificationItem
+      <NotificationItemText
         image={<TenderIcon />}
-        timestamp={notification.timestamp}
-        isNew={!notification.read}
         locale={locale}
-      >
-        <NotificationItemTitle>
-          {i18n[locale].title.start}{" "}
-          <SpanHighlighted>
-            {notification.metadata.proposalTitle}
-          </SpanHighlighted>{" "}
-          {i18n[locale].title.end}
-        </NotificationItemTitle>
-        <NotificationItemDescription color="inherit" underline="none">
-          {i18n[locale].description.start}{" "}
-          <Link href={notification.metadata.link}>
-            {i18n[locale].description.link_text}
-          </Link>
-        </NotificationItemDescription>
-      </NotificationItem>
+        notification={notification}
+        title={
+          <>
+            {governanceTenderPassedI18n[locale].title.start}{" "}
+            <SpanHighlighted>
+              {notification.metadata.proposalTitle}
+            </SpanHighlighted>{" "}
+            {governanceTenderPassedI18n[locale].title.end}
+          </>
+        }
+        description={
+          <>
+            {governanceTenderPassedI18n[locale].description.start}{" "}
+            <Link href={notification.metadata.link}>
+              {governanceTenderPassedI18n[locale].description.link_text}
+            </Link>
+          </>
+        }
+      />
     )
   }
 )

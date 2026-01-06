@@ -12,14 +12,14 @@ import { hexToRgba } from "../../utils/colors"
 
 const CardContainer = styled(Card)<{
   withShadow?: boolean
-  withBorder?: boolean
-}>(({ theme, withShadow, withBorder }) => ({
+  borderColor?: string
+}>(({ theme, withShadow, borderColor }) => ({
   borderRadius: theme.spacing(2),
   boxSizing: "border-box",
-  maxWidth: theme.spacing(50.625),
+  maxWidth: theme.spacing(75),
   backgroundColor: "transparent",
   position: "relative",
-  overflow: "hidden",
+  overflow: "visible",
   transition: [
     theme.transitions.create("transform", {
       duration: theme.transitions.duration.complex,
@@ -32,13 +32,13 @@ const CardContainer = styled(Card)<{
     }),
   ],
 
-  ...(withBorder && {
+  ...(borderColor && {
     "&::before": {
       content: '""',
       position: "absolute",
       inset: 0,
       borderRadius: theme.spacing(2),
-      background: "linear-gradient(to bottom, #FF2D55, #FFBC5B)",
+      background: borderColor,
       mask: `linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)`,
       maskComposite: "exclude",
       padding: theme.spacing(0.5),
@@ -73,7 +73,7 @@ const StyledCardActionArea = styled(CardActionArea)<{
 }>(({ theme, hasVisibleButton }) => ({
   borderRadius: theme.spacing(2),
   overflow: "hidden",
-  height: hasVisibleButton ? theme.spacing(56) : theme.spacing(48.5),
+  height: hasVisibleButton ? theme.spacing(60) : theme.spacing(52),
   display: "flex",
   flexDirection: "column",
   position: "relative",
@@ -94,11 +94,10 @@ const MediaContainer = styled(Box)({
 
 const StyledCardMedia = styled(CardMedia)<{ shrinkOnHover?: boolean }>(
   ({ theme, shrinkOnHover }) => ({
-    height: shrinkOnHover ? theme.spacing(28) : theme.spacing(32),
+    height: shrinkOnHover ? theme.spacing(32) : theme.spacing(35),
     width: "100%",
     borderRadius: `${theme.spacing(2)} ${theme.spacing(2)} 0 0`,
     backgroundSize: "cover",
-    paddingBottom: "50%",
 
     ...(shrinkOnHover && {
       [theme.breakpoints.up("sm")]: {
@@ -106,16 +105,27 @@ const StyledCardMedia = styled(CardMedia)<{ shrinkOnHover?: boolean }>(
           duration: theme.transitions.duration.complex,
         }),
         ".MuiCardActionArea-root:hover &": {
-          height: theme.spacing(24),
+          height: theme.spacing(28),
         },
       },
     }),
 
     [theme.breakpoints.down("sm")]: {
-      height: theme.spacing(25),
+      height: theme.spacing(28),
     },
   })
 )
+
+const CornerBadgeContainer = styled(Box)(({ theme }) => ({
+  position: "absolute",
+  top: -15,
+  left: -15,
+  zIndex: 11,
+  [theme.breakpoints.down("sm")]: {
+    top: -8,
+    left: -8,
+  },
+}))
 
 const BadgesContainer = styled(Box)(({ theme }) => ({
   position: "absolute",
@@ -178,6 +188,7 @@ const LeftBadge = styled(Box)<{ showOnHover?: boolean }>(
 
 const RightBadge = styled(Box)<{ showOnHover?: boolean }>(
   ({ theme, showOnHover }) => ({
+    marginLeft: "auto",
     padding: theme.spacing(1, 2),
     height: theme.spacing(4),
     maxWidth: "45%",
@@ -228,7 +239,7 @@ const StyledCardContent = styled(CardContent)(({ theme }) => ({
   justifyContent: "space-between",
   width: "100%",
   flex: "1 1 auto",
-  minHeight: theme.spacing(17),
+  minHeight: theme.spacing(20),
 }))
 
 const SceneTitle = styled(Box)({
@@ -411,6 +422,7 @@ export {
   BadgesContainer,
   CardContainer,
   ContentContainer,
+  CornerBadgeContainer,
   JumpInButtonContainer,
   LeftBadge,
   LocationChip,

@@ -1,36 +1,23 @@
 import React from "react"
 import { GovernanceIcon } from "../../../Icon"
-import { NotificationItem } from "../../NotificationItem"
-import {
-  NotificationItemDescription,
-  NotificationItemTitle,
-} from "../../NotificationItem.styled"
+import { NotificationItemText } from "../../NotificationItem"
 import {
   CommonNotificationProps,
   GovernanceAnnouncementNotificationProps,
-} from "../../types"
+} from "../../Notifications.types"
 
 const GovernanceAnnouncementNotification = React.memo(
   (props: CommonNotificationProps<GovernanceAnnouncementNotificationProps>) => {
     const { notification, locale } = props
     return (
-      <NotificationItem
+      <NotificationItemText
         image={<GovernanceIcon />}
-        timestamp={notification.timestamp}
-        isNew={!notification.read}
         locale={locale}
-      >
-        <NotificationItemTitle>
-          {notification.metadata.title}
-        </NotificationItemTitle>
-        <NotificationItemDescription
-          href={notification.metadata.link}
-          color="inherit"
-          underline="none"
-        >
-          {notification.metadata.description}
-        </NotificationItemDescription>
-      </NotificationItem>
+        notification={notification}
+        title={notification.metadata.title}
+        description={notification.metadata.description}
+        descriptionHref={notification.metadata.link}
+      />
     )
   }
 )

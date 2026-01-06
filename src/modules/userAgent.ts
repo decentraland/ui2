@@ -1,4 +1,4 @@
-import { AdvancedNavigatorUAData } from "@dcl/hooks/cjs/hooks/useAdvancedUserAgentData"
+import { AdvancedNavigatorUAData } from "@dcl/hooks"
 import { OperativeSystem } from "../components/DownloadButton/DownloadButton.types"
 
 const setUserAgentArchitectureDefaultByOs = (

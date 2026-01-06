@@ -2,7 +2,7 @@ import { NFTCategory, NotificationType, Rarity } from "@dcl/schemas"
 import {
   CreditsExpireIn24HrsReminderNotificationProps,
   CreditsExpireSoonReminderNotificationProps,
-} from "components/Notifications/NotificationTypes/Credits/types"
+} from "components/Notifications/NotificationTypes/Credits/Credits.types"
 import {
   BidAcceptedNotificationProps,
   BidReceivedNotificationProps,
@@ -43,7 +43,7 @@ import {
   WorldsMissingResourcesNotificationProps,
   WorldsPermissionGrantedNotificationProps,
   WorldsPermissionRevokedNotificationProps,
-} from "../components/Notifications/types"
+} from "../components/Notifications/Notifications.types"
 
 const futureStartDate = new Date()
 futureStartDate.setSeconds(futureStartDate.getSeconds() + 120)

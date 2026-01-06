@@ -1,17 +1,13 @@
 import React from "react"
 import { Link } from "@mui/material"
-import { i18n } from "./GovernanceVotingEndedVoterNotification.i18n"
+import { governanceVotingEndedVoterI18n } from "./Governance.i18n"
 import { VotingEndedIcon } from "../../../Icon"
-import { NotificationItem } from "../../NotificationItem"
-import {
-  NotificationItemDescription,
-  NotificationItemTitle,
-  SpanHighlighted,
-} from "../../NotificationItem.styled"
+import { NotificationItemText } from "../../NotificationItem"
+import { SpanHighlighted } from "../../NotificationItem/NotificationItem.styled"
 import {
   CommonNotificationProps,
   GovernanceVotingEndedVoterNotificationProps,
-} from "../../types"
+} from "../../Notifications.types"
 
 const GovernanceVotingEndedVoterNotification = React.memo(
   (
@@ -19,25 +15,27 @@ const GovernanceVotingEndedVoterNotification = React.memo(
   ) => {
     const { notification, locale } = props
     return (
-      <NotificationItem
+      <NotificationItemText
         image={<VotingEndedIcon />}
-        timestamp={notification.timestamp}
-        isNew={!notification.read}
         locale={locale}
-      >
-        <NotificationItemTitle>
-          {i18n[locale].title}{" "}
-          <SpanHighlighted>
-            {notification.metadata.proposalTitle}
-          </SpanHighlighted>
-        </NotificationItemTitle>
-        <NotificationItemDescription color="inherit" underline="none">
-          <Link href={notification.metadata.link}>
-            {i18n[locale].description.link_text}
-          </Link>{" "}
-          {i18n[locale].description.end}
-        </NotificationItemDescription>
-      </NotificationItem>
+        notification={notification}
+        title={
+          <>
+            {governanceVotingEndedVoterI18n[locale].title}{" "}
+            <SpanHighlighted>
+              {notification.metadata.proposalTitle}
+            </SpanHighlighted>
+          </>
+        }
+        description={
+          <>
+            <Link href={notification.metadata.link}>
+              {governanceVotingEndedVoterI18n[locale].description.link_text}
+            </Link>{" "}
+            {governanceVotingEndedVoterI18n[locale].description.end}
+          </>
+        }
+      />
     )
   }
 )

@@ -1,37 +1,36 @@
 import React from "react"
-import { i18n } from "./ItemSoldNotification.i18n"
+import { itemSoldI18n } from "./Marketplace.i18n"
 import { ItemSoldIcon } from "../../../Icon"
-import { NotificationItem } from "../../NotificationItem"
-import {
-  NotificationItemDescription,
-  NotificationItemTitle,
-} from "../../NotificationItem.styled"
+import { NotificationItemText } from "../../NotificationItem"
 import { NotificationItemNFTLink } from "../../NotificationItemNFTLink"
-import { CommonNotificationProps, ItemSoldNotificationProps } from "../../types"
+import {
+  CommonNotificationProps,
+  ItemSoldNotificationProps,
+} from "../../Notifications.types"
 import { getBGColorByRarity } from "../../utils"
 
 const ItemSoldNotification = React.memo(
   (props: CommonNotificationProps<ItemSoldNotificationProps>) => {
     const { notification, locale } = props
     return (
-      <NotificationItem
+      <NotificationItemText
         image={notification.metadata.image}
         imageBackgroundColor={getBGColorByRarity(notification.metadata.rarity)}
         badgeIcon={<ItemSoldIcon />}
-        timestamp={notification.timestamp}
-        isNew={!notification.read}
         locale={locale}
-      >
-        <NotificationItemTitle>{i18n[locale].title}</NotificationItemTitle>
-        <NotificationItemDescription color="inherit" underline="none">
-          {i18n[locale].description}{" "}
-          <NotificationItemNFTLink
-            rarity={notification.metadata.rarity}
-            name={notification.metadata.nftName}
-            link={notification.metadata.link}
-          />
-        </NotificationItemDescription>
-      </NotificationItem>
+        notification={notification}
+        title={itemSoldI18n[locale].title}
+        description={
+          <>
+            {itemSoldI18n[locale].description}{" "}
+            <NotificationItemNFTLink
+              rarity={notification.metadata.rarity}
+              name={notification.metadata.nftName}
+              link={notification.metadata.link}
+            />
+          </>
+        }
+      />
     )
   }
 )

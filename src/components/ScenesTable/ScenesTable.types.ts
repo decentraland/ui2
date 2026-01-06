@@ -1,4 +1,5 @@
 import { Avatar } from "@dcl/schemas"
+import { JumpInTrackingData } from "../JumpIn/JumpIn.types"
 
 type SceneRowData = {
   key: string
@@ -12,6 +13,9 @@ type SceneRowData = {
 
 type ScenesTableProps = {
   rows: SceneRowData[]
+  headerVisible?: boolean
+  onMobileRowClick?: (row: SceneRowData, index: number) => void
+  onJumpInTrack?: (data: JumpInTrackingData, row: SceneRowData) => void
 }
 
 export type { SceneRowData, ScenesTableProps }

@@ -113,6 +113,14 @@ const exampleColumns: Column<ExampleRow>[] = [
   },
 ]
 
+const singleColumn: Column<ExampleRow>[] = [
+  {
+    id: "scene",
+    header: "Scene",
+    render: (row) => row.scene,
+  },
+]
+
 const mobileColumns: Column<ExampleRow>[] = [
   {
     id: "scene",
@@ -203,12 +211,29 @@ const MobileChangeLayout: Story = {
   },
 }
 
+const SingleColumn: Story = {
+  args: {
+    columns: singleColumn,
+    rows: exampleRows,
+  },
+}
+
+const WithoutHeader: Story = {
+  args: {
+    columns: exampleColumns,
+    rows: exampleRows,
+    headerVisible: false,
+  },
+}
+
 // eslint-disable-next-line import/no-default-export
 export default meta
 export {
   Default,
   DisabledHoverEffect,
   MobileChangeLayout,
+  SingleColumn,
   WithBorders,
+  WithoutHeader,
   WithoutHoverEffect,
 }

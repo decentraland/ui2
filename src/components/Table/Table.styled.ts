@@ -11,8 +11,12 @@ import {
 import { hexToRgba } from "../../utils/colors"
 
 const StyledTableContainer = styled(TableContainer)(({ theme }) => ({
-  padding: theme.spacing(1.5),
-  backgroundImage: "none",
+  paddingLeft: theme.spacing(3),
+  paddingRight: theme.spacing(3),
+  [theme.breakpoints.down("sm")]: {
+    paddingLeft: theme.spacing(1),
+    paddingRight: theme.spacing(1),
+  },
 }))
 
 const StyledTable = styled(Table)(({ theme }) => ({
@@ -30,13 +34,16 @@ const StyledTableHead = styled(TableHead)(({ theme }) => ({
     fontSize: "12px",
     color: theme.palette.text.primary,
   },
-  "& .MuiTableCell-root:first-of-type": {
+  "& .MuiTableCell-root:only-of-type": {
+    borderRadius: theme.spacing(2),
+  },
+  "& .MuiTableCell-root:first-of-type:not(:only-of-type)": {
     borderRadius: theme.spacing(2, 0, 0, 2),
   },
-  "& .MuiTableCell-root:last-of-type": {
+  "& .MuiTableCell-root:last-of-type:not(:only-of-type)": {
     borderRadius: theme.spacing(0, 2, 2, 0),
   },
-  [theme.breakpoints.down("sm")]: {
+  [theme.breakpoints.down("xs")]: {
     display: "none",
   },
 }))
@@ -62,10 +69,15 @@ const StyledTableBody = styled(TableBody, {
     borderBottom: "none",
     textAlign: "left",
   },
-  "& tr td:first-of-type, & tr th:first-of-type": {
+  "& tr td:only-of-type, & tr th:only-of-type": {
+    borderRadius: theme.spacing(2),
+  },
+  ["& tr td:first-of-type:not(:only-of-type)," +
+  " & tr th:first-of-type:not(:only-of-type)"]: {
     borderRadius: theme.spacing(2, 0, 0, 2),
   },
-  "& tr td:last-of-type, & tr th:last-of-type": {
+  ["& tr td:last-of-type:not(:only-of-type)," +
+  " & tr th:last-of-type:not(:only-of-type)"]: {
     borderRadius: theme.spacing(0, 2, 2, 0),
   },
   "& tr": {
@@ -79,7 +91,7 @@ const StyledTableBody = styled(TableBody, {
       },
     }),
   },
-  [theme.breakpoints.down("sm")]: {
+  [theme.breakpoints.down("xs")]: {
     "& tr:hover": {
       boxShadow: "none",
     },
@@ -92,8 +104,9 @@ type ResponsiveWidth =
   | { mobile?: string | number; desktop?: string | number }
 
 type StyledTableCellProps = {
-  cellWidth?: ResponsiveWidth
-  cellPadding?: number | string
+  $cellWidth?: ResponsiveWidth
+  $cellPadding?: number | string
+  $hasBorder?: boolean
 }
 
 const isResponsiveWidth = (
@@ -101,21 +114,29 @@ const isResponsiveWidth = (
 ): value is { mobile?: string | number; desktop?: string | number } =>
   typeof value === "object" && ("mobile" in value || "desktop" in value)
 
-const StyledTableCell = styled(TableCell, {
-  shouldForwardProp: (prop) => prop !== "cellWidth" && prop !== "cellPadding",
-})<StyledTableCellProps>(({ theme, cellWidth, cellPadding }) => {
+const StyledTableCell = styled(TableCell)<StyledTableCellProps>(({
+  theme,
+  $cellWidth,
+  $cellPadding,
+  $hasBorder,
+}) => {
   const desktopWidth =
-    cellWidth && isResponsiveWidth(cellWidth) ? cellWidth.desktop : cellWidth
+    $cellWidth && isResponsiveWidth($cellWidth)
+      ? $cellWidth.desktop
+      : $cellWidth
   const mobileWidth =
-    cellWidth && isResponsiveWidth(cellWidth) ? cellWidth.mobile : undefined
+    $cellWidth && isResponsiveWidth($cellWidth) ? $cellWidth.mobile : undefined
 
   return {
-    overflow: "hidden",
+    overflow: $hasBorder ? "visible" : "hidden",
     ...(desktopWidth && { width: desktopWidth }),
-    ...(cellPadding !== undefined && { padding: cellPadding }),
-    [theme.breakpoints.down("sm")]: {
+    ...($cellPadding !== undefined && { padding: $cellPadding }),
+    [theme.breakpoints.down("xs")]: {
       width: mobileWidth ?? "auto",
     },
+    ...($hasBorder && {
+      position: "relative",
+    }),
   }
 })
 
@@ -141,33 +162,43 @@ const StyledTableRow = styled(TableRow, {
   }),
 }))
 
-type BorderOverlayProps = {
-  borderColor?: string
+type TableCellBorderContainerProps = {
+  $borderColor: string
+  $width: number
 }
 
-const BorderOverlay = styled(Box, {
-  shouldForwardProp: (prop) => prop !== "borderColor",
-})<BorderOverlayProps>(({ theme, borderColor }) => ({
-  position: "absolute",
-  inset: 0,
-  borderRadius: theme.spacing(2),
-  pointerEvents: "none",
-  zIndex: 1,
-  "&::before": {
-    content: '""',
+const TableCellBorderContainer = styled(Box)<TableCellBorderContainerProps>(
+  ({ theme, $borderColor, $width }) => ({
     position: "absolute",
-    inset: 0,
+    top: 0,
+    left: 0,
+    width: $width || "100%",
+    height: "100%",
     borderRadius: theme.spacing(2),
-    padding: "3px",
-    background: borderColor,
-    mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-    maskComposite: "exclude",
     pointerEvents: "none",
-  },
-}))
+    zIndex: 1,
+    "&::before": {
+      content: '""',
+      position: "absolute",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
+      borderRadius: theme.spacing(2),
+      padding: "3px",
+      boxSizing: "border-box",
+      background: $borderColor,
+      WebkitMask:
+        "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+      mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+      WebkitMaskComposite: "xor",
+      maskComposite: "exclude",
+      pointerEvents: "none",
+    },
+  })
+)
 
 export {
-  BorderOverlay,
   StyledTable,
   StyledTableBody,
   StyledTableCell,
@@ -175,4 +206,5 @@ export {
   StyledTableHead,
   StyledTableHeadRow,
   StyledTableRow,
+  TableCellBorderContainer,
 }
