@@ -1,13 +1,17 @@
 import React, { memo, useMemo } from "react"
-import ContentCopyIcon from "@mui/icons-material/ContentCopy"
-import Box from "@mui/material/Box"
-import IconButton from "@mui/material/IconButton"
 import Tooltip from "@mui/material/Tooltip"
 import { i18n as i18nProfile } from "./Profile.i18n"
 import { ProfileImage } from "./ProfileImage"
 import { Address } from "../Address"
 import { ProfileProps } from "./Profile.types"
-import { ProfileContainer, ProfileName } from "./Profile.styled"
+import {
+  ProfileAddressContainer,
+  ProfileContainer,
+  ProfileCopyButton,
+  ProfileCopyIcon,
+  ProfileName,
+  ProfileNameWithAddressContainer,
+} from "./Profile.styled"
 
 const Profile = memo(<T extends React.ElementType>(props: ProfileProps<T>) => {
   const {
@@ -64,42 +68,15 @@ const Profile = memo(<T extends React.ElementType>(props: ProfileProps<T>) => {
       {imageOnly ? null : (
         <Wrapper {...rest}>
           {showBothNameAndAddress && hasAvatarName ? (
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: 0.5,
-              }}
-            >
+            <ProfileNameWithAddressContainer>
               <ProfileName size={size}>{name}</ProfileName>
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  gap: 0.1,
-                  fontSize: "0.875em",
-                  color: "rgba(255, 255, 255, 0.7)",
-                }}
-              >
+              <ProfileAddressContainer>
                 <Address value={address} shorten={shortenAddress} />
-                <IconButton
-                  size="small"
-                  onClick={handleCopyAddress}
-                  sx={{
-                    padding: 0.25,
-                    color: "rgba(255, 255, 255, 0.7)",
-                    "&:hover": {
-                      color: "rgba(255, 255, 255, 1)",
-                    },
-                  }}
-                >
-                  <ContentCopyIcon sx={{ fontSize: "0.875em" }} />
-                </IconButton>
-              </Box>
-            </Box>
+                <ProfileCopyButton size="small" onClick={handleCopyAddress}>
+                  <ProfileCopyIcon />
+                </ProfileCopyButton>
+              </ProfileAddressContainer>
+            </ProfileNameWithAddressContainer>
           ) : (
             <ProfileName size={size}>
               {shouldUseAddressComponent ? (
