@@ -820,6 +820,7 @@ const allTypeOfNotifications = [
   eventStartedNotificationData,
   eventStartsSoonFutureStartNotificationData,
   eventStartsSoonPastStartNotificationData,
+  giftNotificationData,
   governanceAnnouncementNotificationData,
   governanceAuthoredProposalFinishedNotificationData,
   governanceCoauthorRequestedNotificationData,
@@ -843,13 +844,12 @@ const allTypeOfNotifications = [
   streamingKeyRevokeNotificationData,
   streamingPlaceUpdatedNotificationData,
   streamingTimeExceededNotificationData,
+  tipNotificationData,
   worldsAccessRestoredNotificationData,
   worldsAccessRestrictedNotificationData,
   worldsMissingResourcesNotificationData,
   worldsPermissionGrantedNotificationPropsData,
   worldsPermissionRevokedNotificationData,
-  giftNotificationData,
-  tipNotificationData,
 ]
 
 export {
@@ -867,6 +867,7 @@ export {
   eventStartedNotificationData,
   eventStartsSoonFutureStartNotificationData,
   eventStartsSoonPastStartNotificationData,
+  giftNotificationData,
   governanceAnnouncementNotificationData,
   governanceAuthoredProposalFinishedNotificationData,
   governanceCoauthorRequestedNotificationData,
@@ -890,11 +891,10 @@ export {
   streamingKeyRevokeNotificationData,
   streamingPlaceUpdatedNotificationData,
   streamingTimeExceededNotificationData,
+  tipNotificationData,
   worldsAccessRestoredNotificationData,
   worldsAccessRestrictedNotificationData,
   worldsMissingResourcesNotificationData,
   worldsPermissionGrantedNotificationPropsData,
   worldsPermissionRevokedNotificationData,
-  giftNotificationData,
-  tipNotificationData,
 }
