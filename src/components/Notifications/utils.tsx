@@ -37,6 +37,7 @@ import {
   StreamingKeyRevokeNotification,
   StreamingPlaceUpdatedNotification,
   StreamingTimeExceededNotification,
+  TipNotification,
   WorldsAccessRestoredNotification,
   WorldsAccessRestrictedNotification,
   WorldsMissingResourcesNotification,
@@ -85,6 +86,7 @@ const NotificationComponentByType: DecentralandNotificationComponentByType<DCLNo
     [NotificationType.EVENTS_STARTED]: EventsStartedNotification,
     [NotificationType.EVENTS_STARTS_SOON]: EventsStartsSoonNotification,
     [NotificationType.TRANSFER_RECEIVED]: GiftNotification,
+    [NotificationType.TIP_RECEIVED]: TipNotification,
     [NotificationType.GOVERNANCE_ANNOUNCEMENT]:
       GovernanceAnnouncementNotification,
     [NotificationType.GOVERNANCE_AUTHORED_PROPOSAL_FINISHED]:

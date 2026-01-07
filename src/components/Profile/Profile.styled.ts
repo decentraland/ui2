@@ -1,3 +1,6 @@
+import ContentCopyIcon from "@mui/icons-material/ContentCopy"
+import Box from "@mui/material/Box"
+import IconButton from "@mui/material/IconButton"
 import styled from "@emotion/styled"
 import { ProfileBaseProps } from "./Profile.types"
 
@@ -22,4 +25,41 @@ const ProfileName = styled("span")<Pick<ProfileBaseProps, "size">>(({
   }
 })
 
-export { ProfileContainer, ProfileName }
+const ProfileNameWithAddressContainer = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: theme.spacing(0.5),
+}))
+
+const ProfileAddressContainer = styled(Box)(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: theme.spacing(0.1),
+  fontSize: "0.875em",
+  color: theme.palette.text.secondary,
+}))
+
+const ProfileCopyButton = styled(IconButton)(({ theme }) => ({
+  padding: theme.spacing(0.25),
+  color: theme.palette.text.secondary,
+
+  "&:hover": {
+    color: theme.palette.text.primary,
+  },
+}))
+
+const ProfileCopyIcon = styled(ContentCopyIcon)({
+  fontSize: "0.875em",
+})
+
+export {
+  ProfileContainer,
+  ProfileName,
+  ProfileNameWithAddressContainer,
+  ProfileAddressContainer,
+  ProfileCopyButton,
+  ProfileCopyIcon,
+}

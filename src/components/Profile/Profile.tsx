@@ -4,7 +4,14 @@ import { i18n as i18nProfile } from "./Profile.i18n"
 import { ProfileImage } from "./ProfileImage"
 import { Address } from "../Address"
 import { ProfileProps } from "./Profile.types"
-import { ProfileContainer, ProfileName } from "./Profile.styled"
+import {
+  ProfileAddressContainer,
+  ProfileContainer,
+  ProfileCopyButton,
+  ProfileCopyIcon,
+  ProfileName,
+  ProfileNameWithAddressContainer,
+} from "./Profile.styled"
 
 const Profile = memo(<T extends React.ElementType>(props: ProfileProps<T>) => {
   const {
@@ -17,6 +24,7 @@ const Profile = memo(<T extends React.ElementType>(props: ProfileProps<T>) => {
     inline = true,
     sliceAddressBy = 6,
     shortenAddress = false,
+    showBothNameAndAddress = false,
     isDecentraland,
     as = React.Fragment,
     i18n = i18nProfile,
@@ -26,6 +34,11 @@ const Profile = memo(<T extends React.ElementType>(props: ProfileProps<T>) => {
   const sliceLimit = Math.max(Math.min(sliceAddressBy, 42), 6)
   const hasAvatarName = avatar && avatar.name
   const shouldUseAddressComponent = !isDecentraland && !hasAvatarName
+
+  const handleCopyAddress = () => {
+    navigator.clipboard.writeText(address)
+  }
+
   const name = useMemo(() => {
     if (isDecentraland) {
       return i18n.decentraland
@@ -54,13 +67,25 @@ const Profile = memo(<T extends React.ElementType>(props: ProfileProps<T>) => {
       )}
       {imageOnly ? null : (
         <Wrapper {...rest}>
-          <ProfileName size={size}>
-            {shouldUseAddressComponent ? (
-              <Address value={name} shorten={shortenAddress} />
-            ) : (
-              name
-            )}
-          </ProfileName>
+          {showBothNameAndAddress && hasAvatarName ? (
+            <ProfileNameWithAddressContainer>
+              <ProfileName size={size}>{name}</ProfileName>
+              <ProfileAddressContainer>
+                <Address value={address} shorten={shortenAddress} />
+                <ProfileCopyButton size="small" onClick={handleCopyAddress}>
+                  <ProfileCopyIcon />
+                </ProfileCopyButton>
+              </ProfileAddressContainer>
+            </ProfileNameWithAddressContainer>
+          ) : (
+            <ProfileName size={size}>
+              {shouldUseAddressComponent ? (
+                <Address value={name} shorten={shortenAddress} />
+              ) : (
+                name
+              )}
+            </ProfileName>
+          )}
         </Wrapper>
       )}
     </ProfileContainer>

@@ -46,7 +46,7 @@ import {
   StreamingPlaceUpdatedNotification,
   StreamingTimeExceededNotification,
 } from "./Streaming"
-import { GiftNotification } from "./Transfer"
+import { GiftNotification, TipNotification } from "./Transfer"
 import {
   WorldsAccessRestoredNotification,
   WorldsAccessRestrictedNotification,
@@ -69,6 +69,7 @@ export {
   EventsStartedNotification,
   EventsStartsSoonNotification,
   GiftNotification,
+  TipNotification,
   GovernanceAnnouncementNotification,
   GovernanceAuthoredProposalFinishedNotification,
   GovernanceCoauthorRequestedNotification,
