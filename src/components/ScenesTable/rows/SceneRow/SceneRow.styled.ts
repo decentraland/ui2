@@ -3,7 +3,7 @@ import { Box, Link, Typography, styled } from "@mui/material"
 const SceneRowContainer = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
-  gap: theme.spacing(2),
+  gap: theme.spacing(1),
   minWidth: 0,
   overflow: "hidden",
 }))
@@ -27,6 +27,9 @@ const SceneContentContainer = styled(Box)(({ theme }) => ({
   flex: 1,
   minWidth: 0,
   overflow: "hidden",
+  [theme.breakpoints.down("xs")]: {
+    paddingRight: theme.spacing(2),
+  },
 }))
 
 const SceneName = styled(Typography)(({ theme }) => ({
@@ -34,18 +37,18 @@ const SceneName = styled(Typography)(({ theme }) => ({
   overflow: "hidden",
   textOverflow: "ellipsis",
   whiteSpace: "nowrap",
-  [theme.breakpoints.down("sm")]: {
+  [theme.breakpoints.down("xs")]: {
     fontSize: "14px",
   },
 }))
 
 const MobileInfoRow = styled(Box)(({ theme }) => ({
   display: "none",
-  [theme.breakpoints.down("sm")]: {
+  [theme.breakpoints.down("xs")]: {
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
-    gap: theme.spacing(1),
+    gap: theme.spacing(0.5),
     fontSize: "12px",
     minWidth: 0,
     overflow: "hidden",
@@ -76,7 +79,7 @@ const MobileAvatarName = styled(Link)(({ theme }) => ({
 const MobileLocation = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
-  gap: theme.spacing(0.5),
+  gap: 0,
   fontSize: "12px",
   color: theme.palette.text.secondary,
   minWidth: 0,
