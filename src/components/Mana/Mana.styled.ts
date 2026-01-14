@@ -2,8 +2,10 @@ import styled from "@emotion/styled"
 import { ButtonBase as ButtonMui } from "@mui/material"
 import { ManaProps } from "./Mana.types"
 
-interface StyledManaButtonProps
-  extends Pick<ManaProps, "inline" | "href" | "onClick"> {
+interface StyledManaButtonProps extends Pick<
+  ManaProps,
+  "inline" | "href" | "onClick"
+> {
   fontSize?: string
 }
 

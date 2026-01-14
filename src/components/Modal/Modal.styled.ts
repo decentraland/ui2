@@ -6,15 +6,14 @@ import {
 } from "@mui/material"
 import { ModalProps } from "./Modal.types"
 
-interface StyledModalProps
-  extends Pick<
-    ModalProps,
-    | "size"
-    | "backgroundImage"
-    | "backgroundSize"
-    | "backgroundPosition"
-    | "backgroundRepeat"
-  > {}
+interface StyledModalProps extends Pick<
+  ModalProps,
+  | "size"
+  | "backgroundImage"
+  | "backgroundSize"
+  | "backgroundPosition"
+  | "backgroundRepeat"
+> {}
 
 const Modal = styled(MuiModal)({
   display: "flex",

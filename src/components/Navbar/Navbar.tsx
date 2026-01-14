@@ -6,10 +6,10 @@ import {
   navbarMainTitlesI18N as i18nNavbarTitlesDefault,
   navbarSubmenu,
 } from "./Navbar.defaults"
-import { SubMenu } from "./SubMenu/SubMenu"
 import { ChainSelector } from "../ChainSelector"
 import { TabletAndBelow, useTabletAndBelowMediaQuery } from "../Media"
 import { UserMenu } from "../UserMenu"
+import { SubMenu } from "./SubMenu/SubMenu"
 import { i18n as i18nUserMenuDefault } from "../UserMenu/UserMenu.i18n"
 import { NavbarPages, NavbarProps } from "./Navbar.types"
 import {

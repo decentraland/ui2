@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-empty-function */
 import React, { useCallback, useEffect, useState } from "react"
 import { PreviewEmoteEventType } from "@dcl/schemas/dist/dapps/preview/preview-emote-event-type"
 import PauseIcon from "@mui/icons-material/Pause"
