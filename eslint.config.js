@@ -1,4 +1,4 @@
-const ui = require("@dcl/eslint-config/ui.config");
+const ui = require("@dcl/eslint-config/ui.config")
 
 module.exports = [
   ...ui,
@@ -10,4 +10,4 @@ module.exports = [
       "@typescript-eslint/no-unused-vars": "off",
     },
   },
-];
+]
