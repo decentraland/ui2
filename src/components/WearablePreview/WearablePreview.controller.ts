@@ -189,7 +189,7 @@ function createController(id: string): IPreviewController {
   promises.clear()
 
   const events = iframe.contentWindow
-    ? emoteEvents.get(iframe.contentWindow) ?? mitt<EmoteEvents>()
+    ? (emoteEvents.get(iframe.contentWindow) ?? mitt<EmoteEvents>())
     : mitt<EmoteEvents>()
   if (iframe.contentWindow) {
     emoteEvents.set(iframe.contentWindow, events)
