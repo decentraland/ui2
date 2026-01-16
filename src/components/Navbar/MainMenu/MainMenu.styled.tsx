@@ -1,4 +1,3 @@
-import zIndex from "@mui/material/styles/zIndex"
 import styled from "@emotion/styled"
 import { Box } from "@mui/material"
 
@@ -32,7 +31,7 @@ const MainMenuContainer = styled(Box, {
       top: "-150vh",
       left: 0,
       marginLeft: 0,
-      zIndex: zIndex.mobileStepper,
+      zIndex: theme!.zIndex.mobileStepper,
       transition: `${theme!.transitions.create(["top"], {
         duration: theme!.transitions.duration.shorter,
         easing: theme!.transitions.easing.easeInOut,

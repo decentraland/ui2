@@ -50,9 +50,7 @@ const Blockie = React.memo((props: BlockieProps) => {
   return children ? (
     <Box component="span">
       {canvas}
-      <StyledBlockieChildrenWrapper component="span">
-        {children}
-      </StyledBlockieChildrenWrapper>
+      <StyledBlockieChildrenWrapper>{children}</StyledBlockieChildrenWrapper>
     </Box>
   ) : (
     canvas

@@ -1,4 +1,3 @@
-import zIndex from "@mui/material/styles/zIndex"
 import styled from "@emotion/styled"
 import { AppBar, Box, Button, Link, Modal } from "@mui/material"
 import { Logo as LogoComponent } from "../Logo/Logo"
@@ -32,11 +31,11 @@ const DclAppBar = styled(AppBar, {
 const LogoLink = styled(Link, {
   shouldForwardProp: (prop) => prop !== "isMobile",
 })<LogoLinkProps>((props) => {
-  const { isMobile } = props
+  const { isMobile, theme } = props
   let mobileStyles
   if (isMobile) {
     mobileStyles = {
-      zIndex: zIndex.appBar,
+      zIndex: theme!.zIndex.appBar,
     }
   }
   return {

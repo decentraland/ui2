@@ -1,4 +1,3 @@
-import zIndex from "@mui/material/styles/zIndex"
 import styled from "@emotion/styled"
 import { Box, Button } from "@mui/material"
 import CreateImage from "../../../Assets/Navbar/create-submenu.png"
@@ -17,9 +16,9 @@ interface MenuItemContainerProps {
 const SubMenuContainer = styled(Box)((props) => {
   const { theme } = props
   return {
-    [theme!.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("sm")]: {
       position: "absolute",
-      zIndex: zIndex.modal,
+      zIndex: theme.zIndex.modal,
     },
   }
 })
@@ -51,12 +50,12 @@ const MenuItemContainer = styled(Box, {
     display: "flex",
     alignItems: "center",
     paddingTop: "64px",
-    backgroundColor: theme!.palette.background.default,
-    transition: `${theme!.transitions.create(["box-shadow", "height"], {
-      duration: theme!.transitions.duration.shorter,
-      easing: theme!.transitions.easing.easeInOut,
-    })}, ${theme!.transitions.create(["top", "left"], {
-      duration: theme!.transitions.duration.complex,
+    backgroundColor: theme.palette.background.default,
+    transition: `${theme.transitions.create(["box-shadow", "height"], {
+      duration: theme.transitions.duration.shorter,
+      easing: theme.transitions.easing.easeInOut,
+    })}, ${theme.transitions.create(["top", "left"], {
+      duration: theme.transitions.duration.complex,
       easing: "cubic-bezier(1, 0, 0.15, 1)",
     })}`,
   }
@@ -66,7 +65,7 @@ const MenuItemContainer = styled(Box, {
       opacity: 1,
       top: 0,
       zIndex: 1099,
-      boxShadow: theme!.shadows[20],
+      boxShadow: theme.shadows[20],
     }
     mobileModifiedStyles = {
       left: 0,
@@ -140,17 +139,17 @@ const MenuItemContainer = styled(Box, {
       left: 0,
       backgroundSize: "auto 90%",
       ...leftImageStyles,
-      [theme!.breakpoints.between("sm", "lg")]: {
+      [theme.breakpoints.between("sm", "lg")]: {
         backgroundImage: "none",
       },
     },
-    [theme!.breakpoints.down("lg")]: {
+    [theme.breakpoints.down("lg")]: {
       paddingLeft: "48px",
       "&::after": {
         content: "none",
       },
     },
-    [theme!.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("sm")]: {
       top: "64px",
       left: "150%",
       height: "100vh",
@@ -158,7 +157,7 @@ const MenuItemContainer = styled(Box, {
       margin: 0,
       alignItems: "flex-start",
       boxShadow: "none",
-      backgroundColor: theme!.palette.background.default,
+      backgroundColor: theme.palette.background.default,
       ...mobileModifiedStyles,
       "&::after": {
         content: "none",
@@ -174,7 +173,7 @@ const SubMenuWrapper = styled(Box)((props) => {
     display: "flex",
     alignItems: "flex-start",
     height: "fit-content",
-    [theme!.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("sm")]: {
       flexDirection: "column",
     },
   }

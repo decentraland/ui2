@@ -62,7 +62,7 @@ const meta = {
       control: "boolean",
       description: "Whether to hide the icon",
       table: {
-        defaultValue: { summary: false },
+        defaultValue: { summary: "false" },
       },
     },
     desktopAppOptions: {

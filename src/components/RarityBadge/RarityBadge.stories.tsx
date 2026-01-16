@@ -37,8 +37,10 @@ const meta: Meta<RarityBadgeProps> = {
     },
     onClick: {
       description: "The function to call when the badge is clicked",
-      control: "function",
-      defaultValue: () => console.log("Clicked!"),
+      action: "onClick",
+      table: {
+        type: { summary: "function" },
+      },
     },
     i18n: {
       description: "The i18n object to use for the badge",
