@@ -1,4 +1,4 @@
-import { ArgTypes, Title } from "@storybook/blocks"
+import { ArgTypes, Title } from "@storybook/addon-docs/blocks"
 import styled from "@emotion/styled"
 import { getTiles } from "./util"
 import { Atlas, AtlasProps, Coord, Layer } from "./index"

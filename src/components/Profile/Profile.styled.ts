@@ -45,7 +45,6 @@ const ProfileAddressContainer = styled(Box)(({ theme }) => ({
 const ProfileCopyButton = styled(IconButton)(({ theme }) => ({
   padding: theme.spacing(0.25),
   color: theme.palette.text.secondary,
-
   "&:hover": {
     color: theme.palette.text.primary,
   },

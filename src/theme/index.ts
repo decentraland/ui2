@@ -1,16 +1,13 @@
-import {
-  ThemeOptions,
-  experimental_extendTheme as extendTheme,
-} from "@mui/material/styles"
-import createPalette, { Palette } from "@mui/material/styles/createPalette"
+import { ThemeOptions, extendTheme } from "@mui/material/styles"
 import { colorSchemas } from "./colorSchemes"
 import { components } from "./components"
 import { ThemeProvider } from "./provider"
 import { typography } from "./typography"
+import type { Palette } from "@mui/material/styles"
 
 function theme(type: "light" | "dark"): ThemeOptions {
   return {
-    palette: createPalette(colorSchemas[type].palette),
+    palette: colorSchemas[type].palette,
     typography: typography,
     shape: {
       borderRadius: 6,
