@@ -49,7 +49,7 @@ export const EmoteControls: React.FC<EmoteControlsProps> = ({
     setIsPlaying(false)
     setFrame((currentFrame) => {
       const currentLength = length ?? 0
-      return currentFrame >= Math.floor(currentLength * 100) ? 0 : currentFrame
+      return currentFrame >= Math.floor(currentLength) ? 0 : currentFrame
     })
   }, [length])
 
@@ -70,7 +70,7 @@ export const EmoteControls: React.FC<EmoteControlsProps> = ({
 
   const handleAnimationPlaying = useCallback(
     ({ length: playingLength }: { length: number }) => {
-      setFrame(Math.ceil((playingLength ?? 0) * 100))
+      setFrame(Math.ceil(playingLength ?? 0))
     },
     []
   )
@@ -195,8 +195,8 @@ export const EmoteControls: React.FC<EmoteControlsProps> = ({
       }
       let targetValue = value
       const currentLength = length ?? 0
-      if (currentLength * 100 < value) {
-        targetValue = currentLength * 100
+      if (currentLength < value) {
+        targetValue = currentLength
       }
       setFrame(targetValue)
       setIsChangingFrame(true)
@@ -205,7 +205,7 @@ export const EmoteControls: React.FC<EmoteControlsProps> = ({
           await controllerRef.current.emote.pause()
           setShouldResumePlaying(true)
         }
-        await controllerRef.current.emote.goTo(targetValue / 100)
+        await controllerRef.current.emote.goTo(targetValue)
       } catch (error) {
         console.error("Error changing frame:", error)
       }
@@ -251,11 +251,11 @@ export const EmoteControls: React.FC<EmoteControlsProps> = ({
         ) : (
           <StyledRangeInput
             type="range"
-            value={frame}
-            max={Math.ceil((length ?? 0) * 100)}
+            value={frame / 100}
+            max={Math.ceil((length ?? 0) / 100)}
             min={0}
-            step={1}
-            onChange={(e) => handleFrameChange(Number(e.target.value))}
+            step={0.01}
+            onChange={(e) => handleFrameChange(Number(e.target.value) * 100)}
             onMouseUp={handleMouseUp}
           />
         )
@@ -265,8 +265,8 @@ export const EmoteControls: React.FC<EmoteControlsProps> = ({
         <StyledFrameControl>
           {renderFrameInput ? (
             renderFrameInput({
-              frame: Math.round(frame / 100),
-              onChange: (value) => handleFrameChange(value * 100),
+              frame: Math.round(frame),
+              onChange: (value) => handleFrameChange(value),
             })
           ) : (
             <StyledFrameInput
