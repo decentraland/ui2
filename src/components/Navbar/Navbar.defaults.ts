@@ -143,6 +143,14 @@ const navbarSubmenu = {
         eventTrackingName: "places_my_favorite",
       },
     ],
+    column3: [
+      {
+        title: "Top Scenes",
+        description: "Discover Decentraland's hottest scenes",
+        url: config.get("TOP_SCENES_URL"),
+        eventTrackingName: "places_my_favorite",
+      },
+    ],
   },
   learn: {
     column1: [

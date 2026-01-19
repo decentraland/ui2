@@ -24,6 +24,10 @@ const meta: Meta<AddressProps> = {
     tooltip: {
       description: "Show full address on hover",
     },
+    showCopyButton: {
+      description: "Show a copy-to-clipboard button",
+      defaultValue: false,
+    },
   },
   render: (args) => <Address {...args} />,
 }
@@ -62,6 +66,20 @@ const WithTooltip: Story = {
   },
 }
 
+const WithCopyButton: Story = {
+  name: "With Copy Button",
+  args: {
+    value: address,
+    showCopyButton: true,
+  },
+}
+
 // eslint-disable-next-line import/no-default-export
 export default meta
-export { FullAddress, ShortAddress, StrongStyleAddress, WithTooltip }
+export {
+  FullAddress,
+  ShortAddress,
+  StrongStyleAddress,
+  WithTooltip,
+  WithCopyButton,
+}
