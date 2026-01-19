@@ -122,6 +122,7 @@ const AvatarWithShortenedAddress: Story = {
     address: "0x89805E5f0698Cb4dB57f0E389f2a75259f78CCF6",
     avatar: { ...avatar, name: null } as unknown as Avatar,
     shortenAddress: true,
+    showCopyButton: true,
   },
 }
 
@@ -323,6 +324,7 @@ const LinkedBlockie: Story = {
         as={"a"}
         href="https://decentraland.zone/marketplace/accounts/0x89805E5f0698Cb4dB57f0E389f2a75259f78CCF6"
         target="_blank"
+        showCopyButton={true}
       />
     </ProfileStoryContainer>
   ),
@@ -335,6 +337,9 @@ const WithNameAndShortenedAddress: Story = {
     avatar,
     showBothNameAndAddress: true,
     shortenAddress: true,
+    showCopyButton: true,
+    size: "huge",
+    highlightName: true,
   },
 }
 

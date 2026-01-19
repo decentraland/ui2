@@ -5,10 +5,7 @@ import { ProfileImage } from "./ProfileImage"
 import { Address } from "../Address"
 import { ProfileProps } from "./Profile.types"
 import {
-  ProfileAddressContainer,
   ProfileContainer,
-  ProfileCopyButton,
-  ProfileCopyIcon,
   ProfileName,
   ProfileNameWithAddressContainer,
 } from "./Profile.styled"
@@ -28,16 +25,14 @@ const Profile = memo(<T extends React.ElementType>(props: ProfileProps<T>) => {
     isDecentraland,
     as = React.Fragment,
     i18n = i18nProfile,
+    showCopyButton,
+    highlightName = false,
     ...rest
   } = props
 
   const sliceLimit = Math.max(Math.min(sliceAddressBy, 42), 6)
   const hasAvatarName = avatar && avatar.name
   const shouldUseAddressComponent = !isDecentraland && !hasAvatarName
-
-  const handleCopyAddress = () => {
-    navigator.clipboard.writeText(address)
-  }
 
   const name = useMemo(() => {
     if (isDecentraland) {
@@ -69,18 +64,23 @@ const Profile = memo(<T extends React.ElementType>(props: ProfileProps<T>) => {
         <Wrapper {...rest}>
           {showBothNameAndAddress && hasAvatarName ? (
             <ProfileNameWithAddressContainer>
-              <ProfileName size={size}>{name}</ProfileName>
-              <ProfileAddressContainer>
-                <Address value={address} shorten={shortenAddress} />
-                <ProfileCopyButton size="small" onClick={handleCopyAddress}>
-                  <ProfileCopyIcon />
-                </ProfileCopyButton>
-              </ProfileAddressContainer>
+              <ProfileName size={size} highlightName={highlightName}>
+                {name}
+              </ProfileName>
+              <Address
+                value={address}
+                shorten={shortenAddress}
+                showCopyButton={showCopyButton}
+              />
             </ProfileNameWithAddressContainer>
           ) : (
-            <ProfileName size={size}>
+            <ProfileName size={size} highlightName={highlightName}>
               {shouldUseAddressComponent ? (
-                <Address value={name} shorten={shortenAddress} />
+                <Address
+                  value={address}
+                  shorten={shortenAddress}
+                  showCopyButton={showCopyButton}
+                />
               ) : (
                 name
               )}

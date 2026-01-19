@@ -13,14 +13,17 @@ const ProfileContainer = styled("span")<ProfileBaseProps>(
   })
 )
 
-const ProfileName = styled("span")<Pick<ProfileBaseProps, "size">>(({
+const ProfileName = styled("span", {
+  shouldForwardProp: (prop) => prop !== "highlightName",
+})<Pick<ProfileBaseProps, "size" | "highlightName">>(({
   theme,
   size = "normal",
+  highlightName = false,
 }) => {
   const font = size !== "normal" ? theme.typography.h6 : theme.typography.body1
   return {
     fontSize: font.fontSize,
-    fontWeight: font.fontWeight,
+    fontWeight: highlightName ? 600 : font.fontWeight,
     lineHeight: font.lineHeight,
   }
 })
@@ -28,18 +31,9 @@ const ProfileName = styled("span")<Pick<ProfileBaseProps, "size">>(({
 const ProfileNameWithAddressContainer = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
-  alignItems: "center",
+  alignItems: "flex-start",
   justifyContent: "center",
   gap: theme.spacing(0.5),
-}))
-
-const ProfileAddressContainer = styled(Box)(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  gap: theme.spacing(0.1),
-  fontSize: "0.875em",
-  color: theme.palette.text.secondary,
 }))
 
 const ProfileCopyButton = styled(IconButton)(({ theme }) => ({
@@ -59,7 +53,6 @@ export {
   ProfileContainer,
   ProfileName,
   ProfileNameWithAddressContainer,
-  ProfileAddressContainer,
   ProfileCopyButton,
   ProfileCopyIcon,
 }

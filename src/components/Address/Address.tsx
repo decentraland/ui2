@@ -1,7 +1,12 @@
-import { useMemo } from "react"
+import { useCallback, useMemo } from "react"
 import Tooltip from "@mui/material/Tooltip"
 import { AddressProps } from "./Address.types"
-import { StyledAddress } from "./Address.styled"
+import {
+  AddressContainer,
+  CopyButton,
+  CopyIcon,
+  StyledAddress,
+} from "./Address.styled"
 
 const Address = (props: AddressProps) => {
   const {
@@ -9,6 +14,8 @@ const Address = (props: AddressProps) => {
     strong = false,
     shorten = true,
     tooltip = false,
+    showCopyButton = false,
+    onCopy,
     ...restProps
   } = props
   const address = useMemo(
@@ -16,10 +23,26 @@ const Address = (props: AddressProps) => {
     [value, shorten]
   )
 
+  const handleCopy = useCallback(() => {
+    if (onCopy) {
+      onCopy(value)
+      return
+    }
+
+    navigator.clipboard.writeText(value)
+  }, [onCopy, value])
+
   const content = (
-    <StyledAddress as={strong ? "strong" : "span"} {...restProps}>
-      {address}
-    </StyledAddress>
+    <AddressContainer>
+      <StyledAddress as={strong ? "strong" : "span"} {...restProps}>
+        {address}
+      </StyledAddress>
+      {showCopyButton ? (
+        <CopyButton aria-label="Copy address" size="small" onClick={handleCopy}>
+          <CopyIcon />
+        </CopyButton>
+      ) : null}
+    </AddressContainer>
   )
 
   return tooltip ? (

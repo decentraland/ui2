@@ -19,6 +19,8 @@ type ProfileBaseProps = {
   size?: ProfileSize
   isDecentraland?: boolean
   i18n?: ProfileI18N
+  showCopyButton?: boolean
+  highlightName?: boolean
 }
 
 type ProfileLogoProps = Pick<
