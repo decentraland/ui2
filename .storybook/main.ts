@@ -1,18 +1,24 @@
 import type { StorybookConfig } from "@storybook/react-webpack5"
 
 const config: StorybookConfig = {
-  stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
+  stories: ["../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
 
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-themes",
     "@storybook/addon-docs",
+    "@storybook/addon-webpack5-compiler-babel",
   ],
 
   framework: {
     name: "@storybook/react-webpack5",
     options: {},
   },
+
+  babel: async (options) => ({
+    ...options,
+    plugins: [...(options.plugins ?? []), "@emotion/babel-plugin"],
+  }),
 
   webpackFinal: async (config) => {
     if (config.module?.rules) {
@@ -28,6 +34,7 @@ const config: StorybookConfig = {
                 "@babel/preset-typescript",
                 ["@babel/preset-react", { runtime: "automatic" }],
               ],
+              plugins: ["@emotion/babel-plugin"],
             },
           },
         ],
@@ -46,8 +53,5 @@ const config: StorybookConfig = {
     defaultName: "Documentation",
   },
 
-  features: {
-    outline: false,
-  },
 }
 export default config
