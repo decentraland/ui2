@@ -1,15 +1,14 @@
-import zIndex from "@mui/material/styles/zIndex"
 import styled from "@emotion/styled"
 import { Box, Button } from "@mui/material"
 
-const UserMenuContainer = styled(Box)({
+const UserMenuContainer = styled(Box)(({ theme }) => ({
   display: "flex",
   position: "relative",
   textAlign: "left",
   outline: "none",
   alignItems: "center",
-  zIndex: zIndex.appBar,
-})
+  zIndex: theme.zIndex.appBar,
+}))
 
 const UserMenuLoaderContainer = styled(Box)({
   display: "flex",

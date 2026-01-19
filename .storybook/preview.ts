@@ -1,6 +1,6 @@
 import type { Preview } from "@storybook/react"
 import { CssBaseline } from "@mui/material"
-import { Experimental_CssVarsProvider as CssVarsProvider } from "@mui/material/styles"
+import { CssVarsProvider } from "@mui/material/styles"
 import { withThemeFromJSXProvider } from "@storybook/addon-themes"
 import { light, dark } from "../src/theme"
 
@@ -60,6 +60,9 @@ const preview: Preview = {
           value: "#1a091c",
         },
       ],
+    },
+    docs: {
+      codePanel: true,
     },
   },
   decorators: decorators,
