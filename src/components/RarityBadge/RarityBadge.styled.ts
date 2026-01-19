@@ -1,9 +1,28 @@
-import styled from "@emotion/styled"
-import { Chip } from "@mui/material"
+import { Chip, Palette, styled } from "@mui/material"
+import {
+  rarity as rarityColors,
+  rarityLightTheme,
+  textOnRarity,
+} from "../../theme/colors"
+import { hexToRgba } from "../../utils/colors"
 import { RarityBadgeProps } from "./RarityBadge.types"
 
-const RarityBadge = styled(Chip)<RarityBadgeProps>((props) => {
+type ExtendedPalette = Palette & {
+  rarities?: Record<string, string>
+  raritiesText?: Record<string, string>
+}
+
+const RarityBadge = styled(Chip, {
+  shouldForwardProp: (prop) => prop !== "rarity" && prop !== "square",
+})<RarityBadgeProps>((props) => {
   const { theme, rarity, size = "medium", square = false } = props
+  const palette = theme.palette as ExtendedPalette
+  const rarityBackground =
+    palette.rarities?.[rarity] ??
+    (palette.mode === "dark"
+      ? hexToRgba(rarityColors[rarity], 0.2)
+      : rarityLightTheme[rarity])
+  const rarityText = palette.raritiesText?.[rarity] ?? textOnRarity[rarity]
   const typographyBySize = {
     small: {
       fontSize: theme.typography.caption.fontSize,
@@ -17,8 +36,8 @@ const RarityBadge = styled(Chip)<RarityBadgeProps>((props) => {
     },
   }
   return {
-    backgroundColor: theme.palette.rarities[rarity],
-    color: theme.palette.raritiesText[rarity],
+    backgroundColor: rarityBackground,
+    color: rarityText,
     textTransform: "uppercase",
     ...(square
       ? {
@@ -28,7 +47,7 @@ const RarityBadge = styled(Chip)<RarityBadgeProps>((props) => {
       : {}),
     ...typographyBySize[size],
     ":hover": {
-      backgroundColor: theme.palette.rarities[rarity],
+      backgroundColor: rarityBackground,
     },
   }
 })

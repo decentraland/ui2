@@ -1,20 +1,52 @@
+import React, { type ReactNode, type ReactElement } from "react"
 import type { Preview } from "@storybook/react"
-import { CssBaseline } from "@mui/material"
-import { CssVarsProvider } from "@mui/material/styles"
-import { withThemeFromJSXProvider } from "@storybook/addon-themes"
-import { light, dark } from "../src/theme"
+import { useColorScheme } from "@mui/material/styles"
+import { ThemeProvider, theme } from "../src/theme"
 
-export const decorators = [
-  withThemeFromJSXProvider({
-    themes: {
-      light: light,
-      dark: dark,
+const ColorSchemeWrapper = ({
+  children,
+  mode,
+}: {
+  children: ReactNode
+  mode: "light" | "dark"
+}): ReactElement => {
+  const { setMode } = useColorScheme()
+  React.useEffect(() => {
+    setMode(mode)
+  }, [mode, setMode])
+  return React.createElement(React.Fragment, null, children)
+}
+
+const withDclTheme = (Story, context): ReactElement => {
+  const selectedMode = context.globals?.dclTheme ?? "light"
+  const storyElement = React.createElement(Story)
+  const wrapperElement = React.createElement(ColorSchemeWrapper, {
+    mode: selectedMode,
+    children: storyElement,
+  })
+  return React.createElement(ThemeProvider, {
+    theme,
+    defaultMode: selectedMode,
+    children: wrapperElement,
+  })
+}
+
+export const decorators = [withDclTheme]
+
+export const globalTypes = {
+  dclTheme: {
+    name: "Theme",
+    description: "Decentraland theme selector",
+    defaultValue: "light",
+    toolbar: {
+      icon: "paintbrush",
+      items: [
+        { value: "light", title: "Light" },
+        { value: "dark", title: "Dark" },
+      ],
     },
-    defaultTheme: "light",
-    Provider: CssVarsProvider,
-    GlobalStyles: CssBaseline,
-  }),
-]
+  },
+}
 
 const preview: Preview = {
   parameters: {

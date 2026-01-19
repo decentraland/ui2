@@ -1,5 +1,4 @@
-import styled from "@emotion/styled"
-import { Button, Divider, Grow } from "@mui/material"
+import { Button, Divider, Grow, styled } from "@mui/material"
 
 const StyledAnimationButton = styled(Button)(({ theme }) => ({
   gap: theme.spacing(1),

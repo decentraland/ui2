@@ -1,5 +1,4 @@
-import styled from "@emotion/styled"
-import { Box, Card, CardContent, Typography } from "@mui/material"
+import { Box, Card, CardContent, styled, Typography } from "@mui/material"
 import { Address } from "../../components/Address"
 import { hexToRgba } from "../../utils/colors"
 import { AssetImage } from "../AssetImage"
@@ -78,8 +77,9 @@ const ExtraInformationContainer = styled(Box)(({ theme }) => ({
   },
 }))
 
-const CatalogCardContainer = styled(Card)<Pick<CatalogCardProps, "withShadow">>(
-  ({ theme, withShadow }) => ({
+const CatalogCardContainer = styled(Card, {
+  shouldForwardProp: (prop) => prop !== "withShadow",
+})<Pick<CatalogCardProps, "withShadow">>(({ theme, withShadow }) => ({
     height: theme.spacing(45),
     transition:
       "transform 0.1s ease-in-out, box-shadow 0.3s ease-in-out, height 0.1s ease-in-out",
@@ -100,12 +100,12 @@ const CatalogCardContainer = styled(Card)<Pick<CatalogCardProps, "withShadow">>(
       boxShadow: withShadow
         ? `0px 0px 20px 6px ${hexToRgba(theme.palette.mode === "dark" ? theme.palette.common.white : theme.palette.common.black, 0.37)}`
         : "none",
-      [`${ExtraInformationContainer}, ${CatalogItemInformationContainer}`]: {
+      "& .ExtraInformationContainer, & .CatalogItemInformationContainer": {
         height: "auto",
         opacity: 1,
         transition: "height 0.3s ease-in-out, opacity 0.6s ease-in-out",
       },
-      [`${AssetImageContainer}`]: {
+      "& .AssetImageContainer": {
         height: theme.spacing(20),
         transition: "height 0.1s ease-in-out",
       },
