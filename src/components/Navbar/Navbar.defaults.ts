@@ -147,7 +147,7 @@ const navbarSubmenu = {
       {
         title: "Top Scenes",
         description: "Discover Decentraland's hottest scenes",
-        url: config.get("PLACES_MY_FAVORITE_URL"),
+        url: config.get("TOP_SCENES_URL"),
         eventTrackingName: "places_my_favorite",
       },
     ],
