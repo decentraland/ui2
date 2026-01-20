@@ -1,10 +1,9 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react"
 import type { Layer, TileMapProps } from "react-tile-map"
-// eslint-disable-next-line import/no-unresolved
 import "react-tile-map/lib/styles.css"
+import { getColorByType, getTiles } from "./util"
 import { createLazyComponent } from "../../utils/optionalDependency"
 import { AtlasColor, AtlasProps, AtlasStateProps } from "./Atlas.types"
-import { getColorByType, getTiles } from "./util"
 
 const LazyTileMap = createLazyComponent<TileMapProps>(
   {

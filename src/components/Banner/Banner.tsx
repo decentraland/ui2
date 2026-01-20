@@ -15,8 +15,8 @@ import {
   Text,
   Title,
 } from "./Banner.styled"
-import type { Property } from "csstype"
 import type { ContentfulRichTextProps } from "./ContentfulRichText"
+import type { Property } from "csstype"
 
 const LazyContentfulRichText = createLazyComponent<ContentfulRichTextProps>(
   {
