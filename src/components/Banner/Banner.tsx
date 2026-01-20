@@ -1,8 +1,8 @@
-import React, { Suspense } from "react"
+import React from "react"
 import { ContentfulLocale } from "@dcl/schemas"
 import CircularProgress from "@mui/material/CircularProgress"
 import { getAssetUrl } from "../../modules/contentful"
-import { OptionalDependencyError } from "../../utils/optionalDependency"
+import { createLazyComponent } from "../../utils/optionalDependency"
 import { useTabletAndBelowMediaQuery } from "../Media"
 import { BannerProps, LowercasedAlignment } from "./Banner.types"
 import {
@@ -16,16 +16,17 @@ import {
   Title,
 } from "./Banner.styled"
 import type { Property } from "csstype"
+import type { ContentfulRichTextProps } from "./ContentfulRichText"
 
-const LazyContentfulRichText = React.lazy(() =>
-  import("./ContentfulRichText")
-    .then((mod) => ({ default: mod.ContentfulRichText }))
-    .catch(() => {
-      throw new OptionalDependencyError({
-        packageName: "@contentful/rich-text-react-renderer",
-        componentName: "Banner",
-      })
-    })
+const LazyContentfulRichText = createLazyComponent<ContentfulRichTextProps>(
+  {
+    packageName: "@contentful/rich-text-react-renderer",
+    componentName: "Banner",
+  },
+  () =>
+    import("./ContentfulRichText").then((mod) => ({
+      default: mod.ContentfulRichText,
+    }))
 )
 
 const convertAlignmentToFlex = (alignment: Property.TextAlign) => {
@@ -104,11 +105,7 @@ export const Banner: React.FC<BannerProps> = (props: BannerProps) => {
         </Title>
 
         <Text textAlign={textAlignment}>
-          {text ? (
-            <Suspense fallback={null}>
-              <LazyContentfulRichText document={text} />
-            </Suspense>
-          ) : null}
+          {text ? <LazyContentfulRichText document={text} /> : null}
         </Text>
 
         {fields.showButton[ContentfulLocale.enUS] &&

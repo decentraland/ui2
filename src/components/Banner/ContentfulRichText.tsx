@@ -10,3 +10,4 @@ const ContentfulRichText = ({ document }: ContentfulRichTextProps) => {
 }
 
 export { ContentfulRichText }
+export type { ContentfulRichTextProps }

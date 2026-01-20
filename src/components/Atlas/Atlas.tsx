@@ -1,26 +1,17 @@
-import React, {
-  Suspense,
-  useCallback,
-  useEffect,
-  useMemo,
-  useState,
-} from "react"
+import React, { useCallback, useEffect, useMemo, useState } from "react"
 import type { Layer, TileMapProps } from "react-tile-map"
-import { getColorByType, getTiles } from "./util"
-import { OptionalDependencyError } from "../../utils/optionalDependency"
-import { AtlasColor, AtlasProps, AtlasStateProps } from "./Atlas.types"
 // eslint-disable-next-line import/no-unresolved
 import "react-tile-map/lib/styles.css"
+import { createLazyComponent } from "../../utils/optionalDependency"
+import { AtlasColor, AtlasProps, AtlasStateProps } from "./Atlas.types"
+import { getColorByType, getTiles } from "./util"
 
-const LazyTileMap = React.lazy<React.ComponentType<TileMapProps>>(() =>
-  import("react-tile-map")
-    .then((mod) => ({ default: mod.TileMap }))
-    .catch(() => {
-      throw new OptionalDependencyError({
-        packageName: "react-tile-map",
-        componentName: "Atlas",
-      })
-    })
+const LazyTileMap = createLazyComponent<TileMapProps>(
+  {
+    packageName: "react-tile-map",
+    componentName: "Atlas",
+  },
+  () => import("react-tile-map").then((mod) => ({ default: mod.TileMap }))
 )
 
 const Atlas = React.memo((props: AtlasProps) => {
@@ -78,11 +69,7 @@ const Atlas = React.memo((props: AtlasProps) => {
 
   const layersMemo = useMemo(() => [layer, ...(layers || [])], [layer, layers])
 
-  return (
-    <Suspense fallback={null}>
-      <LazyTileMap {...(props as TileMapProps)} layers={layersMemo} />
-    </Suspense>
-  )
+  return <LazyTileMap {...(props as TileMapProps)} layers={layersMemo} />
 })
 
 export { Atlas }
