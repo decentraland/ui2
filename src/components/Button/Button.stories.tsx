@@ -7,39 +7,41 @@ const meta = {
   title: "Decentraland UI/Button",
   component: Button,
   tags: ["autodocs"],
+  args: {
+    children: "Button",
+    variant: "contained",
+    color: "primary",
+    size: "medium",
+    disabled: false,
+    loading: false,
+  },
   argTypes: {
     variant: {
       description: "The variant to use",
       control: "select",
       options: ["text", "outlined", "contained"],
-      defaultValue: "contained",
     },
     loading: {
       description: "If true, the loading indicator is shown",
       control: "boolean",
-      defaultValue: false,
     },
     disabled: {
       description: "If true, the button is disabled",
       control: "boolean",
-      defaultValue: false,
     },
     size: {
       description: "The size of the button",
       control: "select",
       options: ["small", "medium", "large"],
-      defaultValue: "medium",
     },
     color: {
       description: "The color of the button",
       control: "select",
       options: ["primary", "secondary", "error", "info", "success", "warning"],
-      defaultValue: "primary",
     },
     children: {
       description: "The content of the button",
       control: "text",
-      defaultValue: "Button",
     },
   },
 } satisfies Meta<ButtonProps>
@@ -48,10 +50,6 @@ type Story = StoryObj<ButtonProps>
 
 // Story definitions
 const Basic: Story = {
-  args: {
-    children: "Button",
-    variant: "contained",
-  },
   parameters: {
     docs: {
       description: {
@@ -69,13 +67,23 @@ const Basic: Story = {
 }
 
 const Variants: Story = {
-  render: () => (
+  render: (args) => (
     <Box display="flex" gap={2}>
-      <Button variant="contained">Contained</Button>
-      <Button variant="outlined">Outlined</Button>
-      <Button variant="text">Text</Button>
+      <Button {...args} variant="contained">
+        Contained
+      </Button>
+      <Button {...args} variant="outlined">
+        Outlined
+      </Button>
+      <Button {...args} variant="text">
+        Text
+      </Button>
     </Box>
   ),
+  argTypes: {
+    variant: { table: { disable: true } },
+    children: { table: { disable: true } },
+  },
   parameters: {
     docs: {
       description: {
@@ -94,16 +102,32 @@ const Variants: Story = {
 }
 
 const Colors: Story = {
-  render: () => (
+  render: (args) => (
     <Box display="flex" gap={2} flexWrap="wrap">
-      <Button color="primary">Primary</Button>
-      <Button color="secondary">Secondary</Button>
-      <Button color="error">Error</Button>
-      <Button color="warning">Warning</Button>
-      <Button color="info">Info</Button>
-      <Button color="success">Success</Button>
+      <Button {...args} color="primary">
+        Primary
+      </Button>
+      <Button {...args} color="secondary">
+        Secondary
+      </Button>
+      <Button {...args} color="error">
+        Error
+      </Button>
+      <Button {...args} color="warning">
+        Warning
+      </Button>
+      <Button {...args} color="info">
+        Info
+      </Button>
+      <Button {...args} color="success">
+        Success
+      </Button>
     </Box>
   ),
+  argTypes: {
+    color: { table: { disable: true } },
+    children: { table: { disable: true } },
+  },
   parameters: {
     docs: {
       description: {
@@ -125,13 +149,23 @@ const Colors: Story = {
 }
 
 const Sizes: Story = {
-  render: () => (
+  render: (args) => (
     <Box display="flex" gap={2} alignItems="center">
-      <Button size="small">Small</Button>
-      <Button size="medium">Medium</Button>
-      <Button size="large">Large</Button>
+      <Button {...args} size="small">
+        Small
+      </Button>
+      <Button {...args} size="medium">
+        Medium
+      </Button>
+      <Button {...args} size="large">
+        Large
+      </Button>
     </Box>
   ),
+  argTypes: {
+    size: { table: { disable: true } },
+    children: { table: { disable: true } },
+  },
   parameters: {
     docs: {
       description: {
@@ -150,19 +184,21 @@ const Sizes: Story = {
 }
 
 const Loading: Story = {
-  render: () => (
+  args: {
+    loading: true,
+    children: "Loading",
+  },
+  render: (args) => (
     <Box display="flex" gap={2}>
-      <Button loading variant="contained">
-        Loading
-      </Button>
-      <Button loading variant="outlined">
-        Loading
-      </Button>
-      <Button loading variant="text">
-        Loading
-      </Button>
+      <Button {...args} variant="contained" />
+      <Button {...args} variant="outlined" />
+      <Button {...args} variant="text" />
     </Box>
   ),
+  argTypes: {
+    loading: { table: { disable: true } },
+    variant: { table: { disable: true } },
+  },
   parameters: {
     docs: {
       description: {
@@ -180,19 +216,21 @@ const Loading: Story = {
 }
 
 const Disabled: Story = {
-  render: () => (
+  args: {
+    disabled: true,
+    children: "Disabled",
+  },
+  render: (args) => (
     <Box display="flex" gap={2}>
-      <Button disabled variant="contained">
-        Disabled
-      </Button>
-      <Button disabled variant="outlined">
-        Disabled
-      </Button>
-      <Button disabled variant="text">
-        Disabled
-      </Button>
+      <Button {...args} variant="contained" />
+      <Button {...args} variant="outlined" />
+      <Button {...args} variant="text" />
     </Box>
   ),
+  argTypes: {
+    disabled: { table: { disable: true } },
+    variant: { table: { disable: true } },
+  },
   parameters: {
     docs: {
       description: {

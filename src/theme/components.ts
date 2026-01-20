@@ -1228,11 +1228,12 @@ export const components = (
           lineHeight: "24px /* 160% */",
           letterSpacing: "0.46px",
           textTransform: "uppercase",
+          borderColor: "var(--mui-palette-secondary-outlinedColor)",
           "&:not(.Mui-disabled):not(.Mui-focusVisible):not(:hover)": {
-            color: "var(--mui-palette-secondary-contrast)",
+            color: "var(--mui-palette-secondary-outlinedColor)",
           },
           "&:not(.Mui-disabled).Mui-focusVisible:not(:hover)": {
-            color: "var(--mui-palette-secondary-contrast)",
+            color: "var(--mui-palette-secondary-outlinedColor)",
             "& .MuiTouchRipple-root": {
               width: "69.209px",
               height: "51.429px",
@@ -1244,7 +1245,7 @@ export const components = (
             },
           },
           "&:not(.Mui-disabled):not(.Mui-focusVisible):hover": {
-            color: "var(--mui-palette-secondary-contrast)",
+            color: "var(--mui-palette-secondary-outlinedColor)",
           },
           "&.Mui-disabled:not(.Mui-focusVisible):not(:hover)": {
             color: "var(--mui-palette-action-disabled)",
@@ -1487,11 +1488,12 @@ export const components = (
           lineHeight: "24px /* 171.429% */",
           letterSpacing: "0.4px",
           textTransform: "uppercase",
+          borderColor: "var(--mui-palette-secondary-outlinedColor)",
           "&:not(.Mui-disabled):not(.Mui-focusVisible):not(:hover)": {
-            color: "var(--mui-palette-secondary-contrast)",
+            color: "var(--mui-palette-secondary-outlinedColor)",
           },
           "&:not(.Mui-disabled).Mui-focusVisible:not(:hover)": {
-            color: "var(--mui-palette-secondary-contrast)",
+            color: "var(--mui-palette-secondary-outlinedColor)",
             "& .MuiTouchRipple-root": {
               width: "57.429px",
               height: "46.286px",
@@ -1506,7 +1508,7 @@ export const components = (
             color: "var(--mui-palette-action-disabled)",
           },
           "&:not(.Mui-disabled):not(.Mui-focusVisible):hover": {
-            color: "var(--mui-palette-secondary-contrast)",
+            color: "var(--mui-palette-secondary-outlinedColor)",
           },
         },
         "&.MuiButton-sizeMedium.MuiButton-outlinedError": {
@@ -1742,11 +1744,12 @@ export const components = (
           lineHeight: "24px /* 184.615% */",
           letterSpacing: "0.46px",
           textTransform: "uppercase",
+          borderColor: "var(--mui-palette-secondary-outlinedColor)",
           "&:not(.Mui-disabled):not(.Mui-focusVisible):not(:hover)": {
-            color: "var(--mui-palette-secondary-contrast)",
+            color: "var(--mui-palette-secondary-outlinedColor)",
           },
           "&:not(.Mui-disabled).Mui-focusVisible:not(:hover)": {
-            color: "var(--mui-palette-secondary-contrast)",
+            color: "var(--mui-palette-secondary-outlinedColor)",
             "& .MuiTouchRipple-root": {
               width: "46.385px",
               height: "41.143px",
@@ -1761,7 +1764,7 @@ export const components = (
             color: "var(--mui-palette-action-disabled)",
           },
           "&:not(.Mui-disabled):not(.Mui-focusVisible):hover": {
-            color: "var(--mui-palette-secondary-contrast)",
+            color: "var(--mui-palette-secondary-outlinedColor)",
           },
         },
         "&.MuiButton-sizeSmall.MuiButton-outlinedError": {
@@ -1980,10 +1983,10 @@ export const components = (
           letterSpacing: "0.4px",
           textTransform: "uppercase",
           "&:not(.Mui-disabled):not(.Mui-focusVisible):not(:hover)": {
-            color: "var(--mui-palette-secondary-contrast)",
+            color: "var(--mui-palette-secondary-outlinedColor)",
           },
           "&:not(.Mui-disabled).Mui-focusVisible:not(:hover)": {
-            color: "var(--mui-palette-secondary-contrast)",
+            color: "var(--mui-palette-secondary-outlinedColor)",
             "& .MuiTouchRipple-root": {
               width: "45.648px",
               height: "46.286px",
@@ -1995,7 +1998,7 @@ export const components = (
             },
           },
           "&:not(.Mui-disabled):not(.Mui-focusVisible):hover": {
-            color: "var(--mui-palette-secondary-contrast)",
+            color: "var(--mui-palette-secondary-outlinedColor)",
           },
           "&.Mui-disabled:not(.Mui-focusVisible):not(:hover)": {
             color: "var(--mui-palette-action-disabled)",
@@ -2221,10 +2224,10 @@ export const components = (
           letterSpacing: "0.46px",
           textTransform: "uppercase",
           "&:not(.Mui-disabled):not(.Mui-focusVisible):not(:hover)": {
-            color: "var(--mui-palette-secondary-contrast)",
+            color: "var(--mui-palette-secondary-outlinedColor)",
           },
           "&:not(.Mui-disabled).Mui-focusVisible:not(:hover)": {
-            color: "var(--mui-palette-secondary-contrast)",
+            color: "var(--mui-palette-secondary-outlinedColor)",
             "& .MuiTouchRipple-root": {
               width: "53.011px",
               height: "51.429px",
@@ -2236,7 +2239,7 @@ export const components = (
             },
           },
           "&:not(.Mui-disabled):not(.Mui-focusVisible):hover": {
-            color: "var(--mui-palette-secondary-contrast)",
+            color: "var(--mui-palette-secondary-outlinedColor)",
           },
           "&.Mui-disabled:not(.Mui-focusVisible):not(:hover)": {
             color: "var(--mui-palette-action-disabled)",
@@ -2462,10 +2465,10 @@ export const components = (
           letterSpacing: "0.46px",
           textTransform: "uppercase",
           "&:not(.Mui-disabled):not(.Mui-focusVisible):not(:hover)": {
-            color: "var(--mui-palette-secondary-contrast)",
+            color: "var(--mui-palette-secondary-outlinedColor)",
           },
           "&:not(.Mui-disabled).Mui-focusVisible:not(:hover)": {
-            color: "var(--mui-palette-secondary-contrast)",
+            color: "var(--mui-palette-secondary-outlinedColor)",
             "& .MuiTouchRipple-root": {
               width: "39.022px",
               height: "41.143px",
@@ -2477,7 +2480,7 @@ export const components = (
             },
           },
           "&:not(.Mui-disabled):not(.Mui-focusVisible):hover": {
-            color: "var(--mui-palette-secondary-contrast)",
+            color: "var(--mui-palette-secondary-outlinedColor)",
           },
           "&.Mui-disabled:not(.Mui-focusVisible):not(:hover)": {
             color: "var(--mui-palette-action-disabled)",
