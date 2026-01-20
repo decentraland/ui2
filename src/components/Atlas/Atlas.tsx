@@ -10,7 +10,7 @@ import { getColorByType, getTiles } from "./util"
 import { OptionalDependencyError } from "../../utils/optionalDependency"
 import { AtlasColor, AtlasProps, AtlasStateProps } from "./Atlas.types"
 // eslint-disable-next-line import/no-unresolved
-import "react-tile-map/dist/styles.css"
+import "react-tile-map/lib/styles.css"
 
 const LazyTileMap = React.lazy<React.ComponentType<TileMapProps>>(() =>
   import("react-tile-map")
