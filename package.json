@@ -22,9 +22,8 @@
     "generate:storybooks": "ts-node ./bin/storybookGenerator.ts && npm run lint:fix"
   },
   "dependencies": {
-    "@contentful/rich-text-react-renderer": "16.0.0",
-    "@emotion/react": "11.11.0",
-    "@emotion/styled": "11.11.0",
+    "@emotion/react": "11.14.0",
+    "@emotion/styled": "11.14.0",
     "@mui/icons-material": "5.16.0",
     "@mui/material": "5.16.0",
     "autoprefixer": "10.4.19",
@@ -32,20 +31,27 @@
     "deep-equal": "2.2.3",
     "ethereum-blockies": "0.1.1",
     "fp-future": "1.0.1",
-    "lottie-react": "2.4.0",
     "mitt": "3.0.1",
     "radash": "11.0.0",
     "uuid": "11.1.0"
   },
   "peerDependencies": {
+    "@contentful/rich-text-react-renderer": "^16.0.0",
     "@dcl/hooks": "^1.0.0",
     "@dcl/schemas": "^22.0.0",
     "@dcl/ui-env": "^1.5.0",
+    "lottie-react": "^2.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-tile-map": "^0.4.0"
   },
   "peerDependenciesMeta": {
+    "@contentful/rich-text-react-renderer": {
+      "optional": true
+    },
+    "lottie-react": {
+      "optional": true
+    },
     "react-tile-map": {
       "optional": true
     }
