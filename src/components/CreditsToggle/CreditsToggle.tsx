@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo } from "react"
-import Lottie from "lottie-react"
 import toggleAnimation from "./toggleAnimation.json"
 import { formatEther } from "../../utils/format"
+import { createLazyComponent } from "../../utils/optionalDependency"
 import { CreditsIcon } from "../Icon/CreditsIcon"
 import { CreditsToggleProps } from "./CreditsToggle.types"
 import {
@@ -15,6 +15,14 @@ import {
   StyledSwitch,
   StyledText,
 } from "./CreditsToggle.styled"
+
+const Lottie = createLazyComponent(
+  {
+    packageName: "lottie-react",
+    componentName: "CreditsToggle",
+  },
+  () => import("lottie-react")
+)
 
 const CreditsToggle: React.FC<CreditsToggleProps> = ({
   totalCredits,
