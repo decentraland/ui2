@@ -1,9 +1,30 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react"
-import { Layer, TileMap } from "react-tile-map"
+import React, {
+  Suspense,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react"
+import type { Layer, TileMapProps } from "react-tile-map"
 import { getColorByType, getTiles } from "./util"
+import { OptionalDependencyError } from "../../utils/optionalDependency"
 import { AtlasColor, AtlasProps, AtlasStateProps } from "./Atlas.types"
 
-import "react-tile-map/dist/styles.css"
+const LazyTileMap = React.lazy<React.ComponentType<TileMapProps>>(() =>
+  import("react-tile-map")
+    .then(async (mod) => {
+      // @ts-expect-error CSS import has no types
+      // eslint-disable-next-line import/no-unresolved
+      await import("react-tile-map/dist/styles.css")
+      return { default: mod.TileMap }
+    })
+    .catch(() => {
+      throw new OptionalDependencyError({
+        packageName: "react-tile-map",
+        componentName: "Atlas",
+      })
+    })
+)
 
 const Atlas = React.memo((props: AtlasProps) => {
   const { layers } = props
@@ -61,13 +82,9 @@ const Atlas = React.memo((props: AtlasProps) => {
   const layersMemo = useMemo(() => [layer, ...(layers || [])], [layer, layers])
 
   return (
-    <TileMap
-      {...TileMap.defaultProps}
-      {...props}
-      /* Review this CSS */
-      /* css={atlasStyle} */
-      layers={layersMemo}
-    />
+    <Suspense fallback={null}>
+      <LazyTileMap {...(props as TileMapProps)} layers={layersMemo} />
+    </Suspense>
   )
 })
 

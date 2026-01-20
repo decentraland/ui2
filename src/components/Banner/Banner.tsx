@@ -1,7 +1,8 @@
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
+import React, { Suspense } from "react"
 import { ContentfulLocale } from "@dcl/schemas"
 import CircularProgress from "@mui/material/CircularProgress"
 import { getAssetUrl } from "../../modules/contentful"
+import { OptionalDependencyError } from "../../utils/optionalDependency"
 import { useTabletAndBelowMediaQuery } from "../Media"
 import { BannerProps, LowercasedAlignment } from "./Banner.types"
 import {
@@ -15,6 +16,17 @@ import {
   Title,
 } from "./Banner.styled"
 import type { Property } from "csstype"
+
+const LazyContentfulRichText = React.lazy(() =>
+  import("./ContentfulRichText")
+    .then((mod) => ({ default: mod.ContentfulRichText }))
+    .catch(() => {
+      throw new OptionalDependencyError({
+        packageName: "@contentful/rich-text-react-renderer",
+        componentName: "Banner",
+      })
+    })
+)
 
 const convertAlignmentToFlex = (alignment: Property.TextAlign) => {
   switch (alignment) {
@@ -92,7 +104,11 @@ export const Banner: React.FC<BannerProps> = (props: BannerProps) => {
         </Title>
 
         <Text textAlign={textAlignment}>
-          {text ? documentToReactComponents(text) : null}
+          {text ? (
+            <Suspense fallback={null}>
+              <LazyContentfulRichText document={text} />
+            </Suspense>
+          ) : null}
         </Text>
 
         {fields.showButton[ContentfulLocale.enUS] &&

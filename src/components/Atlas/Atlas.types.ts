@@ -1,4 +1,4 @@
-import { Layer, TileMapProps } from "react-tile-map"
+import type { Layer, TileMapProps } from "react-tile-map"
 
 enum AtlasColor {
   OWNED = "#3D3A46",
