@@ -800,7 +800,21 @@ const tipNotificationData: TipNotificationProps = {
   timestamp: new Date().getTime(),
   metadata: {
     senderAddress: "0xD8041DC1a844477603ecB8ef8c47AC09cb7ea6Dd",
-    manaAmount: "100000000000000000000",
+    amount: "100.0",
+  },
+  created_at: "2023-11-29T12:51:00.600Z",
+  updated_at: "2023-11-29T12:51:00.600Z",
+}
+
+const tipNotificationDataWithCents: TipNotificationProps = {
+  id: NotificationType.TIP_RECEIVED,
+  read: false,
+  type: NotificationType.TIP_RECEIVED,
+  address: "0x6b347a82fcac4e6a38d1fc40e3631bd8f9495e9f",
+  timestamp: new Date().getTime(),
+  metadata: {
+    senderAddress: "0xd9B96B5dC720fC52BedE1EC3B40A930e15F70Ddd",
+    amount: "100.01",
   },
   created_at: "2023-11-29T12:51:00.600Z",
   updated_at: "2023-11-29T12:51:00.600Z",
@@ -845,6 +859,7 @@ const allTypeOfNotifications = [
   streamingPlaceUpdatedNotificationData,
   streamingTimeExceededNotificationData,
   tipNotificationData,
+  tipNotificationDataWithCents,
   worldsAccessRestoredNotificationData,
   worldsAccessRestrictedNotificationData,
   worldsMissingResourcesNotificationData,
@@ -892,6 +907,7 @@ export {
   streamingPlaceUpdatedNotificationData,
   streamingTimeExceededNotificationData,
   tipNotificationData,
+  tipNotificationDataWithCents,
   worldsAccessRestoredNotificationData,
   worldsAccessRestrictedNotificationData,
   worldsMissingResourcesNotificationData,

@@ -260,7 +260,7 @@ type TransferNotificationMetadataProps = {
 
 type TipNotificationMetadataProps = {
   senderAddress: string
-  manaAmount: string
+  amount: string
 }
 
 type GiftNotificationProps = RawDecentralandNotification<
