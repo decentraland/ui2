@@ -18,7 +18,10 @@ const TipNotification = React.memo(
     const playerName =
       renderProfile?.(senderAddress) ??
       `${senderAddress.slice(0, 6)}…${senderAddress.slice(-4)}`
-    const manaAmount = Number(notification.metadata.amount).toString()
+    const manaAmount = Number(notification.metadata.amount)
+      .toFixed(2)
+      .replace(/\.?0+$/, "")
+
     const profileUrl = `${config.get("PROFILE_URL")}/accounts/${senderAddress}`
     const marketplaceActivityUrl = `${config.get("MARKETPLACE_URL")}/activity`
 
