@@ -54,9 +54,13 @@ export {
   ButtonGroup,
 } from "@mui/material"
 export { default as SvgIcon } from "@mui/material/SvgIcon"
-export type { SvgIconProps } from "@mui/material/SvgIcon"
-export type { ModalProps, ButtonProps, LinkProps } from "@mui/material"
-export type { SvgIconOwnProps } from "@mui/material"
+export type {
+  SvgIconProps,
+  ModalProps,
+  ButtonProps,
+  LinkProps,
+  SvgIconOwnProps,
+} from "@mui/material"
 
 export { emotionReact, emotionStyled, emotionCache, muiIcons }
 // Note: muiIcons is exported as a namespace for backward compatibility.
