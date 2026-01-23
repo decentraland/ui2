@@ -1,16 +1,20 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react"
 import type { Layer, TileMapProps } from "react-tile-map"
-import "react-tile-map/lib/styles.css"
 import { getColorByType, getTiles } from "./util"
-import { createLazyComponent } from "../../utils/optionalDependency"
+import { createDynamicImport, createLazyComponent } from "../../utils/optionalDependency"
 import { AtlasColor, AtlasProps, AtlasStateProps } from "./Atlas.types"
+
+const importTileMap = createDynamicImport<typeof import("react-tile-map")>(
+  "react-tile-map"
+)
+const importTileMapStyles = createDynamicImport("react-tile-map/lib/styles.css")
 
 const LazyTileMap = createLazyComponent<TileMapProps>(
   {
     packageName: "react-tile-map",
     componentName: "Atlas",
   },
-  () => import("react-tile-map").then((mod) => ({ default: mod.TileMap }))
+  () => importTileMap().then((mod) => ({ default: mod.TileMap }))
 )
 
 const Atlas = React.memo((props: AtlasProps) => {
@@ -40,6 +44,11 @@ const Atlas = React.memo((props: AtlasProps) => {
   )
 
   useEffect(() => {
+    importTileMapStyles().catch(() => {
+      // Keep silent if the optional dependency is not installed; LazyTileMap will warn when rendered.
+      return
+    })
+
     if (!tiles) {
       getTiles().then(handleUpdateTiles)
     }

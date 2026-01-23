@@ -15,14 +15,31 @@ class OptionalDependencyError extends Error {
   }
 }
 
+function createDynamicImport<TModule = unknown>(moduleName: string) {
+  return () => {
+    const parts = moduleName.split("/")
+    const base = parts[0]
+    const rest = parts.slice(1).join("/")
+    const dynamicModule = rest ? `${base}/${rest}` : base
+    return import(/* webpackMode: "lazy" */ dynamicModule) as Promise<TModule>
+  }
+}
+
 function createLazyComponent<P extends object>(
   config: OptionalDependencyConfig,
   importFn: () => Promise<{ default: ComponentType<P> }>,
   fallback: React.ReactNode = null
 ): React.FC<P> {
   const LazyComponent = React.lazy(() =>
-    importFn().catch(() => {
-      throw new OptionalDependencyError(config)
+    importFn().catch((error) => {
+      if (
+        error?.code === "MODULE_NOT_FOUND" ||
+        error?.message?.includes("Cannot resolve module") ||
+        error?.message?.includes("Can't resolve")
+      ) {
+        throw new OptionalDependencyError(config)
+      }
+      throw error
     })
   ) as unknown as React.FC<P>
 
@@ -37,4 +54,4 @@ function createLazyComponent<P extends object>(
   return WrappedComponent
 }
 
-export { createLazyComponent, OptionalDependencyError }
+export { createLazyComponent, OptionalDependencyError, createDynamicImport }

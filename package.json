@@ -1,6 +1,6 @@
 {
   "name": "decentraland-ui2",
-  "version": "0.0.0-development",
+  "version": "1.2.1",
   "description": "Decentraland's UI components and styles",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
