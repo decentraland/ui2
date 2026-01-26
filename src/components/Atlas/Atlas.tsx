@@ -1,12 +1,14 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react"
 import type { Layer, TileMapProps } from "react-tile-map"
 import { getColorByType, getTiles } from "./util"
-import { createDynamicImport, createLazyComponent } from "../../utils/optionalDependency"
+import {
+  createDynamicImport,
+  createLazyComponent,
+} from "../../utils/optionalDependency"
 import { AtlasColor, AtlasProps, AtlasStateProps } from "./Atlas.types"
 
-const importTileMap = createDynamicImport<typeof import("react-tile-map")>(
-  "react-tile-map"
-)
+const importTileMap =
+  createDynamicImport<typeof import("react-tile-map")>("react-tile-map")
 const importTileMapStyles = createDynamicImport("react-tile-map/lib/styles.css")
 
 const LazyTileMap = createLazyComponent<TileMapProps>(

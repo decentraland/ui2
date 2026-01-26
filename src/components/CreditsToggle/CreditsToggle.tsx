@@ -2,7 +2,10 @@ import React, { useCallback, useMemo } from "react"
 import type { LottieComponentProps } from "lottie-react"
 import toggleAnimation from "./toggleAnimation.json"
 import { formatEther } from "../../utils/format"
-import { createLazyComponent, createDynamicImport } from "../../utils/optionalDependency"
+import {
+  createLazyComponent,
+  createDynamicImport,
+} from "../../utils/optionalDependency"
 import { CreditsIcon } from "../Icon/CreditsIcon"
 import { CreditsToggleProps } from "./CreditsToggle.types"
 import {
