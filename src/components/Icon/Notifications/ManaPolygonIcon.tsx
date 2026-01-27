@@ -1,5 +1,5 @@
-import React from "react"
-import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon"
+import React from 'react'
+import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon'
 
 const ManaPolygonIcon = React.memo((props: SvgIconProps) => {
   return (
@@ -21,14 +21,7 @@ const ManaPolygonIcon = React.memo((props: SvgIconProps) => {
           fill="#FCFCFC"
         />
         <defs>
-          <linearGradient
-            id="paint0_linear_121_6315"
-            x1="-0.631579"
-            y1="0.631579"
-            x2="24"
-            y2="24"
-            gradientUnits="userSpaceOnUse"
-          >
+          <linearGradient id="paint0_linear_121_6315" x1="-0.631579" y1="0.631579" x2="24" y2="24" gradientUnits="userSpaceOnUse">
             <stop stopColor="#34CE76" />
             <stop offset="1" stopColor="#229754" />
           </linearGradient>

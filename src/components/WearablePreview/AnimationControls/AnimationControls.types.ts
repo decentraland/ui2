@@ -1,6 +1,6 @@
-import { ReactNode } from "react"
-import { IPreviewController } from "@dcl/schemas"
-import { SocialEmoteAnimation } from "@dcl/schemas/dist/dapps/preview/social-emote-animation"
+import { ReactNode } from 'react'
+import { IPreviewController } from '@dcl/schemas'
+import { SocialEmoteAnimation } from '@dcl/schemas/dist/dapps/preview/social-emote-animation'
 
 export type AnimationControlsProps = {
   wearablePreviewId: string

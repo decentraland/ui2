@@ -1,25 +1,14 @@
-import * as React from "react"
-import { ManaBalancesProps } from "./ManaBalances/ManaBalances.types"
-import { UserMenuSignedInProps } from "./UserMenuSignedIn/UserMenuSignedIn.types"
+import * as React from 'react'
+import { ManaBalancesProps } from './ManaBalances/ManaBalances.types'
+import { UserMenuSignedInProps } from './UserMenuSignedIn/UserMenuSignedIn.types'
 
 type UserMenuI18N = Record<
-  | "myAssets"
-  | "account"
-  | "viewProfile"
-  | "signIn"
-  | "signOut"
-  | "guest"
-  | "marketplaceAuthorizations"
-  | "download"
-  | "inviteFriends",
+  'myAssets' | 'account' | 'viewProfile' | 'signIn' | 'signOut' | 'guest' | 'marketplaceAuthorizations' | 'download' | 'inviteFriends',
   string
 > &
-  ManaBalancesProps["i18n"]
+  ManaBalancesProps['i18n']
 
-type UserMenuProps = Omit<
-  UserMenuSignedInProps,
-  "isOpen" | "isClickable" | "trackingId" | "onClickToggle"
-> & {
+type UserMenuProps = Omit<UserMenuSignedInProps, 'isOpen' | 'isClickable' | 'trackingId' | 'onClickToggle'> & {
   isSignedIn?: boolean
   isSigningIn?: boolean
   isDisconnecting?: boolean
@@ -32,28 +21,22 @@ type UserMenuProps = Omit<
   shouldDownloadBeforeRedirect?: boolean
   getIdentityId?: () => Promise<string | undefined>
   onClickSignIn?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void
-  onClickOpen?: (
-    event: React.MouseEvent<HTMLElement, MouseEvent>,
-    trackingId: string
-  ) => void
-  onClickDownload?: (
-    event: React.MouseEvent<HTMLElement, MouseEvent>,
-    options: { href: string }
-  ) => void
+  onClickOpen?: (event: React.MouseEvent<HTMLElement, MouseEvent>, trackingId: string) => void
+  onClickDownload?: (event: React.MouseEvent<HTMLElement, MouseEvent>, options: { href: string }) => void
 }
 
 enum UserMenuEventId {
-  ACTIVITY = "activity",
-  ACCOUNT = "account",
-  MY_ASSETS = "my_assets",
-  PROFILE = "profile",
-  SIGN_IN = "sign_in",
-  SIGN_OUT = "sign_out",
-  GUEST = "guest",
-  MARKETPLACE_AUTHORIZATIONS = "marketplace_authorizations",
-  DOWNLOAD = "download",
-  BALANCE = "balance",
-  INVITE_FRIENDS = "invite_friends",
+  ACTIVITY = 'activity',
+  ACCOUNT = 'account',
+  MY_ASSETS = 'my_assets',
+  PROFILE = 'profile',
+  SIGN_IN = 'sign_in',
+  SIGN_OUT = 'sign_out',
+  GUEST = 'guest',
+  MARKETPLACE_AUTHORIZATIONS = 'marketplace_authorizations',
+  DOWNLOAD = 'download',
+  BALANCE = 'balance',
+  INVITE_FRIENDS = 'invite_friends'
 }
 
 type DownloadProps = {

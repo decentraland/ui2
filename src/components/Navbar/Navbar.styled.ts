@@ -1,7 +1,7 @@
-import zIndex from "@mui/material/styles/zIndex"
-import styled from "@emotion/styled"
-import { AppBar, Box, Button, Link, Modal } from "@mui/material"
-import { Logo as LogoComponent } from "../Logo/Logo"
+import zIndex from '@mui/material/styles/zIndex'
+import styled from '@emotion/styled'
+import { AppBar, Box, Button, Link, Modal } from '@mui/material'
+import { Logo as LogoComponent } from '../Logo/Logo'
 
 interface DclAppBarProps {
   isSubmenuOpen: boolean
@@ -13,16 +13,15 @@ interface LogoLinkProps {
 }
 
 const DclAppBar = styled(AppBar, {
-  shouldForwardProp: (prop) =>
-    !["isSubmenuOpen", "isMobileOpen"].includes(prop as string),
-})<DclAppBarProps>((props) => {
+  shouldForwardProp: prop => !['isSubmenuOpen', 'isMobileOpen'].includes(prop as string)
+})<DclAppBarProps>(props => {
   const { isSubmenuOpen, isMobileOpen } = props
   let openedStyles
 
   if (isSubmenuOpen || isMobileOpen) {
     openedStyles = {
-      boxShadow: "none",
-      backgroundImage: "none",
+      boxShadow: 'none',
+      backgroundImage: 'none'
     }
   }
 
@@ -30,122 +29,122 @@ const DclAppBar = styled(AppBar, {
 })
 
 const LogoLink = styled(Link, {
-  shouldForwardProp: (prop) => prop !== "isMobile",
-})<LogoLinkProps>((props) => {
+  shouldForwardProp: prop => prop !== 'isMobile'
+})<LogoLinkProps>(props => {
   const { isMobile } = props
   let mobileStyles
   if (isMobile) {
     mobileStyles = {
-      zIndex: zIndex.appBar,
+      zIndex: zIndex.appBar
     }
   }
   return {
-    height: "36px",
-    ...mobileStyles,
+    height: '36px',
+    ...mobileStyles
   }
 })
 
 const AppBarDesktopWrapper = styled(Box)(({ theme }) => ({
-  display: "flex",
-  justifyContent: "flex-start",
-  alignItems: "center",
-  [theme.breakpoints.down("sm")]: {
-    display: "none",
-  },
+  display: 'flex',
+  justifyContent: 'flex-start',
+  alignItems: 'center',
+  [theme.breakpoints.down('sm')]: {
+    display: 'none'
+  }
 }))
 
 const AppBarWrapper = styled(Box)({
-  display: "flex",
-  justifyContent: "space-between",
-  width: "100%",
-  alignItems: "center",
-  height: "66px",
+  display: 'flex',
+  justifyContent: 'space-between',
+  width: '100%',
+  alignItems: 'center',
+  height: '66px'
 })
 
 const AppBarTabletAndBelowWrapper = styled(Box)({
-  width: "85px",
-  display: "flex",
-  alignItems: "center",
-  height: "66px",
-  justifyContent: "space-between",
+  width: '85px',
+  display: 'flex',
+  alignItems: 'center',
+  height: '66px',
+  justifyContent: 'space-between'
 })
 
 const AppBarRightWrapper = styled(Box)({
-  display: "flex",
-  alignItems: "center",
+  display: 'flex',
+  alignItems: 'center'
 })
 
 const MenuIcon = styled(Button)({
-  height: "32px",
-  width: "32px",
-  minWidth: "32px",
-  position: "relative",
+  height: '32px',
+  width: '32px',
+  minWidth: '32px',
+  position: 'relative',
   padding: 0,
-  "&:hover": {
-    backgroundColor: "transparent",
-  },
+  '&:hover': {
+    backgroundColor: 'transparent'
+  }
 })
 
 interface MenuIconBarProps {
   isOpen: boolean
 }
 
-const MenuIconBar = styled("span", {
-  shouldForwardProp: (prop) => prop !== "isOpen" && prop !== "active",
-})<MenuIconBarProps>((props) => {
+const MenuIconBar = styled('span', {
+  shouldForwardProp: prop => prop !== 'isOpen' && prop !== 'active'
+})<MenuIconBarProps>(props => {
   const { isOpen, theme } = props
   let openedStyles
 
   if (isOpen) {
     openedStyles = {
-      "&:nth-of-type(1)": {
-        top: "50%",
-        left: "50%",
-        transform: "translate(-50%, -50%) rotate(45deg)",
-        width: "33.94px",
+      '&:nth-of-type(1)': {
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%) rotate(45deg)',
+        width: '33.94px'
       },
-      "&:nth-of-type(2)": {
-        top: "50%",
-        left: "50%",
-        transform: "translate(-50%, -50%) rotate(-45deg)",
-        width: "33.94px",
-      },
+      '&:nth-of-type(2)': {
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%) rotate(-45deg)',
+        width: '33.94px'
+      }
     }
   }
 
   return {
     transition: `all 0.3s ease`,
-    height: "2px",
-    width: "100%",
+    height: '2px',
+    width: '100%',
     backgroundColor: theme.palette.text.primary,
-    position: "absolute",
-    "&:nth-of-type(1)": {
-      top: "8px",
-      left: 0,
+    position: 'absolute',
+    '&:nth-of-type(1)': {
+      top: '8px',
+      left: 0
     },
-    "&:nth-of-type(2)": {
-      top: "21px",
-      left: 0,
+    '&:nth-of-type(2)': {
+      top: '21px',
+      left: 0
     },
-    ...openedStyles,
+    ...openedStyles
   }
 })
 
 const MenuModal = styled(Modal)(() => {
   return {
-    "& .MuiBackdrop-root.MuiModal-backdrop": {
-      backgroundColor: "transparent",
-    },
+    '& .MuiBackdrop-root.MuiModal-backdrop': {
+      backgroundColor: 'transparent'
+    }
   }
 })
 
 const Logo = styled(LogoComponent)(({ theme }) => ({
   width: theme.spacing(4.5),
   height: theme.spacing(4.5),
-  [theme.breakpoints.down("sm")]: {
+  [theme.breakpoints.down('sm')]: {
     width: theme.spacing(4),
-    height: theme.spacing(4),
-  },
+    height: theme.spacing(4)
+  }
 }))
 
 export {
@@ -158,5 +157,5 @@ export {
   MenuIcon,
   MenuIconBar,
   MenuModal,
-  Logo,
+  Logo
 }

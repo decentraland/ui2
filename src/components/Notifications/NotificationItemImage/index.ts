@@ -1,2 +1,2 @@
-export { NotificationItemImage } from "./NotificationItemImage"
-export type { NotificationItemImageProps } from "./NotificationItemImage.types"
+export { NotificationItemImage } from './NotificationItemImage'
+export type { NotificationItemImageProps } from './NotificationItemImage.types'

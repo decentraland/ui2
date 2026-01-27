@@ -1,19 +1,19 @@
-import React, { useCallback, useEffect, useState } from "react"
-import { PreviewEmoteEventType } from "@dcl/schemas/dist/dapps/preview/preview-emote-event-type"
-import PauseIcon from "@mui/icons-material/Pause"
-import PlayArrowIcon from "@mui/icons-material/PlayArrow"
-import VolumeOffIcon from "@mui/icons-material/VolumeOff"
-import VolumeUpIcon from "@mui/icons-material/VolumeUp"
-import { useWearablePreviewController } from "../useWearablePreviewController"
-import { EmoteControlsProps } from "./EmoteControls.types"
+import React, { useCallback, useEffect, useState } from 'react'
+import { PreviewEmoteEventType } from '@dcl/schemas/dist/dapps/preview/preview-emote-event-type'
+import PauseIcon from '@mui/icons-material/Pause'
+import PlayArrowIcon from '@mui/icons-material/PlayArrow'
+import VolumeOffIcon from '@mui/icons-material/VolumeOff'
+import VolumeUpIcon from '@mui/icons-material/VolumeUp'
+import { useWearablePreviewController } from '../useWearablePreviewController'
+import { EmoteControlsProps } from './EmoteControls.types'
 import {
   StyledEmoteControlsContainer,
   StyledFrameControl,
   StyledFrameInput,
   StyledPlayButton,
   StyledRangeInput,
-  StyledSoundButton,
-} from "./EmoteControls.styled"
+  StyledSoundButton
+} from './EmoteControls.styled'
 
 export const EmoteControls: React.FC<EmoteControlsProps> = ({
   wearablePreviewId,
@@ -26,12 +26,9 @@ export const EmoteControls: React.FC<EmoteControlsProps> = ({
   renderPlayButton,
   renderSoundButton,
   renderProgressBar,
-  renderFrameInput,
+  renderFrameInput
 }) => {
-  const { controllerRef, isReady } = useWearablePreviewController(
-    wearablePreviewId,
-    wearablePreviewController
-  )
+  const { controllerRef, isReady } = useWearablePreviewController(wearablePreviewId, wearablePreviewController)
 
   const [frame, setFrame] = useState(0)
   const [isPlaying, setIsPlaying] = useState(false)
@@ -47,7 +44,7 @@ export const EmoteControls: React.FC<EmoteControlsProps> = ({
 
   const handleAnimationEnd = useCallback(() => {
     setIsPlaying(false)
-    setFrame((currentFrame) => {
+    setFrame(currentFrame => {
       const currentLength = length ?? 0
       return currentFrame >= Math.floor(currentLength * 100) ? 0 : currentFrame
     })
@@ -68,12 +65,9 @@ export const EmoteControls: React.FC<EmoteControlsProps> = ({
     }
   }, [length, isChangingFrame, controllerRef])
 
-  const handleAnimationPlaying = useCallback(
-    ({ length: playingLength }: { length: number }) => {
-      setFrame(Math.ceil((playingLength ?? 0) * 100))
-    },
-    []
-  )
+  const handleAnimationPlaying = useCallback(({ length: playingLength }: { length: number }) => {
+    setFrame(Math.ceil((playingLength ?? 0) * 100))
+  }, [])
 
   useEffect(() => {
     const controller = controllerRef.current
@@ -81,69 +75,32 @@ export const EmoteControls: React.FC<EmoteControlsProps> = ({
       return
     }
 
-    controller.emote.events.on(
-      PreviewEmoteEventType.ANIMATION_PLAY,
-      handleAnimationPlay
-    )
+    controller.emote.events.on(PreviewEmoteEventType.ANIMATION_PLAY, handleAnimationPlay)
 
-    controller.emote.events.on(
-      PreviewEmoteEventType.ANIMATION_PLAYING,
-      handleAnimationPlaying
-    )
+    controller.emote.events.on(PreviewEmoteEventType.ANIMATION_PLAYING, handleAnimationPlaying)
 
-    controller.emote.events.on(
-      PreviewEmoteEventType.ANIMATION_END,
-      handleAnimationEnd
-    )
+    controller.emote.events.on(PreviewEmoteEventType.ANIMATION_END, handleAnimationEnd)
 
-    controller.emote.events.on(
-      PreviewEmoteEventType.ANIMATION_PAUSE,
-      handleAnimationPause
-    )
+    controller.emote.events.on(PreviewEmoteEventType.ANIMATION_PAUSE, handleAnimationPause)
 
-    controller.emote.events.on(
-      PreviewEmoteEventType.ANIMATION_LOOP,
-      handleAnimationLoop
-    )
+    controller.emote.events.on(PreviewEmoteEventType.ANIMATION_LOOP, handleAnimationLoop)
 
     return () => {
-      controller.emote.events.off(
-        PreviewEmoteEventType.ANIMATION_PLAY,
-        handleAnimationPlay
-      )
-      controller.emote.events.off(
-        PreviewEmoteEventType.ANIMATION_PLAYING,
-        handleAnimationPlaying
-      )
-      controller.emote.events.off(
-        PreviewEmoteEventType.ANIMATION_END,
-        handleAnimationEnd
-      )
-      controller.emote.events.off(
-        PreviewEmoteEventType.ANIMATION_PAUSE,
-        handleAnimationPause
-      )
-      controller.emote.events.off(
-        PreviewEmoteEventType.ANIMATION_LOOP,
-        handleAnimationLoop
-      )
+      controller.emote.events.off(PreviewEmoteEventType.ANIMATION_PLAY, handleAnimationPlay)
+      controller.emote.events.off(PreviewEmoteEventType.ANIMATION_PLAYING, handleAnimationPlaying)
+      controller.emote.events.off(PreviewEmoteEventType.ANIMATION_END, handleAnimationEnd)
+      controller.emote.events.off(PreviewEmoteEventType.ANIMATION_PAUSE, handleAnimationPause)
+      controller.emote.events.off(PreviewEmoteEventType.ANIMATION_LOOP, handleAnimationLoop)
     }
-  }, [
-    controllerRef,
-    handleAnimationPlay,
-    handleAnimationPlaying,
-    handleAnimationEnd,
-    handleAnimationPause,
-    handleAnimationLoop,
-  ])
+  }, [controllerRef, handleAnimationPlay, handleAnimationPlaying, handleAnimationEnd, handleAnimationPause, handleAnimationLoop])
 
   useEffect(() => {
     if (hasSound === undefined && isReady && controllerRef.current) {
       controllerRef.current.emote
         .hasSound()
-        .then((soundExists) => setHasSound(soundExists))
-        .catch((error) => {
-          console.error("Error checking sound:", error)
+        .then(soundExists => setHasSound(soundExists))
+        .catch(error => {
+          console.error('Error checking sound:', error)
           setHasSound(false)
         })
     }
@@ -156,7 +113,7 @@ export const EmoteControls: React.FC<EmoteControlsProps> = ({
     try {
       await controllerRef.current.emote.play()
     } catch (error) {
-      console.error("Error playing emote:", error)
+      console.error('Error playing emote:', error)
     }
   }, [controllerRef])
 
@@ -167,7 +124,7 @@ export const EmoteControls: React.FC<EmoteControlsProps> = ({
     try {
       await controllerRef.current.emote.pause()
     } catch (error) {
-      console.error("Error pausing emote:", error)
+      console.error('Error pausing emote:', error)
     }
   }, [controllerRef])
 
@@ -207,7 +164,7 @@ export const EmoteControls: React.FC<EmoteControlsProps> = ({
         }
         await controllerRef.current.emote.goTo(targetValue / 100)
       } catch (error) {
-        console.error("Error changing frame:", error)
+        console.error('Error changing frame:', error)
       }
     },
     [length, isPlaying, controllerRef]
@@ -219,7 +176,7 @@ export const EmoteControls: React.FC<EmoteControlsProps> = ({
       try {
         await controllerRef.current.emote.play()
       } catch (error) {
-        console.error("Error resuming play:", error)
+        console.error('Error resuming play:', error)
       }
       setShouldResumePlaying(false)
     }
@@ -232,12 +189,10 @@ export const EmoteControls: React.FC<EmoteControlsProps> = ({
           isPlaying,
           onPlay: handlePlay,
           onPause: handlePause,
-          onToggle: handlePlayPause,
+          onToggle: handlePlayPause
         })
       ) : (
-        <StyledPlayButton onClick={handlePlayPause}>
-          {isPlaying ? <PauseIcon /> : <PlayArrowIcon />}
-        </StyledPlayButton>
+        <StyledPlayButton onClick={handlePlayPause}>{isPlaying ? <PauseIcon /> : <PlayArrowIcon />}</StyledPlayButton>
       )}
 
       {!hideProgressInput ? (
@@ -246,7 +201,7 @@ export const EmoteControls: React.FC<EmoteControlsProps> = ({
             frame,
             length: length ?? 0,
             onChange: handleFrameChange,
-            onMouseUp: handleMouseUp,
+            onMouseUp: handleMouseUp
           })
         ) : (
           <StyledRangeInput
@@ -255,7 +210,7 @@ export const EmoteControls: React.FC<EmoteControlsProps> = ({
             max={Math.ceil((length ?? 0) * 100)}
             min={0}
             step={1}
-            onChange={(e) => handleFrameChange(Number(e.target.value))}
+            onChange={e => handleFrameChange(Number(e.target.value))}
             onMouseUp={handleMouseUp}
           />
         )
@@ -266,13 +221,13 @@ export const EmoteControls: React.FC<EmoteControlsProps> = ({
           {renderFrameInput ? (
             renderFrameInput({
               frame: Math.round(frame / 100),
-              onChange: (value) => handleFrameChange(value * 100),
+              onChange: value => handleFrameChange(value * 100)
             })
           ) : (
             <StyledFrameInput
               type="number"
               value={Math.round(frame / 100)}
-              onChange={(e) => handleFrameChange(Number(e.target.value) * 100)}
+              onChange={e => handleFrameChange(Number(e.target.value) * 100)}
             />
           )}
         </StyledFrameControl>
@@ -282,7 +237,7 @@ export const EmoteControls: React.FC<EmoteControlsProps> = ({
         renderSoundButton({
           isSoundEnabled,
           hasSound,
-          onToggle: handleSoundToggle,
+          onToggle: handleSoundToggle
         })
       ) : (
         <StyledSoundButton muted={!isSoundEnabled} onClick={handleSoundToggle}>

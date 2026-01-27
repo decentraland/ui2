@@ -1,10 +1,10 @@
-import { ButtonProps, LinkProps } from "@mui/material"
-import { DownloadModalProps } from "../Modal/DownloadModal/DownloadModal.types"
+import { ButtonProps, LinkProps } from '@mui/material'
+import { DownloadModalProps } from '../Modal/DownloadModal/DownloadModal.types'
 
 enum JumpInEventType {
-  JUMP_IN = "JUMP_IN",
-  OPEN_DOWNLOAD_MODAL = "OPEN_DOWNLOAD_MODAL",
-  DOWNLOAD = "DOWNLOAD",
+  JUMP_IN = 'JUMP_IN',
+  OPEN_DOWNLOAD_MODAL = 'OPEN_DOWNLOAD_MODAL',
+  DOWNLOAD = 'DOWNLOAD'
 }
 
 type JumpInTrackingData = {
@@ -29,7 +29,7 @@ type JumpInBaseProps = {
   /** Whether to hide the icon */
   hideIcon?: boolean
   /** Props for the download modal */
-  modalProps: Omit<DownloadModalProps, "open" | "onClose" | "onDownloadClick">
+  modalProps: Omit<DownloadModalProps, 'open' | 'onClose' | 'onDownloadClick'>
   /** Options for the desktop app */
   desktopAppOptions?: {
     position?: string
@@ -41,11 +41,11 @@ type JumpInBaseProps = {
 type JumpInProps = JumpInBaseProps &
   (
     | {
-        variant: "button"
+        variant: 'button'
         buttonProps?: Omit<ButtonProps, keyof JumpInBaseProps>
       }
     | {
-        variant: "link"
+        variant: 'link'
         linkProps?: Omit<LinkProps, keyof JumpInBaseProps>
       }
   )

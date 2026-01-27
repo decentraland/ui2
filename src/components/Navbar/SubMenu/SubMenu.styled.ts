@@ -1,12 +1,12 @@
-import zIndex from "@mui/material/styles/zIndex"
-import styled from "@emotion/styled"
-import { Box, Button } from "@mui/material"
-import CreateImage from "../../../Assets/Navbar/create-submenu.png"
-import ExploreImage from "../../../Assets/Navbar/explore-submenu.png"
-import GovernanceImage from "../../../Assets/Navbar/governance-submenu.png"
-import LearnImage from "../../../Assets/Navbar/learn-submenu.png"
-import MarketplaceImage from "../../../Assets/Navbar/marketplace-submenu.png"
-import { NavbarPages } from "../Navbar.types"
+import zIndex from '@mui/material/styles/zIndex'
+import styled from '@emotion/styled'
+import { Box, Button } from '@mui/material'
+import CreateImage from '../../../Assets/Navbar/create-submenu.png'
+import ExploreImage from '../../../Assets/Navbar/explore-submenu.png'
+import GovernanceImage from '../../../Assets/Navbar/governance-submenu.png'
+import LearnImage from '../../../Assets/Navbar/learn-submenu.png'
+import MarketplaceImage from '../../../Assets/Navbar/marketplace-submenu.png'
+import { NavbarPages } from '../Navbar.types'
 
 interface MenuItemContainerProps {
   active: boolean
@@ -14,20 +14,19 @@ interface MenuItemContainerProps {
   isMobile?: boolean
 }
 
-const SubMenuContainer = styled(Box)((props) => {
+const SubMenuContainer = styled(Box)(props => {
   const { theme } = props
   return {
-    [theme!.breakpoints.down("sm")]: {
-      position: "absolute",
-      zIndex: zIndex.modal,
-    },
+    [theme!.breakpoints.down('sm')]: {
+      position: 'absolute',
+      zIndex: zIndex.modal
+    }
   }
 })
 
 const MenuItemContainer = styled(Box, {
-  shouldForwardProp: (prop) =>
-    !["active", "section", "isMobile"].includes(prop),
-})<MenuItemContainerProps>((props) => {
+  shouldForwardProp: prop => !['active', 'section', 'isMobile'].includes(prop)
+})<MenuItemContainerProps>(props => {
   const { active, section, theme } = props
   let modifiedStyles
   let mobileModifiedStyles
@@ -35,30 +34,30 @@ const MenuItemContainer = styled(Box, {
 
   const defaultStyles = {
     opacity: 1,
-    top: "-200%",
-    width: "100%",
-    backgroundSize: "100% 100%",
-    backgroundPosition: "0px 0px, 0px 0px",
-    position: "fixed",
+    top: '-200%',
+    width: '100%',
+    backgroundSize: '100% 100%',
+    backgroundPosition: '0px 0px, 0px 0px',
+    position: 'fixed',
     zIndex: 1099,
     left: 0,
-    paddingLeft: "370px",
-    paddingRight: "48px",
-    height: "328px",
-    minHeight: "calc(390px + 64px)",
-    boxShadow: "none",
-    backgroundRepeat: "no-repeat",
-    display: "flex",
-    alignItems: "center",
-    paddingTop: "64px",
+    paddingLeft: '370px',
+    paddingRight: '48px',
+    height: '328px',
+    minHeight: 'calc(390px + 64px)',
+    boxShadow: 'none',
+    backgroundRepeat: 'no-repeat',
+    display: 'flex',
+    alignItems: 'center',
+    paddingTop: '64px',
     backgroundColor: theme!.palette.background.default,
-    transition: `${theme!.transitions.create(["box-shadow", "height"], {
+    transition: `${theme!.transitions.create(['box-shadow', 'height'], {
       duration: theme!.transitions.duration.shorter,
-      easing: theme!.transitions.easing.easeInOut,
-    })}, ${theme!.transitions.create(["top", "left"], {
+      easing: theme!.transitions.easing.easeInOut
+    })}, ${theme!.transitions.create(['top', 'left'], {
       duration: theme!.transitions.duration.complex,
-      easing: "cubic-bezier(1, 0, 0.15, 1)",
-    })}`,
+      easing: 'cubic-bezier(1, 0, 0.15, 1)'
+    })}`
   }
 
   if (active) {
@@ -66,10 +65,10 @@ const MenuItemContainer = styled(Box, {
       opacity: 1,
       top: 0,
       zIndex: 1099,
-      boxShadow: theme!.shadows[20],
+      boxShadow: theme!.shadows[20]
     }
     mobileModifiedStyles = {
-      left: 0,
+      left: 0
     }
   }
 
@@ -78,50 +77,50 @@ const MenuItemContainer = styled(Box, {
       modifiedStyles = {
         ...modifiedStyles,
         backgroundImage:
-          "radial-gradient(350px 200px at 400px 120%,#691fa933 0%,transparent 150%),radial-gradient(350px 200px at 1280px 120%, #691fa933 0%, #073aff00 100%)",
+          'radial-gradient(350px 200px at 400px 120%,#691fa933 0%,transparent 150%),radial-gradient(350px 200px at 1280px 120%, #691fa933 0%, #073aff00 100%)'
       }
       leftImageStyles = {
-        backgroundImage: `url(${MarketplaceImage})`,
+        backgroundImage: `url(${MarketplaceImage})`
       }
       break
     case NavbarPages.CREATE:
       modifiedStyles = {
         ...modifiedStyles,
         backgroundImage:
-          "radial-gradient(350px 200px at 400px 120%,#ff743933 0%,transparent 150%),radial-gradient(350px 200px at 1280px 120%, #ff743933 0%, #073aff00 100%)",
+          'radial-gradient(350px 200px at 400px 120%,#ff743933 0%,transparent 150%),radial-gradient(350px 200px at 1280px 120%, #ff743933 0%, #073aff00 100%)'
       }
       leftImageStyles = {
-        backgroundImage: `url(${CreateImage})`,
+        backgroundImage: `url(${CreateImage})`
       }
       break
     case NavbarPages.EXPLORE:
       modifiedStyles = {
         ...modifiedStyles,
         backgroundImage:
-          "radial-gradient(350px 200px at 400px 120%,#3dd0ff33 0%,transparent 150%),radial-gradient(350px 200px at 1280px 120%, #3dd0ff33 0%, #073aff00 100%)",
+          'radial-gradient(350px 200px at 400px 120%,#3dd0ff33 0%,transparent 150%),radial-gradient(350px 200px at 1280px 120%, #3dd0ff33 0%, #073aff00 100%)'
       }
       leftImageStyles = {
-        backgroundImage: `url(${ExploreImage})`,
+        backgroundImage: `url(${ExploreImage})`
       }
       break
     case NavbarPages.LEARN:
       modifiedStyles = {
         ...modifiedStyles,
         backgroundImage:
-          "radial-gradient(350px 200px at 400px 120%,#a6746433 0%,transparent 150%),radial-gradient(350px 200px at 1280px 120%, #a6746433 0%, #073aff00 100%)",
+          'radial-gradient(350px 200px at 400px 120%,#a6746433 0%,transparent 150%),radial-gradient(350px 200px at 1280px 120%, #a6746433 0%, #073aff00 100%)'
       }
       leftImageStyles = {
-        backgroundImage: `url(${LearnImage})`,
+        backgroundImage: `url(${LearnImage})`
       }
       break
     case NavbarPages.GOVERNANCE:
       modifiedStyles = {
         ...modifiedStyles,
         backgroundImage:
-          "radial-gradient(350px 200px at 400px 120%,#ff3dec33 0%,transparent 150%),radial-gradient(350px 200px at 1280px 120%, #ff3dec33 0%, #073aff00 100%)",
+          'radial-gradient(350px 200px at 400px 120%,#ff3dec33 0%,transparent 150%),radial-gradient(350px 200px at 1280px 120%, #ff3dec33 0%, #073aff00 100%)'
       }
       leftImageStyles = {
-        backgroundImage: `url(${GovernanceImage})`,
+        backgroundImage: `url(${GovernanceImage})`
       }
       break
   }
@@ -129,57 +128,57 @@ const MenuItemContainer = styled(Box, {
   return {
     ...defaultStyles,
     ...modifiedStyles,
-    "&::after": {
+    '&::after': {
       content: '""',
-      position: "absolute",
-      width: "370px",
-      height: "calc(100% - 64px)",
-      top: "64px",
-      backgroundRepeat: "no-repeat",
-      backgroundPosition: "bottom center",
+      position: 'absolute',
+      width: '370px',
+      height: 'calc(100% - 64px)',
+      top: '64px',
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'bottom center',
       left: 0,
-      backgroundSize: "auto 90%",
+      backgroundSize: 'auto 90%',
       ...leftImageStyles,
-      [theme!.breakpoints.between("sm", "lg")]: {
-        backgroundImage: "none",
-      },
+      [theme!.breakpoints.between('sm', 'lg')]: {
+        backgroundImage: 'none'
+      }
     },
-    [theme!.breakpoints.down("lg")]: {
-      paddingLeft: "48px",
-      "&::after": {
-        content: "none",
-      },
+    [theme!.breakpoints.down('lg')]: {
+      paddingLeft: '48px',
+      '&::after': {
+        content: 'none'
+      }
     },
-    [theme!.breakpoints.down("sm")]: {
-      top: "64px",
-      left: "150%",
-      height: "100vh",
-      padding: "0 25px",
+    [theme!.breakpoints.down('sm')]: {
+      top: '64px',
+      left: '150%',
+      height: '100vh',
+      padding: '0 25px',
       margin: 0,
-      alignItems: "flex-start",
-      boxShadow: "none",
+      alignItems: 'flex-start',
+      boxShadow: 'none',
       backgroundColor: theme!.palette.background.default,
       ...mobileModifiedStyles,
-      "&::after": {
-        content: "none",
-      },
-    },
+      '&::after': {
+        content: 'none'
+      }
+    }
   }
 })
 
-const SubMenuWrapper = styled(Box)((props) => {
+const SubMenuWrapper = styled(Box)(props => {
   const { theme } = props
   return {
-    width: "100%",
-    display: "flex",
-    alignItems: "flex-start",
-    height: "fit-content",
-    [theme!.breakpoints.down("sm")]: {
-      flexDirection: "column",
-    },
+    width: '100%',
+    display: 'flex',
+    alignItems: 'flex-start',
+    height: 'fit-content',
+    [theme!.breakpoints.down('sm')]: {
+      flexDirection: 'column'
+    }
   }
 })
 
-const BackButton = styled(Button)({ padding: "0" })
+const BackButton = styled(Button)({ padding: '0' })
 
 export { SubMenuContainer, MenuItemContainer, SubMenuWrapper, BackButton }

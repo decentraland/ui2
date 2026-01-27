@@ -1,12 +1,9 @@
-import React, { useCallback, useMemo } from "react"
-import toggleAnimation from "./toggleAnimation.json"
-import { formatEther } from "../../utils/format"
-import {
-  createDynamicImport,
-  createLazyComponent,
-} from "../../utils/optionalDependency"
-import { CreditsIcon } from "../Icon/CreditsIcon"
-import { CreditsToggleProps } from "./CreditsToggle.types"
+import React, { useCallback, useMemo } from 'react'
+import toggleAnimation from './toggleAnimation.json'
+import { formatEther } from '../../utils/format'
+import { createDynamicImport, createLazyComponent } from '../../utils/optionalDependency'
+import { CreditsIcon } from '../Icon/CreditsIcon'
+import { CreditsToggleProps } from './CreditsToggle.types'
 import {
   AnimationContainer,
   Container,
@@ -16,16 +13,16 @@ import {
   StyledAmount,
   StyledNumber,
   StyledSwitch,
-  StyledText,
-} from "./CreditsToggle.styled"
-import type { LottieComponentProps } from "lottie-react"
+  StyledText
+} from './CreditsToggle.styled'
+import type { LottieComponentProps } from 'lottie-react'
 
 const Lottie = createLazyComponent<LottieComponentProps>(
   {
-    packageName: "lottie-react",
-    componentName: "CreditsToggle",
+    packageName: 'lottie-react',
+    componentName: 'CreditsToggle'
   },
-  createDynamicImport<typeof import("lottie-react")>("lottie-react")
+  createDynamicImport<typeof import('lottie-react')>('lottie-react')
 )
 
 const CreditsToggle: React.FC<CreditsToggleProps> = ({
@@ -33,24 +30,20 @@ const CreditsToggle: React.FC<CreditsToggleProps> = ({
   assetPrice,
   useCredits,
   onToggle,
-  className = "",
+  className = '',
   showLearnMore = false,
   learnMoreUrl,
   label,
   showTooltip = true,
-  tooltipContent,
+  tooltipContent
 }) => {
   const creditsToUseInEth = useMemo(() => {
     if (!totalCredits) {
-      return "0"
+      return '0'
     }
     const inEth = formatEther(totalCredits.toString())
-    const assetPriceInEth = assetPrice
-      ? formatEther(assetPrice.toString())
-      : "0"
-    return assetPrice
-      ? Math.min(Number(assetPriceInEth), Number(inEth)).toFixed(2)
-      : Number(inEth).toFixed(2)
+    const assetPriceInEth = assetPrice ? formatEther(assetPrice.toString()) : '0'
+    return assetPrice ? Math.min(Number(assetPriceInEth), Number(inEth)).toFixed(2) : Number(inEth).toFixed(2)
   }, [totalCredits, assetPrice])
 
   const handleToggleCredits = useCallback(() => {
@@ -59,7 +52,7 @@ const CreditsToggle: React.FC<CreditsToggleProps> = ({
 
   const handleLearnMore = useCallback(() => {
     if (learnMoreUrl) {
-      window.open(learnMoreUrl, "_blank", "noopener noreferrer")
+      window.open(learnMoreUrl, '_blank', 'noopener noreferrer')
     }
   }, [learnMoreUrl])
 
@@ -76,7 +69,7 @@ const CreditsToggle: React.FC<CreditsToggleProps> = ({
       <Container showLearnMore className={className}>
         <LeftSection>
           <CreditsIcon sx={{ fontSize: 18 }} />
-          <StyledText>{label || "Get with Credits"}</StyledText>
+          <StyledText>{label || 'Get with Credits'}</StyledText>
         </LeftSection>
         <StyledAmount>
           <LearnMoreButton variant="outlined" onClick={handleLearnMore}>
@@ -90,17 +83,13 @@ const CreditsToggle: React.FC<CreditsToggleProps> = ({
   return (
     <Container active={useCredits} className={className}>
       <LeftSection active={useCredits}>
-        <AnimationContainer show={useCredits}>
-          {useCredits && (
-            <Lottie animationData={toggleAnimation} loop={false} />
-          )}
-        </AnimationContainer>
+        <AnimationContainer show={useCredits}>{useCredits && <Lottie animationData={toggleAnimation} loop={false} />}</AnimationContainer>
         <StyledSwitch checked={useCredits} onChange={handleToggleCredits} />
-        <StyledText active={useCredits}>{label || "Use Credits"}</StyledText>
+        <StyledText active={useCredits}>{label || 'Use Credits'}</StyledText>
       </LeftSection>
       <StyledAmount active={useCredits}>
         {showTooltip ? (
-          <PopupContainer title={tooltipContent || "Credits value"}>
+          <PopupContainer title={tooltipContent || 'Credits value'}>
             <CreditsIcon sx={{ fontSize: 18, marginLeft: 1.5 }} />
             <StyledNumber>{creditsToUseInEth}</StyledNumber>
           </PopupContainer>
@@ -115,5 +104,5 @@ const CreditsToggle: React.FC<CreditsToggleProps> = ({
   )
 }
 
-CreditsToggle.displayName = "CreditsToggle"
+CreditsToggle.displayName = 'CreditsToggle'
 export { CreditsToggle }

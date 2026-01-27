@@ -1,4 +1,4 @@
-import { AdvancedNavigatorUAData } from "@dcl/hooks"
+import { AdvancedNavigatorUAData } from '@dcl/hooks'
 
 type JumpInOptions = {
   position?: string
@@ -13,24 +13,21 @@ type ProcessWithVersions = NodeJS.Process & { versions: { electron?: string } }
 
 function buildDecentralandUrl(opts: JumpInOptions) {
   const params = new URLSearchParams()
-  if (opts.position) params.set("position", opts.position)
-  if (opts.realm) params.set("realm", opts.realm)
-  if (opts.communityId) params.set("community", opts.communityId)
+  if (opts.position) params.set('position', opts.position)
+  if (opts.realm) params.set('realm', opts.realm)
+  if (opts.communityId) params.set('community', opts.communityId)
   return `decentraland://?${params.toString()}`
 }
 
 function isElectronApp(): boolean {
   return (
-    (typeof window !== "undefined" &&
-      typeof (window as unknown as WindowWithProcess).process === "object" &&
-      (window as unknown as WindowWithProcess).process.type === "renderer") ||
-    (typeof process !== "undefined" &&
-      typeof (process as unknown as ProcessWithVersions).versions ===
-        "object" &&
+    (typeof window !== 'undefined' &&
+      typeof (window as unknown as WindowWithProcess).process === 'object' &&
+      (window as unknown as WindowWithProcess).process.type === 'renderer') ||
+    (typeof process !== 'undefined' &&
+      typeof (process as unknown as ProcessWithVersions).versions === 'object' &&
       !!(process as unknown as ProcessWithVersions).versions.electron) ||
-    (typeof navigator === "object" &&
-      typeof navigator.userAgent === "string" &&
-      navigator.userAgent.includes("Electron"))
+    (typeof navigator === 'object' && typeof navigator.userAgent === 'string' && navigator.userAgent.includes('Electron'))
   )
 }
 
@@ -58,18 +55,18 @@ export function launchDesktopApp(opts: JumpInOptions = {}): Promise<boolean> {
   }
 
   const cleanup = () => {
-    document.removeEventListener("visibilitychange", onVis)
-    window.removeEventListener("pagehide", onLoseFocus)
-    window.removeEventListener("blur", onLoseFocus)
+    document.removeEventListener('visibilitychange', onVis)
+    window.removeEventListener('pagehide', onLoseFocus)
+    window.removeEventListener('blur', onLoseFocus)
   }
 
   const onVis = () => {
-    if (document.visibilityState === "hidden") onLoseFocus()
+    if (document.visibilityState === 'hidden') onLoseFocus()
   }
 
-  document.addEventListener("visibilitychange", onVis, { passive: true })
-  window.addEventListener("pagehide", onLoseFocus, { passive: true })
-  window.addEventListener("blur", onLoseFocus, { passive: true })
+  document.addEventListener('visibilitychange', onVis, { passive: true })
+  window.addEventListener('pagehide', onLoseFocus, { passive: true })
+  window.addEventListener('blur', onLoseFocus, { passive: true })
 
   try {
     window.location.assign(target)
@@ -79,7 +76,7 @@ export function launchDesktopApp(opts: JumpInOptions = {}): Promise<boolean> {
     return Promise.resolve(false)
   }
 
-  return new Promise<boolean>((resolve) => {
+  return new Promise<boolean>(resolve => {
     const t = setTimeout(() => {
       cleanup()
       if (opened) {

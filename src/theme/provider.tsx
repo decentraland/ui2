@@ -1,7 +1,7 @@
-import React, { ReactNode } from "react"
-import { Experimental_CssVarsProvider as CssVarsProvider } from "@mui/material/styles"
-import { CssBaseline } from "@mui/material"
-import type { Theme } from "./types"
+import React, { ReactNode } from 'react'
+import { Experimental_CssVarsProvider as CssVarsProvider } from '@mui/material/styles'
+import { CssBaseline } from '@mui/material'
+import type { Theme } from './types'
 
 type ThemeProviderProps = {
   theme: Theme

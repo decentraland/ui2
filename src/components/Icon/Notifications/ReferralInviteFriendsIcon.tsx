@@ -1,16 +1,10 @@
-import React from "react"
-import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon"
+import React from 'react'
+import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon'
 
 const ReferralInviteFriendsIcon = React.memo((props: SvgIconProps) => {
   return (
     <SvgIcon {...props}>
-      <svg
-        width="241"
-        height="230"
-        viewBox="0 0 241 230"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+      <svg width="241" height="230" viewBox="0 0 241 230" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
           d="M236.214 92.0736C236.345 92.8983 236.422 93.7379 236.422 94.5861V209.94H236.419C236.419 218.858 229.162 226.115 220.244 226.115H20.363C11.4451 226.115 4.18848 218.858 4.18848 209.94V94.5861C4.18848 93.7379 4.26174 92.9013 4.39627 92.0736L106.393 165.757C110.555 168.764 115.428 170.264 120.304 170.264C125.179 170.264 130.055 168.761 134.217 165.757L236.214 92.0736ZM206.117 32.9466C208.466 32.9466 210.375 34.8568 210.375 37.2055V104.261L131.14 161.501C124.656 166.184 115.946 166.184 109.464 161.501L30.2288 104.261V37.2055C30.2288 34.8568 32.1386 32.9467 34.4872 32.9466H206.117ZM24.9814 100.471L6.18319 86.8904C7.30341 84.8606 8.86238 83.0647 10.7869 81.6754L24.9814 71.4208V100.471ZM229.82 81.6754C231.745 83.0647 233.304 84.8606 234.424 86.8904L215.626 100.471V71.4208L229.82 81.6754ZM110.979 9.29631C116.557 5.26581 124.053 5.26581 129.631 9.29631L155.107 27.6996H85.5061L110.982 9.29631H110.979Z"
           fill="white"
@@ -21,10 +15,7 @@ const ReferralInviteFriendsIcon = React.memo((props: SvgIconProps) => {
             fill="url(#paint0_linear_2765_53407)"
           />
         </g>
-        <g
-          style={{ mixBlendMode: "soft-light" as const }}
-          filter="url(#filter1_dii_2765_53407)"
-        >
+        <g style={{ mixBlendMode: 'soft-light' as const }} filter="url(#filter1_dii_2765_53407)">
           <path
             d="M229.417 93.7761C229.541 94.5579 229.612 95.354 229.612 96.1579V205.489H229.609C229.609 213.941 222.773 220.819 214.372 220.819H26.0664C17.665 220.819 10.8283 213.941 10.8281 205.489V96.1579C10.8281 95.354 10.8967 94.5606 11.0234 93.7761L107.113 163.613C111.034 166.463 115.625 167.884 120.219 167.885C124.812 167.885 129.406 166.46 133.327 163.613L229.417 93.7761ZM201.062 37.737C203.275 37.737 205.074 39.5474 205.074 41.7732V105.328L130.428 159.579C124.319 164.017 116.113 164.017 110.007 159.579L35.3604 105.328V41.7732C35.3606 39.5474 37.1597 37.7372 39.3721 37.737H201.062ZM140.433 54.8738C136.62 54.8531 132.846 55.6602 129.361 57.2409C127.66 58.0126 126.047 58.9597 124.546 60.0652C122.972 61.2241 121.522 62.5571 120.222 64.0427C118.922 62.5569 117.47 61.2242 115.896 60.0652C114.395 58.9597 112.782 58.0126 111.081 57.2409C107.597 55.6602 103.823 54.8531 100.01 54.8738C96.7871 54.8128 93.5845 55.4079 90.5898 56.6247C87.5952 57.8416 84.8683 59.6557 82.5684 61.9607C80.2684 64.2656 78.4412 67.0156 77.1943 70.0495C75.9475 73.0834 75.3061 76.3406 75.3066 79.6306C75.3067 99.6804 94.4045 115.619 110.25 128.843C111.844 130.174 113.405 131.478 114.91 132.755C117.969 135.349 122.484 135.361 125.551 132.776C126.932 131.612 128.359 130.425 129.814 129.214C145.746 115.96 165.136 99.8305 165.136 79.6306C165.136 76.3406 164.495 73.0834 163.248 70.0495C162.001 67.0156 160.174 64.2656 157.874 61.9607C155.574 59.6558 152.847 57.8416 149.853 56.6247C146.858 55.4079 143.655 54.8128 140.433 54.8738ZM30.417 101.735L12.707 88.864C13.7624 86.9401 15.2318 85.2384 17.0449 83.9216L30.417 74.2019V101.735ZM223.394 83.9216C225.206 85.2383 226.675 86.9403 227.73 88.864L210.021 101.735V74.2019L223.394 83.9216ZM111.435 15.322C116.689 11.502 123.751 11.502 129.006 15.322L153.007 32.7644H87.4365L111.438 15.322H111.435Z"
             fill="url(#paint1_linear_2765_53407)"
@@ -86,66 +77,25 @@ const ReferralInviteFriendsIcon = React.memo((props: SvgIconProps) => {
             colorInterpolationFilters="sRGB"
           >
             <feFlood floodOpacity="0" result="BackgroundImageFix" />
-            <feColorMatrix
-              in="SourceAlpha"
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-              result="hardAlpha"
-            />
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
             <feOffset dy="0.973154" />
             <feGaussianBlur stdDeviation="0.486577" />
             <feComposite in2="hardAlpha" operator="out" />
-            <feColorMatrix
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
-            />
-            <feBlend
-              mode="normal"
-              in2="BackgroundImageFix"
-              result="effect1_dropShadow_2765_53407"
-            />
-            <feBlend
-              mode="normal"
-              in="SourceGraphic"
-              in2="effect1_dropShadow_2765_53407"
-              result="shape"
-            />
-            <feColorMatrix
-              in="SourceAlpha"
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-              result="hardAlpha"
-            />
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_2765_53407" />
+            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_2765_53407" result="shape" />
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
             <feOffset dy="0.729866" />
             <feGaussianBlur stdDeviation="0.364933" />
             <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
-            <feColorMatrix
-              type="matrix"
-              values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.25 0"
-            />
-            <feBlend
-              mode="normal"
-              in2="shape"
-              result="effect2_innerShadow_2765_53407"
-            />
-            <feColorMatrix
-              in="SourceAlpha"
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-              result="hardAlpha"
-            />
+            <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.25 0" />
+            <feBlend mode="normal" in2="shape" result="effect2_innerShadow_2765_53407" />
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
             <feOffset dy="-0.486577" />
             <feGaussianBlur stdDeviation="0.997483" />
             <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
-            <feColorMatrix
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
-            />
-            <feBlend
-              mode="normal"
-              in2="effect2_innerShadow_2765_53407"
-              result="effect3_innerShadow_2765_53407"
-            />
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+            <feBlend mode="normal" in2="effect2_innerShadow_2765_53407" result="effect3_innerShadow_2765_53407" />
           </filter>
           <filter
             id="filter1_dii_2765_53407"
@@ -157,66 +107,25 @@ const ReferralInviteFriendsIcon = React.memo((props: SvgIconProps) => {
             colorInterpolationFilters="sRGB"
           >
             <feFlood floodOpacity="0" result="BackgroundImageFix" />
-            <feColorMatrix
-              in="SourceAlpha"
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-              result="hardAlpha"
-            />
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
             <feOffset dy="0.973154" />
             <feGaussianBlur stdDeviation="0.486577" />
             <feComposite in2="hardAlpha" operator="out" />
-            <feColorMatrix
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
-            />
-            <feBlend
-              mode="normal"
-              in2="BackgroundImageFix"
-              result="effect1_dropShadow_2765_53407"
-            />
-            <feBlend
-              mode="normal"
-              in="SourceGraphic"
-              in2="effect1_dropShadow_2765_53407"
-              result="shape"
-            />
-            <feColorMatrix
-              in="SourceAlpha"
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-              result="hardAlpha"
-            />
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_2765_53407" />
+            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_2765_53407" result="shape" />
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
             <feOffset dy="2.67617" />
             <feGaussianBlur stdDeviation="0.486577" />
             <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
-            <feColorMatrix
-              type="matrix"
-              values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.25 0"
-            />
-            <feBlend
-              mode="normal"
-              in2="shape"
-              result="effect2_innerShadow_2765_53407"
-            />
-            <feColorMatrix
-              in="SourceAlpha"
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-              result="hardAlpha"
-            />
+            <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.25 0" />
+            <feBlend mode="normal" in2="shape" result="effect2_innerShadow_2765_53407" />
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
             <feOffset dy="-0.729866" />
             <feGaussianBlur stdDeviation="0.997483" />
             <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
-            <feColorMatrix
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
-            />
-            <feBlend
-              mode="normal"
-              in2="effect2_innerShadow_2765_53407"
-              result="effect3_innerShadow_2765_53407"
-            />
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+            <feBlend mode="normal" in2="effect2_innerShadow_2765_53407" result="effect3_innerShadow_2765_53407" />
           </filter>
           <filter
             id="filter2_dii_2765_53407"
@@ -228,66 +137,25 @@ const ReferralInviteFriendsIcon = React.memo((props: SvgIconProps) => {
             colorInterpolationFilters="sRGB"
           >
             <feFlood floodOpacity="0" result="BackgroundImageFix" />
-            <feColorMatrix
-              in="SourceAlpha"
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-              result="hardAlpha"
-            />
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
             <feOffset dy="0.973154" />
             <feGaussianBlur stdDeviation="1.20428" />
             <feComposite in2="hardAlpha" operator="out" />
-            <feColorMatrix
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
-            />
-            <feBlend
-              mode="normal"
-              in2="BackgroundImageFix"
-              result="effect1_dropShadow_2765_53407"
-            />
-            <feBlend
-              mode="normal"
-              in="SourceGraphic"
-              in2="effect1_dropShadow_2765_53407"
-              result="shape"
-            />
-            <feColorMatrix
-              in="SourceAlpha"
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-              result="hardAlpha"
-            />
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_2765_53407" />
+            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_2765_53407" result="shape" />
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
             <feOffset dy="1.21644" />
             <feGaussianBlur stdDeviation="0.486577" />
             <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
-            <feColorMatrix
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
-            />
-            <feBlend
-              mode="normal"
-              in2="shape"
-              result="effect2_innerShadow_2765_53407"
-            />
-            <feColorMatrix
-              in="SourceAlpha"
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-              result="hardAlpha"
-            />
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+            <feBlend mode="normal" in2="shape" result="effect2_innerShadow_2765_53407" />
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
             <feOffset dy="-1.45973" />
             <feGaussianBlur stdDeviation="0.486577" />
             <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
-            <feColorMatrix
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
-            />
-            <feBlend
-              mode="normal"
-              in2="effect2_innerShadow_2765_53407"
-              result="effect3_innerShadow_2765_53407"
-            />
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+            <feBlend mode="normal" in2="effect2_innerShadow_2765_53407" result="effect3_innerShadow_2765_53407" />
           </filter>
           <filter
             id="filter3_i_2765_53407"
@@ -299,30 +167,13 @@ const ReferralInviteFriendsIcon = React.memo((props: SvgIconProps) => {
             colorInterpolationFilters="sRGB"
           >
             <feFlood floodOpacity="0" result="BackgroundImageFix" />
-            <feBlend
-              mode="normal"
-              in="SourceGraphic"
-              in2="BackgroundImageFix"
-              result="shape"
-            />
-            <feColorMatrix
-              in="SourceAlpha"
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-              result="hardAlpha"
-            />
+            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
             <feOffset />
             <feGaussianBlur stdDeviation="1.61964" />
             <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
-            <feColorMatrix
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
-            />
-            <feBlend
-              mode="normal"
-              in2="shape"
-              result="effect1_innerShadow_2765_53407"
-            />
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+            <feBlend mode="normal" in2="shape" result="effect1_innerShadow_2765_53407" />
           </filter>
           <filter
             id="filter4_dii_2765_53407"
@@ -334,66 +185,25 @@ const ReferralInviteFriendsIcon = React.memo((props: SvgIconProps) => {
             colorInterpolationFilters="sRGB"
           >
             <feFlood floodOpacity="0" result="BackgroundImageFix" />
-            <feColorMatrix
-              in="SourceAlpha"
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-              result="hardAlpha"
-            />
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
             <feOffset dy="-1.45973" />
             <feGaussianBlur stdDeviation="1.01228" />
             <feComposite in2="hardAlpha" operator="out" />
-            <feColorMatrix
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
-            />
-            <feBlend
-              mode="normal"
-              in2="BackgroundImageFix"
-              result="effect1_dropShadow_2765_53407"
-            />
-            <feBlend
-              mode="normal"
-              in="SourceGraphic"
-              in2="effect1_dropShadow_2765_53407"
-              result="shape"
-            />
-            <feColorMatrix
-              in="SourceAlpha"
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-              result="hardAlpha"
-            />
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_2765_53407" />
+            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_2765_53407" result="shape" />
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
             <feOffset dy="0.973154" />
             <feGaussianBlur stdDeviation="1.01228" />
             <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
-            <feColorMatrix
-              type="matrix"
-              values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.25 0"
-            />
-            <feBlend
-              mode="normal"
-              in2="shape"
-              result="effect2_innerShadow_2765_53407"
-            />
-            <feColorMatrix
-              in="SourceAlpha"
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-              result="hardAlpha"
-            />
+            <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.25 0" />
+            <feBlend mode="normal" in2="shape" result="effect2_innerShadow_2765_53407" />
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
             <feOffset dy="-0.729866" />
             <feGaussianBlur stdDeviation="1.01228" />
             <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
-            <feColorMatrix
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
-            />
-            <feBlend
-              mode="normal"
-              in2="effect2_innerShadow_2765_53407"
-              result="effect3_innerShadow_2765_53407"
-            />
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+            <feBlend mode="normal" in2="effect2_innerShadow_2765_53407" result="effect3_innerShadow_2765_53407" />
           </filter>
           <filter
             id="filter5_dii_2765_53407"
@@ -405,66 +215,25 @@ const ReferralInviteFriendsIcon = React.memo((props: SvgIconProps) => {
             colorInterpolationFilters="sRGB"
           >
             <feFlood floodOpacity="0" result="BackgroundImageFix" />
-            <feColorMatrix
-              in="SourceAlpha"
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-              result="hardAlpha"
-            />
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
             <feOffset dy="-1.41719" />
             <feGaussianBlur stdDeviation="1.01228" />
             <feComposite in2="hardAlpha" operator="out" />
-            <feColorMatrix
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
-            />
-            <feBlend
-              mode="normal"
-              in2="BackgroundImageFix"
-              result="effect1_dropShadow_2765_53407"
-            />
-            <feBlend
-              mode="normal"
-              in="SourceGraphic"
-              in2="effect1_dropShadow_2765_53407"
-              result="shape"
-            />
-            <feColorMatrix
-              in="SourceAlpha"
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-              result="hardAlpha"
-            />
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_2765_53407" />
+            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_2765_53407" result="shape" />
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
             <feOffset dy="-0.728839" />
             <feGaussianBlur stdDeviation="1.01228" />
             <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
-            <feColorMatrix
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
-            />
-            <feBlend
-              mode="normal"
-              in2="shape"
-              result="effect2_innerShadow_2765_53407"
-            />
-            <feColorMatrix
-              in="SourceAlpha"
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-              result="hardAlpha"
-            />
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+            <feBlend mode="normal" in2="shape" result="effect2_innerShadow_2765_53407" />
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
             <feOffset dy="0.971786" />
             <feGaussianBlur stdDeviation="1.01228" />
             <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
-            <feColorMatrix
-              type="matrix"
-              values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.25 0"
-            />
-            <feBlend
-              mode="normal"
-              in2="effect2_innerShadow_2765_53407"
-              result="effect3_innerShadow_2765_53407"
-            />
+            <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.25 0" />
+            <feBlend mode="normal" in2="effect2_innerShadow_2765_53407" result="effect3_innerShadow_2765_53407" />
           </filter>
           <filter
             id="filter6_dii_2765_53407"
@@ -476,109 +245,40 @@ const ReferralInviteFriendsIcon = React.memo((props: SvgIconProps) => {
             colorInterpolationFilters="sRGB"
           >
             <feFlood floodOpacity="0" result="BackgroundImageFix" />
-            <feColorMatrix
-              in="SourceAlpha"
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-              result="hardAlpha"
-            />
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
             <feOffset dy="-1.41719" />
             <feGaussianBlur stdDeviation="1.01228" />
             <feComposite in2="hardAlpha" operator="out" />
-            <feColorMatrix
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
-            />
-            <feBlend
-              mode="normal"
-              in2="BackgroundImageFix"
-              result="effect1_dropShadow_2765_53407"
-            />
-            <feBlend
-              mode="normal"
-              in="SourceGraphic"
-              in2="effect1_dropShadow_2765_53407"
-              result="shape"
-            />
-            <feColorMatrix
-              in="SourceAlpha"
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-              result="hardAlpha"
-            />
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_2765_53407" />
+            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_2765_53407" result="shape" />
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
             <feOffset dy="-0.728839" />
             <feGaussianBlur stdDeviation="1.01228" />
             <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
-            <feColorMatrix
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
-            />
-            <feBlend
-              mode="normal"
-              in2="shape"
-              result="effect2_innerShadow_2765_53407"
-            />
-            <feColorMatrix
-              in="SourceAlpha"
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-              result="hardAlpha"
-            />
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+            <feBlend mode="normal" in2="shape" result="effect2_innerShadow_2765_53407" />
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
             <feOffset dy="0.971786" />
             <feGaussianBlur stdDeviation="1.01228" />
             <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
-            <feColorMatrix
-              type="matrix"
-              values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.25 0"
-            />
-            <feBlend
-              mode="normal"
-              in2="effect2_innerShadow_2765_53407"
-              result="effect3_innerShadow_2765_53407"
-            />
+            <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.25 0" />
+            <feBlend mode="normal" in2="effect2_innerShadow_2765_53407" result="effect3_innerShadow_2765_53407" />
           </filter>
-          <linearGradient
-            id="paint0_linear_2765_53407"
-            x1="85.1323"
-            y1="97.3043"
-            x2="156.742"
-            y2="206.777"
-            gradientUnits="userSpaceOnUse"
-          >
+          <linearGradient id="paint0_linear_2765_53407" x1="85.1323" y1="97.3043" x2="156.742" y2="206.777" gradientUnits="userSpaceOnUse">
             <stop offset="0.485577" stopColor="#FFD946" />
             <stop offset="1" stopColor="#FFB750" />
           </linearGradient>
-          <linearGradient
-            id="paint1_linear_2765_53407"
-            x1="120.22"
-            y1="12.457"
-            x2="120.22"
-            y2="220.819"
-            gradientUnits="userSpaceOnUse"
-          >
+          <linearGradient id="paint1_linear_2765_53407" x1="120.22" y1="12.457" x2="120.22" y2="220.819" gradientUnits="userSpaceOnUse">
             <stop stopColor="#FF7272" />
             <stop offset="1" stopColor="#E40000" />
           </linearGradient>
-          <linearGradient
-            id="paint2_linear_2765_53407"
-            x1="184.605"
-            y1="30.0597"
-            x2="-230.911"
-            y2="558.917"
-            gradientUnits="userSpaceOnUse"
-          >
+          <linearGradient id="paint2_linear_2765_53407" x1="184.605" y1="30.0597" x2="-230.911" y2="558.917" gradientUnits="userSpaceOnUse">
             <stop stopColor="#FF4F57" />
             <stop offset="0.135396" stopColor="#FF5A57" />
             <stop offset="1" stopColor="#FFA25A" />
           </linearGradient>
-          <linearGradient
-            id="paint3_linear_2765_53407"
-            x1="120.281"
-            y1="54.8516"
-            x2="120.281"
-            y2="134.65"
-            gradientUnits="userSpaceOnUse"
-          >
+          <linearGradient id="paint3_linear_2765_53407" x1="120.281" y1="54.8516" x2="120.281" y2="134.65" gradientUnits="userSpaceOnUse">
             <stop stopColor="white" />
             <stop offset="1" stopColor="#666666" />
           </linearGradient>

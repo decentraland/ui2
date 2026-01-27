@@ -1,3 +1,3 @@
-export { ZoomControls } from "./ZoomControls"
-export { Position } from "./ZoomControls.types"
-export type { ZoomControlsProps } from "./ZoomControls.types"
+export { ZoomControls } from './ZoomControls'
+export { Position } from './ZoomControls.types'
+export type { ZoomControlsProps } from './ZoomControls.types'

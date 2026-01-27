@@ -1,188 +1,187 @@
-import { Avatar } from "@dcl/schemas"
-import { ScenesTable } from "./ScenesTable"
-import sceneThumbnail from "../../Assets/scene-thumbnail.png"
-import { gradient } from "../../theme/colors"
-import type { Meta, StoryObj } from "@storybook/react"
+import { Avatar } from '@dcl/schemas'
+import { ScenesTable } from './ScenesTable'
+import sceneThumbnail from '../../Assets/scene-thumbnail.png'
+import { gradient } from '../../theme/colors'
+import type { Meta, StoryObj } from '@storybook/react'
 
 const exampleAvatar: Avatar = {
   hasClaimedName: true,
-  description: "",
+  description: '',
   tutorialStep: 256,
-  name: "alelevyyyy",
-  userId: "0xe3fc7040653768efb2941a6c26fdb868ed36ca99",
-  email: "",
-  ethAddress: "0xe3fc7040653768efb2941a6c26fdb868ed36ca99",
+  name: 'alelevyyyy',
+  userId: '0xe3fc7040653768efb2941a6c26fdb868ed36ca99',
+  email: '',
+  ethAddress: '0xe3fc7040653768efb2941a6c26fdb868ed36ca99',
   version: 5,
   avatar: {
-    bodyShape: "urn:decentraland:off-chain:base-avatars:BaseFemale",
+    bodyShape: 'urn:decentraland:off-chain:base-avatars:BaseFemale',
     wearables: [
-      "urn:decentraland:off-chain:base-avatars:black_top",
-      "urn:decentraland:off-chain:base-avatars:kilt",
-      "urn:decentraland:off-chain:base-avatars:SchoolShoes",
-      "urn:decentraland:off-chain:base-avatars:matrix_sunglasses",
-      "urn:decentraland:off-chain:base-avatars:thunder_02_earring",
-      "urn:decentraland:off-chain:base-avatars:hair_undere",
-      "urn:decentraland:off-chain:base-avatars:f_eyes_06",
+      'urn:decentraland:off-chain:base-avatars:black_top',
+      'urn:decentraland:off-chain:base-avatars:kilt',
+      'urn:decentraland:off-chain:base-avatars:SchoolShoes',
+      'urn:decentraland:off-chain:base-avatars:matrix_sunglasses',
+      'urn:decentraland:off-chain:base-avatars:thunder_02_earring',
+      'urn:decentraland:off-chain:base-avatars:hair_undere',
+      'urn:decentraland:off-chain:base-avatars:f_eyes_06'
     ],
     forceRender: [],
     emotes: [
-      { slot: 0, urn: "handsair" },
-      { slot: 1, urn: "wave" },
-      { slot: 2, urn: "fistpump" },
-      { slot: 3, urn: "dance" },
-      { slot: 4, urn: "raiseHand" },
-      { slot: 5, urn: "clap" },
-      { slot: 6, urn: "money" },
-      { slot: 7, urn: "kiss" },
-      { slot: 8, urn: "headexplode" },
-      { slot: 9, urn: "shrug" },
+      { slot: 0, urn: 'handsair' },
+      { slot: 1, urn: 'wave' },
+      { slot: 2, urn: 'fistpump' },
+      { slot: 3, urn: 'dance' },
+      { slot: 4, urn: 'raiseHand' },
+      { slot: 5, urn: 'clap' },
+      { slot: 6, urn: 'money' },
+      { slot: 7, urn: 'kiss' },
+      { slot: 8, urn: 'headexplode' },
+      { slot: 9, urn: 'shrug' }
     ],
     snapshots: {
-      face256:
-        "https://profile-images.decentraland.org/entities/bafkreietha7mzh7q3lk4j236vut2znwqhbiapihg46p6yrv3j4lbwlzd34/face.png",
-      body: "https://profile-images.decentraland.org/entities/bafkreietha7mzh7q3lk4j236vut2znwqhbiapihg46p6yrv3j4lbwlzd34/body.png",
+      face256: 'https://profile-images.decentraland.org/entities/bafkreietha7mzh7q3lk4j236vut2znwqhbiapihg46p6yrv3j4lbwlzd34/face.png',
+      body: 'https://profile-images.decentraland.org/entities/bafkreietha7mzh7q3lk4j236vut2znwqhbiapihg46p6yrv3j4lbwlzd34/body.png'
     },
     eyes: {
       color: {
         r: 0.2235294133424759,
         g: 0.48627451062202454,
-        b: 0.6901960968971252,
-      },
+        b: 0.6901960968971252
+      }
     },
     hair: {
       color: {
         r: 0.32549020648002625,
         g: 0.2352941334247589,
-        b: 0.1764705926179886,
-      },
+        b: 0.1764705926179886
+      }
     },
     skin: {
       color: {
         r: 0.9490196108818054,
         g: 0.7607843279838562,
-        b: 0.6470588445663452,
-      },
-    },
+        b: 0.6470588445663452
+      }
+    }
   },
   blocked: [],
   interests: [],
   hasConnectedWeb3: true,
-  country: "",
-  employmentStatus: "",
-  gender: "",
-  pronouns: "",
-  relationshipStatus: "",
-  sexualOrientation: "",
-  language: "",
-  profession: "",
-  realName: "",
-  hobbies: "",
+  country: '',
+  employmentStatus: '',
+  gender: '',
+  pronouns: '',
+  relationshipStatus: '',
+  sexualOrientation: '',
+  language: '',
+  profession: '',
+  realName: '',
+  hobbies: '',
   birthdate: 0,
-  links: [],
+  links: []
 }
 
 const exampleRows = [
   {
-    key: "1",
-    sceneName: "My Galaxy World and mor things",
+    key: '1',
+    sceneName: 'My Galaxy World and mor things',
     thumbnail: sceneThumbnail,
     creator: exampleAvatar,
-    location: "alelevyyyyworldamazing.eth.dcl",
-    positionChange: 3,
+    location: 'alelevyyyyworldamazing.eth.dcl',
+    positionChange: 3
   },
   {
-    key: "2",
-    sceneName: "My Galaxy World and more and more and this is anoter",
+    key: '2',
+    sceneName: 'My Galaxy World and more and more and this is anoter',
     thumbnail: sceneThumbnail,
     creator: exampleAvatar,
-    location: "-17,5",
-    positionChange: -1,
+    location: '-17,5',
+    positionChange: -1
   },
   {
-    key: "3",
-    sceneName: "Eclair",
+    key: '3',
+    sceneName: 'Eclair',
     thumbnail: sceneThumbnail,
     creator: exampleAvatar,
-    location: "alelevyyyy.eth.dcl",
-    positionChange: 5,
+    location: 'alelevyyyy.eth.dcl',
+    positionChange: 5
   },
   {
-    key: "4",
-    sceneName: "Cupcake",
+    key: '4',
+    sceneName: 'Cupcake',
     thumbnail: sceneThumbnail,
     creator: exampleAvatar,
-    location: "87,56",
-  },
+    location: '87,56'
+  }
 ]
 
 const exampleRowsWithBorders = [
   {
-    key: "1",
-    sceneName: "Gold Border Scene",
+    key: '1',
+    sceneName: 'Gold Border Scene',
     thumbnail: sceneThumbnail,
     creator: exampleAvatar,
-    location: "alelevyyyyworldamazing.eth.dcl",
+    location: 'alelevyyyyworldamazing.eth.dcl',
     positionChange: 3,
-    borderColor: gradient.gold,
+    borderColor: gradient.gold
   },
   {
-    key: "2",
-    sceneName: "Silver Border Scene",
+    key: '2',
+    sceneName: 'Silver Border Scene',
     thumbnail: sceneThumbnail,
     creator: exampleAvatar,
-    location: "-17,5",
+    location: '-17,5',
     positionChange: -1,
-    borderColor: gradient.silver,
+    borderColor: gradient.silver
   },
   {
-    key: "3",
-    sceneName: "Bronze Border Scene",
+    key: '3',
+    sceneName: 'Bronze Border Scene',
     thumbnail: sceneThumbnail,
     creator: exampleAvatar,
-    location: "alelevyyyy.eth.dcl",
+    location: 'alelevyyyy.eth.dcl',
     positionChange: 5,
-    borderColor: gradient.bronze,
+    borderColor: gradient.bronze
   },
   {
-    key: "4",
-    sceneName: "No Border Scene",
+    key: '4',
+    sceneName: 'No Border Scene',
     thumbnail: sceneThumbnail,
     creator: exampleAvatar,
-    location: "87,56",
-  },
+    location: '87,56'
+  }
 ]
 
 const meta: Meta<typeof ScenesTable> = {
-  title: "Decentraland UI/Tables/Scenes Table",
+  title: 'Decentraland UI/Tables/Scenes Table',
   component: ScenesTable,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   parameters: {
-    layout: "fullscreen",
+    layout: 'fullscreen',
     globals: {
-      backgrounds: { value: "red" },
-    },
+      backgrounds: { value: 'red' }
+    }
   },
   decorators: [
-    (Story) => (
-      <div style={{ width: "100%", padding: "16px" }}>
+    Story => (
+      <div style={{ width: '100%', padding: '16px' }}>
         <Story />
       </div>
-    ),
-  ],
+    )
+  ]
 }
 
 type Story = StoryObj<typeof ScenesTable>
 
 const Default: Story = {
   args: {
-    rows: exampleRows,
-  },
+    rows: exampleRows
+  }
 }
 
 const WithColorBorders: Story = {
   args: {
-    rows: exampleRowsWithBorders,
-  },
+    rows: exampleRowsWithBorders
+  }
 }
 
 // eslint-disable-next-line import/no-default-export

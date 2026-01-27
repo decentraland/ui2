@@ -1,21 +1,12 @@
-import React from "react"
-import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon"
+import React from 'react'
+import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon'
 
 const NewCommentIcon = React.memo((props: SvgIconProps) => {
   return (
     <SvgIcon {...props}>
       <svg width="47" height="47" viewBox="0 0 47 47" fill="none" {...props}>
-        <circle
-          cx="23.5"
-          cy="23.5"
-          r="23.5"
-          fill="url(#paint0_linear_662_7058)"
-        />
-        <path
-          d="M18.3075 32.3125L16.6457 33.4204V32.3125H18.3075Z"
-          stroke="white"
-          strokeWidth="1.95833"
-        />
+        <circle cx="23.5" cy="23.5" r="23.5" fill="url(#paint0_linear_662_7058)" />
+        <path d="M18.3075 32.3125L16.6457 33.4204V32.3125H18.3075Z" stroke="white" strokeWidth="1.95833" />
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -29,14 +20,7 @@ const NewCommentIcon = React.memo((props: SvgIconProps) => {
           fill="#FCFCFC"
         />
         <defs>
-          <linearGradient
-            id="paint0_linear_662_7058"
-            x1="-1.23684"
-            y1="1.23684"
-            x2="47"
-            y2="47"
-            gradientUnits="userSpaceOnUse"
-          >
+          <linearGradient id="paint0_linear_662_7058" x1="-1.23684" y1="1.23684" x2="47" y2="47" gradientUnits="userSpaceOnUse">
             <stop stopColor="#34CE76" />
             <stop offset="1" stopColor="#229754" />
           </linearGradient>

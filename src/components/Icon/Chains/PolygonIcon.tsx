@@ -1,16 +1,10 @@
-import React from "react"
-import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon"
+import React from 'react'
+import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon'
 
 const PolygonIcon = React.memo((props: SvgIconProps) => {
   return (
     <SvgIcon {...props}>
-      <svg
-        width="40"
-        height="40"
-        viewBox="0 0 40 40"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+      <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g clipPath="url(#clip0_1474_35755)">
           <rect width="40" height="40" rx="20" fill="white" />
           <path
@@ -19,14 +13,7 @@ const PolygonIcon = React.memo((props: SvgIconProps) => {
           />
         </g>
         <defs>
-          <linearGradient
-            id="paint0_linear_1474_35755"
-            x1="0.0709752"
-            y1="20"
-            x2="39.929"
-            y2="20"
-            gradientUnits="userSpaceOnUse"
-          >
+          <linearGradient id="paint0_linear_1474_35755" x1="0.0709752" y1="20" x2="39.929" y2="20" gradientUnits="userSpaceOnUse">
             <stop stopColor="#A229C5" />
             <stop offset="1" stopColor="#7B3FE4" />
           </linearGradient>

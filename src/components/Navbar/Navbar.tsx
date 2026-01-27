@@ -1,17 +1,13 @@
-import React, { useCallback, useState } from "react"
-import { Toolbar } from "@mui/material"
-import { MainMenu } from "./MainMenu/MainMenu"
-import {
-  i18nChainSelectorDefault,
-  navbarMainTitlesI18N as i18nNavbarTitlesDefault,
-  navbarSubmenu,
-} from "./Navbar.defaults"
-import { ChainSelector } from "../ChainSelector"
-import { TabletAndBelow, useTabletAndBelowMediaQuery } from "../Media"
-import { UserMenu } from "../UserMenu"
-import { SubMenu } from "./SubMenu/SubMenu"
-import { i18n as i18nUserMenuDefault } from "../UserMenu/UserMenu.i18n"
-import { NavbarPages, NavbarProps } from "./Navbar.types"
+import React, { useCallback, useState } from 'react'
+import { Toolbar } from '@mui/material'
+import { MainMenu } from './MainMenu/MainMenu'
+import { i18nChainSelectorDefault, navbarMainTitlesI18N as i18nNavbarTitlesDefault, navbarSubmenu } from './Navbar.defaults'
+import { ChainSelector } from '../ChainSelector'
+import { TabletAndBelow, useTabletAndBelowMediaQuery } from '../Media'
+import { UserMenu } from '../UserMenu'
+import { SubMenu } from './SubMenu/SubMenu'
+import { i18n as i18nUserMenuDefault } from '../UserMenu/UserMenu.i18n'
+import { NavbarPages, NavbarProps } from './Navbar.types'
 import {
   AppBarDesktopWrapper,
   AppBarRightWrapper,
@@ -22,8 +18,8 @@ import {
   LogoLink,
   MenuIcon,
   MenuIconBar,
-  MenuModal,
-} from "./Navbar.styled"
+  MenuModal
+} from './Navbar.styled'
 
 const Navbar = React.memo((props: NavbarProps) => {
   const {
@@ -48,11 +44,7 @@ const Navbar = React.memo((props: NavbarProps) => {
   const isTabletAndBelow = useTabletAndBelowMediaQuery()
 
   const handleToggle = useCallback(
-    (
-      _e: React.MouseEvent<HTMLElement>,
-      show: boolean,
-      section: NavbarPages
-    ) => {
+    (_e: React.MouseEvent<HTMLElement>, show: boolean, section: NavbarPages) => {
       setToggle(show)
       setSelectedMenu(show && section)
     },
@@ -60,10 +52,7 @@ const Navbar = React.memo((props: NavbarProps) => {
   )
 
   const handleClickMenu = useCallback(
-    (
-      event: React.MouseEvent<HTMLElement, MouseEvent>,
-      options: { eventTrackingName: string; url?: string; isExternal?: boolean }
-    ) => {
+    (event: React.MouseEvent<HTMLElement, MouseEvent>, options: { eventTrackingName: string; url?: string; isExternal?: boolean }) => {
       onClickNavbarItem && onClickNavbarItem(event, options)
     },
     [onClickNavbarItem]
@@ -91,36 +80,22 @@ const Navbar = React.memo((props: NavbarProps) => {
 
   return (
     <>
-      <DclAppBar
-        isSubmenuOpen={toggle}
-        isMobileOpen={menuMobileOpen}
-        aria-label="navigation bar"
-      >
+      <DclAppBar isSubmenuOpen={toggle} isMobileOpen={menuMobileOpen} aria-label="navigation bar">
         <Toolbar>
           <AppBarWrapper>
             <TabletAndBelow>
               <AppBarTabletAndBelowWrapper>
-                <LogoLink
-                  isMobile
-                  href="https://decentraland.org"
-                  aria-label="Decentraland home"
-                >
+                <LogoLink isMobile href="https://decentraland.org" aria-label="Decentraland home">
                   <Logo />
                 </LogoLink>
-                <MenuIcon
-                  aria-label="toggle menu"
-                  onClick={(e) => handleMobileToggle(e, !menuMobileOpen)}
-                >
+                <MenuIcon aria-label="toggle menu" onClick={e => handleMobileToggle(e, !menuMobileOpen)}>
                   <MenuIconBar isOpen={menuMobileOpen} aria-label="menu bar" />
                   <MenuIconBar isOpen={menuMobileOpen} aria-label="menu bar" />
                 </MenuIcon>
               </AppBarTabletAndBelowWrapper>
             </TabletAndBelow>
             <AppBarDesktopWrapper>
-              <LogoLink
-                href="https://decentraland.org"
-                aria-label="Decentraland home"
-              >
+              <LogoLink href="https://decentraland.org" aria-label="Decentraland home">
                 <Logo />
               </LogoLink>
 
@@ -133,10 +108,7 @@ const Navbar = React.memo((props: NavbarProps) => {
               />
             </AppBarDesktopWrapper>
             <AppBarRightWrapper>
-              {isSignedIn &&
-              onSelectChain &&
-              chains?.length &&
-              selectedChain ? (
+              {isSignedIn && onSelectChain && chains?.length && selectedChain ? (
                 <ChainSelector
                   chains={chains}
                   selectedChain={selectedChain}
@@ -148,11 +120,7 @@ const Navbar = React.memo((props: NavbarProps) => {
               ) : null}
               <UserMenu
                 {...userMenuProps}
-                onClickOpen={
-                  isTabletAndBelow
-                    ? handleUserMenuOpen
-                    : userMenuProps.onClickOpen
-                }
+                onClickOpen={isTabletAndBelow ? handleUserMenuOpen : userMenuProps.onClickOpen}
                 isSignedIn={isSignedIn}
                 i18n={i18nUserMenu}
                 aria-label="user menu"
@@ -171,9 +139,7 @@ const Navbar = React.memo((props: NavbarProps) => {
 
       <MenuModal
         open={isTabletAndBelow && menuMobileOpen}
-        onClose={(event: React.MouseEvent<HTMLElement>) =>
-          handleMobileToggle(event, false)
-        }
+        onClose={(event: React.MouseEvent<HTMLElement>) => handleMobileToggle(event, false)}
         aria-label="mobile menu"
       >
         <>

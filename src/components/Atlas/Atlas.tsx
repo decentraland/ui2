@@ -1,31 +1,24 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react"
-import type { Layer, TileMapProps } from "react-tile-map"
-import CircularProgress from "@mui/material/CircularProgress"
-import { getColorByType, getTiles } from "./util"
-import {
-  createDynamicImport,
-  createLazyComponent,
-} from "../../utils/optionalDependency"
-import { AtlasColor, AtlasProps, AtlasStateProps } from "./Atlas.types"
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import type { Layer, TileMapProps } from 'react-tile-map'
+import CircularProgress from '@mui/material/CircularProgress'
+import { getColorByType, getTiles } from './util'
+import { createDynamicImport, createLazyComponent } from '../../utils/optionalDependency'
+import { AtlasColor, AtlasProps, AtlasStateProps } from './Atlas.types'
 
-const importTileMap =
-  createDynamicImport<typeof import("react-tile-map")>("react-tile-map")
-const importTileMapStyles = createDynamicImport("react-tile-map/lib/styles.css")
+const importTileMap = createDynamicImport<typeof import('react-tile-map')>('react-tile-map')
+const importTileMapStyles = createDynamicImport('react-tile-map/lib/styles.css')
 
 const Atlas = React.memo((props: AtlasProps) => {
   const { layers } = props
-  const atlasFallback = useMemo(
-    () => <CircularProgress size={24} color="inherit" />,
-    []
-  )
+  const atlasFallback = useMemo(() => <CircularProgress size={24} color="inherit" />, [])
   const LazyTileMap = useMemo(
     () =>
       createLazyComponent<TileMapProps>(
         {
-          packageName: "react-tile-map",
-          componentName: "Atlas",
+          packageName: 'react-tile-map',
+          componentName: 'Atlas'
         },
-        () => importTileMap().then((mod) => ({ default: mod.TileMap })),
+        () => importTileMap().then(mod => ({ default: mod.TileMap })),
         atlasFallback
       ),
     [atlasFallback]
@@ -36,18 +29,18 @@ const Atlas = React.memo((props: AtlasProps) => {
 
   const layer: Layer = useCallback(
     (x: number, y: number) => {
-      const id = x + "," + y
+      const id = x + ',' + y
       if (resolvedTiles && id in resolvedTiles) {
         const tile = resolvedTiles[id]
         return {
           color: getColorByType(tile.type),
           top: tile.top,
           left: tile.left,
-          topLeft: tile.topLeft,
+          topLeft: tile.topLeft
         }
       } else {
         return {
-          color: (x + y) % 2 === 0 ? AtlasColor.ODD : AtlasColor.EVEN,
+          color: (x + y) % 2 === 0 ? AtlasColor.ODD : AtlasColor.EVEN
         }
       }
     },
@@ -63,7 +56,7 @@ const Atlas = React.memo((props: AtlasProps) => {
     })
 
     if (!props.tiles && !tiles) {
-      getTiles().then((updatedTiles) => {
+      getTiles().then(updatedTiles => {
         if (cancelled) {
           return
         }

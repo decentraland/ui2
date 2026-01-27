@@ -1,4 +1,4 @@
-import React, { ComponentType, Suspense } from "react"
+import React, { ComponentType, Suspense } from 'react'
 
 type OptionalDependencyConfig = {
   packageName: string
@@ -11,7 +11,7 @@ class OptionalDependencyError extends Error {
       `The "${config.componentName}" component requires "${config.packageName}" to be installed. ` +
         `Please install it by running: npm install ${config.packageName}`
     )
-    this.name = "OptionalDependencyError"
+    this.name = 'OptionalDependencyError'
   }
 }
 
@@ -19,9 +19,9 @@ function createDynamicImport<TModule = unknown>(moduleName: string) {
   return () => {
     // Split base package from subpath to keep the dynamic import specific
     // (works with scoped packages and avoids a broad context import).
-    const parts = moduleName.split("/")
+    const parts = moduleName.split('/')
     const base = parts[0]
-    const rest = parts.slice(1).join("/")
+    const rest = parts.slice(1).join('/')
     const dynamicModule = rest ? `${base}/${rest}` : base
     return import(/* webpackMode: "lazy" */ dynamicModule) as Promise<TModule>
   }
@@ -33,10 +33,10 @@ function createLazyComponent<P extends object>(
   fallback: React.ReactNode = null
 ): React.FC<P> {
   const LazyComponent = React.lazy(() =>
-    importFn().catch((error) => {
+    importFn().catch(error => {
       if (
-        error?.code === "MODULE_NOT_FOUND" ||
-        error?.message?.includes("Cannot resolve module") ||
+        error?.code === 'MODULE_NOT_FOUND' ||
+        error?.message?.includes('Cannot resolve module') ||
         error?.message?.includes("Can't resolve")
       ) {
         throw new OptionalDependencyError(config)
@@ -45,7 +45,7 @@ function createLazyComponent<P extends object>(
     })
   ) as unknown as React.FC<P>
 
-  const WrappedComponent: React.FC<P> = (props) => (
+  const WrappedComponent: React.FC<P> = props => (
     <Suspense fallback={fallback}>
       <LazyComponent {...props} />
     </Suspense>

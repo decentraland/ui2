@@ -1,51 +1,48 @@
-import type { StorybookConfig } from "@storybook/react-webpack5"
+import type { StorybookConfig } from '@storybook/react-webpack5'
 
 // white all posible options for StorybookConfig
 // https://storybook.js.org/docs/react/configure/typescript#mainjs-configuration
 
 const config: StorybookConfig = {
-  stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
+  stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
   addons: [
-    "@storybook/addon-links",
+    '@storybook/addon-links',
     {
-      name: "@storybook/addon-essentials",
+      name: '@storybook/addon-essentials',
       options: {
         toolbars: false,
-        outline: false,
-      },
+        outline: false
+      }
     },
-    "@storybook/addon-themes",
+    '@storybook/addon-themes',
     {
-      name: "@storybook/addon-storysource",
+      name: '@storybook/addon-storysource',
       options: {
         loaderOptions: {
-          injectStoryParameters: false,
-        },
-      },
-    },
+          injectStoryParameters: false
+        }
+      }
+    }
   ],
   framework: {
-    name: "@storybook/react-webpack5",
-    options: {},
+    name: '@storybook/react-webpack5',
+    options: {}
   },
   typescript: {
-    reactDocgen: "react-docgen-typescript",
+    reactDocgen: 'react-docgen-typescript',
     reactDocgenTypescriptOptions: {
       compilerOptions: {
         allowSyntheticDefaultImports: false,
-        esModuleInterop: false,
+        esModuleInterop: false
       },
       shouldExtractLiteralValuesFromEnum: true,
       shouldRemoveUndefinedFromOptional: true,
-      propFilter: (prop) =>
-        prop.parent
-          ? !/node_modules\/(?!@mui)/.test(prop.parent.fileName)
-          : true,
-    },
+      propFilter: prop => (prop.parent ? !/node_modules\/(?!@mui)/.test(prop.parent.fileName) : true)
+    }
   },
   docs: {
-    autodocs: "tag",
-    defaultName: "Documentation",
-  },
+    autodocs: 'tag',
+    defaultName: 'Documentation'
+  }
 }
 export default config

@@ -1,17 +1,17 @@
-import { DiscordIcon } from "./DiscordIcon"
-import { GitHubIcon } from "./GitHubIcon"
-import { RedditIcon } from "./RedditIcon"
-import { XIcon } from "./XIcon"
-import { IconsContainer } from "../Icons.stories.styled"
-import type { Meta, StoryObj } from "@storybook/react"
+import { DiscordIcon } from './DiscordIcon'
+import { GitHubIcon } from './GitHubIcon'
+import { RedditIcon } from './RedditIcon'
+import { XIcon } from './XIcon'
+import { IconsContainer } from '../Icons.stories.styled'
+import type { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof DiscordIcon> = {
-  title: "Decentraland UI/Icons/Social",
+  title: 'Decentraland UI/Icons/Social',
   component: DiscordIcon,
   parameters: {
-    layout: "centered",
+    layout: 'centered'
   },
-  tags: ["autodocs"],
+  tags: ['autodocs']
 }
 
 type Story = StoryObj<typeof DiscordIcon>
@@ -19,15 +19,15 @@ type Story = StoryObj<typeof DiscordIcon>
 const Discord: Story = {}
 
 const GitHub: Story = {
-  render: () => <GitHubIcon />,
+  render: () => <GitHubIcon />
 }
 
 const Reddit: Story = {
-  render: () => <RedditIcon />,
+  render: () => <RedditIcon />
 }
 
 const X: Story = {
-  render: () => <XIcon />,
+  render: () => <XIcon />
 }
 
 const AllSocialIcons: Story = {
@@ -38,7 +38,7 @@ const AllSocialIcons: Story = {
       <GitHubIcon />
       <XIcon />
     </IconsContainer>
-  ),
+  )
 }
 
 const LargeSocialIcons: Story = {
@@ -49,7 +49,7 @@ const LargeSocialIcons: Story = {
       <GitHubIcon fontSize="large" />
       <XIcon fontSize="large" />
     </IconsContainer>
-  ),
+  )
 }
 
 // eslint-disable-next-line import/no-default-export
