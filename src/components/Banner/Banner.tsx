@@ -2,8 +2,8 @@ import React from "react"
 import { ContentfulLocale } from "@dcl/schemas"
 import CircularProgress from "@mui/material/CircularProgress"
 import { getAssetUrl } from "../../modules/contentful"
-import { createLazyComponent } from "../../utils/optionalDependency"
 import { useTabletAndBelowMediaQuery } from "../Media"
+import { ContentfulRichText } from "./ContentfulRichText"
 import { BannerProps, LowercasedAlignment } from "./Banner.types"
 import {
   BannerContainer,
@@ -15,19 +15,7 @@ import {
   Text,
   Title,
 } from "./Banner.styled"
-import type { ContentfulRichTextProps } from "./ContentfulRichText"
 import type { Property } from "csstype"
-
-const LazyContentfulRichText = createLazyComponent<ContentfulRichTextProps>(
-  {
-    packageName: "@contentful/rich-text-react-renderer",
-    componentName: "Banner",
-  },
-  () =>
-    import("./ContentfulRichText").then((mod) => ({
-      default: mod.ContentfulRichText,
-    }))
-)
 
 const convertAlignmentToFlex = (alignment: Property.TextAlign) => {
   switch (alignment) {
@@ -105,7 +93,7 @@ export const Banner: React.FC<BannerProps> = (props: BannerProps) => {
         </Title>
 
         <Text textAlign={textAlignment}>
-          {text ? <LazyContentfulRichText document={text} /> : null}
+          {text ? <ContentfulRichText document={text} /> : null}
         </Text>
 
         {fields.showButton[ContentfulLocale.enUS] &&

@@ -1,43 +1,31 @@
-import { useEffect, useState } from "react"
-import { createDynamicImport } from "../../utils/optionalDependency"
+import CircularProgress from "@mui/material/CircularProgress"
+import {
+  createDynamicImport,
+  createLazyComponent,
+} from "../../utils/optionalDependency"
 import type { Document } from "@contentful/rich-text-types"
 
 type ContentfulRichTextProps = {
   document: Document
 }
 
-const ContentfulRichText = ({ document }: ContentfulRichTextProps) => {
-  const [content, setContent] = useState<React.ReactNode>(null)
+const importContentful = createDynamicImport<
+  typeof import("@contentful/rich-text-react-renderer")
+>("@contentful/rich-text-react-renderer")
 
-  useEffect(() => {
-    const importContentful = createDynamicImport<{
-      documentToReactComponents: (doc: Document) => React.ReactNode
-    }>("@contentful/rich-text-react-renderer")
-    importContentful()
-      .then((mod) => {
-        setContent(mod.documentToReactComponents(document))
-      })
-      .catch((error: unknown) => {
-        const errorMessage =
-          error && typeof error === "object" && "message" in error
-            ? String((error as { message?: unknown }).message)
-            : ""
-        if (
-          (error && typeof error === "object" && "code" in error
-            ? (error as { code?: unknown }).code === "MODULE_NOT_FOUND"
-            : false) ||
-          errorMessage.includes("Cannot resolve module") ||
-          errorMessage.includes("Can't resolve")
-        ) {
-          console.warn(
-            `The ContentfulRichText component requires "@contentful/rich-text-react-renderer" to be installed.`
-          )
-        }
-      })
-  }, [document])
-
-  return <>{content}</>
-}
+const ContentfulRichText = createLazyComponent<ContentfulRichTextProps>(
+  {
+    packageName: "@contentful/rich-text-react-renderer",
+    componentName: "ContentfulRichText",
+  },
+  () =>
+    importContentful().then((mod) => ({
+      default: ({ document }: ContentfulRichTextProps) => (
+        <>{mod.documentToReactComponents(document)}</>
+      ),
+    })),
+  <CircularProgress size={16} color="inherit" />
+)
 
 export { ContentfulRichText }
 export type { ContentfulRichTextProps }

@@ -1,10 +1,9 @@
 import React, { useCallback, useMemo } from "react"
-import type { LottieComponentProps } from "lottie-react"
 import toggleAnimation from "./toggleAnimation.json"
 import { formatEther } from "../../utils/format"
 import {
-  createLazyComponent,
   createDynamicImport,
+  createLazyComponent,
 } from "../../utils/optionalDependency"
 import { CreditsIcon } from "../Icon/CreditsIcon"
 import { CreditsToggleProps } from "./CreditsToggle.types"
@@ -19,6 +18,7 @@ import {
   StyledSwitch,
   StyledText,
 } from "./CreditsToggle.styled"
+import type { LottieComponentProps } from "lottie-react"
 
 const Lottie = createLazyComponent<LottieComponentProps>(
   {

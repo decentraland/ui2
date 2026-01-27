@@ -17,6 +17,8 @@ class OptionalDependencyError extends Error {
 
 function createDynamicImport<TModule = unknown>(moduleName: string) {
   return () => {
+    // Split base package from subpath to keep the dynamic import specific
+    // (works with scoped packages and avoids a broad context import).
     const parts = moduleName.split("/")
     const base = parts[0]
     const rest = parts.slice(1).join("/")
