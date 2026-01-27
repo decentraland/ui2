@@ -1,16 +1,10 @@
-import React from "react"
-import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon"
+import React from 'react'
+import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon'
 
 const UtilityIcon = React.memo((props: SvgIconProps) => {
   return (
     <SvgIcon {...props}>
-      <svg
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g clipPath="url(#clip0_2_668)">
           <path
             d="M21.7069 18.3504L16.397 13.3034H15.4051L12.8604 15.7222V16.6649L18.1703 21.7119C18.561 22.0833 19.1922 22.0833 19.583 21.7119L21.7069 19.6931C22.0977 19.3313 22.0977 18.7218 21.7069 18.3504Z"

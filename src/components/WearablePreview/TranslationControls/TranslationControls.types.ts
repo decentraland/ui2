@@ -1,14 +1,14 @@
-import { IPreviewController } from "@dcl/schemas"
+import { IPreviewController } from '@dcl/schemas'
 
 enum HorizontalPosition {
-  TOP = "top",
-  BOTTOM = "bottom",
-  CENTER = "center",
+  TOP = 'top',
+  BOTTOM = 'bottom',
+  CENTER = 'center'
 }
 
 enum VerticalPosition {
-  LEFT = "left",
-  RIGHT = "right",
+  LEFT = 'left',
+  RIGHT = 'right'
 }
 
 type TranslationControlsProps = {

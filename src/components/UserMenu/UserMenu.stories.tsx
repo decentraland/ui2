@@ -1,90 +1,89 @@
-import { useState } from "react"
-import { Network } from "@dcl/schemas"
-import { Box } from "@mui/material"
-import { UserMenu } from "./UserMenu"
-import { i18n } from "./UserMenu.i18n"
-import { avatar } from "../../data/avatar"
-import { itemSoldNotificationPropsData } from "../../data/notifications"
-import { NotificationActiveTab } from "../Notifications"
-import { UserMenuProps } from "./UserMenu.types"
-import type { Meta, StoryObj } from "@storybook/react"
+import { useState } from 'react'
+import { Network } from '@dcl/schemas'
+import { Box } from '@mui/material'
+import { UserMenu } from './UserMenu'
+import { i18n } from './UserMenu.i18n'
+import { avatar } from '../../data/avatar'
+import { itemSoldNotificationPropsData } from '../../data/notifications'
+import { NotificationActiveTab } from '../Notifications'
+import { UserMenuProps } from './UserMenu.types'
+import type { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<UserMenuProps> = {
   component: UserMenu,
-  title: "Decentraland UI/UserMenu",
+  title: 'Decentraland UI/UserMenu',
   argTypes: {
     shouldDownloadBeforeRedirect: {
-      description:
-        "If true, downloads the file before redirecting. If false, only redirects without downloading.",
-      control: "boolean",
-      defaultValue: true,
-    },
+      description: 'If true, downloads the file before redirecting. If false, only redirects without downloading.',
+      control: 'boolean',
+      defaultValue: true
+    }
   },
   args: {
-    i18n: i18n,
+    i18n: i18n
   },
-  render: (args) => {
+  render: args => {
     return <UserMenu {...args} />
-  },
+  }
 }
 
 type Story = StoryObj<UserMenuProps>
 
 const SignedOut: Story = {
-  name: "Signed Out",
+  name: 'Signed Out'
 }
 
 const SignedIn: Story = {
-  name: "Signed In",
+  name: 'Signed In',
   args: {
     avatar: avatar,
-    isSignedIn: true,
-  },
+    isSignedIn: true
+  }
 }
 
 const SigningIn: Story = {
-  name: "Signing In",
+  name: 'Signing In',
   args: {
     avatar: avatar,
-    isSigningIn: true,
-  },
+    isSigningIn: true
+  }
 }
 
 const Disconnecting: Story = {
-  name: "Disconnecting",
+  name: 'Disconnecting',
   args: {
-    isDisconnecting: true,
-  },
+    isDisconnecting: true
+  }
 }
 
 const Guest: Story = {
-  name: "Guest",
+  name: 'Guest',
   args: {
     avatar: { ...avatar, hasClaimedName: false },
-    isSignedIn: true,
-  },
+    isSignedIn: true
+  }
 }
 
 const Complete: Story = {
-  name: "Complete",
+  name: 'Complete',
   args: {
     avatar: avatar,
     manaBalances: { [Network.ETHEREUM]: 1000, [Network.MATIC]: 2500 },
     creditsBalance: {
       balance: 100,
-      expiresAt: Date.now() + 1000 * 60 * 60 * 24 * 30,
+      expiresAt: Date.now() + 1000 * 60 * 60 * 24 * 30
     },
     hasActivity: true,
-    isSignedIn: true,
+    isSignedIn: true
   },
-  render: (args) => {
+  render: args => {
     const [openNotification, setOpenNotification] = useState(false)
     const [tab, setTab] = useState(NotificationActiveTab.NEWEST)
     return (
       <Box
         sx={{
-          width: "500px",
-          height: "90vh",
+          width: '500px',
+          height: '90vh'
         }}
       >
         <UserMenu
@@ -94,52 +93,43 @@ const Complete: Story = {
             isOpen: openNotification,
             isLoading: false,
             items: [itemSoldNotificationPropsData],
-            locale: "en",
+            locale: 'en',
             activeTab: tab,
             onBegin: console.log,
             onChangeTab: (_e, tab) => setTab(tab),
             onClick: () => setOpenNotification(true),
-            onClose: () => setOpenNotification(false),
+            onClose: () => setOpenNotification(false)
           }}
         />
       </Box>
     )
-  },
+  }
 }
 
 const WithSignInButtonHidden: Story = {
-  name: "With Sign In Button Hidden",
+  name: 'With Sign In Button Hidden',
   args: {
-    hideSignInButton: true,
-  },
+    hideSignInButton: true
+  }
 }
 
 const WithRedirectOnly: Story = {
-  name: "Redirect Only (No Download Before Redirect)",
+  name: 'Redirect Only (No Download Before Redirect)',
   args: {
     avatar: avatar,
     isSignedIn: true,
-    shouldDownloadBeforeRedirect: false,
+    shouldDownloadBeforeRedirect: false
   },
   parameters: {
     docs: {
       description: {
         story:
-          "UserMenu with download button that redirects without downloading the file first. The download will happen on the success page.",
-      },
-    },
-  },
+          'UserMenu with download button that redirects without downloading the file first. The download will happen on the success page.'
+      }
+    }
+  }
 }
 
 // eslint-disable-next-line import/no-default-export
 export default meta
-export {
-  SignedOut,
-  SignedIn,
-  SigningIn,
-  Disconnecting,
-  Guest,
-  Complete,
-  WithSignInButtonHidden,
-  WithRedirectOnly,
-}
+export { SignedOut, SignedIn, SigningIn, Disconnecting, Guest, Complete, WithSignInButtonHidden, WithRedirectOnly }

@@ -1,5 +1,5 @@
-import type { NotificationItemImageProps } from "../NotificationItemImage"
-import type { NotificationLocale } from "../Notifications.types"
+import type { NotificationItemImageProps } from '../NotificationItemImage'
+import type { NotificationLocale } from '../Notifications.types'
 
 type NotificationItemProps = NotificationItemImageProps & {
   timestamp: number

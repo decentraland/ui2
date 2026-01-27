@@ -1,12 +1,6 @@
-import { Avatar } from "@dcl/schemas"
+import { Avatar } from '@dcl/schemas'
 
-type AvatarFaceSize =
-  | "tiny"
-  | "small"
-  | "medium"
-  | "large"
-  | "massive"
-  | "responsive"
+type AvatarFaceSize = 'tiny' | 'small' | 'medium' | 'large' | 'massive' | 'responsive'
 
 type AvatarFaceProps = {
   avatar?: Avatar

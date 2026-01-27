@@ -1,68 +1,68 @@
-import type { Preview } from "@storybook/react"
-import { CssBaseline } from "@mui/material"
-import { Experimental_CssVarsProvider as CssVarsProvider } from "@mui/material/styles"
-import { withThemeFromJSXProvider } from "@storybook/addon-themes"
-import { light, dark } from "../src/theme"
+import type { Preview } from '@storybook/react'
+import { CssBaseline } from '@mui/material'
+import { Experimental_CssVarsProvider as CssVarsProvider } from '@mui/material/styles'
+import { withThemeFromJSXProvider } from '@storybook/addon-themes'
+import { light, dark } from '../src/theme'
 
 export const decorators = [
   withThemeFromJSXProvider({
     themes: {
       light: light,
-      dark: dark,
+      dark: dark
     },
-    defaultTheme: "light",
+    defaultTheme: 'light',
     Provider: CssVarsProvider,
-    GlobalStyles: CssBaseline,
-  }),
+    GlobalStyles: CssBaseline
+  })
 ]
 
 const preview: Preview = {
   parameters: {
-    actions: { argTypesRegex: "^on[A-Z].*" },
+    actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
       matchers: {
         color: /(background|color)$/i,
-        date: /Date$/i,
-      },
+        date: /Date$/i
+      }
     },
-    layout: "centered",
+    layout: 'centered',
     options: {
       storySort: {
-        method: "alphabetical",
-        order: ["Decentraland UI", "Material UI"],
-      },
+        method: 'alphabetical',
+        order: ['Decentraland UI', 'Material UI']
+      }
     },
     backgrounds: {
-      default: "Theme background",
+      default: 'Theme background',
       values: [
         {
-          name: "Theme background",
-          value: "var(--mui-palette-background-default, #f0f0f0)",
+          name: 'Theme background',
+          value: 'var(--mui-palette-background-default, #f0f0f0)'
         },
         {
-          name: "Theme surface",
-          value: "var(--mui-palette-background-paper, #ffffff)",
+          name: 'Theme surface',
+          value: 'var(--mui-palette-background-paper, #ffffff)'
         },
         {
-          name: "light",
-          value: "#f0f0f0",
+          name: 'light',
+          value: '#f0f0f0'
         },
         {
-          name: "dark",
-          value: "#1a091c",
+          name: 'dark',
+          value: '#1a091c'
         },
         {
-          name: "Decentraland default",
-          value: "rgb(24, 20, 26)",
+          name: 'Decentraland default',
+          value: 'rgb(24, 20, 26)'
         },
         {
-          name: "Decentraland new",
-          value: "#1a091c",
-        },
-      ],
-    },
+          name: 'Decentraland new',
+          value: '#1a091c'
+        }
+      ]
+    }
   },
-  decorators: decorators,
+  decorators: decorators
 }
 
 export default preview

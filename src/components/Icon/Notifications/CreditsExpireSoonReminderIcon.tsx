@@ -1,5 +1,5 @@
-import React from "react"
-import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon"
+import React from 'react'
+import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon'
 
 const CreditsExpireSoonReminderIcon = React.memo((props: SvgIconProps) => {
   return (
@@ -12,32 +12,11 @@ const CreditsExpireSoonReminderIcon = React.memo((props: SvgIconProps) => {
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
       >
-        <rect
-          x="0.201172"
-          y="0.0332031"
-          width="40"
-          height="40"
-          rx="20"
-          fill="url(#paint0_radial_1376_14710)"
-        />
-        <rect
-          x="0.201172"
-          y="0.0332031"
-          width="39.9998"
-          height="40.0015"
-          fill="url(#pattern0_1376_14710)"
-        />
+        <rect x="0.201172" y="0.0332031" width="40" height="40" rx="20" fill="url(#paint0_radial_1376_14710)" />
+        <rect x="0.201172" y="0.0332031" width="39.9998" height="40.0015" fill="url(#pattern0_1376_14710)" />
         <defs>
-          <pattern
-            id="pattern0_1376_14710"
-            patternContentUnits="objectBoundingBox"
-            width="1"
-            height="1"
-          >
-            <use
-              xlinkHref="#image0_1376_14710"
-              transform="translate(-0.267316 -0.265668) scale(0.00323081)"
-            />
+          <pattern id="pattern0_1376_14710" patternContentUnits="objectBoundingBox" width="1" height="1">
+            <use xlinkHref="#image0_1376_14710" transform="translate(-0.267316 -0.265668) scale(0.00323081)" />
           </pattern>
           <radialGradient
             id="paint0_radial_1376_14710"

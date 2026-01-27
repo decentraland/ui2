@@ -1,16 +1,13 @@
-import {
-  ChainSelectorProps,
-  ChainSelectori18n,
-} from "../ChainSelector/ChainSelector.types"
-import { UserMenuI18N, UserMenuProps } from "../UserMenu/UserMenu.types"
+import { ChainSelectorProps, ChainSelectori18n } from '../ChainSelector/ChainSelector.types'
+import { UserMenuI18N, UserMenuProps } from '../UserMenu/UserMenu.types'
 
 enum NavbarPages {
-  MARKETPLACE = "marketplace",
-  CREATE = "create",
-  EXPLORE = "explore",
-  LEARN = "learn",
-  GOVERNANCE = "governance",
-  EXTRA = "extra",
+  MARKETPLACE = 'marketplace',
+  CREATE = 'create',
+  EXPLORE = 'explore',
+  LEARN = 'learn',
+  GOVERNANCE = 'governance',
+  EXTRA = 'extra'
 }
 
 type NavbarMenuI18nProps = Record<NavbarPages, string>
@@ -50,7 +47,7 @@ type NavbarSubmenuProps = {
   governance: NavbarSubMenuItemsProps
 }
 
-type NavbarProps = Omit<UserMenuProps, "i18n"> &
+type NavbarProps = Omit<UserMenuProps, 'i18n'> &
   Partial<ChainSelectorProps> & {
     i18nNavbar?: NavbarMenuI18nProps
     submenuItems?: NavbarSubmenuProps
@@ -64,9 +61,4 @@ type NavbarProps = Omit<UserMenuProps, "i18n"> &
   }
 
 export { NavbarPages }
-export type {
-  NavbarMenuI18nProps,
-  NavbarSubMenuItemsProps,
-  NavbarSubmenuProps,
-  NavbarProps,
-}
+export type { NavbarMenuI18nProps, NavbarSubMenuItemsProps, NavbarSubmenuProps, NavbarProps }

@@ -1,4 +1,4 @@
-import { BannerFields, ContentfulAsset, ContentfulLocale } from "@dcl/schemas"
+import { BannerFields, ContentfulAsset, ContentfulLocale } from '@dcl/schemas'
 
 type BannerProps = {
   fields: BannerFields | null
@@ -9,6 +9,6 @@ type BannerProps = {
   locale?: ContentfulLocale
 }
 
-type LowercasedAlignment = "left" | "center" | "right"
+type LowercasedAlignment = 'left' | 'center' | 'right'
 
 export type { BannerProps, BannerFields, LowercasedAlignment }

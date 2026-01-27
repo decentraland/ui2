@@ -1,4 +1,4 @@
-import { Rarity } from "@dcl/schemas"
+import { Rarity } from '@dcl/schemas'
 
 type NotificationItemNFTLinkProps = {
   link: string

@@ -1,16 +1,11 @@
-import React from "react"
-import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon"
+import React from 'react'
+import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon'
 
 const ProposalFinishedIcon = React.memo((props: SvgIconProps) => {
   return (
     <SvgIcon {...props}>
       <svg viewBox="0 0 47 47" fill="none">
-        <circle
-          cx="23.5"
-          cy="23.5"
-          r="23.5"
-          fill="url(#paint0_linear_662_7055)"
-        />
+        <circle cx="23.5" cy="23.5" r="23.5" fill="url(#paint0_linear_662_7055)" />
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -22,14 +17,7 @@ const ProposalFinishedIcon = React.memo((props: SvgIconProps) => {
           fill="#FCFCFC"
         />
         <defs>
-          <linearGradient
-            id="paint0_linear_662_7055"
-            x1="0"
-            y1="0"
-            x2="47"
-            y2="47"
-            gradientUnits="userSpaceOnUse"
-          >
+          <linearGradient id="paint0_linear_662_7055" x1="0" y1="0" x2="47" y2="47" gradientUnits="userSpaceOnUse">
             <stop stopColor="#FF7439" />
             <stop offset="1" stopColor="#BF5122" />
           </linearGradient>

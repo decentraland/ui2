@@ -1,10 +1,10 @@
-import { memo } from "react"
-import Typography from "@mui/material/Typography"
-import { Box } from "@mui/material"
-import { AvatarFace } from "../AvatarFace"
-import { LocationIcon } from "../Icon"
-import { JumpIn } from "../JumpIn/JumpIn"
-import { SceneCardHoverElement, SceneCardProps } from "./SceneCard.types"
+import { memo } from 'react'
+import Typography from '@mui/material/Typography'
+import { Box } from '@mui/material'
+import { AvatarFace } from '../AvatarFace'
+import { LocationIcon } from '../Icon'
+import { JumpIn } from '../JumpIn/JumpIn'
+import { SceneCardHoverElement, SceneCardProps } from './SceneCard.types'
 import {
   AvatarAndLocationRow,
   AvatarContainer,
@@ -24,8 +24,8 @@ import {
   SceneTitle,
   StyledCardActionArea,
   StyledCardContent,
-  StyledCardMedia,
-} from "./SceneCard.styled"
+  StyledCardMedia
+} from './SceneCard.styled'
 
 const SceneCard = memo((props: SceneCardProps) => {
   const {
@@ -40,47 +40,36 @@ const SceneCard = memo((props: SceneCardProps) => {
     rightBadge,
     showOnHover = [],
     onJumpInTrack,
-    onClick,
+    onClick
   } = props
 
-  const isWorld = coordinates?.includes(".eth.dcl")
-  const jumpInUrl = isWorld
-    ? `https://decentraland.org/jump?realm=${coordinates}`
-    : `https://decentraland.org/jump?position=${coordinates}`
+  const isWorld = coordinates?.includes('.eth.dcl')
+  const jumpInUrl = isWorld ? `https://decentraland.org/jump?realm=${coordinates}` : `https://decentraland.org/jump?position=${coordinates}`
 
-  const shouldShowOnHover = (element: SceneCardHoverElement) =>
-    showOnHover.includes(element)
+  const shouldShowOnHover = (element: SceneCardHoverElement) => showOnHover.includes(element)
 
-  const hasVisibleButton = !shouldShowOnHover("jumpInButton")
+  const hasVisibleButton = !shouldShowOnHover('jumpInButton')
 
   return (
     <CardContainer withShadow={withShadow} borderColor={borderColor}>
-      {cornerBadge && (
-        <CornerBadgeContainer>{cornerBadge}</CornerBadgeContainer>
-      )}
-      <StyledCardActionArea
-        hasVisibleButton={hasVisibleButton}
-        onClick={onClick}
-      >
+      {cornerBadge && <CornerBadgeContainer>{cornerBadge}</CornerBadgeContainer>}
+      <StyledCardActionArea hasVisibleButton={hasVisibleButton} onClick={onClick}>
         {(leftBadge !== undefined || rightBadge !== undefined) && (
           <BadgesContainer>
             {leftBadge !== undefined && (
-              <LeftBadge showOnHover={shouldShowOnHover("leftBadge")}>
+              <LeftBadge showOnHover={shouldShowOnHover('leftBadge')}>
                 <Box component="span">{leftBadge}</Box>
               </LeftBadge>
             )}
             {rightBadge !== undefined && (
-              <RightBadge showOnHover={shouldShowOnHover("rightBadge")}>
+              <RightBadge showOnHover={shouldShowOnHover('rightBadge')}>
                 <Box component="span">{rightBadge}</Box>
               </RightBadge>
             )}
           </BadgesContainer>
         )}
         <MediaContainer>
-          <StyledCardMedia
-            image={image}
-            shrinkOnHover={shouldShowOnHover("jumpInButton")}
-          />
+          <StyledCardMedia image={image} shrinkOnHover={shouldShowOnHover('jumpInButton')} />
         </MediaContainer>
         <StyledCardContent>
           <ContentContainer>
@@ -91,47 +80,37 @@ const SceneCard = memo((props: SceneCardProps) => {
                 </Typography>
               </SceneTitle>
               <AvatarAndLocationRow>
-                <AvatarContainer showOnHover={shouldShowOnHover("avatar")}>
+                <AvatarContainer showOnHover={shouldShowOnHover('avatar')}>
                   <AvatarFace size="small" avatar={avatar} />
                   <AvatarTextContainer>
                     <Typography variant="body2">
-                      by{" "}
-                      <AvatarLink
-                        href={`https://decentraland.org/profile/accounts/${avatar?.ethAddress}`}
-                      >
-                        {avatar?.name}
-                      </AvatarLink>
+                      by <AvatarLink href={`https://decentraland.org/profile/accounts/${avatar?.ethAddress}`}>{avatar?.name}</AvatarLink>
                     </Typography>
                   </AvatarTextContainer>
                 </AvatarContainer>
                 {coordinates && (
-                  <LocationChipContainer
-                    showOnHover={shouldShowOnHover("location")}
-                  >
+                  <LocationChipContainer showOnHover={shouldShowOnHover('location')}>
                     <LocationChip
                       label={coordinates}
                       size="small"
                       icon={<LocationIcon />}
                       onClick={() => {
-                        window.open(jumpInUrl, "_blank")
+                        window.open(jumpInUrl, '_blank')
                       }}
                     />
                   </LocationChipContainer>
                 )}
               </AvatarAndLocationRow>
             </SceneInfoContainer>
-            <JumpInButtonContainer
-              showOnHover={shouldShowOnHover("jumpInButton")}
-            >
+            <JumpInButtonContainer showOnHover={shouldShowOnHover('jumpInButton')}>
               <JumpIn
                 position={coordinates}
                 variant="button"
                 onTrack={onJumpInTrack}
                 modalProps={{
-                  title: "Download Decentraland to Jump In",
-                  description:
-                    "Once you've installed and launched Decentraland, you can jump straight to the scene in-world!",
-                  buttonLabel: "Download",
+                  title: 'Download Decentraland to Jump In',
+                  description: "Once you've installed and launched Decentraland, you can jump straight to the scene in-world!",
+                  buttonLabel: 'Download'
                 }}
               />
             </JumpInButtonContainer>
@@ -142,6 +121,6 @@ const SceneCard = memo((props: SceneCardProps) => {
   )
 })
 
-SceneCard.displayName = "SceneCard"
+SceneCard.displayName = 'SceneCard'
 
 export { SceneCard }

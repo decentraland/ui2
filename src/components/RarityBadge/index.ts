@@ -1,2 +1,2 @@
-export * from "./RarityBadge"
-export * from "./RarityBadge.types"
+export * from './RarityBadge'
+export * from './RarityBadge.types'

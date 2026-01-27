@@ -1,13 +1,8 @@
-import { ReactNode } from "react"
-import { Avatar } from "@dcl/schemas"
-import { JumpInTrackingData } from "../JumpIn/JumpIn.types"
+import { ReactNode } from 'react'
+import { Avatar } from '@dcl/schemas'
+import { JumpInTrackingData } from '../JumpIn/JumpIn.types'
 
-type SceneCardHoverElement =
-  | "leftBadge"
-  | "rightBadge"
-  | "avatar"
-  | "location"
-  | "jumpInButton"
+type SceneCardHoverElement = 'leftBadge' | 'rightBadge' | 'avatar' | 'location' | 'jumpInButton'
 
 interface SceneCardProps {
   image: string

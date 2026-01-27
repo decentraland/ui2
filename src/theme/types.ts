@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { SupportedColorScheme } from "@mui/material"
+import { SupportedColorScheme } from '@mui/material'
 
 type Theme =
   | {

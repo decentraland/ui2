@@ -1,15 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import {
-  EmoteEvents,
-  IPreviewController,
-  PreviewMessagePayload,
-  PreviewMessageType,
-  sendMessage,
-} from "@dcl/schemas/dist/dapps/preview"
-import { SocialEmoteAnimation } from "@dcl/schemas/dist/dapps/preview/social-emote-animation"
-import { Metrics } from "@dcl/schemas/dist/platform/item/metrics"
-import { IFuture, default as future } from "fp-future"
-import mitt, { Emitter } from "mitt"
+import { EmoteEvents, IPreviewController, PreviewMessagePayload, PreviewMessageType, sendMessage } from '@dcl/schemas/dist/dapps/preview'
+import { SocialEmoteAnimation } from '@dcl/schemas/dist/dapps/preview/social-emote-animation'
+import { Metrics } from '@dcl/schemas/dist/platform/item/metrics'
+import { IFuture, default as future } from 'fp-future'
+import mitt, { Emitter } from 'mitt'
 
 const promises = new Map<string, IFuture<any>>()
 const emoteEvents = new Map<MessageEventSource, Emitter<EmoteEvents>>()
@@ -31,8 +25,7 @@ function processMessage(event: MessageEvent) {
     try {
       switch (event.data.type as PreviewMessageType) {
         case PreviewMessageType.CONTROLLER_RESPONSE: {
-          const payload = event.data
-            .payload as PreviewMessagePayload<PreviewMessageType.CONTROLLER_RESPONSE>
+          const payload = event.data.payload as PreviewMessagePayload<PreviewMessageType.CONTROLLER_RESPONSE>
           const { id } = payload
           const promise = promises.get(id)
           if (promise) {
@@ -46,8 +39,7 @@ function processMessage(event: MessageEvent) {
           break
         }
         case PreviewMessageType.EMOTE_EVENT: {
-          const payload = event.data
-            .payload as PreviewMessagePayload<PreviewMessageType.EMOTE_EVENT>
+          const payload = event.data.payload as PreviewMessagePayload<PreviewMessageType.EMOTE_EVENT>
           const { type, payload: eventPayload } = payload
           const events = event.source ? emoteEvents.get(event.source) : null
           if (events && type) {
@@ -61,11 +53,8 @@ function processMessage(event: MessageEvent) {
             controllerReadyMap.set(event.source, true)
 
             // Process any pending messages for this iframe
-            const pendingMessages =
-              pendingMessagesBySource.get(event.source) || []
-            const messagesToProcess = pendingMessages.filter(
-              (msg) => msg.data?.type !== PreviewMessageType.LOAD
-            )
+            const pendingMessages = pendingMessagesBySource.get(event.source) || []
+            const messagesToProcess = pendingMessages.filter(msg => msg.data?.type !== PreviewMessageType.LOAD)
             messagesToProcess.forEach(processMessage)
 
             // Clear pending messages for this iframe
@@ -77,7 +66,7 @@ function processMessage(event: MessageEvent) {
         // nothing to do, invalid message
       }
     } catch (error) {
-      console.error("Error processing WearablePreview message:", error)
+      console.error('Error processing WearablePreview message:', error)
     }
   }
 }
@@ -105,43 +94,43 @@ const handleControllerMessage = (event: MessageEvent) => {
 }
 
 // Use addEventListener to allow multiple message listeners to coexist
-if (typeof window !== "undefined") {
-  window.addEventListener("message", handleControllerMessage, false)
+if (typeof window !== 'undefined') {
+  window.addEventListener('message', handleControllerMessage, false)
 }
 
 let nonce = 0
 function createSendRequest(id: string) {
   return function sendRequest<T>(
-    namespace: "scene" | "emote",
+    namespace: 'scene' | 'emote',
     method:
-      | "getScreenshot"
-      | "getMetrics"
-      | "getLength"
-      | "changeZoom"
-      | "panCamera"
-      | "changeCameraPosition"
-      | "cleanup"
-      | "isPlaying"
-      | "goTo"
-      | "play"
-      | "pause"
-      | "stop"
-      | "enableSound"
-      | "disableSound"
-      | "hasSound"
-      | "setUsername"
-      | "isSocialEmote"
-      | "getSocialEmoteAnimations"
-      | "getPlayingSocialEmoteAnimation",
+      | 'getScreenshot'
+      | 'getMetrics'
+      | 'getLength'
+      | 'changeZoom'
+      | 'panCamera'
+      | 'changeCameraPosition'
+      | 'cleanup'
+      | 'isPlaying'
+      | 'goTo'
+      | 'play'
+      | 'pause'
+      | 'stop'
+      | 'enableSound'
+      | 'disableSound'
+      | 'hasSound'
+      | 'setUsername'
+      | 'isSocialEmote'
+      | 'getSocialEmoteAnimations'
+      | 'getPlayingSocialEmoteAnimation',
     params: any[]
   ) {
     const iframe = document.getElementById(id) as HTMLIFrameElement
     if (!iframe || !iframe.contentWindow) {
-      const error = new Error("iframe not found or not accessible")
+      const error = new Error('iframe not found or not accessible')
       return Promise.reject(error)
     }
 
-    const messageId = id + "-" + nonce
+    const messageId = id + '-' + nonce
     const promise = future<T>()
     promises.set(messageId, promise)
     const type = PreviewMessageType.CONTROLLER_REQUEST
@@ -166,8 +155,7 @@ function createSendRequest(id: string) {
     try {
       sendMessage(iframe.contentWindow, type, message as any)
     } catch (error) {
-      const errorMessage =
-        error instanceof Error ? error.message : String(error)
+      const errorMessage = error instanceof Error ? error.message : String(error)
       promise.reject(new Error(`Failed to send message: ${errorMessage}`))
       promises.delete(messageId)
       clearTimeout(timeout)
@@ -188,9 +176,7 @@ function createController(id: string): IPreviewController {
   // Only clean up promises as they're keyed by iframe id
   promises.clear()
 
-  const events = iframe.contentWindow
-    ? (emoteEvents.get(iframe.contentWindow) ?? mitt<EmoteEvents>())
-    : mitt<EmoteEvents>()
+  const events = iframe.contentWindow ? (emoteEvents.get(iframe.contentWindow) ?? mitt<EmoteEvents>()) : mitt<EmoteEvents>()
   if (iframe.contentWindow) {
     emoteEvents.set(iframe.contentWindow, events)
   }
@@ -200,75 +186,67 @@ function createController(id: string): IPreviewController {
   return {
     scene: {
       getScreenshot(width: number, height: number) {
-        return sendRequest<string>("scene", "getScreenshot", [width, height])
+        return sendRequest<string>('scene', 'getScreenshot', [width, height])
       },
       getMetrics() {
-        return sendRequest<Metrics>("scene", "getMetrics", [])
+        return sendRequest<Metrics>('scene', 'getMetrics', [])
       },
       changeZoom: function (zoom) {
-        return sendRequest("scene", "changeZoom", [zoom])
+        return sendRequest('scene', 'changeZoom', [zoom])
       },
       panCamera: function (offset) {
-        return sendRequest("scene", "panCamera", [offset])
+        return sendRequest('scene', 'panCamera', [offset])
       },
       changeCameraPosition: function (position) {
-        return sendRequest("scene", "changeCameraPosition", [position])
+        return sendRequest('scene', 'changeCameraPosition', [position])
       },
       cleanup() {
-        return sendRequest<void>("scene", "cleanup", [])
+        return sendRequest<void>('scene', 'cleanup', [])
       },
       setUsername: function (username: string) {
-        return sendRequest<void>("scene", "setUsername", [username])
-      },
+        return sendRequest<void>('scene', 'setUsername', [username])
+      }
     },
     emote: {
       getLength() {
-        return sendRequest<number>("emote", "getLength", [])
+        return sendRequest<number>('emote', 'getLength', [])
       },
       isPlaying() {
-        return sendRequest<boolean>("emote", "isPlaying", [])
+        return sendRequest<boolean>('emote', 'isPlaying', [])
       },
       goTo(seconds: number) {
-        return sendRequest<void>("emote", "goTo", [seconds])
+        return sendRequest<void>('emote', 'goTo', [seconds])
       },
       play() {
-        return sendRequest<void>("emote", "play", [])
+        return sendRequest<void>('emote', 'play', [])
       },
       pause() {
-        return sendRequest<void>("emote", "pause", [])
+        return sendRequest<void>('emote', 'pause', [])
       },
       stop() {
-        return sendRequest<void>("emote", "stop", [])
+        return sendRequest<void>('emote', 'stop', [])
       },
       enableSound() {
-        return sendRequest<void>("emote", "enableSound", [])
+        return sendRequest<void>('emote', 'enableSound', [])
       },
       disableSound() {
-        return sendRequest<void>("emote", "disableSound", [])
+        return sendRequest<void>('emote', 'disableSound', [])
       },
       hasSound() {
-        return sendRequest<boolean>("emote", "hasSound", [])
+        return sendRequest<boolean>('emote', 'hasSound', [])
       },
       isSocialEmote() {
-        return sendRequest<boolean>("emote", "isSocialEmote", [])
+        return sendRequest<boolean>('emote', 'isSocialEmote', [])
       },
       getSocialEmoteAnimations() {
-        return sendRequest<SocialEmoteAnimation[] | null>(
-          "emote",
-          "getSocialEmoteAnimations",
-          []
-        )
+        return sendRequest<SocialEmoteAnimation[] | null>('emote', 'getSocialEmoteAnimations', [])
       },
       getPlayingSocialEmoteAnimation() {
-        return sendRequest<SocialEmoteAnimation | null>(
-          "emote",
-          "getPlayingSocialEmoteAnimation",
-          []
-        )
+        return sendRequest<SocialEmoteAnimation | null>('emote', 'getPlayingSocialEmoteAnimation', [])
       },
       emote: null,
-      events,
-    },
+      events
+    }
   }
 }
 

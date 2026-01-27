@@ -1,46 +1,46 @@
-import { AccessRestoredIcon } from "./AccessRestoredIcon"
-import { AccessRestrictedIcon } from "./AccessRestrictedIcon"
-import { BidAcceptedIcon } from "./BidAcceptedIcon"
-import { BidReceivedIcon } from "./BidReceivedIcon"
-import { CoauthorIcon } from "./CoauthorIcon"
-import { EmptyInboxIcon } from "./EmptyInboxIcon"
-import { EventCancelledIcon } from "./EventCancelledIcon"
-import { EventStartedIcon } from "./EventStartedIcon"
-import { EventStartsSoonIcon } from "./EventStartsSoonIcon"
-import { GovernanceIcon } from "./GovernanceIcon"
-import { HistoryIcon } from "./HistoryIcon"
-import { ItemAirdroppedIcon } from "./ItemAirdroppedIcon"
-import { ItemSoldIcon } from "./ItemSoldIcon"
-import { LandRentedIcon } from "./LandRentedIcon"
-import { ManaMainnetIcon } from "./ManaMainnetIcon"
-import { ManaPolygonIcon } from "./ManaPolygonIcon"
-import { MissingResourcesIcon } from "./MissingResourcesIcon"
-import { NewCommentIcon } from "./NewCommentIcon"
-import { NewNotificationIcon } from "./NewNotificationIcon"
-import { NotificationBellActiveIcon } from "./NotificationBellActiveIcon"
-import { NotificationBellIcon } from "./NotificationBellIcon"
-import { PermissionGrantedIcon } from "./PermissionGrantedIcon"
-import { PermissionRevokedIcon } from "./PermissionRevokedIcon"
-import { PitchIcon } from "./PitchIcon"
-import { ProjectEnactedIcon } from "./ProjectEnactedIcon"
-import { ProposalFinishedIcon } from "./ProposalFinishedIcon"
-import { ReferralInvitedUserAcceptedIcon } from "./ReferralInvitedUserAcceptedIcon"
-import { ReferralInviteFriendsIcon } from "./ReferralInviteFriendsIcon"
-import { RentPeriodEndingIcon } from "./RentPeriodEndingIcon"
-import { RewardIcon } from "./RewardIcon"
-import { StreamingIcon } from "./StreamingIcon"
-import { TenderIcon } from "./TenderIcon"
-import { VotingEndedIcon } from "./VotingEndedIcon"
-import { IconsContainer } from "../Icons.stories.styled"
-import type { Meta, StoryObj } from "@storybook/react"
+import { AccessRestoredIcon } from './AccessRestoredIcon'
+import { AccessRestrictedIcon } from './AccessRestrictedIcon'
+import { BidAcceptedIcon } from './BidAcceptedIcon'
+import { BidReceivedIcon } from './BidReceivedIcon'
+import { CoauthorIcon } from './CoauthorIcon'
+import { EmptyInboxIcon } from './EmptyInboxIcon'
+import { EventCancelledIcon } from './EventCancelledIcon'
+import { EventStartedIcon } from './EventStartedIcon'
+import { EventStartsSoonIcon } from './EventStartsSoonIcon'
+import { GovernanceIcon } from './GovernanceIcon'
+import { HistoryIcon } from './HistoryIcon'
+import { ItemAirdroppedIcon } from './ItemAirdroppedIcon'
+import { ItemSoldIcon } from './ItemSoldIcon'
+import { LandRentedIcon } from './LandRentedIcon'
+import { ManaMainnetIcon } from './ManaMainnetIcon'
+import { ManaPolygonIcon } from './ManaPolygonIcon'
+import { MissingResourcesIcon } from './MissingResourcesIcon'
+import { NewCommentIcon } from './NewCommentIcon'
+import { NewNotificationIcon } from './NewNotificationIcon'
+import { NotificationBellActiveIcon } from './NotificationBellActiveIcon'
+import { NotificationBellIcon } from './NotificationBellIcon'
+import { PermissionGrantedIcon } from './PermissionGrantedIcon'
+import { PermissionRevokedIcon } from './PermissionRevokedIcon'
+import { PitchIcon } from './PitchIcon'
+import { ProjectEnactedIcon } from './ProjectEnactedIcon'
+import { ProposalFinishedIcon } from './ProposalFinishedIcon'
+import { ReferralInvitedUserAcceptedIcon } from './ReferralInvitedUserAcceptedIcon'
+import { ReferralInviteFriendsIcon } from './ReferralInviteFriendsIcon'
+import { RentPeriodEndingIcon } from './RentPeriodEndingIcon'
+import { RewardIcon } from './RewardIcon'
+import { StreamingIcon } from './StreamingIcon'
+import { TenderIcon } from './TenderIcon'
+import { VotingEndedIcon } from './VotingEndedIcon'
+import { IconsContainer } from '../Icons.stories.styled'
+import type { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof AccessRestoredIcon> = {
-  title: "Decentraland UI/Icons/Notifications",
+  title: 'Decentraland UI/Icons/Notifications',
   component: AccessRestoredIcon,
   parameters: {
-    layout: "centered",
+    layout: 'centered'
   },
-  tags: ["autodocs"],
+  tags: ['autodocs']
 }
 
 type Story = StoryObj<typeof AccessRestoredIcon>
@@ -48,131 +48,131 @@ type Story = StoryObj<typeof AccessRestoredIcon>
 const AccessRestored: Story = {}
 
 const AccessRestricted: Story = {
-  render: () => <AccessRestrictedIcon />,
+  render: () => <AccessRestrictedIcon />
 }
 
 const BidAccepted: Story = {
-  render: () => <BidAcceptedIcon />,
+  render: () => <BidAcceptedIcon />
 }
 
 const BidReceived: Story = {
-  render: () => <BidReceivedIcon />,
+  render: () => <BidReceivedIcon />
 }
 
 const Coauthor: Story = {
-  render: () => <CoauthorIcon />,
+  render: () => <CoauthorIcon />
 }
 
 const EmptyInbox: Story = {
-  render: () => <EmptyInboxIcon />,
+  render: () => <EmptyInboxIcon />
 }
 
 const EventCancelled: Story = {
-  render: () => <EventCancelledIcon />,
+  render: () => <EventCancelledIcon />
 }
 
 const EventStarted: Story = {
-  render: () => <EventStartedIcon />,
+  render: () => <EventStartedIcon />
 }
 
 const EventStartsSoon: Story = {
-  render: () => <EventStartsSoonIcon />,
+  render: () => <EventStartsSoonIcon />
 }
 
 const Governance: Story = {
-  render: () => <GovernanceIcon />,
+  render: () => <GovernanceIcon />
 }
 
 const History: Story = {
-  render: () => <HistoryIcon />,
+  render: () => <HistoryIcon />
 }
 
 const ItemAirdropped: Story = {
-  render: () => <ItemAirdroppedIcon />,
+  render: () => <ItemAirdroppedIcon />
 }
 
 const ItemSold: Story = {
-  render: () => <ItemSoldIcon />,
+  render: () => <ItemSoldIcon />
 }
 
 const LandRented: Story = {
-  render: () => <LandRentedIcon />,
+  render: () => <LandRentedIcon />
 }
 
 const ManaMainnet: Story = {
-  render: () => <ManaMainnetIcon />,
+  render: () => <ManaMainnetIcon />
 }
 
 const ManaPolygon: Story = {
-  render: () => <ManaPolygonIcon />,
+  render: () => <ManaPolygonIcon />
 }
 
 const MissingResources: Story = {
-  render: () => <MissingResourcesIcon />,
+  render: () => <MissingResourcesIcon />
 }
 
 const NewComment: Story = {
-  render: () => <NewCommentIcon />,
+  render: () => <NewCommentIcon />
 }
 
 const NewNotification: Story = {
-  render: () => <NewNotificationIcon />,
+  render: () => <NewNotificationIcon />
 }
 
 const NotificationBellActive: Story = {
-  render: () => <NotificationBellActiveIcon />,
+  render: () => <NotificationBellActiveIcon />
 }
 
 const NotificationBell: Story = {
-  render: () => <NotificationBellIcon />,
+  render: () => <NotificationBellIcon />
 }
 
 const PermissionGranted: Story = {
-  render: () => <PermissionGrantedIcon />,
+  render: () => <PermissionGrantedIcon />
 }
 
 const PermissionRevoked: Story = {
-  render: () => <PermissionRevokedIcon />,
+  render: () => <PermissionRevokedIcon />
 }
 
 const Pitch: Story = {
-  render: () => <PitchIcon />,
+  render: () => <PitchIcon />
 }
 
 const ProjectEnacted: Story = {
-  render: () => <ProjectEnactedIcon />,
+  render: () => <ProjectEnactedIcon />
 }
 
 const ProposalFinished: Story = {
-  render: () => <ProposalFinishedIcon />,
+  render: () => <ProposalFinishedIcon />
 }
 
 const ReferralInvitedUserAccepted: Story = {
-  render: () => <ReferralInvitedUserAcceptedIcon />,
+  render: () => <ReferralInvitedUserAcceptedIcon />
 }
 
 const ReferralInviteFriends: Story = {
-  render: () => <ReferralInviteFriendsIcon />,
+  render: () => <ReferralInviteFriendsIcon />
 }
 
 const RentPeriodEnding: Story = {
-  render: () => <RentPeriodEndingIcon />,
+  render: () => <RentPeriodEndingIcon />
 }
 
 const Reward: Story = {
-  render: () => <RewardIcon />,
+  render: () => <RewardIcon />
 }
 
 const Streaming: Story = {
-  render: () => <StreamingIcon />,
+  render: () => <StreamingIcon />
 }
 
 const Tender: Story = {
-  render: () => <TenderIcon />,
+  render: () => <TenderIcon />
 }
 
 const VotingEnded: Story = {
-  render: () => <VotingEndedIcon />,
+  render: () => <VotingEndedIcon />
 }
 
 const AllNotificationsIcons: Story = {
@@ -212,7 +212,7 @@ const AllNotificationsIcons: Story = {
       <TenderIcon />
       <VotingEndedIcon />
     </IconsContainer>
-  ),
+  )
 }
 
 const LargeNotificationsIcons: Story = {
@@ -252,7 +252,7 @@ const LargeNotificationsIcons: Story = {
       <TenderIcon fontSize="large" />
       <VotingEndedIcon fontSize="large" />
     </IconsContainer>
-  ),
+  )
 }
 
 // eslint-disable-next-line import/no-default-export
@@ -292,5 +292,5 @@ export {
   Tender,
   VotingEnded,
   AllNotificationsIcons,
-  LargeNotificationsIcons,
+  LargeNotificationsIcons
 }

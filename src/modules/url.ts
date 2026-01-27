@@ -1,7 +1,4 @@
-const addQueryParamsToUrlString = (
-  url: string,
-  params: Record<string, string | undefined | null>
-): string => {
+const addQueryParamsToUrlString = (url: string, params: Record<string, string | undefined | null>): string => {
   if (!params || Object.keys(params).length === 0) {
     return url
   }
@@ -17,11 +14,7 @@ const addQueryParamsToUrlString = (
   return urlObj.toString()
 }
 
-const updateUrlWithLastValue = (
-  url: string,
-  paramKey: string,
-  paramValue: string
-) => {
+const updateUrlWithLastValue = (url: string, paramKey: string, paramValue: string) => {
   const urlObj = new URL(url)
 
   urlObj.searchParams.delete(paramKey)

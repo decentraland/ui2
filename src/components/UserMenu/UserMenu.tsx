@@ -1,18 +1,14 @@
-import React, { useCallback, useState } from "react"
-import { Network } from "@dcl/schemas/dist/dapps/network"
-import { v4 as uuidv4 } from "uuid"
-import { CircularProgress } from "@mui/material"
-import { ManaBalancesProps } from "./ManaBalances"
-import { i18n as i18nUserMenu } from "./UserMenu.i18n"
-import { UserMenuSignedIn } from "./UserMenuSignedIn/UserMenuSignedIn"
-import { config } from "../../config"
-import { DownloadButton } from "../DownloadButton"
-import { UserMenuEventId, UserMenuProps } from "./UserMenu.types"
-import {
-  SignInButton,
-  UserMenuContainer,
-  UserMenuLoaderContainer,
-} from "./UserMenu.styled"
+import React, { useCallback, useState } from 'react'
+import { Network } from '@dcl/schemas/dist/dapps/network'
+import { v4 as uuidv4 } from 'uuid'
+import { CircularProgress } from '@mui/material'
+import { ManaBalancesProps } from './ManaBalances'
+import { i18n as i18nUserMenu } from './UserMenu.i18n'
+import { UserMenuSignedIn } from './UserMenuSignedIn/UserMenuSignedIn'
+import { config } from '../../config'
+import { DownloadButton } from '../DownloadButton'
+import { UserMenuEventId, UserMenuProps } from './UserMenu.types'
+import { SignInButton, UserMenuContainer, UserMenuLoaderContainer } from './UserMenu.styled'
 
 const UserMenu = React.memo((props: UserMenuProps) => {
   const {
@@ -40,7 +36,7 @@ const UserMenu = React.memo((props: UserMenuProps) => {
   const handleToggle = useCallback(
     (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
       const trackId = uuidv4()
-      setIsOpen((prev) => {
+      setIsOpen(prev => {
         if (!prev) {
           setTrackingId(trackId)
         }
@@ -64,7 +60,7 @@ const UserMenu = React.memo((props: UserMenuProps) => {
         onClickUserMenuItem(event, {
           type: UserMenuEventId.SIGN_IN,
           track_uuid: trackingId || undefined,
-          url: config.get("MARKETPLACE_URL"),
+          url: config.get('MARKETPLACE_URL')
         })
 
       onClickSignIn && onClickSignIn(event)
@@ -73,27 +69,22 @@ const UserMenu = React.memo((props: UserMenuProps) => {
   )
 
   const handleClickBalance = useCallback(
-    (
-      event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
-      network: Network
-    ) => {
+    (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>, network: Network) => {
       event.preventDefault()
       onClickUserMenuItem &&
         onClickUserMenuItem(event, {
-          type: UserMenuEventId.BALANCE,
+          type: UserMenuEventId.BALANCE
         })
 
       setTimeout(
         () => {
-          onClickBalance
-            ? onClickBalance(event, network)
-            : window.open(config.get("ACCOUNT_URL"), "_blank", "noopener")
+          onClickBalance ? onClickBalance(event, network) : window.open(config.get('ACCOUNT_URL'), '_blank', 'noopener')
         },
         onClickUserMenuItem ? 300 : 0
       )
     },
     [onClickBalance, onClickUserMenuItem, trackingId]
-  ) as ManaBalancesProps["onClickBalance"]
+  ) as ManaBalancesProps['onClickBalance']
 
   return (
     <UserMenuContainer>
@@ -117,17 +108,8 @@ const UserMenu = React.memo((props: UserMenuProps) => {
             />
           )}
           {!hideSignInButton && !isSignedIn ? (
-            <SignInButton
-              variant="outlined"
-              color="inherit"
-              disabled={isSigningIn}
-              onClick={handleClickSignIn}
-            >
-              {isSigningIn ? (
-                <CircularProgress size={20} color="inherit" />
-              ) : (
-                i18n.signIn
-              )}
+            <SignInButton variant="outlined" color="inherit" disabled={isSigningIn} onClick={handleClickSignIn}>
+              {isSigningIn ? <CircularProgress size={20} color="inherit" /> : i18n.signIn}
             </SignInButton>
           ) : null}
 

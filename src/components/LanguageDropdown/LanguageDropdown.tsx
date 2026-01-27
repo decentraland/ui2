@@ -1,15 +1,8 @@
-import React, { useState } from "react"
-import { ExpandMore } from "@mui/icons-material"
-import { Menu } from "@mui/material"
-import type {
-  LanguageDropdownProps,
-  SupportedLanguage,
-} from "./LanguageDropdown.types"
-import {
-  FlagIcon,
-  LanguageButton,
-  StyledMenuItem,
-} from "./LanguageDropdown.styled"
+import React, { useState } from 'react'
+import { ExpandMore } from '@mui/icons-material'
+import { Menu } from '@mui/material'
+import type { LanguageDropdownProps, SupportedLanguage } from './LanguageDropdown.types'
+import { FlagIcon, LanguageButton, StyledMenuItem } from './LanguageDropdown.styled'
 
 const LanguageDropdown = React.memo((props: LanguageDropdownProps) => {
   const { languages, selectedLanguage, onLanguageChange } = props
@@ -30,16 +23,16 @@ const LanguageDropdown = React.memo((props: LanguageDropdownProps) => {
     handleClose()
   }
 
-  const selectedLang = languages.find((lang) => lang.code === selectedLanguage)
+  const selectedLang = languages.find(lang => lang.code === selectedLanguage)
 
   return (
     <div>
       <LanguageButton
         onClick={handleClick}
         endIcon={<ExpandMore />}
-        aria-controls={open ? "language-menu" : undefined}
+        aria-controls={open ? 'language-menu' : undefined}
         aria-haspopup="true"
-        aria-expanded={open ? "true" : undefined}
+        aria-expanded={open ? 'true' : undefined}
       >
         {selectedLang && (
           <>
@@ -52,20 +45,20 @@ const LanguageDropdown = React.memo((props: LanguageDropdownProps) => {
         id="language-menu"
         anchorEl={anchorEl}
         anchorOrigin={{
-          vertical: "top",
-          horizontal: "left",
+          vertical: 'top',
+          horizontal: 'left'
         }}
         transformOrigin={{
-          vertical: "bottom",
-          horizontal: "left",
+          vertical: 'bottom',
+          horizontal: 'left'
         }}
         open={open}
         onClose={handleClose}
         MenuListProps={{
-          "aria-labelledby": "language-button",
+          'aria-labelledby': 'language-button'
         }}
       >
-        {languages.map((language) => (
+        {languages.map(language => (
           <StyledMenuItem
             key={language.code}
             onClick={() => handleLanguageSelect(language.code)}

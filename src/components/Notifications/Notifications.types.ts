@@ -1,19 +1,19 @@
-import { NFTCategory, NotificationType, Rarity } from "@dcl/schemas"
+import { NFTCategory, NotificationType, Rarity } from '@dcl/schemas'
 import {
   CreditsClaimReminderNotificationProps,
   CreditsCompleteYourWeeklyGoalsNotificationProps,
   CreditsDoNotMissOutNotificationProps,
   CreditsExpireIn24HrsReminderNotificationProps,
   CreditsExpireSoonReminderNotificationProps,
-  CreditsNotificationsProps,
-} from "./NotificationTypes/Credits/Credits.types"
+  CreditsNotificationsProps
+} from './NotificationTypes/Credits/Credits.types'
 
 enum NotificationActiveTab {
-  NEWEST = "newest",
-  READ = "read",
+  NEWEST = 'newest',
+  READ = 'read'
 }
 
-type NotificationLocale = "en" | "es" | "zh"
+type NotificationLocale = 'en' | 'es' | 'zh'
 
 type RawDecentralandNotification<T extends NotificationType, M> = {
   id: string
@@ -33,7 +33,7 @@ type CommonNFTNotificationMetadataProps = {
   image: string
   rarity: Rarity
   nftName: string
-  network: "ethereum" | "polygon"
+  network: 'ethereum' | 'polygon'
   category: NFTCategory
 }
 
@@ -54,25 +54,13 @@ type BidReceivedMetadataProps = CommonNFTNotificationMetadataProps & {
   price: string
 }
 
-type ItemSoldNotificationProps = RawDecentralandNotification<
-  NotificationType.ITEM_SOLD,
-  ItemSoldMetadataProps
->
+type ItemSoldNotificationProps = RawDecentralandNotification<NotificationType.ITEM_SOLD, ItemSoldMetadataProps>
 
-type RoyalitesEarnedNotificationProps = RawDecentralandNotification<
-  NotificationType.ROYALTIES_EARNED,
-  RoyalitesEarnedMetadataProps
->
+type RoyalitesEarnedNotificationProps = RawDecentralandNotification<NotificationType.ROYALTIES_EARNED, RoyalitesEarnedMetadataProps>
 
-type BidAcceptedNotificationProps = RawDecentralandNotification<
-  NotificationType.BID_ACCEPTED,
-  BidAcceptedMetadataProps
->
+type BidAcceptedNotificationProps = RawDecentralandNotification<NotificationType.BID_ACCEPTED, BidAcceptedMetadataProps>
 
-type BidReceivedNotificationProps = RawDecentralandNotification<
-  NotificationType.BID_RECEIVED,
-  BidReceivedMetadataProps
->
+type BidReceivedNotificationProps = RawDecentralandNotification<NotificationType.BID_RECEIVED, BidReceivedMetadataProps>
 
 type MarketplaceNotificationsProps =
   | ItemSoldNotificationProps
@@ -100,10 +88,7 @@ type CommonGovernanceNotificationMetadataProps = {
 
 type GovernanceAnnouncementNotificationProps = RawDecentralandNotification<
   NotificationType.GOVERNANCE_ANNOUNCEMENT,
-  Omit<
-    CommonGovernanceNotificationMetadataProps,
-    "proposalId" | "proposalTitle"
-  >
+  Omit<CommonGovernanceNotificationMetadataProps, 'proposalId' | 'proposalTitle'>
 >
 type GovernanceProposalEnactedNotificationProps = RawDecentralandNotification<
   NotificationType.GOVERNANCE_PROPOSAL_ENACTED,
@@ -113,25 +98,22 @@ type GovernanceCoauthorRequestedNotificationProps = RawDecentralandNotification<
   NotificationType.GOVERNANCE_COAUTHOR_REQUESTED,
   CommonGovernanceNotificationMetadataProps
 >
-type GovernanceAuthoredProposalFinishedNotificationProps =
-  RawDecentralandNotification<
-    NotificationType.GOVERNANCE_AUTHORED_PROPOSAL_FINISHED,
-    CommonGovernanceNotificationMetadataProps
-  >
+type GovernanceAuthoredProposalFinishedNotificationProps = RawDecentralandNotification<
+  NotificationType.GOVERNANCE_AUTHORED_PROPOSAL_FINISHED,
+  CommonGovernanceNotificationMetadataProps
+>
 type GovernanceVotingEndedVoterNotificationProps = RawDecentralandNotification<
   NotificationType.GOVERNANCE_VOTING_ENDED_VOTER,
   CommonGovernanceNotificationMetadataProps
 >
-type GovernanceNewCommentOnProposalNotificationProps =
-  RawDecentralandNotification<
-    NotificationType.GOVERNANCE_NEW_COMMENT_ON_PROPOSAL,
-    CommonGovernanceNotificationMetadataProps
-  >
-type GovernanceNewCommentOnProjectUpdateNotificationProps =
-  RawDecentralandNotification<
-    NotificationType.GOVERNANCE_NEW_COMMENT_ON_PROJECT_UPDATE,
-    CommonGovernanceNotificationMetadataProps
-  >
+type GovernanceNewCommentOnProposalNotificationProps = RawDecentralandNotification<
+  NotificationType.GOVERNANCE_NEW_COMMENT_ON_PROPOSAL,
+  CommonGovernanceNotificationMetadataProps
+>
+type GovernanceNewCommentOnProjectUpdateNotificationProps = RawDecentralandNotification<
+  NotificationType.GOVERNANCE_NEW_COMMENT_ON_PROJECT_UPDATE,
+  CommonGovernanceNotificationMetadataProps
+>
 
 type GovernancePitchPassedNotificationProps = RawDecentralandNotification<
   NotificationType.GOVERNANCE_PITCH_PASSED,
@@ -180,10 +162,9 @@ type CommonWorldsNotificationMetadataProps = {
   url: string
 }
 
-type WorldsNotificationMetadataWithWhenProps =
-  CommonWorldsNotificationMetadataProps & {
-    when: number
-  }
+type WorldsNotificationMetadataWithWhenProps = CommonWorldsNotificationMetadataProps & {
+  when: number
+}
 
 type WorldsMissingResourcesNotificationProps = RawDecentralandNotification<
   NotificationType.WORLDS_MISSING_RESOURCES,
@@ -239,19 +220,11 @@ type LandNotificationMetadataProps = {
   land: string
 }
 
-type LandRentedNotificationProps = RawDecentralandNotification<
-  NotificationType.LAND_RENTED,
-  LandNotificationMetadataProps
->
+type LandRentedNotificationProps = RawDecentralandNotification<NotificationType.LAND_RENTED, LandNotificationMetadataProps>
 
-type LandRentalEndedNotificationProps = RawDecentralandNotification<
-  NotificationType.LAND_RENTAL_ENDED,
-  LandNotificationMetadataProps
->
+type LandRentalEndedNotificationProps = RawDecentralandNotification<NotificationType.LAND_RENTAL_ENDED, LandNotificationMetadataProps>
 
-type LandNotificationsProps =
-  | LandRentedNotificationProps
-  | LandRentalEndedNotificationProps
+type LandNotificationsProps = LandRentedNotificationProps | LandRentalEndedNotificationProps
 
 // Transfer Notifications
 type TransferNotificationMetadataProps = {
@@ -263,15 +236,9 @@ type TipNotificationMetadataProps = {
   amount: string
 }
 
-type GiftNotificationProps = RawDecentralandNotification<
-  NotificationType.TRANSFER_RECEIVED,
-  TransferNotificationMetadataProps
->
+type GiftNotificationProps = RawDecentralandNotification<NotificationType.TRANSFER_RECEIVED, TransferNotificationMetadataProps>
 
-type TipNotificationProps = RawDecentralandNotification<
-  NotificationType.TIP_RECEIVED,
-  TipNotificationMetadataProps
->
+type TipNotificationProps = RawDecentralandNotification<NotificationType.TIP_RECEIVED, TipNotificationMetadataProps>
 
 type TransferNotificationsProps = GiftNotificationProps | TipNotificationProps
 
@@ -288,20 +255,11 @@ type CommonCampaignMetadata = {
   campaignName: string
 }
 
-type RewardAssignedNotificationProps = RawDecentralandNotification<
-  NotificationType.REWARD_ASSIGNED,
-  CommonRewardsMetadata
->
+type RewardAssignedNotificationProps = RawDecentralandNotification<NotificationType.REWARD_ASSIGNED, CommonRewardsMetadata>
 
-type RewardInProgressNotificationProps = RawDecentralandNotification<
-  NotificationType.REWARD_IN_PROGRESS,
-  CommonRewardsMetadata
->
+type RewardInProgressNotificationProps = RawDecentralandNotification<NotificationType.REWARD_IN_PROGRESS, CommonRewardsMetadata>
 
-type RewardDelayedNotificationProps = RawDecentralandNotification<
-  NotificationType.REWARD_DELAYED,
-  CommonRewardsMetadata
->
+type RewardDelayedNotificationProps = RawDecentralandNotification<NotificationType.REWARD_DELAYED, CommonRewardsMetadata>
 
 type CampaignOutOfStockNotificationProps = RawDecentralandNotification<
   NotificationType.REWARD_CAMPAIGN_OUT_OF_STOCK,
@@ -313,11 +271,10 @@ type CampaignOutOfFundsNotificationProps = RawDecentralandNotification<
   CommonCampaignMetadata
 >
 
-type CampaignGasPriceHigherThanExpectedNotificationProps =
-  RawDecentralandNotification<
-    NotificationType.REWARD_CAMPAIGN_GAS_PRICE_HIGHER_THAN_EXPECTED,
-    CommonCampaignMetadata
-  >
+type CampaignGasPriceHigherThanExpectedNotificationProps = RawDecentralandNotification<
+  NotificationType.REWARD_CAMPAIGN_GAS_PRICE_HIGHER_THAN_EXPECTED,
+  CommonCampaignMetadata
+>
 
 type CommonEventsMetadataProps = {
   image: string
@@ -334,14 +291,9 @@ type EventsStartsSoonNotificationProps = RawDecentralandNotification<
   }
 >
 
-type EventsStartedNotificationProps = RawDecentralandNotification<
-  NotificationType.EVENTS_STARTED,
-  CommonEventsMetadataProps
->
+type EventsStartedNotificationProps = RawDecentralandNotification<NotificationType.EVENTS_STARTED, CommonEventsMetadataProps>
 
-type EventsNotificationsProps =
-  | EventsStartsSoonNotificationProps
-  | EventsStartedNotificationProps
+type EventsNotificationsProps = EventsStartsSoonNotificationProps | EventsStartedNotificationProps
 
 // Streaming Notifications
 
@@ -409,15 +361,12 @@ type ReferralNewTierReachedNotificationProps = RawDecentralandNotification<
   NewTierReachedNotificationMetadata
 >
 
-type ReferralInvitedUsersAcceptedNotificationProps =
-  RawDecentralandNotification<
-    NotificationType.REFERRAL_INVITED_USERS_ACCEPTED,
-    ReferralNotificationMetadataProps
-  >
+type ReferralInvitedUsersAcceptedNotificationProps = RawDecentralandNotification<
+  NotificationType.REFERRAL_INVITED_USERS_ACCEPTED,
+  ReferralNotificationMetadataProps
+>
 
-type ReferralNotificationsProps =
-  | ReferralNewTierReachedNotificationProps
-  | ReferralInvitedUsersAcceptedNotificationProps
+type ReferralNotificationsProps = ReferralNewTierReachedNotificationProps | ReferralInvitedUsersAcceptedNotificationProps
 
 type DCLNotificationProps =
   | MarketplaceNotificationsProps
@@ -487,5 +436,5 @@ export type {
   CreditsExpireSoonReminderNotificationProps,
   CreditsExpireIn24HrsReminderNotificationProps,
   ReferralNewTierReachedNotificationProps,
-  ReferralInvitedUsersAcceptedNotificationProps,
+  ReferralInvitedUsersAcceptedNotificationProps
 }

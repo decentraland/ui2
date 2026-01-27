@@ -1,6 +1,6 @@
-import { memo, useCallback, useEffect, useRef, useState } from "react"
-import { useMobileMediaQuery } from "../Media"
-import { BaseRow, TableProps } from "./Table.types"
+import { memo, useCallback, useEffect, useRef, useState } from 'react'
+import { useMobileMediaQuery } from '../Media'
+import { BaseRow, TableProps } from './Table.types'
 import {
   StyledTable,
   StyledTableBody,
@@ -9,8 +9,8 @@ import {
   StyledTableHead,
   StyledTableHeadRow,
   StyledTableRow,
-  TableCellBorderContainer,
-} from "./Table.styled"
+  TableCellBorderContainer
+} from './Table.styled'
 
 type TableCellBorderProps = {
   borderColor: string
@@ -22,8 +22,8 @@ const TableCellBorder = ({ borderColor }: TableCellBorderProps) => {
 
   useEffect(() => {
     const updateWidth = () => {
-      const cell = ref.current?.closest("td")
-      const row = cell?.closest("tr")
+      const cell = ref.current?.closest('td')
+      const row = cell?.closest('tr')
       if (row) {
         setRowWidth(row.offsetWidth)
       }
@@ -31,33 +31,19 @@ const TableCellBorder = ({ borderColor }: TableCellBorderProps) => {
 
     updateWidth()
 
-    window.addEventListener("resize", updateWidth)
-    return () => window.removeEventListener("resize", updateWidth)
+    window.addEventListener('resize', updateWidth)
+    return () => window.removeEventListener('resize', updateWidth)
   }, [])
 
-  return (
-    <TableCellBorderContainer
-      ref={ref}
-      $borderColor={borderColor}
-      $width={rowWidth}
-    />
-  )
+  return <TableCellBorderContainer ref={ref} $borderColor={borderColor} $width={rowWidth} />
 }
 
 const TableComponent = <T extends BaseRow>(props: TableProps<T>) => {
-  const {
-    columns,
-    rows,
-    hoverEffect = true,
-    headerVisible = true,
-    onMobileRowClick,
-  } = props
+  const { columns, rows, hoverEffect = true, headerVisible = true, onMobileRowClick } = props
 
   const isMobile = useMobileMediaQuery()
 
-  const visibleColumns = isMobile
-    ? columns.filter((col) => !col.hideOnMobile)
-    : columns
+  const visibleColumns = isMobile ? columns.filter(col => !col.hideOnMobile) : columns
 
   const handleRowClick = useCallback(
     (row: T, index: number) => {
@@ -74,12 +60,8 @@ const TableComponent = <T extends BaseRow>(props: TableProps<T>) => {
         {headerVisible && (
           <StyledTableHead>
             <StyledTableHeadRow>
-              {visibleColumns.map((column) => (
-                <StyledTableCell
-                  key={column.id}
-                  $cellWidth={column.width}
-                  $cellPadding={column.cellPadding}
-                >
+              {visibleColumns.map(column => (
+                <StyledTableCell key={column.id} $cellWidth={column.width} $cellPadding={column.cellPadding}>
                   {column.header}
                 </StyledTableCell>
               ))}
@@ -101,9 +83,7 @@ const TableComponent = <T extends BaseRow>(props: TableProps<T>) => {
                   $cellPadding={column.cellPadding}
                   $hasBorder={colIndex === 0 && !!row.borderColor}
                 >
-                  {colIndex === 0 && row.borderColor && (
-                    <TableCellBorder borderColor={row.borderColor} />
-                  )}
+                  {colIndex === 0 && row.borderColor && <TableCellBorder borderColor={row.borderColor} />}
                   {column.render(row, index)}
                 </StyledTableCell>
               ))}
@@ -115,7 +95,7 @@ const TableComponent = <T extends BaseRow>(props: TableProps<T>) => {
   )
 }
 
-TableComponent.displayName = "Table"
+TableComponent.displayName = 'Table'
 
 const Table = memo(TableComponent) as typeof TableComponent
 

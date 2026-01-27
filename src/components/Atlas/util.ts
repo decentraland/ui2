@@ -1,7 +1,7 @@
-import { memo } from "radash"
-import { AtlasColor, AtlasTileProps, AtlasTileType } from "./Atlas.types"
+import { memo } from 'radash'
+import { AtlasColor, AtlasTileProps, AtlasTileType } from './Atlas.types'
 
-const TILES_URL = "https://api.decentraland.org/v2/tiles"
+const TILES_URL = 'https://api.decentraland.org/v2/tiles'
 
 const getTiles = memo(
   async (): Promise<Record<string, AtlasTileProps>> => {

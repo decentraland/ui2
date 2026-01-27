@@ -1,17 +1,11 @@
-import React from "react"
-import { LogoProps } from "./Logo.types"
-import { LogoContainer } from "./Logo.styled"
+import React from 'react'
+import { LogoProps } from './Logo.types'
+import { LogoContainer } from './Logo.styled'
 
 const Logo = React.memo((props: LogoProps) => {
   return (
     <LogoContainer {...props}>
-      <svg
-        width="90"
-        height="90"
-        viewBox="0 0 90 90"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+      <svg width="90" height="90" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -42,24 +36,9 @@ const Logo = React.memo((props: LogoProps) => {
           d="M31.8826 29.2496V62.9996H60.0075L31.8826 29.2496Z"
           fill="url(#paint1_linear_1_49380)"
         />
-        <path
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M3.75757 62.9997H31.8826V29.2497L3.75757 62.9997Z"
-          fill="white"
-        />
-        <path
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M60.3675 47.25V72H81L60.3675 47.25Z"
-          fill="url(#paint2_linear_1_49380)"
-        />
-        <path
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M39.7574 72H60.3674V47.25L39.7574 72Z"
-          fill="white"
-        />
+        <path fillRule="evenodd" clipRule="evenodd" d="M3.75757 62.9997H31.8826V29.2497L3.75757 62.9997Z" fill="white" />
+        <path fillRule="evenodd" clipRule="evenodd" d="M60.3675 47.25V72H81L60.3675 47.25Z" fill="url(#paint2_linear_1_49380)" />
+        <path fillRule="evenodd" clipRule="evenodd" d="M39.7574 72H60.3674V47.25L39.7574 72Z" fill="white" />
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -73,36 +52,15 @@ const Logo = React.memo((props: LogoProps) => {
           fill="#FFC95B"
         />
         <defs>
-          <linearGradient
-            id="paint0_linear_1_49380"
-            x1="45"
-            y1="-18.6396"
-            x2="-18.6396"
-            y2="45"
-            gradientUnits="userSpaceOnUse"
-          >
+          <linearGradient id="paint0_linear_1_49380" x1="45" y1="-18.6396" x2="-18.6396" y2="45" gradientUnits="userSpaceOnUse">
             <stop stopColor="#FF2D55" />
             <stop offset="1" stopColor="#FFBC5B" />
           </linearGradient>
-          <linearGradient
-            id="paint1_linear_1_49380"
-            x1="31.8731"
-            y1="29.2497"
-            x2="31.8731"
-            y2="62.9996"
-            gradientUnits="userSpaceOnUse"
-          >
+          <linearGradient id="paint1_linear_1_49380" x1="31.8731" y1="29.2497" x2="31.8731" y2="62.9996" gradientUnits="userSpaceOnUse">
             <stop stopColor="#A524B3" />
             <stop offset="1" stopColor="#FF2D55" />
           </linearGradient>
-          <linearGradient
-            id="paint2_linear_1_49380"
-            x1="60.3605"
-            y1="47.25"
-            x2="60.3605"
-            y2="72"
-            gradientUnits="userSpaceOnUse"
-          >
+          <linearGradient id="paint2_linear_1_49380" x1="60.3605" y1="47.25" x2="60.3605" y2="72" gradientUnits="userSpaceOnUse">
             <stop stopColor="#A524B3" />
             <stop offset="1" stopColor="#FF2D55" />
           </linearGradient>

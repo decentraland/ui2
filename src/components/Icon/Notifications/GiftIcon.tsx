@@ -1,22 +1,11 @@
-import React from "react"
-import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon"
+import React from 'react'
+import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon'
 
 const GiftIcon = React.memo((props: SvgIconProps) => {
   return (
     <SvgIcon {...props}>
-      <svg
-        width="48"
-        height="48"
-        viewBox="0 0 48 48"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <rect
-          width="48"
-          height="48"
-          rx="24"
-          fill="url(#paint0_linear_347_102300)"
-        />
+      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="48" height="48" rx="24" fill="url(#paint0_linear_347_102300)" />
         <path
           d="M23.6523 17.9778C23.754 18.1314 23.6558 18.3381 23.4725 18.3564L19.3233 18.7706C17.2832 18.9743 15.7404 16.9623 16.4664 15.045C17.2637 12.9394 20.1103 12.6217 21.3522 14.4997L23.6523 17.9778Z"
           stroke="white"
@@ -43,22 +32,9 @@ const GiftIcon = React.memo((props: SvgIconProps) => {
           d="M31.1525 34.0005C32.2403 34.0005 33.1221 33.1187 33.1221 32.031L33.1221 22.8702L27.1288 22.8702L27.1288 34.0005L31.1525 34.0005Z"
           fill="white"
         />
-        <rect
-          x="21.5615"
-          y="22.8701"
-          width="4.28087"
-          height="11.1303"
-          fill="white"
-        />
+        <rect x="21.5615" y="22.8701" width="4.28087" height="11.1303" fill="white" />
         <defs>
-          <linearGradient
-            id="paint0_linear_347_102300"
-            x1="23.9999"
-            y1="144"
-            x2="124.101"
-            y2="84.5906"
-            gradientUnits="userSpaceOnUse"
-          >
+          <linearGradient id="paint0_linear_347_102300" x1="23.9999" y1="144" x2="124.101" y2="84.5906" gradientUnits="userSpaceOnUse">
             <stop stopColor="#FF2D55" />
             <stop offset="1" stopColor="#FFBC5B" />
           </linearGradient>

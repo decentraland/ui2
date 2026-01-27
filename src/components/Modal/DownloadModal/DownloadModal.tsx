@@ -1,31 +1,15 @@
-import React, { useCallback } from "react"
-import { ExplorerJumpIn } from "./ExplorerJumpIn"
-import { DownloadButton } from "../../DownloadButton"
-import { Modal } from "../Modal"
-import { DownloadModalProps } from "./DownloadModal.types"
-import {
-  Content,
-  ImageContainer,
-  StyledDescription,
-  StyledTitle,
-} from "./DownloadModal.styled"
+import React, { useCallback } from 'react'
+import { ExplorerJumpIn } from './ExplorerJumpIn'
+import { DownloadButton } from '../../DownloadButton'
+import { Modal } from '../Modal'
+import { DownloadModalProps } from './DownloadModal.types'
+import { Content, ImageContainer, StyledDescription, StyledTitle } from './DownloadModal.styled'
 
 function DownloadModal(props: DownloadModalProps) {
-  const {
-    title,
-    description,
-    buttonLabel,
-    open,
-    onClose,
-    onDownloadClick,
-    ...modalProps
-  } = props
+  const { title, description, buttonLabel, open, onClose, onDownloadClick, ...modalProps } = props
 
   const handleClose = useCallback(
-    (
-      event: React.MouseEvent<HTMLButtonElement>,
-      reason: "backdropClick" | "escapeKeyDown"
-    ) => {
+    (event: React.MouseEvent<HTMLButtonElement>, reason: 'backdropClick' | 'escapeKeyDown') => {
       if (onClose) {
         onClose(event, reason)
       }

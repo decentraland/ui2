@@ -1,16 +1,10 @@
-import React from "react"
-import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon"
+import React from 'react'
+import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon'
 
 const HandsWearIcon = React.memo((props: SvgIconProps) => {
   return (
     <SvgIcon {...props}>
-      <svg
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
           d="M17.0875 16.8H9.91251C9.73992 16.8 9.6 17.0158 9.6 17.282V19.318C9.6 19.5842 9.73992 19.8 9.91251 19.8H17.0875C17.2601 19.8 17.4 19.5842 17.4 19.318V17.282C17.4 17.0158 17.2601 16.8 17.0875 16.8Z"
           fill="white"
