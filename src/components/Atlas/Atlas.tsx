@@ -1,29 +1,44 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react"
 import type { Layer, TileMapProps } from "react-tile-map"
-import "react-tile-map/lib/styles.css"
+import CircularProgress from "@mui/material/CircularProgress"
 import { getColorByType, getTiles } from "./util"
-import { createLazyComponent } from "../../utils/optionalDependency"
+import {
+  createDynamicImport,
+  createLazyComponent,
+} from "../../utils/optionalDependency"
 import { AtlasColor, AtlasProps, AtlasStateProps } from "./Atlas.types"
 
-const LazyTileMap = createLazyComponent<TileMapProps>(
-  {
-    packageName: "react-tile-map",
-    componentName: "Atlas",
-  },
-  () => import("react-tile-map").then((mod) => ({ default: mod.TileMap }))
-)
+const importTileMap =
+  createDynamicImport<typeof import("react-tile-map")>("react-tile-map")
+const importTileMapStyles = createDynamicImport("react-tile-map/lib/styles.css")
 
 const Atlas = React.memo((props: AtlasProps) => {
   const { layers } = props
+  const atlasFallback = useMemo(
+    () => <CircularProgress size={24} color="inherit" />,
+    []
+  )
+  const LazyTileMap = useMemo(
+    () =>
+      createLazyComponent<TileMapProps>(
+        {
+          packageName: "react-tile-map",
+          componentName: "Atlas",
+        },
+        () => importTileMap().then((mod) => ({ default: mod.TileMap })),
+        atlasFallback
+      ),
+    [atlasFallback]
+  )
 
   const [tiles, setTiles] = useState<AtlasStateProps>(props.tiles)
-  const mountedRef = React.useRef(true)
+  const resolvedTiles = props.tiles ?? tiles
 
   const layer: Layer = useCallback(
     (x: number, y: number) => {
       const id = x + "," + y
-      if (tiles && id in tiles) {
-        const tile = tiles[id]
+      if (resolvedTiles && id in resolvedTiles) {
+        const tile = resolvedTiles[id]
         return {
           color: getColorByType(tile.type),
           top: tile.top,
@@ -36,30 +51,36 @@ const Atlas = React.memo((props: AtlasProps) => {
         }
       }
     },
-    [tiles]
+    [resolvedTiles]
   )
 
   useEffect(() => {
-    if (!tiles) {
-      getTiles().then(handleUpdateTiles)
+    let cancelled = false
+
+    importTileMapStyles().catch(() => {
+      // Keep silent if the optional dependency is not installed; LazyTileMap will warn when rendered.
+      return
+    })
+
+    if (!props.tiles && !tiles) {
+      getTiles().then((updatedTiles) => {
+        if (cancelled) {
+          return
+        }
+        setTiles(updatedTiles)
+      })
     }
 
     return () => {
-      mountedRef.current = false
+      cancelled = true
     }
-  }, [tiles])
+  }, [props.tiles, tiles])
 
   useEffect(() => {
     if (props.tiles && props.tiles !== tiles) {
       setTiles(props.tiles)
     }
-  }, [props.tiles])
-
-  const handleUpdateTiles = (updatedTiles: AtlasStateProps): void => {
-    if (mountedRef.current) {
-      setTiles(updatedTiles)
-    }
-  }
+  }, [props.tiles, tiles])
   /* 
   Review this CSS
   const atlasStyle = css({
@@ -67,6 +88,10 @@ const Atlas = React.memo((props: AtlasProps) => {
   }) */
 
   const layersMemo = useMemo(() => [layer, ...(layers || [])], [layer, layers])
+
+  if (!resolvedTiles) {
+    return atlasFallback
+  }
 
   return <LazyTileMap {...(props as TileMapProps)} layers={layersMemo} />
 })

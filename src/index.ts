@@ -11,8 +11,63 @@ export {
 } from "./theme"
 export * as dclColors from "./theme/colors"
 
-export * from "@mui/material"
+// Re-exports from @mui/material (named exports only, no export * — for tree-shaking)
+export {
+  AppBar,
+  Badge,
+  Box,
+  Button,
+  ButtonBase,
+  Checkbox,
+  Chip,
+  CircularProgress,
+  ClickAwayListener,
+  CssBaseline,
+  Divider,
+  FormControlLabel,
+  Grow,
+  IconButton,
+  Link,
+  ListItemIcon,
+  Menu,
+  MenuItem,
+  MenuList,
+  Modal,
+  Paper,
+  Popper,
+  Slider,
+  styled,
+  Tab,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Tabs,
+  TextField,
+  Toolbar,
+  Tooltip,
+  Typography,
+  useMediaQuery,
+  useTheme,
+  ButtonGroup,
+} from "@mui/material"
+export { default as SvgIcon } from "@mui/material/SvgIcon"
+export type {
+  SvgIconProps,
+  ModalProps,
+  ButtonProps,
+  LinkProps,
+  SvgIconOwnProps,
+} from "@mui/material"
+
 export { emotionReact, emotionStyled, emotionCache, muiIcons }
+// Note: muiIcons is exported as a namespace for backward compatibility.
+// For better tree-shaking, dApps should import icons directly from '@mui/icons-material':
+//   import { Home, Settings } from '@mui/icons-material'
+// instead of:
+//   import { muiIcons } from 'decentraland-ui2'
 export * from "./components/Address"
 export * as dclAddressUtils from "./components/AddressField/utils"
 export * from "./components/AvatarFace"
