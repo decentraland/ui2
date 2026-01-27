@@ -3,12 +3,9 @@ import {
   CreditsCompleteYourWeeklyGoalsNotification,
   CreditsDoNotMissOutNotification,
   CreditsExpireIn24HrsReminderNotification,
-  CreditsExpireSoonReminderNotification,
-} from "./Credits"
-import {
-  EventsStartedNotification,
-  EventsStartsSoonNotification,
-} from "./Events"
+  CreditsExpireSoonReminderNotification
+} from './Credits'
+import { EventsStartedNotification, EventsStartsSoonNotification } from './Events'
 import {
   GovernanceAnnouncementNotification,
   GovernanceAuthoredProposalFinishedNotification,
@@ -18,42 +15,34 @@ import {
   GovernancePitchPassedNotification,
   GovernanceProposalEnactedNotification,
   GovernanceTenderPassedNotification,
-  GovernanceVotingEndedVoterNotification,
-} from "./Governance"
-import { LandRentalEndedNotification, LandRentedNotification } from "./Land"
-import {
-  BidAcceptedNotification,
-  BidReceivedNotification,
-  ItemSoldNotification,
-  RoyaltiesEarnedNotification,
-} from "./Marketplace"
-import {
-  ReferralInvitedUserAcceptedNotification,
-  ReferralNewTierReachedNotification,
-} from "./Referral"
+  GovernanceVotingEndedVoterNotification
+} from './Governance'
+import { LandRentalEndedNotification, LandRentedNotification } from './Land'
+import { BidAcceptedNotification, BidReceivedNotification, ItemSoldNotification, RoyaltiesEarnedNotification } from './Marketplace'
+import { ReferralInvitedUserAcceptedNotification, ReferralNewTierReachedNotification } from './Referral'
 import {
   CampaignGasPriceHigherThanExpectedNotification,
   CampaignOutOfFundsNotification,
   CampaignOutOfStockNotification,
   RewardAssignedNotification,
   RewardDelayedNotification,
-  RewardInProgressNotification,
-} from "./Reward"
+  RewardInProgressNotification
+} from './Reward'
 import {
   StreamingKeyExpiredNotification,
   StreamingKeyResetNotification,
   StreamingKeyRevokeNotification,
   StreamingPlaceUpdatedNotification,
-  StreamingTimeExceededNotification,
-} from "./Streaming"
-import { GiftNotification, TipNotification } from "./Transfer"
+  StreamingTimeExceededNotification
+} from './Streaming'
+import { GiftNotification, TipNotification } from './Transfer'
 import {
   WorldsAccessRestoredNotification,
   WorldsAccessRestrictedNotification,
   WorldsMissingResourcesNotification,
   WorldsPermissionGrantedNotification,
-  WorldsPermissionRevokedNotification,
-} from "./Worlds"
+  WorldsPermissionRevokedNotification
+} from './Worlds'
 
 export {
   BidAcceptedNotification,
@@ -97,5 +86,5 @@ export {
   WorldsAccessRestrictedNotification,
   WorldsMissingResourcesNotification,
   WorldsPermissionGrantedNotification,
-  WorldsPermissionRevokedNotification,
+  WorldsPermissionRevokedNotification
 }

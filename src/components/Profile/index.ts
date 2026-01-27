@@ -1,2 +1,2 @@
-export * from "./Profile"
-export * from "./Profile.types"
+export * from './Profile'
+export * from './Profile.types'

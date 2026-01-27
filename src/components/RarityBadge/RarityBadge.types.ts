@@ -1,11 +1,11 @@
-import { MouseEventHandler } from "react"
-import { Rarity } from "@dcl/schemas"
+import { MouseEventHandler } from 'react'
+import { Rarity } from '@dcl/schemas'
 
 type RarityBadgeI18N = Record<string, Record<Rarity, string>>
 
 type RarityBadgeProps = {
   rarity: Rarity
-  size?: "small" | "medium"
+  size?: 'small' | 'medium'
   square?: boolean
   withTooltip?: boolean
   onClick?: MouseEventHandler<HTMLDivElement>

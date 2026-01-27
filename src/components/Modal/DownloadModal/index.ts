@@ -1,2 +1,2 @@
-export { DownloadModal } from "./DownloadModal"
-export { DownloadModalProps } from "./DownloadModal.types"
+export { DownloadModal } from './DownloadModal'
+export { DownloadModalProps } from './DownloadModal.types'

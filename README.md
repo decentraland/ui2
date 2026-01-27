@@ -33,10 +33,10 @@ import { dark, ThemeProvider } from 'decentraland-ui2/dist/theme';
 Now you can use Decentraland UI v2's components:
 
 ```tsx
-import React from "react"
-import { Button } from "decentraland-ui2/lib/@mui"
+import React from 'react'
+import { Button } from 'decentraland-ui2/lib/@mui'
 
-export const CustomButton = (props) => {
+export const CustomButton = props => {
   return <Button {...props}>Save</Button>
 }
 ```

@@ -1,20 +1,20 @@
-import { MuteIcon } from "./MuteIcon"
-import { PropsIcon } from "./PropsIcon"
-import { SoundIcon } from "./SoundIcon"
-import { VolumeIcon } from "./VolumeIcon"
-import { IconsContainer } from "../Icons.stories.styled"
-import type { Meta, StoryObj } from "@storybook/react"
+import { MuteIcon } from './MuteIcon'
+import { PropsIcon } from './PropsIcon'
+import { SoundIcon } from './SoundIcon'
+import { VolumeIcon } from './VolumeIcon'
+import { IconsContainer } from '../Icons.stories.styled'
+import type { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof MuteIcon> = {
-  title: "Decentraland UI/Icons/Emotes",
+  title: 'Decentraland UI/Icons/Emotes',
   component: MuteIcon,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
     backgrounds: {
-      default: "dark",
-    },
+      default: 'dark'
+    }
   },
-  tags: ["autodocs"],
+  tags: ['autodocs']
 }
 
 type Story = StoryObj<typeof MuteIcon>
@@ -22,15 +22,15 @@ type Story = StoryObj<typeof MuteIcon>
 const Mute: Story = {}
 
 const Props: Story = {
-  render: () => <PropsIcon />,
+  render: () => <PropsIcon />
 }
 
 const Sound: Story = {
-  render: () => <SoundIcon />,
+  render: () => <SoundIcon />
 }
 
 const Volume: Story = {
-  render: () => <VolumeIcon />,
+  render: () => <VolumeIcon />
 }
 
 const AllEmotesIcons: Story = {
@@ -41,7 +41,7 @@ const AllEmotesIcons: Story = {
       <SoundIcon />
       <VolumeIcon />
     </IconsContainer>
-  ),
+  )
 }
 
 const LargeEmotesIcons: Story = {
@@ -52,7 +52,7 @@ const LargeEmotesIcons: Story = {
       <SoundIcon fontSize="large" />
       <VolumeIcon fontSize="large" />
     </IconsContainer>
-  ),
+  )
 }
 
 // eslint-disable-next-line import/no-default-export

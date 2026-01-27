@@ -1,7 +1,7 @@
-import React from "react"
-import { RewardIcon } from "../../../Icon"
-import { NotificationItemText } from "../../NotificationItem"
-import { CampaignNotificationProps } from "./Reward.types"
+import React from 'react'
+import { RewardIcon } from '../../../Icon'
+import { NotificationItemText } from '../../NotificationItem'
+import { CampaignNotificationProps } from './Reward.types'
 
 const CampaignName = (props: CampaignNotificationProps) => {
   const { metadata } = props.notification
@@ -23,8 +23,7 @@ const CampaignNotification = React.memo((props: CampaignNotificationProps) => {
       title={i18n[locale].title}
       description={
         <>
-          {i18n[locale].description.start} <CampaignName {...props} />{" "}
-          {i18n[locale].description.end}
+          {i18n[locale].description.start} <CampaignName {...props} /> {i18n[locale].description.end}
         </>
       }
     />

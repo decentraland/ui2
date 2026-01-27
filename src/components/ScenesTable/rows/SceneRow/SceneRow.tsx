@@ -1,8 +1,8 @@
-import { memo } from "react"
-import { Typography } from "@mui/material"
-import { AvatarFace } from "../../../AvatarFace/AvatarFace"
-import { LocationIcon } from "../../../Icon"
-import { SceneRowProps } from "./SceneRow.types"
+import { memo } from 'react'
+import { Typography } from '@mui/material'
+import { AvatarFace } from '../../../AvatarFace/AvatarFace'
+import { LocationIcon } from '../../../Icon'
+import { SceneRowProps } from './SceneRow.types'
 import {
   MobileAvatarContainer,
   MobileAvatarName,
@@ -12,8 +12,8 @@ import {
   SceneContentContainer,
   SceneName,
   SceneRowContainer,
-  SceneThumbnail,
-} from "./SceneRow.styled"
+  SceneThumbnail
+} from './SceneRow.styled'
 
 const SceneRow = memo((props: SceneRowProps) => {
   const { name, thumbnail, creator, location } = props
@@ -28,13 +28,9 @@ const SceneRow = memo((props: SceneRowProps) => {
             <MobileAvatarContainer>
               <AvatarFace size="tiny" avatar={creator} />
               <Typography component="span" fontSize="12px">
-                By{" "}
+                By{' '}
               </Typography>
-              <MobileAvatarName
-                href={`https://decentraland.org/profile/accounts/${creator.ethAddress}`}
-              >
-                {creator.name}
-              </MobileAvatarName>
+              <MobileAvatarName href={`https://decentraland.org/profile/accounts/${creator.ethAddress}`}>{creator.name}</MobileAvatarName>
             </MobileAvatarContainer>
           )}
           {location && (
@@ -49,6 +45,6 @@ const SceneRow = memo((props: SceneRowProps) => {
   )
 })
 
-SceneRow.displayName = "SceneRow"
+SceneRow.displayName = 'SceneRow'
 
 export { SceneRow }

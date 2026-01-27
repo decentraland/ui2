@@ -1,7 +1,7 @@
-import { useState } from "react"
-import { Box } from "@mui/material"
-import { Notifications } from "./NotificationsToggle"
-import { NotificationsProps } from "./NotificationsToggle/Notifications.types"
+import { useState } from 'react'
+import { Box } from '@mui/material'
+import { Notifications } from './NotificationsToggle'
+import { NotificationsProps } from './NotificationsToggle/Notifications.types'
 import {
   allTypeOfNotifications,
   bidAcceptedNotificationData,
@@ -47,29 +47,28 @@ import {
   worldsAccessRestrictedNotificationData,
   worldsMissingResourcesNotificationData,
   worldsPermissionGrantedNotificationPropsData,
-  worldsPermissionRevokedNotificationData,
-} from "../../data/notifications"
-import { shorten } from "../AddressField/utils"
-import { NotificationActiveTab } from "./Notifications.types"
-import type { Meta, StoryObj } from "@storybook/react"
+  worldsPermissionRevokedNotificationData
+} from '../../data/notifications'
+import { shorten } from '../AddressField/utils'
+import { NotificationActiveTab } from './Notifications.types'
+import type { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta = {
   component: Notifications,
-  title: "Decentraland UI/Notifications Toggle",
-  tags: ["autodocs"],
+  title: 'Decentraland UI/Notifications Toggle',
+  tags: ['autodocs'],
   argTypes: {},
-  render: (args) => {
+  render: args => {
     const [tab, setTab] = useState(NotificationActiveTab.NEWEST)
     const [open, setOpen] = useState(false)
     return (
       <Box
         sx={{
-          height: "35px",
-          width: "200px",
-          display: "flex",
-          justifyContent: "center",
-          backgroundColor: ({ palette }) =>
-            palette.mode === "light" ? "#f0f0f0" : "#1a091c",
+          height: '35px',
+          width: '200px',
+          display: 'flex',
+          justifyContent: 'center',
+          backgroundColor: ({ palette }) => (palette.mode === 'light' ? '#f0f0f0' : '#1a091c')
         }}
       >
         <Notifications
@@ -81,67 +80,67 @@ const meta: Meta = {
           activeTab={tab}
           onChangeTab={(_e, newTab) => setTab(newTab)}
           onClick={() => setOpen(!open)}
-          onBegin={() => console.log("Begin")}
+          onBegin={() => console.log('Begin')}
           onClose={() => setOpen(open)}
           {...args}
         />
       </Box>
     )
-  },
+  }
 }
 
 type Story = StoryObj<NotificationsProps>
 
 const WithoutNewNotifications: Story = {
-  name: "Without new notifications",
+  name: 'Without new notifications',
   args: {
-    items: [],
-  },
+    items: []
+  }
 }
 
 const WithNewNotifications: Story = {
-  name: "With new notifications",
+  name: 'With new notifications',
   args: {
-    items: [itemSoldNotificationPropsData],
-  },
+    items: [itemSoldNotificationPropsData]
+  }
 }
 
 const Onboarding: Story = {
-  name: "Onboarding",
+  name: 'Onboarding',
   args: {
     isOnboarding: true,
-    items: [eventStartedNotificationData],
-  },
+    items: [eventStartedNotificationData]
+  }
 }
 
 const OpenLoading: Story = {
-  name: "Open but loading",
+  name: 'Open but loading',
   args: {
     isLoading: true,
-    items: [],
-  },
+    items: []
+  }
 }
 
 const OpenNotLoadingButEmpty: Story = {
-  name: "Open not loading but empty",
+  name: 'Open not loading but empty',
   args: {
-    items: [],
-  },
+    items: []
+  }
 }
 
 const EventsNotifications: Story = {
-  name: "Events Notifications",
+  name: 'Events Notifications',
   args: {
     items: [
       eventStartedNotificationData,
       { ...eventStartsSoonFutureStartNotificationData, read: false },
-      eventStartsSoonPastStartNotificationData,
-    ],
-  },
+      eventStartsSoonPastStartNotificationData
+    ]
+  }
 }
 
 const GovernanceNotifications: Story = {
-  name: "Governance Notifications",
+  name: 'Governance Notifications',
   args: {
     items: [
       { ...governanceAnnouncementNotificationData, read: false },
@@ -152,48 +151,41 @@ const GovernanceNotifications: Story = {
       governancePitchPassedNotificationData,
       governanceProposalEnactedNotificationData,
       governanceTenderPassedNotificationData,
-      governanceVotingEndedVoterNotificationData,
-    ],
-  },
+      governanceVotingEndedVoterNotificationData
+    ]
+  }
 }
 
 const LandNotifications: Story = {
-  name: "Land Notifications",
+  name: 'Land Notifications',
   args: {
-    items: [
-      { ...landRentalEndedNotificationData, read: false },
-      landRentedNotificationData,
-    ],
-    renderProfile: (address: string) => shorten(address),
-  },
+    items: [{ ...landRentalEndedNotificationData, read: false }, landRentedNotificationData],
+    renderProfile: (address: string) => shorten(address)
+  }
 }
 
 const TransferNotifications: Story = {
-  name: "Transfer Notifications",
+  name: 'Transfer Notifications',
   args: {
-    items: [
-      giftNotificationData,
-      tipNotificationData,
-      tipNotificationDataWithCents,
-    ],
-    renderProfile: (address: string) => shorten(address),
-  },
+    items: [giftNotificationData, tipNotificationData, tipNotificationDataWithCents],
+    renderProfile: (address: string) => shorten(address)
+  }
 }
 
 const MarketplaceNotifications: Story = {
-  name: "Marketplace Notifications",
+  name: 'Marketplace Notifications',
   args: {
     items: [
       { ...bidAcceptedNotificationData, read: false },
       bidReceivedNotificationPropsData,
       itemSoldNotificationPropsData,
-      royalitesEarnedNotificationPropsData,
-    ],
-  },
+      royalitesEarnedNotificationPropsData
+    ]
+  }
 }
 
 const RewardsNotifications: Story = {
-  name: "Rewards Notifications",
+  name: 'Rewards Notifications',
   args: {
     items: [
       rewardAssignedNotificationData,
@@ -201,76 +193,73 @@ const RewardsNotifications: Story = {
       rewardDelayedNotificationData,
       campaignOutOfFundsNotificationData,
       campaignOutOfStockNotificationData,
-      campaignGasPriceHigherThanExpectedNotificationData,
-    ],
-  },
+      campaignGasPriceHigherThanExpectedNotificationData
+    ]
+  }
 }
 
 const CreditsNotifications: Story = {
-  name: "Credits Notifications",
+  name: 'Credits Notifications',
   args: {
     items: [
       creditsCompleteYourWeeklyGoalsNotificationData,
       creditsDoNotMissOutNotificationData,
       creditsClaimReminderNotificationData,
       creditsExpireSoonReminderNotificationData,
-      creditsExpireIn24HrsReminderNotificationData,
-    ],
-  },
+      creditsExpireIn24HrsReminderNotificationData
+    ]
+  }
 }
 
 const ReferralNotifications: Story = {
-  name: "Referral Notifications",
+  name: 'Referral Notifications',
   args: {
-    items: [
-      referralNewTierReachedNotificationData,
-      referralInvitedUserAcceptedNotificationData,
-    ],
-  },
+    items: [referralNewTierReachedNotificationData, referralInvitedUserAcceptedNotificationData]
+  }
 }
 
 const StreamingNotifications: Story = {
-  name: "Streaming Notifications",
+  name: 'Streaming Notifications',
   args: {
     items: [
       streamingKeyExpiredNotificationData,
       streamingKeyResetNotificationData,
       streamingKeyRevokeNotificationData,
       streamingPlaceUpdatedNotificationData,
-      streamingTimeExceededNotificationData,
-    ],
-  },
+      streamingTimeExceededNotificationData
+    ]
+  }
 }
 
 const WorldsNotifications: Story = {
-  name: "Worlds Notifications",
+  name: 'Worlds Notifications',
   args: {
     items: [
       worldsAccessRestoredNotificationData,
       worldsAccessRestrictedNotificationData,
       worldsMissingResourcesNotificationData,
       worldsPermissionGrantedNotificationPropsData,
-      worldsPermissionRevokedNotificationData,
-    ],
-  },
+      worldsPermissionRevokedNotificationData
+    ]
+  }
 }
 
 const OpenNotLoading: Story = {
-  name: "Open not loading",
+  name: 'Open not loading',
   args: {
-    items: allTypeOfNotifications,
-  },
+    items: allTypeOfNotifications
+  }
 }
 
 const OnlySeen: Story = {
-  name: "Only seen",
+  name: 'Only seen',
   args: {
-    items: allTypeOfNotifications.map((n) => {
+    items: allTypeOfNotifications.map(n => {
       const pastStartDate = new Date()
       pastStartDate.setFullYear(pastStartDate.getFullYear() - 1)
       return { ...n, read: true, timestamp: pastStartDate.getTime() }
-    }),
-  },
+    })
+  }
 }
 
 // eslint-disable-next-line import/no-default-export
@@ -292,5 +281,5 @@ export {
   StreamingNotifications,
   WorldsNotifications,
   OpenNotLoading,
-  OnlySeen,
+  OnlySeen
 }

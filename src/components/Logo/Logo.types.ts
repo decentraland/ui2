@@ -1,5 +1,5 @@
-import { SvgIconProps } from "@mui/material/SvgIcon"
+import { SvgIconProps } from '@mui/material/SvgIcon'
 
 export type LogoProps = SvgIconProps & {
-  size?: "normal" | "large" | "huge" | "massive"
+  size?: 'normal' | 'large' | 'huge' | 'massive'
 }

@@ -1,16 +1,10 @@
-import React from "react"
-import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon"
+import React from 'react'
+import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon'
 
 const OptimismIcon = React.memo((props: SvgIconProps) => {
   return (
     <SvgIcon {...props}>
-      <svg
-        width="40"
-        height="40"
-        viewBox="0 0 40 40"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+      <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g clipPath="url(#clip0_1474_35771)">
           <path
             d="M40 20C40 8.95431 31.0457 0 20 0C8.95431 0 0 8.95431 0 20C0 31.0457 8.95431 40 20 40C31.0457 40 40 31.0457 40 20Z"
@@ -27,14 +21,7 @@ const OptimismIcon = React.memo((props: SvgIconProps) => {
           />
         </g>
         <defs>
-          <linearGradient
-            id="paint0_linear_1474_35771"
-            x1="0"
-            y1="0"
-            x2="20"
-            y2="40"
-            gradientUnits="userSpaceOnUse"
-          >
+          <linearGradient id="paint0_linear_1474_35771" x1="0" y1="0" x2="20" y2="40" gradientUnits="userSpaceOnUse">
             <stop stopColor="white" />
             <stop offset="1" stopColor="white" stopOpacity="0" />
           </linearGradient>

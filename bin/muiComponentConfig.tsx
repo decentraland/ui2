@@ -1,11 +1,4 @@
-export const documentComponents: string[] = [
-  "Autocomplete",
-  "Button",
-  "ButtonGroup",
-  "Card",
-  "Checkbox",
-  "FormGroup",
-]
+export const documentComponents: string[] = ['Autocomplete', 'Button', 'ButtonGroup', 'Card', 'Checkbox', 'FormGroup']
 
 type ComponentsConfigProps = Record<
   string,
@@ -28,17 +21,17 @@ export const componentsConfig: ComponentsConfigProps = {
       sx: { width: 300 },
       renderInput: (params) => <TextField {...params} label="Label" />
     }`,
-    imports: ["import TextField from '@mui/material/TextField'"],
+    imports: ["import TextField from '@mui/material/TextField'"]
   },
   Button: {
     args: `{children: "Button", color: 'primary', variant: 'contained'}`,
-    imports: [],
+    imports: []
   },
   ButtonGroup: {
     args: `{children: <><Button>One</Button>
     <Button>Two</Button>
     <Button>Three</Button></>}`,
-    imports: ["import Button from '@mui/material/Button'"],
+    imports: ["import Button from '@mui/material/Button'"]
   },
   Card: {
     args: `{
@@ -53,14 +46,11 @@ export const componentsConfig: ComponentsConfigProps = {
     </CardContent>,
       sx: { width: 300 },
     }`,
-    imports: [
-      "import CardContent from '@mui/material/CardContent'",
-      "import { Typography } from '@mui/material'",
-    ],
+    imports: ["import CardContent from '@mui/material/CardContent'", "import { Typography } from '@mui/material'"]
   },
   Checkbox: {
     args: `{ inputProps: { 'aria-label': 'Checkbox demo' }, checked: true, color: "primary" }`,
-    imports: [],
+    imports: []
   },
   FormGroup: {
     args: `{children: (<><FormControlLabel control={<Checkbox defaultChecked />} label="Label" />
@@ -72,7 +62,7 @@ export const componentsConfig: ComponentsConfigProps = {
       "import FormControlLabel from '@mui/material/FormControlLabel'",
       "import Checkbox from '@mui/material/Checkbox'",
       "import Button from '@mui/material/Button'",
-      "import { linkTo } from '@storybook/addon-links'",
-    ],
-  },
+      "import { linkTo } from '@storybook/addon-links'"
+    ]
+  }
 }

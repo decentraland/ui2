@@ -1,34 +1,22 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react"
-import {
-  PreviewMessagePayload,
-  PreviewMessageType,
-  PreviewOptions,
-  sendMessage,
-} from "@dcl/schemas/dist/dapps/preview"
-import equal from "deep-equal"
-import { createController } from "./WearablePreview.controller"
-import { config } from "../../config"
-import { createDebounce } from "../../lib/debounce"
-import {
-  WearablePreviewProps,
-  WearablePreviewState,
-} from "./WearablePreview.types"
-import { StyledWearablePreview } from "./WearablePreview.styled"
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { PreviewMessagePayload, PreviewMessageType, PreviewOptions, sendMessage } from '@dcl/schemas/dist/dapps/preview'
+import equal from 'deep-equal'
+import { createController } from './WearablePreview.controller'
+import { config } from '../../config'
+import { createDebounce } from '../../lib/debounce'
+import { WearablePreviewProps, WearablePreviewState } from './WearablePreview.types'
+import { StyledWearablePreview } from './WearablePreview.styled'
 
 const debounce = createDebounce()
 
 const safeEncodeParam = (key: string, value: unknown): string => {
-  if (value === undefined || value === null || value === "") {
-    return ""
+  if (value === undefined || value === null || value === '') {
+    return ''
   }
 
   // Handle arrays
   if (Array.isArray(value)) {
-    return value.length > 0
-      ? value
-          .map((item) => `${key}=${encodeURIComponent(String(item))}`)
-          .join("&")
-      : ""
+    return value.length > 0 ? value.map(item => `${key}=${encodeURIComponent(String(item))}`).join('&') : ''
   }
 
   // Handle all other values (strings, numbers, booleans, objects, etc.)
@@ -38,7 +26,7 @@ const safeEncodeParam = (key: string, value: unknown): string => {
 const WearablePreview = (props: WearablePreviewProps) => {
   const {
     dev = false,
-    baseUrl = config.get("WEARABLE_PREVIEW_URL"),
+    baseUrl = config.get('WEARABLE_PREVIEW_URL'),
     unity = false,
     onLoad = () => {},
     onError = () => {},
@@ -48,7 +36,7 @@ const WearablePreview = (props: WearablePreviewProps) => {
 
   const [state, setState] = useState<WearablePreviewState>({
     isReady: false,
-    pendingOptions: null,
+    pendingOptions: null
   })
 
   const iframeRef = useRef<HTMLIFrameElement>(null)
@@ -100,90 +88,60 @@ const WearablePreview = (props: WearablePreviewProps) => {
       type,
       unityMode,
       username,
-      socialEmote,
+      socialEmote
     } = restProps
 
-    const contractParam = safeEncodeParam("contract", contractAddress)
-    const tokenParam = safeEncodeParam("token", tokenId)
-    const itemParam = safeEncodeParam("item", itemId)
-    const profileParam = safeEncodeParam("profile", profile)
-    const urnParams = safeEncodeParam("urn", urns)
-    const urlsParams = safeEncodeParam("url", urls)
-    const base64sParams = safeEncodeParam("base64", base64s)
-    const skinParam = safeEncodeParam("skin", skin)
-    const hairParam = safeEncodeParam("hair", hair)
-    const eyesParam = safeEncodeParam("eyes", eyes)
-    const bodyShapeParam = safeEncodeParam("bodyShape", bodyShape)
-    const emoteParam = safeEncodeParam("emote", emote)
-    const cameraParam = safeEncodeParam("camera", camera)
-    const projectionParam = safeEncodeParam("projection", projection)
-    const zoomParam = safeEncodeParam("zoom", zoom)
-    const backgroundParam = safeEncodeParam("background", background)
-    const offsetXParam = safeEncodeParam("offsetX", offsetX)
-    const offsetYParam = safeEncodeParam("offsetY", offsetY)
-    const offsetZParam = safeEncodeParam("offsetZ", offsetZ)
-    const cameraXParam = safeEncodeParam("cameraX", cameraX)
-    const cameraYParam = safeEncodeParam("cameraY", cameraY)
-    const cameraZParam = safeEncodeParam("cameraZ", cameraZ)
-    const wheelZoomParam = safeEncodeParam("wheelZoom", wheelZoom)
-    const wheelPrecisionParam = safeEncodeParam(
-      "wheelPrecision",
-      wheelPrecision
-    )
-    const wheelStartParam = safeEncodeParam("wheelStart", wheelStart)
-    const disableBackgroundParam = safeEncodeParam(
-      "disableBackground",
-      disableBackground
-    )
-    const disableAutoRotateParam = safeEncodeParam(
-      "disableAutoRotate",
-      disableAutoRotate
-    )
-    const disableAutoCenterParam = safeEncodeParam(
-      "disableAutoCenter",
-      disableAutoCenter
-    )
-    const disableFaceParam = safeEncodeParam("disableFace", disableFace)
-    const disableDefaultWearablesParam = safeEncodeParam(
-      "disableDefaultWearables",
-      disableDefaultWearables
-    )
-    const disableDefaultEmotesParam = safeEncodeParam(
-      "disableDefaultEmotes",
-      disableDefaultEmotes
-    )
-    const disableFadeEffectParam = safeEncodeParam(
-      "disableFadeEffect",
-      disableFadeEffect
-    )
-    const showSceneBoundariesParam = safeEncodeParam(
-      "showSceneBoundaries",
-      showSceneBoundaries
-    )
-    const showThumbnailBoundariesParam = safeEncodeParam(
-      "showThumbnailBoundaries",
-      showThumbnailBoundaries
-    )
-    const peerUrlParam = safeEncodeParam("peerUrl", peerUrl)
+    const contractParam = safeEncodeParam('contract', contractAddress)
+    const tokenParam = safeEncodeParam('token', tokenId)
+    const itemParam = safeEncodeParam('item', itemId)
+    const profileParam = safeEncodeParam('profile', profile)
+    const urnParams = safeEncodeParam('urn', urns)
+    const urlsParams = safeEncodeParam('url', urls)
+    const base64sParams = safeEncodeParam('base64', base64s)
+    const skinParam = safeEncodeParam('skin', skin)
+    const hairParam = safeEncodeParam('hair', hair)
+    const eyesParam = safeEncodeParam('eyes', eyes)
+    const bodyShapeParam = safeEncodeParam('bodyShape', bodyShape)
+    const emoteParam = safeEncodeParam('emote', emote)
+    const cameraParam = safeEncodeParam('camera', camera)
+    const projectionParam = safeEncodeParam('projection', projection)
+    const zoomParam = safeEncodeParam('zoom', zoom)
+    const backgroundParam = safeEncodeParam('background', background)
+    const offsetXParam = safeEncodeParam('offsetX', offsetX)
+    const offsetYParam = safeEncodeParam('offsetY', offsetY)
+    const offsetZParam = safeEncodeParam('offsetZ', offsetZ)
+    const cameraXParam = safeEncodeParam('cameraX', cameraX)
+    const cameraYParam = safeEncodeParam('cameraY', cameraY)
+    const cameraZParam = safeEncodeParam('cameraZ', cameraZ)
+    const wheelZoomParam = safeEncodeParam('wheelZoom', wheelZoom)
+    const wheelPrecisionParam = safeEncodeParam('wheelPrecision', wheelPrecision)
+    const wheelStartParam = safeEncodeParam('wheelStart', wheelStart)
+    const disableBackgroundParam = safeEncodeParam('disableBackground', disableBackground)
+    const disableAutoRotateParam = safeEncodeParam('disableAutoRotate', disableAutoRotate)
+    const disableAutoCenterParam = safeEncodeParam('disableAutoCenter', disableAutoCenter)
+    const disableFaceParam = safeEncodeParam('disableFace', disableFace)
+    const disableDefaultWearablesParam = safeEncodeParam('disableDefaultWearables', disableDefaultWearables)
+    const disableDefaultEmotesParam = safeEncodeParam('disableDefaultEmotes', disableDefaultEmotes)
+    const disableFadeEffectParam = safeEncodeParam('disableFadeEffect', disableFadeEffect)
+    const showSceneBoundariesParam = safeEncodeParam('showSceneBoundaries', showSceneBoundaries)
+    const showThumbnailBoundariesParam = safeEncodeParam('showThumbnailBoundaries', showThumbnailBoundaries)
+    const peerUrlParam = safeEncodeParam('peerUrl', peerUrl)
     const serverUrl = marketplaceServerUrl ?? nftServerUrl
-    const marketplaceServerUrlParam = safeEncodeParam(
-      "marketplaceServerUrl",
-      serverUrl
-    )
-    const typeParam = safeEncodeParam("type", type)
-    const panningParam = safeEncodeParam("panning", panning)
-    const lockAlphaParam = safeEncodeParam("lockAlpha", lockAlpha)
-    const lockBetaParam = safeEncodeParam("lockBeta", lockBeta)
-    const lockRadiusParam = safeEncodeParam("lockRadius", lockRadius)
-    const envParam = safeEncodeParam("env", dev ? "dev" : undefined)
-    const unityParam = safeEncodeParam("unity", unity)
-    const unityModeParam = safeEncodeParam("mode", unityMode)
-    const usernameParam = safeEncodeParam("username", username)
-    const socialEmoteParam = safeEncodeParam("socialEmote", socialEmote)
+    const marketplaceServerUrlParam = safeEncodeParam('marketplaceServerUrl', serverUrl)
+    const typeParam = safeEncodeParam('type', type)
+    const panningParam = safeEncodeParam('panning', panning)
+    const lockAlphaParam = safeEncodeParam('lockAlpha', lockAlpha)
+    const lockBetaParam = safeEncodeParam('lockBeta', lockBeta)
+    const lockRadiusParam = safeEncodeParam('lockRadius', lockRadius)
+    const envParam = safeEncodeParam('env', dev ? 'dev' : undefined)
+    const unityParam = safeEncodeParam('unity', unity)
+    const unityModeParam = safeEncodeParam('mode', unityMode)
+    const usernameParam = safeEncodeParam('username', username)
+    const socialEmoteParam = safeEncodeParam('socialEmote', socialEmote)
 
     const url =
       baseUrl +
-      "?" +
+      '?' +
       [
         contractParam,
         tokenParam,
@@ -230,10 +188,10 @@ const WearablePreview = (props: WearablePreviewProps) => {
         unityParam,
         unityModeParam,
         usernameParam,
-        socialEmoteParam,
+        socialEmoteParam
       ]
-        .filter((param) => !!param)
-        .join("&")
+        .filter(param => !!param)
+        .join('&')
     return url
   }, [restProps, baseUrl, dev, unity])
 
@@ -241,7 +199,7 @@ const WearablePreview = (props: WearablePreviewProps) => {
     const opts: PreviewOptions = {}
 
     for (const key in restProps) {
-      if (typeof restProps[key] !== "function") {
+      if (typeof restProps[key] !== 'function') {
         opts[key] = restProps[key]
       }
     }
@@ -258,13 +216,9 @@ const WearablePreview = (props: WearablePreviewProps) => {
       if (!currentLastOptions || !equal(options, currentLastOptions)) {
         // send message to iframe
         if (iframeRef.current?.contentWindow) {
-          sendMessage(
-            iframeRef.current.contentWindow,
-            PreviewMessageType.UPDATE,
-            {
-              options,
-            }
-          )
+          sendMessage(iframeRef.current.contentWindow, PreviewMessageType.UPDATE, {
+            options
+          })
         }
         // callback
         onUpdate(options)
@@ -279,13 +233,13 @@ const WearablePreview = (props: WearablePreviewProps) => {
   const handleUpdate = useCallback(() => {
     if (iframeRef.current) {
       // SSR check
-      if (typeof window !== "undefined") {
+      if (typeof window !== 'undefined') {
         if (state.isReady) {
           // if the iframe is ready, send the update
           sendUpdate(options)
         } else if (!equal(state.pendingOptions, options)) {
           // otherwise store last update in state until it's ready
-          setState((prev) => ({ ...prev, pendingOptions: options, url }))
+          setState(prev => ({ ...prev, pendingOptions: options, url }))
         }
       }
     } else {
@@ -301,19 +255,17 @@ const WearablePreview = (props: WearablePreviewProps) => {
       const type: PreviewMessageType = event.data.type
       switch (type) {
         case PreviewMessageType.LOAD: {
-          const payload = event.data
-            .payload as PreviewMessagePayload<PreviewMessageType.LOAD>
+          const payload = event.data.payload as PreviewMessagePayload<PreviewMessageType.LOAD>
           onLoad(payload?.renderer)
           break
         }
         case PreviewMessageType.ERROR: {
-          const payload = event.data
-            .payload as PreviewMessagePayload<PreviewMessageType.ERROR>
+          const payload = event.data.payload as PreviewMessagePayload<PreviewMessageType.ERROR>
           onError(new Error(payload.message))
           break
         }
         case PreviewMessageType.READY: {
-          setState((prev) => {
+          setState(prev => {
             if (prev.isReady) return prev
 
             if (prev.pendingOptions !== null) {
@@ -321,7 +273,7 @@ const WearablePreview = (props: WearablePreviewProps) => {
               return {
                 ...prev,
                 isReady: true,
-                pendingOptions: null,
+                pendingOptions: null
               }
             }
 
@@ -337,9 +289,9 @@ const WearablePreview = (props: WearablePreviewProps) => {
   )
 
   useEffect(() => {
-    window.addEventListener("message", handleMessage, false)
+    window.addEventListener('message', handleMessage, false)
     return () => {
-      window.removeEventListener("message", handleMessage, false)
+      window.removeEventListener('message', handleMessage, false)
     }
   }, [handleMessage])
 
@@ -355,19 +307,10 @@ const WearablePreview = (props: WearablePreviewProps) => {
   }, [handleUpdate])
 
   if (props.tokenId && props.itemId) {
-    console.warn(
-      "You should NOT use `tokenId` and `itemId` props simultaneously"
-    )
+    console.warn('You should NOT use `tokenId` and `itemId` props simultaneously')
   }
 
-  return (
-    <StyledWearablePreview
-      id={props.id}
-      src={url}
-      ref={iframeRef}
-      allow="autoplay"
-    />
-  )
+  return <StyledWearablePreview id={props.id} src={url} ref={iframeRef} allow="autoplay" />
 }
 
 WearablePreview.createController = createController

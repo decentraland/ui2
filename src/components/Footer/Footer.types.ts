@@ -1,4 +1,4 @@
-import type { SupportedLanguage } from "../LanguageDropdown/LanguageDropdown.types"
+import type { SupportedLanguage } from '../LanguageDropdown/LanguageDropdown.types'
 
 interface Language {
   code: SupportedLanguage

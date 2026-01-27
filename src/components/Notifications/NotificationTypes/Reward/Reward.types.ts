@@ -5,13 +5,10 @@ import {
   CommonNotificationProps,
   RewardAssignedNotificationProps,
   RewardDelayedNotificationProps,
-  RewardInProgressNotificationProps,
-} from "../../Notifications.types"
+  RewardInProgressNotificationProps
+} from '../../Notifications.types'
 
-type RewardsNotificationProps =
-  | RewardAssignedNotificationProps
-  | RewardDelayedNotificationProps
-  | RewardInProgressNotificationProps
+type RewardsNotificationProps = RewardAssignedNotificationProps | RewardDelayedNotificationProps | RewardInProgressNotificationProps
 
 type CampaignsNotificationProps =
   | CampaignGasPriceHigherThanExpectedNotificationProps
@@ -23,20 +20,12 @@ type CommonI18nProps = {
   description: { start: string; end: string }
 }
 
-type RewardNotificationProps =
-  CommonNotificationProps<RewardsNotificationProps> & {
-    i18n: Record<string, CommonI18nProps>
-  }
-
-type CampaignNotificationProps =
-  CommonNotificationProps<CampaignsNotificationProps> & {
-    i18n: Record<string, CommonI18nProps>
-  }
-
-export type {
-  CampaignNotificationProps,
-  CampaignsNotificationProps,
-  CommonI18nProps,
-  RewardNotificationProps,
-  RewardsNotificationProps,
+type RewardNotificationProps = CommonNotificationProps<RewardsNotificationProps> & {
+  i18n: Record<string, CommonI18nProps>
 }
+
+type CampaignNotificationProps = CommonNotificationProps<CampaignsNotificationProps> & {
+  i18n: Record<string, CommonI18nProps>
+}
+
+export type { CampaignNotificationProps, CampaignsNotificationProps, CommonI18nProps, RewardNotificationProps, RewardsNotificationProps }

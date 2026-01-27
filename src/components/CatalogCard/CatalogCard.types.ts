@@ -1,8 +1,8 @@
-import { Item } from "@dcl/schemas"
-import { RarityBadgeI18N } from "components/RarityBadge/RarityBadge.types"
+import { Item } from '@dcl/schemas'
+import { RarityBadgeI18N } from 'components/RarityBadge/RarityBadge.types'
 
 type CatalogCardProps = {
-  asset: Pick<Item, "id" | "url" | "name" | "rarity" | "network" | "creator">
+  asset: Pick<Item, 'id' | 'url' | 'name' | 'rarity' | 'network' | 'creator'>
   action: React.ReactNode
   actionIcon?: React.ReactNode
   imageSrc: string

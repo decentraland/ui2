@@ -1,39 +1,24 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react"
-import { AdvancedNavigatorUAData, useAdvancedUserAgentData } from "@dcl/hooks"
-import Download from "@mui/icons-material/Download"
-import { config } from "../../config"
-import { CDNSource, getCDNRelease } from "../../modules/cdnReleases"
-import { triggerFileDownload } from "../../modules/file"
-import {
-  addQueryParamsToUrlString,
-  updateUrlWithLastValue,
-} from "../../modules/url"
-import { setUserAgentArchitectureDefaultByOs } from "../../modules/userAgent"
-import {
-  DownloadButtonProps,
-  DownloadOption,
-  OperativeSystem,
-} from "./DownloadButton.types"
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import { AdvancedNavigatorUAData, useAdvancedUserAgentData } from '@dcl/hooks'
+import Download from '@mui/icons-material/Download'
+import { config } from '../../config'
+import { CDNSource, getCDNRelease } from '../../modules/cdnReleases'
+import { triggerFileDownload } from '../../modules/file'
+import { addQueryParamsToUrlString, updateUrlWithLastValue } from '../../modules/url'
+import { setUserAgentArchitectureDefaultByOs } from '../../modules/userAgent'
+import { DownloadButtonProps, DownloadOption, OperativeSystem } from './DownloadButton.types'
 import {
   DownloadButtonAppleIcon,
   DownloadButtonLabelContainer,
   DownloadButtonStyled,
-  DownloadButtonWindowsIcon,
-} from "./DownloadButton.styled"
+  DownloadButtonWindowsIcon
+} from './DownloadButton.styled'
 
 type CDNLinks = Record<string, Record<string, string | undefined>> | null
 
 // Helper function to create download option from links and user agent data
-const createDownloadOption = (
-  links?: CDNLinks,
-  userAgentData?: AdvancedNavigatorUAData
-): DownloadOption | null => {
-  if (
-    !userAgentData ||
-    !links ||
-    !links[userAgentData.os.name] ||
-    !links[userAgentData.os.name][userAgentData.cpu.architecture]
-  ) {
+const createDownloadOption = (links?: CDNLinks, userAgentData?: AdvancedNavigatorUAData): DownloadOption | null => {
+  if (!userAgentData || !links || !links[userAgentData.os.name] || !links[userAgentData.os.name][userAgentData.cpu.architecture]) {
     return null
   }
 
@@ -46,21 +31,21 @@ const createDownloadOption = (
     return {
       icon: <DownloadButtonAppleIcon />,
       link,
-      arch: userAgentData.cpu.architecture,
+      arch: userAgentData.cpu.architecture
     }
   }
 
   return {
     icon: <DownloadButtonWindowsIcon />,
     link,
-    arch: userAgentData.cpu.architecture,
+    arch: userAgentData.cpu.architecture
   }
 }
 
 const DownloadButton = React.memo((props: DownloadButtonProps) => {
   const {
     onClick,
-    label = "Download",
+    label = 'Download',
     trackingId,
     href,
     startIcon,
@@ -69,18 +54,15 @@ const DownloadButton = React.memo((props: DownloadButtonProps) => {
     cdnLinks,
     getIdentityId,
     onRedirect,
-    shouldDownloadBeforeRedirect = true,
+    shouldDownloadBeforeRedirect = true
   } = props
   const [isDownloading, setIsDownloading] = useState(false)
 
   const [isLoadingUserAgentData, userAgentData] = useAdvancedUserAgentData()
 
-  const windowSearchParams =
-    typeof window !== "undefined"
-      ? new URLSearchParams(window.location.search)
-      : undefined
+  const windowSearchParams = typeof window !== 'undefined' ? new URLSearchParams(window.location.search) : undefined
   const searchParams = new URLSearchParams(windowSearchParams)
-  const os = searchParams.get("os")
+  const os = searchParams.get('os')
 
   useEffect(() => {
     if (userAgentData && os) {
@@ -95,7 +77,7 @@ const DownloadButton = React.memo((props: DownloadButtonProps) => {
   }, [userAgentData, cdnLinks])
 
   const finalHref = useMemo(() => {
-    return href || defaultDownloadOption?.link || config.get("DOWNLOAD_URL")
+    return href || defaultDownloadOption?.link || config.get('DOWNLOAD_URL')
   }, [href, defaultDownloadOption])
 
   const handleClick = useCallback(
@@ -115,34 +97,25 @@ const DownloadButton = React.memo((props: DownloadButtonProps) => {
           try {
             currentIdentityId = await getIdentityId()
           } catch (error) {
-            console.error("Failed to generate identityId:", error)
+            console.error('Failed to generate identityId:', error)
             // Continue with fallback behavior
           }
         }
 
         // Use AUTO_SIGNING source when identityId is available, otherwise fallback to LAUNCHER
-        const source = currentIdentityId
-          ? CDNSource.AUTO_SIGNING
-          : CDNSource.LAUNCHER
+        const source = currentIdentityId ? CDNSource.AUTO_SIGNING : CDNSource.LAUNCHER
         currentLinks = getCDNRelease(source, currentIdentityId)
       }
 
       // Calculate download option with current links
-      const currentDownloadOption = createDownloadOption(
-        currentLinks,
-        userAgentData
-      )
+      const currentDownloadOption = createDownloadOption(currentLinks, userAgentData)
 
       // If we have user agent data and a download option, handle download/redirect
       if (userAgentData && currentDownloadOption) {
-        const redirectUrl = updateUrlWithLastValue(
-          config.get("DOWNLOAD_SUCCESS_URL"),
-          "os",
-          userAgentData.os.name
-        )
+        const redirectUrl = updateUrlWithLastValue(config.get('DOWNLOAD_SUCCESS_URL'), 'os', userAgentData.os.name)
 
         const finalUrl = addQueryParamsToUrlString(redirectUrl, {
-          arch: userAgentData.cpu.architecture,
+          arch: userAgentData.cpu.architecture
         })
 
         if (shouldDownloadBeforeRedirect) {
@@ -156,7 +129,7 @@ const DownloadButton = React.memo((props: DownloadButtonProps) => {
                 onRedirect(finalUrl)
               } else {
                 // Use window.open instead of window.location.href to avoid canceling download
-                window.open(finalUrl, "_blank", "noopener")
+                window.open(finalUrl, '_blank', 'noopener')
               }
             }, 1000) // Wait 1 second after download initiation before redirect
           })
@@ -166,7 +139,7 @@ const DownloadButton = React.memo((props: DownloadButtonProps) => {
           if (onRedirect) {
             onRedirect(finalUrl)
           } else {
-            window.open(finalUrl, "_blank", "noopener")
+            window.open(finalUrl, '_blank', 'noopener')
           }
         }
         return
@@ -176,14 +149,14 @@ const DownloadButton = React.memo((props: DownloadButtonProps) => {
 
       // Fallback: call custom onClick handler or open download page
       onClick?.(event, {
-        type: "DOWNLOAD",
+        type: 'DOWNLOAD',
         track_uuid: trackingId,
-        url: finalHref,
+        url: finalHref
       })
 
       if (!onClick) {
         setTimeout(() => {
-          window.open(config.get("DOWNLOAD_URL"), "_blank", "noopener")
+          window.open(config.get('DOWNLOAD_URL'), '_blank', 'noopener')
         }, 0)
       }
     },
@@ -197,14 +170,11 @@ const DownloadButton = React.memo((props: DownloadButtonProps) => {
       onRedirect,
       shouldDownloadBeforeRedirect,
       trackingId,
-      setIsDownloading,
+      setIsDownloading
     ]
   )
 
-  if (
-    (isLoadingUserAgentData || !defaultDownloadOption) &&
-    (userAgentData?.mobile || userAgentData?.tablet)
-  ) {
+  if ((isLoadingUserAgentData || !defaultDownloadOption) && (userAgentData?.mobile || userAgentData?.tablet)) {
     return null
   }
 

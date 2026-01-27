@@ -1,11 +1,6 @@
-import { memo } from "react"
-import { NumberBadgeProps, TextBadgeProps } from "./Badges.types"
-import {
-  NumberBadgeInner,
-  NumberBadgeWrapper,
-  TextBadgeLabel,
-  TextBadgeWrapper,
-} from "./Badges.styled"
+import { memo } from 'react'
+import { NumberBadgeProps, TextBadgeProps } from './Badges.types'
+import { NumberBadgeInner, NumberBadgeWrapper, TextBadgeLabel, TextBadgeWrapper } from './Badges.styled'
 
 const NumberBadge = memo(({ value }: NumberBadgeProps) => (
   <NumberBadgeWrapper>
@@ -13,7 +8,7 @@ const NumberBadge = memo(({ value }: NumberBadgeProps) => (
   </NumberBadgeWrapper>
 ))
 
-NumberBadge.displayName = "NumberBadge"
+NumberBadge.displayName = 'NumberBadge'
 
 const TextBadge = memo(({ text }: TextBadgeProps) => (
   <TextBadgeWrapper>
@@ -21,6 +16,6 @@ const TextBadge = memo(({ text }: TextBadgeProps) => (
   </TextBadgeWrapper>
 ))
 
-TextBadge.displayName = "TextBadge"
+TextBadge.displayName = 'TextBadge'
 
 export { NumberBadge, TextBadge }

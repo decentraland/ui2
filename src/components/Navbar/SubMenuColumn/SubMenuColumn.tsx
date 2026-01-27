@@ -1,6 +1,6 @@
-import { Typography } from "@mui/material"
-import { SubMenuColumnProps } from "./SubMenuColumn.types"
-import { SubMenuColumnContainer } from "./SubMenuColumn.styled"
+import { Typography } from '@mui/material'
+import { SubMenuColumnProps } from './SubMenuColumn.types'
+import { SubMenuColumnContainer } from './SubMenuColumn.styled'
 
 const SubMenuColumn = (props: SubMenuColumnProps) => {
   const { children, title } = props

@@ -1,16 +1,10 @@
-import React from "react"
-import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon"
+import React from 'react'
+import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon'
 
 const PropsIcon = React.memo((props: SvgIconProps) => {
   return (
     <SvgIcon {...props}>
-      <svg
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -41,12 +35,7 @@ const PropsIcon = React.memo((props: SvgIconProps) => {
           d="M12.1707 8.32199L16.5471 6.06319L17.0058 6.95181L12.6293 9.21061L12.1707 8.32199Z"
           fill="white"
         />
-        <path
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M12.9 8.76615V14.4036H11.9V8.76615H12.9Z"
-          fill="white"
-        />
+        <path fillRule="evenodd" clipRule="evenodd" d="M12.9 8.76615V14.4036H11.9V8.76615H12.9Z" fill="white" />
       </svg>
     </SvgIcon>
   )

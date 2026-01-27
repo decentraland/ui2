@@ -1,33 +1,27 @@
-import React from "react"
-import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRounded"
-import CancelRoundedIcon from "@mui/icons-material/CancelRounded"
-import { IconButton, Typography } from "@mui/material"
-import { ModalProps } from "./Modal.types"
-import {
-  Modal as BaseModal,
-  ModalActionsContainer,
-  ModalContainer,
-  ModalContentContainer,
-  ModalTitleContainer,
-} from "./Modal.styled"
+import React from 'react'
+import ArrowBackIosNewRoundedIcon from '@mui/icons-material/ArrowBackIosNewRounded'
+import CancelRoundedIcon from '@mui/icons-material/CancelRounded'
+import { IconButton, Typography } from '@mui/material'
+import { ModalProps } from './Modal.types'
+import { Modal as BaseModal, ModalActionsContainer, ModalContainer, ModalContentContainer, ModalTitleContainer } from './Modal.styled'
 
 const ModalContent = React.memo(
   (
     props: Partial<
       Pick<
         ModalProps,
-        | "header"
-        | "children"
-        | "actions"
-        | "title"
-        | "subtitle"
-        | "size"
-        | "onClose"
-        | "onBack"
-        | "backgroundImage"
-        | "backgroundSize"
-        | "backgroundPosition"
-        | "backgroundRepeat"
+        | 'header'
+        | 'children'
+        | 'actions'
+        | 'title'
+        | 'subtitle'
+        | 'size'
+        | 'onClose'
+        | 'onBack'
+        | 'backgroundImage'
+        | 'backgroundSize'
+        | 'backgroundPosition'
+        | 'backgroundRepeat'
       >
     >
   ) => {
@@ -43,7 +37,7 @@ const ModalContent = React.memo(
       backgroundImage,
       backgroundSize,
       backgroundPosition,
-      backgroundRepeat,
+      backgroundRepeat
     } = props
 
     return (
@@ -65,11 +59,7 @@ const ModalContent = React.memo(
             )}
             {title && <Typography variant="h5">{title}</Typography>}
             {onClose && (
-              <IconButton
-                aria-label="close"
-                size="large"
-                onClick={(event) => onClose(event, "escapeKeyDown")}
-              >
+              <IconButton aria-label="close" size="large" onClick={event => onClose(event, 'escapeKeyDown')}>
                 <CancelRoundedIcon />
               </IconButton>
             )}

@@ -1,46 +1,25 @@
-import React, { useCallback, useMemo, useState } from "react"
-import { NotificationBellActiveIcon, NotificationBellIcon } from "../../Icon"
-import { NotificationsFeed } from "../NotificationsFeed"
-import { NotificationsProps } from "./Notifications.types"
-import {
-  NotificationIconContainer,
-  NotificationIconWrapper,
-} from "./Notifications.styled"
+import React, { useCallback, useMemo, useState } from 'react'
+import { NotificationBellActiveIcon, NotificationBellIcon } from '../../Icon'
+import { NotificationsFeed } from '../NotificationsFeed'
+import { NotificationsProps } from './Notifications.types'
+import { NotificationIconContainer, NotificationIconWrapper } from './Notifications.styled'
 
 const Notifications = React.memo((props: NotificationsProps) => {
-  const {
-    isOpen,
-    items,
-    isLoading,
-    locale,
-    isOnboarding,
-    activeTab,
-    renderProfile,
-    onClick,
-    onChangeTab,
-    onBegin,
-    onClose,
-  } = props
+  const { isOpen, items, isLoading, locale, isOnboarding, activeTab, renderProfile, onClick, onChangeTab, onBegin, onClose } = props
   const newNotificationsCount = useMemo(() => {
-    return items.filter((notification) => !notification.read).length
+    return items.filter(notification => !notification.read).length
   }, [items])
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
-  const handleClick = useCallback(
-    (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-      onClick(event)
-      setAnchorEl(event.currentTarget)
-    },
-    []
-  )
+  const handleClick = useCallback((event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    onClick(event)
+    setAnchorEl(event.currentTarget)
+  }, [])
 
-  const handleClose = useCallback(
-    (event: React.MouseEvent<HTMLElement> | MouseEvent) => {
-      onClose(event)
-      setAnchorEl(null)
-    },
-    []
-  )
+  const handleClose = useCallback((event: React.MouseEvent<HTMLElement> | MouseEvent) => {
+    onClose(event)
+    setAnchorEl(null)
+  }, [])
 
   return (
     <>
@@ -50,8 +29,8 @@ const Notifications = React.memo((props: NotificationsProps) => {
         badgeContent={newNotificationsCount}
         color="primary"
         anchorOrigin={{
-          vertical: "top",
-          horizontal: "right",
+          vertical: 'top',
+          horizontal: 'right'
         }}
         invisible={newNotificationsCount === 0}
       >
