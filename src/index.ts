@@ -5,6 +5,8 @@ import * as muiIcons from '@mui/icons-material'
 
 // Export Themes
 export { light as lightTheme, dark as darkTheme, ThemeProvider as DclThemeProvider } from './theme'
+export type { Theme } from '@mui/material/styles'
+export type { ThemeProviderProps } from './theme/provider'
 export * as dclColors from './theme/colors'
 
 // Re-exports from @mui/material (named exports only, no export * — for tree-shaking)
