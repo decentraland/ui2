@@ -3,9 +3,12 @@ import * as emotionReact from '@emotion/react'
 import emotionStyled from '@emotion/styled'
 import * as muiIcons from '@mui/icons-material'
 
+// Side-effect import to include emotion theme augmentation in the build
+import './types/emotion'
+
 // Export Themes
 export { light as lightTheme, dark as darkTheme, ThemeProvider as DclThemeProvider } from './theme'
-export type { Theme } from '@mui/material/styles'
+export type { Theme } from '@emotion/react'
 export type { ThemeProviderProps } from './theme/provider'
 export * as dclColors from './theme/colors'
 
@@ -147,11 +150,12 @@ export {
   useAutocomplete,
   useMediaQuery,
   useScrollTrigger,
-  useTheme,
+  useTheme as useThemeMui,
   Zoom
 } from '@mui/material'
 export type { SvgIconProps, ModalProps, ButtonProps, LinkProps, SvgIconOwnProps } from '@mui/material'
 
+export { useTheme } from '@emotion/react'
 export { emotionReact, emotionStyled, emotionCache, muiIcons }
 // Note: muiIcons is exported as a namespace for backward compatibility.
 // For better tree-shaking, dApps should import icons directly from '@mui/icons-material':
