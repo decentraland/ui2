@@ -33,7 +33,7 @@ const navbarSubmenu = {
       },
       {
         title: 'Merch',
-        description: 'Get official Decentraland merchandise',
+        description: 'Offline gear for online people',
         url: 'https://store.decentraland.org/',
         eventTrackingName: 'marketplace_merch',
         isExternal: true
