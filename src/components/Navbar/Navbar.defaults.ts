@@ -30,6 +30,13 @@ const navbarSubmenu = {
         description: 'Claim a NAME, get a whole World',
         url: config.get('MARKETPLACE_NAMES_URL'),
         eventTrackingName: 'marketplace_names'
+      },
+      {
+        title: 'Merch',
+        description: 'Offline gear for online people',
+        url: 'https://store.decentraland.org/',
+        eventTrackingName: 'marketplace_merch',
+        isExternal: true
       }
     ],
     column2: [
