@@ -1,5 +1,6 @@
 import emotionCache from '@emotion/cache'
 import * as emotionReact from '@emotion/react'
+import { keyframes } from '@emotion/react'
 import emotionStyled from '@emotion/styled'
 import * as muiIcons from '@mui/icons-material'
 
@@ -156,7 +157,7 @@ export {
 export type { SvgIconProps, ModalProps, ButtonProps, LinkProps, SvgIconOwnProps } from '@mui/material'
 
 export { useTheme } from '@emotion/react'
-export { emotionReact, emotionStyled, emotionCache, muiIcons }
+export { emotionReact, emotionStyled, emotionCache, keyframes, muiIcons }
 // Note: muiIcons is exported as a namespace for backward compatibility.
 // For better tree-shaking, dApps should import icons directly from '@mui/icons-material':
 //   import { Home, Settings } from '@mui/icons-material'
