@@ -32,6 +32,7 @@
     "deep-equal": "2.2.3",
     "ethereum-blockies": "0.1.1",
     "fp-future": "1.0.1",
+    "lottie-react": "^2.4.0",
     "mitt": "3.0.1",
     "radash": "11.0.0",
     "uuid": "11.1.0"
@@ -41,16 +42,12 @@
     "@dcl/hooks": "^1.0.0",
     "@dcl/schemas": "^22.4.0",
     "@dcl/ui-env": "^2.0.0",
-    "lottie-react": "^2.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-tile-map": "^0.4.0"
   },
   "peerDependenciesMeta": {
     "@contentful/rich-text-react-renderer": {
-      "optional": true
-    },
-    "lottie-react": {
       "optional": true
     },
     "react-tile-map": {
