@@ -15,18 +15,6 @@ class OptionalDependencyError extends Error {
   }
 }
 
-function createDynamicImport<TModule = unknown>(moduleName: string) {
-  return () => {
-    // Split base package from subpath to keep the dynamic import specific
-    // (works with scoped packages and avoids a broad context import).
-    const parts = moduleName.split('/')
-    const base = parts[0]
-    const rest = parts.slice(1).join('/')
-    const dynamicModule = rest ? `${base}/${rest}` : base
-    return import(/* webpackMode: "lazy" */ dynamicModule) as Promise<TModule>
-  }
-}
-
 function createLazyComponent<P extends object>(
   config: OptionalDependencyConfig,
   importFn: () => Promise<{ default: ComponentType<P> }>,
@@ -56,4 +44,4 @@ function createLazyComponent<P extends object>(
   return WrappedComponent
 }
 
-export { createLazyComponent, OptionalDependencyError, createDynamicImport }
+export { createLazyComponent, OptionalDependencyError }

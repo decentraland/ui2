@@ -2,11 +2,12 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import type { Layer, TileMapProps } from 'react-tile-map'
 import CircularProgress from '@mui/material/CircularProgress'
 import { getColorByType, getTiles } from './util'
-import { createDynamicImport, createLazyComponent } from '../../utils/optionalDependency'
+import { createLazyComponent } from '../../utils/optionalDependency'
 import { AtlasColor, AtlasProps, AtlasStateProps } from './Atlas.types'
 
-const importTileMap = createDynamicImport<typeof import('react-tile-map')>('react-tile-map')
-const importTileMapStyles = createDynamicImport('react-tile-map/lib/styles.css')
+const importTileMap = () => import('react-tile-map')
+// @ts-ignore - CSS side-effect import has no type declarations
+const importTileMapStyles = () => import('react-tile-map/lib/styles.css')
 
 const Atlas = React.memo((props: AtlasProps) => {
   const { layers } = props
