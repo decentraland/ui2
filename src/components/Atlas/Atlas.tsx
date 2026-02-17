@@ -6,7 +6,7 @@ import { createLazyComponent } from '../../utils/optionalDependency'
 import { AtlasColor, AtlasProps, AtlasStateProps } from './Atlas.types'
 
 const importTileMap = () => import('react-tile-map')
-// @ts-ignore - CSS side-effect import has no type declarations
+// @ts-expect-error - CSS side-effect import has no type declarations
 const importTileMapStyles = () => import('react-tile-map/lib/styles.css')
 
 const Atlas = React.memo((props: AtlasProps) => {
