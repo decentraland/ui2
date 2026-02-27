@@ -108,7 +108,7 @@ const SubscribeSubtitle = styled(Typography)(({ theme }) => ({
 }))
 
 const SubscribeTitle = styled(Typography)(({ theme }) => ({
-  color: '#fff',
+  color: theme.palette.text.primary,
   marginBottom: theme.spacing(2),
   fontFamily: 'DecentralandHero',
   [theme.breakpoints.down('md')]: {
@@ -145,14 +145,14 @@ const SocialIconWrapper = styled(Box)({
   justifyContent: 'space-between'
 })
 
-const SocialIconBox = styled(Link)({
+const SocialIconBox = styled(Link)(({ theme }) => ({
   cursor: 'pointer',
   fontSize: '32px',
-  color: '#fff',
+  color: theme.palette.text.primary,
   '&:hover': {
-    color: '#fff'
+    color: theme.palette.text.primary
   }
-})
+}))
 
 export {
   FooterContainer,

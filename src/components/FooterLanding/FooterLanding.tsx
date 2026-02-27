@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import ArticleRoundedIcon from '@mui/icons-material/ArticleRounded'
 import CalendarMonthRoundedIcon from '@mui/icons-material/CalendarMonthRounded'
 import GitHubIcon from '@mui/icons-material/GitHub'
@@ -13,6 +13,7 @@ import PeopleAltRoundedIcon from '@mui/icons-material/PeopleAltRounded'
 import SupportRoundedIcon from '@mui/icons-material/SupportRounded'
 import XIcon from '@mui/icons-material/X'
 import YouTubeIcon from '@mui/icons-material/YouTube'
+import Tooltip from '@mui/material/Tooltip'
 import { footerLandingDefaults } from './FooterLanding.defaults'
 import { config } from '../../config'
 import { DiscordIcon } from '../Icon/Social/DiscordIcon'
@@ -34,7 +35,92 @@ import {
   SubscriptionBeehiiv
 } from './FooterLanding.styled'
 
+const HTTP_PROTOCOL_REGEX = /^https?:/i
+const MAILTO_PROTOCOL_REGEX = /^mailto:/i
+const MAILTO_FALLBACK_DELAY_MS = 1200
+const EMAIL_COPIED_TOOLTIP_DURATION_MS = 2000
+
+const getMailtoRecipient = (mailtoHref: string) => {
+  const [rawTo, rawQuery = ''] = mailtoHref.replace(MAILTO_PROTOCOL_REGEX, '').split('?')
+  const mailtoParams = new URLSearchParams(rawQuery)
+  const recipient = rawTo ? decodeURIComponent(rawTo) : (mailtoParams.get('to') ?? '')
+  return recipient.trim()
+}
+
+const copyTextToClipboard = async (text: string) => {
+  if (!text || !navigator.clipboard?.writeText) {
+    return false
+  }
+
+  try {
+    await navigator.clipboard.writeText(text)
+    return true
+  } catch {
+    return false
+  }
+}
+
 const FooterLanding = React.memo((props: FooterLandingProps) => {
+  const emailCopiedTooltipTimeoutRef = useRef<number>()
+  const [isEmailCopiedTooltipOpen, setIsEmailCopiedTooltipOpen] = useState(false)
+
+  const showEmailCopiedTooltip = useCallback(() => {
+    window.clearTimeout(emailCopiedTooltipTimeoutRef.current)
+    setIsEmailCopiedTooltipOpen(true)
+    emailCopiedTooltipTimeoutRef.current = window.setTimeout(() => {
+      setIsEmailCopiedTooltipOpen(false)
+    }, EMAIL_COPIED_TOOLTIP_DURATION_MS)
+  }, [])
+
+  const copyMailtoRecipient = useCallback(
+    async (mailtoHref: string) => {
+      const recipient = getMailtoRecipient(mailtoHref)
+      const copied = await copyTextToClipboard(recipient)
+
+      if (copied) {
+        showEmailCopiedTooltip()
+      }
+    },
+    [showEmailCopiedTooltip]
+  )
+
+  const openMailtoWithCopyFallback = useCallback(
+    (mailtoHref: string) => {
+      let fallbackTimer = 0
+
+      const handleVisibilityChange = () => {
+        if (document.visibilityState === 'hidden') {
+          cleanup()
+        }
+      }
+
+      const cleanup = () => {
+        window.clearTimeout(fallbackTimer)
+        window.removeEventListener('blur', cleanup)
+        document.removeEventListener('visibilitychange', handleVisibilityChange)
+      }
+
+      document.addEventListener('visibilitychange', handleVisibilityChange)
+      window.addEventListener('blur', cleanup)
+
+      fallbackTimer = window.setTimeout(() => {
+        cleanup()
+        if (document.visibilityState === 'visible' && document.hasFocus()) {
+          void copyMailtoRecipient(mailtoHref)
+        }
+      }, MAILTO_FALLBACK_DELAY_MS)
+
+      window.location.href = mailtoHref
+    },
+    [copyMailtoRecipient]
+  )
+
+  useEffect(() => {
+    return () => {
+      window.clearTimeout(emailCopiedTooltipTimeoutRef.current)
+    }
+  }, [])
+
   const {
     subscriptionSrc: subscriptionSrcProp,
     hideSubscription = false,
@@ -80,16 +166,30 @@ const FooterLanding = React.memo((props: FooterLandingProps) => {
 
   const handleClick = useCallback(
     (event: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => {
+      const href = (event.currentTarget as HTMLAnchorElement).href
+
+      if (MAILTO_PROTOCOL_REGEX.test(href)) {
+        event.preventDefault()
+        onLinkClick?.(event)
+        openMailtoWithCopyFallback(href)
+        return
+      }
+
       if (onLinkClick) {
         event.preventDefault()
         onLinkClick(event)
-        const href = (event.currentTarget as HTMLAnchorElement).href
-        setTimeout(() => {
-          window.location.href = href
-        }, 500)
+
+        if (HTTP_PROTOCOL_REGEX.test(href)) {
+          setTimeout(() => {
+            window.location.href = href
+          }, 500)
+          return
+        }
+
+        window.location.href = href
       }
     },
-    [onLinkClick]
+    [onLinkClick, openMailtoWithCopyFallback]
   )
 
   const isMobile = useMobileMediaQuery()
@@ -231,16 +331,28 @@ const FooterLanding = React.memo((props: FooterLandingProps) => {
             </IconButton>
           )}
           {!hideEmail && emailUrl && (
-            <IconButton
-              variant="text"
-              color="secondary"
-              startIcon={<MailRoundedIcon />}
-              href={emailUrl}
-              onClick={handleClick}
-              data-place={trackingContext}
+            <Tooltip
+              title="Email copied"
+              placement="top"
+              arrow
+              open={isEmailCopiedTooltipOpen}
+              disableFocusListener
+              disableHoverListener
+              disableTouchListener
             >
-              {footerLandingDefaults.email}
-            </IconButton>
+              <span>
+                <IconButton
+                  variant="text"
+                  color="secondary"
+                  startIcon={<MailRoundedIcon />}
+                  href={emailUrl}
+                  onClick={handleClick}
+                  data-place={trackingContext}
+                >
+                  {footerLandingDefaults.email}
+                </IconButton>
+              </span>
+            </Tooltip>
           )}
           {!hideDao && daoUrl && (
             <IconButton
