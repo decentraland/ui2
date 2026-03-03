@@ -63,8 +63,8 @@ type Story = StoryObj<typeof meta>
 
 const Default: Story = {
   args: {
-    title: 'Download Decentraland',
-    description: 'To jump in, download the Decentraland app on your mobile device',
+    title: 'Download Decentraland to Jump In',
+    description: "To jump in, you'll need to download the Decentraland app",
     open: true
   },
   parameters: {
