@@ -19,12 +19,7 @@ function MobileDownloadModal(props: MobileDownloadModalProps) {
   } = props
 
   return (
-    <Modal
-      {...modalProps}
-      open={open}
-      size="tiny"
-      onClose={onClose}
-    >
+    <Modal {...modalProps} open={open} size="tiny" onClose={onClose}>
       <ModalContent>
         <ModalImageContainer>
           <ExplorerJumpIn />
