@@ -44,7 +44,10 @@ const ModalContainer = styled(PaperMui)<StyledModalProps>(props => {
 const ModalTitleContainer = styled(BoxMui)({
   display: 'flex',
   justifyContent: 'space-between',
-  padding: '24px'
+  padding: '24px',
+  '& > :only-child': {
+    marginLeft: 'auto'
+  }
 })
 
 const ModalContentContainer = styled(BoxMui)({

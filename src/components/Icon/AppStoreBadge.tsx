@@ -1,14 +1,15 @@
 import React from 'react'
+import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon'
 
-function AppStoreBadge(props: React.SVGProps<SVGSVGElement>) {
+const AppStoreBadge = React.memo((props: SvgIconProps) => {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="135" height="40" viewBox="0 0 135 40" {...props}>
+    <SvgIcon viewBox="0 0 135 40" {...props}>
       <g>
         <path
           fill="#A6A6A6"
           d="M130.197,40H4.729C2.122,40,0,37.872,0,35.267V4.726C0,2.12,2.122,0,4.729,0h125.468 C132.803,0,135,2.12,135,4.726v30.541C135,37.872,132.803,40,130.197,40L130.197,40z"
         />
-        <path d="M134.032,35.268c0,2.116-1.714,3.83-3.834,3.83H4.729c-2.119,0-3.839-1.714-3.839-3.83V4.725 c0-2.115,1.72-3.835,3.839-3.835h125.468c2.121,0,3.834,1.72,3.834,3.835L134.032,35.268L134.032,35.268z" />
+        <path fill="#000000" d="M134.032,35.268c0,2.116-1.714,3.83-3.834,3.83H4.729c-2.119,0-3.839-1.714-3.839-3.83V4.725 c0-2.115,1.72-3.835,3.839-3.835h125.468c2.121,0,3.834,1.72,3.834,3.835L134.032,35.268L134.032,35.268z" />
         <g>
           <g>
             <path
@@ -109,8 +110,8 @@ function AppStoreBadge(props: React.SVGProps<SVGSVGElement>) {
           </g>
         </g>
       </g>
-    </svg>
+    </SvgIcon>
   )
-}
+})
 
 export { AppStoreBadge }

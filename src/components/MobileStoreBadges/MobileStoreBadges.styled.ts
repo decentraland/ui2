@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
+import { Box, Link } from '@mui/material'
 
-const StoreBadgesContainer = styled('div')(({ theme }) => ({
+const StoreBadgesContainer = styled(Box)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
@@ -9,7 +10,7 @@ const StoreBadgesContainer = styled('div')(({ theme }) => ({
   width: '100%'
 }))
 
-const StoreBadgeLink = styled('a')({
+const StoreBadgeLink = styled(Link)({
   display: 'inline-flex',
   alignItems: 'center',
   textDecoration: 'none',
@@ -19,7 +20,7 @@ const StoreBadgeLink = styled('a')({
   }
 })
 
-const StoreBadgeIconWrapper = styled('div', {
+const StoreBadgeIconWrapper = styled(Box, {
   shouldForwardProp: prop => prop !== 'badgeSize'
 })<{ badgeSize: 'small' | 'large' }>(({ badgeSize }) => ({
   display: 'inline-flex',

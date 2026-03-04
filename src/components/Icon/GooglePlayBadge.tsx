@@ -1,8 +1,9 @@
 import React from 'react'
+import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon'
 
-function GooglePlayBadge(props: React.SVGProps<SVGSVGElement>) {
+const GooglePlayBadge = React.memo((props: SvgIconProps) => {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="180" height="53.333" viewBox="0 0 180 53.333" {...props}>
+    <SvgIcon viewBox="0 0 180 53.333" {...props}>
       <path
         d="m173.33 53.333h-166.66c-3.6666 0-6.6665-2.9999-6.6665-6.6665v-39.999c0-3.6666 2.9999-6.6665 6.6665-6.6665h166.66c3.6666 0 6.6665 2.9999 6.6665 6.6665v39.999c0 3.6666-2.9999 6.6665-6.6665 6.6665"
         fill="#100f0d"
@@ -45,8 +46,8 @@ function GooglePlayBadge(props: React.SVGProps<SVGSVGElement>) {
         strokeMiterlimit="10"
         strokeWidth=".26666"
       />
-    </svg>
+    </SvgIcon>
   )
-}
+})
 
 export { GooglePlayBadge }

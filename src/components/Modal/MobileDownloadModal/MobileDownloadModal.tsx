@@ -1,4 +1,3 @@
-import React, { useCallback } from 'react'
 import { MobileStoreBadges } from '../../MobileStoreBadges'
 import { ExplorerJumpIn } from '../DownloadModal/ExplorerJumpIn'
 import { Modal } from '../Modal'
@@ -19,22 +18,12 @@ function MobileDownloadModal(props: MobileDownloadModalProps) {
     ...modalProps
   } = props
 
-  const handleClose = useCallback(
-    (event: React.MouseEvent<HTMLButtonElement>, reason: 'backdropClick' | 'escapeKeyDown') => {
-      if (onClose) {
-        onClose(event, reason)
-      }
-    },
-    [onClose]
-  )
-
   return (
     <Modal
       {...modalProps}
       open={open}
       size="tiny"
-      title=" " // this is to move the close button to the right
-      onClose={handleClose}
+      onClose={onClose}
     >
       <ModalContent>
         <ModalImageContainer>

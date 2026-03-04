@@ -1,5 +1,2 @@
 export { MobileStoreBadges } from './MobileStoreBadges'
 export { MobileStoreBadgesProps } from './MobileStoreBadges.types'
-export { MOBILE_STORE_DEFAULTS } from './constants'
-export { AppStoreBadge } from './AppStoreBadge'
-export { GooglePlayBadge } from './GooglePlayBadge'

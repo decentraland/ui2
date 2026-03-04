@@ -4,5 +4,4 @@ export interface MobileStoreBadgesProps {
   androidLabel?: string
   iosStoreUrl?: string
   androidStoreUrl?: string
-  className?: string
 }

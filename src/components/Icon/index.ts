@@ -1,3 +1,4 @@
+import { AppStoreBadge } from './AppStoreBadge'
 import { MuteIcon } from './Emotes/MuteIcon'
 import { PropsIcon } from './Emotes/PropsIcon'
 import { SoundIcon } from './Emotes/SoundIcon'
@@ -48,6 +49,7 @@ import { GitHubIcon } from './Social/GitHubIcon'
 import { RedditIcon } from './Social/RedditIcon'
 import { TiktokIcon } from './Social/TiktokIcon'
 import { XIcon } from './Social/XIcon'
+import { GooglePlayBadge } from './GooglePlayBadge'
 import { SparklesIcon } from './SparklesIcon'
 import { UtilityIcon } from './UtilityIcon'
 import { BaseFemaleIcon } from './Wearables/BaseFemaleIcon'
@@ -75,6 +77,7 @@ import { UpperBodyIcon } from './Wearables/UpperBodyIcon'
 
 export {
   AccessRestoredIcon,
+  AppStoreBadge,
   AccessRestrictedIcon,
   BaseFemaleIcon,
   BaseMaleIcon,
@@ -92,6 +95,7 @@ export {
   EyewearIcon,
   FacialHairIcon,
   FeetIcon,
+  GooglePlayBadge,
   GovernanceIcon,
   HairIcon,
   HandsWearIcon,
