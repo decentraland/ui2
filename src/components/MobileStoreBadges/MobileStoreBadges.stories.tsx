@@ -88,8 +88,8 @@ const Large: Story = {
 const CustomLabels: Story = {
   args: {
     size: 'small',
-    iosLabel: 'Descargar en App Store',
-    androidLabel: 'Disponible en Google Play'
+    iosLabel: 'Download on the App Store',
+    androidLabel: 'Get it on Google Play'
   },
   parameters: {
     docs: {
