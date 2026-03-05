@@ -5,13 +5,15 @@ import { GooglePlayBadge } from '../Icon/GooglePlayBadge'
 import { MobileStoreBadgesProps } from './MobileStoreBadges.types'
 import { StoreBadgeIconWrapper, StoreBadgeLink, StoreBadgesContainer } from './MobileStoreBadges.styled'
 
-const MobileStoreBadges = React.memo(function MobileStoreBadges({
-  size = 'small',
-  iosLabel = 'Download on the App Store',
-  androidLabel = 'Get it on Google Play',
-  iosStoreUrl = config.get('IOS_STORE_URL'),
-  androidStoreUrl = config.get('ANDROID_STORE_URL')
-}: MobileStoreBadgesProps) {
+const MobileStoreBadges = React.memo(function MobileStoreBadges(props: MobileStoreBadgesProps) {
+  const {
+    size = 'small',
+    iosLabel = 'Download on the App Store',
+    androidLabel = 'Get it on Google Play',
+    iosStoreUrl = config.get('IOS_STORE_URL'),
+    androidStoreUrl = config.get('ANDROID_STORE_URL')
+  } = props
+
   return (
     <StoreBadgesContainer>
       <StoreBadgeLink href={iosStoreUrl} target="_blank" rel="noopener noreferrer" aria-label={iosLabel}>

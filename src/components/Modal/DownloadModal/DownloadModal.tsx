@@ -1,4 +1,3 @@
-import React, { useCallback } from 'react'
 import { ExplorerJumpIn } from './ExplorerJumpIn'
 import { DownloadButton } from '../../DownloadButton'
 import { Modal } from '../Modal'
@@ -8,23 +7,8 @@ import { Content, ImageContainer, StyledDescription, StyledTitle } from './Downl
 function DownloadModal(props: DownloadModalProps) {
   const { title, description, buttonLabel, open, onClose, onDownloadClick, ...modalProps } = props
 
-  const handleClose = useCallback(
-    (event: React.MouseEvent<HTMLButtonElement>, reason: 'backdropClick' | 'escapeKeyDown') => {
-      if (onClose) {
-        onClose(event, reason)
-      }
-    },
-    [onClose]
-  )
-
   return (
-    <Modal
-      {...modalProps}
-      open={open}
-      size="tiny"
-      title=" " // this is to move the close button to the right
-      onClose={handleClose}
-    >
+    <Modal {...modalProps} open={open} size="tiny" onClose={onClose}>
       <Content>
         <ImageContainer>
           <ExplorerJumpIn />
