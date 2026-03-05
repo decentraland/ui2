@@ -1,9 +1,7 @@
-import { AppStoreBadge } from './AppStoreBadge'
 import { MuteIcon } from './Emotes/MuteIcon'
 import { PropsIcon } from './Emotes/PropsIcon'
 import { SoundIcon } from './Emotes/SoundIcon'
 import { VolumeIcon } from './Emotes/VolumeIcon'
-import { GooglePlayBadge } from './GooglePlayBadge'
 import { JumpInIcon } from './JumpInIcon'
 import { LocationIcon } from './LocationIcon'
 import { ManaEthIcon } from './ManaEthIcon'
@@ -77,7 +75,6 @@ import { UpperBodyIcon } from './Wearables/UpperBodyIcon'
 
 export {
   AccessRestoredIcon,
-  AppStoreBadge,
   AccessRestrictedIcon,
   BaseFemaleIcon,
   BaseMaleIcon,
@@ -95,7 +92,6 @@ export {
   EyewearIcon,
   FacialHairIcon,
   FeetIcon,
-  GooglePlayBadge,
   GovernanceIcon,
   HairIcon,
   HandsWearIcon,

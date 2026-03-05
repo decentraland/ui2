@@ -24,22 +24,6 @@ const meta: Meta<MobileStoreBadgesProps> = {
         defaultValue: { summary: 'small' }
       }
     },
-    iosLabel: {
-      control: 'text',
-      description: 'Accessible label for the iOS badge link',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: 'Download on the App Store' }
-      }
-    },
-    androidLabel: {
-      control: 'text',
-      description: 'Accessible label for the Android badge link',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: 'Get it on Google Play' }
-      }
-    },
     iosStoreUrl: {
       control: 'text',
       description: 'iOS store URL',
@@ -85,22 +69,7 @@ const Large: Story = {
   }
 }
 
-const CustomLabels: Story = {
-  args: {
-    size: 'small',
-    iosLabel: 'Download on the App Store',
-    androidLabel: 'Get it on Google Play'
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: 'Badges with custom accessible labels for i18n'
-      }
-    }
-  }
-}
-
 // eslint-disable-next-line import/no-default-export
 export default meta
 
-export { Small, Large, CustomLabels }
+export { Small, Large }

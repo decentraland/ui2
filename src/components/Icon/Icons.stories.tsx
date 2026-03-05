@@ -1,7 +1,5 @@
 import { AppleIcon } from './AppleIcon'
-import { AppStoreBadge } from './AppStoreBadge'
 import { CreditsIcon } from './CreditsIcon'
-import { GooglePlayBadge } from './GooglePlayBadge'
 import { JumpInIcon } from './JumpInIcon'
 import { LocationIcon } from './LocationIcon'
 import { ManaEthIcon } from './ManaEthIcon'
@@ -67,18 +65,9 @@ const Mint: Story = {
   render: () => <MintIcon />
 }
 
-const AppStore: Story = {
-  render: () => <AppStoreBadge />
-}
-
-const GooglePlay: Story = {
-  render: () => <GooglePlayBadge />
-}
-
 const AllIcons: Story = {
   render: () => (
     <IconsContainer>
-      <AppStoreBadge />
       <AppleIcon />
       <CreditsIcon />
       <JumpInIcon />
@@ -90,7 +79,6 @@ const AllIcons: Story = {
       <UtilityIcon />
       <WindowsIcon />
       <MintIcon />
-      <GooglePlayBadge />
     </IconsContainer>
   )
 }
@@ -98,7 +86,6 @@ const AllIcons: Story = {
 const LargeIcons: Story = {
   render: () => (
     <IconsContainer>
-      <AppStoreBadge fontSize="large" />
       <AppleIcon fontSize="large" />
       <CreditsIcon fontSize="large" />
       <JumpInIcon fontSize="large" />
@@ -110,27 +97,10 @@ const LargeIcons: Story = {
       <UtilityIcon fontSize="large" />
       <WindowsIcon fontSize="large" />
       <MintIcon fontSize="large" />
-      <GooglePlayBadge fontSize="large" />
     </IconsContainer>
   )
 }
 
 // eslint-disable-next-line import/no-default-export
 export default meta
-export {
-  AppStore,
-  Apple,
-  Credits,
-  GooglePlay,
-  JumpIn,
-  Location,
-  ManaEth,
-  ManaMatic,
-  Places,
-  Sparkles,
-  Utility,
-  Windows,
-  Mint,
-  AllIcons,
-  LargeIcons
-}
+export { Apple, Credits, JumpIn, Location, ManaEth, ManaMatic, Places, Sparkles, Utility, Windows, Mint, AllIcons, LargeIcons }
