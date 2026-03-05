@@ -1,5 +1,5 @@
-import { AppStoreBadge } from './AppStoreBadge'
 import { AppleIcon } from './AppleIcon'
+import { AppStoreBadge } from './AppStoreBadge'
 import { CreditsIcon } from './CreditsIcon'
 import { GooglePlayBadge } from './GooglePlayBadge'
 import { JumpInIcon } from './JumpInIcon'
@@ -117,4 +117,20 @@ const LargeIcons: Story = {
 
 // eslint-disable-next-line import/no-default-export
 export default meta
-export { AppStore, Apple, Credits, GooglePlay, JumpIn, Location, ManaEth, ManaMatic, Places, Sparkles, Utility, Windows, Mint, AllIcons, LargeIcons }
+export {
+  AppStore,
+  Apple,
+  Credits,
+  GooglePlay,
+  JumpIn,
+  Location,
+  ManaEth,
+  ManaMatic,
+  Places,
+  Sparkles,
+  Utility,
+  Windows,
+  Mint,
+  AllIcons,
+  LargeIcons
+}
