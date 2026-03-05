@@ -1,6 +1,9 @@
 import React from 'react'
 import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon'
 
+// This is the official Google Play badge as a single SVG asset.
+// It includes the background, the Play Store logo, and the "Get it on Google Play" text
+// as vectorized paths — following Google's badge usage guidelines. English only.
 const GooglePlayBadge = React.memo((props: SvgIconProps) => {
   return (
     <SvgIcon viewBox="0 0 180 53.333" {...props}>

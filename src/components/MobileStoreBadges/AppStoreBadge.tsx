@@ -1,6 +1,9 @@
 import React from 'react'
 import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon'
 
+// This is the official App Store badge as a single SVG asset.
+// It includes the background, the Apple logo, and the "Download on the App Store" text
+// as vectorized paths — following Apple's badge usage guidelines. English only.
 const AppStoreBadge = React.memo((props: SvgIconProps) => {
   return (
     <SvgIcon viewBox="0 0 135 40" {...props}>
