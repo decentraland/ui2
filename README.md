@@ -2,7 +2,7 @@
 
 # Decentraland UI v2
 
-This is basically `Material UI` themed with Decentrland's look & feel + some of our own components
+This is basically `Material UI` themed with Decentraland's look & feel + some of our own components
 
 See: [ui2.decentraland.org](https://ui2.decentraland.org)
 
