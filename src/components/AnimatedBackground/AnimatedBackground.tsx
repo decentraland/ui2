@@ -1,7 +1,7 @@
 import { memo, useEffect, useRef } from 'react'
 import { FRAGMENT_SHADER, VERTEX_SHADER } from './AnimatedBackground.shaders'
 import { createProgram, createShader, darkenRgb, hexToRgb, loadTexture } from './AnimatedBackground.utils'
-import overlayTextureUrl from '../../Assets/logo-pattern.png'
+import overlayTextureUrl from '../../Assets/logo-pattern.webp'
 import { AnimatedBackgroundProps } from './AnimatedBackground.types'
 import { Canvas, Fallback, Wrapper } from './AnimatedBackground.styled'
 
