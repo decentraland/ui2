@@ -10,7 +10,8 @@ const meta: Meta<AnimatedBackgroundProps> = {
   parameters: {
     docs: {
       description: {
-        component: 'Animated WebGL background with a gradient shader and overlay texture. Falls back to a static image when WebGL is not available.'
+        component:
+          'Animated WebGL background with a gradient shader and overlay texture. Falls back to a static image when WebGL is not available.'
       }
     }
   },
