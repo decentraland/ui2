@@ -87,11 +87,7 @@ const EventCard = memo((props: EventCardProps) => {
                 </AvatarContainer>
                 {coordinates && !hideLocation && (
                   <LocationChipContainer>
-                    <LocationChip
-                      label={coordinates}
-                      size="small"
-                      icon={<LocationIcon />}
-                    />
+                    <LocationChip label={coordinates} size="small" icon={<LocationIcon />} />
                   </LocationChipContainer>
                 )}
               </AvatarAndLocationRow>

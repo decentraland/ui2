@@ -106,13 +106,7 @@ const Default: Story = {
         leftBadge={<UserCountBadge count={12} />}
         leftBadgeTransparent
       />
-      <EventCard
-        image={sceneThumbnail}
-        sceneName="Upcoming Event Without Live"
-        coordinates="10,15"
-        avatar={exampleAvatar}
-        withShadow
-      />
+      <EventCard image={sceneThumbnail} sceneName="Upcoming Event Without Live" coordinates="10,15" avatar={exampleAvatar} withShadow />
     </Box>
   )
 }

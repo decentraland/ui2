@@ -255,7 +255,9 @@ const WithLeftBadge: Story = {
 
 const BadgeVariations: Story = {
   render: () => (
-    <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 3, width: '100%', alignItems: 'flex-start' }}>
+    <Box
+      sx={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 3, width: '100%', alignItems: 'flex-start' }}
+    >
       <SceneCard
         image={sceneThumbnail}
         sceneName="Simple Numbers and the text title is long and 2 lines"
@@ -375,18 +377,119 @@ const RealWorldExamples: Story = {
 
 const ShowOnHoverVariations: Story = {
   render: () => (
-    <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 3, width: '100%', alignItems: 'flex-start' }}>
-      <SceneCard image={sceneThumbnail} sceneName="All Always Visible" coordinates="always-visible.dcl.eth" avatar={exampleAvatar} withShadow leftBadge="1" rightBadge={<Mana inline>5k</Mana>} showOnHover={[]} />
-      <SceneCard image={sceneThumbnail} sceneName="Left Badge on Hover" coordinates="left-badge-hover.dcl.eth" avatar={exampleAvatar} withShadow leftBadge="2" rightBadge={<Mana inline>3k</Mana>} showOnHover={['leftBadge']} />
-      <SceneCard image={sceneThumbnail} sceneName="Right Badge on Hover" coordinates="right-badge-hover.dcl.eth" avatar={exampleAvatar} withShadow leftBadge="3" rightBadge={<Mana inline>2.5k</Mana>} showOnHover={['rightBadge']} />
-      <SceneCard image={sceneThumbnail} sceneName="Avatar on Hover" coordinates="avatar-hover.dcl.eth" avatar={exampleAvatar} withShadow leftBadge="4" rightBadge={<Mana inline>1.8k</Mana>} showOnHover={['avatar']} />
-      <SceneCard image={sceneThumbnail} sceneName="Location on Hover" coordinates="location-hover.dcl.eth" avatar={exampleAvatar} withShadow leftBadge="5" rightBadge={<Mana inline>1.2k</Mana>} showOnHover={['location']} />
-      <SceneCard image={sceneThumbnail} sceneName="Button on Hover and Long text Title" coordinates="button-hover.dcl.eth" avatar={exampleAvatar} withShadow leftBadge="6" rightBadge={<Mana inline>900</Mana>} showOnHover={['jumpInButton']} />
-      <SceneCard image={sceneThumbnail} sceneName="Both Badges on Hover and Long text Title" coordinates="badges-hover.dcl.eth" avatar={exampleAvatar} withShadow leftBadge="7" rightBadge={<Mana inline>750</Mana>} showOnHover={['leftBadge', 'rightBadge']} />
-      <SceneCard image={sceneThumbnail} sceneName="Avatar & Location Hover" coordinates="avatar-location.dcl.eth" avatar={exampleAvatar} withShadow leftBadge="8" rightBadge={<Mana inline>600</Mana>} showOnHover={['avatar', 'location']} />
-      <SceneCard image={sceneThumbnail} sceneName="Location & Button Hover" coordinates="location-button.dcl.eth" avatar={exampleAvatar} withShadow leftBadge="9" rightBadge={<Mana inline>450</Mana>} showOnHover={['location', 'jumpInButton']} />
-      <SceneCard image={sceneThumbnail} sceneName="All on Hover" coordinates="all-hover.dcl.eth" avatar={exampleAvatar} withShadow leftBadge="10" rightBadge={<Mana inline>300</Mana>} showOnHover={['leftBadge', 'rightBadge', 'avatar', 'location', 'jumpInButton']} />
-      <SceneCard image={sceneThumbnail} sceneName="Multiple Elements Hover" coordinates="multiple-hover.dcl.eth" avatar={exampleAvatar} withShadow leftBadge="⭐" rightBadge={<Mana inline>150</Mana>} showOnHover={['avatar', 'location', 'jumpInButton']} />
+    <Box
+      sx={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 3, width: '100%', alignItems: 'flex-start' }}
+    >
+      <SceneCard
+        image={sceneThumbnail}
+        sceneName="All Always Visible"
+        coordinates="always-visible.dcl.eth"
+        avatar={exampleAvatar}
+        withShadow
+        leftBadge="1"
+        rightBadge={<Mana inline>5k</Mana>}
+        showOnHover={[]}
+      />
+      <SceneCard
+        image={sceneThumbnail}
+        sceneName="Left Badge on Hover"
+        coordinates="left-badge-hover.dcl.eth"
+        avatar={exampleAvatar}
+        withShadow
+        leftBadge="2"
+        rightBadge={<Mana inline>3k</Mana>}
+        showOnHover={['leftBadge']}
+      />
+      <SceneCard
+        image={sceneThumbnail}
+        sceneName="Right Badge on Hover"
+        coordinates="right-badge-hover.dcl.eth"
+        avatar={exampleAvatar}
+        withShadow
+        leftBadge="3"
+        rightBadge={<Mana inline>2.5k</Mana>}
+        showOnHover={['rightBadge']}
+      />
+      <SceneCard
+        image={sceneThumbnail}
+        sceneName="Avatar on Hover"
+        coordinates="avatar-hover.dcl.eth"
+        avatar={exampleAvatar}
+        withShadow
+        leftBadge="4"
+        rightBadge={<Mana inline>1.8k</Mana>}
+        showOnHover={['avatar']}
+      />
+      <SceneCard
+        image={sceneThumbnail}
+        sceneName="Location on Hover"
+        coordinates="location-hover.dcl.eth"
+        avatar={exampleAvatar}
+        withShadow
+        leftBadge="5"
+        rightBadge={<Mana inline>1.2k</Mana>}
+        showOnHover={['location']}
+      />
+      <SceneCard
+        image={sceneThumbnail}
+        sceneName="Button on Hover and Long text Title"
+        coordinates="button-hover.dcl.eth"
+        avatar={exampleAvatar}
+        withShadow
+        leftBadge="6"
+        rightBadge={<Mana inline>900</Mana>}
+        showOnHover={['jumpInButton']}
+      />
+      <SceneCard
+        image={sceneThumbnail}
+        sceneName="Both Badges on Hover and Long text Title"
+        coordinates="badges-hover.dcl.eth"
+        avatar={exampleAvatar}
+        withShadow
+        leftBadge="7"
+        rightBadge={<Mana inline>750</Mana>}
+        showOnHover={['leftBadge', 'rightBadge']}
+      />
+      <SceneCard
+        image={sceneThumbnail}
+        sceneName="Avatar & Location Hover"
+        coordinates="avatar-location.dcl.eth"
+        avatar={exampleAvatar}
+        withShadow
+        leftBadge="8"
+        rightBadge={<Mana inline>600</Mana>}
+        showOnHover={['avatar', 'location']}
+      />
+      <SceneCard
+        image={sceneThumbnail}
+        sceneName="Location & Button Hover"
+        coordinates="location-button.dcl.eth"
+        avatar={exampleAvatar}
+        withShadow
+        leftBadge="9"
+        rightBadge={<Mana inline>450</Mana>}
+        showOnHover={['location', 'jumpInButton']}
+      />
+      <SceneCard
+        image={sceneThumbnail}
+        sceneName="All on Hover"
+        coordinates="all-hover.dcl.eth"
+        avatar={exampleAvatar}
+        withShadow
+        leftBadge="10"
+        rightBadge={<Mana inline>300</Mana>}
+        showOnHover={['leftBadge', 'rightBadge', 'avatar', 'location', 'jumpInButton']}
+      />
+      <SceneCard
+        image={sceneThumbnail}
+        sceneName="Multiple Elements Hover"
+        coordinates="multiple-hover.dcl.eth"
+        avatar={exampleAvatar}
+        withShadow
+        leftBadge="⭐"
+        rightBadge={<Mana inline>150</Mana>}
+        showOnHover={['avatar', 'location', 'jumpInButton']}
+      />
       <SceneCard
         image={sceneThumbnail}
         sceneName="Only Title Visible"

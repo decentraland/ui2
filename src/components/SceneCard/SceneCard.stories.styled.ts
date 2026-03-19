@@ -52,12 +52,4 @@ const NewLabel = styled(Typography)(({ theme }) => ({
   fontSize: 10
 }))
 
-export {
-  NewLabel,
-  RatingBadgeContent,
-  StoryFlexWrap,
-  StoryGrid,
-  StoryGrid2ColsPadded,
-  StoryGrid3Cols,
-  StoryGrid3ColsPadded
-}
+export { NewLabel, RatingBadgeContent, StoryFlexWrap, StoryGrid, StoryGrid2ColsPadded, StoryGrid3Cols, StoryGrid3ColsPadded }
