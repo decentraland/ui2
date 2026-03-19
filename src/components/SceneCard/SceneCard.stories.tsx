@@ -29,72 +29,24 @@ const exampleAvatar: Avatar = {
     ],
     forceRender: [],
     emotes: [
-      {
-        slot: 0,
-        urn: 'handsair'
-      },
-      {
-        slot: 1,
-        urn: 'wave'
-      },
-      {
-        slot: 2,
-        urn: 'fistpump'
-      },
-      {
-        slot: 3,
-        urn: 'dance'
-      },
-      {
-        slot: 4,
-        urn: 'raiseHand'
-      },
-      {
-        slot: 5,
-        urn: 'clap'
-      },
-      {
-        slot: 6,
-        urn: 'money'
-      },
-      {
-        slot: 7,
-        urn: 'kiss'
-      },
-      {
-        slot: 8,
-        urn: 'headexplode'
-      },
-      {
-        slot: 9,
-        urn: 'shrug'
-      }
+      { slot: 0, urn: 'handsair' },
+      { slot: 1, urn: 'wave' },
+      { slot: 2, urn: 'fistpump' },
+      { slot: 3, urn: 'dance' },
+      { slot: 4, urn: 'raiseHand' },
+      { slot: 5, urn: 'clap' },
+      { slot: 6, urn: 'money' },
+      { slot: 7, urn: 'kiss' },
+      { slot: 8, urn: 'headexplode' },
+      { slot: 9, urn: 'shrug' }
     ],
     snapshots: {
       face256: 'https://profile-images.decentraland.org/entities/bafkreietha7mzh7q3lk4j236vut2znwqhbiapihg46p6yrv3j4lbwlzd34/face.png',
       body: 'https://profile-images.decentraland.org/entities/bafkreietha7mzh7q3lk4j236vut2znwqhbiapihg46p6yrv3j4lbwlzd34/body.png'
     },
-    eyes: {
-      color: {
-        r: 0.2235294133424759,
-        g: 0.48627451062202454,
-        b: 0.6901960968971252
-      }
-    },
-    hair: {
-      color: {
-        r: 0.32549020648002625,
-        g: 0.2352941334247589,
-        b: 0.1764705926179886
-      }
-    },
-    skin: {
-      color: {
-        r: 0.9490196108818054,
-        g: 0.7607843279838562,
-        b: 0.6470588445663452
-      }
-    }
+    eyes: { color: { r: 0.2235294133424759, g: 0.48627451062202454, b: 0.6901960968971252 } },
+    hair: { color: { r: 0.32549020648002625, g: 0.2352941334247589, b: 0.1764705926179886 } },
+    skin: { color: { r: 0.9490196108818054, g: 0.7607843279838562, b: 0.6470588445663452 } }
   },
   blocked: [],
   interests: [],
@@ -185,15 +137,7 @@ const WithBorder: Story = {
 
 const BorderColors: Story = {
   render: () => (
-    <Box
-      sx={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(3, 1fr)',
-        gap: 3,
-        width: '100%',
-        alignItems: 'flex-start'
-      }}
-    >
+    <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 3, width: '100%', alignItems: 'flex-start' }}>
       <SceneCard
         image={sceneThumbnail}
         sceneName="Gold Border - 1st Place"
@@ -233,16 +177,7 @@ const BorderColors: Story = {
 
 const CornerBadgeVariations: Story = {
   render: () => (
-    <Box
-      sx={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(3, 1fr)',
-        gap: 3,
-        width: '100%',
-        alignItems: 'flex-start',
-        padding: 2
-      }}
-    >
+    <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 3, width: '100%', alignItems: 'flex-start', padding: 2 }}>
       <SceneCard
         image={sceneThumbnail}
         sceneName="With Text Badge"
@@ -280,15 +215,7 @@ const CornerBadgeVariations: Story = {
 
 const WithLeftBadge: Story = {
   render: () => (
-    <Box
-      sx={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(3, 1fr)',
-        gap: 3,
-        width: '100%',
-        alignItems: 'flex-start'
-      }}
-    >
+    <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 3, width: '100%', alignItems: 'flex-start' }}>
       <SceneCard
         image={sceneThumbnail}
         sceneName="1st Place"
@@ -328,15 +255,7 @@ const WithLeftBadge: Story = {
 
 const BadgeVariations: Story = {
   render: () => (
-    <Box
-      sx={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-        gap: 3,
-        width: '100%',
-        alignItems: 'flex-start'
-      }}
-    >
+    <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 3, width: '100%', alignItems: 'flex-start' }}>
       <SceneCard
         image={sceneThumbnail}
         sceneName="Simple Numbers and the text title is long and 2 lines"
@@ -415,14 +334,7 @@ const BadgeVariations: Story = {
 
 const RealWorldExamples: Story = {
   render: () => (
-    <Box
-      sx={{
-        display: 'flex',
-        gap: 3,
-        flexWrap: 'wrap',
-        alignItems: 'flex-start'
-      }}
-    >
+    <Box sx={{ display: 'flex', gap: 3, flexWrap: 'wrap', alignItems: 'flex-start' }}>
       <SceneCard
         image={sceneThumbnail}
         sceneName="Top Ranking Scene"
@@ -463,125 +375,18 @@ const RealWorldExamples: Story = {
 
 const ShowOnHoverVariations: Story = {
   render: () => (
-    <Box
-      sx={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-        gap: 3,
-        width: '100%',
-        alignItems: 'flex-start'
-      }}
-    >
-      <SceneCard
-        image={sceneThumbnail}
-        sceneName="All Always Visible"
-        coordinates="always-visible.dcl.eth"
-        avatar={exampleAvatar}
-        withShadow
-        leftBadge="1"
-        rightBadge={<Mana inline>5k</Mana>}
-        showOnHover={[]}
-      />
-      <SceneCard
-        image={sceneThumbnail}
-        sceneName="Left Badge on Hover"
-        coordinates="left-badge-hover.dcl.eth"
-        avatar={exampleAvatar}
-        withShadow
-        leftBadge="2"
-        rightBadge={<Mana inline>3k</Mana>}
-        showOnHover={['leftBadge']}
-      />
-      <SceneCard
-        image={sceneThumbnail}
-        sceneName="Right Badge on Hover"
-        coordinates="right-badge-hover.dcl.eth"
-        avatar={exampleAvatar}
-        withShadow
-        leftBadge="3"
-        rightBadge={<Mana inline>2.5k</Mana>}
-        showOnHover={['rightBadge']}
-      />
-      <SceneCard
-        image={sceneThumbnail}
-        sceneName="Avatar on Hover"
-        coordinates="avatar-hover.dcl.eth"
-        avatar={exampleAvatar}
-        withShadow
-        leftBadge="4"
-        rightBadge={<Mana inline>1.8k</Mana>}
-        showOnHover={['avatar']}
-      />
-      <SceneCard
-        image={sceneThumbnail}
-        sceneName="Location on Hover"
-        coordinates="location-hover.dcl.eth"
-        avatar={exampleAvatar}
-        withShadow
-        leftBadge="5"
-        rightBadge={<Mana inline>1.2k</Mana>}
-        showOnHover={['location']}
-      />
-      <SceneCard
-        image={sceneThumbnail}
-        sceneName="Button on Hover and Long text Title"
-        coordinates="button-hover.dcl.eth"
-        avatar={exampleAvatar}
-        withShadow
-        leftBadge="6"
-        rightBadge={<Mana inline>900</Mana>}
-        showOnHover={['jumpInButton']}
-      />
-      <SceneCard
-        image={sceneThumbnail}
-        sceneName="Both Badges on Hover and Long text Title"
-        coordinates="badges-hover.dcl.eth"
-        avatar={exampleAvatar}
-        withShadow
-        leftBadge="7"
-        rightBadge={<Mana inline>750</Mana>}
-        showOnHover={['leftBadge', 'rightBadge']}
-      />
-      <SceneCard
-        image={sceneThumbnail}
-        sceneName="Avatar & Location Hover"
-        coordinates="avatar-location.dcl.eth"
-        avatar={exampleAvatar}
-        withShadow
-        leftBadge="8"
-        rightBadge={<Mana inline>600</Mana>}
-        showOnHover={['avatar', 'location']}
-      />
-      <SceneCard
-        image={sceneThumbnail}
-        sceneName="Location & Button Hover"
-        coordinates="location-button.dcl.eth"
-        avatar={exampleAvatar}
-        withShadow
-        leftBadge="9"
-        rightBadge={<Mana inline>450</Mana>}
-        showOnHover={['location', 'jumpInButton']}
-      />
-      <SceneCard
-        image={sceneThumbnail}
-        sceneName="All on Hover"
-        coordinates="all-hover.dcl.eth"
-        avatar={exampleAvatar}
-        withShadow
-        leftBadge="10"
-        rightBadge={<Mana inline>300</Mana>}
-        showOnHover={['leftBadge', 'rightBadge', 'avatar', 'location', 'jumpInButton']}
-      />
-      <SceneCard
-        image={sceneThumbnail}
-        sceneName="Multiple Elements Hover"
-        coordinates="multiple-hover.dcl.eth"
-        avatar={exampleAvatar}
-        withShadow
-        leftBadge="⭐"
-        rightBadge={<Mana inline>150</Mana>}
-        showOnHover={['avatar', 'location', 'jumpInButton']}
-      />
+    <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 3, width: '100%', alignItems: 'flex-start' }}>
+      <SceneCard image={sceneThumbnail} sceneName="All Always Visible" coordinates="always-visible.dcl.eth" avatar={exampleAvatar} withShadow leftBadge="1" rightBadge={<Mana inline>5k</Mana>} showOnHover={[]} />
+      <SceneCard image={sceneThumbnail} sceneName="Left Badge on Hover" coordinates="left-badge-hover.dcl.eth" avatar={exampleAvatar} withShadow leftBadge="2" rightBadge={<Mana inline>3k</Mana>} showOnHover={['leftBadge']} />
+      <SceneCard image={sceneThumbnail} sceneName="Right Badge on Hover" coordinates="right-badge-hover.dcl.eth" avatar={exampleAvatar} withShadow leftBadge="3" rightBadge={<Mana inline>2.5k</Mana>} showOnHover={['rightBadge']} />
+      <SceneCard image={sceneThumbnail} sceneName="Avatar on Hover" coordinates="avatar-hover.dcl.eth" avatar={exampleAvatar} withShadow leftBadge="4" rightBadge={<Mana inline>1.8k</Mana>} showOnHover={['avatar']} />
+      <SceneCard image={sceneThumbnail} sceneName="Location on Hover" coordinates="location-hover.dcl.eth" avatar={exampleAvatar} withShadow leftBadge="5" rightBadge={<Mana inline>1.2k</Mana>} showOnHover={['location']} />
+      <SceneCard image={sceneThumbnail} sceneName="Button on Hover and Long text Title" coordinates="button-hover.dcl.eth" avatar={exampleAvatar} withShadow leftBadge="6" rightBadge={<Mana inline>900</Mana>} showOnHover={['jumpInButton']} />
+      <SceneCard image={sceneThumbnail} sceneName="Both Badges on Hover and Long text Title" coordinates="badges-hover.dcl.eth" avatar={exampleAvatar} withShadow leftBadge="7" rightBadge={<Mana inline>750</Mana>} showOnHover={['leftBadge', 'rightBadge']} />
+      <SceneCard image={sceneThumbnail} sceneName="Avatar & Location Hover" coordinates="avatar-location.dcl.eth" avatar={exampleAvatar} withShadow leftBadge="8" rightBadge={<Mana inline>600</Mana>} showOnHover={['avatar', 'location']} />
+      <SceneCard image={sceneThumbnail} sceneName="Location & Button Hover" coordinates="location-button.dcl.eth" avatar={exampleAvatar} withShadow leftBadge="9" rightBadge={<Mana inline>450</Mana>} showOnHover={['location', 'jumpInButton']} />
+      <SceneCard image={sceneThumbnail} sceneName="All on Hover" coordinates="all-hover.dcl.eth" avatar={exampleAvatar} withShadow leftBadge="10" rightBadge={<Mana inline>300</Mana>} showOnHover={['leftBadge', 'rightBadge', 'avatar', 'location', 'jumpInButton']} />
+      <SceneCard image={sceneThumbnail} sceneName="Multiple Elements Hover" coordinates="multiple-hover.dcl.eth" avatar={exampleAvatar} withShadow leftBadge="⭐" rightBadge={<Mana inline>150</Mana>} showOnHover={['avatar', 'location', 'jumpInButton']} />
       <SceneCard
         image={sceneThumbnail}
         sceneName="Only Title Visible"
@@ -603,16 +408,7 @@ const ShowOnHoverVariations: Story = {
 
 const TextBadgeExamples: Story = {
   render: () => (
-    <Box
-      sx={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(2, 1fr)',
-        gap: 4,
-        width: '100%',
-        alignItems: 'flex-start',
-        padding: 3
-      }}
-    >
+    <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 4, width: '100%', alignItems: 'flex-start', padding: 3 }}>
       <SceneCard
         image={sceneThumbnail}
         sceneName="Text Badge - Best New"
