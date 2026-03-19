@@ -87,7 +87,7 @@ const Default: Story = {
   args: {
     image: sceneThumbnail,
     sceneName: 'My Galaxy World',
-    coordinates: 'alelevyyyy.eth.dcl',
+    coordinates: 'alelevyyyy.dcl.eth',
     avatar: exampleAvatar,
     withShadow: true,
     leftBadge: '1',
@@ -100,7 +100,7 @@ const WithIcon: Story = {
   args: {
     image: sceneThumbnail,
     sceneName: 'Featured Scene',
-    coordinates: 'featured.eth.dcl',
+    coordinates: 'featured.dcl.eth',
     avatar: exampleAvatar,
     withShadow: true,
     leftBadge: '🏆',
@@ -113,7 +113,7 @@ const AllVisible: Story = {
   args: {
     image: sceneThumbnail,
     sceneName: 'All Elements Visible',
-    coordinates: 'allvisible.eth.dcl',
+    coordinates: 'allvisible.dcl.eth',
     avatar: exampleAvatar,
     withShadow: true,
     leftBadge: '2',
@@ -125,7 +125,7 @@ const WithBorder: Story = {
   args: {
     image: sceneThumbnail,
     sceneName: 'Scene With Border and long name and more text',
-    coordinates: 'border.eth.dcl',
+    coordinates: 'border.dcl.eth',
     avatar: exampleAvatar,
     borderColor: gradient.gold,
     withShadow: true,
@@ -141,7 +141,7 @@ const BorderColors: Story = {
       <SceneCard
         image={sceneThumbnail}
         sceneName="Gold Border - 1st Place"
-        coordinates="gold.eth.dcl"
+        coordinates="gold.dcl.eth"
         avatar={exampleAvatar}
         borderColor={gradient.gold}
         withShadow
@@ -152,7 +152,7 @@ const BorderColors: Story = {
       <SceneCard
         image={sceneThumbnail}
         sceneName="Silver Border - 2nd Place"
-        coordinates="silver.eth.dcl"
+        coordinates="silver.dcl.eth"
         avatar={exampleAvatar}
         borderColor={gradient.silver}
         withShadow
@@ -163,7 +163,7 @@ const BorderColors: Story = {
       <SceneCard
         image={sceneThumbnail}
         sceneName="Bronze Border - 3rd Place"
-        coordinates="bronze.eth.dcl"
+        coordinates="bronze.dcl.eth"
         avatar={exampleAvatar}
         borderColor={gradient.bronze}
         withShadow
@@ -181,7 +181,7 @@ const CornerBadgeVariations: Story = {
       <SceneCard
         image={sceneThumbnail}
         sceneName="With Text Badge"
-        coordinates="text.eth.dcl"
+        coordinates="text.dcl.eth"
         avatar={exampleAvatar}
         withShadow
         cornerBadge={<TextBadge text="Best New" />}
@@ -191,7 +191,7 @@ const CornerBadgeVariations: Story = {
       <SceneCard
         image={sceneThumbnail}
         sceneName="Ranking Badge (no card border)"
-        coordinates="number.eth.dcl"
+        coordinates="number.dcl.eth"
         avatar={exampleAvatar}
         withShadow
         cornerBadge={<NumberBadge value="4" />}
@@ -201,7 +201,7 @@ const CornerBadgeVariations: Story = {
       <SceneCard
         image={sceneThumbnail}
         sceneName="Ranking Badge with Card Border"
-        coordinates="number2.eth.dcl"
+        coordinates="number2.dcl.eth"
         avatar={exampleAvatar}
         withShadow
         borderColor={gradient.gold}
@@ -219,7 +219,7 @@ const WithLeftBadge: Story = {
       <SceneCard
         image={sceneThumbnail}
         sceneName="1st Place"
-        coordinates="first.eth.dcl"
+        coordinates="first.dcl.eth"
         avatar={exampleAvatar}
         withShadow
         borderColor={gradient.gold}
@@ -230,7 +230,7 @@ const WithLeftBadge: Story = {
       <SceneCard
         image={sceneThumbnail}
         sceneName="2nd Place"
-        coordinates="second.eth.dcl"
+        coordinates="second.dcl.eth"
         avatar={exampleAvatar}
         withShadow
         borderColor={gradient.silver}
@@ -241,7 +241,7 @@ const WithLeftBadge: Story = {
       <SceneCard
         image={sceneThumbnail}
         sceneName="3rd Place"
-        coordinates="third.eth.dcl"
+        coordinates="third.dcl.eth"
         avatar={exampleAvatar}
         withShadow
         borderColor={gradient.bronze}
@@ -299,7 +299,7 @@ const BadgeVariations: Story = {
       <SceneCard
         image={sceneThumbnail}
         sceneName="Featured Scene"
-        coordinates="featured.eth.dcl"
+        coordinates="featured.dcl.eth"
         avatar={exampleAvatar}
         withShadow
         leftBadge="⭐"
@@ -309,7 +309,7 @@ const BadgeVariations: Story = {
       <SceneCard
         image={sceneThumbnail}
         sceneName="New Release"
-        coordinates="newrelease.eth.dcl"
+        coordinates="newrelease.dcl.eth"
         avatar={exampleAvatar}
         withShadow
         leftBadge={
@@ -323,7 +323,7 @@ const BadgeVariations: Story = {
       <SceneCard
         image={sceneThumbnail}
         sceneName="Popular Place"
-        coordinates="popular.eth.dcl"
+        coordinates="popular.dcl.eth"
         avatar={exampleAvatar}
         withShadow
         leftBadge="2"
@@ -360,7 +360,7 @@ const RealWorldExamples: Story = {
       <SceneCard
         image={sceneThumbnail}
         sceneName="New Release"
-        coordinates="newrelease.eth.dcl"
+        coordinates="newrelease.dcl.eth"
         avatar={exampleAvatar}
         withShadow
         leftBadge={
@@ -515,7 +515,7 @@ const TextBadgeExamples: Story = {
       <SceneCard
         image={sceneThumbnail}
         sceneName="Text Badge - Best New"
-        coordinates="featured.eth.dcl"
+        coordinates="featured.dcl.eth"
         avatar={exampleAvatar}
         withShadow
         cornerBadge={<TextBadge text="Best New" />}
@@ -525,7 +525,7 @@ const TextBadgeExamples: Story = {
       <SceneCard
         image={sceneThumbnail}
         sceneName="Text Badge - Featured"
-        coordinates="featured2.eth.dcl"
+        coordinates="featured2.dcl.eth"
         avatar={exampleAvatar}
         withShadow
         cornerBadge={<TextBadge text="Featured" />}

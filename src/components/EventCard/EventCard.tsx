@@ -38,7 +38,7 @@ const EventCard = memo((props: EventCardProps) => {
     hideLocation = false
   } = props
 
-  const isWorld = coordinates?.includes('.eth.dcl')
+  const isWorld = coordinates?.includes('.dcl.eth')
   const jumpInUrl = isWorld ? `https://decentraland.org/jump?realm=${coordinates}` : `https://decentraland.org/jump?position=${coordinates}`
 
   const handleCardClick = useCallback(() => {
