@@ -16,7 +16,7 @@ const EventCardContainer = styled(Card)<{
 }>(({ theme, withShadow }) => ({
   borderRadius: theme.spacing(2),
   boxSizing: 'border-box',
-  maxWidth: theme.spacing(75),
+  maxWidth: 329,
   backgroundColor: 'transparent',
   position: 'relative',
   overflow: 'visible',
