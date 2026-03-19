@@ -21,27 +21,27 @@ const ModalImageContainer = styled(Box)({
 })
 
 const ModalTitle = styled(Typography)(({ theme }) => ({
-  fontSize: '21px',
-  fontWeight: 600,
-  fontStretch: 'normal',
+  fontFamily: 'Inter, sans-serif',
+  fontSize: 22,
+  fontWeight: 700,
   fontStyle: 'normal',
-  lineHeight: 1.43,
-  letterSpacing: '0.3px',
+  lineHeight: 1,
+  letterSpacing: '-0.02em',
   textAlign: 'center',
   marginBottom: theme.spacing(2),
   color: theme.palette.text.primary
 }))
 
 const ModalDescription = styled(Typography)(({ theme }) => ({
-  fontSize: '17px',
-  fontWeight: 'normal',
-  fontStretch: 'normal',
+  fontFamily: 'Inter, sans-serif',
+  fontSize: 18,
+  fontWeight: 400,
   fontStyle: 'normal',
-  lineHeight: 1.53,
-  letterSpacing: '-0.2px',
+  lineHeight: 1,
+  letterSpacing: '-0.02em',
   textAlign: 'center',
   marginBottom: theme.spacing(3),
-  color: theme.palette.text.secondary
+  color: '#1E1E1E'
 }))
 
 export { ModalContent, ModalImageContainer, ModalTitle, ModalDescription }
