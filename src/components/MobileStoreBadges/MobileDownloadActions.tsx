@@ -3,7 +3,7 @@ import AppleIcon from '@mui/icons-material/Apple'
 import ShareIcon from '@mui/icons-material/Share'
 import { GooglePlayIcon } from './GooglePlayIcon'
 import { config } from '../../config'
-import { MobileDownloadActionsProps, MobileDownloadActionsI18N } from './MobileDownloadActions.types'
+import { MobileDownloadActionsI18N, MobileDownloadActionsProps } from './MobileDownloadActions.types'
 import {
   ActionsContainer,
   ComingSoonContainer,

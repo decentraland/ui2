@@ -6,7 +6,7 @@ const ActionsContainer = styled(Box)(({ theme }) => ({
   flexDirection: 'column',
   alignItems: 'center',
   width: '100%',
-  gap: theme.spacing(2)
+  gap: theme.spacing(1)
 }))
 
 const GooglePlayButton = styled(Link)(({ theme }) => ({
@@ -70,6 +70,7 @@ const ComingSoonContainer = styled(Box)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+  height: 46,
   gap: theme.spacing(1),
   color: '#161518',
   fontSize: 16,

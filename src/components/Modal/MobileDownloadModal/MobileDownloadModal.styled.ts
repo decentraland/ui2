@@ -27,10 +27,10 @@ const ModalTitle = styled(Typography)({
   fontSize: 22,
   fontWeight: 700,
   fontStyle: 'normal',
-  lineHeight: 1,
+  lineHeight: 1.3,
   letterSpacing: '-0.02em',
   textAlign: 'center',
-  marginBottom: 8,
+  marginBottom: 12,
   color: '#161518'
 })
 
@@ -42,7 +42,7 @@ const ModalDescription = styled(Typography)({
   lineHeight: 1,
   letterSpacing: '-0.02em',
   textAlign: 'center',
-  marginBottom: 24,
+  marginBottom: 25,
   color: '#1E1E1E'
 })
 
