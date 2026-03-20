@@ -23,20 +23,6 @@ const meta: Meta<MobileDownloadModalProps> = {
         defaultValue: { summary: false }
       }
     },
-    title: {
-      control: 'text',
-      description: 'Modal title text',
-      table: {
-        type: { summary: 'string' }
-      }
-    },
-    description: {
-      control: 'text',
-      description: 'Modal description text',
-      table: {
-        type: { summary: 'string' }
-      }
-    },
     platform: {
       control: 'radio',
       options: ['android', 'ios'],
@@ -62,8 +48,6 @@ type Story = StoryObj<typeof meta>
 
 const AndroidPlatform: Story = {
   args: {
-    title: 'Download Decentraland to jump in',
-    description: 'To Jump in, you\u2019ll need to download the Decentraland app.',
     platform: 'android',
     open: true
   }
@@ -71,8 +55,6 @@ const AndroidPlatform: Story = {
 
 const IOSPlatform: Story = {
   args: {
-    title: 'Download Decentraland to jump in',
-    description: 'Switch to a computer to download.',
     platform: 'ios',
     open: true
   }
