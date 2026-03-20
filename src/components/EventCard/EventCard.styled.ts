@@ -16,7 +16,9 @@ const EventCardContainer = styled(Card)<{
 }>(({ theme, withShadow }) => ({
   borderRadius: theme.spacing(2),
   boxSizing: 'border-box',
-  maxWidth: 329,
+  minWidth: 400,
+  maxWidth: 850,
+  flex: 1,
   backgroundColor: 'transparent',
   position: 'relative',
   overflow: 'visible',
@@ -48,8 +50,7 @@ const EventCardContainer = styled(Card)<{
 
 const EventCardActionArea = styled(CardActionArea)(({ theme }) => ({
   borderRadius: theme.spacing(2),
-  overflow: 'hidden',
-  height: theme.spacing(44),
+  height: 460,
   display: 'flex',
   flexDirection: 'column',
   position: 'relative',
@@ -65,36 +66,33 @@ const EventCardActionArea = styled(CardActionArea)(({ theme }) => ({
 const EventMediaContainer = styled(Box)({
   position: 'relative',
   width: '100%',
-  overflow: 'hidden',
-  flexShrink: 0
+  overflow: 'hidden'
 })
 
-const EventCardMedia = styled(CardMedia)(({ theme }) => ({
-  height: theme.spacing(32),
-  width: '100%',
-  borderRadius: `${theme.spacing(2)} ${theme.spacing(2)} 0 0`,
-  backgroundSize: 'cover',
-  [theme.breakpoints.up('sm')]: {
-    transition: theme.transitions.create('height', {
-      duration: theme.transitions.duration.complex
-    }),
-    '.MuiCardActionArea-root:hover &': {
-      height: theme.spacing(25)
+const EventCardMedia = styled(CardMedia)<{ imageHeight?: number; hoverHeight?: number }>(
+  ({ theme, imageHeight = 329, hoverHeight = 271 }) => ({
+    height: imageHeight,
+    width: '100%',
+    borderRadius: `${theme.spacing(2)} ${theme.spacing(2)} 0 0`,
+    backgroundSize: 'cover',
+    [theme.breakpoints.up('sm')]: {
+      transition: theme.transitions.create('height', {
+        duration: theme.transitions.duration.complex
+      }),
+      '.MuiCardActionArea-root:hover &': {
+        height: hoverHeight
+      }
     }
-  },
-  [theme.breakpoints.down('sm')]: {
-    height: theme.spacing(28)
-  }
-}))
+  })
+)
 
 const EventCardContent = styled(CardContent)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? 'rgba(0, 0, 0, 0.4)' : 'rgba(255, 255, 255, 0.4)',
   borderRadius: `0 0 ${theme.spacing(2)} ${theme.spacing(2)}`,
   display: 'flex',
   flexDirection: 'column',
-  justifyContent: 'flex-start',
+  flex: 1,
   width: '100%',
-  flex: '1 1 auto',
   padding: theme.spacing(2),
   '&:last-child': {
     paddingBottom: theme.spacing(2)
@@ -154,6 +152,7 @@ const SceneTitle = styled(Box)({
 const ContentContainer = styled(Box)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
+  flex: 1,
   gap: theme.spacing(1)
 }))
 
@@ -247,6 +246,7 @@ const LocationChip = styled(Chip)(({ theme }) => ({
 }))
 
 const JumpInButtonContainer = styled(Box)(({ theme }) => ({
+  marginTop: 'auto',
   [theme.breakpoints.up('sm')]: {
     opacity: 0,
     height: 0,

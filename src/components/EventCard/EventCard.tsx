@@ -10,7 +10,6 @@ import {
   AvatarLink,
   AvatarTextContainer,
   BadgesContainer,
-  ContentContainer,
   EventCardActionArea,
   EventCardContainer,
   EventCardContent,
@@ -69,36 +68,34 @@ const EventCard = memo((props: EventCardProps) => {
           <EventCardMedia image={image} />
         </EventMediaContainer>
         <EventCardContent>
-          <ContentContainer>
-            <SceneInfoContainer>
-              <SceneTitle>
-                <Typography variant="h6" component="div" gutterBottom>
-                  {sceneName}
-                </Typography>
-              </SceneTitle>
-              <AvatarAndLocationRow>
-                <AvatarContainer>
-                  <AvatarFace size="small" avatar={avatar} />
-                  <AvatarTextContainer>
-                    <Typography variant="body2">
-                      by <AvatarLink href={`https://decentraland.org/profile/accounts/${avatar?.ethAddress}`}>{avatar?.name}</AvatarLink>
-                    </Typography>
-                  </AvatarTextContainer>
-                </AvatarContainer>
-                {coordinates && !hideLocation && (
-                  <LocationChipContainer>
-                    <LocationChip label={coordinates} size="small" icon={<LocationIcon />} />
-                  </LocationChipContainer>
-                )}
-              </AvatarAndLocationRow>
-            </SceneInfoContainer>
-            <JumpInButtonContainer>
-              <Button variant="contained" size="small" fullWidth sx={{ borderRadius: 2 }}>
-                <span>Jump In</span>
-                <JumpInIcon sx={{ marginLeft: 1 }} />
-              </Button>
-            </JumpInButtonContainer>
-          </ContentContainer>
+          <SceneInfoContainer>
+            <SceneTitle>
+              <Typography variant="h6" component="div" gutterBottom>
+                {sceneName}
+              </Typography>
+            </SceneTitle>
+            <AvatarAndLocationRow>
+              <AvatarContainer>
+                <AvatarFace size="small" avatar={avatar} />
+                <AvatarTextContainer>
+                  <Typography variant="body2">
+                    by <AvatarLink href={`https://decentraland.org/profile/accounts/${avatar?.ethAddress}`}>{avatar?.name}</AvatarLink>
+                  </Typography>
+                </AvatarTextContainer>
+              </AvatarContainer>
+              {coordinates && !hideLocation && (
+                <LocationChipContainer>
+                  <LocationChip label={coordinates} size="small" icon={<LocationIcon />} />
+                </LocationChipContainer>
+              )}
+            </AvatarAndLocationRow>
+          </SceneInfoContainer>
+          <JumpInButtonContainer>
+            <Button variant="contained" size="small" fullWidth sx={{ borderRadius: 2 }}>
+              <span>Jump In</span>
+              <JumpInIcon sx={{ marginLeft: 1 }} />
+            </Button>
+          </JumpInButtonContainer>
         </EventCardContent>
       </EventCardActionArea>
     </EventCardContainer>

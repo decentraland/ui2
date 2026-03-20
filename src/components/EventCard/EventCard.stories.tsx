@@ -1,8 +1,8 @@
 import { Avatar } from '@dcl/schemas'
-import { Box } from '@mui/material'
 import { EventCard } from './EventCard'
 import sceneThumbnail from '../../Assets/scene-thumbnail.png'
 import { BadgeGroup, LiveBadge, UserCountBadge } from '../Badges'
+import { StoryRow, StorySection } from './EventCard.stories.styled'
 import type { Meta, StoryObj } from '@storybook/react'
 
 const exampleAvatar: Avatar = {
@@ -82,32 +82,20 @@ type Story = StoryObj<typeof EventCard>
 
 const Default: Story = {
   render: () => (
-    <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 3, width: '100%', alignItems: 'flex-start' }}>
-      <EventCard
-        image={sceneThumbnail}
-        sceneName="Event Title"
-        coordinates="24,24"
-        avatar={exampleAvatar}
-        withShadow
-        leftBadge={
-          <BadgeGroup>
-            <LiveBadge />
-            <UserCountBadge count={24} />
-          </BadgeGroup>
-        }
-        leftBadgeTransparent
-      />
-      <EventCard
-        image={sceneThumbnail}
-        sceneName="Event Title"
-        coordinates="24,24"
-        avatar={exampleAvatar}
-        withShadow
-        leftBadge={<UserCountBadge count={12} />}
-        leftBadgeTransparent
-      />
-      <EventCard image={sceneThumbnail} sceneName="Upcoming Event Without Live" coordinates="10,15" avatar={exampleAvatar} withShadow />
-    </Box>
+    <EventCard
+      image={sceneThumbnail}
+      sceneName="Event Title"
+      coordinates="24,24"
+      avatar={exampleAvatar}
+      withShadow
+      leftBadge={
+        <BadgeGroup>
+          <LiveBadge />
+          <UserCountBadge count={24} />
+        </BadgeGroup>
+      }
+      leftBadgeTransparent
+    />
   )
 }
 
@@ -131,6 +119,197 @@ const WithRedirectToAuth: Story = {
   )
 }
 
+const OneCard: Story = {
+  render: () => (
+    <StoryRow>
+      <EventCard
+        image={sceneThumbnail}
+        sceneName="Single Event Card"
+        coordinates="24,24"
+        avatar={exampleAvatar}
+        withShadow
+        leftBadge={
+          <BadgeGroup>
+            <LiveBadge />
+            <UserCountBadge count={24} />
+          </BadgeGroup>
+        }
+        leftBadgeTransparent
+      />
+    </StoryRow>
+  )
+}
+
+const TwoCards: Story = {
+  render: () => (
+    <StoryRow>
+      <EventCard
+        image={sceneThumbnail}
+        sceneName="Live Music Festival"
+        coordinates="24,24"
+        avatar={exampleAvatar}
+        withShadow
+        leftBadge={
+          <BadgeGroup>
+            <LiveBadge />
+            <UserCountBadge count={24} />
+          </BadgeGroup>
+        }
+        leftBadgeTransparent
+      />
+      <EventCard
+        image={sceneThumbnail}
+        sceneName="Art Gallery Opening"
+        coordinates="10,15"
+        avatar={exampleAvatar}
+        withShadow
+        leftBadge={<UserCountBadge count={12} />}
+        leftBadgeTransparent
+      />
+    </StoryRow>
+  )
+}
+
+const ThreeCards: Story = {
+  render: () => (
+    <StoryRow>
+      <EventCard
+        image={sceneThumbnail}
+        sceneName="Live Music Festival"
+        coordinates="24,24"
+        avatar={exampleAvatar}
+        withShadow
+        leftBadge={
+          <BadgeGroup>
+            <LiveBadge />
+            <UserCountBadge count={24} />
+          </BadgeGroup>
+        }
+        leftBadgeTransparent
+      />
+      <EventCard
+        image={sceneThumbnail}
+        sceneName="Art Gallery Opening"
+        coordinates="10,15"
+        avatar={exampleAvatar}
+        withShadow
+        leftBadge={<UserCountBadge count={12} />}
+        leftBadgeTransparent
+      />
+      <EventCard image={sceneThumbnail} sceneName="Upcoming Community Meetup" coordinates="0,0" avatar={exampleAvatar} withShadow />
+    </StoryRow>
+  )
+}
+
+const CardQuantities: Story = {
+  render: () => (
+    <StorySection>
+      <StoryRow>
+        <EventCard
+          image={sceneThumbnail}
+          sceneName="Single Card"
+          coordinates="24,24"
+          avatar={exampleAvatar}
+          withShadow
+          leftBadge={
+            <BadgeGroup>
+              <LiveBadge />
+              <UserCountBadge count={24} />
+            </BadgeGroup>
+          }
+          leftBadgeTransparent
+        />
+      </StoryRow>
+      <StoryRow>
+        <EventCard
+          image={sceneThumbnail}
+          sceneName="Two Cards - First"
+          coordinates="24,24"
+          avatar={exampleAvatar}
+          withShadow
+          leftBadge={
+            <BadgeGroup>
+              <LiveBadge />
+              <UserCountBadge count={24} />
+            </BadgeGroup>
+          }
+          leftBadgeTransparent
+        />
+        <EventCard
+          image={sceneThumbnail}
+          sceneName="Two Cards - Second"
+          coordinates="10,15"
+          avatar={exampleAvatar}
+          withShadow
+          leftBadge={<UserCountBadge count={12} />}
+          leftBadgeTransparent
+        />
+      </StoryRow>
+      <StoryRow>
+        <EventCard
+          image={sceneThumbnail}
+          sceneName="Three Cards - First"
+          coordinates="24,24"
+          avatar={exampleAvatar}
+          withShadow
+          leftBadge={
+            <BadgeGroup>
+              <LiveBadge />
+              <UserCountBadge count={24} />
+            </BadgeGroup>
+          }
+          leftBadgeTransparent
+        />
+        <EventCard
+          image={sceneThumbnail}
+          sceneName="Three Cards - Second"
+          coordinates="10,15"
+          avatar={exampleAvatar}
+          withShadow
+          leftBadge={<UserCountBadge count={12} />}
+          leftBadgeTransparent
+        />
+        <EventCard image={sceneThumbnail} sceneName="Three Cards - Third" coordinates="0,0" avatar={exampleAvatar} withShadow />
+      </StoryRow>
+    </StorySection>
+  )
+}
+
+const Multiline: Story = {
+  render: () => (
+    <StoryRow>
+      <EventCard
+        image={sceneThumbnail}
+        sceneName="Short Title"
+        coordinates="24,24"
+        avatar={exampleAvatar}
+        withShadow
+        leftBadge={
+          <BadgeGroup>
+            <LiveBadge />
+            <UserCountBadge count={24} />
+          </BadgeGroup>
+        }
+        leftBadgeTransparent
+      />
+      <EventCard
+        image={sceneThumbnail}
+        sceneName="This Is A Much Longer Event Title That Wraps To Two Lines"
+        coordinates="10,15"
+        avatar={exampleAvatar}
+        withShadow
+        leftBadge={
+          <BadgeGroup>
+            <LiveBadge />
+            <UserCountBadge count={8} />
+          </BadgeGroup>
+        }
+        leftBadgeTransparent
+      />
+    </StoryRow>
+  )
+}
+
 // eslint-disable-next-line import/no-default-export
 export default meta
-export { Default, WithRedirectToAuth }
+export { Default, WithRedirectToAuth, OneCard, TwoCards, ThreeCards, CardQuantities, Multiline }
