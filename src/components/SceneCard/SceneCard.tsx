@@ -43,7 +43,7 @@ const SceneCard = memo((props: SceneCardProps) => {
     onClick
   } = props
 
-  const isWorld = coordinates?.includes('.eth.dcl')
+  const isWorld = coordinates?.includes('.dcl.eth')
   const jumpInUrl = isWorld ? `https://decentraland.org/jump?realm=${coordinates}` : `https://decentraland.org/jump?position=${coordinates}`
 
   const shouldShowOnHover = (element: SceneCardHoverElement) => showOnHover.includes(element)

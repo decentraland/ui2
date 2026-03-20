@@ -86,7 +86,7 @@ const exampleRows = [
     sceneName: 'My Galaxy World and mor things',
     thumbnail: sceneThumbnail,
     creator: exampleAvatar,
-    location: 'alelevyyyyworldamazing.eth.dcl',
+    location: 'alelevyyyyworldamazing.dcl.eth',
     positionChange: 3
   },
   {
@@ -102,7 +102,7 @@ const exampleRows = [
     sceneName: 'Eclair',
     thumbnail: sceneThumbnail,
     creator: exampleAvatar,
-    location: 'alelevyyyy.eth.dcl',
+    location: 'alelevyyyy.dcl.eth',
     positionChange: 5
   },
   {
@@ -120,7 +120,7 @@ const exampleRowsWithBorders = [
     sceneName: 'Gold Border Scene',
     thumbnail: sceneThumbnail,
     creator: exampleAvatar,
-    location: 'alelevyyyyworldamazing.eth.dcl',
+    location: 'alelevyyyyworldamazing.dcl.eth',
     positionChange: 3,
     borderColor: gradient.gold
   },
@@ -138,7 +138,7 @@ const exampleRowsWithBorders = [
     sceneName: 'Bronze Border Scene',
     thumbnail: sceneThumbnail,
     creator: exampleAvatar,
-    location: 'alelevyyyy.eth.dcl',
+    location: 'alelevyyyy.dcl.eth',
     positionChange: 5,
     borderColor: gradient.bronze
   },
