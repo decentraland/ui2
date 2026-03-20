@@ -3,7 +3,7 @@ import AppleIcon from '@mui/icons-material/Apple'
 import ShareIcon from '@mui/icons-material/Share'
 import { GooglePlayIcon } from './GooglePlayIcon'
 import { config } from '../../config'
-import { MobileDownloadActionsProps } from './MobileDownloadActions.types'
+import { MobileDownloadActionsProps, MobileDownloadActionsI18N } from './MobileDownloadActions.types'
 import {
   ActionsContainer,
   ComingSoonContainer,
@@ -12,8 +12,16 @@ import {
   SendLinkButton
 } from './MobileDownloadActions.styled'
 
+const defaultI18n: MobileDownloadActionsI18N = {
+  get_it_on: 'GET IT ON',
+  google_play: 'Google Play',
+  send_yourself_the_link: 'SEND YOURSELF THE LINK',
+  coming_soon: 'Coming Soon'
+}
+
 const MobileDownloadActions = React.memo(function MobileDownloadActions(props: MobileDownloadActionsProps) {
-  const { platform, androidStoreUrl = config.get('ANDROID_STORE_URL'), onCopyLink } = props
+  const { platform, androidStoreUrl = config.get('ANDROID_STORE_URL'), onCopyLink, i18n: i18nProp } = props
+  const texts = { ...defaultI18n, ...i18nProp }
 
   const handleSendLink = useCallback(async () => {
     const url = window.location.href
@@ -35,8 +43,8 @@ const MobileDownloadActions = React.memo(function MobileDownloadActions(props: M
         <GooglePlayButton href={androidStoreUrl} target="_blank" rel="noopener noreferrer">
           <GooglePlayIcon />
           <GooglePlayButtonLabel>
-            <span>GET IT ON</span>
-            Google Play
+            <span>{texts.get_it_on}</span>
+            {texts.google_play}
           </GooglePlayButtonLabel>
         </GooglePlayButton>
       </ActionsContainer>
@@ -46,12 +54,12 @@ const MobileDownloadActions = React.memo(function MobileDownloadActions(props: M
   return (
     <ActionsContainer>
       <SendLinkButton variant="contained" onClick={handleSendLink}>
-        SEND YOURSELF THE LINK
+        {texts.send_yourself_the_link}
         <ShareIcon />
       </SendLinkButton>
       <ComingSoonContainer>
         <AppleIcon />
-        <span>Coming Soon</span>
+        <span>{texts.coming_soon}</span>
       </ComingSoonContainer>
     </ActionsContainer>
   )
