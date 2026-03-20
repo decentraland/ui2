@@ -141,12 +141,15 @@ const LeftBadge = styled(Box)<{ transparent?: boolean }>(({ theme, transparent }
 }))
 
 const SceneTitle = styled(Box)({
-  display: '-webkit-box',
-  WebkitLineClamp: 2,
-  WebkitBoxOrient: 'vertical',
-  overflow: 'hidden',
-  textOverflow: 'ellipsis',
-  wordBreak: 'break-word'
+  height: 71,
+  '& .MuiTypography-root': {
+    display: '-webkit-box',
+    WebkitLineClamp: 2,
+    WebkitBoxOrient: 'vertical',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    wordBreak: 'break-word'
+  }
 })
 
 const ContentContainer = styled(Box)(({ theme }) => ({
@@ -202,29 +205,27 @@ const LocationChipContainer = styled(Box)(({ theme }) => ({
   maxWidth: '50%',
   display: 'flex',
   justifyContent: 'flex-end',
-  [theme.breakpoints.up('sm')]: {
-    opacity: 0,
-    height: 0,
-    overflow: 'hidden',
-    transform: 'translateX(20px)',
-    transition: [
-      theme.transitions.create('opacity', {
-        duration: theme.transitions.duration.complex
-      }),
-      theme.transitions.create('height', {
-        duration: theme.transitions.duration.complex
-      }),
-      theme.transitions.create('transform', {
-        duration: theme.transitions.duration.complex
-      })
-    ].join(', '),
-    '.MuiCardActionArea-root:hover &': {
-      opacity: 1,
-      height: 'auto',
-      transform: 'translateX(0)'
-    }
+  opacity: 0,
+  height: 0,
+  overflow: 'hidden',
+  transform: 'translateX(20px)',
+  transition: [
+    theme.transitions.create('opacity', {
+      duration: theme.transitions.duration.complex
+    }),
+    theme.transitions.create('height', {
+      duration: theme.transitions.duration.complex
+    }),
+    theme.transitions.create('transform', {
+      duration: theme.transitions.duration.complex
+    })
+  ].join(', '),
+  '.MuiCardActionArea-root:hover &': {
+    opacity: 1,
+    height: 'auto',
+    transform: 'translateX(0)'
   },
-  [theme.breakpoints.down('sm')]: {
+  [theme.breakpoints.down('xs')]: {
     display: 'none'
   }
 }))
@@ -247,29 +248,27 @@ const LocationChip = styled(Chip)(({ theme }) => ({
 
 const JumpInButtonContainer = styled(Box)(({ theme }) => ({
   marginTop: 'auto',
-  [theme.breakpoints.up('sm')]: {
-    opacity: 0,
-    height: 0,
-    overflow: 'hidden',
-    transform: 'translateY(20px)',
-    transition: [
-      theme.transitions.create('opacity', {
-        duration: theme.transitions.duration.complex
-      }),
-      theme.transitions.create('height', {
-        duration: theme.transitions.duration.complex
-      }),
-      theme.transitions.create('transform', {
-        duration: theme.transitions.duration.complex
-      })
-    ].join(', '),
-    '.MuiCardActionArea-root:hover &': {
-      opacity: 1,
-      height: 'auto',
-      transform: 'translateY(0)'
-    }
+  opacity: 0,
+  height: 0,
+  overflow: 'hidden',
+  transform: 'translateY(20px)',
+  transition: [
+    theme.transitions.create('opacity', {
+      duration: theme.transitions.duration.complex
+    }),
+    theme.transitions.create('height', {
+      duration: theme.transitions.duration.complex
+    }),
+    theme.transitions.create('transform', {
+      duration: theme.transitions.duration.complex
+    })
+  ].join(', '),
+  '.MuiCardActionArea-root:hover &': {
+    opacity: 1,
+    height: 'auto',
+    transform: 'translateY(0)'
   },
-  [theme.breakpoints.down('sm')]: {
+  [theme.breakpoints.down('xs')]: {
     display: 'none'
   }
 }))
@@ -277,6 +276,37 @@ const JumpInButtonContainer = styled(Box)(({ theme }) => ({
 const SceneInfoContainer = styled(Box)({
   width: '100%'
 })
+
+const JumpInButton = styled('button')(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  gap: theme.spacing(1),
+  width: '100%',
+  height: 46,
+  border: 'none',
+  borderRadius: theme.spacing(2),
+  backgroundColor: theme.palette.primary.main,
+  color: theme.palette.primary.contrastText,
+  fontSize: 16,
+  fontWeight: theme.typography.fontWeightBold,
+  textTransform: 'uppercase',
+  cursor: 'pointer',
+  '& svg': {
+    width: 24,
+    height: 24
+  },
+  '&:hover': {
+    backgroundColor: theme.palette.primary.dark
+  },
+  '&:focus-visible': {
+    outline: `2px solid ${theme.palette.primary.main}`,
+    outlineOffset: 2
+  },
+  '&:active': {
+    backgroundColor: theme.palette.primary.dark
+  }
+}))
 
 export {
   AvatarAndLocationRow,
@@ -290,6 +320,7 @@ export {
   EventCardContent,
   EventCardMedia,
   EventMediaContainer,
+  JumpInButton,
   JumpInButtonContainer,
   LeftBadge,
   LocationChip,

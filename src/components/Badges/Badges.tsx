@@ -30,7 +30,7 @@ TextBadge.displayName = 'TextBadge'
 
 const LiveBadge = memo(() => (
   <LiveBadgeWrapper>
-    <SensorsRoundedIcon sx={{ fontSize: 14 }} />
+    <SensorsRoundedIcon />
     LIVE
   </LiveBadgeWrapper>
 ))
@@ -40,7 +40,7 @@ LiveBadge.displayName = 'LiveBadge'
 const UserCountBadge = memo(({ count }: UserCountBadgeProps) => (
   <UserCountBadgeWrapper>
     <UserCountDot />
-    <PermIdentityRoundedIcon sx={{ fontSize: 14 }} />
+    <PermIdentityRoundedIcon />
     {count}
   </UserCountBadgeWrapper>
 ))

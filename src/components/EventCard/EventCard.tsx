@@ -1,6 +1,6 @@
 import { memo, useCallback } from 'react'
 import Typography from '@mui/material/Typography'
-import { Box, Button } from '@mui/material'
+import { Box } from '@mui/material'
 import { AvatarFace } from '../AvatarFace'
 import { JumpInIcon, LocationIcon } from '../Icon'
 import { EventCardProps } from './EventCard.types'
@@ -15,6 +15,7 @@ import {
   EventCardContent,
   EventCardMedia,
   EventMediaContainer,
+  JumpInButton,
   JumpInButtonContainer,
   LeftBadge,
   LocationChip,
@@ -74,27 +75,31 @@ const EventCard = memo((props: EventCardProps) => {
                 {sceneName}
               </Typography>
             </SceneTitle>
-            <AvatarAndLocationRow>
-              <AvatarContainer>
-                <AvatarFace size="small" avatar={avatar} />
-                <AvatarTextContainer>
-                  <Typography variant="body2">
-                    by <AvatarLink href={`https://decentraland.org/profile/accounts/${avatar?.ethAddress}`}>{avatar?.name}</AvatarLink>
-                  </Typography>
-                </AvatarTextContainer>
-              </AvatarContainer>
-              {coordinates && !hideLocation && (
-                <LocationChipContainer>
-                  <LocationChip label={coordinates} size="small" icon={<LocationIcon />} />
-                </LocationChipContainer>
-              )}
-            </AvatarAndLocationRow>
+            {(avatar || (coordinates && !hideLocation)) && (
+              <AvatarAndLocationRow>
+                {avatar && (
+                  <AvatarContainer>
+                    <AvatarFace size="small" avatar={avatar} />
+                    <AvatarTextContainer>
+                      <Typography variant="body2">
+                        by <AvatarLink href={`https://decentraland.org/profile/accounts/${avatar.ethAddress}`}>{avatar.name}</AvatarLink>
+                      </Typography>
+                    </AvatarTextContainer>
+                  </AvatarContainer>
+                )}
+                {coordinates && !hideLocation && (
+                  <LocationChipContainer>
+                    <LocationChip label={coordinates} size="small" icon={<LocationIcon />} />
+                  </LocationChipContainer>
+                )}
+              </AvatarAndLocationRow>
+            )}
           </SceneInfoContainer>
           <JumpInButtonContainer>
-            <Button variant="contained" size="small" fullWidth sx={{ borderRadius: 2 }}>
-              <span>Jump In</span>
-              <JumpInIcon sx={{ marginLeft: 1 }} />
-            </Button>
+            <JumpInButton>
+              <span>JUMP IN</span>
+              <JumpInIcon />
+            </JumpInButton>
           </JumpInButtonContainer>
         </EventCardContent>
       </EventCardActionArea>
