@@ -85,7 +85,6 @@ const Default: Story = {
     <EventCard
       image={sceneThumbnail}
       sceneName="Event Title"
-      coordinates="24,24"
       avatar={exampleAvatar}
       withShadow
       leftBadge={
@@ -104,7 +103,6 @@ const WithRedirectToAuth: Story = {
     <EventCard
       image={sceneThumbnail}
       sceneName="Event With Auth Redirect"
-      coordinates="24,24"
       avatar={exampleAvatar}
       withShadow
       leftBadge={
@@ -125,7 +123,6 @@ const OneCard: Story = {
       <EventCard
         image={sceneThumbnail}
         sceneName="Single Event Card"
-        coordinates="24,24"
         avatar={exampleAvatar}
         withShadow
         leftBadge={
@@ -146,7 +143,6 @@ const TwoCards: Story = {
       <EventCard
         image={sceneThumbnail}
         sceneName="Live Music Festival"
-        coordinates="24,24"
         avatar={exampleAvatar}
         withShadow
         leftBadge={
@@ -160,7 +156,6 @@ const TwoCards: Story = {
       <EventCard
         image={sceneThumbnail}
         sceneName="Art Gallery Opening"
-        coordinates="10,15"
         avatar={exampleAvatar}
         withShadow
         leftBadge={<UserCountBadge count={12} />}
@@ -176,7 +171,6 @@ const ThreeCards: Story = {
       <EventCard
         image={sceneThumbnail}
         sceneName="Live Music Festival"
-        coordinates="24,24"
         avatar={exampleAvatar}
         withShadow
         leftBadge={
@@ -190,13 +184,12 @@ const ThreeCards: Story = {
       <EventCard
         image={sceneThumbnail}
         sceneName="Art Gallery Opening"
-        coordinates="10,15"
         avatar={exampleAvatar}
         withShadow
         leftBadge={<UserCountBadge count={12} />}
         leftBadgeTransparent
       />
-      <EventCard image={sceneThumbnail} sceneName="Upcoming Community Meetup" coordinates="0,0" avatar={exampleAvatar} withShadow />
+      <EventCard image={sceneThumbnail} sceneName="Upcoming Community Meetup" avatar={exampleAvatar} withShadow />
     </StoryRow>
   )
 }
@@ -208,7 +201,6 @@ const CardQuantities: Story = {
         <EventCard
           image={sceneThumbnail}
           sceneName="Single Card"
-          coordinates="24,24"
           avatar={exampleAvatar}
           withShadow
           leftBadge={
@@ -224,7 +216,6 @@ const CardQuantities: Story = {
         <EventCard
           image={sceneThumbnail}
           sceneName="Two Cards - First"
-          coordinates="24,24"
           avatar={exampleAvatar}
           withShadow
           leftBadge={
@@ -238,7 +229,6 @@ const CardQuantities: Story = {
         <EventCard
           image={sceneThumbnail}
           sceneName="Two Cards - Second"
-          coordinates="10,15"
           avatar={exampleAvatar}
           withShadow
           leftBadge={<UserCountBadge count={12} />}
@@ -249,7 +239,6 @@ const CardQuantities: Story = {
         <EventCard
           image={sceneThumbnail}
           sceneName="Three Cards - First"
-          coordinates="24,24"
           avatar={exampleAvatar}
           withShadow
           leftBadge={
@@ -263,13 +252,12 @@ const CardQuantities: Story = {
         <EventCard
           image={sceneThumbnail}
           sceneName="Three Cards - Second"
-          coordinates="10,15"
           avatar={exampleAvatar}
           withShadow
           leftBadge={<UserCountBadge count={12} />}
           leftBadgeTransparent
         />
-        <EventCard image={sceneThumbnail} sceneName="Three Cards - Third" coordinates="0,0" avatar={exampleAvatar} withShadow />
+        <EventCard image={sceneThumbnail} sceneName="Three Cards - Third" avatar={exampleAvatar} withShadow />
       </StoryRow>
     </StorySection>
   )
@@ -281,7 +269,6 @@ const Multiline: Story = {
       <EventCard
         image={sceneThumbnail}
         sceneName="Short Title"
-        coordinates="24,24"
         avatar={exampleAvatar}
         withShadow
         leftBadge={
@@ -295,7 +282,6 @@ const Multiline: Story = {
       <EventCard
         image={sceneThumbnail}
         sceneName="This Is A Much Longer Event Title That Wraps To Two Lines"
-        coordinates="10,15"
         avatar={exampleAvatar}
         withShadow
         leftBadge={
@@ -310,6 +296,23 @@ const Multiline: Story = {
   )
 }
 
+const WithoutAvatar: Story = {
+  render: () => (
+    <EventCard
+      image={sceneThumbnail}
+      sceneName="Event Without Avatar"
+      withShadow
+      leftBadge={
+        <BadgeGroup>
+          <LiveBadge />
+          <UserCountBadge count={24} />
+        </BadgeGroup>
+      }
+      leftBadgeTransparent
+    />
+  )
+}
+
 // eslint-disable-next-line import/no-default-export
 export default meta
-export { Default, WithRedirectToAuth, OneCard, TwoCards, ThreeCards, CardQuantities, Multiline }
+export { Default, WithRedirectToAuth, OneCard, TwoCards, ThreeCards, CardQuantities, Multiline, WithoutAvatar }

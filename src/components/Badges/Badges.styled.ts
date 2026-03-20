@@ -57,6 +57,11 @@ const pulse = keyframes({
   '50%': { opacity: 0.4 }
 })
 
+const livePulse = keyframes({
+  '0%, 100%': { transform: 'scale(1)' },
+  '50%': { transform: 'scale(1.3)' }
+})
+
 const LiveBadgeWrapper = styled(Box)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
@@ -69,7 +74,11 @@ const LiveBadgeWrapper = styled(Box)(({ theme }) => ({
   fontSize: theme.typography.caption.fontSize,
   fontWeight: theme.typography.fontWeightBold,
   textTransform: 'uppercase',
-  lineHeight: 1
+  lineHeight: 1,
+  '& .MuiSvgIcon-root': {
+    fontSize: 14,
+    animation: `${livePulse} 1.5s ease-in-out infinite`
+  }
 }))
 
 const LiveBadgeDot = styled(Box)({
@@ -91,7 +100,10 @@ const UserCountBadgeWrapper = styled(Box)(({ theme }) => ({
   borderRadius: theme.spacing(1),
   fontSize: theme.typography.caption.fontSize,
   fontWeight: theme.typography.fontWeightBold,
-  lineHeight: 1
+  lineHeight: 1,
+  '& .MuiSvgIcon-root': {
+    fontSize: 14
+  }
 }))
 
 const UserCountDot = styled(Box)(({ theme }) => ({
