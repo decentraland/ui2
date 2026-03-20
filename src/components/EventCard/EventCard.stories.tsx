@@ -85,8 +85,6 @@ const Default: Story = {
     <EventCard
       image={sceneThumbnail}
       sceneName="Event Title"
-
-
       avatar={exampleAvatar}
       withShadow
       leftBadge={
@@ -105,8 +103,6 @@ const WithRedirectToAuth: Story = {
     <EventCard
       image={sceneThumbnail}
       sceneName="Event With Auth Redirect"
-
-
       avatar={exampleAvatar}
       withShadow
       leftBadge={
@@ -127,8 +123,6 @@ const OneCard: Story = {
       <EventCard
         image={sceneThumbnail}
         sceneName="Single Event Card"
-  
-
         avatar={exampleAvatar}
         withShadow
         leftBadge={
@@ -149,8 +143,6 @@ const TwoCards: Story = {
       <EventCard
         image={sceneThumbnail}
         sceneName="Live Music Festival"
-  
-
         avatar={exampleAvatar}
         withShadow
         leftBadge={
@@ -164,8 +156,6 @@ const TwoCards: Story = {
       <EventCard
         image={sceneThumbnail}
         sceneName="Art Gallery Opening"
-  
-
         avatar={exampleAvatar}
         withShadow
         leftBadge={<UserCountBadge count={12} />}
@@ -181,8 +171,6 @@ const ThreeCards: Story = {
       <EventCard
         image={sceneThumbnail}
         sceneName="Live Music Festival"
-  
-
         avatar={exampleAvatar}
         withShadow
         leftBadge={
@@ -196,8 +184,6 @@ const ThreeCards: Story = {
       <EventCard
         image={sceneThumbnail}
         sceneName="Art Gallery Opening"
-  
-
         avatar={exampleAvatar}
         withShadow
         leftBadge={<UserCountBadge count={12} />}
@@ -215,8 +201,6 @@ const CardQuantities: Story = {
         <EventCard
           image={sceneThumbnail}
           sceneName="Single Card"
-    
-
           avatar={exampleAvatar}
           withShadow
           leftBadge={
@@ -232,8 +216,6 @@ const CardQuantities: Story = {
         <EventCard
           image={sceneThumbnail}
           sceneName="Two Cards - First"
-    
-
           avatar={exampleAvatar}
           withShadow
           leftBadge={
@@ -247,8 +229,6 @@ const CardQuantities: Story = {
         <EventCard
           image={sceneThumbnail}
           sceneName="Two Cards - Second"
-    
-
           avatar={exampleAvatar}
           withShadow
           leftBadge={<UserCountBadge count={12} />}
@@ -259,8 +239,6 @@ const CardQuantities: Story = {
         <EventCard
           image={sceneThumbnail}
           sceneName="Three Cards - First"
-    
-
           avatar={exampleAvatar}
           withShadow
           leftBadge={
@@ -274,8 +252,6 @@ const CardQuantities: Story = {
         <EventCard
           image={sceneThumbnail}
           sceneName="Three Cards - Second"
-    
-
           avatar={exampleAvatar}
           withShadow
           leftBadge={<UserCountBadge count={12} />}
@@ -293,8 +269,6 @@ const Multiline: Story = {
       <EventCard
         image={sceneThumbnail}
         sceneName="Short Title"
-  
-
         avatar={exampleAvatar}
         withShadow
         leftBadge={
@@ -308,8 +282,6 @@ const Multiline: Story = {
       <EventCard
         image={sceneThumbnail}
         sceneName="This Is A Much Longer Event Title That Wraps To Two Lines"
-  
-
         avatar={exampleAvatar}
         withShadow
         leftBadge={
