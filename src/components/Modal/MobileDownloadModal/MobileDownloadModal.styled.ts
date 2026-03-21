@@ -1,16 +1,18 @@
 import styled from '@emotion/styled'
 import { Box, Typography } from '@mui/material'
 
-const ModalContent = styled(Box)(({ theme }) => ({
+const ModalContent = styled(Box)({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
+  justifyContent: 'center',
   position: 'relative',
-  padding: theme.spacing(2)
-}))
+  padding: '16px 24px 32px',
+  flex: 1
+})
 
 const ModalImageContainer = styled(Box)({
-  marginBottom: '24px',
+  marginBottom: 16,
   width: '100%',
   '& svg': {
     maxWidth: '100%',
@@ -20,28 +22,28 @@ const ModalImageContainer = styled(Box)({
   }
 })
 
-const ModalTitle = styled(Typography)(({ theme }) => ({
-  fontSize: '21px',
-  fontWeight: 600,
-  fontStretch: 'normal',
+const ModalTitle = styled(Typography)({
+  fontFamily: 'Inter, sans-serif',
+  fontSize: 22,
+  fontWeight: 700,
   fontStyle: 'normal',
-  lineHeight: 1.43,
-  letterSpacing: '0.3px',
+  lineHeight: 1.3,
+  letterSpacing: '-0.02em',
   textAlign: 'center',
-  marginBottom: theme.spacing(2),
-  color: theme.palette.text.primary
-}))
+  marginBottom: 12,
+  color: '#161518'
+})
 
-const ModalDescription = styled(Typography)(({ theme }) => ({
-  fontSize: '17px',
-  fontWeight: 'normal',
-  fontStretch: 'normal',
+const ModalDescription = styled(Typography)({
+  fontFamily: 'Inter, sans-serif',
+  fontSize: 18,
+  fontWeight: 400,
   fontStyle: 'normal',
-  lineHeight: 1.53,
-  letterSpacing: '-0.2px',
+  lineHeight: 1,
+  letterSpacing: '-0.02em',
   textAlign: 'center',
-  marginBottom: theme.spacing(3),
-  color: theme.palette.text.secondary
-}))
+  marginBottom: 25,
+  color: '#1E1E1E'
+})
 
 export { ModalContent, ModalImageContainer, ModalTitle, ModalDescription }
