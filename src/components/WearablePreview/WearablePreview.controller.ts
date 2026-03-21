@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { EmoteEvents, IPreviewController, PreviewMessagePayload, PreviewMessageType, sendMessage } from '@dcl/schemas/dist/dapps/preview'
 import { SocialEmoteAnimation } from '@dcl/schemas/dist/dapps/preview/social-emote-animation'
+import { SpringBoneParams } from '@dcl/schemas/dist/dapps/preview/spring-bone-params'
 import { Metrics } from '@dcl/schemas/dist/platform/item/metrics'
 import { IFuture, default as future } from 'fp-future'
 import mitt, { Emitter } from 'mitt'
@@ -101,7 +102,7 @@ if (typeof window !== 'undefined') {
 let nonce = 0
 function createSendRequest(id: string) {
   return function sendRequest<T>(
-    namespace: 'scene' | 'emote',
+    namespace: keyof IPreviewController,
     method:
       | 'getScreenshot'
       | 'getMetrics'
@@ -121,7 +122,8 @@ function createSendRequest(id: string) {
       | 'setUsername'
       | 'isSocialEmote'
       | 'getSocialEmoteAnimations'
-      | 'getPlayingSocialEmoteAnimation',
+      | 'getPlayingSocialEmoteAnimation'
+      | 'setSpringBonesParams',
     params: any[]
   ) {
     const iframe = document.getElementById(id) as HTMLIFrameElement
@@ -246,6 +248,11 @@ function createController(id: string): IPreviewController {
       },
       emote: null,
       events
+    },
+    physics: {
+      setSpringBonesParams(itemHash: string, params: SpringBoneParams[]): Promise<void> {
+        return sendRequest<void>('physics', 'setSpringBonesParams', [itemHash, params])
+      }
     }
   }
 }
