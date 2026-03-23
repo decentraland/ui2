@@ -1,6 +1,8 @@
 import { Box, Card, CardActionArea, CardContent, CardMedia, Chip, Link, Skeleton, keyframes, styled } from '@mui/material'
 import { hexToRgba } from '../../utils/colors'
 
+const JUMP_IN_BUTTON_HEIGHT = 46
+
 const coinFlip = keyframes({
   '0%': { transform: 'perspective(800px) rotateX(0deg) rotateY(0deg)' },
   '15%': { transform: 'perspective(800px) rotateX(5deg) rotateY(1deg)' },
@@ -203,7 +205,7 @@ const AvatarAndLocationRow = styled(Box)(({ theme }) => ({
       duration: theme.transitions.duration.complex
     }),
     '.MuiCardActionArea-root:hover &': {
-      marginBottom: `calc(46px + ${theme.spacing(2)})`
+      marginBottom: `calc(${JUMP_IN_BUTTON_HEIGHT}px + ${theme.spacing(2)})`
     }
   }
 }))
@@ -215,9 +217,14 @@ const LocationChipContainer = styled(Box)(({ theme }) => ({
   display: 'flex',
   justifyContent: 'flex-end',
   opacity: 0,
+  height: 0,
+  overflow: 'hidden',
   transform: 'translateX(20px)',
   transition: [
     theme.transitions.create('opacity', {
+      duration: theme.transitions.duration.complex
+    }),
+    theme.transitions.create('height', {
       duration: theme.transitions.duration.complex
     }),
     theme.transitions.create('transform', {
@@ -226,6 +233,7 @@ const LocationChipContainer = styled(Box)(({ theme }) => ({
   ].join(', '),
   '.MuiCardActionArea-root:hover &': {
     opacity: 1,
+    height: 'auto',
     transform: 'translateX(0)'
   },
   [theme.breakpoints.down('xs')]: {
@@ -288,7 +296,7 @@ const JumpInButton = styled(Box)(({ theme }) => ({
   justifyContent: 'center',
   gap: theme.spacing(1),
   width: '100%',
-  height: 46,
+  height: JUMP_IN_BUTTON_HEIGHT,
   border: 'none',
   borderRadius: theme.spacing(2),
   backgroundColor: theme.palette.primary.main,
