@@ -1,4 +1,4 @@
-import { Box, Card, CardActionArea, CardContent, CardMedia, Chip, Link, keyframes, styled } from '@mui/material'
+import { Box, Card, CardActionArea, CardContent, CardMedia, Chip, Link, Skeleton, keyframes, styled } from '@mui/material'
 import { hexToRgba } from '../../utils/colors'
 
 const coinFlip = keyframes({
@@ -21,7 +21,7 @@ const EventCardContainer = styled(Card)<{
   flex: 1,
   backgroundColor: 'transparent',
   position: 'relative',
-  overflow: 'visible',
+  overflow: 'hidden',
   transition: [
     theme.transitions.create('transform', {
       duration: theme.transitions.duration.complex
@@ -308,6 +308,32 @@ const JumpInButton = styled('button')(({ theme }) => ({
   }
 }))
 
+const SkeletonImage = styled(Skeleton)({
+  height: 329,
+  width: '100%',
+  borderRadius: 0,
+  transform: 'none'
+})
+
+const SkeletonTitle = styled(Skeleton)(({ theme }) => ({
+  width: '60%',
+  fontSize: '1.25rem',
+  marginBottom: theme.spacing(6),
+  borderRadius: theme.shape.borderRadius
+}))
+
+const SkeletonAvatar = styled(Skeleton)(({ theme }) => ({
+  width: theme.spacing(4),
+  height: theme.spacing(4),
+  flexShrink: 0
+}))
+
+const SkeletonText = styled(Skeleton)(({ theme }) => ({
+  height: 20,
+  flex: 1,
+  borderRadius: theme.shape.borderRadius
+}))
+
 export {
   AvatarAndLocationRow,
   AvatarContainer,
@@ -326,5 +352,9 @@ export {
   LocationChip,
   LocationChipContainer,
   SceneInfoContainer,
-  SceneTitle
+  SceneTitle,
+  SkeletonAvatar,
+  SkeletonImage,
+  SkeletonText,
+  SkeletonTitle
 }

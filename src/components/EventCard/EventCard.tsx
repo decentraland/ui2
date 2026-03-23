@@ -10,6 +10,7 @@ import {
   AvatarLink,
   AvatarTextContainer,
   BadgesContainer,
+  ContentContainer,
   EventCardActionArea,
   EventCardContainer,
   EventCardContent,
@@ -21,7 +22,11 @@ import {
   LocationChip,
   LocationChipContainer,
   SceneInfoContainer,
-  SceneTitle
+  SceneTitle,
+  SkeletonAvatar,
+  SkeletonImage,
+  SkeletonText,
+  SkeletonTitle
 } from './EventCard.styled'
 
 const EventCard = memo((props: EventCardProps) => {
@@ -35,11 +40,35 @@ const EventCard = memo((props: EventCardProps) => {
     leftBadgeTransparent = false,
     onClick,
     redirectToAuth = false,
-    hideLocation = false
+    hideLocation = false,
+    loading = false
   } = props
 
   const isWorld = coordinates?.includes('.dcl.eth')
   const jumpInUrl = isWorld ? `https://decentraland.org/jump?realm=${coordinates}` : `https://decentraland.org/jump?position=${coordinates}`
+
+  if (loading) {
+    return (
+      <EventCardContainer>
+        <EventCardActionArea disabled>
+          <EventMediaContainer>
+            <SkeletonImage variant="rectangular" />
+          </EventMediaContainer>
+          <EventCardContent>
+            <ContentContainer>
+              <SkeletonTitle variant="rectangular" />
+              <AvatarAndLocationRow>
+                <AvatarContainer>
+                  <SkeletonAvatar variant="circular" />
+                  <SkeletonText variant="rectangular" />
+                </AvatarContainer>
+              </AvatarAndLocationRow>
+            </ContentContainer>
+          </EventCardContent>
+        </EventCardActionArea>
+      </EventCardContainer>
+    )
+  }
 
   const handleCardClick = useCallback(() => {
     if (onClick) {

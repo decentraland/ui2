@@ -4,6 +4,7 @@ import { Avatar } from '@dcl/schemas'
 interface EventCardProps {
   image: string
   sceneName: string
+  loading?: boolean
   avatar?: Avatar
   coordinates?: string
   withShadow?: boolean
