@@ -37,7 +37,7 @@ const meta = {
     color: {
       description: 'The color of the button',
       control: 'select',
-      options: ['primary', 'secondary', 'error', 'info', 'success', 'warning']
+      options: ['primary', 'secondary', 'muted', 'error', 'info', 'success', 'warning']
     },
     children: {
       description: 'The content of the button',
@@ -109,6 +109,9 @@ const Colors: Story = {
       <Button {...args} color="secondary">
         Secondary
       </Button>
+      <Button {...args} color="muted">
+        Muted
+      </Button>
       <Button {...args} color="error">
         Error
       </Button>
@@ -136,6 +139,7 @@ const Colors: Story = {
         code: `
 <Button color="primary">Primary</Button>
 <Button color="secondary">Secondary</Button>
+<Button color="muted">Muted</Button>
 <Button color="error">Error</Button>
 <Button color="warning">Warning</Button>
 <Button color="info">Info</Button>

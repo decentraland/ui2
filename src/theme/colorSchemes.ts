@@ -44,6 +44,20 @@ const colorSchemas = {
           outlinedBorder: neutral.gray1
         }
       },
+      muted: {
+        main: neutral.gray0,
+        dark: '#36333D',
+        light: neutral.gray1,
+        contrast: '#FFFFFF',
+        outlinedColor: neutral.gray0,
+        _states: {
+          hover: 'rgba(67, 64, 74, 0.08)',
+          selected: 'rgba(67, 64, 74, 0.16)',
+          focus: 'rgba(67, 64, 74, 0.12)',
+          focusVisible: 'rgba(67, 64, 74, 0.24)',
+          outlinedBorder: 'rgba(67, 64, 74, 0.5)'
+        }
+      },
       action: {
         active: 'rgba(22, 21, 24, 0.56)',
         hover: 'rgba(22, 21, 24, 0.08)',
@@ -235,6 +249,20 @@ const colorSchemas = {
           focus: 'rgba(255, 255, 255, 0.12)',
           focusVisible: 'rgba(255, 255, 255, 0.24)',
           outlinedBorder: neutral.trueWhite
+        }
+      },
+      muted: {
+        main: neutral.gray0,
+        dark: '#36333D',
+        light: neutral.gray1,
+        contrast: '#FFFFFF',
+        outlinedColor: neutral.gray3,
+        _states: {
+          hover: 'rgba(67, 64, 74, 0.16)',
+          selected: 'rgba(67, 64, 74, 0.24)',
+          focus: 'rgba(67, 64, 74, 0.12)',
+          focusVisible: 'rgba(67, 64, 74, 0.32)',
+          outlinedBorder: 'rgba(67, 64, 74, 0.5)'
         }
       },
       action: {
