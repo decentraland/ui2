@@ -18,7 +18,10 @@ const EventCardContainer = styled(Card)<{
   boxSizing: 'border-box',
   minWidth: 400,
   maxWidth: 850,
+  display: 'flex',
+  flexDirection: 'column',
   flex: 1,
+  height: '100%',
   backgroundColor: 'transparent',
   position: 'relative',
   overflow: 'hidden',
@@ -50,16 +53,13 @@ const EventCardContainer = styled(Card)<{
 
 const EventCardActionArea = styled(CardActionArea)(({ theme }) => ({
   borderRadius: theme.spacing(2),
-  height: 460,
+  flex: 1,
   display: 'flex',
   flexDirection: 'column',
   position: 'relative',
   backgroundColor: 'transparent',
   '&:hover .MuiCardActionArea-focusHighlight': {
     opacity: 0
-  },
-  [theme.breakpoints.down('sm')]: {
-    height: 'auto'
   }
 }))
 
@@ -93,6 +93,8 @@ const EventCardContent = styled(CardContent)(({ theme }) => ({
   flexDirection: 'column',
   flex: 1,
   width: '100%',
+  position: 'relative',
+  overflow: 'hidden',
   padding: theme.spacing(2),
   '&:last-child': {
     paddingBottom: theme.spacing(2)
@@ -141,7 +143,6 @@ const LeftBadge = styled(Box)<{ transparent?: boolean }>(({ theme, transparent }
 }))
 
 const SceneTitle = styled(Box)({
-  height: 71,
   '& .MuiTypography-root': {
     display: '-webkit-box',
     WebkitLineClamp: 2,
@@ -195,8 +196,16 @@ const AvatarAndLocationRow = styled(Box)(({ theme }) => ({
   gap: theme.spacing(1),
   alignItems: 'center',
   justifyContent: 'space-between',
-  flex: 1,
-  minWidth: 0
+  marginTop: 'auto',
+  minWidth: 0,
+  [theme.breakpoints.up('sm')]: {
+    transition: theme.transitions.create('margin-bottom', {
+      duration: theme.transitions.duration.complex
+    }),
+    '.MuiCardActionArea-root:hover &': {
+      marginBottom: `calc(46px + ${theme.spacing(2)})`
+    }
+  }
 }))
 
 const LocationChipContainer = styled(Box)(({ theme }) => ({
@@ -206,14 +215,9 @@ const LocationChipContainer = styled(Box)(({ theme }) => ({
   display: 'flex',
   justifyContent: 'flex-end',
   opacity: 0,
-  height: 0,
-  overflow: 'hidden',
   transform: 'translateX(20px)',
   transition: [
     theme.transitions.create('opacity', {
-      duration: theme.transitions.duration.complex
-    }),
-    theme.transitions.create('height', {
       duration: theme.transitions.duration.complex
     }),
     theme.transitions.create('transform', {
@@ -222,7 +226,6 @@ const LocationChipContainer = styled(Box)(({ theme }) => ({
   ].join(', '),
   '.MuiCardActionArea-root:hover &': {
     opacity: 1,
-    height: 'auto',
     transform: 'translateX(0)'
   },
   [theme.breakpoints.down('xs')]: {
@@ -247,26 +250,25 @@ const LocationChip = styled(Chip)(({ theme }) => ({
 }))
 
 const JumpInButtonContainer = styled(Box)(({ theme }) => ({
-  marginTop: 'auto',
+  position: 'absolute',
+  bottom: theme.spacing(2),
+  left: theme.spacing(2),
+  right: theme.spacing(2),
   opacity: 0,
-  height: 0,
-  overflow: 'hidden',
-  transform: 'translateY(20px)',
+  transform: `translateY(calc(100% + ${theme.spacing(2)}))`,
   transition: [
     theme.transitions.create('opacity', {
-      duration: theme.transitions.duration.complex
-    }),
-    theme.transitions.create('height', {
       duration: theme.transitions.duration.complex
     }),
     theme.transitions.create('transform', {
       duration: theme.transitions.duration.complex
     })
   ].join(', '),
-  '.MuiCardActionArea-root:hover &': {
-    opacity: 1,
-    height: 'auto',
-    transform: 'translateY(0)'
+  [theme.breakpoints.up('sm')]: {
+    '.MuiCardActionArea-root:hover &': {
+      opacity: 1,
+      transform: 'translateY(0)'
+    }
   },
   [theme.breakpoints.down('xs')]: {
     display: 'none'
@@ -274,10 +276,13 @@ const JumpInButtonContainer = styled(Box)(({ theme }) => ({
 }))
 
 const SceneInfoContainer = styled(Box)({
+  display: 'flex',
+  flexDirection: 'column',
+  flex: 1,
   width: '100%'
 })
 
-const JumpInButton = styled('button')(({ theme }) => ({
+const JumpInButton = styled(Box)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
