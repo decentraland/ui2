@@ -313,6 +313,15 @@ const WithoutAvatar: Story = {
   )
 }
 
+const Loading: Story = {
+  render: () => (
+    <StoryRow>
+      <EventCard image="" sceneName="" loading />
+      <EventCard image="" sceneName="" loading />
+    </StoryRow>
+  )
+}
+
 // eslint-disable-next-line import/no-default-export
 export default meta
-export { Default, WithRedirectToAuth, OneCard, TwoCards, ThreeCards, CardQuantities, Multiline, WithoutAvatar }
+export { Default, WithRedirectToAuth, OneCard, TwoCards, ThreeCards, CardQuantities, Multiline, WithoutAvatar, Loading }
