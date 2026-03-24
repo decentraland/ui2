@@ -3,6 +3,43 @@ import { Button } from './Button'
 import { ButtonProps } from './Button.types'
 import type { Meta, StoryObj } from '@storybook/react'
 
+const MATRIX_COLORS = ['primary', 'secondary', 'error', 'warning', 'info', 'success'] as const
+const MATRIX_VARIANTS = ['contained', 'outlined', 'text'] as const
+const MATRIX_STATES = ['Enabled', 'Hovered', 'Focused', 'Disabled', 'Loading'] as const
+
+type MatrixColor = (typeof MATRIX_COLORS)[number]
+type MatrixVariant = (typeof MATRIX_VARIANTS)[number]
+
+const getHoverSx = (color: MatrixColor, variant: MatrixVariant) => {
+  if (variant === 'contained') {
+    const hoverKey = color === 'primary' ? 'light' : 'dark'
+    return {
+      '&&': {
+        background: `var(--mui-palette-${color}-${hoverKey})`,
+        boxShadow: 'var(--mui-shadows-2)'
+      }
+    }
+  }
+  return {}
+}
+
+const renderMatrixButton = (color: MatrixColor, variant: MatrixVariant, state: (typeof MATRIX_STATES)[number]) => {
+  const baseProps = { color, variant, children: 'Button' as const }
+
+  switch (state) {
+    case 'Hovered':
+      return <Button {...baseProps} sx={getHoverSx(color, variant)} />
+    case 'Focused':
+      return <Button {...baseProps} className="Mui-focusVisible" />
+    case 'Disabled':
+      return <Button {...baseProps} disabled />
+    case 'Loading':
+      return <Button {...baseProps} loading />
+    default:
+      return <Button {...baseProps} />
+  }
+}
+
 const meta = {
   title: 'Decentraland UI/Button',
   component: Button,
@@ -244,8 +281,89 @@ const Disabled: Story = {
   }
 }
 
+const Matrix: Story = {
+  render: () => (
+    <Box sx={{ overflowX: 'auto' }}>
+      <Box
+        sx={{
+          display: 'grid',
+          gridTemplateColumns: `80px repeat(${MATRIX_COLORS.length * MATRIX_VARIANTS.length}, minmax(90px, 1fr))`,
+          gap: '4px 2px',
+          alignItems: 'center',
+          minWidth: 1400
+        }}
+      >
+        <Box />
+        {MATRIX_COLORS.map(color => (
+          <Box
+            key={color}
+            sx={{
+              gridColumn: 'span 3',
+              textAlign: 'center',
+              fontWeight: 700,
+              fontSize: '0.8rem',
+              textTransform: 'capitalize',
+              pb: 0.5,
+              borderBottom: 2,
+              borderColor: 'divider'
+            }}
+          >
+            {color}
+          </Box>
+        ))}
+
+        <Box />
+        {MATRIX_COLORS.flatMap(color =>
+          MATRIX_VARIANTS.map(variant => (
+            <Box
+              key={`h-${color}-${variant}`}
+              sx={{
+                textAlign: 'center',
+                fontSize: '0.7rem',
+                color: 'text.secondary',
+                textTransform: 'capitalize',
+                py: 0.5
+              }}
+            >
+              {variant}
+            </Box>
+          ))
+        )}
+
+        {MATRIX_STATES.map(state => (
+          <Box key={state} sx={{ display: 'contents' }}>
+            <Box sx={{ fontWeight: 600, fontSize: '0.8rem' }}>{state}</Box>
+            {MATRIX_COLORS.flatMap(color =>
+              MATRIX_VARIANTS.map(variant => (
+                <Box key={`${color}-${variant}`} sx={{ display: 'flex', justifyContent: 'center', py: 0.5 }}>
+                  {renderMatrixButton(color, variant, state)}
+                </Box>
+              ))
+            )}
+          </Box>
+        ))}
+      </Box>
+    </Box>
+  ),
+  argTypes: {
+    variant: { table: { disable: true } },
+    color: { table: { disable: true } },
+    children: { table: { disable: true } },
+    disabled: { table: { disable: true } },
+    loading: { table: { disable: true } },
+    size: { table: { disable: true } }
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Complete matrix of all button colors, variants, and states. Hovered state is visually simulated via style overrides. Focused state uses the Mui-focusVisible class.'
+      }
+    }
+  }
+}
+
 // We need to keep the default export for Storybook to work properly
 // eslint-disable-next-line import/no-default-export
 export default meta
 
-export { Basic, Variants, Colors, Sizes, Loading, Disabled }
+export { Basic, Variants, Colors, Sizes, Loading, Disabled, Matrix }
