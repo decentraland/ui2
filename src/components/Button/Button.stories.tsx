@@ -293,9 +293,14 @@ const Matrix: Story = {
         sx={{
           display: 'grid',
           gridTemplateColumns: `60px 60px repeat(${MATRIX_VARIANTS.length * MATRIX_COLORS.length}, minmax(90px, 1fr))`,
-          gap: '8px',
           alignItems: 'center',
-          minWidth: 1500
+          minWidth: 1500,
+          border: '1px dashed #7B2FBE',
+          '& > *, & > * > *': {
+            borderRight: '1px dashed #7B2FBE',
+            borderBottom: '1px dashed #7B2FBE',
+            padding: '8px 4px'
+          }
         }}
       >
         <Box sx={{ gridColumn: 'span 2' }} />
@@ -307,10 +312,7 @@ const Matrix: Story = {
               textAlign: 'center',
               fontWeight: 700,
               fontSize: '0.8rem',
-              textTransform: 'capitalize',
-              pb: 0.5,
-              borderBottom: 2,
-              borderColor: 'divider'
+              textTransform: 'capitalize'
             }}
           >
             {variant}
@@ -326,8 +328,7 @@ const Matrix: Story = {
                 textAlign: 'center',
                 fontSize: '0.7rem',
                 color: 'text.secondary',
-                textTransform: 'capitalize',
-                py: 0.5
+                textTransform: 'capitalize'
               }}
             >
               {color}
@@ -365,11 +366,7 @@ const Matrix: Story = {
                     key={`${variant}-${color}`}
                     sx={{
                       display: 'flex',
-                      justifyContent: 'center',
-                      py: 1,
-                      border: '1px dashed',
-                      borderColor: '#7B2FBE',
-                      borderRadius: 1
+                      justifyContent: 'center'
                     }}
                   >
                     {renderMatrixButton(color, variant, state, size)}
