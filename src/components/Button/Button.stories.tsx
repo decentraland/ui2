@@ -361,7 +361,17 @@ const Matrix: Story = {
               </Box>
               {MATRIX_VARIANTS.flatMap(variant =>
                 MATRIX_COLORS.map(color => (
-                  <Box key={`${variant}-${color}`} sx={{ display: 'flex', justifyContent: 'center', py: 0.5 }}>
+                  <Box
+                    key={`${variant}-${color}`}
+                    sx={{
+                      display: 'flex',
+                      justifyContent: 'center',
+                      py: 1,
+                      border: '1px dashed',
+                      borderColor: '#7B2FBE',
+                      borderRadius: 1
+                    }}
+                  >
                     {renderMatrixButton(color, variant, state, size)}
                   </Box>
                 ))
