@@ -21,7 +21,8 @@ const colorSchemas = {
       primary: {
         main: '#FF2D55',
         dark: '#F70038',
-        light: '#F70038',
+        light: '#F8919D',
+        contrast: '#FFFFFF',
         _states: {
           hover: 'rgba(255, 45, 85, 0.08)',
           selected: 'rgba(255, 45, 85, 0.08)',
@@ -54,7 +55,7 @@ const colorSchemas = {
       },
       error: {
         main: '#FB3B3B',
-        dark: '#EC303A',
+        dark: '#FB3B3B',
         light: '#E97177',
         _states: {
           hover: 'rgba(251, 59, 59, 0.08)',
@@ -68,6 +69,7 @@ const colorSchemas = {
         main: '#FE9C2A',
         dark: '#F38025',
         light: '#FFB95B',
+        contrast: '#FFFFFF',
         _states: {
           hover: 'rgba(244, 130, 33, 0.08)',
           selected: 'rgba(244, 130, 33, 0.08)',
@@ -79,6 +81,7 @@ const colorSchemas = {
         main: '#2196F3',
         dark: '#1A75D2',
         light: '#63B4F6',
+        contrast: '#FFFFFF',
         _states: {
           hover: 'rgba(33, 150, 243, 0.08)',
           focusVisible: 'rgba(33, 150, 243, 0.16)',
@@ -89,6 +92,7 @@ const colorSchemas = {
         main: '#34CE77',
         dark: '#00B453',
         light: '#65D890',
+        contrast: '#FFFFFF',
         _states: {
           hover: 'rgba(52, 206, 119, 0.08)',
           selected: 'rgba(52, 206, 119, 0.16)',
@@ -213,7 +217,7 @@ const colorSchemas = {
       primary: {
         main: '#FF2D55',
         dark: '#F70038',
-        light: '#F26276',
+        light: '#F8919D',
         contrast: '#FFFFFF',
         _states: {
           hover: 'rgba(255, 45, 85, 0.08)',
@@ -247,7 +251,7 @@ const colorSchemas = {
       },
       error: {
         main: '#FB3B3B',
-        dark: '#EC303A',
+        dark: '#FB3B3B',
         light: '#E97177',
         _states: {
           hover: 'rgba(251, 59, 59, 0.16)',
