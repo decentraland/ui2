@@ -210,7 +210,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
           },
           '&:not(.Mui-disabled):not(.Mui-focusVisible):hover': {
             color: 'var(--mui-palette-secondary-contrast)',
-            background: 'var(--mui-palette-secondary-light)',
+            background: 'var(--mui-palette-secondary-dark)',
             boxShadow: 'var(--mui-shadows-2)'
           },
           '&.Mui-disabled:not(.Mui-focusVisible):not(:hover)': {
@@ -570,7 +570,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
           },
           '&:not(.Mui-disabled):not(.Mui-focusVisible):hover': {
             color: 'var(--mui-palette-secondary-contrast)',
-            background: 'var(--mui-palette-secondary-light)',
+            background: 'var(--mui-palette-secondary-dark)',
             boxShadow: 'var(--mui-shadows-2)'
           }
         },
@@ -921,7 +921,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
           },
           '&:not(.Mui-disabled):not(.Mui-focusVisible):hover': {
             color: 'var(--mui-palette-secondary-contrast)',
-            background: 'var(--mui-palette-secondary-light)',
+            background: 'var(--mui-palette-secondary-dark)',
             boxShadow: 'var(--mui-shadows-2)'
           }
         },
