@@ -1,5 +1,5 @@
 import { ModalProps } from '../Modal.types'
-import type { MobileDownloadActionsI18N, MobilePlatform } from '../../MobileDownload'
+import type { MobilePlatform } from '../../MobileDownload'
 
 type MobileDownloadModalI18N = {
   title: string
@@ -12,7 +12,6 @@ type MobileDownloadModalProps = Omit<ModalProps, 'children'> & {
   androidStoreUrl?: string
   onCopyLink?: () => void
   i18n?: Partial<MobileDownloadModalI18N>
-  actionsI18n?: Partial<MobileDownloadActionsI18N>
 }
 
 export type { MobileDownloadModalI18N, MobileDownloadModalProps }
