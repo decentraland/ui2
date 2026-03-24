@@ -288,7 +288,7 @@ const Matrix: Story = {
         sx={{
           display: 'grid',
           gridTemplateColumns: `80px repeat(${MATRIX_VARIANTS.length * MATRIX_COLORS.length}, minmax(90px, 1fr))`,
-          gap: '4px 2px',
+          gap: '12px 8px',
           alignItems: 'center',
           minWidth: 1400
         }}
