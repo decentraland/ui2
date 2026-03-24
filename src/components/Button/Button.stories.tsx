@@ -3,28 +3,6 @@ import { Button } from './Button'
 import { ButtonProps } from './Button.types'
 import type { Meta, StoryObj } from '@storybook/react'
 
-const MATRIX_COLORS = ['primary', 'secondary', 'error', 'warning', 'info', 'success'] as const
-const MATRIX_VARIANTS = ['contained', 'outlined', 'text'] as const
-const MATRIX_STATES = ['Enabled', 'Disabled', 'Loading'] as const
-const MATRIX_SIZES = ['large', 'medium', 'small'] as const
-
-type MatrixColor = (typeof MATRIX_COLORS)[number]
-type MatrixVariant = (typeof MATRIX_VARIANTS)[number]
-type MatrixSize = (typeof MATRIX_SIZES)[number]
-
-const renderMatrixButton = (color: MatrixColor, variant: MatrixVariant, state: (typeof MATRIX_STATES)[number], size: MatrixSize) => {
-  const baseProps = { color, variant, size, children: 'Button' as const }
-
-  switch (state) {
-    case 'Disabled':
-      return <Button {...baseProps} disabled />
-    case 'Loading':
-      return <Button {...baseProps} loading />
-    default:
-      return <Button {...baseProps} />
-  }
-}
-
 const meta = {
   title: 'Decentraland UI/Button',
   component: Button,
