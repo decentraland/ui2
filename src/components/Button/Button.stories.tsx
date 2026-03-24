@@ -5,7 +5,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 const MATRIX_COLORS = ['primary', 'secondary', 'error', 'warning', 'info', 'success'] as const
 const MATRIX_VARIANTS = ['contained', 'outlined', 'text'] as const
-const MATRIX_STATES = ['Enabled', 'Hovered', 'Focused', 'Disabled', 'Loading'] as const
+const MATRIX_STATES = ['Enabled', 'Hovered', 'Disabled', 'Loading'] as const
 
 type MatrixColor = (typeof MATRIX_COLORS)[number]
 type MatrixVariant = (typeof MATRIX_VARIANTS)[number]
@@ -29,8 +29,6 @@ const renderMatrixButton = (color: MatrixColor, variant: MatrixVariant, state: (
   switch (state) {
     case 'Hovered':
       return <Button {...baseProps} sx={getHoverSx(color, variant)} />
-    case 'Focused':
-      return <Button {...baseProps} className="Mui-focusVisible" />
     case 'Disabled':
       return <Button {...baseProps} disabled />
     case 'Loading':
