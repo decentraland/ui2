@@ -6,9 +6,11 @@ import type { Meta, StoryObj } from '@storybook/react'
 const MATRIX_COLORS = ['primary', 'secondary', 'error', 'warning', 'info', 'success'] as const
 const MATRIX_VARIANTS = ['contained', 'outlined', 'text'] as const
 const MATRIX_STATES = ['Enabled', 'Hovered', 'Disabled', 'Loading'] as const
+const MATRIX_SIZES = ['large', 'medium', 'small'] as const
 
 type MatrixColor = (typeof MATRIX_COLORS)[number]
 type MatrixVariant = (typeof MATRIX_VARIANTS)[number]
+type MatrixSize = (typeof MATRIX_SIZES)[number]
 
 const getHoverSx = (color: MatrixColor, variant: MatrixVariant) => {
   if (variant === 'contained') {
@@ -23,8 +25,13 @@ const getHoverSx = (color: MatrixColor, variant: MatrixVariant) => {
   return {}
 }
 
-const renderMatrixButton = (color: MatrixColor, variant: MatrixVariant, state: (typeof MATRIX_STATES)[number]) => {
-  const baseProps = { color, variant, children: 'Button' as const }
+const renderMatrixButton = (
+  color: MatrixColor,
+  variant: MatrixVariant,
+  state: (typeof MATRIX_STATES)[number],
+  size: MatrixSize
+) => {
+  const baseProps = { color, variant, size, children: 'Button' as const }
 
   switch (state) {
     case 'Hovered':
@@ -285,13 +292,13 @@ const Matrix: Story = {
       <Box
         sx={{
           display: 'grid',
-          gridTemplateColumns: `80px repeat(${MATRIX_VARIANTS.length * MATRIX_COLORS.length}, minmax(90px, 1fr))`,
-          gap: '12px 8px',
+          gridTemplateColumns: `60px 60px repeat(${MATRIX_VARIANTS.length * MATRIX_COLORS.length}, minmax(90px, 1fr))`,
+          gap: '8px',
           alignItems: 'center',
-          minWidth: 1400
+          minWidth: 1500
         }}
       >
-        <Box />
+        <Box sx={{ gridColumn: 'span 2' }} />
         {MATRIX_VARIANTS.map(variant => (
           <Box
             key={variant}
@@ -310,7 +317,7 @@ const Matrix: Story = {
           </Box>
         ))}
 
-        <Box />
+        <Box sx={{ gridColumn: 'span 2' }} />
         {MATRIX_VARIANTS.flatMap(variant =>
           MATRIX_COLORS.map(color => (
             <Box
@@ -328,18 +335,40 @@ const Matrix: Story = {
           ))
         )}
 
-        {MATRIX_STATES.map(state => (
-          <Box key={state} sx={{ display: 'contents' }}>
-            <Box sx={{ fontWeight: 600, fontSize: '0.8rem' }}>{state}</Box>
-            {MATRIX_VARIANTS.flatMap(variant =>
-              MATRIX_COLORS.map(color => (
-                <Box key={`${variant}-${color}`} sx={{ display: 'flex', justifyContent: 'center', py: 0.5 }}>
-                  {renderMatrixButton(color, variant, state)}
+        {MATRIX_STATES.map(state =>
+          MATRIX_SIZES.map((size, sizeIdx) => (
+            <Box key={`${state}-${size}`} sx={{ display: 'contents' }}>
+              {sizeIdx === 0 ? (
+                <Box
+                  sx={{
+                    gridRow: `span ${MATRIX_SIZES.length}`,
+                    fontWeight: 600,
+                    fontSize: '0.8rem',
+                    alignSelf: 'center'
+                  }}
+                >
+                  {state}
                 </Box>
-              ))
-            )}
-          </Box>
-        ))}
+              ) : null}
+              <Box
+                sx={{
+                  fontSize: '0.7rem',
+                  color: 'text.secondary',
+                  textTransform: 'capitalize'
+                }}
+              >
+                {size}
+              </Box>
+              {MATRIX_VARIANTS.flatMap(variant =>
+                MATRIX_COLORS.map(color => (
+                  <Box key={`${variant}-${color}`} sx={{ display: 'flex', justifyContent: 'center', py: 0.5 }}>
+                    {renderMatrixButton(color, variant, state, size)}
+                  </Box>
+                ))
+              )}
+            </Box>
+          ))
+        )}
       </Box>
     </Box>
   ),
@@ -354,7 +383,7 @@ const Matrix: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Complete matrix of all button colors, variants, and states. Hovered state is visually simulated via style overrides. Focused state uses the Mui-focusVisible class.'
+        story: 'Complete matrix of all button colors, variants, sizes, and states.'
       }
     }
   }
