@@ -7,7 +7,7 @@ import { MobileDownloadModalProps } from './MobileDownloadModal.types'
 import { ModalContent, ModalDescription, ModalImage, ModalImageContainer, ModalTitle } from './MobileDownloadModal.styled'
 
 function MobileDownloadModal(props: MobileDownloadModalProps) {
-  const { platform, androidStoreUrl, onCopyLink, i18n: i18nProp, open, onClose } = props
+  const { platform, androidStoreUrl, onCopyLink, i18n: i18nProp, actionsI18n, open, onClose } = props
   const texts = { ...defaultI18n, ...i18nProp }
   const description = platform === 'ios' ? texts.description_ios : texts.description_android
 
@@ -19,7 +19,7 @@ function MobileDownloadModal(props: MobileDownloadModalProps) {
         </ModalImageContainer>
         <ModalTitle variant="h2">{texts.title}</ModalTitle>
         <ModalDescription variant="body1">{description}</ModalDescription>
-        <MobileDownloadActions platform={platform} androidStoreUrl={androidStoreUrl} onCopyLink={onCopyLink} />
+        <MobileDownloadActions platform={platform} androidStoreUrl={androidStoreUrl} onCopyLink={onCopyLink} i18n={actionsI18n} />
       </ModalContent>
     </Modal>
   )

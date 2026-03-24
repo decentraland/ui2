@@ -8,7 +8,7 @@ type MobileDownloadActionsI18N = {
 }
 
 type MobileDownloadActionsProps = {
-  platform?: MobilePlatform
+  platform: MobilePlatform
   androidStoreUrl?: string
   onCopyLink?: () => void
   i18n?: Partial<MobileDownloadActionsI18N>
