@@ -31,24 +31,10 @@ const colorSchemas = {
         }
       },
       secondary: {
-        main: neutral.gray5,
-        dark: neutral.gray3,
-        light: neutral.gray4,
-        contrast: neutral.gray1,
-        outlinedColor: neutral.gray1,
-        _states: {
-          hover: 'rgba(94, 91, 103, 0.08)',
-          selected: 'rgba(94, 91, 103, 0.08)',
-          focus: 'rgba(94, 91, 103, 0.12)',
-          focusVisible: 'rgba(94, 91, 103, 0.16)',
-          outlinedBorder: neutral.gray1
-        }
-      },
-      muted: {
         main: neutral.gray0,
-        dark: '#36333D',
-        light: neutral.gray1,
-        contrast: '#FFFFFF',
+        dark: neutral.gray2,
+        light: neutral.gray4,
+        contrast: neutral.softWhite,
         outlinedColor: neutral.gray0,
         _states: {
           hover: 'rgba(67, 64, 74, 0.08)',
@@ -238,24 +224,10 @@ const colorSchemas = {
         }
       },
       secondary: {
-        main: neutral.trueWhite,
-        dark: neutral.gray4,
-        light: neutral.gray4,
-        contrast: neutral.softBlack1,
-        outlinedColor: neutral.trueWhite,
-        _states: {
-          hover: 'rgba(255, 255, 255, 0.08)',
-          selected: 'rgba(255, 255, 255, 0.16)',
-          focus: 'rgba(255, 255, 255, 0.12)',
-          focusVisible: 'rgba(255, 255, 255, 0.24)',
-          outlinedBorder: neutral.trueWhite
-        }
-      },
-      muted: {
         main: neutral.gray0,
-        dark: '#36333D',
-        light: neutral.gray1,
-        contrast: '#FFFFFF',
+        dark: neutral.gray2,
+        light: neutral.gray4,
+        contrast: neutral.softWhite,
         outlinedColor: neutral.gray3,
         _states: {
           hover: 'rgba(67, 64, 74, 0.16)',

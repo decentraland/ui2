@@ -219,48 +219,6 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             boxShadow: 'none'
           }
         },
-        '&.MuiButton-sizeLarge.MuiButton-containedMuted': {
-          fontFeatureSettings: "'liga' off, 'clig' off",
-          fontFamily: 'Inter, Helvetica, Arial, sans-serif',
-          fontSize: '0.9375rem',
-          fontStyle: 'normal',
-          fontWeight: '600',
-          lineHeight: '24px /* 160% */',
-          letterSpacing: '0.46px',
-          textTransform: 'uppercase',
-          padding: '8px 22px',
-          borderRadius: 'var(--mui-shape-borderRadius)',
-          opacity: '1',
-          '&:not(.Mui-disabled):not(.Mui-focusVisible):not(:hover)': {
-            color: 'var(--mui-palette-muted-contrast)',
-            background: 'var(--mui-palette-muted-main)',
-            boxShadow: 'none'
-          },
-          '&:not(.Mui-disabled).Mui-focusVisible:not(:hover)': {
-            color: 'var(--mui-palette-muted-contrast)',
-            background: 'var(--mui-palette-muted-main)',
-            boxShadow: 'none',
-            '& .MuiTouchRipple-root': {
-              width: '69.209px',
-              height: '51.429px',
-              borderRadius: '100px',
-              opacity: '0.16',
-              background: 'var(--mui-palette-muted-contrast)',
-              padding: '0',
-              boxShadow: 'none'
-            }
-          },
-          '&:not(.Mui-disabled):not(.Mui-focusVisible):hover': {
-            color: 'var(--mui-palette-muted-contrast)',
-            background: 'var(--mui-palette-muted-light)',
-            boxShadow: 'var(--mui-shadows-2)'
-          },
-          '&.Mui-disabled:not(.Mui-focusVisible):not(:hover)': {
-            color: 'var(--mui-palette-action-disabled)',
-            background: '#A09BA8',
-            boxShadow: 'none'
-          }
-        },
         '&.MuiButton-sizeLarge.MuiButton-containedError': {
           fontFeatureSettings: "'liga' off, 'clig' off",
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
@@ -616,47 +574,6 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             boxShadow: 'var(--mui-shadows-2)'
           }
         },
-        '&.MuiButton-sizeMedium.MuiButton-containedMuted': {
-          fontFamily: 'Inter, Helvetica, Arial, sans-serif',
-          fontSize: '0.875rem',
-          fontStyle: 'normal',
-          fontWeight: '600',
-          lineHeight: '24px /* 171.429% */',
-          letterSpacing: '0.4px',
-          textTransform: 'uppercase',
-          padding: '6px 16px',
-          borderRadius: 'var(--mui-shape-borderRadius)',
-          opacity: '1',
-          '&:not(.Mui-disabled):not(.Mui-focusVisible):not(:hover)': {
-            color: 'var(--mui-palette-muted-contrast)',
-            background: 'var(--mui-palette-muted-main)',
-            boxShadow: 'none'
-          },
-          '&:not(.Mui-disabled).Mui-focusVisible:not(:hover)': {
-            color: 'var(--mui-palette-muted-contrast)',
-            background: 'var(--mui-palette-muted-main)',
-            boxShadow: 'none',
-            '& .MuiTouchRipple-root': {
-              width: '57.429px',
-              height: '46.286px',
-              borderRadius: '100px',
-              opacity: '0.16',
-              background: 'var(--mui-palette-muted-contrast)',
-              padding: '0',
-              boxShadow: 'none'
-            }
-          },
-          '&.Mui-disabled:not(.Mui-focusVisible):not(:hover)': {
-            color: 'var(--mui-palette-action-disabled)',
-            background: '#A09BA8',
-            boxShadow: 'none'
-          },
-          '&:not(.Mui-disabled):not(.Mui-focusVisible):hover': {
-            color: 'var(--mui-palette-muted-contrast)',
-            background: 'var(--mui-palette-muted-light)',
-            boxShadow: 'var(--mui-shadows-2)'
-          }
-        },
         '&.MuiButton-sizeMedium.MuiButton-containedError': {
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.875rem',
@@ -1008,47 +925,6 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             boxShadow: 'var(--mui-shadows-2)'
           }
         },
-        '&.MuiButton-sizeSmall.MuiButton-containedMuted': {
-          fontFamily: 'Inter, Helvetica, Arial, sans-serif',
-          fontSize: '0.8125rem',
-          fontStyle: 'normal',
-          fontWeight: '600',
-          lineHeight: '24px /* 184.615% */',
-          letterSpacing: '0.46px',
-          textTransform: 'uppercase',
-          padding: '4px 10px',
-          borderRadius: 'var(--mui-shape-borderRadius)',
-          opacity: '1',
-          '&:not(.Mui-disabled):not(.Mui-focusVisible):not(:hover)': {
-            color: 'var(--mui-palette-muted-contrast)',
-            background: 'var(--mui-palette-muted-main)',
-            boxShadow: 'none'
-          },
-          '&:not(.Mui-disabled).Mui-focusVisible:not(:hover)': {
-            color: 'var(--mui-palette-muted-contrast)',
-            background: 'var(--mui-palette-muted-main)',
-            boxShadow: 'none',
-            '& .MuiTouchRipple-root': {
-              width: '46.385px',
-              height: '41.143px',
-              borderRadius: '100px',
-              opacity: '0.16',
-              background: 'var(--mui-palette-muted-contrast)',
-              padding: '0',
-              boxShadow: 'none'
-            }
-          },
-          '&.Mui-disabled:not(.Mui-focusVisible):not(:hover)': {
-            color: 'var(--mui-palette-action-disabled)',
-            background: '#A09BA8',
-            boxShadow: 'none'
-          },
-          '&:not(.Mui-disabled):not(.Mui-focusVisible):hover': {
-            color: 'var(--mui-palette-muted-contrast)',
-            background: 'var(--mui-palette-muted-light)',
-            boxShadow: 'var(--mui-shadows-2)'
-          }
-        },
         '&.MuiButton-sizeSmall.MuiButton-containedError': {
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.8125rem',
@@ -1369,38 +1245,6 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-action-disabled)'
           }
         },
-        '&.MuiButton-sizeLarge.MuiButton-outlinedMuted': {
-          fontFeatureSettings: "'liga' off, 'clig' off",
-          fontFamily: 'Inter, Helvetica, Arial, sans-serif',
-          fontSize: '0.9375rem',
-          fontStyle: 'normal',
-          fontWeight: '600',
-          lineHeight: '24px /* 160% */',
-          letterSpacing: '0.46px',
-          textTransform: 'uppercase',
-          borderColor: 'var(--mui-palette-muted-outlinedColor)',
-          '&:not(.Mui-disabled):not(.Mui-focusVisible):not(:hover)': {
-            color: 'var(--mui-palette-muted-outlinedColor)'
-          },
-          '&:not(.Mui-disabled).Mui-focusVisible:not(:hover)': {
-            color: 'var(--mui-palette-muted-outlinedColor)',
-            '& .MuiTouchRipple-root': {
-              width: '69.209px',
-              height: '51.429px',
-              borderRadius: '100px',
-              background: 'var(--mui-palette-muted-_states-focusVisible)',
-              padding: '0',
-              opacity: '1',
-              boxShadow: 'none'
-            }
-          },
-          '&:not(.Mui-disabled):not(.Mui-focusVisible):hover': {
-            color: 'var(--mui-palette-muted-outlinedColor)'
-          },
-          '&.Mui-disabled:not(.Mui-focusVisible):not(:hover)': {
-            color: 'var(--mui-palette-action-disabled)'
-          }
-        },
         '&.MuiButton-sizeLarge.MuiButton-outlinedError': {
           fontFeatureSettings: "'liga' off, 'clig' off",
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
@@ -1661,37 +1505,6 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-secondary-outlinedColor)'
           }
         },
-        '&.MuiButton-sizeMedium.MuiButton-outlinedMuted': {
-          fontFamily: 'Inter, Helvetica, Arial, sans-serif',
-          fontSize: '0.875rem',
-          fontStyle: 'normal',
-          fontWeight: '600',
-          lineHeight: '24px /* 171.429% */',
-          letterSpacing: '0.4px',
-          textTransform: 'uppercase',
-          borderColor: 'var(--mui-palette-muted-outlinedColor)',
-          '&:not(.Mui-disabled):not(.Mui-focusVisible):not(:hover)': {
-            color: 'var(--mui-palette-muted-outlinedColor)'
-          },
-          '&:not(.Mui-disabled).Mui-focusVisible:not(:hover)': {
-            color: 'var(--mui-palette-muted-outlinedColor)',
-            '& .MuiTouchRipple-root': {
-              width: '57.429px',
-              height: '46.286px',
-              borderRadius: '100px',
-              background: 'var(--mui-palette-muted-_states-focusVisible)',
-              padding: '0',
-              opacity: '1',
-              boxShadow: 'none'
-            }
-          },
-          '&.Mui-disabled:not(.Mui-focusVisible):not(:hover)': {
-            color: 'var(--mui-palette-action-disabled)'
-          },
-          '&:not(.Mui-disabled):not(.Mui-focusVisible):hover': {
-            color: 'var(--mui-palette-muted-outlinedColor)'
-          }
-        },
         '&.MuiButton-sizeMedium.MuiButton-outlinedError': {
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.875rem',
@@ -1948,37 +1761,6 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-secondary-outlinedColor)'
           }
         },
-        '&.MuiButton-sizeSmall.MuiButton-outlinedMuted': {
-          fontFamily: 'Inter, Helvetica, Arial, sans-serif',
-          fontSize: '0.8125rem',
-          fontStyle: 'normal',
-          fontWeight: '600',
-          lineHeight: '24px /* 184.615% */',
-          letterSpacing: '0.46px',
-          textTransform: 'uppercase',
-          borderColor: 'var(--mui-palette-muted-outlinedColor)',
-          '&:not(.Mui-disabled):not(.Mui-focusVisible):not(:hover)': {
-            color: 'var(--mui-palette-muted-outlinedColor)'
-          },
-          '&:not(.Mui-disabled).Mui-focusVisible:not(:hover)': {
-            color: 'var(--mui-palette-muted-outlinedColor)',
-            '& .MuiTouchRipple-root': {
-              width: '46.385px',
-              height: '41.143px',
-              borderRadius: '100px',
-              background: 'var(--mui-palette-muted-_states-focusVisible)',
-              padding: '0',
-              opacity: '1',
-              boxShadow: 'none'
-            }
-          },
-          '&.Mui-disabled:not(.Mui-focusVisible):not(:hover)': {
-            color: 'var(--mui-palette-action-disabled)'
-          },
-          '&:not(.Mui-disabled):not(.Mui-focusVisible):hover': {
-            color: 'var(--mui-palette-muted-outlinedColor)'
-          }
-        },
         '&.MuiButton-sizeSmall.MuiButton-outlinedError': {
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.8125rem',
@@ -2211,36 +1993,6 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
           },
           '&:not(.Mui-disabled):not(.Mui-focusVisible):hover': {
             color: 'var(--mui-palette-secondary-outlinedColor)'
-          },
-          '&.Mui-disabled:not(.Mui-focusVisible):not(:hover)': {
-            color: 'var(--mui-palette-action-disabled)'
-          }
-        },
-        '&.MuiButton-sizeMedium.MuiButton-textMuted': {
-          fontFamily: 'Inter, Helvetica, Arial, sans-serif',
-          fontSize: '0.875rem',
-          fontStyle: 'normal',
-          fontWeight: '600',
-          lineHeight: '24px /* 171.429% */',
-          letterSpacing: '0.4px',
-          textTransform: 'uppercase',
-          '&:not(.Mui-disabled):not(.Mui-focusVisible):not(:hover)': {
-            color: 'var(--mui-palette-muted-outlinedColor)'
-          },
-          '&:not(.Mui-disabled).Mui-focusVisible:not(:hover)': {
-            color: 'var(--mui-palette-muted-outlinedColor)',
-            '& .MuiTouchRipple-root': {
-              width: '45.648px',
-              height: '46.286px',
-              borderRadius: '100px',
-              background: 'var(--mui-palette-muted-_states-focusVisible)',
-              padding: '0',
-              opacity: '1',
-              boxShadow: 'none'
-            }
-          },
-          '&:not(.Mui-disabled):not(.Mui-focusVisible):hover': {
-            color: 'var(--mui-palette-muted-outlinedColor)'
           },
           '&.Mui-disabled:not(.Mui-focusVisible):not(:hover)': {
             color: 'var(--mui-palette-action-disabled)'
@@ -2487,37 +2239,6 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-action-disabled)'
           }
         },
-        '&.MuiButton-sizeLarge.MuiButton-textMuted': {
-          fontFeatureSettings: "'liga' off, 'clig' off",
-          fontFamily: 'Inter, Helvetica, Arial, sans-serif',
-          fontSize: '0.9375rem',
-          fontStyle: 'normal',
-          fontWeight: '600',
-          lineHeight: '24px /* 160% */',
-          letterSpacing: '0.46px',
-          textTransform: 'uppercase',
-          '&:not(.Mui-disabled):not(.Mui-focusVisible):not(:hover)': {
-            color: 'var(--mui-palette-muted-outlinedColor)'
-          },
-          '&:not(.Mui-disabled).Mui-focusVisible:not(:hover)': {
-            color: 'var(--mui-palette-muted-outlinedColor)',
-            '& .MuiTouchRipple-root': {
-              width: '53.011px',
-              height: '51.429px',
-              borderRadius: '100px',
-              background: 'var(--mui-palette-muted-_states-focusVisible)',
-              padding: '0',
-              opacity: '1',
-              boxShadow: 'none'
-            }
-          },
-          '&:not(.Mui-disabled):not(.Mui-focusVisible):hover': {
-            color: 'var(--mui-palette-muted-outlinedColor)'
-          },
-          '&.Mui-disabled:not(.Mui-focusVisible):not(:hover)': {
-            color: 'var(--mui-palette-action-disabled)'
-          }
-        },
         '&.MuiButton-sizeLarge.MuiButton-textError': {
           fontFeatureSettings: "'liga' off, 'clig' off",
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
@@ -2754,36 +2475,6 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
           },
           '&:not(.Mui-disabled):not(.Mui-focusVisible):hover': {
             color: 'var(--mui-palette-secondary-outlinedColor)'
-          },
-          '&.Mui-disabled:not(.Mui-focusVisible):not(:hover)': {
-            color: 'var(--mui-palette-action-disabled)'
-          }
-        },
-        '&.MuiButton-sizeSmall.MuiButton-textMuted': {
-          fontFamily: 'Inter, Helvetica, Arial, sans-serif',
-          fontSize: '0.8125rem',
-          fontStyle: 'normal',
-          fontWeight: '600',
-          lineHeight: '24px /* 184.615% */',
-          letterSpacing: '0.46px',
-          textTransform: 'uppercase',
-          '&:not(.Mui-disabled):not(.Mui-focusVisible):not(:hover)': {
-            color: 'var(--mui-palette-muted-outlinedColor)'
-          },
-          '&:not(.Mui-disabled).Mui-focusVisible:not(:hover)': {
-            color: 'var(--mui-palette-muted-outlinedColor)',
-            '& .MuiTouchRipple-root': {
-              width: '39.022px',
-              height: '41.143px',
-              borderRadius: '100px',
-              background: 'var(--mui-palette-muted-_states-focusVisible)',
-              padding: '0',
-              opacity: '1',
-              boxShadow: 'none'
-            }
-          },
-          '&:not(.Mui-disabled):not(.Mui-focusVisible):hover': {
-            color: 'var(--mui-palette-muted-outlinedColor)'
           },
           '&.Mui-disabled:not(.Mui-focusVisible):not(:hover)': {
             color: 'var(--mui-palette-action-disabled)'
