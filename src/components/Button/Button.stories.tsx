@@ -12,12 +12,7 @@ type MatrixColor = (typeof MATRIX_COLORS)[number]
 type MatrixVariant = (typeof MATRIX_VARIANTS)[number]
 type MatrixSize = (typeof MATRIX_SIZES)[number]
 
-const renderMatrixButton = (
-  color: MatrixColor,
-  variant: MatrixVariant,
-  state: (typeof MATRIX_STATES)[number],
-  size: MatrixSize
-) => {
+const renderMatrixButton = (color: MatrixColor, variant: MatrixVariant, state: (typeof MATRIX_STATES)[number], size: MatrixSize) => {
   const baseProps = { color, variant, size, children: 'Button' as const }
 
   switch (state) {
