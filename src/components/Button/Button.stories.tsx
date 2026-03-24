@@ -5,25 +5,12 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 const MATRIX_COLORS = ['primary', 'secondary', 'error', 'warning', 'info', 'success'] as const
 const MATRIX_VARIANTS = ['contained', 'outlined', 'text'] as const
-const MATRIX_STATES = ['Enabled', 'Hovered', 'Disabled', 'Loading'] as const
+const MATRIX_STATES = ['Enabled', 'Disabled', 'Loading'] as const
 const MATRIX_SIZES = ['large', 'medium', 'small'] as const
 
 type MatrixColor = (typeof MATRIX_COLORS)[number]
 type MatrixVariant = (typeof MATRIX_VARIANTS)[number]
 type MatrixSize = (typeof MATRIX_SIZES)[number]
-
-const getHoverSx = (color: MatrixColor, variant: MatrixVariant) => {
-  if (variant === 'contained') {
-    const hoverKey = color === 'primary' ? 'light' : 'dark'
-    return {
-      '&&': {
-        background: `var(--mui-palette-${color}-${hoverKey})`,
-        boxShadow: 'var(--mui-shadows-2)'
-      }
-    }
-  }
-  return {}
-}
 
 const renderMatrixButton = (
   color: MatrixColor,
@@ -34,8 +21,6 @@ const renderMatrixButton = (
   const baseProps = { color, variant, size, children: 'Button' as const }
 
   switch (state) {
-    case 'Hovered':
-      return <Button {...baseProps} sx={getHoverSx(color, variant)} />
     case 'Disabled':
       return <Button {...baseProps} disabled />
     case 'Loading':
