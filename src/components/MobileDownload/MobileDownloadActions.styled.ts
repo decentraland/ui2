@@ -14,12 +14,12 @@ const GooglePlayButton = styled(Link)(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'center',
   textDecoration: 'none',
-  gap: 8,
+  gap: theme.spacing(1),
   height: 64,
   width: '100%',
   borderRadius: 12,
   backgroundColor: theme.palette.primary.main,
-  color: '#FCFCFC',
+  color: theme.palette.primary.contrastText,
   fontSize: 22,
   fontWeight: 700,
   boxShadow: theme.shadows[4],
@@ -52,17 +52,17 @@ const SendLinkButton = styled(Button)(({ theme }) => ({
   width: '100%',
   borderRadius: 12,
   backgroundColor: theme.palette.primary.main,
-  color: '#FCFCFC',
+  color: theme.palette.primary.contrastText,
   textTransform: 'uppercase',
   fontSize: theme.typography.pxToRem(15),
   fontWeight: 700,
   letterSpacing: '0.03em',
   boxShadow: theme.shadows[4],
   padding: '0 20px',
-  gap: 8,
+  gap: theme.spacing(1),
   '&:hover, &:active, &:focus': {
     backgroundColor: theme.palette.primary.dark,
-    color: '#FCFCFC'
+    color: theme.palette.primary.contrastText
   }
 }))
 
@@ -72,7 +72,7 @@ const ComingSoonContainer = styled(Box)(({ theme }) => ({
   justifyContent: 'center',
   height: 46,
   gap: theme.spacing(1),
-  color: '#161518',
+  color: theme.palette.text.primary,
   fontSize: 16,
   fontWeight: 500,
   lineHeight: 1,

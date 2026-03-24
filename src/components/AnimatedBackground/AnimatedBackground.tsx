@@ -1,4 +1,4 @@
-import { memo, useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { FRAGMENT_SHADER, VERTEX_SHADER } from './AnimatedBackground.shaders'
 import { createProgram, createShader, darkenRgb, hexToRgb, loadTexture } from './AnimatedBackground.utils'
 import overlayTextureUrl from '../../Assets/logo-pattern.webp'
@@ -8,7 +8,7 @@ import { Canvas, Fallback, Wrapper } from './AnimatedBackground.styled'
 const DEFAULT_INNER_COLOR: [number, number, number] = [0.749, 0.0, 1.0]
 const DEFAULT_OUTER_COLOR: [number, number, number] = [0.3176, 0.0235, 0.5176]
 
-const AnimatedBackground = memo(({ variant = 'fixed', color, patternUrl }: AnimatedBackgroundProps) => {
+const AnimatedBackground = React.memo(function AnimatedBackground({ variant = 'fixed', color, patternUrl }: AnimatedBackgroundProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const animFrameRef = useRef<number>(0)
 
@@ -43,7 +43,7 @@ const AnimatedBackground = memo(({ variant = 'fixed', color, patternUrl }: Anima
     gl.bindBuffer(gl.ARRAY_BUFFER, buffer)
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1]), gl.STATIC_DRAW)
 
-    const overlayTexture = loadTexture(gl, patternUrl ?? overlayTextureUrl)
+    const { texture: overlayTexture, cancel: cancelTexture } = loadTexture(gl, patternUrl ?? overlayTextureUrl)
 
     const resize = () => {
       const dpr = window.devicePixelRatio || 1
@@ -85,6 +85,7 @@ const AnimatedBackground = memo(({ variant = 'fixed', color, patternUrl }: Anima
 
     return () => {
       cancelAnimationFrame(animFrameRef.current)
+      cancelTexture()
       gl.deleteProgram(program)
       gl.deleteShader(vs)
       gl.deleteShader(fs)
@@ -95,7 +96,7 @@ const AnimatedBackground = memo(({ variant = 'fixed', color, patternUrl }: Anima
 
   return (
     <Wrapper variant={variant}>
-      <Fallback variant={variant} aria-hidden />
+      <Fallback aria-hidden />
       <Canvas ref={canvasRef} />
     </Wrapper>
   )

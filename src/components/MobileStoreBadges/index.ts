@@ -1,5 +1,0 @@
-export { MobileStoreBadges } from './MobileStoreBadges'
-export { MobileStoreBadgesProps } from './MobileStoreBadges.types'
-export { MobileDownloadActions } from './MobileDownloadActions'
-export { MobileDownloadActionsProps, MobileDownloadActionsI18N } from './MobileDownloadActions.types'
-export { GooglePlayIcon } from './GooglePlayIcon'

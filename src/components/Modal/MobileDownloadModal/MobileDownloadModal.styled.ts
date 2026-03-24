@@ -31,7 +31,7 @@ const ModalTitle = styled(Typography)({
   letterSpacing: '-0.02em',
   textAlign: 'center',
   marginBottom: 12,
-  color: '#161518'
+  color: 'var(--text-primary)'
 })
 
 const ModalDescription = styled(Typography)({
@@ -43,7 +43,16 @@ const ModalDescription = styled(Typography)({
   letterSpacing: '-0.02em',
   textAlign: 'center',
   marginBottom: 25,
-  color: '#1E1E1E'
+  color: 'var(--text-secondary)'
 })
 
-export { ModalContent, ModalImageContainer, ModalTitle, ModalDescription }
+const ModalImage = styled('img')({
+  maxWidth: 226,
+  maxHeight: 160,
+  width: 'auto',
+  height: 'auto',
+  display: 'block',
+  margin: '0 auto'
+})
+
+export { ModalContent, ModalImage, ModalImageContainer, ModalTitle, ModalDescription }

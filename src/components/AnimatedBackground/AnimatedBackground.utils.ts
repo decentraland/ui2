@@ -25,16 +25,18 @@ function createProgram(gl: WebGLRenderingContext, vs: WebGLShader, fs: WebGLShad
   return program
 }
 
-function loadTexture(gl: WebGLRenderingContext, url: string): WebGLTexture | null {
+function loadTexture(gl: WebGLRenderingContext, url: string): { texture: WebGLTexture | null; cancel: () => void } {
   const texture = gl.createTexture()
-  if (!texture) return null
+  if (!texture) return { texture: null, cancel: () => {} }
   gl.bindTexture(gl.TEXTURE_2D, texture)
 
   gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 1, 1, 0, gl.RGBA, gl.UNSIGNED_BYTE, new Uint8Array([128, 128, 128, 255]))
 
+  let cancelled = false
   const image = new Image()
   image.crossOrigin = 'anonymous'
   image.onload = () => {
+    if (cancelled) return
     gl.bindTexture(gl.TEXTURE_2D, texture)
     gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true)
     gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image)
@@ -44,9 +46,19 @@ function loadTexture(gl: WebGLRenderingContext, url: string): WebGLTexture | nul
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR)
     gl.generateMipmap(gl.TEXTURE_2D)
   }
+  image.onerror = () => {
+    if (!cancelled) {
+      console.warn(`Failed to load texture: ${url}`)
+    }
+  }
   image.src = url
 
-  return texture
+  return {
+    texture,
+    cancel: () => {
+      cancelled = true
+    }
+  }
 }
 
 function hexToRgb(hex: string): [number, number, number] {

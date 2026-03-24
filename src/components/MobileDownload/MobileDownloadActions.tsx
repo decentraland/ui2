@@ -1,9 +1,10 @@
 import React, { useCallback } from 'react'
-import AppleIcon from '@mui/icons-material/Apple'
 import ShareIcon from '@mui/icons-material/Share'
 import { GooglePlayIcon } from './GooglePlayIcon'
+import { i18n as defaultI18n } from './MobileDownloadActions.i18n'
 import { config } from '../../config'
-import { MobileDownloadActionsI18N, MobileDownloadActionsProps } from './MobileDownloadActions.types'
+import { AppleIcon } from '../Icon/AppleIcon'
+import { MobileDownloadActionsProps } from './MobileDownloadActions.types'
 import {
   ActionsContainer,
   ComingSoonContainer,
@@ -11,13 +12,6 @@ import {
   GooglePlayButtonLabel,
   SendLinkButton
 } from './MobileDownloadActions.styled'
-
-const defaultI18n: MobileDownloadActionsI18N = {
-  get_it_on: 'GET IT ON',
-  google_play: 'Google Play',
-  send_yourself_the_link: 'SEND YOURSELF THE LINK',
-  coming_soon: 'Coming Soon'
-}
 
 const MobileDownloadActions = React.memo(function MobileDownloadActions(props: MobileDownloadActionsProps) {
   const { platform, androidStoreUrl = config.get('ANDROID_STORE_URL'), onCopyLink, i18n: i18nProp } = props
@@ -32,8 +26,9 @@ const MobileDownloadActions = React.memo(function MobileDownloadActions(props: M
         await navigator.clipboard.writeText(url)
       }
       onCopyLink?.()
-    } catch {
-      // User cancelled share or API unavailable
+    } catch (error) {
+      if (error instanceof DOMException && error.name === 'AbortError') return
+      throw error
     }
   }, [onCopyLink])
 

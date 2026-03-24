@@ -1,2 +1,2 @@
 export { MobileDownloadModal } from './MobileDownloadModal'
-export { MobileDownloadModalProps, MobileDownloadModalI18N } from './MobileDownloadModal.types'
+export type { MobileDownloadModalProps, MobileDownloadModalI18N } from './MobileDownloadModal.types'

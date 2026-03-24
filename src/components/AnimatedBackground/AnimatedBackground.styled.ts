@@ -24,7 +24,7 @@ const Wrapper = styled(Box)<{ variant: AnimatedBackgroundVariant }>(({ variant }
   ...baseVariantStyles(variant)
 }))
 
-const Fallback = styled(Box)<{ variant: AnimatedBackgroundVariant }>({
+const Fallback = styled(Box)({
   position: 'absolute',
   top: 0,
   left: 0,

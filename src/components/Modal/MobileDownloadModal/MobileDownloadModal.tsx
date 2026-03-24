@@ -1,9 +1,10 @@
 import { i18n as defaultI18n } from './MobileDownloadModal.i18n'
-import { MobileDownloadActions } from '../../MobileStoreBadges'
+import mobileJumpInUrl from '../../../Assets/mobile-jump-in.png'
+import { MobileDownloadActions } from '../../MobileDownload'
 import { ExplorerJumpIn } from '../DownloadModal/ExplorerJumpIn'
 import { Modal } from '../Modal'
 import { MobileDownloadModalProps } from './MobileDownloadModal.types'
-import { ModalContent, ModalDescription, ModalImageContainer, ModalTitle } from './MobileDownloadModal.styled'
+import { ModalContent, ModalDescription, ModalImage, ModalImageContainer, ModalTitle } from './MobileDownloadModal.styled'
 
 function MobileDownloadModal(props: MobileDownloadModalProps) {
   const { platform, androidStoreUrl, onCopyLink, i18n: i18nProp, open, onClose } = props
@@ -14,7 +15,7 @@ function MobileDownloadModal(props: MobileDownloadModalProps) {
     <Modal open={open} size="tiny" onClose={onClose}>
       <ModalContent>
         <ModalImageContainer>
-          <ExplorerJumpIn />
+          {platform === 'android' ? <ModalImage src={mobileJumpInUrl} alt="Jump In" /> : <ExplorerJumpIn />}
         </ModalImageContainer>
         <ModalTitle variant="h2">{texts.title}</ModalTitle>
         <ModalDescription variant="body1">{description}</ModalDescription>

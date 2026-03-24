@@ -1,14 +1,17 @@
 import { ModalProps } from '../Modal.types'
+import type { MobilePlatform } from '../../MobileDownload'
 
-export type MobileDownloadModalI18N = {
+type MobileDownloadModalI18N = {
   title: string
   description_android: string
   description_ios: string
 }
 
-export type MobileDownloadModalProps = Omit<ModalProps, 'children'> & {
-  platform: 'android' | 'ios'
+type MobileDownloadModalProps = Omit<ModalProps, 'children'> & {
+  platform: MobilePlatform
   androidStoreUrl?: string
   onCopyLink?: () => void
   i18n?: Partial<MobileDownloadModalI18N>
 }
+
+export type { MobileDownloadModalI18N, MobileDownloadModalProps }
