@@ -294,13 +294,8 @@ const Matrix: Story = {
           display: 'grid',
           gridTemplateColumns: `60px 60px repeat(${MATRIX_VARIANTS.length * MATRIX_COLORS.length}, minmax(90px, 1fr))`,
           alignItems: 'center',
-          minWidth: 1500,
-          border: '1px dashed #7B2FBE',
-          '& > *, & > * > *': {
-            borderRight: '1px dashed #7B2FBE',
-            borderBottom: '1px dashed #7B2FBE',
-            padding: '8px 4px'
-          }
+          gap: '12px',
+          minWidth: 1500
         }}
       >
         <Box sx={{ gridColumn: 'span 2' }} />
