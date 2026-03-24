@@ -322,6 +322,94 @@ const Loading: Story = {
   )
 }
 
+const MixedHeights: Story = {
+  render: () => (
+    <StorySection>
+      <StoryRow>
+        <EventCard image={sceneThumbnail} sceneName="Short Title" avatar={exampleAvatar} withShadow />
+        <EventCard
+          image={sceneThumbnail}
+          sceneName="Another Short"
+          avatar={exampleAvatar}
+          withShadow
+          leftBadge={<LiveBadge />}
+          leftBadgeTransparent
+        />
+        <EventCard
+          image={sceneThumbnail}
+          sceneName="One Line Title"
+          avatar={exampleAvatar}
+          withShadow
+          leftBadge={<UserCountBadge count={5} />}
+          leftBadgeTransparent
+        />
+      </StoryRow>
+      <StoryRow>
+        <EventCard
+          image={sceneThumbnail}
+          sceneName="This Is A Much Longer Event Title That Wraps To Two Lines"
+          avatar={exampleAvatar}
+          withShadow
+          leftBadge={
+            <BadgeGroup>
+              <LiveBadge />
+              <UserCountBadge count={24} />
+            </BadgeGroup>
+          }
+          leftBadgeTransparent
+        />
+        <EventCard
+          image={sceneThumbnail}
+          sceneName="Another Long Title That Also Wraps To A Second Line Here"
+          avatar={exampleAvatar}
+          withShadow
+          leftBadge={<UserCountBadge count={8} />}
+          leftBadgeTransparent
+        />
+        <EventCard
+          image={sceneThumbnail}
+          sceneName="Two Line Event Title That Needs More Space To Show"
+          avatar={exampleAvatar}
+          withShadow
+        />
+      </StoryRow>
+      <StoryRow>
+        <EventCard image={sceneThumbnail} sceneName="Short Title" withShadow />
+        <EventCard image={sceneThumbnail} sceneName="Another Short" withShadow leftBadge={<LiveBadge />} leftBadgeTransparent />
+        <EventCard
+          image={sceneThumbnail}
+          sceneName="One Line Title"
+          withShadow
+          leftBadge={<UserCountBadge count={5} />}
+          leftBadgeTransparent
+        />
+      </StoryRow>
+      <StoryRow>
+        <EventCard
+          image={sceneThumbnail}
+          sceneName="This Is A Much Longer Event Title That Wraps To Two Lines"
+          withShadow
+          leftBadge={
+            <BadgeGroup>
+              <LiveBadge />
+              <UserCountBadge count={24} />
+            </BadgeGroup>
+          }
+          leftBadgeTransparent
+        />
+        <EventCard
+          image={sceneThumbnail}
+          sceneName="Another Long Title That Also Wraps To A Second Line Here"
+          withShadow
+          leftBadge={<UserCountBadge count={8} />}
+          leftBadgeTransparent
+        />
+        <EventCard image={sceneThumbnail} sceneName="Two Line Event Title That Needs More Space To Show" withShadow />
+      </StoryRow>
+    </StorySection>
+  )
+}
+
 // eslint-disable-next-line import/no-default-export
 export default meta
-export { Default, WithRedirectToAuth, OneCard, TwoCards, ThreeCards, CardQuantities, Multiline, WithoutAvatar, Loading }
+export { Default, WithRedirectToAuth, OneCard, TwoCards, ThreeCards, CardQuantities, Multiline, WithoutAvatar, Loading, MixedHeights }
