@@ -287,18 +287,18 @@ const Matrix: Story = {
       <Box
         sx={{
           display: 'grid',
-          gridTemplateColumns: `80px repeat(${MATRIX_COLORS.length * MATRIX_VARIANTS.length}, minmax(90px, 1fr))`,
+          gridTemplateColumns: `80px repeat(${MATRIX_VARIANTS.length * MATRIX_COLORS.length}, minmax(90px, 1fr))`,
           gap: '4px 2px',
           alignItems: 'center',
           minWidth: 1400
         }}
       >
         <Box />
-        {MATRIX_COLORS.map(color => (
+        {MATRIX_VARIANTS.map(variant => (
           <Box
-            key={color}
+            key={variant}
             sx={{
-              gridColumn: 'span 3',
+              gridColumn: `span ${MATRIX_COLORS.length}`,
               textAlign: 'center',
               fontWeight: 700,
               fontSize: '0.8rem',
@@ -308,15 +308,15 @@ const Matrix: Story = {
               borderColor: 'divider'
             }}
           >
-            {color}
+            {variant}
           </Box>
         ))}
 
         <Box />
-        {MATRIX_COLORS.flatMap(color =>
-          MATRIX_VARIANTS.map(variant => (
+        {MATRIX_VARIANTS.flatMap(variant =>
+          MATRIX_COLORS.map(color => (
             <Box
-              key={`h-${color}-${variant}`}
+              key={`h-${variant}-${color}`}
               sx={{
                 textAlign: 'center',
                 fontSize: '0.7rem',
@@ -325,7 +325,7 @@ const Matrix: Story = {
                 py: 0.5
               }}
             >
-              {variant}
+              {color}
             </Box>
           ))
         )}
@@ -333,9 +333,9 @@ const Matrix: Story = {
         {MATRIX_STATES.map(state => (
           <Box key={state} sx={{ display: 'contents' }}>
             <Box sx={{ fontWeight: 600, fontSize: '0.8rem' }}>{state}</Box>
-            {MATRIX_COLORS.flatMap(color =>
-              MATRIX_VARIANTS.map(variant => (
-                <Box key={`${color}-${variant}`} sx={{ display: 'flex', justifyContent: 'center', py: 0.5 }}>
+            {MATRIX_VARIANTS.flatMap(variant =>
+              MATRIX_COLORS.map(color => (
+                <Box key={`${variant}-${color}`} sx={{ display: 'flex', justifyContent: 'center', py: 0.5 }}>
                   {renderMatrixButton(color, variant, state)}
                 </Box>
               ))
