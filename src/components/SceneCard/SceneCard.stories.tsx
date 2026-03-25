@@ -29,72 +29,24 @@ const exampleAvatar: Avatar = {
     ],
     forceRender: [],
     emotes: [
-      {
-        slot: 0,
-        urn: 'handsair'
-      },
-      {
-        slot: 1,
-        urn: 'wave'
-      },
-      {
-        slot: 2,
-        urn: 'fistpump'
-      },
-      {
-        slot: 3,
-        urn: 'dance'
-      },
-      {
-        slot: 4,
-        urn: 'raiseHand'
-      },
-      {
-        slot: 5,
-        urn: 'clap'
-      },
-      {
-        slot: 6,
-        urn: 'money'
-      },
-      {
-        slot: 7,
-        urn: 'kiss'
-      },
-      {
-        slot: 8,
-        urn: 'headexplode'
-      },
-      {
-        slot: 9,
-        urn: 'shrug'
-      }
+      { slot: 0, urn: 'handsair' },
+      { slot: 1, urn: 'wave' },
+      { slot: 2, urn: 'fistpump' },
+      { slot: 3, urn: 'dance' },
+      { slot: 4, urn: 'raiseHand' },
+      { slot: 5, urn: 'clap' },
+      { slot: 6, urn: 'money' },
+      { slot: 7, urn: 'kiss' },
+      { slot: 8, urn: 'headexplode' },
+      { slot: 9, urn: 'shrug' }
     ],
     snapshots: {
       face256: 'https://profile-images.decentraland.org/entities/bafkreietha7mzh7q3lk4j236vut2znwqhbiapihg46p6yrv3j4lbwlzd34/face.png',
       body: 'https://profile-images.decentraland.org/entities/bafkreietha7mzh7q3lk4j236vut2znwqhbiapihg46p6yrv3j4lbwlzd34/body.png'
     },
-    eyes: {
-      color: {
-        r: 0.2235294133424759,
-        g: 0.48627451062202454,
-        b: 0.6901960968971252
-      }
-    },
-    hair: {
-      color: {
-        r: 0.32549020648002625,
-        g: 0.2352941334247589,
-        b: 0.1764705926179886
-      }
-    },
-    skin: {
-      color: {
-        r: 0.9490196108818054,
-        g: 0.7607843279838562,
-        b: 0.6470588445663452
-      }
-    }
+    eyes: { color: { r: 0.2235294133424759, g: 0.48627451062202454, b: 0.6901960968971252 } },
+    hair: { color: { r: 0.32549020648002625, g: 0.2352941334247589, b: 0.1764705926179886 } },
+    skin: { color: { r: 0.9490196108818054, g: 0.7607843279838562, b: 0.6470588445663452 } }
   },
   blocked: [],
   interests: [],
@@ -135,7 +87,7 @@ const Default: Story = {
   args: {
     image: sceneThumbnail,
     sceneName: 'My Galaxy World',
-    coordinates: 'alelevyyyy.eth.dcl',
+    coordinates: 'alelevyyyy.dcl.eth',
     avatar: exampleAvatar,
     withShadow: true,
     leftBadge: '1',
@@ -148,7 +100,7 @@ const WithIcon: Story = {
   args: {
     image: sceneThumbnail,
     sceneName: 'Featured Scene',
-    coordinates: 'featured.eth.dcl',
+    coordinates: 'featured.dcl.eth',
     avatar: exampleAvatar,
     withShadow: true,
     leftBadge: '🏆',
@@ -161,7 +113,7 @@ const AllVisible: Story = {
   args: {
     image: sceneThumbnail,
     sceneName: 'All Elements Visible',
-    coordinates: 'allvisible.eth.dcl',
+    coordinates: 'allvisible.dcl.eth',
     avatar: exampleAvatar,
     withShadow: true,
     leftBadge: '2',
@@ -173,7 +125,7 @@ const WithBorder: Story = {
   args: {
     image: sceneThumbnail,
     sceneName: 'Scene With Border and long name and more text',
-    coordinates: 'border.eth.dcl',
+    coordinates: 'border.dcl.eth',
     avatar: exampleAvatar,
     borderColor: gradient.gold,
     withShadow: true,
@@ -185,19 +137,11 @@ const WithBorder: Story = {
 
 const BorderColors: Story = {
   render: () => (
-    <Box
-      sx={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(3, 1fr)',
-        gap: 3,
-        width: '100%',
-        alignItems: 'flex-start'
-      }}
-    >
+    <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 3, width: '100%', alignItems: 'flex-start' }}>
       <SceneCard
         image={sceneThumbnail}
         sceneName="Gold Border - 1st Place"
-        coordinates="gold.eth.dcl"
+        coordinates="gold.dcl.eth"
         avatar={exampleAvatar}
         borderColor={gradient.gold}
         withShadow
@@ -208,7 +152,7 @@ const BorderColors: Story = {
       <SceneCard
         image={sceneThumbnail}
         sceneName="Silver Border - 2nd Place"
-        coordinates="silver.eth.dcl"
+        coordinates="silver.dcl.eth"
         avatar={exampleAvatar}
         borderColor={gradient.silver}
         withShadow
@@ -219,7 +163,7 @@ const BorderColors: Story = {
       <SceneCard
         image={sceneThumbnail}
         sceneName="Bronze Border - 3rd Place"
-        coordinates="bronze.eth.dcl"
+        coordinates="bronze.dcl.eth"
         avatar={exampleAvatar}
         borderColor={gradient.bronze}
         withShadow
@@ -233,20 +177,11 @@ const BorderColors: Story = {
 
 const CornerBadgeVariations: Story = {
   render: () => (
-    <Box
-      sx={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(3, 1fr)',
-        gap: 3,
-        width: '100%',
-        alignItems: 'flex-start',
-        padding: 2
-      }}
-    >
+    <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 3, width: '100%', alignItems: 'flex-start', padding: 2 }}>
       <SceneCard
         image={sceneThumbnail}
         sceneName="With Text Badge"
-        coordinates="text.eth.dcl"
+        coordinates="text.dcl.eth"
         avatar={exampleAvatar}
         withShadow
         cornerBadge={<TextBadge text="Best New" />}
@@ -256,7 +191,7 @@ const CornerBadgeVariations: Story = {
       <SceneCard
         image={sceneThumbnail}
         sceneName="Ranking Badge (no card border)"
-        coordinates="number.eth.dcl"
+        coordinates="number.dcl.eth"
         avatar={exampleAvatar}
         withShadow
         cornerBadge={<NumberBadge value="4" />}
@@ -266,7 +201,7 @@ const CornerBadgeVariations: Story = {
       <SceneCard
         image={sceneThumbnail}
         sceneName="Ranking Badge with Card Border"
-        coordinates="number2.eth.dcl"
+        coordinates="number2.dcl.eth"
         avatar={exampleAvatar}
         withShadow
         borderColor={gradient.gold}
@@ -280,19 +215,11 @@ const CornerBadgeVariations: Story = {
 
 const WithLeftBadge: Story = {
   render: () => (
-    <Box
-      sx={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(3, 1fr)',
-        gap: 3,
-        width: '100%',
-        alignItems: 'flex-start'
-      }}
-    >
+    <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 3, width: '100%', alignItems: 'flex-start' }}>
       <SceneCard
         image={sceneThumbnail}
         sceneName="1st Place"
-        coordinates="first.eth.dcl"
+        coordinates="first.dcl.eth"
         avatar={exampleAvatar}
         withShadow
         borderColor={gradient.gold}
@@ -303,7 +230,7 @@ const WithLeftBadge: Story = {
       <SceneCard
         image={sceneThumbnail}
         sceneName="2nd Place"
-        coordinates="second.eth.dcl"
+        coordinates="second.dcl.eth"
         avatar={exampleAvatar}
         withShadow
         borderColor={gradient.silver}
@@ -314,7 +241,7 @@ const WithLeftBadge: Story = {
       <SceneCard
         image={sceneThumbnail}
         sceneName="3rd Place"
-        coordinates="third.eth.dcl"
+        coordinates="third.dcl.eth"
         avatar={exampleAvatar}
         withShadow
         borderColor={gradient.bronze}
@@ -329,13 +256,7 @@ const WithLeftBadge: Story = {
 const BadgeVariations: Story = {
   render: () => (
     <Box
-      sx={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-        gap: 3,
-        width: '100%',
-        alignItems: 'flex-start'
-      }}
+      sx={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 3, width: '100%', alignItems: 'flex-start' }}
     >
       <SceneCard
         image={sceneThumbnail}
@@ -378,7 +299,7 @@ const BadgeVariations: Story = {
       <SceneCard
         image={sceneThumbnail}
         sceneName="Featured Scene"
-        coordinates="featured.eth.dcl"
+        coordinates="featured.dcl.eth"
         avatar={exampleAvatar}
         withShadow
         leftBadge="⭐"
@@ -388,7 +309,7 @@ const BadgeVariations: Story = {
       <SceneCard
         image={sceneThumbnail}
         sceneName="New Release"
-        coordinates="newrelease.eth.dcl"
+        coordinates="newrelease.dcl.eth"
         avatar={exampleAvatar}
         withShadow
         leftBadge={
@@ -402,7 +323,7 @@ const BadgeVariations: Story = {
       <SceneCard
         image={sceneThumbnail}
         sceneName="Popular Place"
-        coordinates="popular.eth.dcl"
+        coordinates="popular.dcl.eth"
         avatar={exampleAvatar}
         withShadow
         leftBadge="2"
@@ -415,14 +336,7 @@ const BadgeVariations: Story = {
 
 const RealWorldExamples: Story = {
   render: () => (
-    <Box
-      sx={{
-        display: 'flex',
-        gap: 3,
-        flexWrap: 'wrap',
-        alignItems: 'flex-start'
-      }}
-    >
+    <Box sx={{ display: 'flex', gap: 3, flexWrap: 'wrap', alignItems: 'flex-start' }}>
       <SceneCard
         image={sceneThumbnail}
         sceneName="Top Ranking Scene"
@@ -446,7 +360,7 @@ const RealWorldExamples: Story = {
       <SceneCard
         image={sceneThumbnail}
         sceneName="New Release"
-        coordinates="newrelease.eth.dcl"
+        coordinates="newrelease.dcl.eth"
         avatar={exampleAvatar}
         withShadow
         leftBadge={
@@ -464,13 +378,7 @@ const RealWorldExamples: Story = {
 const ShowOnHoverVariations: Story = {
   render: () => (
     <Box
-      sx={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-        gap: 3,
-        width: '100%',
-        alignItems: 'flex-start'
-      }}
+      sx={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 3, width: '100%', alignItems: 'flex-start' }}
     >
       <SceneCard
         image={sceneThumbnail}
@@ -603,20 +511,11 @@ const ShowOnHoverVariations: Story = {
 
 const TextBadgeExamples: Story = {
   render: () => (
-    <Box
-      sx={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(2, 1fr)',
-        gap: 4,
-        width: '100%',
-        alignItems: 'flex-start',
-        padding: 3
-      }}
-    >
+    <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 4, width: '100%', alignItems: 'flex-start', padding: 3 }}>
       <SceneCard
         image={sceneThumbnail}
         sceneName="Text Badge - Best New"
-        coordinates="featured.eth.dcl"
+        coordinates="featured.dcl.eth"
         avatar={exampleAvatar}
         withShadow
         cornerBadge={<TextBadge text="Best New" />}
@@ -626,7 +525,7 @@ const TextBadgeExamples: Story = {
       <SceneCard
         image={sceneThumbnail}
         sceneName="Text Badge - Featured"
-        coordinates="featured2.eth.dcl"
+        coordinates="featured2.dcl.eth"
         avatar={exampleAvatar}
         withShadow
         cornerBadge={<TextBadge text="Featured" />}

@@ -1,6 +1,16 @@
 import { memo } from 'react'
-import { NumberBadgeProps, TextBadgeProps } from './Badges.types'
-import { NumberBadgeInner, NumberBadgeWrapper, TextBadgeLabel, TextBadgeWrapper } from './Badges.styled'
+import PermIdentityRoundedIcon from '@mui/icons-material/PermIdentityRounded'
+import SensorsRoundedIcon from '@mui/icons-material/SensorsRounded'
+import { NumberBadgeProps, TextBadgeProps, UserCountBadgeProps } from './Badges.types'
+import {
+  LiveBadgeWrapper,
+  NumberBadgeInner,
+  NumberBadgeWrapper,
+  TextBadgeLabel,
+  TextBadgeWrapper,
+  UserCountBadgeWrapper,
+  UserCountDot
+} from './Badges.styled'
 
 const NumberBadge = memo(({ value }: NumberBadgeProps) => (
   <NumberBadgeWrapper>
@@ -18,4 +28,23 @@ const TextBadge = memo(({ text }: TextBadgeProps) => (
 
 TextBadge.displayName = 'TextBadge'
 
-export { NumberBadge, TextBadge }
+const LiveBadge = memo(() => (
+  <LiveBadgeWrapper>
+    <SensorsRoundedIcon />
+    LIVE
+  </LiveBadgeWrapper>
+))
+
+LiveBadge.displayName = 'LiveBadge'
+
+const UserCountBadge = memo(({ count }: UserCountBadgeProps) => (
+  <UserCountBadgeWrapper>
+    <UserCountDot />
+    <PermIdentityRoundedIcon />
+    {count}
+  </UserCountBadgeWrapper>
+))
+
+UserCountBadge.displayName = 'UserCountBadge'
+
+export { LiveBadge, NumberBadge, TextBadge, UserCountBadge }
