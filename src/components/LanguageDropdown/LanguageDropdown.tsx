@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { ExpandMore } from '@mui/icons-material'
+import ExpandMore from '@mui/icons-material/ExpandMore'
 import { Menu } from '@mui/material'
 import type { LanguageDropdownProps, SupportedLanguage } from './LanguageDropdown.types'
 import { FlagIcon, LanguageButton, StyledMenuItem } from './LanguageDropdown.styled'

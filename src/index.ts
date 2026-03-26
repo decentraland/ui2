@@ -1,7 +1,6 @@
 import emotionCache from '@emotion/cache'
 import * as emotionReact from '@emotion/react'
 import emotionStyled from '@emotion/styled'
-import * as muiIcons from '@mui/icons-material'
 
 // Side-effect import to include emotion theme augmentation in the build
 import './types/emotion'
@@ -156,12 +155,7 @@ export {
 export type { SvgIconProps, ModalProps, ButtonProps, LinkProps, SvgIconOwnProps } from '@mui/material'
 
 export { useTheme } from '@emotion/react'
-export { emotionReact, emotionStyled, emotionCache, muiIcons }
-// Note: muiIcons is exported as a namespace for backward compatibility.
-// For better tree-shaking, dApps should import icons directly from '@mui/icons-material':
-//   import { Home, Settings } from '@mui/icons-material'
-// instead of:
-//   import { muiIcons } from 'decentraland-ui2'
+export { emotionReact, emotionStyled, emotionCache }
 export * from './components/Address'
 export * as dclAddressUtils from './components/AddressField/utils'
 export * from './components/AvatarFace'
