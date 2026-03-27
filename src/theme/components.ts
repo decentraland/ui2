@@ -1,6 +1,6 @@
 import { Components, Palette, Theme, getOverlayAlpha } from '@mui/material'
-import RoobertPROBoldwoff2 from './fonts/RoobertPRO-Bold.woff2'
 import RoobertPROBoldttf from './fonts/RoobertPRO-Bold.ttf'
+import RoobertPROBoldwoff2 from './fonts/RoobertPRO-Bold.woff2'
 
 export const components = (palette: Palette): Components<Omit<Theme, 'components'>> => ({
   MuiCssBaseline: {
