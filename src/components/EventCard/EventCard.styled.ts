@@ -98,8 +98,12 @@ const EventCardContent = styled(CardContent)(({ theme }) => ({
   position: 'relative',
   overflow: 'hidden',
   padding: theme.spacing(2),
+  minHeight: 123,
   '&:last-child': {
     paddingBottom: theme.spacing(2)
+  },
+  [theme.breakpoints.down('sm')]: {
+    minHeight: 149
   }
 }))
 
@@ -207,6 +211,9 @@ const AvatarAndLocationRow = styled(Box)(({ theme }) => ({
     '.MuiCardActionArea-root:hover &': {
       marginBottom: `calc(${JUMP_IN_BUTTON_HEIGHT}px + ${theme.spacing(2)})`
     }
+  },
+  [theme.breakpoints.down('sm')]: {
+    marginBottom: 0
   }
 }))
 
@@ -278,8 +285,14 @@ const JumpInButtonContainer = styled(Box)(({ theme }) => ({
       transform: 'translateY(0)'
     }
   },
-  [theme.breakpoints.down('xs')]: {
-    display: 'none'
+  [theme.breakpoints.down('sm')]: {
+    position: 'relative',
+    opacity: 1,
+    transform: 'none',
+    bottom: 'auto',
+    left: 'auto',
+    right: 'auto',
+    marginTop: theme.spacing(1)
   }
 }))
 
