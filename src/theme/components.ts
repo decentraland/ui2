@@ -8,6 +8,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
       '@font-face': {
         fontFamily: 'DecentralandHero',
         src: `url(${RoobertPROBoldwoff2}) format("woff2"), url(${RoobertPROBoldttf}) format("truetype")`,
+        fontDisplay: 'swap',
         fontStyle: 'Sans-serif',
         fontWeight: '700'
       },
