@@ -199,7 +199,7 @@ const FooterLanding = React.memo((props: FooterLandingProps) => {
       <SubscribeContainer>
         <SubscribeSubtitle variant={isMobile ? 'h3' : 'h4'}>{footerLandingDefaults.stayUpdatedWith}</SubscribeSubtitle>
         <SubscribeTitle variant={isMobile ? 'h1' : 'h2'}>{footerLandingDefaults.decentraland}</SubscribeTitle>
-        {!hideSubscription && subscriptionSrc && <SubscriptionBeehiiv src={subscriptionSrc} data-test-id="beehiiv-embed" />}
+        {!hideSubscription && subscriptionSrc && <SubscriptionBeehiiv src={subscriptionSrc} loading="lazy" data-test-id="beehiiv-embed" />}
         <SocialContainer>
           <SocialIconWrapper>
             {!hideDiscord && discordUrl && (
