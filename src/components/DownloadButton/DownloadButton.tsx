@@ -174,13 +174,19 @@ const DownloadButton = React.memo((props: DownloadButtonProps) => {
     ]
   )
 
-  if ((isLoadingUserAgentData || !defaultDownloadOption) && (userAgentData?.mobile || userAgentData?.tablet)) {
+  // Don't render anything while UA data is loading — prevents a flash of the
+  // generic download button on mobile/tablet before we know it should be hidden.
+  if (isLoadingUserAgentData) {
+    return null
+  }
+
+  if (!defaultDownloadOption && (userAgentData?.mobile || userAgentData?.tablet)) {
     return null
   }
 
   const isLoading = loadingCdnLinks || isDownloading
 
-  if (isLoadingUserAgentData || !defaultDownloadOption) {
+  if (!defaultDownloadOption) {
     return (
       <DownloadButtonStyled
         variant="contained"
