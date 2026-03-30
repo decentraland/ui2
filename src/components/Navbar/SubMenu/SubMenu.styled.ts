@@ -1,11 +1,11 @@
 import zIndex from '@mui/material/styles/zIndex'
 import styled from '@emotion/styled'
 import { Box, Button } from '@mui/material'
-import CreateImage from '../../../Assets/Navbar/create-submenu.png'
-import ExploreImage from '../../../Assets/Navbar/explore-submenu.png'
-import GovernanceImage from '../../../Assets/Navbar/governance-submenu.png'
-import LearnImage from '../../../Assets/Navbar/learn-submenu.png'
-import MarketplaceImage from '../../../Assets/Navbar/marketplace-submenu.png'
+import CreateImage from '../../../Assets/Navbar/create-submenu.webp'
+import ExploreImage from '../../../Assets/Navbar/explore-submenu.webp'
+import GovernanceImage from '../../../Assets/Navbar/governance-submenu.webp'
+import LearnImage from '../../../Assets/Navbar/learn-submenu.webp'
+import MarketplaceImage from '../../../Assets/Navbar/marketplace-submenu.webp'
 import { NavbarPages } from '../Navbar.types'
 
 interface MenuItemContainerProps {
