@@ -39,6 +39,7 @@ const EventCard = memo((props: EventCardProps) => {
     leftBadge,
     leftBadgeTransparent = false,
     onClick,
+    onJumpInClick,
     redirectToAuth = false,
     hideLocation = false,
     loading = false
@@ -125,7 +126,16 @@ const EventCard = memo((props: EventCardProps) => {
             )}
           </SceneInfoContainer>
           <JumpInButtonContainer>
-            <JumpInButton>
+            <JumpInButton
+              onClick={
+                onJumpInClick
+                  ? (e: React.MouseEvent) => {
+                      e.stopPropagation()
+                      onJumpInClick()
+                    }
+                  : undefined
+              }
+            >
               <span>JUMP IN</span>
               <JumpInIcon />
             </JumpInButton>
