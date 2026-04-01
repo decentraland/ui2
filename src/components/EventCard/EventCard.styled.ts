@@ -136,7 +136,7 @@ const LeftBadge = styled(Box)<{ transparent?: boolean }>(({ theme, transparent }
     fontSize: theme.typography.subtitle1.fontSize,
     fontWeight: theme.typography.fontWeightBold
   }),
-  maxWidth: '45%',
+  maxWidth: '100%',
   color: theme.palette.text.primary,
   display: 'flex',
   alignItems: 'center',
