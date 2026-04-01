@@ -65,11 +65,13 @@ const EventCardActionArea = styled(CardActionArea)(({ theme }) => ({
   }
 }))
 
-const EventMediaContainer = styled(Box)({
+const EventMediaContainer = styled(Box)(({ theme }) => ({
   position: 'relative',
   width: '100%',
-  overflow: 'hidden'
-})
+  overflow: 'hidden',
+  // Solid bg visible while the CardMedia background-image loads
+  backgroundColor: theme.palette.mode === 'dark' ? '#3a3a3a' : '#e0e0e0'
+}))
 
 const EventCardMedia = styled(CardMedia)<{ imageHeight?: number; hoverHeight?: number }>(
   ({ theme, imageHeight = 329, hoverHeight = 271 }) => ({
@@ -77,6 +79,7 @@ const EventCardMedia = styled(CardMedia)<{ imageHeight?: number; hoverHeight?: n
     width: '100%',
     borderRadius: `${theme.spacing(2)} ${theme.spacing(2)} 0 0`,
     backgroundSize: 'cover',
+    backgroundColor: theme.palette.mode === 'dark' ? '#2a2435' : '#e8e8e8',
     [theme.breakpoints.up('sm')]: {
       transition: theme.transitions.create('height', {
         duration: theme.transitions.duration.complex
