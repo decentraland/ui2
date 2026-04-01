@@ -148,6 +148,9 @@ const LeftBadge = styled(Box)<{ transparent?: boolean }>(({ theme, transparent }
     whiteSpace: 'nowrap',
     minWidth: 0,
     maxWidth: '100%'
+  },
+  [theme.breakpoints.down('sm')]: {
+    maxWidth: '70%'
   }
 }))
 

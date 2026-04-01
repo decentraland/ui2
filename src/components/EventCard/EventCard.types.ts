@@ -13,6 +13,8 @@ interface EventCardProps {
   leftBadgeTransparent?: boolean
   /** Custom click handler. When not provided, clicking the card opens the jump-in URL */
   onClick?: () => void
+  /** Custom handler for the Jump In button. When provided, clicking the button calls this instead of the card's onClick */
+  onJumpInClick?: () => void
   /** When true, clicking the card redirects to /auth instead of the jump-in URL */
   redirectToAuth?: boolean
   /** When true, the location chip is not shown on hover */
