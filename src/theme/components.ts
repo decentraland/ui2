@@ -1,13 +1,14 @@
 import { Components, Palette, Theme, getOverlayAlpha } from '@mui/material'
-import RoobertPROBoldotf from './fonts/RoobertPRO-Bold.otf'
 import RoobertPROBoldttf from './fonts/RoobertPRO-Bold.ttf'
+import RoobertPROBoldwoff2 from './fonts/RoobertPRO-Bold.woff2'
 
 export const components = (palette: Palette): Components<Omit<Theme, 'components'>> => ({
   MuiCssBaseline: {
     styleOverrides: {
       '@font-face': {
         fontFamily: 'DecentralandHero',
-        src: `url(${RoobertPROBoldttf}) format("truetype"), url(${RoobertPROBoldotf}) format("otf")`,
+        src: `url(${RoobertPROBoldwoff2}) format("woff2"), url(${RoobertPROBoldttf}) format("truetype")`,
+        fontDisplay: 'swap',
         fontStyle: 'Sans-serif',
         fontWeight: '700'
       },

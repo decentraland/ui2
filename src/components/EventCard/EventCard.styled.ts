@@ -65,11 +65,13 @@ const EventCardActionArea = styled(CardActionArea)(({ theme }) => ({
   }
 }))
 
-const EventMediaContainer = styled(Box)({
+const EventMediaContainer = styled(Box)(({ theme }) => ({
   position: 'relative',
   width: '100%',
-  overflow: 'hidden'
-})
+  overflow: 'hidden',
+  // Solid bg visible while the CardMedia background-image loads
+  backgroundColor: theme.palette.mode === 'dark' ? '#3a3a3a' : '#e0e0e0'
+}))
 
 const EventCardMedia = styled(CardMedia)<{ imageHeight?: number; hoverHeight?: number }>(
   ({ theme, imageHeight = 329, hoverHeight = 271 }) => ({
@@ -77,6 +79,7 @@ const EventCardMedia = styled(CardMedia)<{ imageHeight?: number; hoverHeight?: n
     width: '100%',
     borderRadius: `${theme.spacing(2)} ${theme.spacing(2)} 0 0`,
     backgroundSize: 'cover',
+    backgroundColor: theme.palette.mode === 'dark' ? '#2a2435' : '#e8e8e8',
     [theme.breakpoints.up('sm')]: {
       transition: theme.transitions.create('height', {
         duration: theme.transitions.duration.complex
@@ -98,8 +101,12 @@ const EventCardContent = styled(CardContent)(({ theme }) => ({
   position: 'relative',
   overflow: 'hidden',
   padding: theme.spacing(2),
+  minHeight: 123,
   '&:last-child': {
     paddingBottom: theme.spacing(2)
+  },
+  [theme.breakpoints.down('sm')]: {
+    minHeight: 149
   }
 }))
 
@@ -129,7 +136,7 @@ const LeftBadge = styled(Box)<{ transparent?: boolean }>(({ theme, transparent }
     fontSize: theme.typography.subtitle1.fontSize,
     fontWeight: theme.typography.fontWeightBold
   }),
-  maxWidth: '45%',
+  maxWidth: '100%',
   color: theme.palette.text.primary,
   display: 'flex',
   alignItems: 'center',
@@ -141,6 +148,9 @@ const LeftBadge = styled(Box)<{ transparent?: boolean }>(({ theme, transparent }
     whiteSpace: 'nowrap',
     minWidth: 0,
     maxWidth: '100%'
+  },
+  [theme.breakpoints.down('sm')]: {
+    maxWidth: '70%'
   }
 }))
 
@@ -207,6 +217,9 @@ const AvatarAndLocationRow = styled(Box)(({ theme }) => ({
     '.MuiCardActionArea-root:hover &': {
       marginBottom: `calc(${JUMP_IN_BUTTON_HEIGHT}px + ${theme.spacing(2)})`
     }
+  },
+  [theme.breakpoints.down('sm')]: {
+    marginBottom: 0
   }
 }))
 
@@ -278,8 +291,14 @@ const JumpInButtonContainer = styled(Box)(({ theme }) => ({
       transform: 'translateY(0)'
     }
   },
-  [theme.breakpoints.down('xs')]: {
-    display: 'none'
+  [theme.breakpoints.down('sm')]: {
+    position: 'relative',
+    opacity: 1,
+    transform: 'none',
+    bottom: 'auto',
+    left: 'auto',
+    right: 'auto',
+    marginTop: theme.spacing(1)
   }
 }))
 
