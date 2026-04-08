@@ -3,6 +3,7 @@
 ## Breaking Changes
 
 ### Removed Exports
+
 - `NavbarPages` enum — no longer exists
 - `MainMenu`, `MenuItem`, `SubMenu`, `SubMenuColumn`, `SubMenuItem` components — replaced by internal `NavLinks` and `MobileMenu`
 - Old `NavbarProps` shape — completely rewritten
@@ -34,16 +35,16 @@ type NavbarProps = {
 
 ### Key Differences
 
-| Old API | New API |
-|---------|---------|
-| `activePage: NavbarPages` | `activePage?: 'whatsOn' \| 'shop' \| 'create' \| 'learn'` |
-| `submenuItems: NavbarSubmenuProps` | Menu items are hardcoded from `config.get()` |
+| Old API                                           | New API                                                   |
+| ------------------------------------------------- | --------------------------------------------------------- |
+| `activePage: NavbarPages`                         | `activePage?: 'whatsOn' \| 'shop' \| 'create' \| 'learn'` |
+| `submenuItems: NavbarSubmenuProps`                | Menu items are hardcoded from `config.get()`              |
 | `i18nNavbar`, `i18nUserMenu`, `i18nChainSelector` | Single `i18n?: Partial<NavbarI18n>` with English defaults |
-| `notifications` data object | `notificationSlot?: ReactNode` (consumer renders) |
-| `chains`, `selectedChain` as direct props | Same — `selectedChain?`, `chains?`, `onSelectChain?` |
-| `manaBalances` via UserMenu | `manaBalances?` as direct prop |
-| `onClickNavbarItem` callback | Removed — links navigate directly |
-| `onClickBalance`, `onClickOpen` | `onClickBalance?`, `onClickCredits?` |
+| `notifications` data object                       | `notificationSlot?: ReactNode` (consumer renders)         |
+| `chains`, `selectedChain` as direct props         | Same — `selectedChain?`, `chains?`, `onSelectChain?`      |
+| `manaBalances` via UserMenu                       | `manaBalances?` as direct prop                            |
+| `onClickNavbarItem` callback                      | Removed — links navigate directly                         |
+| `onClickBalance`, `onClickOpen`                   | `onClickBalance?`, `onClickCredits?`                      |
 
 ### Notification Slot Pattern
 
@@ -52,14 +53,9 @@ Notifications are no longer managed by the Navbar. Instead, pass a fully rendere
 ```tsx
 import { Navbar, BellButton, NotificationBadge, NotificationPanel } from 'decentraland-ui2'
 
-<Navbar
-  notificationSlot={
-    <MyNotificationBell
-      items={notifications}
-      onToggle={handleToggle}
-    />
-  }
-  onToggleUserCard={(isOpen) => {
+;<Navbar
+  notificationSlot={<MyNotificationBell items={notifications} onToggle={handleToggle} />}
+  onToggleUserCard={isOpen => {
     // Close notifications when user card opens (mutual exclusion)
     if (isOpen) closeNotifications()
   }}
@@ -73,10 +69,7 @@ The styled components for building a notification panel (`BellButton`, `Notifica
 Credits display is built into the Navbar. Pass the data:
 
 ```tsx
-<Navbar
-  creditsBalance={{ balance: 4200, expiresAt: Date.now() + 86400000 * 30 }}
-  onClickCredits={() => navigateToCredits()}
-/>
+<Navbar creditsBalance={{ balance: 4200, expiresAt: Date.now() + 86400000 * 30 }} onClickCredits={() => navigateToCredits()} />
 ```
 
 ### Chain Selector & MANA Balance
@@ -87,9 +80,9 @@ These render inside the user card panel (not in the top bar):
 <Navbar
   selectedChain={ChainId.ETHEREUM_MAINNET}
   chains={[ChainId.ETHEREUM_MAINNET, ChainId.MATIC_MAINNET]}
-  onSelectChain={(chain) => switchChain(chain)}
+  onSelectChain={chain => switchChain(chain)}
   manaBalances={{ [Network.ETHEREUM]: 1234, [Network.MATIC]: 5678 }}
-  onClickBalance={(network) => openAccount(network)}
+  onClickBalance={network => openAccount(network)}
 />
 ```
 
