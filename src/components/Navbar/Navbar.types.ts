@@ -57,6 +57,8 @@ type NavbarProps = {
   /** Called when the user card panel is toggled open or closed.
    *  Consumers can use this to close other panels (e.g. notifications). */
   onToggleUserCard?: (isOpen: boolean) => void
+  /** When set, the matching navigation tab receives a visual highlight. */
+  activePage?: 'whatsOn' | 'shop' | 'create' | 'learn'
   onClickSignIn: () => void
   onClickSignOut: () => void
 }

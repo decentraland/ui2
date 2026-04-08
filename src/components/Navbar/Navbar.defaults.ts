@@ -1,3 +1,4 @@
+import { config } from '../../config'
 import type { NavbarI18n } from './Navbar.types'
 
 const DEFAULT_I18N: NavbarI18n = {
@@ -50,50 +51,56 @@ type MenuConfig = {
 }
 
 /**
- * URLs are hardcoded to production on purpose. All Decentraland dApps share the
- * same production URLs for cross-app navigation (marketplace, builder, docs, etc.).
- * Dev/staging environments only differ in API endpoints, not in navigation links,
- * so a configurable `urls` prop would add complexity without practical benefit.
+ * URLs resolved from the ui-env config system so they point to the correct
+ * environment (zone for dev, today for staging, org for production).
  */
-const MENU_CONFIG: MenuConfig = {
-  whatsOn: {
-    label: 'whatsOn',
-    url: 'https://decentraland.org/events'
-  },
-  shop: {
-    label: 'shop',
-    items: [
-      { label: 'shopAll', url: 'https://decentraland.org/marketplace' },
-      {
-        label: 'wearables',
-        url: 'https://decentraland.org/marketplace/browse?assetType=item&section=wearables&status=on_sale'
-      },
-      {
-        label: 'emotes',
-        url: 'https://decentraland.org/marketplace/browse?assetType=item&section=emotes&status=on_sale'
-      },
-      { label: 'names', url: 'https://decentraland.org/marketplace/names/claim' },
-      { label: 'land', url: 'https://decentraland.org/marketplace/lands' },
-      { label: 'merch', url: 'https://store.decentraland.org/', isExternal: true }
-    ]
-  },
-  create: {
-    label: 'create',
-    items: [
-      { label: 'createInDecentraland', url: 'https://decentraland.org/create/' },
-      { label: 'publishWearablesEmotes', url: 'https://decentraland.org/builder/collections' },
-      { label: 'publishLand', url: 'https://decentraland.org/builder/land' }
-    ]
-  },
-  learn: {
-    label: 'learn',
-    items: [
-      { label: 'getStarted', url: 'https://docs.decentraland.org/player/', isExternal: true },
-      { label: 'startCreating', url: 'https://docs.decentraland.org/creator/', isExternal: true },
-      { label: 'seeWhatsNew', url: 'https://decentraland.org/blog/' }
-    ]
+function buildMenuConfig(): MenuConfig {
+  const marketplaceUrl = config.get('MARKETPLACE_URL')
+  const builderUrl = config.get('BUILDER_URL')
+  const eventsUrl = config.get('EVENTS_URL')
+  const createUrl = config.get('CREATE_URL')
+  const blogUrl = config.get('BLOG_URL')
+  const docsPlayerUrl = config.get('DOCS_ABOUT_URL') ?? config.get('LEARN_URL')
+  const docsCreatorUrl = config.get('DOCS_CREATORS_URL')
+  const namesUrl = config.get('MARKETPLACE_NAMES_URL')
+  const landsUrl = config.get('MARKETPLACE_LANDS_URL')
+
+  return {
+    whatsOn: {
+      label: 'whatsOn',
+      url: eventsUrl
+    },
+    shop: {
+      label: 'shop',
+      items: [
+        { label: 'shopAll', url: marketplaceUrl },
+        { label: 'wearables', url: `${marketplaceUrl}/browse?assetType=item&section=wearables&status=on_sale` },
+        { label: 'emotes', url: `${marketplaceUrl}/browse?assetType=item&section=emotes&status=on_sale` },
+        { label: 'names', url: namesUrl },
+        { label: 'land', url: landsUrl },
+        { label: 'merch', url: 'https://store.decentraland.org/', isExternal: true }
+      ]
+    },
+    create: {
+      label: 'create',
+      items: [
+        { label: 'createInDecentraland', url: createUrl },
+        { label: 'publishWearablesEmotes', url: `${builderUrl}/collections` },
+        { label: 'publishLand', url: `${builderUrl}/land` }
+      ]
+    },
+    learn: {
+      label: 'learn',
+      items: [
+        { label: 'getStarted', url: docsPlayerUrl, isExternal: true },
+        { label: 'startCreating', url: docsCreatorUrl, isExternal: true },
+        { label: 'seeWhatsNew', url: blogUrl }
+      ]
+    }
   }
 }
+
+const MENU_CONFIG: MenuConfig = buildMenuConfig()
 
 type UserMenuItem = {
   label: keyof NavbarI18n
@@ -102,14 +109,10 @@ type UserMenuItem = {
 }
 
 const USER_MENU_ITEMS: UserMenuItem[] = [
-  { label: 'viewProfile', url: 'https://decentraland.org/profile', icon: 'account' },
-  { label: 'myAssets', url: 'https://decentraland.org/marketplace/account', icon: 'wearable' },
-  { label: 'accountSettings', url: 'https://decentraland.org/account', icon: 'settings' },
-  {
-    label: 'marketplaceAuthorizations',
-    url: 'https://decentraland.org/marketplace/settings',
-    icon: 'shopping'
-  }
+  { label: 'viewProfile', url: config.get('PROFILE_URL'), icon: 'account' },
+  { label: 'myAssets', url: config.get('MARKETPLACE_MY_ASSETS_URL'), icon: 'wearable' },
+  { label: 'accountSettings', url: config.get('ACCOUNT_URL'), icon: 'settings' },
+  { label: 'marketplaceAuthorizations', url: config.get('MARKETPLACE_SETTINGS_URL'), icon: 'shopping' }
 ]
 
 const DROPDOWN_SECTIONS = ['shop', 'create', 'learn'] as const

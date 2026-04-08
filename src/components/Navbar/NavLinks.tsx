@@ -16,17 +16,21 @@ interface NavLinksProps {
   desktopDropdown: DropdownSection | null
   onOpenDropdown: (section: DropdownSection) => void
   onScheduleCloseDropdown: () => void
+  activePage?: 'whatsOn' | 'shop' | 'create' | 'learn'
   i18n: NavbarI18n
 }
 
-const NavLinks = memo(function NavLinks({ desktopDropdown, onOpenDropdown, onScheduleCloseDropdown, i18n }: NavLinksProps) {
+const NavLinks = memo(function NavLinks({ desktopDropdown, onOpenDropdown, onScheduleCloseDropdown, activePage, i18n }: NavLinksProps) {
   return (
     <DesktopTabList>
-      <DesktopTabLink href={MENU_CONFIG.whatsOn.url}>{i18n[MENU_CONFIG.whatsOn.label]}</DesktopTabLink>
+      <DesktopTabLink href={MENU_CONFIG.whatsOn.url} className={activePage === 'whatsOn' ? 'active' : undefined}>
+        {i18n[MENU_CONFIG.whatsOn.label]}
+      </DesktopTabLink>
 
       {DROPDOWN_SECTIONS.map(section => (
         <DesktopDropdownWrapper key={section} onMouseEnter={() => onOpenDropdown(section)} onMouseLeave={onScheduleCloseDropdown}>
           <DesktopTabWithDropdown
+            className={activePage === section ? 'active' : undefined}
             aria-expanded={desktopDropdown === section}
             aria-haspopup="true"
             onClick={() => {

@@ -30,6 +30,10 @@ const DesktopTab = styled('button')({
     backgroundColor: GLASS_BG,
     textShadow: '0 0 0.5px currentColor, 0 0 0.5px currentColor'
   },
+  '&.active': {
+    color: colors.neutral.white,
+    textShadow: '0 0 0.5px currentColor, 0 0 0.5px currentColor'
+  },
   '&:focus-visible': {
     outline: `2px solid ${colors.base.primary}`,
     outlineOffset: 2
@@ -59,6 +63,10 @@ const DesktopTabLink = styled('a')({
   '&:hover': {
     color: colors.neutral.white,
     backgroundColor: GLASS_BG,
+    textShadow: '0 0 0.5px currentColor, 0 0 0.5px currentColor'
+  },
+  '&.active': {
+    color: colors.neutral.white,
     textShadow: '0 0 0.5px currentColor, 0 0 0.5px currentColor'
   },
   '&:focus-visible': {
