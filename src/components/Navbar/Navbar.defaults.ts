@@ -100,23 +100,40 @@ function buildMenuConfig(): MenuConfig {
   }
 }
 
-const MENU_CONFIG: MenuConfig = buildMenuConfig()
-
 type UserMenuItem = {
   label: keyof NavbarI18n
   url: string
   icon: 'account' | 'wearable' | 'settings' | 'shopping'
 }
 
-const USER_MENU_ITEMS: UserMenuItem[] = [
-  { label: 'viewProfile', url: config.get('PROFILE_URL'), icon: 'account' },
-  { label: 'myAssets', url: config.get('MARKETPLACE_MY_ASSETS_URL'), icon: 'wearable' },
-  { label: 'accountSettings', url: config.get('ACCOUNT_URL'), icon: 'settings' },
-  { label: 'marketplaceAuthorizations', url: config.get('MARKETPLACE_SETTINGS_URL'), icon: 'shopping' }
-]
+/**
+ * Lazy singleton getters — config.get() is deferred until first call
+ * to avoid issues in SSR, test environments, or lazy-import scenarios
+ * where the env config may not be initialized at module load time.
+ */
+let _menuConfig: MenuConfig | null = null
+function getMenuConfig(): MenuConfig {
+  if (!_menuConfig) {
+    _menuConfig = buildMenuConfig()
+  }
+  return _menuConfig
+}
+
+let _userMenuItems: UserMenuItem[] | null = null
+function getUserMenuItems(): UserMenuItem[] {
+  if (!_userMenuItems) {
+    _userMenuItems = [
+      { label: 'viewProfile', url: config.get('PROFILE_URL'), icon: 'account' },
+      { label: 'myAssets', url: config.get('MARKETPLACE_MY_ASSETS_URL'), icon: 'wearable' },
+      { label: 'accountSettings', url: config.get('ACCOUNT_URL'), icon: 'settings' },
+      { label: 'marketplaceAuthorizations', url: config.get('MARKETPLACE_SETTINGS_URL'), icon: 'shopping' }
+    ]
+  }
+  return _userMenuItems
+}
 
 const DROPDOWN_SECTIONS = ['shop', 'create', 'learn'] as const
 type DropdownSection = (typeof DROPDOWN_SECTIONS)[number]
 
-export { DEFAULT_I18N, DROPDOWN_SECTIONS, MENU_CONFIG, USER_MENU_ITEMS }
+export { DEFAULT_I18N, DROPDOWN_SECTIONS, getMenuConfig, getUserMenuItems }
 export type { DropdownSection, MenuConfig, MenuItem, MenuSection, UserMenuItem }

@@ -14,7 +14,7 @@ import {
   ShoppingBagIcon,
   WearableIcon
 } from './icons'
-import { USER_MENU_ITEMS } from './Navbar.defaults'
+import { getUserMenuItems } from './Navbar.defaults'
 import type { NavbarI18n } from './Navbar.types'
 import {
   AvatarButton,
@@ -251,7 +251,7 @@ const UserCardPanel = memo(function UserCardPanel({
 
   const renderMenuItems = () => (
     <>
-      {USER_MENU_ITEMS.map(item => {
+      {getUserMenuItems().map(item => {
         const Icon = ICON_MAP[item.icon]
         return (
           <UserCardMenuItem key={item.label} href={item.url}>

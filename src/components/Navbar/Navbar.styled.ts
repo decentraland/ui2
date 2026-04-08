@@ -2,8 +2,18 @@ import { keyframes } from '@emotion/react'
 import styled from '@emotion/styled'
 import * as colors from '../../theme/colors'
 
+const FONT_FAMILY = 'Inter, Helvetica, Arial, sans-serif'
+
 const MOBILE_BREAKPOINT = '@media (max-width: 991px)'
 const DESKTOP_BREAKPOINT = '@media (min-width: 992px)'
+
+const Z_INDEX = {
+  userCard: 1099,
+  navbar: 1100,
+  mobileMenu: 1101,
+  notificationPanel: 1102,
+  mobileOverlay: 1201
+} as const
 
 const NAV_SHADOW = '0px 1.333px 24px rgba(0,0,0,0.12), 0px 8px 13.333px rgba(0,0,0,0.14), 0px 4px 6.667px rgba(0,0,0,0.2)'
 const GLASS_BG = 'rgba(38, 38, 38, 0.8)'
@@ -36,13 +46,13 @@ const bellShake = keyframes({
   '75%': { transform: 'rotate(4deg)' }
 })
 
-const NavBarRoot = styled('nav')({
+const NavbarRoot = styled('nav')({
   position: 'fixed',
   top: 0,
   left: 0,
   right: 0,
-  zIndex: 1100,
-  fontFamily: 'Inter, Helvetica, Arial, sans-serif',
+  zIndex: Z_INDEX.navbar,
+  fontFamily: FONT_FAMILY,
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
@@ -78,7 +88,7 @@ const NavBarRoot = styled('nav')({
   }
 })
 
-const NavBarLeft = styled('div')({
+const NavbarLeft = styled('div')({
   display: 'flex',
   alignItems: 'center',
   [MOBILE_BREAKPOINT]: {
@@ -97,7 +107,7 @@ const NavBarLeft = styled('div')({
   }
 })
 
-const NavBarRight = styled('div')({
+const NavbarRight = styled('div')({
   display: 'flex',
   alignItems: 'center',
   [MOBILE_BREAKPOINT]: {
@@ -108,7 +118,7 @@ const NavBarRight = styled('div')({
   }
 })
 
-const NavBarRightGroup = styled('div')({
+const NavbarRightGroup = styled('div')({
   display: 'flex',
   alignItems: 'center',
   gap: 24
@@ -163,7 +173,7 @@ const SignInButton = styled('button')({
   padding: '8px 22px',
   border: `1px solid ${colors.neutral.softWhite}`,
   borderRadius: 6,
-  fontFamily: 'Inter, Helvetica, Arial, sans-serif',
+  fontFamily: FONT_FAMILY,
   fontWeight: 600,
   fontSize: 15,
   lineHeight: '24px',
@@ -192,6 +202,7 @@ const SignInButton = styled('button')({
 
 export {
   DESKTOP_BREAKPOINT,
+  FONT_FAMILY,
   GLASS_BG,
   GLASS_BLUR,
   GLASS_BORDER,
@@ -199,11 +210,12 @@ export {
   HamburgerButton,
   LogoLink,
   MOBILE_BREAKPOINT,
-  NavBarLeft,
-  NavBarRight,
-  NavBarRightGroup,
-  NavBarRoot,
+  NavbarLeft,
+  NavbarRight,
+  NavbarRightGroup,
+  NavbarRoot,
   SignInButton,
+  Z_INDEX,
   avatarPulse,
   bellShake,
   slideDown

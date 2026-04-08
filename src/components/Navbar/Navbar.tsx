@@ -7,7 +7,7 @@ import { NavLinks } from './NavLinks'
 import { UserCardPanel } from './UserCardPanel'
 import type { NavbarI18n, NavbarProps } from './Navbar.types'
 import { CreditsBalanceButton, CreditsTooltip } from './Credits.styled'
-import { HamburgerButton, LogoLink, NavBarLeft, NavBarRight, NavBarRightGroup, NavBarRoot, SignInButton } from './Navbar.styled'
+import { HamburgerButton, LogoLink, NavbarLeft, NavbarRight, NavbarRightGroup, NavbarRoot, SignInButton } from './Navbar.styled'
 import type { DropdownSection } from './Navbar.defaults'
 
 /** Calculate days remaining until a given timestamp. */
@@ -98,9 +98,6 @@ const Navbar = memo(function Navbar({
     function handleClickOutside(event: MouseEvent) {
       const target = event.target as Node
       if (navRef.current && !navRef.current.contains(target)) {
-        // Don't close if clicking inside the mobile user card
-        const mobileCard = document.querySelector('[data-mobile-user-card]')
-        if (mobileCard?.contains(target)) return
         closeDesktopDropdown()
         closeUserCard()
       }
@@ -146,8 +143,8 @@ const Navbar = memo(function Navbar({
 
   return (
     <>
-      <NavBarRoot ref={navRef}>
-        <NavBarLeft>
+      <NavbarRoot ref={navRef}>
+        <NavbarLeft>
           <LogoLink href="https://decentraland.org" aria-label="Decentraland Home">
             <DclLogo />
           </LogoLink>
@@ -159,11 +156,11 @@ const Navbar = memo(function Navbar({
             activePage={activePage}
             i18n={i18n}
           />
-        </NavBarLeft>
+        </NavbarLeft>
 
-        <NavBarRight>
+        <NavbarRight>
           {isSignedIn && (
-            <NavBarRightGroup>
+            <NavbarRightGroup>
               {creditsBalance && (
                 <CreditsBalanceButton onClick={onClickCredits} aria-label={`${formatBalance(creditsBalance.balance)} credits`}>
                   <NavbarCreditsIcon />
@@ -201,7 +198,7 @@ const Navbar = memo(function Navbar({
                 onClickBalance={onClickBalance}
                 i18n={i18n}
               />
-            </NavBarRightGroup>
+            </NavbarRightGroup>
           )}
 
           {!isSignedIn && (
@@ -217,8 +214,8 @@ const Navbar = memo(function Navbar({
           >
             {mobileMenuOpen ? <CloseIcon /> : <HamburgerIcon />}
           </HamburgerButton>
-        </NavBarRight>
-      </NavBarRoot>
+        </NavbarRight>
+      </NavbarRoot>
 
       <MobileMenu open={mobileMenuOpen} onClose={closeMobileMenu} i18n={i18n} />
     </>

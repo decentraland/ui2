@@ -1,6 +1,6 @@
 import { memo, useCallback, useState } from 'react'
 import { ChevronDownIcon, ChevronUpIcon, ExternalLinkIcon } from './icons'
-import { DROPDOWN_SECTIONS, MENU_CONFIG } from './Navbar.defaults'
+import { DROPDOWN_SECTIONS, getMenuConfig } from './Navbar.defaults'
 import type { NavbarI18n } from './Navbar.types'
 import {
   MobileMenuAccordionHeader,
@@ -20,6 +20,7 @@ interface MobileMenuProps {
 }
 
 const MobileMenu = memo(function MobileMenu({ open, onClose, i18n }: MobileMenuProps) {
+  const menuConfig = getMenuConfig()
   const [mobileAccordion, setMobileAccordion] = useState<DropdownSection | null>(null)
 
   const toggleMobileAccordion = useCallback((section: DropdownSection) => {
@@ -31,11 +32,11 @@ const MobileMenu = memo(function MobileMenu({ open, onClose, i18n }: MobileMenuP
       <MobileMenuOverlay open={open} onClick={onClose} />
       <MobileMenuPanel open={open} role="navigation" aria-label="Mobile navigation">
         <MobileMenuItem>
-          <MobileMenuLink href={MENU_CONFIG.whatsOn.url}>{i18n[MENU_CONFIG.whatsOn.label]}</MobileMenuLink>
+          <MobileMenuLink href={menuConfig.whatsOn.url}>{i18n[menuConfig.whatsOn.label]}</MobileMenuLink>
         </MobileMenuItem>
 
         {DROPDOWN_SECTIONS.map(section => {
-          const config = MENU_CONFIG[section]
+          const config = menuConfig[section]
           const isExpanded = mobileAccordion === section
 
           return (

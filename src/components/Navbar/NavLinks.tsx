@@ -1,6 +1,6 @@
 import { memo } from 'react'
 import { ChevronDownIcon, ExternalLinkIcon } from './icons'
-import { DROPDOWN_SECTIONS, MENU_CONFIG } from './Navbar.defaults'
+import { DROPDOWN_SECTIONS, getMenuConfig } from './Navbar.defaults'
 import type { NavbarI18n } from './Navbar.types'
 import {
   DesktopDropdown,
@@ -21,10 +21,11 @@ interface NavLinksProps {
 }
 
 const NavLinks = memo(function NavLinks({ desktopDropdown, onOpenDropdown, onScheduleCloseDropdown, activePage, i18n }: NavLinksProps) {
+  const menuConfig = getMenuConfig()
   return (
     <DesktopTabList>
-      <DesktopTabLink href={MENU_CONFIG.whatsOn.url} className={activePage === 'whatsOn' ? 'active' : undefined}>
-        {i18n[MENU_CONFIG.whatsOn.label]}
+      <DesktopTabLink href={menuConfig.whatsOn.url} className={activePage === 'whatsOn' ? 'active' : undefined}>
+        {i18n[menuConfig.whatsOn.label]}
       </DesktopTabLink>
 
       {DROPDOWN_SECTIONS.map(section => (
@@ -34,11 +35,11 @@ const NavLinks = memo(function NavLinks({ desktopDropdown, onOpenDropdown, onSch
             aria-expanded={desktopDropdown === section}
             aria-haspopup="true"
             onClick={() => {
-              const firstItem = MENU_CONFIG[section].items?.[0]
+              const firstItem = menuConfig[section].items?.[0]
               if (firstItem) window.open(firstItem.url, '_self')
             }}
           >
-            {i18n[MENU_CONFIG[section].label]}
+            {i18n[menuConfig[section].label]}
             <ChevronDownIcon
               style={{
                 transform: desktopDropdown === section ? 'rotate(180deg)' : 'rotate(0deg)',
@@ -49,7 +50,7 @@ const NavLinks = memo(function NavLinks({ desktopDropdown, onOpenDropdown, onSch
 
           {desktopDropdown === section && (
             <DesktopDropdown>
-              {MENU_CONFIG[section].items?.map(item => (
+              {menuConfig[section].items?.map(item => (
                 <DesktopDropdownItem
                   key={item.label}
                   href={item.url}
