@@ -24,7 +24,7 @@ const DEFAULT_I18N: NavbarI18n = {
   myAssets: 'My Assets',
   accountSettings: 'Account Settings',
   marketplaceAuthorizations: 'Marketplace Authorizations',
-  walletAddress: 'Wallet address',
+  walletAddress: 'User ID',
   addressCopied: 'Copied!',
   logout: 'Log Out',
   creditsExpiringIn: 'Expiring in {days} days',

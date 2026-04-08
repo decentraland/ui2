@@ -118,7 +118,7 @@ const UserCardName = styled('span')({
 const UserCardAddressLabel = styled('span')({
   fontFamily: 'Inter, Helvetica, Arial, sans-serif',
   fontWeight: 400,
-  fontSize: 12,
+  fontSize: 14,
   color: colors.neutral.gray4
 })
 
@@ -128,9 +128,9 @@ const UserCardAddress = styled('div')({
   gap: 8,
   fontFamily: 'Inter, Helvetica, Arial, sans-serif',
   fontWeight: 400,
-  fontSize: 12,
+  fontSize: 14,
   color: colors.neutral.softWhite,
-  marginBottom: 4
+  lineHeight: 1.75
 })
 
 const UserCardCopyButton = styled('button')({
@@ -305,6 +305,7 @@ const MobileUserCardName = styled('span')({
   fontWeight: 600,
   fontSize: 20,
   color: colors.neutral.softWhite,
+  marginBottom: 4,
   overflow: 'hidden',
   textOverflow: 'ellipsis',
   whiteSpace: 'nowrap'
@@ -313,7 +314,7 @@ const MobileUserCardName = styled('span')({
 const MobileUserCardAddressLabel = styled('span')({
   fontFamily: 'Inter, Helvetica, Arial, sans-serif',
   fontWeight: 400,
-  fontSize: 12,
+  fontSize: 14,
   color: colors.neutral.gray4
 })
 
@@ -323,8 +324,9 @@ const MobileUserCardAddress = styled('div')({
   gap: 6,
   fontFamily: 'Inter, Helvetica, Arial, sans-serif',
   fontWeight: 400,
-  fontSize: 12,
-  color: colors.neutral.softWhite
+  fontSize: 14,
+  color: colors.neutral.softWhite,
+  lineHeight: 1.75
 })
 
 const MobileUserCardCopyButton = styled('button')({
@@ -366,7 +368,9 @@ const UserCardChainOptions = styled('div')({
 const BalanceAndChainRow = styled('div')({
   display: 'flex',
   alignItems: 'center',
-  gap: 24,
+  flexWrap: 'wrap',
+  gap: '12px 24px',
+  paddingTop: 8,
   width: '100%'
 })
 

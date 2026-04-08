@@ -110,9 +110,7 @@ const NavbarLeft = styled('div')({
 const NavbarRight = styled('div')({
   display: 'flex',
   alignItems: 'center',
-  [MOBILE_BREAKPOINT]: {
-    gap: 24
-  },
+  gap: 16,
   [DESKTOP_BREAKPOINT]: {
     gap: 48
   }
@@ -121,7 +119,10 @@ const NavbarRight = styled('div')({
 const NavbarRightGroup = styled('div')({
   display: 'flex',
   alignItems: 'center',
-  gap: 24
+  gap: 12,
+  [DESKTOP_BREAKPOINT]: {
+    gap: 24
+  }
 })
 
 const LogoLink = styled('a')({
