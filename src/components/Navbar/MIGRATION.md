@@ -52,7 +52,6 @@ Notifications are no longer managed by the Navbar. Instead, pass a fully rendere
 
 ```tsx
 import { Navbar, BellButton, NotificationBadge, NotificationPanel } from 'decentraland-ui2'
-
 ;<Navbar
   notificationSlot={<MyNotificationBell items={notifications} onToggle={handleToggle} />}
   onToggleUserCard={isOpen => {
