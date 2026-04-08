@@ -1,0 +1,360 @@
+import { memo } from 'react'
+
+type IconProps = React.SVGAttributes<SVGElement>
+
+const DclLogo = memo(function DclLogo(props: IconProps) {
+  return (
+    <svg viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M45 89.9999C69.8528 89.9999 89.9999 69.8528 89.9999 45C89.9999 20.1472 69.8528 0 45 0C20.1472 0 0 20.1472 0 45C0 69.8528 20.1472 89.9999 45 89.9999Z"
+        fill="url(#dcl-nav0)"
+      />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M18 80.9996C25.515 86.6471 34.875 89.9996 45 89.9996C55.125 89.9996 64.485 86.6471 72 80.9996H18Z"
+        fill="#FF2D55"
+      />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M9 71.9996C11.565 75.397 14.603 78.435 18 80.9996H72C75.398 78.435 78.435 75.397 81 71.9996H9Z"
+        fill="#FFA25A"
+      />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M60.368 62.9997H3.758C5.153 66.2172 6.93 69.2322 9 71.9997H60.39V62.9997H60.368Z"
+        fill="#FFC95B"
+      />
+      <path fillRule="evenodd" clipRule="evenodd" d="M31.883 29.25V63H60.008L31.883 29.25Z" fill="url(#dcl-nav1)" />
+      <path fillRule="evenodd" clipRule="evenodd" d="M3.758 63H31.883V29.25L3.758 63Z" fill="white" />
+      <path fillRule="evenodd" clipRule="evenodd" d="M60.368 47.25V72H81L60.368 47.25Z" fill="url(#dcl-nav2)" />
+      <path fillRule="evenodd" clipRule="evenodd" d="M39.757 72H60.367V47.25L39.757 72Z" fill="white" />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M60.368 40.5C66.58 40.5 71.618 35.463 71.618 29.25C71.618 23.037 66.58 18 60.368 18C54.154 18 49.118 23.037 49.118 29.25C49.118 35.463 54.154 40.5 60.368 40.5Z"
+        fill="#FFC95B"
+      />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M31.882 22.5C34.989 22.5 37.507 19.981 37.507 16.875C37.507 13.768 34.989 11.25 31.882 11.25C28.776 11.25 26.257 13.768 26.257 16.875C26.257 19.981 28.776 22.5 31.882 22.5Z"
+        fill="#FFC95B"
+      />
+      <defs>
+        <linearGradient id="dcl-nav0" x1="45" y1="-18.64" x2="-18.64" y2="45" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#FF2D55" />
+          <stop offset="1" stopColor="#FFBC5B" />
+        </linearGradient>
+        <linearGradient id="dcl-nav1" x1="31.873" y1="29.25" x2="31.873" y2="63" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#A524B3" />
+          <stop offset="1" stopColor="#FF2D55" />
+        </linearGradient>
+        <linearGradient id="dcl-nav2" x1="60.36" y1="47.25" x2="60.36" y2="72" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#A524B3" />
+          <stop offset="1" stopColor="#FF2D55" />
+        </linearGradient>
+      </defs>
+    </svg>
+  )
+})
+
+const HamburgerIcon = memo(function HamburgerIcon(props: IconProps) {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <path d="M3 6H21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      <path d="M3 12H21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      <path d="M3 18H21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+  )
+})
+
+const CloseIcon = memo(function CloseIcon(props: IconProps) {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <path d="M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      <path d="M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+  )
+})
+
+const ChevronDownIcon = memo(function ChevronDownIcon(props: IconProps) {
+  return (
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+})
+
+const ChevronUpIcon = memo(function ChevronUpIcon(props: IconProps) {
+  return (
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <path d="M15 12.5L10 7.5L5 12.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+})
+
+const ExternalLinkIcon = memo(function ExternalLinkIcon(props: IconProps) {
+  return (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <path
+        d="M12 8.66667V12.6667C12 13.0203 11.8595 13.3594 11.6095 13.6095C11.3594 13.8595 11.0203 14 10.6667 14H3.33333C2.97971 14 2.64057 13.8595 2.39052 13.6095C2.14048 13.3594 2 13.0203 2 12.6667V5.33333C2 4.97971 2.14048 4.64057 2.39052 4.39052C2.64057 4.14048 2.97971 4 3.33333 4H7.33333"
+        stroke="currentColor"
+        strokeWidth="1.33"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path d="M10 2H14V6" stroke="currentColor" strokeWidth="1.33" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M6.66699 9.33333L14.0003 2" stroke="currentColor" strokeWidth="1.33" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+})
+
+const LogoutIcon = memo(function LogoutIcon(props: IconProps) {
+  return (
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <path
+        d="M7.5 17.5H4.16667C3.72464 17.5 3.30072 17.3244 2.98816 17.0118C2.67559 16.6993 2.5 16.2754 2.5 15.8333V4.16667C2.5 3.72464 2.67559 3.30072 2.98816 2.98816C3.30072 2.67559 3.72464 2.5 4.16667 2.5H7.5"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M13.333 14.1667L17.4997 10.0001L13.333 5.83337"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path d="M17.5 10H7.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+})
+
+const CopyIcon = memo(function CopyIcon(props: IconProps) {
+  return (
+    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <rect x="3.5" y="3.5" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1" />
+      <path
+        d="M8.5 3.5V2C8.5 1.17157 7.82843 0.5 7 0.5H2C1.17157 0.5 0.5 1.17157 0.5 2V7C0.5 7.82843 1.17157 8.5 2 8.5H3.5"
+        stroke="currentColor"
+        strokeWidth="1"
+      />
+    </svg>
+  )
+})
+
+const AccountIcon = memo(function AccountIcon(props: IconProps) {
+  return (
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <path
+        d="M10 10C11.3807 10 12.5 8.88071 12.5 7.5C12.5 6.11929 11.3807 5 10 5C8.61929 5 7.5 6.11929 7.5 7.5C7.5 8.88071 8.61929 10 10 10Z"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M5 16.25C5 14.1789 7.23858 12.5 10 12.5C12.7614 12.5 15 14.1789 15 16.25"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  )
+})
+
+const WearableIcon = memo(function WearableIcon(props: IconProps) {
+  return (
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <path
+        d="M15.8333 7.5L13.3333 3.33337H6.66667L4.16667 7.5L2.5 16.6667H17.5L15.8333 7.5Z"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M6.66667 3.33337L7.5 7.50004L10 9.16671L12.5 7.50004L13.3333 3.33337"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  )
+})
+
+const SettingsIcon = memo(function SettingsIcon(props: IconProps) {
+  return (
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <path
+        d="M10 12.5C11.3807 12.5 12.5 11.3807 12.5 10C12.5 8.61929 11.3807 7.5 10 7.5C8.61929 7.5 7.5 8.61929 7.5 10C7.5 11.3807 8.61929 12.5 10 12.5Z"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M16.1666 10C16.1666 9.58337 16.1249 9.16671 16.0416 8.75004L17.9166 7.27087L16.4166 4.72921L14.1666 5.52087C13.5416 4.97921 12.8124 4.56254 11.9999 4.31254L11.6666 1.66671H8.33325L7.99992 4.31254C7.18742 4.56254 6.45825 4.97921 5.83325 5.52087L3.58325 4.72921L2.08325 7.27087L3.95825 8.75004C3.87492 9.16671 3.83325 9.58337 3.83325 10C3.83325 10.4167 3.87492 10.8334 3.95825 11.25L2.08325 12.7292L3.58325 15.2709L5.83325 14.4792C6.45825 15.0209 7.18742 15.4375 7.99992 15.6875L8.33325 18.3334H11.6666L11.9999 15.6875C12.8124 15.4375 13.5416 15.0209 14.1666 14.4792L16.4166 15.2709L17.9166 12.7292L16.0416 11.25C16.1249 10.8334 16.1666 10.4167 16.1666 10Z"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  )
+})
+
+const ShoppingBagIcon = memo(function ShoppingBagIcon(props: IconProps) {
+  return (
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <path
+        d="M5 1.66663L2.5 4.99996V16.6666C2.5 17.1087 2.67559 17.5326 2.98816 17.8452C3.30072 18.1577 3.72464 18.3333 4.16667 18.3333H15.8333C16.2754 18.3333 16.6993 18.1577 17.0118 17.8452C17.3244 17.5326 17.5 17.1087 17.5 16.6666V4.99996L15 1.66663H5Z"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path d="M2.5 5H17.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path
+        d="M13.3334 8.33337C13.3334 9.21743 12.9822 10.0653 12.3571 10.6904C11.7319 11.3155 10.8841 11.6667 10.0001 11.6667C9.11603 11.6667 8.26818 11.3155 7.64306 10.6904C7.01794 10.0653 6.66675 9.21743 6.66675 8.33337"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  )
+})
+
+const BellIcon = memo(function BellIcon(props: IconProps) {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <path
+        d="M12 21.75C13.1 21.75 14 20.85 14 19.75H10C10 20.85 10.89 21.75 12 21.75ZM18 15.75V10.75C18 7.68 16.36 5.11 13.5 4.43V3.75C13.5 2.92 12.83 2.25 12 2.25C11.17 2.25 10.5 2.92 10.5 3.75V4.43C7.63 5.11 6 7.67 6 10.75V15.75L4 17.75V18.75H20V17.75L18 15.75Z"
+        fill="#FCFCFC"
+      />
+    </svg>
+  )
+})
+
+/** Inline credits icon sized for the navbar (20x20). */
+const NavbarCreditsIcon = memo(function NavbarCreditsIcon(props: IconProps) {
+  return (
+    <svg width="20" height="20" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <path
+        d="M25.5371 184.328C16.718 180.685 12.5221 170.582 16.1653 161.763L29.8558 128.622L16.1025 95.5076C12.4426 86.6954 16.6194 76.5848 25.4316 72.9248L58.5462 59.1716L72.2367 26.0312C75.8799 17.212 85.9827 13.0162 94.8018 16.6594L127.942 30.3498L161.057 16.5966C169.869 12.9367 179.98 17.1135 183.639 25.9257L197.393 59.0402L230.533 72.7308C239.352 76.374 243.548 86.4767 239.905 95.2958L226.215 128.436L239.968 161.551C243.628 170.363 239.451 180.474 230.639 184.134L197.524 197.887L183.834 231.027C180.19 239.846 170.088 244.042 161.269 240.399L128.128 226.709L95.0135 240.462C86.2013 244.122 76.0907 239.945 72.4307 231.133L58.6775 198.018L25.5371 184.328Z"
+        fill="url(#credits-nav-g0)"
+      />
+      <path
+        d="M39.4715 176.904C31.9127 173.782 28.3165 165.123 31.439 157.564L43.173 129.16L31.3852 100.777C28.2483 93.2245 31.8282 84.5587 39.3811 81.4219L67.7634 69.634L79.4974 41.2296C82.62 33.6708 91.279 30.0746 98.8377 33.1971L127.242 44.9312L155.624 33.1434C163.177 30.0065 171.843 33.5863 174.98 41.1392L186.768 69.5215L215.172 81.2555C222.731 84.3781 226.327 93.0371 223.205 100.596L211.471 129L223.258 157.383C226.395 164.935 222.815 173.601 215.262 176.738L186.88 188.526L175.146 216.93C172.024 224.489 163.365 228.085 155.806 224.963L127.401 213.229L99.0192 225.017C91.4664 228.153 82.8006 224.574 79.6637 217.021L67.8759 188.638L39.4715 176.904Z"
+        fill="url(#credits-nav-g1)"
+      />
+      <path
+        d="M54.4478 168.591C48.116 165.975 45.1036 158.722 47.7192 152.39L57.5484 128.596L47.6741 104.822C45.0465 98.4947 48.0452 91.2357 54.372 88.6081L78.147 78.7338L87.9762 54.9403C90.5919 48.6086 97.8452 45.5961 104.177 48.2118L127.97 58.041L151.745 48.1667C158.072 45.539 165.331 48.5378 167.959 54.8646L177.833 78.6395L201.627 88.4687C207.958 91.0844 210.971 98.3377 208.355 104.669L198.526 128.463L208.4 152.238C211.028 158.565 208.029 165.824 201.702 168.451L177.927 178.326L168.098 202.119C165.483 208.451 158.229 211.463 151.897 208.848L128.104 199.018L104.329 208.893C98.0022 211.52 90.7432 208.522 88.1155 202.195L78.2413 178.42L54.4478 168.591Z"
+        fill="url(#credits-nav-g2)"
+      />
+      <defs>
+        <linearGradient id="credits-nav-g0" x1="211.108" y1="218.484" x2="77.4791" y2="27.1647" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#9BFFFF" />
+          <stop offset="0.5" stopColor="#B8B9FF" />
+          <stop offset="0.885" stopColor="#FFCBFF" />
+          <stop offset="1" stopColor="#FDFCFF" />
+        </linearGradient>
+        <linearGradient id="credits-nav-g1" x1="225.88" y1="218.975" x2="71.9492" y2="33.3822" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#5285BF" />
+          <stop offset="1" stopColor="#AE66F0" />
+        </linearGradient>
+        <linearGradient id="credits-nav-g2" x1="195.385" y1="221.054" x2="91.1662" y2="16.6319" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#9BFFFF" />
+          <stop offset="0.5" stopColor="#B8B9FF" />
+          <stop offset="1" stopColor="#FFCBFF" />
+        </linearGradient>
+      </defs>
+    </svg>
+  )
+})
+
+/** Ethereum family: mainnet, sepolia, goerli, kovan, rinkeby, ropsten */
+const ETHEREUM_FAMILY = new Set([1, 5, 42, 4, 3, 11155111])
+
+function isEthereumFamily(chainId: number): boolean {
+  return ETHEREUM_FAMILY.has(chainId)
+}
+
+const EthereumChainIcon = memo(function EthereumChainIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <path d="M10 2L4.5 10.5L10 13.5L15.5 10.5L10 2Z" fill="#627EEA" />
+      <path d="M4.5 10.5L10 18L15.5 10.5L10 13.5L4.5 10.5Z" fill="#627EEA" opacity="0.6" />
+      <path d="M10 2L4.5 10.5L10 8.5L15.5 10.5L10 2Z" fill="#C0CBF6" opacity="0.4" />
+    </svg>
+  )
+})
+
+const PolygonChainIcon = memo(function PolygonChainIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <path d="M13.5 7.5L10.75 5.9C10.3 5.64 9.7 5.64 9.25 5.9L6.5 7.5L9.25 9.1C9.7 9.36 10.3 9.36 10.75 9.1L13.5 7.5Z" fill="#8247E5" />
+      <path d="M14.5 8.3L11.75 9.9C11.3 10.16 11 10.66 11 11.2V14.4L13.75 12.8C14.2 12.54 14.5 12.04 14.5 11.5V8.3Z" fill="#8247E5" />
+      <path d="M9 11.2C9 10.66 8.7 10.16 8.25 9.9L5.5 8.3V11.5C5.5 12.04 5.8 12.54 6.25 12.8L9 14.4V11.2Z" fill="#8247E5" />
+    </svg>
+  )
+})
+
+function ChainIcon({ chainId, ...props }: { chainId: number } & IconProps) {
+  return isEthereumFamily(chainId) ? <EthereumChainIcon {...props} /> : <PolygonChainIcon {...props} />
+}
+
+const ManaEthInlineIcon = memo(function ManaEthInlineIcon(props: IconProps) {
+  return (
+    <svg width="16" height="16" viewBox="0 0 13 14" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <path
+        d="M9.864 6.952C9.864 4.968 8.264 3.32 6.28 3.32C4.296 3.32 2.696 4.968 2.696 6.952C2.696 8.92 4.296 10.52 6.28 10.52C8.264 10.52 9.864 8.92 9.864 6.952ZM9.032 6.952C9.032 8.456 7.688 9.688 6.28 9.688C4.728 9.688 3.528 8.488 3.528 6.952C3.528 5.432 4.728 4.152 6.28 4.152C7.704 4.152 9.032 5.432 9.032 6.952ZM12.248 10.424V3.544L6.28 0.12L0.312 3.544V10.424L6.28 13.848L12.248 10.424ZM11.192 9.832L6.296 12.632L1.368 9.832V4.184L6.28 1.336L11.192 4.184V9.832Z"
+        fill="#FF2D55"
+      />
+    </svg>
+  )
+})
+
+const ManaMaticInlineIcon = memo(function ManaMaticInlineIcon(props: IconProps) {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M12 0L24 12L12 24L0 12L12 0ZM12.0002 3.36001L20.6402 12L12.0002 20.64L3.36023 12L12.0002 3.36001ZM12.0009 16.32C14.3868 16.32 16.3209 14.3859 16.3209 12C16.3209 9.61415 14.3868 7.68002 12.0009 7.68002C9.61507 7.68002 7.68094 9.61415 7.68094 12C7.68094 14.3859 9.61507 16.32 12.0009 16.32Z"
+        fill="#FCFCFC"
+      />
+    </svg>
+  )
+})
+
+export {
+  AccountIcon,
+  BellIcon,
+  ChainIcon,
+  ChevronDownIcon,
+  ChevronUpIcon,
+  CloseIcon,
+  CopyIcon,
+  DclLogo,
+  EthereumChainIcon,
+  ExternalLinkIcon,
+  HamburgerIcon,
+  LogoutIcon,
+  ManaEthInlineIcon,
+  ManaMaticInlineIcon,
+  NavbarCreditsIcon,
+  PolygonChainIcon,
+  SettingsIcon,
+  ShoppingBagIcon,
+  WearableIcon
+}

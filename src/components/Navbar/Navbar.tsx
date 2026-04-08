@@ -1,168 +1,228 @@
-import React, { useCallback, useState } from 'react'
-import { Toolbar } from '@mui/material'
-import { MainMenu } from './MainMenu/MainMenu'
-import { i18nChainSelectorDefault, navbarMainTitlesI18N as i18nNavbarTitlesDefault, navbarSubmenu } from './Navbar.defaults'
-import { ChainSelector } from '../ChainSelector'
-import { TabletAndBelow, useTabletAndBelowMediaQuery } from '../Media'
-import { UserMenu } from '../UserMenu'
-import { SubMenu } from './SubMenu/SubMenu'
-import { i18n as i18nUserMenuDefault } from '../UserMenu/UserMenu.i18n'
-import { NavbarPages, NavbarProps } from './Navbar.types'
-import {
-  AppBarDesktopWrapper,
-  AppBarRightWrapper,
-  AppBarTabletAndBelowWrapper,
-  AppBarWrapper,
-  DclAppBar,
-  Logo,
-  LogoLink,
-  MenuIcon,
-  MenuIconBar,
-  MenuModal
-} from './Navbar.styled'
+import { memo, useCallback, useEffect, useRef, useState } from 'react'
+import { formatBalance } from './formatBalance'
+import { CloseIcon, DclLogo, HamburgerIcon } from './icons'
+import { MobileMenu } from './MobileMenu'
+import { DEFAULT_I18N } from './Navbar.defaults'
+import { NavLinks } from './NavLinks'
+import { UserCardPanel } from './UserCardPanel'
+import { CreditsIcon } from '../Icon/CreditsIcon'
+import type { NavbarI18n, NavbarProps } from './Navbar.types'
+import { CreditsBalanceButton, CreditsTooltip } from './Credits.styled'
+import { HamburgerButton, LogoLink, NavbarLeft, NavbarRight, NavbarRightGroup, NavbarRoot, SignInButton } from './Navbar.styled'
+import type { DropdownSection } from './Navbar.defaults'
 
-const Navbar = React.memo((props: NavbarProps) => {
-  const {
-    activePage,
-    chains,
-    chainBeingConfirmed,
-    onSelectChain,
-    selectedChain,
-    isSignedIn,
-    i18nNavbar = i18nNavbarTitlesDefault,
-    i18nUserMenu = i18nUserMenuDefault,
-    i18nChainSelector = i18nChainSelectorDefault,
-    submenuItems = navbarSubmenu,
-    onClickNavbarItem,
-    ...userMenuProps
-  } = props
-  const [toggle, setToggle] = useState(false)
-  const [selectedMenu, setSelectedMenu] = useState<NavbarPages | boolean>()
+/** Calculate days remaining until a given timestamp. */
+function daysUntil(timestamp: number): number {
+  const diff = timestamp - Date.now()
+  return Math.max(0, Math.ceil(diff / (1000 * 60 * 60 * 24)))
+}
 
-  const [menuMobileOpen, setMenuMobileOpen] = useState(false)
+const Navbar = memo(function Navbar({
+  isSignedIn,
+  isSigningIn,
+  isLoadingProfile = false,
+  address,
+  avatar,
+  i18n: i18nPartial,
+  notificationSlot,
+  selectedChain,
+  chains,
+  onSelectChain,
+  manaBalances,
+  onClickBalance,
+  creditsBalance,
+  onClickCredits,
+  activePage,
+  onToggleUserCard,
+  onClickSignIn,
+  onClickSignOut
+}: NavbarProps) {
+  const i18n: NavbarI18n = { ...DEFAULT_I18N, ...i18nPartial }
 
-  const isTabletAndBelow = useTabletAndBelowMediaQuery()
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [desktopDropdown, setDesktopDropdown] = useState<DropdownSection | null>(null)
+  const [userCardOpen, setUserCardOpen] = useState(false)
 
-  const handleToggle = useCallback(
-    (_e: React.MouseEvent<HTMLElement>, show: boolean, section: NavbarPages) => {
-      setToggle(show)
-      setSelectedMenu(show && section)
-    },
-    [setToggle, setSelectedMenu]
-  )
+  const navRef = useRef<HTMLElement>(null)
+  const dropdownTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
-  const handleClickMenu = useCallback(
-    (event: React.MouseEvent<HTMLElement, MouseEvent>, options: { eventTrackingName: string; url?: string; isExternal?: boolean }) => {
-      onClickNavbarItem && onClickNavbarItem(event, options)
-    },
-    [onClickNavbarItem]
-  )
-
-  const handleMobileToggle = useCallback(
-    (_e: React.MouseEvent<HTMLElement>, show: boolean) => {
-      if (!show) {
-        setToggle(false)
+  const toggleMobileMenu = useCallback(() => {
+    setMobileMenuOpen(prev => {
+      if (!prev) {
+        setDesktopDropdown(null)
+        setUserCardOpen(false)
       }
-      setMenuMobileOpen(show)
-    },
-    [setToggle, setMenuMobileOpen]
-  )
+      return !prev
+    })
+  }, [])
 
-  const handleUserMenuOpen = useCallback(
-    (event: React.MouseEvent<HTMLElement, MouseEvent>, trackingId: string) => {
-      if (userMenuProps.onClickOpen) {
-        userMenuProps.onClickOpen(event, trackingId)
+  const closeMobileMenu = useCallback(() => {
+    setMobileMenuOpen(false)
+  }, [])
+
+  const openDesktopDropdown = useCallback((section: DropdownSection) => {
+    if (dropdownTimerRef.current) {
+      clearTimeout(dropdownTimerRef.current)
+      dropdownTimerRef.current = null
+    }
+    setDesktopDropdown(section)
+    setUserCardOpen(false)
+  }, [])
+
+  const scheduleCloseDesktopDropdown = useCallback(() => {
+    dropdownTimerRef.current = setTimeout(() => {
+      setDesktopDropdown(null)
+    }, 300)
+  }, [])
+
+  const closeDesktopDropdown = useCallback(() => {
+    setDesktopDropdown(null)
+  }, [])
+
+  const toggleUserCard = useCallback(() => {
+    setUserCardOpen(prev => {
+      const next = !prev
+      if (next) {
+        setDesktopDropdown(null)
+        setMobileMenuOpen(false)
       }
-      handleMobileToggle(event, false)
-    },
-    [userMenuProps.onClickOpen, handleMobileToggle]
-  )
+      onToggleUserCard?.(next)
+      return next
+    })
+  }, [onToggleUserCard])
+
+  const closeUserCard = useCallback(() => {
+    setUserCardOpen(false)
+  }, [])
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      const target = event.target as Node
+      if (navRef.current && !navRef.current.contains(target)) {
+        closeDesktopDropdown()
+        closeUserCard()
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [closeDesktopDropdown, closeUserCard])
+
+  // Close open panels on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      closeUserCard()
+      closeDesktopDropdown()
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [closeUserCard, closeDesktopDropdown])
+
+  useEffect(() => {
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === 'Escape') {
+        closeDesktopDropdown()
+        closeUserCard()
+        closeMobileMenu()
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [closeDesktopDropdown, closeUserCard, closeMobileMenu])
+
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [mobileMenuOpen])
 
   return (
     <>
-      <DclAppBar isSubmenuOpen={toggle} isMobileOpen={menuMobileOpen} aria-label="navigation bar">
-        <Toolbar>
-          <AppBarWrapper>
-            <TabletAndBelow>
-              <AppBarTabletAndBelowWrapper>
-                <LogoLink isMobile href="https://decentraland.org" aria-label="Decentraland home">
-                  <Logo />
-                </LogoLink>
-                <MenuIcon aria-label="toggle menu" onClick={e => handleMobileToggle(e, !menuMobileOpen)}>
-                  <MenuIconBar isOpen={menuMobileOpen} aria-label="menu bar" />
-                  <MenuIconBar isOpen={menuMobileOpen} aria-label="menu bar" />
-                </MenuIcon>
-              </AppBarTabletAndBelowWrapper>
-            </TabletAndBelow>
-            <AppBarDesktopWrapper>
-              <LogoLink href="https://decentraland.org" aria-label="Decentraland home">
-                <Logo />
-              </LogoLink>
+      <NavbarRoot ref={navRef}>
+        <NavbarLeft>
+          <LogoLink href="https://decentraland.org" aria-label="Decentraland Home">
+            <DclLogo />
+          </LogoLink>
 
-              <MainMenu
-                activePage={activePage}
-                onToggleShowSubMenu={handleToggle}
-                i18n={i18nNavbar}
-                isMobile={false}
-                aria-label="main navigation menu"
-              />
-            </AppBarDesktopWrapper>
-            <AppBarRightWrapper>
-              {isSignedIn && onSelectChain && chains?.length && selectedChain ? (
-                <ChainSelector
-                  chains={chains}
-                  selectedChain={selectedChain}
-                  chainBeingConfirmed={chainBeingConfirmed}
-                  i18n={i18nChainSelector}
-                  onSelectChain={onSelectChain}
-                  aria-label="blockchain network selector"
-                />
-              ) : null}
-              <UserMenu
-                {...userMenuProps}
-                onClickOpen={isTabletAndBelow ? handleUserMenuOpen : userMenuProps.onClickOpen}
-                isSignedIn={isSignedIn}
-                i18n={i18nUserMenu}
-                aria-label="user menu"
-              />
-            </AppBarRightWrapper>
-          </AppBarWrapper>
-        </Toolbar>
-      </DclAppBar>
-      <SubMenu
-        selectedMenu={selectedMenu!}
-        onToggleShowSubMenu={handleToggle}
-        onClickMenuOption={handleClickMenu}
-        submenus={submenuItems}
-        aria-label="submenu navigation"
-      />
-
-      <MenuModal
-        open={isTabletAndBelow && menuMobileOpen}
-        onClose={(event: React.MouseEvent<HTMLElement>) => handleMobileToggle(event, false)}
-        aria-label="mobile menu"
-      >
-        <>
-          <MainMenu
+          <NavLinks
+            desktopDropdown={desktopDropdown}
+            onOpenDropdown={openDesktopDropdown}
+            onScheduleCloseDropdown={scheduleCloseDesktopDropdown}
             activePage={activePage}
-            onToggleShowSubMenu={handleToggle}
-            isOpenOnMobile={menuMobileOpen}
-            i18n={i18nNavbar}
-            isMobile
-            aria-label="main mobile navigation menu"
+            i18n={i18n}
           />
-          <SubMenu
-            selectedMenu={selectedMenu!}
-            onToggleShowSubMenu={handleToggle}
-            onClickMenuOption={handleClickMenu}
-            isMobile={isTabletAndBelow}
-            submenus={submenuItems}
-            aria-label="mobile submenu navigation"
-          />
-        </>
-      </MenuModal>
+        </NavbarLeft>
+
+        <NavbarRight>
+          {isSignedIn && (
+            <NavbarRightGroup>
+              {creditsBalance && (
+                <CreditsBalanceButton onClick={onClickCredits} aria-label={`${formatBalance(creditsBalance.balance)} credits`}>
+                  <CreditsIcon sx={{ width: 20, height: 20 }} />
+                  {formatBalance(creditsBalance.balance)}
+                  <CreditsTooltip className="credits-tooltip">
+                    {i18n.creditsExpiringIn.replace('{days}', String(daysUntil(creditsBalance.expiresAt)))}
+                    <br />
+                    {i18n.creditsValueNote}
+                  </CreditsTooltip>
+                </CreditsBalanceButton>
+              )}
+
+              {notificationSlot && (
+                <div
+                  onClick={() => {
+                    setUserCardOpen(false)
+                    setDesktopDropdown(null)
+                  }}
+                >
+                  {notificationSlot}
+                </div>
+              )}
+
+              <UserCardPanel
+                isLoadingProfile={isLoadingProfile}
+                address={address}
+                avatar={avatar}
+                userCardOpen={userCardOpen}
+                onToggleUserCard={toggleUserCard}
+                onClickSignOut={onClickSignOut}
+                selectedChain={selectedChain}
+                chains={chains}
+                onSelectChain={onSelectChain}
+                manaBalances={manaBalances}
+                onClickBalance={onClickBalance}
+                i18n={i18n}
+              />
+            </NavbarRightGroup>
+          )}
+
+          {!isSignedIn && (
+            <SignInButton onClick={onClickSignIn} disabled={isSigningIn}>
+              {isSigningIn ? i18n.signingIn : i18n.signIn}
+            </SignInButton>
+          )}
+
+          <HamburgerButton
+            onClick={toggleMobileMenu}
+            aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={mobileMenuOpen}
+          >
+            {mobileMenuOpen ? <CloseIcon /> : <HamburgerIcon />}
+          </HamburgerButton>
+        </NavbarRight>
+      </NavbarRoot>
+
+      <MobileMenu open={mobileMenuOpen} onClose={closeMobileMenu} i18n={i18n} />
     </>
   )
 })
+
+Navbar.displayName = 'Navbar'
 
 export { Navbar }
