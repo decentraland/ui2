@@ -1,64 +1,64 @@
-import { ChainSelectorProps, ChainSelectori18n } from '../ChainSelector/ChainSelector.types'
-import { UserMenuI18N, UserMenuProps } from '../UserMenu/UserMenu.types'
+import type { ReactNode } from 'react'
+import type { ChainId } from '@dcl/schemas'
+import type { Network } from '@dcl/schemas/dist/dapps/network'
 
-enum NavbarPages {
-  MARKETPLACE = 'marketplace',
-  CREATE = 'create',
-  EXPLORE = 'explore',
-  LEARN = 'learn',
-  GOVERNANCE = 'governance',
-  EXTRA = 'extra'
+type NavbarI18n = {
+  signIn: string
+  signingIn: string
+  whatsOn: string
+  shop: string
+  shopAll: string
+  wearables: string
+  emotes: string
+  names: string
+  land: string
+  merch: string
+  create: string
+  createInDecentraland: string
+  publishWearablesEmotes: string
+  publishLand: string
+  learn: string
+  getStarted: string
+  startCreating: string
+  seeWhatsNew: string
+  viewProfile: string
+  myAssets: string
+  accountSettings: string
+  marketplaceAuthorizations: string
+  walletAddress: string
+  addressCopied: string
+  logout: string
 }
 
-type NavbarMenuI18nProps = Record<NavbarPages, string>
-
-type NavbarSubMenuItemsProps = {
-  column1Title?: string
-  column1: {
-    title: string
-    description: string
-    url: string
-    eventTrackingName: string
-    isExternal?: boolean
-  }[]
-  column2Title?: string
-  column2: {
-    title: string
-    description: string
-    url: string
-    eventTrackingName: string
-    isExternal?: boolean
-  }[]
-  column3Title?: string
-  column3?: {
-    title: string
-    description: string
-    url: string
-    eventTrackingName: string
-    isExternal?: boolean
-  }[]
+type NavbarProps = {
+  isSignedIn: boolean
+  isSigningIn?: boolean
+  isLoadingProfile?: boolean
+  address?: string
+  avatar?: { name?: string; avatar?: { snapshots?: { face256?: string; body?: string } } }
+  i18n?: Partial<NavbarI18n>
+  notificationSlot?: ReactNode
+  /** Currently selected chain id */
+  selectedChain?: ChainId
+  /** List of chains available for selection */
+  chains?: ChainId[]
+  /** Chain id that is pending wallet confirmation */
+  chainBeingConfirmed?: ChainId
+  /** Called when the user picks a different chain */
+  onSelectChain?: (chain: ChainId) => void
+  /** MANA balances keyed by network */
+  manaBalances?: Partial<Record<Network, number>>
+  /** Called when the user clicks a balance entry */
+  onClickBalance?: (network: Network) => void
+  /** Credits balance to display in the navbar top bar */
+  creditsBalance?: { balance: number; expiresAt: number }
+  /** Called when the user clicks the credits balance */
+  onClickCredits?: () => void
+  /** Called when the user card panel is toggled open or closed.
+   *  Consumers can use this to close other panels (e.g. notifications). */
+  onToggleUserCard?: (isOpen: boolean) => void
+  onClickSignIn: () => void
+  onClickSignOut: () => void
 }
 
-type NavbarSubmenuProps = {
-  marketplace: NavbarSubMenuItemsProps
-  create: NavbarSubMenuItemsProps
-  explore: NavbarSubMenuItemsProps
-  learn: NavbarSubMenuItemsProps
-  governance: NavbarSubMenuItemsProps
-}
-
-type NavbarProps = Omit<UserMenuProps, 'i18n'> &
-  Partial<ChainSelectorProps> & {
-    i18nNavbar?: NavbarMenuI18nProps
-    submenuItems?: NavbarSubmenuProps
-    i18nUserMenu?: UserMenuI18N
-    i18nChainSelector?: ChainSelectori18n
-    activePage: NavbarPages | string
-    onClickNavbarItem?: (
-      event: React.MouseEvent<HTMLElement, MouseEvent>,
-      options: { eventTrackingName: string; url?: string; isExternal?: boolean }
-    ) => void
-  }
-
-export { NavbarPages }
-export type { NavbarMenuI18nProps, NavbarSubMenuItemsProps, NavbarSubmenuProps, NavbarProps }
+export type { NavbarI18n, NavbarProps }

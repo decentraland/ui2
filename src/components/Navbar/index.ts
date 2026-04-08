@@ -1,2 +1,2 @@
-export * from './Navbar'
-export * from './Navbar.types'
+export { Navbar } from './Navbar'
+export type { NavbarProps, NavbarI18n } from './Navbar.types'
