@@ -28,6 +28,8 @@ type NavbarI18n = {
   walletAddress: string
   addressCopied: string
   logout: string
+  creditsExpiringIn: string
+  creditsValueNote: string
 }
 
 type NavbarProps = {
@@ -42,8 +44,6 @@ type NavbarProps = {
   selectedChain?: ChainId
   /** List of chains available for selection */
   chains?: ChainId[]
-  /** Chain id that is pending wallet confirmation */
-  chainBeingConfirmed?: ChainId
   /** Called when the user picks a different chain */
   onSelectChain?: (chain: ChainId) => void
   /** MANA balances keyed by network */

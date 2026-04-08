@@ -25,7 +25,9 @@ const DEFAULT_I18N: NavbarI18n = {
   marketplaceAuthorizations: 'Marketplace Authorizations',
   walletAddress: 'Wallet address',
   addressCopied: 'Copied!',
-  logout: 'Log Out'
+  logout: 'Log Out',
+  creditsExpiringIn: 'Expiring in {days} days',
+  creditsValueNote: '(1 Credit = 1 MANA in value)'
 }
 
 type MenuItem = {
@@ -47,6 +49,12 @@ type MenuConfig = {
   learn: MenuSection
 }
 
+/**
+ * URLs are hardcoded to production on purpose. All Decentraland dApps share the
+ * same production URLs for cross-app navigation (marketplace, builder, docs, etc.).
+ * Dev/staging environments only differ in API endpoints, not in navigation links,
+ * so a configurable `urls` prop would add complexity without practical benefit.
+ */
 const MENU_CONFIG: MenuConfig = {
   whatsOn: {
     label: 'whatsOn',

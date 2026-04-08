@@ -1,11 +1,20 @@
 import { memo, useCallback, useState } from 'react'
+import { Network } from '@dcl/schemas/dist/dapps/network'
 import { AccountIcon, ChevronDownIcon, CopyIcon, DclLogo, LogoutIcon, SettingsIcon, ShoppingBagIcon, WearableIcon } from './icons'
 import { USER_MENU_ITEMS } from './Navbar.defaults'
 import type { NavbarI18n } from './Navbar.types'
 import {
   AvatarButton,
   AvatarImage,
+  BalanceAndChainRow,
   ChainOption,
+  ChainPillButton,
+  ChainPillContainer,
+  ChainPillIconWrapper,
+  ChainPillText,
+  ManaBalanceClickable,
+  ManaBalanceValue,
+  ManaBalancesGroup,
   MobileUserCard,
   MobileUserCardAddress,
   MobileUserCardAddressLabel,
@@ -28,10 +37,10 @@ import {
   UserCardName,
   UserCardWrapper
 } from './UserCardPanel.styled'
+import type { UserMenuItem } from './Navbar.defaults'
 import type { ChainId } from '@dcl/schemas'
-import type { Network } from '@dcl/schemas/dist/dapps/network'
 
-const ICON_MAP: Record<string, React.FC> = {
+const ICON_MAP: Record<UserMenuItem['icon'], React.FC> = {
   account: AccountIcon,
   wearable: WearableIcon,
   settings: SettingsIcon,
@@ -44,6 +53,7 @@ function resolveContentUrl(hash: string | undefined): string | undefined {
   if (!hash) return undefined
   if (hash.startsWith('http://') || hash.startsWith('https://')) return hash
   if (hash.startsWith('data:')) return hash
+  if (!/^[a-zA-Z0-9]+$/.test(hash)) return undefined
   return `${PEER_BASE_URL}${hash}`
 }
 
@@ -144,7 +154,6 @@ interface UserCardPanelProps {
   onClickSignOut: () => void
   selectedChain?: ChainId
   chains?: ChainId[]
-  chainBeingConfirmed?: ChainId
   onSelectChain?: (chain: ChainId) => void
   manaBalances?: Partial<Record<Network, number>>
   onClickBalance?: (network: Network) => void
@@ -160,7 +169,6 @@ const UserCardPanel = memo(function UserCardPanel({
   onClickSignOut,
   selectedChain,
   chains,
-  chainBeingConfirmed: _chainBeingConfirmed,
   onSelectChain,
   manaBalances,
   onClickBalance,
@@ -206,67 +214,30 @@ const UserCardPanel = memo(function UserCardPanel({
   const renderBalanceAndChain = () => {
     if (!hasChainOrMana) return null
     return (
-      <div style={{ display: 'flex', alignItems: 'center', gap: 24, width: '100%' }}>
+      <BalanceAndChainRow>
         {manaBalances && (
-          <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+          <ManaBalancesGroup>
             {manaBalances.ETHEREUM !== undefined && (
-              <div
-                style={{ display: 'flex', alignItems: 'center', gap: 2, cursor: onClickBalance ? 'pointer' : 'default', color: 'white' }}
-                onClick={() => onClickBalance?.('ETHEREUM' as Network)}
-              >
+              <ManaBalanceClickable clickable={!!onClickBalance} onClick={() => onClickBalance?.(Network.ETHEREUM)}>
                 <ManaEthInlineIcon />
-                <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600, fontSize: 16, letterSpacing: -0.8, whiteSpace: 'nowrap' }}>
-                  {formatBalance(manaBalances.ETHEREUM)}
-                </span>
-              </div>
+                <ManaBalanceValue>{formatBalance(manaBalances.ETHEREUM)}</ManaBalanceValue>
+              </ManaBalanceClickable>
             )}
             {manaBalances.MATIC !== undefined && (
-              <div
-                style={{ display: 'flex', alignItems: 'center', gap: 2, cursor: onClickBalance ? 'pointer' : 'default', color: 'white' }}
-                onClick={() => onClickBalance?.('MATIC' as Network)}
-              >
+              <ManaBalanceClickable clickable={!!onClickBalance} onClick={() => onClickBalance?.(Network.MATIC)}>
                 <ManaMaticInlineIcon />
-                <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600, fontSize: 16, letterSpacing: -0.8, whiteSpace: 'nowrap' }}>
-                  {formatBalance(manaBalances.MATIC)}
-                </span>
-              </div>
+                <ManaBalanceValue>{formatBalance(manaBalances.MATIC)}</ManaBalanceValue>
+              </ManaBalanceClickable>
             )}
-          </div>
+          </ManaBalancesGroup>
         )}
         {selectedChain !== undefined && chains && chains.length > 0 && (
-          <div style={{ position: 'relative' }}>
-            <div
-              onClick={() => setChainSelectorOpen(prev => !prev)}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: 8,
-                width: 150,
-                padding: '4px 4px 4px 8px',
-                backgroundColor: '#43404A',
-                borderRadius: 8,
-                cursor: 'pointer',
-                whiteSpace: 'nowrap',
-                boxSizing: 'border-box'
-              }}
-            >
-              <div style={{ width: 16, height: 16, display: 'flex', flexShrink: 0 }}>
+          <ChainPillContainer>
+            <ChainPillButton onClick={() => setChainSelectorOpen(prev => !prev)}>
+              <ChainPillIconWrapper>
                 <ChainIcon chainId={selectedChain} />
-              </div>
-              <span
-                style={{
-                  fontFamily: 'Inter, sans-serif',
-                  fontWeight: 600,
-                  fontSize: 15,
-                  lineHeight: '24px',
-                  letterSpacing: 0.46,
-                  textTransform: 'uppercase' as const,
-                  color: 'white',
-                  flex: 1
-                }}
-              >
-                {getChainDisplayName(selectedChain)}
-              </span>
+              </ChainPillIconWrapper>
+              <ChainPillText>{getChainDisplayName(selectedChain)}</ChainPillText>
               <ChevronDownIcon
                 style={{
                   width: 20,
@@ -277,7 +248,7 @@ const UserCardPanel = memo(function UserCardPanel({
                   transition: 'transform 0.25s ease'
                 }}
               />
-            </div>
+            </ChainPillButton>
             {chainSelectorOpen && (
               <UserCardChainOptions role="listbox" aria-label="Select chain">
                 {chains.map(chain => {
@@ -297,9 +268,9 @@ const UserCardPanel = memo(function UserCardPanel({
                 })}
               </UserCardChainOptions>
             )}
-          </div>
+          </ChainPillContainer>
         )}
-      </div>
+      </BalanceAndChainRow>
     )
   }
 

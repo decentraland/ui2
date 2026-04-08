@@ -1,3 +1,9 @@
+/**
+ * Notification styled components for building the notification slot UI.
+ * These are not used by the Navbar component directly -- they are exported
+ * for consumers (e.g. landing-site, decentraland-dapps) to compose their
+ * notification panel UI and pass it as the notificationSlot prop.
+ */
 import styled from '@emotion/styled'
 import * as colors from '../../theme/colors'
 import { MOBILE_BREAKPOINT, bellShake, slideDown } from './Navbar.styled'

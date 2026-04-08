@@ -540,18 +540,90 @@ const UserCardManaRow = styled('button')({
   }
 })
 
+const BalanceAndChainRow = styled('div')({
+  display: 'flex',
+  alignItems: 'center',
+  gap: 24,
+  width: '100%'
+})
+
+const ManaBalancesGroup = styled('div')({
+  display: 'flex',
+  alignItems: 'center',
+  gap: 6
+})
+
+const ManaBalanceClickable = styled('div')<{ clickable?: boolean }>(({ clickable }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  gap: 2,
+  cursor: clickable ? 'pointer' : 'default',
+  color: 'white'
+}))
+
+const ManaBalanceValue = styled('span')({
+  fontFamily: 'Inter, sans-serif',
+  fontWeight: 600,
+  fontSize: 16,
+  letterSpacing: -0.8,
+  whiteSpace: 'nowrap'
+})
+
+const ChainPillContainer = styled('div')({
+  position: 'relative'
+})
+
+const ChainPillButton = styled('div')({
+  display: 'flex',
+  alignItems: 'center',
+  gap: 8,
+  width: 150,
+  padding: '4px 4px 4px 8px',
+  backgroundColor: '#43404A',
+  borderRadius: 8,
+  cursor: 'pointer',
+  whiteSpace: 'nowrap',
+  boxSizing: 'border-box'
+})
+
+const ChainPillIconWrapper = styled('div')({
+  width: 16,
+  height: 16,
+  display: 'flex',
+  flexShrink: 0
+})
+
+const ChainPillText = styled('span')({
+  fontFamily: 'Inter, sans-serif',
+  fontWeight: 600,
+  fontSize: 15,
+  lineHeight: '24px',
+  letterSpacing: 0.46,
+  textTransform: 'uppercase' as const,
+  color: 'white',
+  flex: 1
+})
+
 export {
   AvatarButton,
   AvatarFallback,
   AvatarImage,
+  BalanceAndChainRow,
   ChainDropdown,
   ChainDropdownContainer,
   ChainOption,
   ChainOptionBadge,
   ChainPill,
+  ChainPillButton,
+  ChainPillContainer,
+  ChainPillIconWrapper,
+  ChainPillText,
+  ManaBalanceClickable,
   ManaBalanceContainer,
   ManaBalanceDivider,
   ManaBalanceEntry,
+  ManaBalanceValue,
+  ManaBalancesGroup,
   MobileUserCard,
   MobileUserCardAddress,
   MobileUserCardAddressLabel,

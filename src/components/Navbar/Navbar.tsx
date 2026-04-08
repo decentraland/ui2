@@ -67,7 +67,6 @@ const Navbar = memo(function Navbar({
   notificationSlot,
   selectedChain,
   chains,
-  chainBeingConfirmed,
   onSelectChain,
   manaBalances,
   onClickBalance,
@@ -209,9 +208,9 @@ const Navbar = memo(function Navbar({
                   <NavbarCreditsIcon />
                   {formatCreditsBalance(creditsBalance.balance)}
                   <CreditsTooltip className="credits-tooltip">
-                    Expiring in {daysUntil(creditsBalance.expiresAt)} days
+                    {i18n.creditsExpiringIn.replace('{days}', String(daysUntil(creditsBalance.expiresAt)))}
                     <br />
-                    (1 Credit = 1 MANA in value)
+                    {i18n.creditsValueNote}
                   </CreditsTooltip>
                 </CreditsBalanceButton>
               )}
@@ -236,7 +235,6 @@ const Navbar = memo(function Navbar({
                 onClickSignOut={onClickSignOut}
                 selectedChain={selectedChain}
                 chains={chains}
-                chainBeingConfirmed={chainBeingConfirmed}
                 onSelectChain={onSelectChain}
                 manaBalances={manaBalances}
                 onClickBalance={onClickBalance}
