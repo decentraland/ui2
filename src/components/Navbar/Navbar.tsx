@@ -1,10 +1,11 @@
 import { memo, useCallback, useEffect, useRef, useState } from 'react'
 import { formatBalance } from './formatBalance'
-import { CloseIcon, DclLogo, HamburgerIcon, NavbarCreditsIcon } from './icons'
+import { CloseIcon, DclLogo, HamburgerIcon } from './icons'
 import { MobileMenu } from './MobileMenu'
 import { DEFAULT_I18N } from './Navbar.defaults'
 import { NavLinks } from './NavLinks'
 import { UserCardPanel } from './UserCardPanel'
+import { CreditsIcon } from '../Icon/CreditsIcon'
 import type { NavbarI18n, NavbarProps } from './Navbar.types'
 import { CreditsBalanceButton, CreditsTooltip } from './Credits.styled'
 import { HamburgerButton, LogoLink, NavbarLeft, NavbarRight, NavbarRightGroup, NavbarRoot, SignInButton } from './Navbar.styled'
@@ -163,7 +164,7 @@ const Navbar = memo(function Navbar({
             <NavbarRightGroup>
               {creditsBalance && (
                 <CreditsBalanceButton onClick={onClickCredits} aria-label={`${formatBalance(creditsBalance.balance)} credits`}>
-                  <NavbarCreditsIcon />
+                  <CreditsIcon sx={{ width: 20, height: 20 }} />
                   {formatBalance(creditsBalance.balance)}
                   <CreditsTooltip className="credits-tooltip">
                     {i18n.creditsExpiringIn.replace('{days}', String(daysUntil(creditsBalance.expiresAt)))}

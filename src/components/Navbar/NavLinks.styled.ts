@@ -27,7 +27,7 @@ const DesktopTab = styled('button')({
   transition: 'background-color 0.15s ease, color 0.15s ease',
   '&:hover': {
     color: colors.neutral.white,
-    backgroundColor: GLASS_BG,
+    backgroundColor: 'rgba(255, 255, 255, 0.08)',
     textShadow: '0 0 0.5px currentColor, 0 0 0.5px currentColor'
   },
   '&.active': {
@@ -62,7 +62,7 @@ const DesktopTabLink = styled('a')({
   transition: 'background-color 0.15s ease, color 0.15s ease',
   '&:hover': {
     color: colors.neutral.white,
-    backgroundColor: GLASS_BG,
+    backgroundColor: 'rgba(255, 255, 255, 0.08)',
     textShadow: '0 0 0.5px currentColor, 0 0 0.5px currentColor'
   },
   '&.active': {
