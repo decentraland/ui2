@@ -282,35 +282,97 @@ const NavbarCreditsIcon = memo(function NavbarCreditsIcon(props: IconProps) {
   )
 })
 
-/** Ethereum family: mainnet, sepolia, goerli, kovan, rinkeby, ropsten */
-const ETHEREUM_FAMILY = new Set([1, 5, 42, 4, 3, 11155111])
-
-function isEthereumFamily(chainId: number): boolean {
-  return ETHEREUM_FAMILY.has(chainId)
-}
+/** Chain icon components keyed by chainId. Uses the same SVGs as Icon/Chains/ but without MUI SvgIcon wrapper. */
 
 const EthereumChainIcon = memo(function EthereumChainIcon(props: IconProps) {
   return (
-    <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-      <path d="M10 2L4.5 10.5L10 13.5L15.5 10.5L10 2Z" fill="#627EEA" />
-      <path d="M4.5 10.5L10 18L15.5 10.5L10 13.5L4.5 10.5Z" fill="#627EEA" opacity="0.6" />
-      <path d="M10 2L4.5 10.5L10 8.5L15.5 10.5L10 2Z" fill="#C0CBF6" opacity="0.4" />
+    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <path fillRule="evenodd" clipRule="evenodd" d="M20 40C25.3043 40 30.3914 37.8929 34.1421 34.1421C37.8929 30.3914 40 25.3043 40 20C40 14.6957 37.8929 9.60859 34.1421 5.85786C30.3914 2.10714 25.3043 0 20 0C14.6957 0 9.60859 2.10714 5.85786 5.85786C2.10714 9.60859 0 14.6957 0 20C0 25.3043 2.10714 30.3914 5.85786 34.1421C9.60859 37.8929 14.6957 40 20 40Z" fill="#25292E" />
+      <path d="M11.7 21.1L20 26.0143L28.2857 21.1L20 32.8L11.7 21.1Z" fill="white" fillOpacity="0.8" />
+      <path d="M20 24.1857L11.7 19.2714L20 6.20001L28.3 19.2714L20 24.1857Z" fill="white" />
     </svg>
   )
 })
 
 const PolygonChainIcon = memo(function PolygonChainIcon(props: IconProps) {
   return (
-    <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-      <path d="M13.5 7.5L10.75 5.9C10.3 5.64 9.7 5.64 9.25 5.9L6.5 7.5L9.25 9.1C9.7 9.36 10.3 9.36 10.75 9.1L13.5 7.5Z" fill="#8247E5" />
-      <path d="M14.5 8.3L11.75 9.9C11.3 10.16 11 10.66 11 11.2V14.4L13.75 12.8C14.2 12.54 14.5 12.04 14.5 11.5V8.3Z" fill="#8247E5" />
-      <path d="M9 11.2C9 10.66 8.7 10.16 8.25 9.9L5.5 8.3V11.5C5.5 12.04 5.8 12.54 6.25 12.8L9 14.4V11.2Z" fill="#8247E5" />
+    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <rect width="40" height="40" rx="20" fill="white" />
+      <path d="M20 0C9 0 0 9 0 20C0 31 8.85714 40 20 40C31.1429 40 40 31.1429 40 20C40 8.85714 31 0 20 0ZM31.8571 20.1429C31.8571 20.4286 31.7143 20.8571 31.4286 21L25.7143 24.2857C25.4286 24.4286 25 24.4286 24.7143 24.2857L22.5714 23V20L25.1429 21.5714L29.1429 19.2857V14.7143L25.1429 12.4286L21.4286 14.5714V26.2857C21.4286 26.5714 21.2857 27 21 27.1429L15.2857 30.4286C15 30.5714 14.5714 30.5714 14.2857 30.4286L8.57143 27.1429C8.28571 27 8.14286 26.7143 8.14286 26.2857V19.7143C8.14286 19.4286 8.28571 19 8.57143 18.8571L14.2857 15.5714C14.5714 15.4286 15 15.4286 15.2857 15.5714L17.4286 16.8571V20L14.8571 18.4286L10.8571 20.7143V25.2857L14.8571 27.5714L18.8571 25.2857V13.7143C18.8571 13.4286 19 13 19.2857 12.8571L25 9.57143C25.2857 9.42857 25.7143 9.42857 26 9.57143L31.4286 12.8571C31.7143 13 31.8571 13.2857 31.8571 13.7143V20.1429Z" fill="#8247E5" />
     </svg>
   )
 })
 
+const ArbitrumChainIcon = memo(function ArbitrumChainIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <path d="M20 1C30.4286 1 39 9.57143 39 20C39 30.4286 30.4286 39 20 39C9.57143 39 1 30.4286 1 20C1 9.57143 9.57143 1 20 1Z" fill="#2D374B" stroke="#96BEDC" strokeWidth="1.4" />
+      <path d="M16.4286 10.7143C14.2857 10.7143 12 11.2857 11 13L2 27L3 29L5 32L19 10.7143H16.4286Z" fill="white" />
+      <path d="M20.8571 10.7143L7 33.5L9 36L11.5 37L27.4286 10.7143H20.8571Z" fill="white" />
+      <path d="M20.1428 26.5714L27.5 37.5L32.5 34L23.8571 20.1429L20.1428 26.5714ZM36.8571 28.8571L38 27.5L28.4286 12.5714L25.1428 18.1429L34.5 33L36.4286 29.8571C36.7143 29.5714 36.8571 29.2857 37 28.8571C36.8571 29 36.8571 28.8571 36.8571 28.8571Z" fill="#28A0F0" />
+      <path fillRule="evenodd" clipRule="evenodd" d="M20.0731 2.14834C10.1438 2.14834 2.14834 10.1438 2.14834 20.0731C2.14834 29.9915 10.133 37.8517 20.0731 37.8517C29.8616 37.8517 37.8517 29.9969 37.8517 20.0731C37.8517 10.133 29.9915 2.14834 20.0731 2.14834ZM0 20.0731C0 8.95736 8.95736 0 20.0731 0C31.1996 0 40 8.96822 40 20.0731C40 31.1942 31.0372 40 20.0731 40C8.96822 40 0 31.1996 0 20.0731Z" fill="#96BEDC" />
+    </svg>
+  )
+})
+
+const OptimismChainIcon = memo(function OptimismChainIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <path d="M40 20C40 8.95431 31.0457 0 20 0C8.95431 0 0 8.95431 0 20C0 31.0457 8.95431 40 20 40C31.0457 40 40 31.0457 40 20Z" fill="#FF3131" />
+      <path d="M13.1714 26.2143C17.0286 26.2143 20.1143 23.0714 20.1143 18.5286C20.1143 15.4 18.0143 13.1 14.4286 13.1C10.5429 13.1 7.5 16.2429 7.5 20.7857C7.5 23.9286 9.64286 26.2143 13.1714 26.2143ZM14.3571 15.7143C15.8714 15.7143 16.8429 16.8714 16.8429 18.7143C16.8429 21.4286 15.2571 23.6 13.2571 23.6C11.7429 23.6 10.7714 22.4286 10.7714 20.6C10.7714 17.9 12.3571 15.7143 14.3429 15.7143H14.3571ZM23.4714 13.3143L20.7857 26H24.0143L24.8 22.2857H26.9C30.3714 22.2857 32.6286 20.3143 32.6286 17.1429C32.6286 14.8429 30.9571 13.3143 28.2 13.3143H23.4857H23.4714ZM26.1857 15.8H27.5286C28.7143 15.8 29.3857 16.3429 29.3857 17.4286C29.3857 18.8571 28.4143 19.8571 26.9 19.8571H25.3143L26.1714 15.8H26.1857Z" fill="white" />
+    </svg>
+  )
+})
+
+const BscChainIcon = memo(function BscChainIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <path fillRule="evenodd" clipRule="evenodd" d="M20 0C31.0471 0 40 8.95286 40 20C40 31.0471 31.0471 40 20 40C8.95286 40 0 31.0471 0 20C0 8.95286 8.95286 0 20 0Z" fill="#F0B90B" />
+      <path d="M10.9914 20L11.0057 25.2886L15.5 27.9314V31.0286L8.37714 26.8514V18.4543L10.9914 20ZM10.9914 14.7114V17.7929L8.37428 16.2457V13.1629L10.9914 11.6157L13.6214 13.1629L10.9929 14.7114H10.9914ZM17.3771 13.1629L19.9943 11.6157L22.6229 13.1629L19.9943 14.7114L17.3771 13.1629Z" fill="white" />
+      <path d="M12.8829 24.1929V21.0957L15.5 22.6443V25.7257L12.8829 24.1929ZM17.3771 29.0414L19.9943 30.59L22.6229 29.0414V32.1229L19.9943 33.6714L17.3771 32.1229V29.0414ZM26.3771 13.1629L28.9943 11.6157L31.6229 13.1629V16.2457L28.9943 17.7929V14.7114L26.3771 13.1629ZM28.9943 25.2886L29.0086 20L31.6243 18.4514V26.85L24.5014 31.0272V27.9314L28.9943 25.2886Z" fill="white" />
+      <path d="M27.1171 24.1928L24.5 25.7257V22.6443L27.1171 21.0957V24.1928Z" fill="white" />
+      <path d="M27.1171 15.8072L27.1314 18.9043L22.6243 21.5472V26.85L20.0086 28.3829L17.3914 26.85V21.5486L12.8843 18.9043V15.8072L15.5129 14.26L19.9914 16.9172L24.4986 14.26L27.1271 15.8072H27.1171ZM12.8829 10.5214L19.9929 6.32858L27.1171 10.5214L24.5 12.0686L19.9943 9.41144L15.5 12.0686L12.8829 10.5214Z" fill="white" />
+    </svg>
+  )
+})
+
+const AvalancheChainIcon = memo(function AvalancheChainIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <path d="M20 40C31.0457 40 40 31.0457 40 20C40 8.9543 31.0457 0 20 0C8.9543 0 0 8.9543 0 20C0 31.0457 8.9543 40 20 40Z" fill="#E84142" />
+      <path d="M27.0552 20.5197C27.7484 19.3226 28.8691 19.3226 29.5592 20.5197L33.8738 28.0946C34.567 29.291 34 30.2674 32.612 30.2674H23.9211C22.5513 30.2674 21.9842 29.291 22.6593 28.0946L27.0552 20.5197ZM18.709 5.93692C19.4014 4.74055 20.504 4.74055 21.1972 5.93692L22.1577 7.67194L24.4251 11.6562C24.6972 12.2182 24.8386 12.8346 24.8386 13.459C24.8386 14.0835 24.6972 14.6998 24.4251 15.2618L16.8186 28.4409C16.479 28.9688 16.0198 29.4093 15.4781 29.7267C14.9365 30.044 14.3277 30.2292 13.7011 30.2674H7.38566C6.00001 30.2674 5.43298 29.3068 6.12383 28.0946L18.709 5.93692Z" fill="white" />
+    </svg>
+  )
+})
+
+const FantomChainIcon = memo(function FantomChainIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <path d="M20 40C31.0457 40 40 31.0457 40 20C40 8.9543 31.0457 0 20 0C8.9543 0 0 8.9543 0 20C0 31.0457 8.9543 40 20 40Z" fill="#13B5EC" />
+      <path fillRule="evenodd" clipRule="evenodd" d="M21.5 16.125L26 13.5V18.75L21.5 16.125ZM26 27.375L20 30.875L14 27.375V21.25L20 24.75L26 21.25V27.375ZM14 13.5L18.5 16.125L14 18.75V13.5ZM20.75 17.375L25.25 20L20.75 22.625V17.375ZM19.25 22.625L14.75 20L19.25 17.375V22.625ZM25.25 12.25L20 15.25L14.75 12.25L20 9.125L25.25 12.25ZM12.5 11.75V28.125L20 32.375L27.5 28.125V11.75L20 7.5L12.5 11.75Z" fill="white" />
+    </svg>
+  )
+})
+
+/** Ethereum family: mainnet, sepolia, goerli, kovan, rinkeby, ropsten */
+const ETHEREUM_CHAIN_IDS = new Set([1, 5, 42, 4, 3, 11155111])
+/** Polygon family: mainnet, amoy */
+const POLYGON_CHAIN_IDS = new Set([137, 80002, 80001])
+
+const CHAIN_ICON_MAP: Record<number, React.FC<IconProps>> = {
+  56: BscChainIcon,
+  10: OptimismChainIcon,
+  42161: ArbitrumChainIcon,
+  250: FantomChainIcon,
+  43114: AvalancheChainIcon
+}
+
 function ChainIcon({ chainId, ...props }: { chainId: number } & IconProps) {
-  return isEthereumFamily(chainId) ? <EthereumChainIcon {...props} /> : <PolygonChainIcon {...props} />
+  const Specific = CHAIN_ICON_MAP[chainId]
+  if (Specific) return <Specific {...props} />
+  if (ETHEREUM_CHAIN_IDS.has(chainId)) return <EthereumChainIcon {...props} />
+  if (POLYGON_CHAIN_IDS.has(chainId)) return <PolygonChainIcon {...props} />
+  return <EthereumChainIcon {...props} />
 }
 
 const ManaEthInlineIcon = memo(function ManaEthInlineIcon(props: IconProps) {
