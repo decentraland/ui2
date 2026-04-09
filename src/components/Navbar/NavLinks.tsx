@@ -65,6 +65,10 @@ const NavLinks = memo(function NavLinks({ desktopDropdown, onOpenDropdown, onSch
           )}
         </DesktopDropdownWrapper>
       ))}
+
+      <DesktopTabLink href={menuConfig.learn.url} className={activePage === 'learn' ? 'active' : undefined}>
+        {i18n[menuConfig.learn.label]}
+      </DesktopTabLink>
     </DesktopTabList>
   )
 })
