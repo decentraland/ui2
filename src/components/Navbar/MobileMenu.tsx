@@ -62,6 +62,10 @@ const MobileMenu = memo(function MobileMenu({ open, onClose, i18n }: MobileMenuP
             </MobileMenuItem>
           )
         })}
+
+        <MobileMenuItem>
+          <MobileMenuLink href={menuConfig.learn.url}>{i18n[menuConfig.learn.label]}</MobileMenuLink>
+        </MobileMenuItem>
       </MobileMenuPanel>
     </>
   )

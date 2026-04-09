@@ -60,8 +60,6 @@ function buildMenuConfig(): MenuConfig {
   const eventsUrl = config.get('EVENTS_URL')
   const createUrl = config.get('CREATE_URL')
   const blogUrl = config.get('BLOG_URL')
-  const docsPlayerUrl = config.get('DOCS_ABOUT_URL') ?? config.get('LEARN_URL')
-  const docsCreatorUrl = config.get('DOCS_CREATORS_URL')
   const namesUrl = config.get('MARKETPLACE_NAMES_URL')
   const landsUrl = config.get('MARKETPLACE_LANDS_URL')
 
@@ -91,11 +89,7 @@ function buildMenuConfig(): MenuConfig {
     },
     learn: {
       label: 'learn',
-      items: [
-        { label: 'getStarted', url: docsPlayerUrl, isExternal: true },
-        { label: 'startCreating', url: docsCreatorUrl, isExternal: true },
-        { label: 'seeWhatsNew', url: blogUrl }
-      ]
+      url: blogUrl
     }
   }
 }
@@ -132,7 +126,7 @@ function getUserMenuItems(): UserMenuItem[] {
   return _userMenuItems
 }
 
-const DROPDOWN_SECTIONS = ['shop', 'create', 'learn'] as const
+const DROPDOWN_SECTIONS = ['shop', 'create'] as const
 type DropdownSection = (typeof DROPDOWN_SECTIONS)[number]
 
 export { DEFAULT_I18N, DROPDOWN_SECTIONS, getMenuConfig, getUserMenuItems }
