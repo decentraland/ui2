@@ -41,21 +41,15 @@ const JumpIn = React.memo((props: JumpInProps) => {
     [onTrack, downloadUrl, desktopAppOptions]
   )
 
-  const handleDownloadClick = useCallback(
-    (e: React.MouseEvent<HTMLButtonElement>) => {
-      e.stopPropagation()
-      e.preventDefault()
+  const handleDownloadClick = useCallback(() => {
+    onTrack?.({
+      type: JumpInEventType.DOWNLOAD,
+      url: downloadUrl,
+      has_launcher: false
+    })
 
-      onTrack?.({
-        type: JumpInEventType.DOWNLOAD,
-        url: downloadUrl,
-        has_launcher: false
-      })
-
-      window.open(downloadUrl, '_blank')
-    },
-    [onTrack, downloadUrl]
-  )
+    window.open(downloadUrl, '_blank')
+  }, [onTrack, downloadUrl])
 
   if (props.variant === 'button') {
     return (

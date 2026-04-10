@@ -29,7 +29,7 @@ type JumpInBaseProps = {
   /** Whether to hide the icon */
   hideIcon?: boolean
   /** Props for the download modal */
-  modalProps: Omit<DownloadModalProps, 'open' | 'onClose' | 'onDownloadClick'>
+  modalProps: Omit<DownloadModalProps, 'open' | 'onClose'>
   /** Options for the desktop app */
   desktopAppOptions?: {
     position?: string

@@ -27,9 +27,10 @@ const ActionRow = memo((props: ActionRowProps) => {
         buttonProps={{ className: 'jump-in-button' }}
         onTrack={onJumpInTrack}
         modalProps={{
-          title: 'Download Decentraland to Jump In',
-          description: "Once you've installed and launched Decentraland, you can jump straight to the scene in-world!",
-          buttonLabel: 'Download'
+          os: 'apple',
+          downloadUrl: 'https://decentraland.org/download',
+          epicUrl: 'https://store.epicgames.com/en-US/p/decentraland-b692fb',
+          googlePlayUrl: 'https://play.google.com/store/apps/details?id=org.decentraland.godotexplorer'
         }}
         desktopAppOptions={location.includes('.dcl') ? { realm: location } : { position: location }}
       />

@@ -78,9 +78,10 @@ const meta = {
 type Story = StoryObj<typeof meta>
 
 const defaultModalProps = {
-  title: 'Download Decentraland',
-  description: "To jump in, you'll need to download the Decentraland app",
-  buttonLabel: 'Download Now'
+  os: 'apple' as const,
+  downloadUrl: 'https://decentraland.org/download',
+  epicUrl: 'https://store.epicgames.com/en-US/p/decentraland-b692fb',
+  googlePlayUrl: 'https://play.google.com/store/apps/details?id=org.decentraland.godotexplorer'
 }
 
 const Button: Story = {
@@ -146,9 +147,10 @@ const CustomModal: Story = {
   args: {
     variant: 'button',
     modalProps: {
-      title: 'Custom Download Title',
-      description: 'This is a custom description for the download modal',
-      buttonLabel: 'Get App Now'
+      os: 'windows' as const,
+      downloadUrl: 'https://decentraland.org/download',
+      epicUrl: 'https://store.epicgames.com/en-US/p/decentraland-b692fb',
+      googlePlayUrl: 'https://play.google.com/store/apps/details?id=org.decentraland.godotexplorer'
     }
   }
 }
