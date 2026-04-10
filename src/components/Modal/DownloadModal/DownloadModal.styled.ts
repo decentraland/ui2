@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { Box, Modal as MuiModal, IconButton } from '@mui/material'
+import { Box, IconButton, Modal as MuiModal } from '@mui/material'
 
 const MODAL_GRADIENT =
   'radial-gradient(ellipse at 50% 77%, rgba(116,52,177,1) 0%, rgba(94,40,143,1) 19%, rgba(72,28,108,1) 37%, rgba(43,16,64,1) 100%)'

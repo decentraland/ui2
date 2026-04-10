@@ -1,11 +1,11 @@
 import React, { useCallback, useMemo } from 'react'
 import CloseIcon from '@mui/icons-material/Close'
-import { DclIcon } from './icons/DclIcon'
 import { AppleIcon } from './icons/AppleIcon'
+import { DclIcon } from './icons/DclIcon'
 import { VerifiedIcon } from './icons/VerifiedIcon'
 import { WindowsIcon } from './icons/WindowsIcon'
-import epicLogoBlack from '../../../Assets/logo-epic-black.svg'
 import googlePlayBadge from '../../../Assets/get-in-on-google-play.svg'
+import epicLogoBlack from '../../../Assets/logo-epic-black.svg'
 import { DownloadModalI18n, DownloadModalProps } from './DownloadModal.types'
 import {
   CloseButton,
@@ -39,17 +39,7 @@ const DEFAULT_I18N: DownloadModalI18n = {
 }
 
 function DownloadModal(props: DownloadModalProps) {
-  const {
-    os,
-    downloadUrl,
-    epicUrl,
-    googlePlayUrl,
-    i18n: i18nPartial,
-    open,
-    onClose,
-    onDownloadClick,
-    onEpicClick
-  } = props
+  const { os, downloadUrl, epicUrl, googlePlayUrl, i18n: i18nPartial, open, onClose, onDownloadClick, onEpicClick } = props
 
   const i18n = useMemo(() => ({ ...DEFAULT_I18N, ...i18nPartial }), [i18nPartial])
 
@@ -76,9 +66,11 @@ function DownloadModal(props: DownloadModalProps) {
         <DownloadSection>
           <PrimaryButton href={downloadUrl} onClick={onDownloadClick}>
             {i18n.download}
-            {isApple
-              ? <AppleIcon style={{ width: 32, height: 32, color: 'white' }} />
-              : <WindowsIcon style={{ width: 28, height: 28, color: 'white' }} />}
+            {isApple ? (
+              <AppleIcon style={{ width: 32, height: 32, color: 'white' }} />
+            ) : (
+              <WindowsIcon style={{ width: 28, height: 28, color: 'white' }} />
+            )}
           </PrimaryButton>
 
           <EpicButton href={epicUrl} target="_blank" rel="noopener noreferrer" onClick={onEpicClick}>
