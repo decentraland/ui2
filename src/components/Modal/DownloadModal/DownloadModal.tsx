@@ -26,15 +26,13 @@ import {
 } from './DownloadModal.styled'
 
 const WINDOWS_DOWNLOAD_URL = 'https://decentraland.org/download_success?os=Windows'
-const APPLE_ARM_DOWNLOAD_URL = 'https://decentraland.org/download_success?os=macOS'
-const APPLE_INTEL_DOWNLOAD_URL = 'https://decentraland.org/download_success?os=macOS&arch=amd64'
+const APPLE_DOWNLOAD_URL = 'https://decentraland.org/download_success?os=macOS'
 
 const DEFAULT_I18N: DownloadModalI18n = {
   title: 'Download Decentraland to Jump In',
   download: 'DOWNLOAD',
   downloadOn: 'DOWNLOAD ON',
   totalDownloads: 'Total Downloads: +250K',
-  intel: '(Intel)',
   alsoAvailableOn: 'Also Available on'
 }
 
@@ -85,17 +83,11 @@ function DownloadModal(props: DownloadModalProps) {
             </StatItem>
             <StatDivider />
             {isApple ? (
-              <>
-                <PlatformLink href={WINDOWS_DOWNLOAD_URL}>
-                  <WindowsIcon style={{ width: 24, height: 24, color: 'white' }} />
-                </PlatformLink>
-                <PlatformLink href={APPLE_INTEL_DOWNLOAD_URL}>
-                  <AppleIcon style={{ width: 20, height: 20, color: '#ECEBED' }} />
-                  {i18n.intel}
-                </PlatformLink>
-              </>
+              <PlatformLink href={WINDOWS_DOWNLOAD_URL}>
+                <WindowsIcon style={{ width: 24, height: 24, color: 'white' }} />
+              </PlatformLink>
             ) : (
-              <PlatformLink href={APPLE_ARM_DOWNLOAD_URL}>
+              <PlatformLink href={APPLE_DOWNLOAD_URL}>
                 <AppleIcon style={{ width: 20, height: 20, color: 'white' }} />
               </PlatformLink>
             )}

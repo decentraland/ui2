@@ -3,7 +3,6 @@ type DownloadModalI18n = {
   download: string
   downloadOn: string
   totalDownloads: string
-  intel: string
   alsoAvailableOn: string
 }
 
