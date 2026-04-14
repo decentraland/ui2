@@ -2,7 +2,6 @@ import { memo } from 'react'
 import AccessTimeIcon from '@mui/icons-material/AccessTime'
 import type { EventSmallCardProps } from './EventSmallCard.types'
 import {
-  ActionSlot,
   AvatarFallback,
   AvatarImg,
   CardContainer,
@@ -12,17 +11,19 @@ import {
   CreatorRow,
   EventTitle,
   HoverActions,
+  MobileAction,
   TextBlock,
   Thumbnail,
   ThumbnailWrapper,
   TimeLabel,
-  TimePill
+  TimePill,
+  TitleRow
 } from './EventSmallCard.styled'
 
 const EventSmallCard = memo(
-  ({ image, title, creatorName, creatorAvatarUrl, timeLabel, onClick, action, hoverActions }: EventSmallCardProps) => {
+  ({ image, title, creatorName, creatorAvatarUrl, timeLabel, onClick, disableHover, action, hoverActions }: EventSmallCardProps) => {
     return (
-      <CardContainer onClick={onClick}>
+      <CardContainer onClick={onClick} disableHover={disableHover}>
         {image && (
           <ThumbnailWrapper>
             <Thumbnail src={image} alt={title} loading="lazy" />
@@ -30,7 +31,10 @@ const EventSmallCard = memo(
         )}
         <TextBlock>
           <ContentTop>
-            <EventTitle>{title}</EventTitle>
+            <TitleRow>
+              <EventTitle>{title}</EventTitle>
+              {action && <MobileAction>{action}</MobileAction>}
+            </TitleRow>
             {creatorName && (
               <CreatorRow>
                 {creatorAvatarUrl ? <AvatarImg src={creatorAvatarUrl} alt={creatorName} /> : <AvatarFallback />}
@@ -46,7 +50,6 @@ const EventSmallCard = memo(
               <TimeLabel>{timeLabel}</TimeLabel>
             </TimePill>
           )}
-          {action && <ActionSlot>{action}</ActionSlot>}
           {hoverActions && <HoverActions data-role="hover-actions">{hoverActions}</HoverActions>}
         </TextBlock>
       </CardContainer>

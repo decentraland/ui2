@@ -13,7 +13,9 @@ interface EventSmallCardProps {
   timeLabel?: string
   /** Click handler for the entire card */
   onClick?: () => void
-  /** Optional action element rendered in the top-right corner (e.g. icon button) */
+  /** When true, disables hover lift and shadow effects (use on mobile/tablet) */
+  disableHover?: boolean
+  /** Optional action element rendered next to the title on mobile, or top-right on desktop */
   action?: ReactNode
   /** Optional hover actions rendered at the bottom of the card on desktop hover */
   hoverActions?: ReactNode

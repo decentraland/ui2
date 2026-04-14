@@ -1,28 +1,36 @@
 import { Box, Typography, styled } from '@mui/material'
+import { hexToRgba } from '../../utils/colors'
 
-const HOVER_SHADOW = '0px 2px 12px 12px rgba(255, 255, 255, 0.3)'
+const HOVER_SHADOW = `0px 2px 12px 12px ${hexToRgba('#FFFFFF', 0.3)}`
+const HOVER_SHADOW_LIGHT = `0px 2px 12px 4px ${hexToRgba('#000000', 0.12)}`
 
-const CardContainer = styled(Box)(({ theme }) => ({
+const CardContainer = styled(Box, {
+  shouldForwardProp: prop => prop !== 'disableHover'
+})<{ disableHover?: boolean }>(({ theme, disableHover }) => ({
   display: 'flex',
   flexDirection: 'row',
   borderRadius: 16,
   overflow: 'hidden',
+  containerType: 'inline-size',
   cursor: 'pointer',
   height: 140,
   minWidth: 300,
+  maxWidth: 430,
   backgroundColor: theme.palette.mode === 'dark' ? 'rgba(0, 0, 0, 0.3)' : 'rgba(0, 0, 0, 0.05)',
   transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-  '&:hover': {
-    transform: 'translateY(-4px)',
-    boxShadow: theme.palette.mode === 'dark' ? HOVER_SHADOW : '0px 2px 12px 4px rgba(0, 0, 0, 0.12)'
-  },
-  '&:hover [data-role="hover-actions"]': {
-    opacity: 1,
-    transform: 'translateY(0)'
-  },
-  '&:hover [data-role="time-pill"]': {
-    opacity: 0
-  },
+  ...(!disableHover && {
+    '&:hover': {
+      transform: 'translateY(-4px)',
+      boxShadow: theme.palette.mode === 'dark' ? HOVER_SHADOW : HOVER_SHADOW_LIGHT
+    },
+    '&:hover [data-role="hover-actions"]': {
+      opacity: 1,
+      transform: 'translateY(0)'
+    },
+    '&:hover [data-role="time-pill"]': {
+      opacity: 0
+    }
+  }),
   [theme.breakpoints.down('md')]: {
     minWidth: 0,
     '& [data-role="hover-actions"]': {
@@ -32,7 +40,7 @@ const CardContainer = styled(Box)(({ theme }) => ({
 }))
 
 const ThumbnailWrapper = styled(Box)({
-  width: 180,
+  width: '42%',
   height: 140,
   flexShrink: 0,
   overflow: 'hidden'
@@ -70,8 +78,28 @@ const EventTitle = styled(Typography)(({ theme }) => ({
   overflow: 'hidden',
   textOverflow: 'ellipsis',
   display: '-webkit-box',
+  flex: 1,
+  minWidth: 0,
   WebkitLineClamp: 2,
   WebkitBoxOrient: 'vertical'
+}))
+
+const TitleRow = styled(Box)(({ theme }) => ({
+  display: 'contents',
+  [theme.breakpoints.down('md')]: {
+    display: 'flex',
+    gap: 8,
+    alignItems: 'flex-start',
+    justifyContent: 'space-between'
+  }
+}))
+
+const MobileAction = styled(Box)(({ theme }) => ({
+  display: 'none',
+  [theme.breakpoints.down('md')]: {
+    display: 'flex',
+    flexShrink: 0
+  }
 }))
 
 const AvatarImg = styled('img')({
@@ -150,15 +178,7 @@ const HoverActions = styled(Box)({
   flexWrap: 'nowrap'
 })
 
-const ActionSlot = styled(Box)({
-  position: 'absolute',
-  top: 7,
-  right: 5,
-  zIndex: 1
-})
-
 export {
-  ActionSlot,
   AvatarFallback,
   AvatarImg,
   CardContainer,
@@ -167,11 +187,13 @@ export {
   CreatorNameHighlight,
   CreatorRow,
   EventTitle,
-  HoverActions,
   HOVER_SHADOW,
+  HoverActions,
   TextBlock,
   Thumbnail,
   ThumbnailWrapper,
   TimeLabel,
-  TimePill
+  TimePill,
+  MobileAction,
+  TitleRow
 }

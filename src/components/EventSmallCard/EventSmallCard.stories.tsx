@@ -1,10 +1,10 @@
-import { Box, IconButton } from '@mui/material'
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth'
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone'
+import { Box, IconButton } from '@mui/material'
 import { EventSmallCard } from './EventSmallCard'
-import type { Meta, StoryObj } from '@storybook/react'
 import sceneThumbnail from '../../Assets/scene-thumbnail.png'
+import type { Meta, StoryObj } from '@storybook/react'
 
 const AVATAR_URL = 'https://profile-images.decentraland.org/entities/bafkreietha7mzh7q3lk4j236vut2znwqhbiapihg46p6yrv3j4lbwlzd34/face.png'
 
@@ -149,12 +149,7 @@ const Grid: Story = {
         creatorAvatarUrl={AVATAR_URL}
         timeLabel="Starts in 10 mins"
       />
-      <EventSmallCard
-        image={sceneThumbnail}
-        title="Art Gallery Opening Night"
-        creatorName="SomeCreator"
-        timeLabel="Starts in 30 mins"
-      />
+      <EventSmallCard image={sceneThumbnail} title="Art Gallery Opening Night" creatorName="SomeCreator" timeLabel="Starts in 30 mins" />
       <EventSmallCard
         image={sceneThumbnail}
         title="Community Meetup"
@@ -170,11 +165,26 @@ const Grid: Story = {
 const AvatarFallback: Story = {
   render: () => (
     <Box sx={{ maxWidth: 500 }}>
+      <EventSmallCard image={sceneThumbnail} title="Creator Without Avatar" creatorName="NoAvatarUser" timeLabel="Starts in 45 mins" />
+    </Box>
+  )
+}
+
+const DisabledHover: Story = {
+  render: () => (
+    <Box sx={{ maxWidth: 500 }}>
       <EventSmallCard
         image={sceneThumbnail}
-        title="Creator Without Avatar"
-        creatorName="NoAvatarUser"
-        timeLabel="Starts in 45 mins"
+        title="No Hover Effect (Mobile/Tablet)"
+        creatorName="alelevyyyy"
+        creatorAvatarUrl={AVATAR_URL}
+        timeLabel="Starts in 10 mins"
+        disableHover
+        action={
+          <IconButton size="small" sx={{ bgcolor: 'rgba(255,255,255,0.15)', color: '#fff', width: 28, height: 28 }}>
+            <CalendarMonthIcon sx={{ fontSize: 16 }} />
+          </IconButton>
+        }
       />
     </Box>
   )
@@ -182,4 +192,16 @@ const AvatarFallback: Story = {
 
 // eslint-disable-next-line import/no-default-export
 export default meta
-export { Default, WithoutImage, WithoutCreator, WithoutTime, LongTitle, WithAction, WithHoverActions, TwoCards, Grid, AvatarFallback }
+export {
+  Default,
+  WithoutImage,
+  WithoutCreator,
+  WithoutTime,
+  LongTitle,
+  WithAction,
+  WithHoverActions,
+  TwoCards,
+  Grid,
+  AvatarFallback,
+  DisabledHover
+}
