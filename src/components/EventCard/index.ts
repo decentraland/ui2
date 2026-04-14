@@ -1,2 +1,2 @@
 export { EventCard } from './EventCard'
-export type { EventCardProps } from './EventCard.types'
+export type { EventCardHoverEffect, EventCardProps } from './EventCard.types'

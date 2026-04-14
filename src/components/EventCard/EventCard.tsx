@@ -36,6 +36,7 @@ const EventCard = memo((props: EventCardProps) => {
     avatar,
     coordinates,
     withShadow,
+    hoverEffect = 'coin',
     leftBadge,
     leftBadgeTransparent = false,
     onClick,
@@ -48,9 +49,23 @@ const EventCard = memo((props: EventCardProps) => {
   const isWorld = coordinates?.includes('.dcl.eth')
   const jumpInUrl = isWorld ? `https://decentraland.org/jump?realm=${coordinates}` : `https://decentraland.org/jump?position=${coordinates}`
 
+  const handleCardClick = useCallback(() => {
+    if (onClick) {
+      onClick()
+      return
+    }
+    if (redirectToAuth) {
+      window.location.href = '/auth'
+      return
+    }
+    if (coordinates) {
+      window.open(jumpInUrl, '_blank')
+    }
+  }, [onClick, redirectToAuth, coordinates, jumpInUrl])
+
   if (loading) {
     return (
-      <EventCardContainer>
+      <EventCardContainer hoverEffect="none">
         <EventCardActionArea disabled>
           <EventMediaContainer>
             <SkeletonImage variant="rectangular" />
@@ -71,22 +86,8 @@ const EventCard = memo((props: EventCardProps) => {
     )
   }
 
-  const handleCardClick = useCallback(() => {
-    if (onClick) {
-      onClick()
-      return
-    }
-    if (redirectToAuth) {
-      window.location.href = '/auth'
-      return
-    }
-    if (coordinates) {
-      window.open(jumpInUrl, '_blank')
-    }
-  }, [onClick, redirectToAuth, coordinates, jumpInUrl])
-
   return (
-    <EventCardContainer withShadow={withShadow}>
+    <EventCardContainer withShadow={withShadow} hoverEffect={hoverEffect}>
       <EventCardActionArea onClick={handleCardClick}>
         {leftBadge !== undefined && (
           <BadgesContainer>

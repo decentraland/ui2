@@ -98,6 +98,36 @@ const Default: Story = {
   )
 }
 
+const CoinHover: Story = {
+  render: () => (
+    <StoryRow>
+      <EventCard
+        image={sceneThumbnail}
+        sceneName="Coin Hover (default)"
+        avatar={exampleAvatar}
+        withShadow
+        hoverEffect="coin"
+        leftBadge={
+          <BadgeGroup>
+            <LiveBadge />
+            <UserCountBadge count={24} />
+          </BadgeGroup>
+        }
+        leftBadgeTransparent
+      />
+      <EventCard
+        image={sceneThumbnail}
+        sceneName="Another Coin Card"
+        avatar={exampleAvatar}
+        withShadow
+        hoverEffect="coin"
+        leftBadge={<UserCountBadge count={12} />}
+        leftBadgeTransparent
+      />
+    </StoryRow>
+  )
+}
+
 const WithRedirectToAuth: Story = {
   render: () => (
     <EventCard
@@ -114,83 +144,6 @@ const WithRedirectToAuth: Story = {
       leftBadgeTransparent
       redirectToAuth
     />
-  )
-}
-
-const OneCard: Story = {
-  render: () => (
-    <StoryRow>
-      <EventCard
-        image={sceneThumbnail}
-        sceneName="Single Event Card"
-        avatar={exampleAvatar}
-        withShadow
-        leftBadge={
-          <BadgeGroup>
-            <LiveBadge />
-            <UserCountBadge count={24} />
-          </BadgeGroup>
-        }
-        leftBadgeTransparent
-      />
-    </StoryRow>
-  )
-}
-
-const TwoCards: Story = {
-  render: () => (
-    <StoryRow>
-      <EventCard
-        image={sceneThumbnail}
-        sceneName="Live Music Festival"
-        avatar={exampleAvatar}
-        withShadow
-        leftBadge={
-          <BadgeGroup>
-            <LiveBadge />
-            <UserCountBadge count={24} />
-          </BadgeGroup>
-        }
-        leftBadgeTransparent
-      />
-      <EventCard
-        image={sceneThumbnail}
-        sceneName="Art Gallery Opening"
-        avatar={exampleAvatar}
-        withShadow
-        leftBadge={<UserCountBadge count={12} />}
-        leftBadgeTransparent
-      />
-    </StoryRow>
-  )
-}
-
-const ThreeCards: Story = {
-  render: () => (
-    <StoryRow>
-      <EventCard
-        image={sceneThumbnail}
-        sceneName="Live Music Festival"
-        avatar={exampleAvatar}
-        withShadow
-        leftBadge={
-          <BadgeGroup>
-            <LiveBadge />
-            <UserCountBadge count={24} />
-          </BadgeGroup>
-        }
-        leftBadgeTransparent
-      />
-      <EventCard
-        image={sceneThumbnail}
-        sceneName="Art Gallery Opening"
-        avatar={exampleAvatar}
-        withShadow
-        leftBadge={<UserCountBadge count={12} />}
-        leftBadgeTransparent
-      />
-      <EventCard image={sceneThumbnail} sceneName="Upcoming Community Meetup" avatar={exampleAvatar} withShadow />
-    </StoryRow>
   )
 }
 
@@ -410,6 +363,67 @@ const MixedHeights: Story = {
   )
 }
 
+const LiftHover: Story = {
+  render: () => (
+    <StoryRow>
+      <EventCard
+        image={sceneThumbnail}
+        sceneName="Lift Hover Effect"
+        avatar={exampleAvatar}
+        hoverEffect="lift"
+        leftBadge={
+          <BadgeGroup>
+            <LiveBadge />
+            <UserCountBadge count={18} />
+          </BadgeGroup>
+        }
+        leftBadgeTransparent
+      />
+      <EventCard
+        image={sceneThumbnail}
+        sceneName="Another Lift Card"
+        avatar={exampleAvatar}
+        hoverEffect="lift"
+        leftBadge={<UserCountBadge count={7} />}
+        leftBadgeTransparent
+      />
+    </StoryRow>
+  )
+}
+
+const HoverEffects: Story = {
+  render: () => (
+    <StorySection>
+      <StoryRow>
+        <EventCard
+          image={sceneThumbnail}
+          sceneName="Coin (default)"
+          avatar={exampleAvatar}
+          withShadow
+          leftBadge={<LiveBadge />}
+          leftBadgeTransparent
+        />
+        <EventCard
+          image={sceneThumbnail}
+          sceneName="Lift"
+          avatar={exampleAvatar}
+          hoverEffect="lift"
+          leftBadge={<LiveBadge />}
+          leftBadgeTransparent
+        />
+        <EventCard
+          image={sceneThumbnail}
+          sceneName="None"
+          avatar={exampleAvatar}
+          hoverEffect="none"
+          leftBadge={<LiveBadge />}
+          leftBadgeTransparent
+        />
+      </StoryRow>
+    </StorySection>
+  )
+}
+
 // eslint-disable-next-line import/no-default-export
 export default meta
-export { Default, WithRedirectToAuth, OneCard, TwoCards, ThreeCards, CardQuantities, Multiline, WithoutAvatar, Loading, MixedHeights }
+export { Default, CoinHover, LiftHover, HoverEffects, WithRedirectToAuth, CardQuantities, Multiline, WithoutAvatar, Loading, MixedHeights }
