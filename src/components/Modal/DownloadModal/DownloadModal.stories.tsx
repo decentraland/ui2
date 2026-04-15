@@ -1,8 +1,7 @@
 import { DownloadModal } from './DownloadModal'
+import { DOWNLOAD_URLS } from '../../../modules/downloadUrls'
 import { DownloadModalProps } from './DownloadModal.types'
 import type { Meta, StoryObj } from '@storybook/react'
-
-import { DOWNLOAD_URLS } from '../../../modules/downloadUrls'
 
 const meta: Meta<DownloadModalProps> = {
   title: 'Decentraland UI/Download Modal',

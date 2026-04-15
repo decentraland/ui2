@@ -1,8 +1,8 @@
 import { memo } from 'react'
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward'
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward'
-import { JumpIn } from '../../../JumpIn'
 import { DOWNLOAD_URLS, detectDownloadOS } from '../../../../modules/downloadUrls'
+import { JumpIn } from '../../../JumpIn'
 import { ActionRowProps } from './ActionRow.types'
 import { ActionRowContainer, PositionChangeContainer, PositionContent } from './ActionRow.styled'
 

@@ -1,10 +1,10 @@
 import { memo } from 'react'
 import Typography from '@mui/material/Typography'
 import { Box } from '@mui/material'
+import { DOWNLOAD_URLS, detectDownloadOS } from '../../modules/downloadUrls'
 import { AvatarFace } from '../AvatarFace'
 import { LocationIcon } from '../Icon'
 import { JumpIn } from '../JumpIn/JumpIn'
-import { DOWNLOAD_URLS, detectDownloadOS } from '../../modules/downloadUrls'
 import { SceneCardHoverElement, SceneCardProps } from './SceneCard.types'
 import {
   AvatarAndLocationRow,
