@@ -37,6 +37,7 @@ const EventCard = memo((props: EventCardProps) => {
     coordinates,
     withShadow,
     hoverEffect = 'coin',
+    liftShadowColor,
     leftBadge,
     leftBadgeTransparent = false,
     onClick,
@@ -87,7 +88,7 @@ const EventCard = memo((props: EventCardProps) => {
   }
 
   return (
-    <EventCardContainer withShadow={withShadow} hoverEffect={hoverEffect}>
+    <EventCardContainer withShadow={withShadow} hoverEffect={hoverEffect} liftShadowColor={liftShadowColor}>
       <EventCardActionArea onClick={handleCardClick}>
         {leftBadge !== undefined && (
           <BadgesContainer>
