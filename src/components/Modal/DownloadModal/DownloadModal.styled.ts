@@ -84,8 +84,12 @@ const PrimaryButton = styled('a')({
   textTransform: 'uppercase',
   letterSpacing: '0.61px',
   boxSizing: 'border-box',
+  outline: '3px solid transparent',
+  outlineOffset: 4,
+  transition: 'outline-color 0.15s ease',
   '&:hover': {
-    opacity: 0.9
+    outlineColor: 'white',
+    borderRadius: 16
   }
 })
 
@@ -108,8 +112,12 @@ const EpicButton = styled('a')({
   textTransform: 'uppercase',
   letterSpacing: '0.61px',
   boxSizing: 'border-box',
+  outline: '3px solid transparent',
+  outlineOffset: 4,
+  transition: 'outline-color 0.15s ease',
   '&:hover': {
-    opacity: 0.9
+    outlineColor: 'white',
+    borderRadius: 16
   }
 })
 
@@ -205,12 +213,15 @@ const MobileCta = styled('a')({
   textDecoration: 'none',
   padding: '12px 20px',
   boxSizing: 'border-box',
+  outline: '3px solid transparent',
+  outlineOffset: 4,
+  transition: 'outline-color 0.15s ease',
   '& img': {
     height: 40,
     width: 'auto'
   },
   '&:hover': {
-    opacity: 0.9
+    outlineColor: 'white'
   }
 })
 

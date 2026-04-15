@@ -5,13 +5,17 @@ const QRContainer = styled(Box)({
   position: 'relative',
   width: 263,
   height: 263,
-  flexShrink: 0
+  flexShrink: 0,
+  backgroundColor: 'white',
+  borderRadius: 16,
+  padding: 12,
+  boxSizing: 'content-box'
 })
 
 const QRImage = styled('img')({
   width: '100%',
   height: '100%',
-  borderRadius: 16,
+  borderRadius: 8,
   objectFit: 'cover',
   display: 'block'
 })
