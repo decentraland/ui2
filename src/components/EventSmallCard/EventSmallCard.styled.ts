@@ -50,17 +50,17 @@ const EventSmallCardContainer = styled(Box, {
       transform: 'translateY(-4px)',
       boxShadow: theme.palette.mode === 'dark' ? HOVER_SHADOW : HOVER_SHADOW_LIGHT
     },
-    [`&:hover ${HoverActions}`]: {
+    '&:hover [data-role="hover-actions"]': {
       opacity: 1,
       transform: 'translateY(0)'
     },
-    [`&:hover ${TimePill}`]: {
+    '&:hover [data-role="time-pill"]': {
       opacity: 0
     }
   }),
   [theme.breakpoints.down('md')]: {
     minWidth: 0,
-    [`& ${HoverActions}`]: {
+    '& [data-role="hover-actions"]': {
       display: 'none'
     }
   }
