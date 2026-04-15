@@ -14,15 +14,16 @@ const coinFlip = keyframes({
   '100%': { transform: 'perspective(800px) rotateX(0deg) rotateY(0deg)' }
 })
 
-const LIFT_GLOW_DARK = `inset 0 0 0 3px ${hexToRgba('#FFFFFF', 0.35)}, inset 0 0 24px 0 ${hexToRgba('#FFFFFF', 0.08)}`
-const LIFT_GLOW_LIGHT = `inset 0 0 0 3px ${hexToRgba('#000000', 0.12)}, inset 0 0 24px 0 ${hexToRgba('#000000', 0.06)}`
+const LIFT_GLOW_DARK = '0px 2px 12px 12px rgba(255, 255, 255, 0.3)'
+const LIFT_GLOW_LIGHT = '0px 2px 12px 4px rgba(0, 0, 0, 0.12)'
 
 const EventCardContainer = styled(Card, {
-  shouldForwardProp: prop => prop !== 'withShadow' && prop !== 'hoverEffect'
+  shouldForwardProp: prop => prop !== 'withShadow' && prop !== 'hoverEffect' && prop !== 'liftShadowColor'
 })<{
   withShadow?: boolean
   hoverEffect?: EventCardHoverEffect
-}>(({ theme, withShadow, hoverEffect = 'coin' }) => ({
+  liftShadowColor?: string
+}>(({ theme, withShadow, hoverEffect = 'coin', liftShadowColor }) => ({
   borderRadius: theme.spacing(2),
   boxSizing: 'border-box',
   minWidth: 400,
@@ -62,7 +63,11 @@ const EventCardContainer = styled(Card, {
     [theme.breakpoints.up('sm')]: {
       '&:hover': {
         transform: 'translateY(-4px)',
-        boxShadow: theme.palette.mode === 'dark' ? LIFT_GLOW_DARK : LIFT_GLOW_LIGHT
+        boxShadow: liftShadowColor
+          ? `0px 2px 12px 12px ${liftShadowColor}`
+          : theme.palette.mode === 'dark'
+            ? LIFT_GLOW_DARK
+            : LIFT_GLOW_LIGHT
       }
     }
   })
