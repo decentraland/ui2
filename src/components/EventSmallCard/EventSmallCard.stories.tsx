@@ -2,12 +2,11 @@ import CalendarMonthIcon from '@mui/icons-material/CalendarMonth'
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone'
 import { EventSmallCard } from './EventSmallCard'
-import { ActionIconButton, StoryColumn, StoryContainer, StoryGrid } from './EventSmallCard.stories.styled'
 import sceneThumbnail from '../../Assets/scene-thumbnail.png'
+import { ActionIconButton, StoryColumn, StoryContainer, StoryGrid } from './EventSmallCard.stories.styled'
 import type { Meta, StoryObj } from '@storybook/react'
 
-const AVATAR_URL =
-  'https://profile-images.decentraland.org/entities/bafkreietha7mzh7q3lk4j236vut2znwqhbiapihg46p6yrv3j4lbwlzd34/face.png'
+const AVATAR_URL = 'https://profile-images.decentraland.org/entities/bafkreietha7mzh7q3lk4j236vut2znwqhbiapihg46p6yrv3j4lbwlzd34/face.png'
 
 const meta: Meta<typeof EventSmallCard> = {
   title: 'Decentraland UI/Cards/Event Small Card',
