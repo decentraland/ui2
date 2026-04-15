@@ -1,7 +1,7 @@
 import { memo } from 'react'
 import Typography from '@mui/material/Typography'
 import { Box } from '@mui/material'
-import { DOWNLOAD_URLS, detectDownloadOS } from '../../modules/downloadUrls'
+import { DOWNLOAD_URLS, detectDownloadOS, getDownloadUrl } from '../../modules/downloadUrls'
 import { AvatarFace } from '../AvatarFace'
 import { LocationIcon } from '../Icon'
 import { JumpIn } from '../JumpIn/JumpIn'
@@ -110,7 +110,7 @@ const SceneCard = memo((props: SceneCardProps) => {
                 onTrack={onJumpInTrack}
                 modalProps={{
                   os: detectDownloadOS(),
-                  downloadUrl: DOWNLOAD_URLS.windows,
+                  downloadUrl: getDownloadUrl(detectDownloadOS()),
                   epicUrl: DOWNLOAD_URLS.epic,
                   googlePlayUrl: DOWNLOAD_URLS.googlePlay,
                   appStoreUrl: DOWNLOAD_URLS.appStore

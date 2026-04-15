@@ -1,7 +1,7 @@
 import { memo } from 'react'
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward'
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward'
-import { DOWNLOAD_URLS, detectDownloadOS } from '../../../../modules/downloadUrls'
+import { DOWNLOAD_URLS, detectDownloadOS, getDownloadUrl } from '../../../../modules/downloadUrls'
 import { JumpIn } from '../../../JumpIn'
 import { ActionRowProps } from './ActionRow.types'
 import { ActionRowContainer, PositionChangeContainer, PositionContent } from './ActionRow.styled'
@@ -29,7 +29,7 @@ const ActionRow = memo((props: ActionRowProps) => {
         onTrack={onJumpInTrack}
         modalProps={{
           os: detectDownloadOS(),
-          downloadUrl: DOWNLOAD_URLS.windows,
+          downloadUrl: getDownloadUrl(detectDownloadOS()),
           epicUrl: DOWNLOAD_URLS.epic,
           googlePlayUrl: DOWNLOAD_URLS.googlePlay,
           appStoreUrl: DOWNLOAD_URLS.appStore

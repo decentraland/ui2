@@ -9,6 +9,7 @@ import appStoreButton from '../../../Assets/download-on-the-app-store.svg'
 import googlePlayBadge from '../../../Assets/get-in-on-google-play.svg'
 import googlePlayButton from '../../../Assets/get-in-on-play-store-button.svg'
 import epicLogoBlack from '../../../Assets/logo-epic-black.svg'
+import { DOWNLOAD_URLS } from '../../../modules/downloadUrls'
 import { DownloadModalI18n, DownloadModalProps } from './DownloadModal.types'
 import {
   CloseButton,
@@ -29,10 +30,6 @@ import {
   StoreBadgesRow,
   StyledModal
 } from './DownloadModal.styled'
-
-const WINDOWS_DOWNLOAD_URL = 'https://decentraland.org/download_success?os=Windows'
-const APPLE_DOWNLOAD_URL = 'https://decentraland.org/download_success?os=macOS'
-const APP_STORE_URL = 'https://apps.apple.com/app/id6478403840'
 
 const DEFAULT_I18N: DownloadModalI18n = {
   title: 'Download Decentraland to Jump In',
@@ -58,7 +55,7 @@ function DownloadModal(props: DownloadModalProps) {
   const isApple = os === 'apple' || os === 'ios'
 
   if (isMobile) {
-    const storeUrl = os === 'ios' ? (appStoreUrl ?? APP_STORE_URL) : googlePlayUrl
+    const storeUrl = os === 'ios' ? (appStoreUrl ?? DOWNLOAD_URLS.appStore) : googlePlayUrl
     const storeImage = os === 'ios' ? appStoreButton : googlePlayButton
     const storeAlt = os === 'ios' ? 'Download on the App Store' : 'Get it on Google Play'
 
@@ -123,11 +120,11 @@ function DownloadModal(props: DownloadModalProps) {
             </StatItem>
             <StatDivider />
             {isApple ? (
-              <PlatformLink href={WINDOWS_DOWNLOAD_URL} target="_blank" rel="noopener noreferrer">
+              <PlatformLink href={DOWNLOAD_URLS.windowsAlt} target="_blank" rel="noopener noreferrer">
                 <WindowsIcon style={{ width: 24, height: 24, color: 'white' }} />
               </PlatformLink>
             ) : (
-              <PlatformLink href={APPLE_DOWNLOAD_URL} target="_blank" rel="noopener noreferrer">
+              <PlatformLink href={DOWNLOAD_URLS.appleAlt} target="_blank" rel="noopener noreferrer">
                 <AppleIcon style={{ width: 20, height: 20, color: 'white' }} />
               </PlatformLink>
             )}
@@ -140,7 +137,7 @@ function DownloadModal(props: DownloadModalProps) {
           </DividerRow>
 
           <StoreBadgesRow>
-            <StoreBadge href={appStoreUrl ?? APP_STORE_URL} target="_blank" rel="noopener noreferrer">
+            <StoreBadge href={appStoreUrl ?? DOWNLOAD_URLS.appStore} target="_blank" rel="noopener noreferrer">
               <img src={appStoreBadge} alt="Download on the App Store" />
             </StoreBadge>
             <StoreBadge href={googlePlayUrl} target="_blank" rel="noopener noreferrer">
