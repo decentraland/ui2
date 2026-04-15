@@ -4,11 +4,11 @@ import type { EventSmallCardProps } from './EventSmallCard.types'
 import {
   AvatarFallback,
   AvatarImg,
-  CardContainer,
   ContentTop,
   CreatorName,
   CreatorNameHighlight,
   CreatorRow,
+  EventSmallCardContainer,
   EventTitle,
   HoverActions,
   MobileAction,
@@ -33,7 +33,11 @@ const EventSmallCard = memo(
     )
 
     return (
-      <CardContainer onClick={onClick} disableHover={disableHover} role="button" tabIndex={0} onKeyDown={handleKeyDown}>
+      <EventSmallCardContainer
+        onClick={onClick}
+        disableHover={disableHover}
+        {...(onClick && { role: 'button', tabIndex: 0, onKeyDown: handleKeyDown })}
+      >
         {image && (
           <ThumbnailWrapper>
             <Thumbnail src={image} alt={title} loading="lazy" />
@@ -55,14 +59,14 @@ const EventSmallCard = memo(
             )}
           </ContentTop>
           {timeLabel && (
-            <TimePill data-role="time-pill">
+            <TimePill>
               <AccessTimeIcon sx={{ fontSize: 20, color: 'inherit' }} />
               <TimeLabel>{timeLabel}</TimeLabel>
             </TimePill>
           )}
-          {hoverActions && <HoverActions data-role="hover-actions">{hoverActions}</HoverActions>}
+          {hoverActions && <HoverActions>{hoverActions}</HoverActions>}
         </TextBlock>
-      </CardContainer>
+      </EventSmallCardContainer>
     )
   }
 )
