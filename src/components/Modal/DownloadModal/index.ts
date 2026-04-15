@@ -1,3 +1,4 @@
 export { DownloadModal } from './DownloadModal'
-export { DownloadModalProps } from './DownloadModal.types'
-export { ExplorerJumpIn } from './ExplorerJumpIn'
+export { DownloadQRModal } from './DownloadQRModal'
+export type { DownloadModalProps } from './DownloadModal.types'
+export type { DownloadQRModalProps } from './DownloadQRModal.types'

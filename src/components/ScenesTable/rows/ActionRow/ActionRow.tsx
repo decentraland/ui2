@@ -1,6 +1,7 @@
 import { memo } from 'react'
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward'
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward'
+import { DOWNLOAD_URLS, detectDownloadOS, getDownloadUrl } from '../../../../modules/downloadUrls'
 import { JumpIn } from '../../../JumpIn'
 import { ActionRowProps } from './ActionRow.types'
 import { ActionRowContainer, PositionChangeContainer, PositionContent } from './ActionRow.styled'
@@ -27,9 +28,11 @@ const ActionRow = memo((props: ActionRowProps) => {
         buttonProps={{ className: 'jump-in-button' }}
         onTrack={onJumpInTrack}
         modalProps={{
-          title: 'Download Decentraland to Jump In',
-          description: "Once you've installed and launched Decentraland, you can jump straight to the scene in-world!",
-          buttonLabel: 'Download'
+          os: detectDownloadOS(),
+          downloadUrl: getDownloadUrl(detectDownloadOS()),
+          epicUrl: DOWNLOAD_URLS.epic,
+          googlePlayUrl: DOWNLOAD_URLS.googlePlay,
+          appStoreUrl: DOWNLOAD_URLS.appStore
         }}
         desktopAppOptions={location.includes('.dcl') ? { realm: location } : { position: location }}
       />

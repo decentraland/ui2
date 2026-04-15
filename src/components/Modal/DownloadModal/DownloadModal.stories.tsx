@@ -1,4 +1,5 @@
 import { DownloadModal } from './DownloadModal'
+import { DOWNLOAD_URLS } from '../../../modules/downloadUrls'
 import { DownloadModalProps } from './DownloadModal.types'
 import type { Meta, StoryObj } from '@storybook/react'
 
@@ -11,133 +12,87 @@ const meta: Meta<DownloadModalProps> = {
     docs: {
       description: {
         component:
-          'DownloadModal is used to prompt users to download the Decentraland app when they try to jump in without having the launcher installed.'
+          'Download modal for Decentraland. Shows platform-specific install options.\n\n' +
+          '- **apple / windows**: Desktop layout with primary download button, Epic Games button, and "Also Available on" store badges (App Store + Google Play)\n' +
+          '- **android / ios**: Mobile layout with a single store CTA button and total downloads stat'
+      },
+      story: {
+        inline: false,
+        iframeHeight: 100
       }
     }
   },
   argTypes: {
+    os: {
+      control: 'radio',
+      options: ['apple', 'windows', 'android', 'ios'],
+      description: 'Target platform — drives layout and primary button'
+    },
+    downloadUrl: {
+      description: 'Primary download URL (OS-specific installer)'
+    },
+    epicUrl: {
+      description: 'Epic Games store URL (desktop only)'
+    },
+    googlePlayUrl: {
+      description: 'Google Play store URL'
+    },
+    appStoreUrl: {
+      description: 'App Store URL (defaults to Decentraland iOS app)'
+    },
     open: {
-      control: 'boolean',
-      description: 'Controls the visibility of the modal',
-      table: {
-        type: { summary: 'boolean' },
-        defaultValue: { summary: false }
-      }
-    },
-    title: {
-      control: 'text',
-      description: 'Modal title text',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: 'Download Decentraland' }
-      }
-    },
-    description: {
-      control: 'text',
-      description: 'Modal description text',
-      table: {
-        type: { summary: 'string' }
-      }
-    },
-    buttonLabel: {
-      control: 'text',
-      description: 'Download button label',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: 'Download Now' }
-      }
-    },
-    onClose: {
-      action: 'onClose',
-      description: 'Callback when modal is closed',
-      table: {
-        type: { summary: 'function' }
-      }
-    },
-    onDownloadClick: {
-      action: 'onDownloadClick',
-      description: 'Callback when download button is clicked',
-      table: {
-        type: { summary: 'function' }
-      }
+      control: 'boolean'
     }
-  },
-  args: {
-    open: false
   }
 } satisfies Meta<typeof DownloadModal>
 
 type Story = StoryObj<typeof meta>
 
-const Default: Story = {
-  args: {
-    title: 'Download Decentraland',
-    description: "To jump in, you'll need to download the Decentraland app",
-    buttonLabel: 'Download Now',
-    open: true
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: 'Default modal configuration with standard messaging'
-      }
-    }
-  }
-}
-
-const CustomContent: Story = {
+const Apple: Story = {
   args: {
     open: true,
-    title: 'Get Started with Decentraland',
-    description: 'Experience the metaverse by downloading our app',
-    buttonLabel: 'Get the App'
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: 'Modal with custom content and messaging'
-      }
-    }
-  },
-  render: args => {
-    return <DownloadModal {...args} />
+    os: 'apple',
+    downloadUrl: DOWNLOAD_URLS.apple,
+    epicUrl: DOWNLOAD_URLS.epic,
+    googlePlayUrl: DOWNLOAD_URLS.googlePlay,
+    appStoreUrl: DOWNLOAD_URLS.appStore
   }
 }
 
-const WithActions: Story = {
+const Windows: Story = {
   args: {
-    ...Default.args,
-    onDownloadClick: () => window.open('https://decentraland.org/download', '_blank')
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: 'Example with custom download handler that opens the download page in a new tab'
-      }
-    }
-  },
-  render: args => {
-    return <DownloadModal {...args} />
+    open: true,
+    os: 'windows',
+    downloadUrl: DOWNLOAD_URLS.windows,
+    epicUrl: DOWNLOAD_URLS.epic,
+    googlePlayUrl: DOWNLOAD_URLS.googlePlay,
+    appStoreUrl: DOWNLOAD_URLS.appStore
   }
 }
 
-const DirectDownload: Story = {
+const MobileAndroid: Story = {
   args: {
-    ...Default.args
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: 'Modal without custom handler - will try direct download first, fallback to default download page if not possible'
-      }
-    }
-  },
-  render: args => {
-    return <DownloadModal {...args} />
+    open: true,
+    os: 'android',
+    downloadUrl: DOWNLOAD_URLS.googlePlay,
+    epicUrl: DOWNLOAD_URLS.epic,
+    googlePlayUrl: DOWNLOAD_URLS.googlePlay,
+    appStoreUrl: DOWNLOAD_URLS.appStore
+  }
+}
+
+const MobileIOS: Story = {
+  args: {
+    open: true,
+    os: 'ios',
+    downloadUrl: DOWNLOAD_URLS.appStore,
+    epicUrl: DOWNLOAD_URLS.epic,
+    googlePlayUrl: DOWNLOAD_URLS.googlePlay,
+    appStoreUrl: DOWNLOAD_URLS.appStore
   }
 }
 
 // eslint-disable-next-line import/no-default-export
 export default meta
 
-export { Default, CustomContent, WithActions, DirectDownload }
+export { Apple, Windows, MobileAndroid, MobileIOS }
