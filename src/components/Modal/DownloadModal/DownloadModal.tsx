@@ -32,7 +32,7 @@ import {
 
 const WINDOWS_DOWNLOAD_URL = 'https://decentraland.org/download_success?os=Windows'
 const APPLE_DOWNLOAD_URL = 'https://decentraland.org/download_success?os=macOS'
-const APP_STORE_URL = 'https://apps.apple.com/es/app/decentraland/id6478403840'
+const APP_STORE_URL = 'https://apps.apple.com/app/id6478403840'
 
 const DEFAULT_I18N: DownloadModalI18n = {
   title: 'Download Decentraland to Jump In',

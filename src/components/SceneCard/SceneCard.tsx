@@ -4,6 +4,7 @@ import { Box } from '@mui/material'
 import { AvatarFace } from '../AvatarFace'
 import { LocationIcon } from '../Icon'
 import { JumpIn } from '../JumpIn/JumpIn'
+import { DOWNLOAD_URLS, detectDownloadOS } from '../../modules/downloadUrls'
 import { SceneCardHoverElement, SceneCardProps } from './SceneCard.types'
 import {
   AvatarAndLocationRow,
@@ -108,10 +109,11 @@ const SceneCard = memo((props: SceneCardProps) => {
                 variant="button"
                 onTrack={onJumpInTrack}
                 modalProps={{
-                  os: 'apple',
-                  downloadUrl: 'https://decentraland.org/download',
-                  epicUrl: 'https://store.epicgames.com/en-US/p/decentraland-b692fb',
-                  googlePlayUrl: 'https://play.google.com/store/apps/details?id=org.decentraland.godotexplorer'
+                  os: detectDownloadOS(),
+                  downloadUrl: DOWNLOAD_URLS.windows,
+                  epicUrl: DOWNLOAD_URLS.epic,
+                  googlePlayUrl: DOWNLOAD_URLS.googlePlay,
+                  appStoreUrl: DOWNLOAD_URLS.appStore
                 }}
               />
             </JumpInButtonContainer>

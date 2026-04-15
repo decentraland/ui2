@@ -47,8 +47,6 @@ const JumpIn = React.memo((props: JumpInProps) => {
       url: downloadUrl,
       has_launcher: false
     })
-
-    window.open(downloadUrl, '_blank')
   }, [onTrack, downloadUrl])
 
   if (props.variant === 'button') {

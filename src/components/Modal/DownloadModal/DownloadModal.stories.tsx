@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 const EPIC_GAMES_URL = 'https://store.epicgames.com/en-US/p/decentraland-b692fb'
 const GOOGLE_PLAY_URL = 'https://play.google.com/store/apps/details?id=org.decentraland.godotexplorer'
-const APP_STORE_URL = 'https://apps.apple.com/es/app/decentraland/id6478403840'
+const APP_STORE_URL = 'https://apps.apple.com/app/id6478403840'
 
 const meta: Meta<DownloadModalProps> = {
   title: 'Decentraland UI/Download Modal',
