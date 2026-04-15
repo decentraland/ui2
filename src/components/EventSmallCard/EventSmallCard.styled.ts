@@ -9,9 +9,8 @@ const CardContainer = styled(Box, {
 })<{ disableHover?: boolean }>(({ theme, disableHover }) => ({
   display: 'flex',
   flexDirection: 'row',
-  borderRadius: 16,
+  borderRadius: theme.spacing(2),
   overflow: 'hidden',
-  containerType: 'inline-size',
   cursor: 'pointer',
   height: 140,
   minWidth: 300,
@@ -53,22 +52,22 @@ const Thumbnail = styled('img')({
   display: 'block'
 })
 
-const TextBlock = styled(Box)({
+const TextBlock = styled(Box)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'space-between',
   flex: 1,
   minWidth: 0,
-  padding: 12,
+  padding: theme.spacing(1.5),
   position: 'relative'
-})
+}))
 
-const ContentTop = styled(Box)({
+const ContentTop = styled(Box)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
-  gap: 4,
+  gap: theme.spacing(0.5),
   overflow: 'hidden'
-})
+}))
 
 const EventTitle = styled(Typography)(({ theme }) => ({
   fontWeight: 600,
@@ -85,13 +84,9 @@ const EventTitle = styled(Typography)(({ theme }) => ({
 }))
 
 const TitleRow = styled(Box)(({ theme }) => ({
-  display: 'contents',
-  [theme.breakpoints.down('md')]: {
-    display: 'flex',
-    gap: 8,
-    alignItems: 'flex-start',
-    justifyContent: 'space-between'
-  }
+  display: 'flex',
+  gap: theme.spacing(1),
+  alignItems: 'flex-start'
 }))
 
 const MobileAction = styled(Box)(({ theme }) => ({
@@ -102,29 +97,29 @@ const MobileAction = styled(Box)(({ theme }) => ({
   }
 }))
 
-const AvatarImg = styled('img')({
+const AvatarImg = styled('img')(({ theme }) => ({
   width: 19,
   height: 19,
   borderRadius: '50%',
-  border: '1.4px solid rgba(255, 255, 255, 0.3)',
+  border: `1.4px solid ${theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0.15)'}`,
   flexShrink: 0,
   objectFit: 'cover'
-})
+}))
 
-const AvatarFallback = styled(Box)({
+const AvatarFallback = styled(Box)(({ theme }) => ({
   width: 19,
   height: 19,
   borderRadius: '50%',
-  backgroundColor: '#00B453',
-  border: '1.4px solid rgba(255, 255, 255, 0.3)',
+  backgroundColor: theme.palette.success.dark,
+  border: `1.4px solid ${theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0.15)'}`,
   flexShrink: 0
-})
+}))
 
-const CreatorRow = styled(Box)({
+const CreatorRow = styled(Box)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
-  gap: 8
-})
+  gap: theme.spacing(1)
+}))
 
 const CreatorName = styled(Typography)(({ theme }) => ({
   fontSize: 12,
@@ -142,10 +137,10 @@ const CreatorNameHighlight = styled('span')(({ theme }) => ({
 const TimePill = styled(Box)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
-  gap: 8,
+  gap: theme.spacing(1),
   backgroundColor: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.06)',
-  borderRadius: 6,
-  padding: '2px 8px 2px 4px',
+  borderRadius: theme.spacing(0.75),
+  padding: theme.spacing(0.25, 1, 0.25, 0.5),
   height: 24,
   width: 'fit-content',
   maxWidth: '100%',
@@ -162,21 +157,21 @@ const TimeLabel = styled(Typography)(({ theme }) => ({
   textOverflow: 'ellipsis'
 }))
 
-const HoverActions = styled(Box)({
+const HoverActions = styled(Box)(({ theme }) => ({
   position: 'absolute',
   bottom: 0,
   left: 0,
   right: 0,
-  padding: 12,
+  padding: theme.spacing(1.5),
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'flex-start',
-  gap: 4,
+  gap: theme.spacing(0.5),
   opacity: 0,
   transform: 'translateY(8px)',
   transition: 'opacity 0.2s ease, transform 0.2s ease',
   flexWrap: 'nowrap'
-})
+}))
 
 export {
   AvatarFallback,
@@ -187,13 +182,12 @@ export {
   CreatorNameHighlight,
   CreatorRow,
   EventTitle,
-  HOVER_SHADOW,
   HoverActions,
+  MobileAction,
   TextBlock,
   Thumbnail,
   ThumbnailWrapper,
   TimeLabel,
   TimePill,
-  MobileAction,
   TitleRow
 }

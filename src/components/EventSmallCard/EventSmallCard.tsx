@@ -1,4 +1,4 @@
-import { memo } from 'react'
+import { memo, useCallback } from 'react'
 import AccessTimeIcon from '@mui/icons-material/AccessTime'
 import type { EventSmallCardProps } from './EventSmallCard.types'
 import {
@@ -22,8 +22,18 @@ import {
 
 const EventSmallCard = memo(
   ({ image, title, creatorName, creatorAvatarUrl, timeLabel, onClick, disableHover, action, hoverActions }: EventSmallCardProps) => {
+    const handleKeyDown = useCallback(
+      (e: React.KeyboardEvent) => {
+        if ((e.key === 'Enter' || e.key === ' ') && onClick) {
+          e.preventDefault()
+          onClick()
+        }
+      },
+      [onClick]
+    )
+
     return (
-      <CardContainer onClick={onClick} disableHover={disableHover}>
+      <CardContainer onClick={onClick} disableHover={disableHover} role="button" tabIndex={0} onKeyDown={handleKeyDown}>
         {image && (
           <ThumbnailWrapper>
             <Thumbnail src={image} alt={title} loading="lazy" />

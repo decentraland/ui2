@@ -1,12 +1,13 @@
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth'
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone'
-import { Box, IconButton } from '@mui/material'
 import { EventSmallCard } from './EventSmallCard'
+import { ActionIconButton, StoryColumn, StoryContainer, StoryGrid } from './EventSmallCard.stories.styled'
 import sceneThumbnail from '../../Assets/scene-thumbnail.png'
 import type { Meta, StoryObj } from '@storybook/react'
 
-const AVATAR_URL = 'https://profile-images.decentraland.org/entities/bafkreietha7mzh7q3lk4j236vut2znwqhbiapihg46p6yrv3j4lbwlzd34/face.png'
+const AVATAR_URL =
+  'https://profile-images.decentraland.org/entities/bafkreietha7mzh7q3lk4j236vut2znwqhbiapihg46p6yrv3j4lbwlzd34/face.png'
 
 const meta: Meta<typeof EventSmallCard> = {
   title: 'Decentraland UI/Cards/Event Small Card',
@@ -22,7 +23,7 @@ type Story = StoryObj<typeof EventSmallCard>
 
 const Default: Story = {
   render: () => (
-    <Box sx={{ maxWidth: 500 }}>
+    <StoryContainer>
       <EventSmallCard
         image={sceneThumbnail}
         title="Live Music Festival"
@@ -31,37 +32,37 @@ const Default: Story = {
         timeLabel="Starts in 10 mins"
         onClick={() => console.log('clicked')}
       />
-    </Box>
+    </StoryContainer>
   )
 }
 
 const WithoutImage: Story = {
   render: () => (
-    <Box sx={{ maxWidth: 500 }}>
+    <StoryContainer>
       <EventSmallCard title="Event Without Image" creatorName="SomeCreator" timeLabel="Starts in 2 hours" />
-    </Box>
+    </StoryContainer>
   )
 }
 
 const WithoutCreator: Story = {
   render: () => (
-    <Box sx={{ maxWidth: 500 }}>
+    <StoryContainer>
       <EventSmallCard image={sceneThumbnail} title="Event Without Creator" timeLabel="Starts in 30 mins" />
-    </Box>
+    </StoryContainer>
   )
 }
 
 const WithoutTime: Story = {
   render: () => (
-    <Box sx={{ maxWidth: 500 }}>
+    <StoryContainer>
       <EventSmallCard image={sceneThumbnail} title="Event Without Time" creatorName="alelevyyyy" creatorAvatarUrl={AVATAR_URL} />
-    </Box>
+    </StoryContainer>
   )
 }
 
 const LongTitle: Story = {
   render: () => (
-    <Box sx={{ maxWidth: 500 }}>
+    <StoryContainer>
       <EventSmallCard
         image={sceneThumbnail}
         title="This Is A Very Long Event Title That Should Be Truncated After Two Lines Of Text"
@@ -69,13 +70,13 @@ const LongTitle: Story = {
         creatorAvatarUrl={AVATAR_URL}
         timeLabel="Starts in 5 mins"
       />
-    </Box>
+    </StoryContainer>
   )
 }
 
 const WithAction: Story = {
   render: () => (
-    <Box sx={{ maxWidth: 500 }}>
+    <StoryContainer>
       <EventSmallCard
         image={sceneThumbnail}
         title="Event With Action Button"
@@ -83,18 +84,18 @@ const WithAction: Story = {
         creatorAvatarUrl={AVATAR_URL}
         timeLabel="Starts in 15 mins"
         action={
-          <IconButton size="small" sx={{ bgcolor: 'rgba(255,255,255,0.15)', color: '#fff', width: 28, height: 28 }}>
-            <CalendarMonthIcon sx={{ fontSize: 16 }} />
-          </IconButton>
+          <ActionIconButton size="small">
+            <CalendarMonthIcon fontSize="small" />
+          </ActionIconButton>
         }
       />
-    </Box>
+    </StoryContainer>
   )
 }
 
 const WithHoverActions: Story = {
   render: () => (
-    <Box sx={{ maxWidth: 500 }}>
+    <StoryContainer>
       <EventSmallCard
         image={sceneThumbnail}
         title="Hover Me For Actions"
@@ -103,25 +104,25 @@ const WithHoverActions: Story = {
         timeLabel="Starts in 20 mins"
         hoverActions={
           <>
-            <IconButton size="small" sx={{ bgcolor: 'rgba(236,235,237,1)', borderRadius: 1, width: 30, height: 30 }}>
-              <NotificationsNoneIcon sx={{ fontSize: 18 }} />
-            </IconButton>
-            <IconButton size="small" sx={{ bgcolor: 'rgba(236,235,237,1)', borderRadius: 1, width: 30, height: 30 }}>
-              <CalendarMonthIcon sx={{ fontSize: 18 }} />
-            </IconButton>
-            <IconButton size="small" sx={{ bgcolor: 'rgba(236,235,237,1)', borderRadius: 1, width: 30, height: 30 }}>
-              <ContentCopyIcon sx={{ fontSize: 18 }} />
-            </IconButton>
+            <ActionIconButton size="small">
+              <NotificationsNoneIcon fontSize="small" />
+            </ActionIconButton>
+            <ActionIconButton size="small">
+              <CalendarMonthIcon fontSize="small" />
+            </ActionIconButton>
+            <ActionIconButton size="small">
+              <ContentCopyIcon fontSize="small" />
+            </ActionIconButton>
           </>
         }
       />
-    </Box>
+    </StoryContainer>
   )
 }
 
 const TwoCards: Story = {
   render: () => (
-    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, maxWidth: 500 }}>
+    <StoryColumn>
       <EventSmallCard
         image={sceneThumbnail}
         title="First Event"
@@ -135,13 +136,13 @@ const TwoCards: Story = {
         creatorName="SomeOtherCreator"
         timeLabel="Starts in 2 hours"
       />
-    </Box>
+    </StoryColumn>
   )
 }
 
 const Grid: Story = {
   render: () => (
-    <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))', gap: 3 }}>
+    <StoryGrid>
       <EventSmallCard
         image={sceneThumbnail}
         title="Live Music Festival"
@@ -158,21 +159,21 @@ const Grid: Story = {
         timeLabel="Starts in 1 hour"
       />
       <EventSmallCard image={sceneThumbnail} title="Workshop: Building in DCL" creatorName="BuilderPro" timeLabel="Starts in 3 hours" />
-    </Box>
+    </StoryGrid>
   )
 }
 
 const AvatarFallback: Story = {
   render: () => (
-    <Box sx={{ maxWidth: 500 }}>
+    <StoryContainer>
       <EventSmallCard image={sceneThumbnail} title="Creator Without Avatar" creatorName="NoAvatarUser" timeLabel="Starts in 45 mins" />
-    </Box>
+    </StoryContainer>
   )
 }
 
 const DisabledHover: Story = {
   render: () => (
-    <Box sx={{ maxWidth: 500 }}>
+    <StoryContainer>
       <EventSmallCard
         image={sceneThumbnail}
         title="No Hover Effect (Mobile/Tablet)"
@@ -181,12 +182,12 @@ const DisabledHover: Story = {
         timeLabel="Starts in 10 mins"
         disableHover
         action={
-          <IconButton size="small" sx={{ bgcolor: 'rgba(255,255,255,0.15)', color: '#fff', width: 28, height: 28 }}>
-            <CalendarMonthIcon sx={{ fontSize: 16 }} />
-          </IconButton>
+          <ActionIconButton size="small">
+            <CalendarMonthIcon fontSize="small" />
+          </ActionIconButton>
         }
       />
-    </Box>
+    </StoryContainer>
   )
 }
 
