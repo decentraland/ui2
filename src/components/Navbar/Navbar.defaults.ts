@@ -4,7 +4,7 @@ import type { NavbarI18n } from './Navbar.types'
 const DEFAULT_I18N: NavbarI18n = {
   signIn: 'SIGN IN',
   signingIn: 'SIGNING IN...',
-  whatsOn: "What's On",
+  whatsOn: 'Explore',
   shop: 'Shop',
   shopAll: 'Shop All',
   wearables: 'Wearables',

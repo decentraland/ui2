@@ -1,5 +1,6 @@
 import { Box, Card, CardActionArea, CardContent, CardMedia, Chip, Link, Skeleton, keyframes, styled } from '@mui/material'
 import { hexToRgba } from '../../utils/colors'
+import type { EventCardHoverEffect } from './EventCard.types'
 
 const JUMP_IN_BUTTON_HEIGHT = 46
 
@@ -13,9 +14,16 @@ const coinFlip = keyframes({
   '100%': { transform: 'perspective(800px) rotateX(0deg) rotateY(0deg)' }
 })
 
-const EventCardContainer = styled(Card)<{
+const LIFT_GLOW_DARK = '0px 2px 12px 12px rgba(255, 255, 255, 0.3)'
+const LIFT_GLOW_LIGHT = '0px 2px 12px 4px rgba(0, 0, 0, 0.12)'
+
+const EventCardContainer = styled(Card, {
+  shouldForwardProp: prop => prop !== 'withShadow' && prop !== 'hoverEffect' && prop !== 'liftShadowColor'
+})<{
   withShadow?: boolean
-}>(({ theme, withShadow }) => ({
+  hoverEffect?: EventCardHoverEffect
+  liftShadowColor?: string
+}>(({ theme, withShadow, hoverEffect = 'coin', liftShadowColor }) => ({
   borderRadius: theme.spacing(2),
   boxSizing: 'border-box',
   minWidth: 400,
@@ -35,22 +43,34 @@ const EventCardContainer = styled(Card)<{
       duration: theme.transitions.duration.complex
     })
   ],
-
-  [theme.breakpoints.up('sm')]: {
-    '&:hover': {
-      boxShadow: withShadow ? `0px 0px 20px 6px ${hexToRgba('#DD56FF', 0.37)}` : 'none',
-      animation: `${coinFlip} 0.8s ease-in-out`,
-
-      transition: [
-        theme.transitions.create('transform', {
-          duration: theme.transitions.duration.complex
-        }),
-        theme.transitions.create('box-shadow', {
-          duration: theme.transitions.duration.complex
-        })
-      ].join(', ')
+  ...(hoverEffect === 'coin' && {
+    [theme.breakpoints.up('sm')]: {
+      '&:hover': {
+        boxShadow: withShadow ? `0px 0px 20px 6px ${hexToRgba('#DD56FF', 0.37)}` : 'none',
+        animation: `${coinFlip} 0.8s ease-in-out`,
+        transition: [
+          theme.transitions.create('transform', {
+            duration: theme.transitions.duration.complex
+          }),
+          theme.transitions.create('box-shadow', {
+            duration: theme.transitions.duration.complex
+          })
+        ].join(', ')
+      }
     }
-  }
+  }),
+  ...(hoverEffect === 'lift' && {
+    [theme.breakpoints.up('sm')]: {
+      '&:hover': {
+        transform: 'translateY(-4px)',
+        boxShadow: liftShadowColor
+          ? `0px 2px 12px 12px ${liftShadowColor}`
+          : theme.palette.mode === 'dark'
+            ? LIFT_GLOW_DARK
+            : LIFT_GLOW_LIGHT
+      }
+    }
+  })
 }))
 
 const EventCardActionArea = styled(CardActionArea)(({ theme }) => ({
