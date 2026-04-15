@@ -2,9 +2,7 @@ import { DownloadModal } from './DownloadModal'
 import { DownloadModalProps } from './DownloadModal.types'
 import type { Meta, StoryObj } from '@storybook/react'
 
-const EPIC_GAMES_URL = 'https://store.epicgames.com/en-US/p/decentraland-b692fb'
-const GOOGLE_PLAY_URL = 'https://play.google.com/store/apps/details?id=org.decentraland.godotexplorer'
-const APP_STORE_URL = 'https://apps.apple.com/app/id6478403840'
+import { DOWNLOAD_URLS } from '../../../modules/downloadUrls'
 
 const meta: Meta<DownloadModalProps> = {
   title: 'Decentraland UI/Download Modal',
@@ -55,10 +53,10 @@ const Apple: Story = {
   args: {
     open: true,
     os: 'apple',
-    downloadUrl: 'https://explorer-artifacts.decentraland.org/launcher-rust/Decentraland_installer.dmg',
-    epicUrl: EPIC_GAMES_URL,
-    googlePlayUrl: GOOGLE_PLAY_URL,
-    appStoreUrl: APP_STORE_URL
+    downloadUrl: DOWNLOAD_URLS.apple,
+    epicUrl: DOWNLOAD_URLS.epic,
+    googlePlayUrl: DOWNLOAD_URLS.googlePlay,
+    appStoreUrl: DOWNLOAD_URLS.appStore
   }
 }
 
@@ -66,10 +64,10 @@ const Windows: Story = {
   args: {
     open: true,
     os: 'windows',
-    downloadUrl: 'https://explorer-artifacts.decentraland.org/launcher-rust/Decentraland_installer.exe',
-    epicUrl: EPIC_GAMES_URL,
-    googlePlayUrl: GOOGLE_PLAY_URL,
-    appStoreUrl: APP_STORE_URL
+    downloadUrl: DOWNLOAD_URLS.windows,
+    epicUrl: DOWNLOAD_URLS.epic,
+    googlePlayUrl: DOWNLOAD_URLS.googlePlay,
+    appStoreUrl: DOWNLOAD_URLS.appStore
   }
 }
 
@@ -77,10 +75,10 @@ const MobileAndroid: Story = {
   args: {
     open: true,
     os: 'android',
-    downloadUrl: GOOGLE_PLAY_URL,
-    epicUrl: EPIC_GAMES_URL,
-    googlePlayUrl: GOOGLE_PLAY_URL,
-    appStoreUrl: APP_STORE_URL
+    downloadUrl: DOWNLOAD_URLS.googlePlay,
+    epicUrl: DOWNLOAD_URLS.epic,
+    googlePlayUrl: DOWNLOAD_URLS.googlePlay,
+    appStoreUrl: DOWNLOAD_URLS.appStore
   }
 }
 
@@ -88,10 +86,10 @@ const MobileIOS: Story = {
   args: {
     open: true,
     os: 'ios',
-    downloadUrl: APP_STORE_URL,
-    epicUrl: EPIC_GAMES_URL,
-    googlePlayUrl: GOOGLE_PLAY_URL,
-    appStoreUrl: APP_STORE_URL
+    downloadUrl: DOWNLOAD_URLS.appStore,
+    epicUrl: DOWNLOAD_URLS.epic,
+    googlePlayUrl: DOWNLOAD_URLS.googlePlay,
+    appStoreUrl: DOWNLOAD_URLS.appStore
   }
 }
 

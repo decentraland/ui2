@@ -102,7 +102,7 @@ function DownloadModal(props: DownloadModalProps) {
         <ModalTitle>{i18n.title}</ModalTitle>
 
         <DownloadSection>
-          <PrimaryButton href={downloadUrl} onClick={onDownloadClick}>
+          <PrimaryButton href={downloadUrl} target="_blank" rel="noopener noreferrer" onClick={onDownloadClick}>
             {i18n.download}
             {isApple ? (
               <AppleIcon style={{ width: 32, height: 32, color: 'white' }} />
@@ -123,11 +123,11 @@ function DownloadModal(props: DownloadModalProps) {
             </StatItem>
             <StatDivider />
             {isApple ? (
-              <PlatformLink href={WINDOWS_DOWNLOAD_URL}>
+              <PlatformLink href={WINDOWS_DOWNLOAD_URL} target="_blank" rel="noopener noreferrer">
                 <WindowsIcon style={{ width: 24, height: 24, color: 'white' }} />
               </PlatformLink>
             ) : (
-              <PlatformLink href={APPLE_DOWNLOAD_URL}>
+              <PlatformLink href={APPLE_DOWNLOAD_URL} target="_blank" rel="noopener noreferrer">
                 <AppleIcon style={{ width: 20, height: 20, color: 'white' }} />
               </PlatformLink>
             )}
