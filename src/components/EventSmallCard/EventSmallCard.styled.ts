@@ -3,35 +3,6 @@ import { Box, Typography, styled } from '@mui/material'
 const HOVER_SHADOW = '0px 2px 12px 12px rgba(255, 255, 255, 0.3)'
 const HOVER_SHADOW_LIGHT = '0px 2px 12px 4px rgba(0, 0, 0, 0.12)'
 
-const TimePill = styled(Box)(({ theme }) => ({
-  display: 'flex',
-  alignItems: 'center',
-  gap: theme.spacing(1),
-  backgroundColor: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.06)',
-  borderRadius: theme.spacing(0.75),
-  padding: theme.spacing(0.25, 1, 0.25, 0.5),
-  height: 24,
-  width: 'fit-content',
-  maxWidth: '100%',
-  transition: 'opacity 0.2s ease'
-}))
-
-const HoverActions = styled(Box)(({ theme }) => ({
-  position: 'absolute',
-  bottom: 0,
-  left: 0,
-  right: 0,
-  padding: theme.spacing(1.5),
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'flex-start',
-  gap: theme.spacing(0.5),
-  opacity: 0,
-  transform: 'translateY(8px)',
-  transition: 'opacity 0.2s ease, transform 0.2s ease',
-  flexWrap: 'nowrap'
-}))
-
 const EventSmallCardContainer = styled(Box, {
   shouldForwardProp: prop => prop !== 'disableHover'
 })<{ disableHover?: boolean }>(({ theme, disableHover }) => ({
@@ -50,17 +21,17 @@ const EventSmallCardContainer = styled(Box, {
       transform: 'translateY(-4px)',
       boxShadow: theme.palette.mode === 'dark' ? HOVER_SHADOW : HOVER_SHADOW_LIGHT
     },
-    [`&:hover ${HoverActions}`]: {
+    '&:hover [data-role="hover-actions"]': {
       opacity: 1,
       transform: 'translateY(0)'
     },
-    [`&:hover ${TimePill}`]: {
+    '&:hover [data-role="time-pill"]': {
       opacity: 0
     }
   }),
   [theme.breakpoints.down('md')]: {
     minWidth: 0,
-    [`& ${HoverActions}`]: {
+    '& [data-role="hover-actions"]': {
       display: 'none'
     }
   }
@@ -162,6 +133,19 @@ const CreatorNameHighlight = styled('span')(({ theme }) => ({
   color: theme.palette.primary.main
 }))
 
+const TimePill = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  gap: theme.spacing(1),
+  backgroundColor: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.06)',
+  borderRadius: theme.spacing(0.75),
+  padding: theme.spacing(0.25, 1, 0.25, 0.5),
+  height: 24,
+  width: 'fit-content',
+  maxWidth: '100%',
+  transition: 'opacity 0.2s ease'
+}))
+
 const TimeLabel = styled(Typography)(({ theme }) => ({
   fontSize: 14,
   fontWeight: 600,
@@ -170,6 +154,22 @@ const TimeLabel = styled(Typography)(({ theme }) => ({
   whiteSpace: 'nowrap',
   overflow: 'hidden',
   textOverflow: 'ellipsis'
+}))
+
+const HoverActions = styled(Box)(({ theme }) => ({
+  position: 'absolute',
+  bottom: 0,
+  left: 0,
+  right: 0,
+  padding: theme.spacing(1.5),
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'flex-start',
+  gap: theme.spacing(0.5),
+  opacity: 0,
+  transform: 'translateY(8px)',
+  transition: 'opacity 0.2s ease, transform 0.2s ease',
+  flexWrap: 'nowrap'
 }))
 
 export {

@@ -59,12 +59,12 @@ const EventSmallCard = memo(
             )}
           </ContentTop>
           {timeLabel && (
-            <TimePill>
+            <TimePill data-role="time-pill">
               <AccessTimeIcon sx={{ fontSize: 20, color: 'inherit' }} />
               <TimeLabel>{timeLabel}</TimeLabel>
             </TimePill>
           )}
-          {hoverActions && <HoverActions>{hoverActions}</HoverActions>}
+          {hoverActions && <HoverActions data-role="hover-actions">{hoverActions}</HoverActions>}
         </TextBlock>
       </EventSmallCardContainer>
     )
