@@ -4,7 +4,10 @@ import { AppleIcon } from './icons/AppleIcon'
 import { DclIcon } from './icons/DclIcon'
 import { VerifiedIcon } from './icons/VerifiedIcon'
 import { WindowsIcon } from './icons/WindowsIcon'
+import appStoreBadge from '../../../Assets/app-store.svg'
+import appStoreButton from '../../../Assets/download-on-the-app-store.svg'
 import googlePlayBadge from '../../../Assets/get-in-on-google-play.svg'
+import googlePlayButton from '../../../Assets/get-in-on-play-store-button.svg'
 import epicLogoBlack from '../../../Assets/logo-epic-black.svg'
 import { DownloadModalI18n, DownloadModalProps } from './DownloadModal.types'
 import {
@@ -14,6 +17,7 @@ import {
   DividerText,
   DownloadSection,
   EpicButton,
+  MobileCta,
   ModalContainer,
   ModalTitle,
   PlatformLink,
@@ -22,11 +26,13 @@ import {
   StatItem,
   StatsRow,
   StoreBadge,
+  StoreBadgesRow,
   StyledModal
 } from './DownloadModal.styled'
 
 const WINDOWS_DOWNLOAD_URL = 'https://decentraland.org/download_success?os=Windows'
 const APPLE_DOWNLOAD_URL = 'https://decentraland.org/download_success?os=macOS'
+const APP_STORE_URL = 'https://apps.apple.com/es/app/decentraland/id6478403840'
 
 const DEFAULT_I18N: DownloadModalI18n = {
   title: 'Download Decentraland to Jump In',
@@ -37,7 +43,7 @@ const DEFAULT_I18N: DownloadModalI18n = {
 }
 
 function DownloadModal(props: DownloadModalProps) {
-  const { os, downloadUrl, epicUrl, googlePlayUrl, i18n: i18nPartial, open, onClose, onDownloadClick, onEpicClick } = props
+  const { os, downloadUrl, epicUrl, googlePlayUrl, appStoreUrl, i18n: i18nPartial, open, onClose, onDownloadClick, onEpicClick } = props
 
   const i18n = useMemo(() => ({ ...DEFAULT_I18N, ...i18nPartial }), [i18nPartial])
 
@@ -48,7 +54,41 @@ function DownloadModal(props: DownloadModalProps) {
     [onClose]
   )
 
-  const isApple = os === 'apple'
+  const isMobile = os === 'android' || os === 'ios'
+  const isApple = os === 'apple' || os === 'ios'
+
+  if (isMobile) {
+    const storeUrl = os === 'ios' ? (appStoreUrl ?? APP_STORE_URL) : googlePlayUrl
+    const storeImage = os === 'ios' ? appStoreButton : googlePlayButton
+    const storeAlt = os === 'ios' ? 'Download on the App Store' : 'Get it on Google Play'
+
+    return (
+      <StyledModal open={open} onClose={handleClose}>
+        <ModalContainer mobile>
+          <CloseButton onClick={onClose} aria-label="Close">
+            <CloseIcon />
+          </CloseButton>
+
+          <DclIcon />
+
+          <ModalTitle>{i18n.title}</ModalTitle>
+
+          <DownloadSection>
+            <MobileCta href={storeUrl} target="_blank" rel="noopener noreferrer" onClick={onDownloadClick}>
+              <img src={storeImage} alt={storeAlt} />
+            </MobileCta>
+
+            <StatsRow>
+              <StatItem>
+                <VerifiedIcon />
+                {i18n.totalDownloads}
+              </StatItem>
+            </StatsRow>
+          </DownloadSection>
+        </ModalContainer>
+      </StyledModal>
+    )
+  }
 
   return (
     <StyledModal open={open} onClose={handleClose}>
@@ -99,9 +139,14 @@ function DownloadModal(props: DownloadModalProps) {
             <DividerLine />
           </DividerRow>
 
-          <StoreBadge href={googlePlayUrl} target="_blank" rel="noopener noreferrer">
-            <img src={googlePlayBadge} alt="Get it on Google Play" />
-          </StoreBadge>
+          <StoreBadgesRow>
+            <StoreBadge href={appStoreUrl ?? APP_STORE_URL} target="_blank" rel="noopener noreferrer">
+              <img src={appStoreBadge} alt="Download on the App Store" />
+            </StoreBadge>
+            <StoreBadge href={googlePlayUrl} target="_blank" rel="noopener noreferrer">
+              <img src={googlePlayBadge} alt="Get it on Google Play" />
+            </StoreBadge>
+          </StoreBadgesRow>
         </DownloadSection>
       </ModalContainer>
     </StyledModal>

@@ -10,8 +10,10 @@ const StyledModal = styled(MuiModal)({
   justifyContent: 'center'
 })
 
-const ModalContainer = styled(Box)(({ theme }) => ({
-  width: 595,
+const ModalContainer = styled(Box, {
+  shouldForwardProp: prop => prop !== 'mobile'
+})<{ mobile?: boolean }>(({ theme, mobile }) => ({
+  width: mobile ? 358 : 595,
   background: MODAL_GRADIENT,
   borderRadius: 16,
   position: 'relative',
@@ -20,7 +22,7 @@ const ModalContainer = styled(Box)(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'center',
   gap: 48,
-  padding: '48px 105px',
+  padding: mobile ? '48px 24px' : '48px 105px',
   outline: 'none',
   [theme.breakpoints.down('sm')]: {
     width: '100vw',
@@ -184,6 +186,34 @@ const PlatformLink = styled('a')({
   }
 })
 
+const StoreBadgesRow = styled(Box)({
+  display: 'flex',
+  alignItems: 'center',
+  gap: 22,
+  justifyContent: 'center'
+})
+
+const MobileCta = styled('a')({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  width: '100%',
+  height: 64,
+  backgroundColor: '#FF2D55',
+  borderRadius: 12,
+  cursor: 'pointer',
+  textDecoration: 'none',
+  padding: '12px 20px',
+  boxSizing: 'border-box',
+  '& img': {
+    height: 40,
+    width: 'auto'
+  },
+  '&:hover': {
+    opacity: 0.9
+  }
+})
+
 export {
   CloseButton,
   DividerLine,
@@ -191,6 +221,7 @@ export {
   DividerText,
   DownloadSection,
   EpicButton,
+  MobileCta,
   ModalContainer,
   ModalTitle,
   PlatformLink,
@@ -199,5 +230,6 @@ export {
   StatItem,
   StatsRow,
   StoreBadge,
+  StoreBadgesRow,
   StyledModal
 }
