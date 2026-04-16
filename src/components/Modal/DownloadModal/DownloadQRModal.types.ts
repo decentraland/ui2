@@ -8,10 +8,10 @@ type DownloadQRModalProps = {
   open: boolean
   /** Called when the modal is closed */
   onClose: () => void
-  /** The platform — drives the title text */
+  /** The platform — drives the title text and default QR code */
   os: 'android' | 'ios'
-  /** QR code image URL (PNG/SVG/data URI) pointing to the store listing */
-  qrImageUrl: string
+  /** QR code image URL override. If omitted, uses the built-in QR for the given OS. */
+  qrImageUrl?: string
   /** Optional logo to overlay at the center of the QR code */
   logoUrl?: string
   /** i18n strings — all have English defaults */

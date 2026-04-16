@@ -3,9 +3,16 @@ import CloseIcon from '@mui/icons-material/Close'
 import { DclIcon } from './icons/DclIcon'
 import { VerifiedIcon } from './icons/VerifiedIcon'
 import dclLogoQr from '../../../Assets/dcl-logo-qr.svg'
+import qrAndroid from '../../../Assets/qr-android.svg'
+import qrIos from '../../../Assets/qr-ios.svg'
 import { DownloadQRModalI18n, DownloadQRModalProps } from './DownloadQRModal.types'
 import { CloseButton, DownloadSection, ModalContainer, ModalTitle, StatItem, StatsRow, StyledModal } from './DownloadModal.styled'
 import { QRContainer, QRImage, QRLogo } from './DownloadQRModal.styled'
+
+const DEFAULT_QR: Record<string, string> = {
+  android: qrAndroid,
+  ios: qrIos
+}
 
 const DEFAULT_I18N: DownloadQRModalI18n = {
   title: 'Download Decentraland App for {os}',
@@ -15,6 +22,7 @@ const DEFAULT_I18N: DownloadQRModalI18n = {
 function DownloadQRModal(props: DownloadQRModalProps) {
   const { os, qrImageUrl, logoUrl = dclLogoQr, i18n: i18nPartial, open, onClose } = props
 
+  const resolvedQr = qrImageUrl ?? DEFAULT_QR[os] ?? ''
   const i18n = useMemo(() => ({ ...DEFAULT_I18N, ...i18nPartial }), [i18nPartial])
 
   const handleClose = useCallback(
@@ -40,7 +48,7 @@ function DownloadQRModal(props: DownloadQRModalProps) {
 
         <DownloadSection>
           <QRContainer>
-            <QRImage src={qrImageUrl} alt={`QR code to download Decentraland for ${osLabel}`} />
+            <QRImage src={resolvedQr} alt={`QR code to download Decentraland for ${osLabel}`} />
             {logoUrl && <QRLogo src={logoUrl} alt="Decentraland" />}
           </QRContainer>
 
