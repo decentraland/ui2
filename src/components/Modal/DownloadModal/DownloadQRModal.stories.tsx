@@ -1,6 +1,4 @@
 import { DownloadQRModal } from './DownloadQRModal'
-import qrAndroid from '../../../Assets/qr-android.svg'
-import qrIos from '../../../Assets/qr-ios.svg'
 import { DownloadQRModalProps } from './DownloadQRModal.types'
 import type { Meta, StoryObj } from '@storybook/react'
 
@@ -15,7 +13,7 @@ const meta: Meta<DownloadQRModalProps> = {
         component:
           'Modal that displays a QR code linking to the App Store or Google Play store. ' +
           'Used on desktop to let users scan and download the mobile app. ' +
-          'The QR images are static SVGs — regenerate with `node scripts/generate-qr-codes.cjs` if URLs change. ' +
+          'QR images are built-in for iOS and Android — no need to pass `qrImageUrl` unless overriding. ' +
           'A DCL logo is overlaid at the center of the QR by default (`dcl-logo-qr.svg`).'
       },
       story: {
@@ -28,10 +26,10 @@ const meta: Meta<DownloadQRModalProps> = {
     os: {
       control: 'radio',
       options: ['android', 'ios'],
-      description: 'Target platform — drives the title text'
+      description: 'Target platform — drives the title text and default QR code'
     },
     qrImageUrl: {
-      description: 'QR code image URL (static SVG, PNG, or data URI)'
+      description: 'Optional QR code image URL override. Built-in QRs are used by default.'
     },
     logoUrl: {
       description: 'Optional logo overlaid at the center of the QR. Defaults to DCL logo.'
@@ -47,8 +45,7 @@ type Story = StoryObj<typeof meta>
 const Android: Story = {
   args: {
     open: true,
-    os: 'android',
-    qrImageUrl: qrAndroid
+    os: 'android'
   }
 }
 
@@ -56,8 +53,7 @@ const IOS: Story = {
   name: 'iOS',
   args: {
     open: true,
-    os: 'ios',
-    qrImageUrl: qrIos
+    os: 'ios'
   }
 }
 
@@ -65,7 +61,6 @@ const WithoutLogo: Story = {
   args: {
     open: true,
     os: 'android',
-    qrImageUrl: qrAndroid,
     logoUrl: undefined
   }
 }
