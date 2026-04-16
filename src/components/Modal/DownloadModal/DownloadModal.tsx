@@ -33,7 +33,7 @@ import {
 
 const DEFAULT_I18N: DownloadModalI18n = {
   title: 'Download Decentraland to Jump In',
-  download: 'DOWNLOAD',
+  download: 'DOWNLOAD FOR',
   downloadOn: 'DOWNLOAD ON',
   totalDownloads: 'Total Downloads: +250K',
   alsoAvailableOn: 'Also Available on'
