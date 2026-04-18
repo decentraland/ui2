@@ -93,23 +93,13 @@ const EventMediaContainer = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#3a3a3a' : '#e0e0e0'
 }))
 
-const EventCardMedia = styled(CardMedia)<{ imageHeight?: number; hoverHeight?: number }>(
-  ({ theme, imageHeight = 329, hoverHeight = 271 }) => ({
-    height: imageHeight,
-    width: '100%',
-    borderRadius: `${theme.spacing(2)} ${theme.spacing(2)} 0 0`,
-    backgroundSize: 'cover',
-    backgroundColor: theme.palette.mode === 'dark' ? '#2a2435' : '#e8e8e8',
-    [theme.breakpoints.up('sm')]: {
-      transition: theme.transitions.create('height', {
-        duration: theme.transitions.duration.complex
-      }),
-      '.MuiCardActionArea-root:hover &': {
-        height: hoverHeight
-      }
-    }
-  })
-)
+const EventCardMedia = styled(CardMedia)<{ imageHeight?: number }>(({ theme, imageHeight = 329 }) => ({
+  height: imageHeight,
+  width: '100%',
+  borderRadius: `${theme.spacing(2)} ${theme.spacing(2)} 0 0`,
+  backgroundSize: 'cover',
+  backgroundColor: theme.palette.mode === 'dark' ? '#2a2435' : '#e8e8e8'
+}))
 
 const EventCardContent = styled(CardContent)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? 'rgba(0, 0, 0, 0.4)' : 'rgba(255, 255, 255, 0.4)',
@@ -229,18 +219,7 @@ const AvatarAndLocationRow = styled(Box)(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'space-between',
   marginTop: 'auto',
-  minWidth: 0,
-  [theme.breakpoints.up('sm')]: {
-    transition: theme.transitions.create('margin-bottom', {
-      duration: theme.transitions.duration.complex
-    }),
-    '.MuiCardActionArea-root:hover &': {
-      marginBottom: `calc(${JUMP_IN_BUTTON_HEIGHT}px + ${theme.spacing(2)})`
-    }
-  },
-  [theme.breakpoints.down('sm')]: {
-    marginBottom: 0
-  }
+  minWidth: 0
 }))
 
 const LocationChipContainer = styled(Box)(({ theme }) => ({
