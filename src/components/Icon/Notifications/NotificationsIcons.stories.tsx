@@ -4,6 +4,7 @@ import { BidAcceptedIcon } from './BidAcceptedIcon'
 import { BidReceivedIcon } from './BidReceivedIcon'
 import { CoauthorIcon } from './CoauthorIcon'
 import { EmptyInboxIcon } from './EmptyInboxIcon'
+import { EventApprovedIcon } from './EventApprovedIcon'
 import { EventCancelledIcon } from './EventCancelledIcon'
 import { EventStartedIcon } from './EventStartedIcon'
 import { EventStartsSoonIcon } from './EventStartsSoonIcon'
@@ -65,6 +66,10 @@ const Coauthor: Story = {
 
 const EmptyInbox: Story = {
   render: () => <EmptyInboxIcon />
+}
+
+const EventApproved: Story = {
+  render: () => <EventApprovedIcon />
 }
 
 const EventCancelled: Story = {
@@ -184,6 +189,7 @@ const AllNotificationsIcons: Story = {
       <BidReceivedIcon />
       <CoauthorIcon />
       <EmptyInboxIcon />
+      <EventApprovedIcon />
       <EventCancelledIcon />
       <EventStartedIcon />
       <EventStartsSoonIcon />
@@ -224,6 +230,7 @@ const LargeNotificationsIcons: Story = {
       <BidReceivedIcon fontSize="large" />
       <CoauthorIcon fontSize="large" />
       <EmptyInboxIcon fontSize="large" />
+      <EventApprovedIcon fontSize="large" />
       <EventCancelledIcon fontSize="large" />
       <EventStartedIcon fontSize="large" />
       <EventStartsSoonIcon fontSize="large" />
@@ -264,6 +271,7 @@ export {
   BidReceived,
   Coauthor,
   EmptyInbox,
+  EventApproved,
   EventCancelled,
   EventStarted,
   EventStartsSoon,

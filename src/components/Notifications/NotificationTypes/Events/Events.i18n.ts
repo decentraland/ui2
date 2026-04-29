@@ -64,4 +64,52 @@ const eventStartsSoonI18n = {
   }
 } as const
 
-export { eventStartedI18n, eventStartsSoonI18n }
+const eventApprovedI18n = {
+  en: {
+    description: {
+      start: 'Your event',
+      end: 'has been successfully approved!'
+    },
+    title: 'Event Approved'
+  },
+  es: {
+    description: {
+      start: 'Tu evento',
+      end: 'ha sido aprobado exitosamente!'
+    },
+    title: 'Evento aprobado'
+  },
+  zh: {
+    description: {
+      start: '您的活动',
+      end: '已成功批准！'
+    },
+    title: '活动已批准'
+  }
+} as const
+
+const eventRejectedI18n = {
+  en: {
+    description: {
+      start: 'Your event',
+      end: 'has been rejected, please update it with the required changes.'
+    },
+    title: 'Event Rejected'
+  },
+  es: {
+    description: {
+      start: 'Tu evento',
+      end: 'ha sido rechazado, por favor actualízalo con los cambios requeridos.'
+    },
+    title: 'Evento rechazado'
+  },
+  zh: {
+    description: {
+      start: '您的活动',
+      end: '已被拒绝，请根据所需的更改进行更新。'
+    },
+    title: '活动已拒绝'
+  }
+} as const
+
+export { eventStartedI18n, eventStartsSoonI18n, eventApprovedI18n, eventRejectedI18n }

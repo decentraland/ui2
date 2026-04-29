@@ -14,6 +14,8 @@ import {
   creditsDoNotMissOutNotificationData,
   creditsExpireIn24HrsReminderNotificationData,
   creditsExpireSoonReminderNotificationData,
+  eventApprovedNotificationData,
+  eventRejectedNotificationData,
   eventStartedNotificationData,
   eventStartsSoonFutureStartNotificationData,
   eventStartsSoonPastStartNotificationData,
@@ -132,6 +134,8 @@ const EventsNotifications: Story = {
   name: 'Events Notifications',
   args: {
     items: [
+      eventApprovedNotificationData,
+      eventRejectedNotificationData,
       eventStartedNotificationData,
       { ...eventStartsSoonFutureStartNotificationData, read: false },
       eventStartsSoonPastStartNotificationData
