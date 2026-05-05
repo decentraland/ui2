@@ -57,4 +57,37 @@ const CreditsTooltip = styled('div')({
   zIndex: 10
 })
 
-export { CreditsBalanceButton, CreditsTooltip }
+const NavbarManaBalancesGroup = styled('div')({
+  display: 'flex',
+  alignItems: 'center',
+  gap: 12,
+  flexShrink: 0
+})
+
+const NavbarManaBalanceButton = styled('button')<{ clickable?: boolean }>(({ clickable }) => ({
+  all: 'unset',
+  display: 'flex',
+  alignItems: 'center',
+  gap: 4,
+  cursor: clickable ? 'pointer' : 'default',
+  color: colors.neutral.softWhite,
+  fontFamily: 'Inter, Helvetica, Arial, sans-serif',
+  fontWeight: 600,
+  fontSize: 16,
+  letterSpacing: -0.8,
+  flexShrink: 0,
+  transition: 'opacity 0.15s ease',
+  '&:hover': clickable ? { opacity: 0.8 } : undefined,
+  '&:focus-visible': {
+    outline: `2px solid ${colors.base.primary}`,
+    outlineOffset: 2,
+    borderRadius: 4
+  },
+  '& svg': {
+    width: 20,
+    height: 20,
+    flexShrink: 0
+  }
+}))
+
+export { CreditsBalanceButton, CreditsTooltip, NavbarManaBalanceButton, NavbarManaBalancesGroup }

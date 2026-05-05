@@ -217,6 +217,47 @@ const MarketplaceExample: Story = {
   }
 }
 
+const MarketplaceWithManaInNavbar: Story = {
+  args: {
+    isSignedIn: true,
+    address: '0xe3fc7040653768efb2941a6c26fdb868ed36ca99',
+    avatar: exampleAvatar,
+    selectedChain: ChainId.ETHEREUM_MAINNET,
+    chains: [
+      ChainId.ETHEREUM_MAINNET,
+      ChainId.MATIC_MAINNET,
+      ChainId.ARBITRUM_MAINNET,
+      ChainId.OPTIMISM_MAINNET,
+      ChainId.BSC_MAINNET,
+      ChainId.AVALANCHE_MAINNET,
+      ChainId.FANTOM_MAINNET
+    ],
+    onSelectChain: (chain: ChainId) => console.log('Selected chain', chain),
+    manaBalances: { [Network.ETHEREUM]: 1234, [Network.MATIC]: 5678 },
+    onClickBalance: (network: Network) => console.log('Clicked balance', network),
+    showManaBalancesInNavbar: true,
+    creditsBalance: { balance: 4200, expiresAt: Date.now() + 86400000 * 30 },
+    onClickCredits: () => console.log('Credits clicked'),
+    onClickSignIn: () => console.log('Sign In clicked'),
+    onClickSignOut: () => console.log('Sign Out clicked')
+  },
+  render: args => {
+    const [notifOpen, setNotifOpen] = useState(false)
+    return (
+      <>
+        <Navbar
+          {...args}
+          notificationSlot={<NotificationDemo isOpen={notifOpen} onToggle={() => setNotifOpen(prev => !prev)} />}
+          onToggleUserCard={isOpen => {
+            if (isOpen) setNotifOpen(false)
+          }}
+        />
+        <PageContent />
+      </>
+    )
+  }
+}
+
 const CustomI18n: Story = {
   args: {
     isSignedIn: false,
@@ -238,4 +279,4 @@ const CustomI18n: Story = {
   )
 }
 
-export { SignedOut, SignedIn, WithNotifications, MarketplaceExample, CustomI18n }
+export { SignedOut, SignedIn, WithNotifications, MarketplaceExample, MarketplaceWithManaInNavbar, CustomI18n }

@@ -1,13 +1,14 @@
 import { memo, useCallback, useEffect, useRef, useState } from 'react'
+import { Network } from '@dcl/schemas/dist/dapps/network'
 import { formatBalance } from './formatBalance'
-import { CloseIcon, DclLogo, HamburgerIcon } from './icons'
+import { CloseIcon, DclLogo, HamburgerIcon, ManaEthInlineIcon, ManaMaticInlineIcon } from './icons'
 import { MobileMenu } from './MobileMenu'
 import { DEFAULT_I18N } from './Navbar.defaults'
 import { NavLinks } from './NavLinks'
 import { UserCardPanel } from './UserCardPanel'
 import { CreditsIcon } from '../Icon/CreditsIcon'
 import type { NavbarI18n, NavbarProps } from './Navbar.types'
-import { CreditsBalanceButton, CreditsTooltip } from './Credits.styled'
+import { CreditsBalanceButton, CreditsTooltip, NavbarManaBalanceButton, NavbarManaBalancesGroup } from './Credits.styled'
 import { HamburgerButton, LogoLink, NavbarLeft, NavbarRight, NavbarRightGroup, NavbarRoot, SignInButton } from './Navbar.styled'
 import type { DropdownSection } from './Navbar.defaults'
 
@@ -30,6 +31,7 @@ const Navbar = memo(function Navbar({
   onSelectChain,
   manaBalances,
   onClickBalance,
+  showManaBalancesInNavbar = false,
   creditsBalance,
   onClickCredits,
   activePage,
@@ -174,6 +176,31 @@ const Navbar = memo(function Navbar({
                 </CreditsBalanceButton>
               )}
 
+              {showManaBalancesInNavbar && manaBalances && (
+                <NavbarManaBalancesGroup>
+                  {manaBalances.ETHEREUM !== undefined && (
+                    <NavbarManaBalanceButton
+                      clickable={!!onClickBalance}
+                      onClick={onClickBalance ? () => onClickBalance(Network.ETHEREUM) : undefined}
+                      aria-label={`${formatBalance(manaBalances.ETHEREUM)} MANA on Ethereum`}
+                    >
+                      <ManaEthInlineIcon />
+                      {formatBalance(manaBalances.ETHEREUM)}
+                    </NavbarManaBalanceButton>
+                  )}
+                  {manaBalances.MATIC !== undefined && (
+                    <NavbarManaBalanceButton
+                      clickable={!!onClickBalance}
+                      onClick={onClickBalance ? () => onClickBalance(Network.MATIC) : undefined}
+                      aria-label={`${formatBalance(manaBalances.MATIC)} MANA on Polygon`}
+                    >
+                      <ManaMaticInlineIcon />
+                      {formatBalance(manaBalances.MATIC)}
+                    </NavbarManaBalanceButton>
+                  )}
+                </NavbarManaBalancesGroup>
+              )}
+
               {notificationSlot && (
                 <div
                   onClick={() => {
@@ -195,8 +222,8 @@ const Navbar = memo(function Navbar({
                 selectedChain={selectedChain}
                 chains={chains}
                 onSelectChain={onSelectChain}
-                manaBalances={manaBalances}
-                onClickBalance={onClickBalance}
+                manaBalances={showManaBalancesInNavbar ? undefined : manaBalances}
+                onClickBalance={showManaBalancesInNavbar ? undefined : onClickBalance}
                 i18n={i18n}
               />
             </NavbarRightGroup>

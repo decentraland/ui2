@@ -50,6 +50,9 @@ type NavbarProps = {
   manaBalances?: Partial<Record<Network, number>>
   /** Called when the user clicks a balance entry */
   onClickBalance?: (network: Network) => void
+  /** When true, MANA balances are rendered in the navbar (next to credits)
+   *  instead of inside the user card panel. */
+  showManaBalancesInNavbar?: boolean
   /** Credits balance to display in the navbar top bar */
   creditsBalance?: { balance: number; expiresAt: number }
   /** Called when the user clicks the credits balance */
