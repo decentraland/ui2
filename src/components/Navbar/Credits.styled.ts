@@ -30,8 +30,8 @@ const CreditsBalanceButton = styled('button')({
     flexShrink: 0
   },
   [MOBILE_BREAKPOINT]: {
-    fontSize: 14,
-    letterSpacing: -0.7,
+    fontSize: 12,
+    letterSpacing: -0.6,
     '&& svg': {
       width: 14,
       height: 14
@@ -100,8 +100,8 @@ const NavbarManaBalanceButton = styled('button')<{ clickable?: boolean }>(({ cli
   },
   [MOBILE_BREAKPOINT]: {
     gap: 2,
-    fontSize: 14,
-    letterSpacing: -0.7,
+    fontSize: 12,
+    letterSpacing: -0.6,
     '& svg': {
       width: 16,
       height: 16,
