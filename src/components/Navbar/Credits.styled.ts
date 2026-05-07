@@ -103,8 +103,8 @@ const NavbarManaBalanceButton = styled('button')<{ clickable?: boolean }>(({ cli
     fontSize: 12,
     letterSpacing: -0.6,
     '& svg': {
-      width: 16,
-      height: 16,
+      width: 14,
+      height: 14,
       flexShrink: 0
     }
   },
