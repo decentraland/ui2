@@ -1,6 +1,6 @@
 import { memo } from 'react'
 
-/** Apple logo — same SVG as landing-site/src/images/apple-logo.svg */
+/** Apple logo — same SVG as sites/src/images/apple-logo.svg */
 const AppleIcon = memo(function AppleIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="-52.01 0 560.035 560.035" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" {...props}>

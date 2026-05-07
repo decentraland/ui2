@@ -1,6 +1,6 @@
 import { memo } from 'react'
 
-/** Windows logo — same SVG as landing-site/src/images/microsoft-logo.svg */
+/** Windows logo — same SVG as sites/src/images/microsoft-logo.svg */
 const WindowsIcon = memo(function WindowsIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg width="24" height="24" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
