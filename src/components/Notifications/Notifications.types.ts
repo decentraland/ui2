@@ -293,7 +293,28 @@ type EventsStartsSoonNotificationProps = RawDecentralandNotification<
 
 type EventsStartedNotificationProps = RawDecentralandNotification<NotificationType.EVENTS_STARTED, CommonEventsMetadataProps>
 
-type EventsNotificationsProps = EventsStartsSoonNotificationProps | EventsStartedNotificationProps
+type EventApprovedMetadataProps = {
+  image: string
+  link: string
+  title: string
+  myHangouts: string
+}
+
+type EventRejectedMetadataProps = {
+  image: string
+  title: string
+  myHangouts: string
+}
+
+type EventApprovedNotificationProps = RawDecentralandNotification<NotificationType.EVENT_APPROVED, EventApprovedMetadataProps>
+
+type EventRejectedNotificationProps = RawDecentralandNotification<NotificationType.EVENT_REJECTED, EventRejectedMetadataProps>
+
+type EventsNotificationsProps =
+  | EventsStartsSoonNotificationProps
+  | EventsStartedNotificationProps
+  | EventApprovedNotificationProps
+  | EventRejectedNotificationProps
 
 // Streaming Notifications
 
@@ -421,6 +442,8 @@ export type {
   CampaignGasPriceHigherThanExpectedNotificationProps,
   EventsStartsSoonNotificationProps,
   EventsStartedNotificationProps,
+  EventApprovedNotificationProps,
+  EventRejectedNotificationProps,
   StreamingKeyResetNotificationProps,
   StreamingKeyRevokeNotificationProps,
   StreamingKeyExpiredNotificationProps,
