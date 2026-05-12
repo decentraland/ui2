@@ -13,7 +13,8 @@ import { BidAcceptedIcon } from './Notifications/BidAcceptedIcon'
 import { BidReceivedIcon } from './Notifications/BidReceivedIcon'
 import { CoauthorIcon } from './Notifications/CoauthorIcon'
 import { EmptyInboxIcon } from './Notifications/EmptyInboxIcon'
-import { EventCancelledIcon } from './Notifications/EventCancelledIcon'
+import { EventApprovedIcon } from './Notifications/EventApprovedIcon'
+import { EventRejectedIcon } from './Notifications/EventRejectedIcon'
 import { EventStartedIcon } from './Notifications/EventStartedIcon'
 import { EventStartsSoonIcon } from './Notifications/EventStartsSoonIcon'
 import { GiftIcon } from './Notifications/GiftIcon'
@@ -84,7 +85,8 @@ export {
   CoauthorIcon,
   EarringIcon,
   EmptyInboxIcon,
-  EventCancelledIcon,
+  EventApprovedIcon,
+  EventRejectedIcon,
   EventStartedIcon,
   EventStartsSoonIcon,
   EyebrowsIcon,
