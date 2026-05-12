@@ -5,7 +5,7 @@ import { BidReceivedIcon } from './BidReceivedIcon'
 import { CoauthorIcon } from './CoauthorIcon'
 import { EmptyInboxIcon } from './EmptyInboxIcon'
 import { EventApprovedIcon } from './EventApprovedIcon'
-import { EventCancelledIcon } from './EventCancelledIcon'
+import { EventRejectedIcon } from './EventRejectedIcon'
 import { EventStartedIcon } from './EventStartedIcon'
 import { EventStartsSoonIcon } from './EventStartsSoonIcon'
 import { GovernanceIcon } from './GovernanceIcon'
@@ -72,8 +72,8 @@ const EventApproved: Story = {
   render: () => <EventApprovedIcon />
 }
 
-const EventCancelled: Story = {
-  render: () => <EventCancelledIcon />
+const EventRejected: Story = {
+  render: () => <EventRejectedIcon />
 }
 
 const EventStarted: Story = {
@@ -190,7 +190,7 @@ const AllNotificationsIcons: Story = {
       <CoauthorIcon />
       <EmptyInboxIcon />
       <EventApprovedIcon />
-      <EventCancelledIcon />
+      <EventRejectedIcon />
       <EventStartedIcon />
       <EventStartsSoonIcon />
       <GovernanceIcon />
@@ -231,7 +231,7 @@ const LargeNotificationsIcons: Story = {
       <CoauthorIcon fontSize="large" />
       <EmptyInboxIcon fontSize="large" />
       <EventApprovedIcon fontSize="large" />
-      <EventCancelledIcon fontSize="large" />
+      <EventRejectedIcon fontSize="large" />
       <EventStartedIcon fontSize="large" />
       <EventStartsSoonIcon fontSize="large" />
       <GovernanceIcon fontSize="large" />
@@ -272,7 +272,7 @@ export {
   Coauthor,
   EmptyInbox,
   EventApproved,
-  EventCancelled,
+  EventRejected,
   EventStarted,
   EventStartsSoon,
   Governance,

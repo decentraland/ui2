@@ -1,7 +1,7 @@
 import React from 'react'
 import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon'
 
-const EventCancelledIcon = React.memo((props: SvgIconProps) => {
+const EventRejectedIcon = React.memo((props: SvgIconProps) => {
   return (
     <SvgIcon {...props}>
       <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
@@ -27,4 +27,4 @@ const EventCancelledIcon = React.memo((props: SvgIconProps) => {
   )
 })
 
-export { EventCancelledIcon }
+export { EventRejectedIcon }

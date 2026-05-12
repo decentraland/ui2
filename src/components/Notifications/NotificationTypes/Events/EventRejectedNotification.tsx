@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from '@mui/material'
 import { eventRejectedI18n } from './Events.i18n'
-import { EventCancelledIcon } from '../../../Icon'
+import { EventRejectedIcon } from '../../../Icon'
 import { NotificationItemText } from '../../NotificationItem'
 import { CommonNotificationProps, EventRejectedNotificationProps } from '../../Notifications.types'
 
@@ -10,7 +10,7 @@ const EventRejectedNotification = React.memo((props: CommonNotificationProps<Eve
   const { title, myHangouts } = notification.metadata
   return (
     <NotificationItemText
-      image={<EventCancelledIcon />}
+      image={<EventRejectedIcon />}
       locale={locale}
       notification={notification}
       title={eventRejectedI18n[locale].title}
