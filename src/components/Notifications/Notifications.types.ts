@@ -297,12 +297,15 @@ type EventApprovedMetadataProps = {
   image: string
   link: string
   title: string
+  description?: string
   myHangouts: string
 }
 
 type EventRejectedMetadataProps = {
   image: string
   title: string
+  description?: string
+  reason?: string
   myHangouts: string
 }
 
