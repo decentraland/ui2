@@ -20,9 +20,10 @@ set -u
 
 if ! command -v jq >/dev/null 2>&1; then
   marker="${TMPDIR:-/tmp}/.claude-ui2-jq-warned-$PPID"
-  if [ ! -f "$marker" ]; then
+  # mkdir is atomic and fails if the path already exists OR is a symlink, so it doubles as a
+  # one-shot gate that's safe against symlink-attack truncation of the marker target.
+  if mkdir "$marker" 2>/dev/null; then
     echo "WARNING: jq not found — .claude/hooks/* operate in fail-open mode (no guards). Install with 'brew install jq'." >&2
-    : > "$marker" 2>/dev/null
   fi
   exit 0
 fi
@@ -37,14 +38,24 @@ block() {
   exit 2
 }
 
-# Build a single rm -rf pattern that matches both -rf/-fr and split -r -f / -f -r forms.
+# Match `rm` with both a recursive flag and a force flag preceding a critical path.
+# Covers combined short (`-rf`, `-fr`, `-Rf`, `-fR` and noisy variants like `-rfv`),
+# split short (`-r -f` / `-f -r`), split long (`--recursive --force` / `--force --recursive`),
+# and mixed forms (`-r --force`, `--recursive -f`, …).
 # $1 is an alternation of paths (e.g. 'src/components|src/theme|src/index.ts').
 matches_rm_rf() {
   local paths="$1"
-  local combined="(^|[[:space:]])rm[[:space:]]+(-[a-zA-Z]*r[a-zA-Z]*f[a-zA-Z]*|-[a-zA-Z]*f[a-zA-Z]*r[a-zA-Z]*)[[:space:]]+(\\./)?(${paths})(/|[[:space:]]|$)"
-  local split_rf="(^|[[:space:]])rm[[:space:]]+(-[a-zA-Z]*r[a-zA-Z]*)[[:space:]]+(-[a-zA-Z]*f[a-zA-Z]*)[[:space:]]+(\\./)?(${paths})(/|[[:space:]]|$)"
-  local split_fr="(^|[[:space:]])rm[[:space:]]+(-[a-zA-Z]*f[a-zA-Z]*)[[:space:]]+(-[a-zA-Z]*r[a-zA-Z]*)[[:space:]]+(\\./)?(${paths})(/|[[:space:]]|$)"
-  printf '%s' "$cmd" | grep -Eq "$combined|$split_rf|$split_fr"
+  local rec='(-[a-zA-Z]*[rR][a-zA-Z]*|--recursive)'
+  local force='(-[a-zA-Z]*f[a-zA-Z]*|--force)'
+  local path_term="(\\./)?(${paths})(/|[[:space:]]|$)"
+  # Combined short: a single token containing both r/R and f. Long flags can't be combined,
+  # so the long-form bypass is covered by the rf/fr alternatives below.
+  local combined="(^|[[:space:]])rm[[:space:]]+(-[a-zA-Z]*[rR][a-zA-Z]*f[a-zA-Z]*|-[a-zA-Z]*f[a-zA-Z]*[rR][a-zA-Z]*)[[:space:]]+${path_term}"
+  # Recursive flag, then force flag (either short or long), then path.
+  local rf="(^|[[:space:]])rm[[:space:]]+${rec}[[:space:]]+${force}[[:space:]]+${path_term}"
+  # Force flag, then recursive flag, then path.
+  local fr="(^|[[:space:]])rm[[:space:]]+${force}[[:space:]]+${rec}[[:space:]]+${path_term}"
+  printf '%s' "$cmd" | grep -Eq "$combined|$rf|$fr"
 }
 
 # 1. rm -rf against critical public-API paths.
