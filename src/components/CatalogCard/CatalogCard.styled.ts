@@ -108,11 +108,12 @@ const InfoBadgesContainer = styled(Box)(({ theme }) => ({
   color: theme.palette.text.secondary
 }))
 
-type ContainerProps = Pick<CatalogCardProps, 'withShadow' | 'hideRarityOnHover' | 'hoverShadow'>
+type ContainerProps = Pick<CatalogCardProps, 'withShadow' | 'hideRarityOnHover' | 'hoverShadow' | 'disableInfoExpansion'>
 
 const CatalogCardContainer = styled(Card, {
-  shouldForwardProp: prop => prop !== 'withShadow' && prop !== 'hideRarityOnHover' && prop !== 'hoverShadow'
-})<ContainerProps>(({ theme, withShadow, hideRarityOnHover, hoverShadow }) => {
+  shouldForwardProp: prop =>
+    prop !== 'withShadow' && prop !== 'hideRarityOnHover' && prop !== 'hoverShadow' && prop !== 'disableInfoExpansion'
+})<ContainerProps>(({ theme, withShadow, hideRarityOnHover, hoverShadow, disableInfoExpansion }) => {
   const glow = hoverShadow === 'glow'
   return {
     height: theme.spacing(45),
@@ -136,11 +137,13 @@ const CatalogCardContainer = styled(Card, {
         : withShadow
           ? `0px 0px 20px 6px ${hexToRgba(theme.palette.mode === 'dark' ? theme.palette.common.white : theme.palette.common.black, 0.37)}`
           : 'none',
-      [`${ExtraInformationContainer}, ${CatalogItemInformationContainer}`]: {
-        height: 'auto',
-        opacity: 1,
-        transition: 'height 0.3s ease-in-out, opacity 0.6s ease-in-out'
-      },
+      [`${ExtraInformationContainer}, ${CatalogItemInformationContainer}`]: disableInfoExpansion
+        ? {}
+        : {
+            height: 'auto',
+            opacity: 1,
+            transition: 'height 0.3s ease-in-out, opacity 0.6s ease-in-out'
+          },
       [`${AssetImageContainer}`]: !glow
         ? {
             height: theme.spacing(20),

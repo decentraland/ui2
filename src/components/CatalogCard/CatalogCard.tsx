@@ -34,11 +34,17 @@ const CatalogCard = React.memo((props: CatalogCardProps) => {
     hideRarityOnHover,
     hoverShadow,
     bottomAction,
-    infoBadges
+    infoBadges,
+    disableInfoExpansion
   } = props
   const showDefaultCreator = creatorSlot === undefined && asset.network === Network.MATIC
   return (
-    <CatalogCardContainer withShadow={withShadow} hideRarityOnHover={hideRarityOnHover} hoverShadow={hoverShadow}>
+    <CatalogCardContainer
+      withShadow={withShadow}
+      hideRarityOnHover={hideRarityOnHover}
+      hoverShadow={hoverShadow}
+      disableInfoExpansion={disableInfoExpansion}
+    >
       <AssetImageContainer className="AssetImageContainer" name={asset.name} rarity={asset.rarity} src={imageSrc} />
       <CardContentContainer>
         <AssetHeaderContainer>

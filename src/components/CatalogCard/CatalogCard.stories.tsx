@@ -163,6 +163,27 @@ const WithBottomActionAndInfoBadges: Story = {
   }
 }
 
+const StaticHoverNoExpansion: Story = {
+  name: 'Static hover (disableInfoExpansion)',
+  args: {
+    withShadow: false,
+    price: '10',
+    imageSrc: item.thumbnail,
+    asset: item,
+    action: null,
+    extraInformation: null,
+    i18n: rarityBadgeI18n,
+    hoverShadow: 'glow',
+    disableInfoExpansion: true,
+    infoBadges: (
+      <>
+        <UpperBodyIcon fontSize="small" titleAccess="upper_body" />
+        <UnisexIcon fontSize="small" titleAccess="unisex" />
+      </>
+    )
+  }
+}
+
 // eslint-disable-next-line import/no-default-export
 export default meta
-export { Default, WithInfoBadges, WithInfoBadgesBaseMale, WithInfoBadgesBaseFemale, WithBottomActionAndInfoBadges }
+export { Default, StaticHoverNoExpansion, WithBottomActionAndInfoBadges, WithInfoBadges, WithInfoBadgesBaseFemale, WithInfoBadgesBaseMale }
