@@ -85,11 +85,11 @@ const ExtraInformationContainer = styled(Box)(({ theme }) => ({
 
 const BottomActionContainer = styled(Box)(({ theme }) => ({
   position: 'absolute',
-  // 24px from edges so the BUY button never sits flush against the card frame
-  // and there is visible breathing room above the previous content row.
+  // Match the CardContent's 16px horizontal padding so the BUY button visually
+  // covers the rarity / info badge row underneath (which uses the same gutter).
   bottom: theme.spacing(3),
-  left: theme.spacing(3),
-  right: theme.spacing(3),
+  left: theme.spacing(2),
+  right: theme.spacing(2),
   opacity: 0,
   transform: `translateY(calc(100% + ${theme.spacing(2)}))`,
   transition: 'opacity 0.3s ease-in-out, transform 0.3s ease-in-out',
