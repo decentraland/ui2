@@ -12,6 +12,8 @@ import {
   CreditsClaimReminderNotificationProps,
   CreditsCompleteYourWeeklyGoalsNotificationProps,
   CreditsDoNotMissOutNotificationProps,
+  EventApprovedNotificationProps,
+  EventRejectedNotificationProps,
   EventsStartedNotificationProps,
   EventsStartsSoonNotificationProps,
   GiftNotificationProps,
@@ -178,6 +180,37 @@ const eventStartsSoonPastStartNotificationData: EventsStartsSoonNotificationProp
     image: 'https://events-assets-099ac00.decentraland.org/poster/083771e26666f90b.jpg',
     startsAt: pastStartDate.toString(),
     endsAt: '2025-01-24T13:22:00.600Z'
+  },
+  created_at: '2023-11-29T12:51:00.600Z',
+  updated_at: '2023-11-29T12:51:00.600Z'
+}
+
+const eventApprovedNotificationData: EventApprovedNotificationProps = {
+  id: NotificationType.EVENT_APPROVED,
+  read: false,
+  type: NotificationType.EVENT_APPROVED,
+  address: '0x6b347a82fcac4e6a38d1fc40e3631bd8f9495e9f',
+  timestamp: new Date().getTime(),
+  metadata: {
+    link: 'https://decentraland.org/events/event/?id=d98222c5-3626-4742-9887-265fa72dac08',
+    title: 'Decentraland Events',
+    image: 'https://events-assets-099ac00.decentraland.org/poster/083771e26666f90b.jpg',
+    myHangouts: 'https://decentraland.org/whats-on?tab=my'
+  },
+  created_at: '2023-11-29T12:51:00.600Z',
+  updated_at: '2023-11-29T12:51:00.600Z'
+}
+
+const eventRejectedNotificationData: EventRejectedNotificationProps = {
+  id: NotificationType.EVENT_REJECTED,
+  read: false,
+  type: NotificationType.EVENT_REJECTED,
+  address: '0x6b347a82fcac4e6a38d1fc40e3631bd8f9495e9f',
+  timestamp: new Date().getTime(),
+  metadata: {
+    title: 'Decentraland Events',
+    image: 'https://events-assets-099ac00.decentraland.org/poster/083771e26666f90b.jpg',
+    myHangouts: 'https://decentraland.org/whats-on?tab=my'
   },
   created_at: '2023-11-29T12:51:00.600Z',
   updated_at: '2023-11-29T12:51:00.600Z'
@@ -796,6 +829,8 @@ const allTypeOfNotifications = [
   creditsDoNotMissOutNotificationData,
   creditsExpireIn24HrsReminderNotificationData,
   creditsExpireSoonReminderNotificationData,
+  eventApprovedNotificationData,
+  eventRejectedNotificationData,
   eventStartedNotificationData,
   eventStartsSoonFutureStartNotificationData,
   eventStartsSoonPastStartNotificationData,
@@ -844,6 +879,8 @@ export {
   creditsDoNotMissOutNotificationData,
   creditsExpireIn24HrsReminderNotificationData,
   creditsExpireSoonReminderNotificationData,
+  eventApprovedNotificationData,
+  eventRejectedNotificationData,
   eventStartedNotificationData,
   eventStartsSoonFutureStartNotificationData,
   eventStartsSoonPastStartNotificationData,
