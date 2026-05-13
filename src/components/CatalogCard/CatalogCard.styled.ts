@@ -20,7 +20,12 @@ const CardContentContainer = styled(CardContent)(({ theme }) => ({
   flexDirection: 'column',
   flexFlow: 'column nowrap',
   alignItems: 'flex-start',
-  gap: theme.spacing(1),
+  // Keep gap tight — the card has a fixed height (theme.spacing(45)) and the
+  // hover state reveals action + extraInformation + bottomAction inside that
+  // same height. Larger gaps make AssetTitle overflow the top edge. Specific
+  // 8px separations (e.g. price→rarity) are applied as margins on the target
+  // element rather than via the container gap.
+  gap: theme.spacing(0.25),
   minHeight: theme.spacing(20)
 }))
 
@@ -80,9 +85,11 @@ const ExtraInformationContainer = styled(Box)(({ theme }) => ({
 
 const BottomActionContainer = styled(Box)(({ theme }) => ({
   position: 'absolute',
-  bottom: theme.spacing(2),
-  left: theme.spacing(2),
-  right: theme.spacing(2),
+  // 24px from edges so the BUY button never sits flush against the card frame
+  // and there is visible breathing room above the previous content row.
+  bottom: theme.spacing(3),
+  left: theme.spacing(3),
+  right: theme.spacing(3),
   opacity: 0,
   transform: `translateY(calc(100% + ${theme.spacing(2)}))`,
   transition: 'opacity 0.3s ease-in-out, transform 0.3s ease-in-out',
@@ -98,7 +105,10 @@ const BadgeRow = styled(Box)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   gap: theme.spacing(1),
-  flexWrap: 'wrap'
+  flexWrap: 'wrap',
+  // 8px breathing room between the price row and the rarity / info badges
+  // (without forcing the same gap on every other CardContent child).
+  marginTop: theme.spacing(1)
 }))
 
 const InfoBadgesContainer = styled(Box)(({ theme }) => ({
