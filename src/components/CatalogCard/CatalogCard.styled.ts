@@ -20,7 +20,7 @@ const CardContentContainer = styled(CardContent)(({ theme }) => ({
   flexDirection: 'column',
   flexFlow: 'column nowrap',
   alignItems: 'flex-start',
-  gap: theme.spacing(0.25),
+  gap: theme.spacing(1),
   minHeight: theme.spacing(20)
 }))
 
@@ -78,36 +78,86 @@ const ExtraInformationContainer = styled(Box)(({ theme }) => ({
   }
 }))
 
-const CatalogCardContainer = styled(Card)<Pick<CatalogCardProps, 'withShadow'>>(({ theme, withShadow }) => ({
-  height: theme.spacing(45),
-  transition: 'transform 0.1s ease-in-out, box-shadow 0.3s ease-in-out, height 0.1s ease-in-out',
-  borderRadius: theme.spacing(1),
-  width: theme.spacing(36),
-  maxWidth: '100%',
-  position: 'relative',
+const BottomActionContainer = styled(Box)(({ theme }) => ({
+  position: 'absolute',
+  bottom: theme.spacing(2),
+  left: theme.spacing(2),
+  right: theme.spacing(2),
+  opacity: 0,
+  transform: `translateY(calc(100% + ${theme.spacing(2)}))`,
+  transition: 'opacity 0.3s ease-in-out, transform 0.3s ease-in-out',
+  pointerEvents: 'none'
+}))
+
+const RarityBadgeSlot = styled(Box)({
   display: 'flex',
-  flexDirection: 'column',
-  padding: 0,
-  overflow: 'hidden',
-  '&:hover': {
-    transition: 'transform 0.1s ease-in-out, box-shadow 0.3s ease-in-out, height 0.3s ease-in-out',
-    height: theme.spacing(46),
-    padding: theme.spacing(0),
+  transition: 'opacity 0.2s ease-in-out'
+})
+
+const BadgeRow = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  gap: theme.spacing(1),
+  flexWrap: 'wrap'
+}))
+
+const InfoBadgesContainer = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  gap: theme.spacing(0.75),
+  color: theme.palette.text.secondary
+}))
+
+type ContainerProps = Pick<CatalogCardProps, 'withShadow' | 'hideRarityOnHover' | 'hoverShadow'>
+
+const CatalogCardContainer = styled(Card, {
+  shouldForwardProp: prop => prop !== 'withShadow' && prop !== 'hideRarityOnHover' && prop !== 'hoverShadow'
+})<ContainerProps>(({ theme, withShadow, hideRarityOnHover, hoverShadow }) => {
+  const glow = hoverShadow === 'glow'
+  return {
+    height: theme.spacing(45),
+    transition: 'transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out, height 0.1s ease-in-out',
     borderRadius: theme.spacing(1),
-    boxShadow: withShadow
-      ? `0px 0px 20px 6px ${hexToRgba(theme.palette.mode === 'dark' ? theme.palette.common.white : theme.palette.common.black, 0.37)}`
-      : 'none',
-    [`${ExtraInformationContainer}, ${CatalogItemInformationContainer}`]: {
-      height: 'auto',
-      opacity: 1,
-      transition: 'height 0.3s ease-in-out, opacity 0.6s ease-in-out'
-    },
-    [`${AssetImageContainer}`]: {
-      height: theme.spacing(20),
-      transition: 'height 0.1s ease-in-out'
+    width: theme.spacing(36),
+    maxWidth: '100%',
+    position: 'relative',
+    display: 'flex',
+    flexDirection: 'column',
+    padding: 0,
+    overflow: 'hidden',
+    '&:hover': {
+      transition: 'transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out, height 0.3s ease-in-out',
+      height: glow ? theme.spacing(45) : theme.spacing(46),
+      transform: glow ? 'translateY(-4px)' : 'none',
+      padding: theme.spacing(0),
+      borderRadius: theme.spacing(1),
+      boxShadow: glow
+        ? '0px 2px 12px 12px rgba(255, 255, 255, 0.3)'
+        : withShadow
+          ? `0px 0px 20px 6px ${hexToRgba(theme.palette.mode === 'dark' ? theme.palette.common.white : theme.palette.common.black, 0.37)}`
+          : 'none',
+      [`${ExtraInformationContainer}, ${CatalogItemInformationContainer}`]: {
+        height: 'auto',
+        opacity: 1,
+        transition: 'height 0.3s ease-in-out, opacity 0.6s ease-in-out'
+      },
+      [`${AssetImageContainer}`]: !glow
+        ? {
+            height: theme.spacing(20),
+            transition: 'height 0.1s ease-in-out'
+          }
+        : {},
+      // data-role selectors don't depend on `@emotion/babel-plugin` running on
+      // this file, so they survive any consumer bundler setup.
+      '& [data-role="catalog-card-bottom-action"]': {
+        opacity: 1,
+        transform: 'translateY(0)',
+        pointerEvents: 'auto'
+      },
+      '& [data-role="catalog-card-rarity"]': hideRarityOnHover ? { opacity: 0 } : {}
     }
   }
-}))
+})
 
 export {
   CatalogCardContainer,
@@ -117,6 +167,10 @@ export {
   CardContentContainer,
   AssetAddress,
   AssetTitle,
+  BadgeRow,
+  BottomActionContainer,
   ExtraInformationContainer,
-  CatalogItemInformationContainer
+  CatalogItemInformationContainer,
+  InfoBadgesContainer,
+  RarityBadgeSlot
 }

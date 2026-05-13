@@ -9,21 +9,41 @@ import {
   AssetHeaderContainer,
   AssetImageContainer,
   AssetTitle,
+  BadgeRow,
+  BottomActionContainer,
   CardContentContainer,
   CatalogCardContainer,
   CatalogItemInformationContainer,
-  ExtraInformationContainer
+  ExtraInformationContainer,
+  InfoBadgesContainer,
+  RarityBadgeSlot
 } from './CatalogCard.styled'
 
 const CatalogCard = React.memo((props: CatalogCardProps) => {
-  const { asset, imageSrc, price, owners, extraInformation, action, actionIcon, withShadow, i18n } = props
+  const {
+    asset,
+    imageSrc,
+    price,
+    owners,
+    extraInformation,
+    action,
+    actionIcon,
+    withShadow,
+    i18n,
+    creatorSlot,
+    hideRarityOnHover,
+    hoverShadow,
+    bottomAction,
+    infoBadges
+  } = props
+  const showDefaultCreator = creatorSlot === undefined && asset.network === Network.MATIC
   return (
-    <CatalogCardContainer withShadow={withShadow}>
+    <CatalogCardContainer withShadow={withShadow} hideRarityOnHover={hideRarityOnHover} hoverShadow={hoverShadow}>
       <AssetImageContainer className="AssetImageContainer" name={asset.name} rarity={asset.rarity} src={imageSrc} />
       <CardContentContainer>
         <AssetHeaderContainer>
           <AssetTitle variant="body1">{asset.name}</AssetTitle>
-          {asset.network === Network.MATIC && <AssetAddress value={asset.creator} />}
+          {showDefaultCreator ? <AssetAddress value={asset.creator} /> : creatorSlot}
         </AssetHeaderContainer>
         <CatalogItemInformationContainer className="CatalogItemInformationContainer">
           <Typography variant="body2">{action}</Typography>
@@ -33,7 +53,13 @@ const CatalogCard = React.memo((props: CatalogCardProps) => {
         {extraInformation && (
           <ExtraInformationContainer className="ExtraInformationContainer">{extraInformation}</ExtraInformationContainer>
         )}
-        <RarityBadge square rarity={asset.rarity} i18n={i18n} />
+        <BadgeRow>
+          <RarityBadgeSlot data-role="catalog-card-rarity">
+            <RarityBadge square rarity={asset.rarity} i18n={i18n} />
+          </RarityBadgeSlot>
+          {infoBadges ? <InfoBadgesContainer>{infoBadges}</InfoBadgesContainer> : null}
+        </BadgeRow>
+        {bottomAction ? <BottomActionContainer data-role="catalog-card-bottom-action">{bottomAction}</BottomActionContainer> : null}
       </CardContentContainer>
     </CatalogCardContainer>
   )

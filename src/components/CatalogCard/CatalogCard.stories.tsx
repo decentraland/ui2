@@ -1,7 +1,7 @@
-import { Typography } from '@mui/material'
+import { Button, Typography } from '@mui/material'
 import { CatalogCard } from './CatalogCard'
 import { item } from '../../data/item'
-import { MintIcon } from '../Icon'
+import { BaseFemaleIcon, BaseMaleIcon, MintIcon, UnisexIcon, UpperBodyIcon } from '../Icon'
 import { i18n as rarityBadgeI18n } from '../RarityBadge/RarityBadge.i18n'
 import { CatalogCardProps } from './CatalogCard.types'
 import type { Meta, StoryObj } from '@storybook/react'
@@ -80,6 +80,89 @@ const Default: Story = {
   }
 }
 
+const WithInfoBadges: Story = {
+  name: 'With info badges (category + body shape)',
+  args: {
+    withShadow: false,
+    price: '10',
+    imageSrc: item.thumbnail,
+    asset: item,
+    action: null,
+    extraInformation: null,
+    i18n: rarityBadgeI18n,
+    infoBadges: (
+      <>
+        <UpperBodyIcon fontSize="small" titleAccess="upper_body" />
+        <UnisexIcon fontSize="small" titleAccess="unisex" />
+      </>
+    )
+  }
+}
+
+const WithInfoBadgesBaseMale: Story = {
+  name: 'With info badges (base male only)',
+  args: {
+    withShadow: false,
+    price: '10',
+    imageSrc: item.thumbnail,
+    asset: item,
+    action: null,
+    extraInformation: null,
+    i18n: rarityBadgeI18n,
+    infoBadges: (
+      <>
+        <UpperBodyIcon fontSize="small" titleAccess="upper_body" />
+        <BaseMaleIcon fontSize="small" titleAccess="BaseMale" />
+      </>
+    )
+  }
+}
+
+const WithInfoBadgesBaseFemale: Story = {
+  name: 'With info badges (base female only)',
+  args: {
+    withShadow: false,
+    price: '10',
+    imageSrc: item.thumbnail,
+    asset: item,
+    action: null,
+    extraInformation: null,
+    i18n: rarityBadgeI18n,
+    infoBadges: (
+      <>
+        <UpperBodyIcon fontSize="small" titleAccess="upper_body" />
+        <BaseFemaleIcon fontSize="small" titleAccess="BaseFemale" />
+      </>
+    )
+  }
+}
+
+const WithBottomActionAndInfoBadges: Story = {
+  name: 'Hover: bottom action + info badges',
+  args: {
+    withShadow: false,
+    price: '10',
+    imageSrc: item.thumbnail,
+    asset: item,
+    action: null,
+    extraInformation: null,
+    i18n: rarityBadgeI18n,
+    hideRarityOnHover: true,
+    hoverShadow: 'glow',
+    infoBadges: (
+      <>
+        <UpperBodyIcon fontSize="small" titleAccess="upper_body" />
+        <UnisexIcon fontSize="small" titleAccess="unisex" />
+      </>
+    ),
+    bottomAction: (
+      <Button variant="contained" color="primary" fullWidth>
+        BUY
+      </Button>
+    )
+  }
+}
+
 // eslint-disable-next-line import/no-default-export
 export default meta
-export { Default }
+export { Default, WithInfoBadges, WithInfoBadgesBaseMale, WithInfoBadgesBaseFemale, WithBottomActionAndInfoBadges }
