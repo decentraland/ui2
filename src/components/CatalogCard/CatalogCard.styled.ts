@@ -154,12 +154,16 @@ const CatalogCardContainer = styled(Card, {
             opacity: 1,
             transition: 'height 0.3s ease-in-out, opacity 0.6s ease-in-out'
           },
-      [`${AssetImageContainer}`]: !glow
-        ? {
+      // Shrink the asset image on hover so the freed vertical space holds the
+      // revealed `bottomAction` / extra-info rows without overlapping the badge
+      // row underneath. `disableInfoExpansion` opts out (used when the card is
+      // a static link target — own-profile equipped items).
+      [`${AssetImageContainer}`]: disableInfoExpansion
+        ? {}
+        : {
             height: theme.spacing(20),
             transition: 'height 0.1s ease-in-out'
-          }
-        : {},
+          },
       // data-role selectors don't depend on `@emotion/babel-plugin` running on
       // this file, so they survive any consumer bundler setup.
       '& [data-role="catalog-card-bottom-action"]': {
