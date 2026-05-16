@@ -1,3 +1,4 @@
+import { Rarity } from '@dcl/schemas'
 import styled from '@emotion/styled'
 import { Box, Card, CardContent, Typography } from '@mui/material'
 import { Address } from '../../components/Address'
@@ -101,6 +102,30 @@ const RarityBadgeSlot = styled(Box)({
   transition: 'opacity 0.2s ease-in-out'
 })
 
+// Figma marketplace-card spec — subdued rarity chip rendered on the dark info area
+// (canonical rarity hue at 30% alpha, light hue text). The canonical hex per rarity is
+// owned by `@dcl/schemas.Rarity.getColor` / `getGradient`; we derive the chip surface
+// from those so the ui2 palette stays in sync with the schemas source of truth.
+const CatalogRarityChip = styled(Box)<{ rarity: Rarity }>(({ rarity }) => {
+  const baseHex = Rarity.getColor(rarity)
+  const [lightHex] = Rarity.getGradient(rarity)
+  return {
+    display: 'inline-flex',
+    alignItems: 'center',
+    borderRadius: 4,
+    padding: '2px 6px',
+    textTransform: 'uppercase',
+    fontFamily: '"Inter", sans-serif',
+    fontWeight: 400,
+    fontSize: 10.55,
+    lineHeight: '14.6px',
+    letterSpacing: 0,
+    whiteSpace: 'nowrap',
+    backgroundColor: hexToRgba(baseHex, 0.3),
+    color: lightHex
+  }
+})
+
 const BadgeRow = styled(Box)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
@@ -186,6 +211,7 @@ export {
   AssetTitle,
   BadgeRow,
   BottomActionContainer,
+  CatalogRarityChip,
   ExtraInformationContainer,
   CatalogItemInformationContainer,
   InfoBadgesContainer,

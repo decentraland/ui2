@@ -1,8 +1,9 @@
 import React from 'react'
-import { Network } from '@dcl/schemas'
+import { Network, Rarity } from '@dcl/schemas'
 import { Typography } from '@mui/material'
 import { CatalogCardPrice } from './CatalogCardPrice'
 import { RarityBadge } from '../../components/RarityBadge'
+import { i18n as rarityBadgeI18nDefault } from '../../components/RarityBadge/RarityBadge.i18n'
 import { CatalogCardProps } from './CatalogCard.types'
 import {
   AssetAddress,
@@ -14,6 +15,7 @@ import {
   CardContentContainer,
   CatalogCardContainer,
   CatalogItemInformationContainer,
+  CatalogRarityChip,
   ExtraInformationContainer,
   InfoBadgesContainer,
   RarityBadgeSlot
@@ -35,7 +37,8 @@ const CatalogCard = React.memo((props: CatalogCardProps) => {
     hoverShadow,
     bottomAction,
     infoBadges,
-    disableInfoExpansion
+    disableInfoExpansion,
+    subduedRarity
   } = props
   const showDefaultCreator = creatorSlot === undefined && asset.network === Network.MATIC
   return (
@@ -61,7 +64,13 @@ const CatalogCard = React.memo((props: CatalogCardProps) => {
         )}
         <BadgeRow>
           <RarityBadgeSlot data-role="catalog-card-rarity">
-            <RarityBadge square rarity={asset.rarity} i18n={i18n} />
+            {subduedRarity ? (
+              <CatalogRarityChip rarity={asset.rarity as Rarity}>
+                {(i18n ?? rarityBadgeI18nDefault).rarities[asset.rarity]}
+              </CatalogRarityChip>
+            ) : (
+              <RarityBadge square rarity={asset.rarity} i18n={i18n} />
+            )}
           </RarityBadgeSlot>
           {infoBadges ? <InfoBadgesContainer>{infoBadges}</InfoBadgesContainer> : null}
         </BadgeRow>
