@@ -242,6 +242,40 @@ type TipNotificationProps = RawDecentralandNotification<NotificationType.TIP_REC
 
 type TransferNotificationsProps = GiftNotificationProps | TipNotificationProps
 
+// Social Service Notifications
+
+type FriendshipProfileMetadataProps = {
+  address: string
+  name: string
+  profileImageUrl: string
+  hasClaimedName: boolean
+}
+
+type FriendshipRequestMetadataProps = {
+  requestId: string
+  sender: FriendshipProfileMetadataProps
+  receiver: FriendshipProfileMetadataProps
+  message?: string
+}
+
+type FriendshipAcceptedMetadataProps = {
+  requestId: string
+  sender: FriendshipProfileMetadataProps
+  receiver: FriendshipProfileMetadataProps
+}
+
+type FriendshipRequestNotificationProps = RawDecentralandNotification<
+  NotificationType.SOCIAL_SERVICE_FRIENDSHIP_REQUEST,
+  FriendshipRequestMetadataProps
+>
+
+type FriendshipAcceptedNotificationProps = RawDecentralandNotification<
+  NotificationType.SOCIAL_SERVICE_FRIENDSHIP_ACCEPTED,
+  FriendshipAcceptedMetadataProps
+>
+
+type SocialNotificationsProps = FriendshipRequestNotificationProps | FriendshipAcceptedNotificationProps
+
 // Reward Notifications
 
 type CommonRewardsMetadata = {
@@ -403,6 +437,7 @@ type DCLNotificationProps =
   | StreamingNotificationsProps
   | CreditsNotificationsProps
   | ReferralNotificationsProps
+  | SocialNotificationsProps
 
 type CommonNotificationProps<N> = {
   notification: N
@@ -462,5 +497,8 @@ export type {
   CreditsExpireSoonReminderNotificationProps,
   CreditsExpireIn24HrsReminderNotificationProps,
   ReferralNewTierReachedNotificationProps,
-  ReferralInvitedUsersAcceptedNotificationProps
+  ReferralInvitedUsersAcceptedNotificationProps,
+  FriendshipRequestNotificationProps,
+  FriendshipAcceptedNotificationProps,
+  SocialNotificationsProps
 }
