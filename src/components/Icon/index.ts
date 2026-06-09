@@ -14,6 +14,7 @@ import { BidReceivedIcon } from './Notifications/BidReceivedIcon'
 import { CoauthorIcon } from './Notifications/CoauthorIcon'
 import { EmptyInboxIcon } from './Notifications/EmptyInboxIcon'
 import { EventApprovedIcon } from './Notifications/EventApprovedIcon'
+import { EventDeletedIcon } from './Notifications/EventDeletedIcon'
 import { EventRejectedIcon } from './Notifications/EventRejectedIcon'
 import { EventStartedIcon } from './Notifications/EventStartedIcon'
 import { EventStartsSoonIcon } from './Notifications/EventStartsSoonIcon'
@@ -86,6 +87,7 @@ export {
   EarringIcon,
   EmptyInboxIcon,
   EventApprovedIcon,
+  EventDeletedIcon,
   EventRejectedIcon,
   EventStartedIcon,
   EventStartsSoonIcon,

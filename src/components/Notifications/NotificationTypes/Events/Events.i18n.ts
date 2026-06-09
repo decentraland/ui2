@@ -112,4 +112,28 @@ const eventRejectedI18n = {
   }
 } as const
 
-export { eventStartedI18n, eventStartsSoonI18n, eventApprovedI18n, eventRejectedI18n }
+const eventDeletedI18n = {
+  en: {
+    description: {
+      start: 'Your event',
+      end: 'has been deleted by an administrator.'
+    },
+    title: 'Event deleted'
+  },
+  es: {
+    description: {
+      start: 'Tu evento',
+      end: 'ha sido eliminado por un administrador.'
+    },
+    title: 'Evento eliminado'
+  },
+  zh: {
+    description: {
+      start: '您的活动',
+      end: '已被管理员删除'
+    },
+    title: '活动已删除'
+  }
+} as const
+
+export { eventStartedI18n, eventStartsSoonI18n, eventApprovedI18n, eventRejectedI18n, eventDeletedI18n }
