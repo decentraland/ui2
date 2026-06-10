@@ -1,57 +1,57 @@
-import { IconBadge } from "./IconBadge"
-import { ManaEthIcon } from "../Icon"
-import { IconBadgeIcon, IconBadgeProps } from "./IconBadge.types"
-import type { Meta, StoryObj } from "@storybook/react"
+import { IconBadge } from './IconBadge'
+import { ManaEthIcon } from '../Icon'
+import { IconBadgeIcon, IconBadgeProps } from './IconBadge.types'
+import type { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<IconBadgeProps> = {
   component: IconBadge,
-  title: "Decentraland UI/Icon Badge",
-  tags: ["autodocs"],
+  title: 'Decentraland UI/Icon Badge',
+  tags: ['autodocs'],
   argTypes: {
     inline: {
-      description: "IconBadge component should be displayed inline",
+      description: 'IconBadge component should be displayed inline'
     },
     icon: {
-      description: "Icon used in component",
-    },
+      description: 'Icon used in component'
+    }
   },
-  render: (args) => <IconBadge {...args} />,
+  render: args => <IconBadge {...args} />
 }
 
 type Story = StoryObj<IconBadgeProps>
 
 const WithIcon: Story = {
-  name: "With Icon",
+  name: 'With Icon',
   args: {
     icon: IconBadgeIcon.Utility,
-    text: "Utility",
-    onClick: () => console.log("Clicked!"),
-  },
+    text: 'Utility',
+    onClick: () => console.log('Clicked!')
+  }
 }
 
 const WithCustomIcon: Story = {
-  name: "With Custom Icon",
+  name: 'With Custom Icon',
   args: {
     children: <ManaEthIcon />,
-    text: "Custom Icon Component",
-    onClick: () => console.log("Clicked!"),
-  },
+    text: 'Custom Icon Component',
+    onClick: () => console.log('Clicked!')
+  }
 }
 
 const WithoutText: Story = {
-  name: "Without Text",
+  name: 'Without Text',
   args: {
     icon: IconBadgeIcon.Tiara,
-    onClick: () => console.log("Clicked!"),
-  },
+    onClick: () => console.log('Clicked!')
+  }
 }
 
 const WithoutIcon: Story = {
-  name: "Without Icon",
+  name: 'Without Icon',
   args: {
-    text: "No Icon",
-    onClick: () => console.log("Clicked!"),
-  },
+    text: 'No Icon',
+    onClick: () => console.log('Clicked!')
+  }
 }
 
 // eslint-disable-next-line import/no-default-export

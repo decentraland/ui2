@@ -1,2 +1,2 @@
-export { NotificationsFeed } from "./NotificationsFeed"
-export type { NotificationsFeedProps } from "./NotificationsFeed.types"
+export { NotificationsFeed } from './NotificationsFeed'
+export type { NotificationsFeedProps } from './NotificationsFeed.types'

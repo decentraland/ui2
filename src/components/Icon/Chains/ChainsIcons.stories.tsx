@@ -1,20 +1,20 @@
-import { ArbitrumIcon } from "./ArbitrumIcon"
-import { AvalancheIcon } from "./AvalancheIcon"
-import { BinanceIcon } from "./BinanceIcon"
-import { EthereumIcon } from "./EthereumIcon"
-import { FantomIcon } from "./FantomIcon"
-import { OptimismIcon } from "./OptimismIcon"
-import { PolygonIcon } from "./PolygonIcon"
-import { IconsContainer } from "../Icons.stories.styled"
-import type { Meta, StoryObj } from "@storybook/react"
+import { ArbitrumIcon } from './ArbitrumIcon'
+import { AvalancheIcon } from './AvalancheIcon'
+import { BinanceIcon } from './BinanceIcon'
+import { EthereumIcon } from './EthereumIcon'
+import { FantomIcon } from './FantomIcon'
+import { OptimismIcon } from './OptimismIcon'
+import { PolygonIcon } from './PolygonIcon'
+import { IconsContainer } from '../Icons.stories.styled'
+import type { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof ArbitrumIcon> = {
-  title: "Decentraland UI/Icons/Chains",
+  title: 'Decentraland UI/Icons/Chains',
   component: ArbitrumIcon,
   parameters: {
-    layout: "centered",
+    layout: 'centered'
   },
-  tags: ["autodocs"],
+  tags: ['autodocs']
 }
 
 type Story = StoryObj<typeof ArbitrumIcon>
@@ -22,27 +22,27 @@ type Story = StoryObj<typeof ArbitrumIcon>
 const Arbitrum: Story = {}
 
 const Avalanche: Story = {
-  render: () => <AvalancheIcon />,
+  render: () => <AvalancheIcon />
 }
 
 const Binance: Story = {
-  render: () => <BinanceIcon />,
+  render: () => <BinanceIcon />
 }
 
 const Ethereum: Story = {
-  render: () => <EthereumIcon />,
+  render: () => <EthereumIcon />
 }
 
 const Fantom: Story = {
-  render: () => <FantomIcon />,
+  render: () => <FantomIcon />
 }
 
 const Optimism: Story = {
-  render: () => <OptimismIcon />,
+  render: () => <OptimismIcon />
 }
 
 const Polygon: Story = {
-  render: () => <PolygonIcon />,
+  render: () => <PolygonIcon />
 }
 
 const AllChainsIcons: Story = {
@@ -56,7 +56,7 @@ const AllChainsIcons: Story = {
       <OptimismIcon />
       <PolygonIcon />
     </IconsContainer>
-  ),
+  )
 }
 
 const LargeChainsIcons: Story = {
@@ -70,19 +70,9 @@ const LargeChainsIcons: Story = {
       <OptimismIcon fontSize="large" />
       <PolygonIcon fontSize="large" />
     </IconsContainer>
-  ),
+  )
 }
 
 // eslint-disable-next-line import/no-default-export
 export default meta
-export {
-  Arbitrum,
-  Avalanche,
-  Binance,
-  Ethereum,
-  Fantom,
-  Optimism,
-  Polygon,
-  AllChainsIcons,
-  LargeChainsIcons,
-}
+export { Arbitrum, Avalanche, Binance, Ethereum, Fantom, Optimism, Polygon, AllChainsIcons, LargeChainsIcons }

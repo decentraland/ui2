@@ -25,8 +25,6 @@ export interface FooterLandingProps {
   hideFaq?: boolean
 
   // Analytics
-  onLinkClick?: (
-    event: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>
-  ) => void
+  onLinkClick?: (event: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => void
   trackingContext?: string
 }

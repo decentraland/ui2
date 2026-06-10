@@ -1,6 +1,6 @@
-import React from "react"
-import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon"
-import { Palette, useTheme } from "@mui/material"
+import React from 'react'
+import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon'
+import { Palette, useTheme } from '@mui/material'
 
 const NotificationBellIcon = React.memo((props: SvgIconProps) => {
   const theme = useTheme<{

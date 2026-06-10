@@ -1,4 +1,4 @@
-import { IPreviewController } from "@dcl/schemas"
+import { IPreviewController } from '@dcl/schemas'
 
 export type ZoomControlsProps = {
   wearablePreviewId: string
@@ -9,6 +9,6 @@ export type ZoomControlsProps = {
 }
 
 export enum Position {
-  LEFT = "left",
-  RIGHT = "right",
+  LEFT = 'left',
+  RIGHT = 'right'
 }

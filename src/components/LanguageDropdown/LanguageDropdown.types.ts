@@ -1,10 +1,10 @@
 enum SupportedLanguage {
-  EN = "en",
-  ES = "es",
-  FR = "fr",
-  ZH = "zh",
-  KO = "ko",
-  JA = "ja",
+  EN = 'en',
+  ES = 'es',
+  FR = 'fr',
+  ZH = 'zh',
+  KO = 'ko',
+  JA = 'ja'
 }
 
 type Language = {

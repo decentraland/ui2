@@ -1,5 +1,5 @@
-import React from "react"
-import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon"
+import React from 'react'
+import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon'
 
 const MintIcon = React.memo((props: SvgIconProps) => {
   return (
@@ -14,12 +14,7 @@ const MintIcon = React.memo((props: SvgIconProps) => {
       >
         <path d="M0 24H24V0H0V24Z" fill="url(#pattern0)" />
         <defs>
-          <pattern
-            id="pattern0"
-            patternContentUnits="objectBoundingBox"
-            width="1"
-            height="1"
-          >
+          <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
             <use xlinkHref="#image0_754_20065" transform="scale(0.00625)" />
           </pattern>
           <image

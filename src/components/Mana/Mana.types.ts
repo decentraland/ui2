@@ -1,7 +1,7 @@
-import { Network } from "@dcl/schemas"
+import { Network } from '@dcl/schemas'
 
 type ManaProps = {
-  size?: "small" | "medium" | "large"
+  size?: 'small' | 'medium' | 'large'
   inline?: boolean
   network?: Network
   children?: React.ReactChild
@@ -10,10 +10,7 @@ type ManaProps = {
   showTooltip?: boolean
   href?: string
   onClick?: React.MouseEventHandler<HTMLButtonElement> &
-    ((
-      event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
-      network: Network
-    ) => void)
+    ((event: React.MouseEvent<HTMLAnchorElement, MouseEvent>, network: Network) => void)
 }
 
 export { ManaProps }

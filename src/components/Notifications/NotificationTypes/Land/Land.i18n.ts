@@ -1,49 +1,49 @@
 const landRentalEndedI18n = {
   en: {
     description: {
-      start: "The rent on your LAND at",
-      end: "has ended",
+      start: 'The rent on your LAND at',
+      end: 'has ended'
     },
-    title: "Rent Period Ended",
+    title: 'Rent Period Ended'
   },
   es: {
     description: {
-      start: "El alquiler de su LAND en",
-      end: "ha terminado",
+      start: 'El alquiler de su LAND en',
+      end: 'ha terminado'
     },
-    title: "Período de alquiler finalizado",
+    title: 'Período de alquiler finalizado'
   },
   zh: {
     description: {
-      start: "土地上的租金",
-      end: "结束了",
+      start: '土地上的租金',
+      end: '结束了'
     },
-    title: "租金期结束",
-  },
+    title: '租金期结束'
+  }
 } as const
 
 const landRentedI18n = {
   en: {
     description: {
-      start: "The rent on your LAND at",
-      end: "was rented by",
+      start: 'The rent on your LAND at',
+      end: 'was rented by'
     },
-    title: "LAND Rented",
+    title: 'LAND Rented'
   },
   es: {
     description: {
-      start: "La renta de tu LAND en",
-      end: "fue alquilada por",
+      start: 'La renta de tu LAND en',
+      end: 'fue alquilada por'
     },
-    title: "LAND alquilada",
+    title: 'LAND alquilada'
   },
   zh: {
     description: {
-      start: "你的土地",
-      end: "租了",
+      start: '你的土地',
+      end: '租了'
     },
-    title: "租用的土地",
-  },
+    title: '租用的土地'
+  }
 } as const
 
 export { landRentalEndedI18n, landRentedI18n }

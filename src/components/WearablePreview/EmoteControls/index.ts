@@ -1,2 +1,2 @@
-export { EmoteControls } from "./EmoteControls"
-export type { EmoteControlsProps } from "./EmoteControls.types"
+export { EmoteControls } from './EmoteControls'
+export type { EmoteControlsProps } from './EmoteControls.types'

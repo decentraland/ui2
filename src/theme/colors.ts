@@ -1,4 +1,4 @@
-import { Rarity } from "@dcl/schemas"
+import { Rarity } from '@dcl/schemas'
 
 const neutral = {
   white: `#FFFFFF`,
@@ -12,7 +12,7 @@ const neutral = {
   gray0: `#43404A`,
   softBlack2: `#242129`,
   softBlack1: `#161518`,
-  black: `#000000`,
+  black: `#000000`
 }
 
 const textOnNeutral: typeof neutral = {
@@ -27,15 +27,15 @@ const textOnNeutral: typeof neutral = {
   gray0: neutral.white,
   softBlack2: neutral.white,
   softBlack1: neutral.white,
-  black: neutral.white,
+  black: neutral.white
 }
 
 const base = {
-  primary: "#FF2D55",
-  primaryDark1: "#F70038",
-  primaryDark2: "#D80029",
+  primary: '#FF2D55',
+  primaryDark1: '#F70038',
+  primaryDark2: '#D80029',
   primaryLight1: `#F8919D`,
-  primaryLight2: `#FFC9D5`,
+  primaryLight2: `#FFC9D5`
 }
 
 const textOnBase: typeof base = {
@@ -43,7 +43,7 @@ const textOnBase: typeof base = {
   primaryDark1: neutral.white,
   primaryDark2: neutral.white,
   primaryLight1: neutral.black,
-  primaryLight2: neutral.black,
+  primaryLight2: neutral.black
 }
 
 const rarity: Record<Rarity, string> = {
@@ -54,7 +54,7 @@ const rarity: Record<Rarity, string> = {
   legendary: `#A14BF3`,
   exotic: `#9BD141`,
   mythic: `#FF4BED`,
-  unique: `#FEA217`,
+  unique: `#FEA217`
 }
 
 const rarityLight: typeof rarity = {
@@ -65,7 +65,7 @@ const rarityLight: typeof rarity = {
   legendary: `#E1C1FF`,
   exotic: `#D1E989`,
   mythic: `#FDC4F7`,
-  unique: `#F3E5CF`,
+  unique: `#F3E5CF`
 }
 
 const rarityLightTheme: typeof rarity = {
@@ -76,7 +76,7 @@ const rarityLightTheme: typeof rarity = {
   legendary: `#A14BF3`,
   exotic: `#9BD141`,
   mythic: `#FF4BED`,
-  unique: `#FEA217`,
+  unique: `#FEA217`
 }
 
 const rarityGradient: typeof rarity = {
@@ -87,7 +87,7 @@ const rarityGradient: typeof rarity = {
   legendary: `radial-gradient(circle, ${rarityLight.legendary} 0%, ${rarity.legendary} 100%)`,
   exotic: `radial-gradient(circle, ${rarityLight.exotic} 0%, ${rarity.exotic} 100%)`,
   mythic: `radial-gradient(circle, ${rarityLight.mythic} 0%, ${rarity.mythic} 100%)`,
-  unique: `radial-gradient(circle, ${rarityLight.unique} 0%, ${rarity.unique} 100%)`,
+  unique: `radial-gradient(circle, ${rarityLight.unique} 0%, ${rarity.unique} 100%)`
 }
 
 const textOnRarity: typeof rarity = {
@@ -98,7 +98,7 @@ const textOnRarity: typeof rarity = {
   legendary: neutral.white,
   mythic: neutral.white,
   exotic: neutral.white,
-  unique: neutral.white,
+  unique: neutral.white
 }
 
 const brand = {
@@ -108,7 +108,7 @@ const brand = {
   ruby: `#FF2D55`,
   lavender: `#C640CD`,
   violet: `#A524B3`,
-  purple: `#691FA9`,
+  purple: `#691FA9`
 }
 
 const textOnBrand: typeof brand = {
@@ -118,7 +118,7 @@ const textOnBrand: typeof brand = {
   ruby: neutral.white,
   lavender: neutral.white,
   violet: neutral.white,
-  purple: neutral.white,
+  purple: neutral.white
 }
 
 const gradient = {
@@ -126,11 +126,9 @@ const gradient = {
   flare: `linear-gradient(135deg, ${brand.ruby} 0%, ${brand.yellow} 100%)`,
   cerise: `linear-gradient(135deg, ${brand.ruby} 0%, ${brand.lavender} 100%)`,
   amin: `linear-gradient(135deg, ${brand.lavender} 0%, ${brand.purple} 100%)`,
-  gold: "linear-gradient(90deg, #F3C66B 0%, #9D7526 25%, #F6E59B 50%, #9D7526 75%, #F3C66B 100%)",
-  silver:
-    "linear-gradient(90deg, #5E5E5E 0%, #626262 25%, #FFFFFF 50%, #6D6D6D 75%, #5E5E5E 100%)",
-  bronze:
-    "linear-gradient(90deg, #FC801A 0%, #AF4300 25%, #FDCAA5 50%, #AF4300 75%, #FC801A 100%)",
+  gold: 'linear-gradient(90deg, #F3C66B 0%, #9D7526 25%, #F6E59B 50%, #9D7526 75%, #F3C66B 100%)',
+  silver: 'linear-gradient(90deg, #5E5E5E 0%, #626262 25%, #FFFFFF 50%, #6D6D6D 75%, #5E5E5E 100%)',
+  bronze: 'linear-gradient(90deg, #FC801A 0%, #AF4300 25%, #FDCAA5 50%, #AF4300 75%, #FC801A 100%)'
 }
 
 const textOnGradient: typeof gradient = {
@@ -140,42 +138,42 @@ const textOnGradient: typeof gradient = {
   amin: neutral.white,
   gold: neutral.softBlack2,
   silver: neutral.softBlack2,
-  bronze: neutral.softBlack2,
+  bronze: neutral.softBlack2
 }
 
 const opacity = {
   backdrop: 0.6,
   blurry: 0.4,
   soft: 0.2,
-  subtle: 0.1,
+  subtle: 0.1
 }
 
 const blackTransparent = {
   backdrop: `rgba(0, 0, 0, ${opacity.backdrop})`,
   blurry: `rgba(0, 0, 0, ${opacity.blurry})`,
   soft: `rgba(0, 0, 0, ${opacity.soft})`,
-  subtle: `rgba(0, 0, 0, ${opacity.subtle})`,
+  subtle: `rgba(0, 0, 0, ${opacity.subtle})`
 }
 
 const textOnBlackTransparent: typeof blackTransparent = {
   backdrop: neutral.white,
   blurry: neutral.white,
   soft: neutral.black,
-  subtle: neutral.black,
+  subtle: neutral.black
 }
 
 const whiteTransparent: typeof blackTransparent = {
   backdrop: `rgba(255, 255, 255, ${opacity.backdrop})`,
   blurry: `rgba(255, 255, 255, ${opacity.blurry})`,
   soft: `rgba(255, 255, 255, ${opacity.soft})`,
-  subtle: `rgba(255, 255, 255, ${opacity.subtle})`,
+  subtle: `rgba(255, 255, 255, ${opacity.subtle})`
 }
 
 const textOnWhiteTransparent: typeof blackTransparent = {
   backdrop: neutral.softBlack2,
   blurry: neutral.softBlack2,
   soft: neutral.softBlack2,
-  subtle: neutral.softBlack2,
+  subtle: neutral.softBlack2
 }
 
 export {
@@ -196,5 +194,5 @@ export {
   blackTransparent,
   textOnBlackTransparent,
   whiteTransparent,
-  textOnWhiteTransparent,
+  textOnWhiteTransparent
 }

@@ -1,4 +1,4 @@
-import { BodyShape } from "@dcl/schemas"
+import { BodyShape } from '@dcl/schemas'
 import {
   EmoteWithBlobs,
   PreviewCamera,
@@ -8,9 +8,9 @@ import {
   PreviewRenderer,
   PreviewType,
   PreviewUnityMode,
-  WearableWithBlobs,
-} from "@dcl/schemas/dist/dapps/preview"
-import { SocialEmoteAnimation } from "@dcl/schemas/dist/dapps/preview/social-emote-animation"
+  WearableWithBlobs
+} from '@dcl/schemas/dist/dapps/preview'
+import { SocialEmoteAnimation } from '@dcl/schemas/dist/dapps/preview/social-emote-animation'
 
 type WearablePreviewProps = {
   id?: string

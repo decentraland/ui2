@@ -6,4 +6,8 @@ interface TextBadgeProps {
   text: string
 }
 
-export type { NumberBadgeProps, TextBadgeProps }
+interface UserCountBadgeProps {
+  count: number
+}
+
+export type { NumberBadgeProps, TextBadgeProps, UserCountBadgeProps }

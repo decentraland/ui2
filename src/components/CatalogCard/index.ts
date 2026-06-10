@@ -1,2 +1,2 @@
-export * from "./CatalogCard"
-export * from "./CatalogCard.types"
+export * from './CatalogCard'
+export * from './CatalogCard.types'

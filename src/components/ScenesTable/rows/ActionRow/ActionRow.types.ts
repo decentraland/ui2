@@ -1,4 +1,4 @@
-import { JumpInTrackingData } from "../../../JumpIn/JumpIn.types"
+import { JumpInTrackingData } from '../../../JumpIn/JumpIn.types'
 
 type ActionRowProps = {
   positionChange?: number

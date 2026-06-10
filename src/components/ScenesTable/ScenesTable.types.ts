@@ -1,5 +1,5 @@
-import { Avatar } from "@dcl/schemas"
-import { JumpInTrackingData } from "../JumpIn/JumpIn.types"
+import { Avatar } from '@dcl/schemas'
+import { JumpInTrackingData } from '../JumpIn/JumpIn.types'
 
 type SceneRowData = {
   key: string

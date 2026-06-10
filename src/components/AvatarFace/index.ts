@@ -1,2 +1,2 @@
-export * from "./AvatarFace"
-export * from "./AvatarFace.types"
+export * from './AvatarFace'
+export * from './AvatarFace.types'

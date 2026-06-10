@@ -1,24 +1,11 @@
-import React from "react"
-import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon"
+import React from 'react'
+import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon'
 
 const RewardIcon = React.memo((props: SvgIconProps) => {
   return (
     <SvgIcon {...props}>
-      <svg
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        {...props}
-      >
-        <circle
-          cx="12"
-          cy="12"
-          r="12"
-          transform="rotate(90 12 12)"
-          fill="url(#paint0_linear_2225_104802)"
-        />
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+        <circle cx="12" cy="12" r="12" transform="rotate(90 12 12)" fill="url(#paint0_linear_2225_104802)" />
         <path
           d="M16.3288 13.6152C15.3743 14.7251 13.9988 15.4602 12.4499 15.5762C12.452 15.5813 12.4532 15.5868 12.4557 15.5918L14.1149 18.876C14.2031 19.05 14.4492 19.0573 14.5475 18.8887L15.5505 17.1699C15.5985 17.088 15.6892 17.0407 15.7839 17.0488L17.7721 17.2197C17.9655 17.2362 18.1008 17.0326 18.0114 16.8604L16.3288 13.6152Z"
           fill="#FCFCFC"

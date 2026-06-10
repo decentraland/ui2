@@ -1,33 +1,12 @@
-import React from "react"
-import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon"
+import React from 'react'
+import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon'
 
 const StreamingIcon = React.memo((props: SvgIconProps) => {
   return (
     <SvgIcon {...props}>
-      <svg
-        width="41"
-        height="41"
-        viewBox="0 0 41 41"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <rect
-          x="0.914062"
-          y="0.635254"
-          width="40"
-          height="40"
-          rx="20"
-          fill="url(#paint0_radial_21008_111770)"
-        />
-        <rect
-          x="0.914062"
-          y="0.635254"
-          width="40"
-          height="40"
-          rx="20"
-          fill="black"
-          fillOpacity="0.4"
-        />
+      <svg width="41" height="41" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0.914062" y="0.635254" width="40" height="40" rx="20" fill="url(#paint0_radial_21008_111770)" />
+        <rect x="0.914062" y="0.635254" width="40" height="40" rx="20" fill="black" fillOpacity="0.4" />
         <g clipPath="url(#clip0_21008_111770)">
           <path
             d="M20.9154 22.3888C21.9171 22.3888 22.7292 21.6047 22.7292 20.6375C22.7292 19.6703 21.9171 18.8862 20.9154 18.8862C19.9136 18.8862 19.1016 19.6703 19.1016 20.6375C19.1016 21.6047 19.9136 22.3888 20.9154 22.3888Z"
@@ -89,12 +68,7 @@ const StreamingIcon = React.memo((props: SvgIconProps) => {
             <stop offset="0.864583" stopColor="#A24BF3" />
           </radialGradient>
           <clipPath id="clip0_21008_111770">
-            <rect
-              width="29"
-              height="28"
-              fill="white"
-              transform="translate(6.41406 6.63525)"
-            />
+            <rect width="29" height="28" fill="white" transform="translate(6.41406 6.63525)" />
           </clipPath>
         </defs>
       </svg>

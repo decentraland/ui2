@@ -1,64 +1,55 @@
-import Download from "@mui/icons-material/Download"
-import { Box } from "@mui/material"
-import { DownloadButton } from "./DownloadButton"
-import { config } from "../../config"
-import { CDNSource, getCDNRelease } from "../../modules/cdnReleases"
-import { DownloadButtonProps } from "./DownloadButton.types"
-import {
-  DownloadButtonAppleIcon,
-  DownloadButtonWindowsIcon,
-} from "./DownloadButton.styled"
-import type { Meta, StoryObj } from "@storybook/react"
+import Download from '@mui/icons-material/Download'
+import { Box } from '@mui/material'
+import { DownloadButton } from './DownloadButton'
+import { config } from '../../config'
+import { CDNSource, getCDNRelease } from '../../modules/cdnReleases'
+import { DownloadButtonProps } from './DownloadButton.types'
+import { DownloadButtonAppleIcon, DownloadButtonWindowsIcon } from './DownloadButton.styled'
+import type { Meta, StoryObj } from '@storybook/react'
 
 const links = getCDNRelease(CDNSource.LAUNCHER)
-const linksAutoSigning = getCDNRelease(CDNSource.AUTO_SIGNING, "1234567890")
+const linksAutoSigning = getCDNRelease(CDNSource.AUTO_SIGNING, '1234567890')
 
 const meta: Meta<DownloadButtonProps> = {
   component: DownloadButton,
-  title: "Decentraland UI/Download Button",
-  tags: ["autodocs"],
+  title: 'Decentraland UI/Download Button',
+  tags: ['autodocs'],
   argTypes: {
     href: {
-      description: "URL to download",
-      control: "select",
+      description: 'URL to download',
+      control: 'select',
       options: [
         links!.Windows.amd64,
         links!.macOS.arm64,
         links!.macOS.amd64,
         linksAutoSigning!.Windows.amd64,
-        linksAutoSigning!.macOS.arm64,
-      ],
+        linksAutoSigning!.macOS.arm64
+      ]
     },
     label: {
-      description: "Button label text",
-      defaultValue: "Download",
+      description: 'Button label text',
+      defaultValue: 'Download'
     },
     startIcon: {
-      description: "Icon to show at start of button",
+      description: 'Icon to show at start of button'
     },
     endIcon: {
-      description: "Icon to show at end of button",
-      control: "select",
-      options: ["Windows", "macOS", "Download"],
+      description: 'Icon to show at end of button',
+      control: 'select',
+      options: ['Windows', 'macOS', 'Download']
     },
     onClick: {
-      description: "Click handler",
+      description: 'Click handler'
     },
     shouldDownloadBeforeRedirect: {
-      description:
-        "If true, downloads the file before redirecting. If false, only redirects without downloading.",
-      control: "boolean",
-      defaultValue: true,
-    },
+      description: 'If true, downloads the file before redirecting. If false, only redirects without downloading.',
+      control: 'boolean',
+      defaultValue: true
+    }
   },
-  render: (args) => {
+  render: args => {
     const { endIcon, shouldDownloadBeforeRedirect, ...rest } = args
-    const icon =
-      endIcon === "Windows" ? (
-        <DownloadButtonWindowsIcon />
-      ) : endIcon === "macOS" ? (
-        <DownloadButtonAppleIcon />
-      ) : null
+    const icon = endIcon === 'Windows' ? <DownloadButtonWindowsIcon /> : endIcon === 'macOS' ? <DownloadButtonAppleIcon /> : null
     return (
       <DownloadButton
         {...rest}
@@ -67,70 +58,60 @@ const meta: Meta<DownloadButtonProps> = {
         startIcon={!icon && <Download />}
       />
     )
-  },
+  }
 }
 
 type Story = StoryObj<DownloadButtonProps>
 
 const Basic: Story = {
-  name: "Basic",
+  name: 'Basic',
   args: {
-    href: config.get("DOWNLOAD_URL"),
-    startIcon: <Download />,
-  },
+    href: config.get('DOWNLOAD_URL'),
+    startIcon: <Download />
+  }
 }
 
 const WithOS: Story = {
-  name: "With OS Icons",
+  name: 'With OS Icons',
   render: () => (
     <Box display="flex" gap={2}>
-      <DownloadButton
-        href={links!.Windows.amd64}
-        endIcon={<DownloadButtonWindowsIcon />}
-        onClick={() => {}}
-      />
-      <DownloadButton
-        href={links!.macOS.arm64}
-        endIcon={<DownloadButtonAppleIcon />}
-        onClick={() => {}}
-      />
+      <DownloadButton href={links!.Windows.amd64} endIcon={<DownloadButtonWindowsIcon />} onClick={() => {}} />
+      <DownloadButton href={links!.macOS.arm64} endIcon={<DownloadButtonAppleIcon />} onClick={() => {}} />
     </Box>
-  ),
+  )
 }
 
 const WithCustomFallback: Story = {
-  name: "With Custom Fallback",
+  name: 'With Custom Fallback',
   args: {
-    label: "Download with Fallback",
+    label: 'Download with Fallback',
     onClick: (event, options) => {
-      console.log("Custom fallback triggered:", event, options)
-      window.open("https://decentraland.org/download", "_blank")
-    },
+      console.log('Custom fallback triggered:', event, options)
+      window.open('https://decentraland.org/download', '_blank')
+    }
   },
   parameters: {
     docs: {
       description: {
-        story:
-          "Button with custom handler - will try direct download first, then call custom handler if direct download not possible",
-      },
-    },
-  },
+        story: 'Button with custom handler - will try direct download first, then call custom handler if direct download not possible'
+      }
+    }
+  }
 }
 
 const WithoutDownloadBeforeRedirect: Story = {
-  name: "Redirect Only (No Download)",
+  name: 'Redirect Only (No Download)',
   args: {
-    label: "Redirect Only",
-    shouldDownloadBeforeRedirect: false,
+    label: 'Redirect Only',
+    shouldDownloadBeforeRedirect: false
   },
   parameters: {
     docs: {
       description: {
-        story:
-          "Button that redirects without downloading the file first. Use this when you only want to redirect to the download page.",
-      },
-    },
-  },
+        story: 'Button that redirects without downloading the file first. Use this when you only want to redirect to the download page.'
+      }
+    }
+  }
 }
 
 // eslint-disable-next-line import/no-default-export

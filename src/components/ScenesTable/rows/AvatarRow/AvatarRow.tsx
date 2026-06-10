@@ -1,6 +1,6 @@
-import { memo } from "react"
-import { UserLabel } from "../../../UserLabel"
-import { AvatarRowProps } from "./AvatarRow.types"
+import { memo } from 'react'
+import { UserLabel } from '../../../UserLabel'
+import { AvatarRowProps } from './AvatarRow.types'
 
 const AvatarRow = memo((props: AvatarRowProps) => {
   const { avatar } = props
@@ -8,6 +8,6 @@ const AvatarRow = memo((props: AvatarRowProps) => {
   return <UserLabel avatar={avatar} />
 })
 
-AvatarRow.displayName = "AvatarRow"
+AvatarRow.displayName = 'AvatarRow'
 
 export { AvatarRow }

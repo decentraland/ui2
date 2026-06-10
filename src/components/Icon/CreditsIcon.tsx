@@ -1,16 +1,10 @@
-import React from "react"
-import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon"
+import React from 'react'
+import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon'
 
 const CreditsIcon = React.memo((props: SvgIconProps) => {
   return (
     <SvgIcon {...props}>
-      <svg
-        width="256"
-        height="256"
-        viewBox="0 0 256 256"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+      <svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
           d="M25.5371 184.328C16.718 180.685 12.5221 170.582 16.1653 161.763L29.8558 128.622L16.1025 95.5076C12.4426 86.6954 16.6194 76.5848 25.4316 72.9248L58.5462 59.1716L72.2367 26.0312C75.8799 17.212 85.9827 13.0162 94.8018 16.6594L127.942 30.3498L161.057 16.5966C169.869 12.9367 179.98 17.1135 183.639 25.9257L197.393 59.0402L230.533 72.7308C239.352 76.374 243.548 86.4767 239.905 95.2958L226.215 128.436L239.968 161.551C243.628 170.363 239.451 180.474 230.639 184.134L197.524 197.887L183.834 231.027C180.19 239.846 170.088 244.042 161.269 240.399L128.128 226.709L95.0135 240.462C86.2013 244.122 76.0907 239.945 72.4307 231.133L58.6775 198.018L25.5371 184.328Z"
           fill="url(#paint0_linear_1048_15924)"
@@ -31,22 +25,8 @@ const CreditsIcon = React.memo((props: SvgIconProps) => {
           d="M62.1592 164.392C56.491 162.05 53.7942 155.557 56.1357 149.889L64.9349 128.589L56.0954 107.305C53.7431 101.641 56.4276 95.1432 62.0914 92.7908L83.3749 83.9513L92.1741 62.6512C94.5157 56.983 101.009 54.2862 106.677 56.6278L127.977 65.4269L149.261 56.5874C154.925 54.2351 161.423 56.9196 163.775 62.5834L172.615 83.8669L193.915 92.6661C199.583 95.0077 202.28 101.501 199.938 107.169L191.139 128.469L199.979 149.753C202.331 155.417 199.646 161.915 193.983 164.267L172.699 173.107L163.9 194.407C161.558 200.075 155.065 202.772 149.397 200.43L128.097 191.631L106.813 200.471C101.149 202.823 94.6511 200.138 92.2988 194.475L83.4593 173.191L62.1592 164.392Z"
           fill="url(#paint4_linear_1048_15924)"
         />
-        <ellipse
-          cx="71.8039"
-          cy="43.6779"
-          rx="4.2556"
-          ry="4.37564"
-          transform="rotate(29.3032 71.8039 43.6779)"
-          fill="white"
-        />
-        <ellipse
-          cx="79.7278"
-          cy="28.2715"
-          rx="4.80667"
-          ry="9.80885"
-          transform="rotate(29.3032 79.7278 28.2715)"
-          fill="white"
-        />
+        <ellipse cx="71.8039" cy="43.6779" rx="4.2556" ry="4.37564" transform="rotate(29.3032 71.8039 43.6779)" fill="white" />
+        <ellipse cx="79.7278" cy="28.2715" rx="4.80667" ry="9.80885" transform="rotate(29.3032 79.7278 28.2715)" fill="white" />
         <path
           opacity="0.8"
           fillRule="evenodd"
@@ -55,72 +35,30 @@ const CreditsIcon = React.memo((props: SvgIconProps) => {
           fill="url(#paint5_linear_1048_15924)"
         />
         <defs>
-          <linearGradient
-            id="paint0_linear_1048_15924"
-            x1="211.108"
-            y1="218.484"
-            x2="77.4791"
-            y2="27.1647"
-            gradientUnits="userSpaceOnUse"
-          >
+          <linearGradient id="paint0_linear_1048_15924" x1="211.108" y1="218.484" x2="77.4791" y2="27.1647" gradientUnits="userSpaceOnUse">
             <stop stopColor="#9BFFFF" />
             <stop offset="0.5" stopColor="#B8B9FF" />
             <stop offset="0.885" stopColor="#FFCBFF" />
             <stop offset="1" stopColor="#FDFCFF" />
           </linearGradient>
-          <linearGradient
-            id="paint1_linear_1048_15924"
-            x1="225.88"
-            y1="218.975"
-            x2="71.9492"
-            y2="33.3822"
-            gradientUnits="userSpaceOnUse"
-          >
+          <linearGradient id="paint1_linear_1048_15924" x1="225.88" y1="218.975" x2="71.9492" y2="33.3822" gradientUnits="userSpaceOnUse">
             <stop stopColor="#5285BF" />
             <stop offset="1" stopColor="#AE66F0" />
           </linearGradient>
-          <linearGradient
-            id="paint2_linear_1048_15924"
-            x1="195.385"
-            y1="221.054"
-            x2="91.1662"
-            y2="16.6319"
-            gradientUnits="userSpaceOnUse"
-          >
+          <linearGradient id="paint2_linear_1048_15924" x1="195.385" y1="221.054" x2="91.1662" y2="16.6319" gradientUnits="userSpaceOnUse">
             <stop stopColor="#9BFFFF" />
             <stop offset="0.5" stopColor="#B8B9FF" />
             <stop offset="1" stopColor="#FFCBFF" />
           </linearGradient>
-          <linearGradient
-            id="paint3_linear_1048_15924"
-            x1="103.148"
-            y1="42.8184"
-            x2="132.876"
-            y2="134.167"
-            gradientUnits="userSpaceOnUse"
-          >
+          <linearGradient id="paint3_linear_1048_15924" x1="103.148" y1="42.8184" x2="132.876" y2="134.167" gradientUnits="userSpaceOnUse">
             <stop stopColor="white" />
             <stop offset="1" stopColor="white" stopOpacity="0" />
           </linearGradient>
-          <linearGradient
-            id="paint4_linear_1048_15924"
-            x1="109.14"
-            y1="55.9116"
-            x2="124.459"
-            y2="109.497"
-            gradientUnits="userSpaceOnUse"
-          >
+          <linearGradient id="paint4_linear_1048_15924" x1="109.14" y1="55.9116" x2="124.459" y2="109.497" gradientUnits="userSpaceOnUse">
             <stop stopColor="white" />
             <stop offset="1" stopColor="white" stopOpacity="0" />
           </linearGradient>
-          <linearGradient
-            id="paint5_linear_1048_15924"
-            x1="129.146"
-            y1="173.852"
-            x2="128.082"
-            y2="69.3607"
-            gradientUnits="userSpaceOnUse"
-          >
+          <linearGradient id="paint5_linear_1048_15924" x1="129.146" y1="173.852" x2="128.082" y2="69.3607" gradientUnits="userSpaceOnUse">
             <stop stopColor="#6141A6" />
             <stop offset="1" stopColor="#6C84FF" />
           </linearGradient>

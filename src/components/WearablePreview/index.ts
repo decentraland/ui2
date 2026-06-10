@@ -1,11 +1,11 @@
-export { WearablePreview } from "./WearablePreview"
-export { EmoteControls } from "./EmoteControls"
-export { AnimationControls } from "./AnimationControls"
-export { TranslationControls } from "./TranslationControls"
-export { ZoomControls } from "./ZoomControls"
-export { useWearablePreviewController } from "./useWearablePreviewController"
-export type { EmoteControlsProps } from "./EmoteControls/EmoteControls.types"
-export type { TranslationControlsProps } from "./TranslationControls/TranslationControls.types"
-export type { WearablePreviewProps } from "./WearablePreview.types"
-export type { ZoomControlsProps } from "./ZoomControls/ZoomControls.types"
-export type { AnimationControlsProps } from "./AnimationControls/AnimationControls.types"
+export { WearablePreview } from './WearablePreview'
+export { EmoteControls } from './EmoteControls'
+export { AnimationControls } from './AnimationControls'
+export { TranslationControls } from './TranslationControls'
+export { ZoomControls } from './ZoomControls'
+export { useWearablePreviewController } from './useWearablePreviewController'
+export type { EmoteControlsProps } from './EmoteControls/EmoteControls.types'
+export type { TranslationControlsProps } from './TranslationControls/TranslationControls.types'
+export type { WearablePreviewProps } from './WearablePreview.types'
+export type { ZoomControlsProps } from './ZoomControls/ZoomControls.types'
+export type { AnimationControlsProps } from './AnimationControls/AnimationControls.types'

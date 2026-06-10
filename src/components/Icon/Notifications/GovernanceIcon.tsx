@@ -1,5 +1,5 @@
-import React from "react"
-import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon"
+import React from 'react'
+import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon'
 
 const GovernanceIcon = React.memo((props: SvgIconProps) => {
   return (
@@ -27,14 +27,7 @@ const GovernanceIcon = React.memo((props: SvgIconProps) => {
           fill="white"
         />
         <defs>
-          <linearGradient
-            id="paint0_linear_607_12590"
-            x1="2.5"
-            y1="1.5"
-            x2="21"
-            y2="22.5"
-            gradientUnits="userSpaceOnUse"
-          >
+          <linearGradient id="paint0_linear_607_12590" x1="2.5" y1="1.5" x2="21" y2="22.5" gradientUnits="userSpaceOnUse">
             <stop stopColor="#A14BF3" />
             <stop offset="1" stopColor="#6C30A6" />
           </linearGradient>

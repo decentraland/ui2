@@ -1,11 +1,11 @@
 enum ChainIconOption {
-  ETHEREUM = "ethereum",
-  POLYGON = "polygon",
-  ARBITRUM = "arbitrum",
-  OPTIMISM = "optimism",
-  FANTOM = "fantom",
-  BSC = "bsc",
-  AVALANCHE = "avalanche",
+  ETHEREUM = 'ethereum',
+  POLYGON = 'polygon',
+  ARBITRUM = 'arbitrum',
+  OPTIMISM = 'optimism',
+  FANTOM = 'fantom',
+  BSC = 'bsc',
+  AVALANCHE = 'avalanche'
 }
 
 type IconChainProps = {

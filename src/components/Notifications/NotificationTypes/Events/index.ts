@@ -1,2 +1,5 @@
-export { EventsStartedNotification } from "./EventsStartedNotification"
-export { EventsStartsSoonNotification } from "./EventsStartsSoonNotification"
+export { EventApprovedNotification } from './EventApprovedNotification'
+export { EventRejectedNotification } from './EventRejectedNotification'
+export { EventDeletedNotification } from './EventDeletedNotification'
+export { EventsStartedNotification } from './EventsStartedNotification'
+export { EventsStartsSoonNotification } from './EventsStartsSoonNotification'

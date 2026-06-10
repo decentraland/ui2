@@ -1,12 +1,9 @@
-import React, { useCallback } from "react"
-import AddIcon from "@mui/icons-material/Add"
-import RemoveIcon from "@mui/icons-material/Remove"
-import { useWearablePreviewController } from "../useWearablePreviewController"
-import { Position, ZoomControlsProps } from "./ZoomControls.types"
-import {
-  StyledZoomButton,
-  StyledZoomControlsContainer,
-} from "./ZoomControls.styled"
+import React, { useCallback } from 'react'
+import AddIcon from '@mui/icons-material/Add'
+import RemoveIcon from '@mui/icons-material/Remove'
+import { useWearablePreviewController } from '../useWearablePreviewController'
+import { Position, ZoomControlsProps } from './ZoomControls.types'
+import { StyledZoomButton, StyledZoomControlsContainer } from './ZoomControls.styled'
 
 const ZOOM_DELTA = 0.1
 
@@ -15,12 +12,9 @@ export const ZoomControls: React.FC<ZoomControlsProps> = ({
   className,
   position = Position.LEFT,
   wearablePreviewController,
-  zoomDelta = ZOOM_DELTA,
+  zoomDelta = ZOOM_DELTA
 }) => {
-  const { controllerRef } = useWearablePreviewController(
-    wearablePreviewId,
-    wearablePreviewController
-  )
+  const { controllerRef } = useWearablePreviewController(wearablePreviewId, wearablePreviewController)
 
   const handleControlZoomIn = useCallback(async () => {
     await controllerRef.current?.scene.changeZoom(zoomDelta)

@@ -1,24 +1,24 @@
-import { createTheme, type Palette } from "@mui/material/styles"
-import { colorSchemas } from "./colorSchemes"
-import { components } from "./components"
-import { ThemeProvider } from "./provider"
-import { typography } from "./typography"
+import { type Palette, createTheme } from '@mui/material/styles'
+import { colorSchemas } from './colorSchemes'
+import { components } from './components'
+import { ThemeProvider } from './provider'
+import { typography } from './typography'
 
 const theme = createTheme({
   cssVariables: {
-    colorSchemeSelector: "data",
+    colorSchemeSelector: 'data'
   },
   colorSchemes: {
     light: {
-      palette: colorSchemas.light.palette,
+      palette: colorSchemas.light.palette
     },
     dark: {
-      palette: colorSchemas.dark.palette,
-    },
+      palette: colorSchemas.dark.palette
+    }
   },
   typography: typography,
   shape: {
-    borderRadius: 6,
+    borderRadius: 6
   },
   breakpoints: {
     values: {
@@ -26,10 +26,10 @@ const theme = createTheme({
       sm: 991,
       md: 1024,
       lg: 1280,
-      xl: 1500,
-    },
+      xl: 1500
+    }
   },
-  components: components(colorSchemas.light.palette as Palette),
+  components: components(colorSchemas.light.palette as Palette)
 })
 
 const light = theme

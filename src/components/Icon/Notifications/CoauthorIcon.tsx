@@ -1,16 +1,11 @@
-import React from "react"
-import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon"
+import React from 'react'
+import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon'
 
 const CoauthorIcon = React.memo((props: SvgIconProps) => {
   return (
     <SvgIcon {...props}>
       <svg width="47" height="47" viewBox="0 0 47 47" fill="none" {...props}>
-        <circle
-          cx="23.5"
-          cy="23.5"
-          r="23.5"
-          fill="url(#paint0_linear_662_7054)"
-        />
+        <circle cx="23.5" cy="23.5" r="23.5" fill="url(#paint0_linear_662_7054)" />
         <path
           d="M25.7037 15.9113C25.7037 17.1284 24.7178 18.1142 23.5006 18.1142C22.2834 18.1142 21.2975 17.1284 21.2975 15.9113C21.2975 14.6942 22.2834 13.7083 23.5006 13.7083C24.7178 13.7083 25.7037 14.6942 25.7037 15.9113Z"
           fill="white"
@@ -32,14 +27,7 @@ const CoauthorIcon = React.memo((props: SvgIconProps) => {
           fill="white"
         />
         <defs>
-          <linearGradient
-            id="paint0_linear_662_7054"
-            x1="-1.23684"
-            y1="1.23684"
-            x2="47"
-            y2="47"
-            gradientUnits="userSpaceOnUse"
-          >
+          <linearGradient id="paint0_linear_662_7054" x1="-1.23684" y1="1.23684" x2="47" y2="47" gradientUnits="userSpaceOnUse">
             <stop stopColor="#34CE76" />
             <stop offset="1" stopColor="#229754" />
           </linearGradient>

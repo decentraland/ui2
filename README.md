@@ -2,7 +2,7 @@
 
 # Decentraland UI v2
 
-This is basically `Material UI` themed with Decentrland's look & feel + some of our own components
+This is basically `Material UI` themed with Decentraland's look & feel + some of our own components
 
 See: [ui2.decentraland.org](https://ui2.decentraland.org)
 
@@ -33,10 +33,10 @@ import { dark, ThemeProvider } from 'decentraland-ui2/dist/theme';
 Now you can use Decentraland UI v2's components:
 
 ```tsx
-import React from "react"
-import { Button } from "decentraland-ui2/lib/@mui"
+import React from 'react'
+import { Button } from 'decentraland-ui2/lib/@mui'
 
-export const CustomButton = (props) => {
+export const CustomButton = props => {
   return <Button {...props}>Save</Button>
 }
 ```
@@ -49,6 +49,6 @@ Install dependencies and start Storybook:
 
 ```
 $ npm install
-$ npm run generate:storybooks //This will regenerate @MUI components
+$ npm run generate:storybooks // This will regenerate @MUI components
 $ npm run start
 ```

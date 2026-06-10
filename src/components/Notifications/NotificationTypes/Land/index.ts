@@ -1,2 +1,2 @@
-export { LandRentalEndedNotification } from "./LandRentalEndedNotification"
-export { LandRentedNotification } from "./LandRentedNotification"
+export { LandRentalEndedNotification } from './LandRentalEndedNotification'
+export { LandRentedNotification } from './LandRentedNotification'

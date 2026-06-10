@@ -1,2 +1,2 @@
-export * from "./Blockie"
-export * from "./Blockie.types"
+export * from './Blockie'
+export * from './Blockie.types'

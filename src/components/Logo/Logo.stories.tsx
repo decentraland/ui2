@@ -1,13 +1,13 @@
-import { SvgIconProps } from "@mui/material"
-import { Logo } from "./Logo"
-import { StoryContainer, StoryItemContainer } from "./Logo.styled"
-import type { Meta, StoryObj } from "@storybook/react"
+import { SvgIconProps } from '@mui/material'
+import { Logo } from './Logo'
+import { StoryContainer, StoryItemContainer } from './Logo.styled'
+import type { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta = {
   component: Logo,
-  title: "Decentraland UI/Logo",
-  tags: ["autodocs"],
-  render: () => <Logo />,
+  title: 'Decentraland UI/Logo',
+  tags: ['autodocs'],
+  render: () => <Logo />
 }
 
 type Story = StoryObj<SvgIconProps>
@@ -32,7 +32,7 @@ const All: Story = {
         <Logo size="massive" />
       </StoryItemContainer>
     </StoryContainer>
-  ),
+  )
 }
 
 // eslint-disable-next-line import/no-default-export

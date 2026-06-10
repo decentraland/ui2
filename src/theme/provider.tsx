@@ -1,11 +1,11 @@
-import React, { ReactNode } from "react"
-import { ThemeProvider as MuiThemeProvider, type Theme } from "@mui/material/styles"
-import { CssBaseline } from "@mui/material"
+import React, { ReactNode } from 'react'
+import { ThemeProvider as MuiThemeProvider, type Theme } from '@mui/material/styles'
+import { CssBaseline } from '@mui/material'
 
 type ThemeProviderProps = {
   theme: Theme
   children: ReactNode
-  defaultMode?: "light" | "dark" | "system"
+  defaultMode?: 'light' | 'dark' | 'system'
 }
 
 const ThemeProvider = React.memo((props: ThemeProviderProps) => (

@@ -1,7 +1,7 @@
-import React from "react"
-import RepeatOneRoundedIcon from "@mui/icons-material/RepeatOneRounded"
-import RepeatRoundedIcon from "@mui/icons-material/RepeatRounded"
-import { SvgIconOwnProps } from "@mui/material"
+import React from 'react'
+import RepeatOneRoundedIcon from '@mui/icons-material/RepeatOneRounded'
+import RepeatRoundedIcon from '@mui/icons-material/RepeatRounded'
+import { SvgIconOwnProps } from '@mui/material'
 import {
   BaseFemaleIcon,
   BaseMaleIcon,
@@ -29,19 +29,15 @@ import {
   TopHeadIcon,
   UnisexIcon,
   UpperBodyIcon,
-  UtilityIcon,
-} from "../Icon"
-import { IconBadgeIcon, IconBadgeProps } from "./IconBadge.types"
-import {
-  IconBadgeButtonContainer,
-  ImageContainer,
-  TextContainer,
-} from "./IconBadge.styled"
+  UtilityIcon
+} from '../Icon'
+import { IconBadgeIcon, IconBadgeProps } from './IconBadge.types'
+import { IconBadgeButtonContainer, ImageContainer, TextContainer } from './IconBadge.styled'
 
 const getIcon = (icon: IconBadgeIcon) => {
-  const commonProps: Pick<SvgIconOwnProps, "fontSize" | "color"> = {
-    fontSize: "small",
-    color: "inherit",
+  const commonProps: Pick<SvgIconOwnProps, 'fontSize' | 'color'> = {
+    fontSize: 'small',
+    color: 'inherit'
   }
   switch (icon) {
     case IconBadgeIcon.BaseFemale:

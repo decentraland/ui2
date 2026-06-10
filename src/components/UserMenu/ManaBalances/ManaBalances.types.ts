@@ -1,5 +1,5 @@
-import * as React from "react"
-import { Network } from "@dcl/schemas/dist/dapps/network"
+import * as React from 'react'
+import { Network } from '@dcl/schemas/dist/dapps/network'
 
 type ManaBalancesProps = {
   manaBalances?: Partial<Record<Network, number>>
@@ -14,10 +14,7 @@ type ManaBalancesProps = {
     creditsExpiringIn: (value: string) => string
   }
   onClickBalance?: React.MouseEventHandler<HTMLButtonElement> &
-    ((
-      event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
-      network: Network
-    ) => void)
+    ((event: React.MouseEvent<HTMLAnchorElement, MouseEvent>, network: Network) => void)
 }
 
 export { ManaBalancesProps }

@@ -1,16 +1,10 @@
-import React from "react"
-import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon"
+import React from 'react'
+import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon'
 
 const TopHeadIcon = React.memo((props: SvgIconProps) => {
   return (
     <SvgIcon {...props}>
-      <svg
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
           d="M3.39558 15.4984C4.4906 14.2845 5.84635 13.4016 7.35852 12.7946C8.81856 12.1877 10.435 11.8566 11.9993 11.8566C13.5637 11.9118 15.1801 12.1877 16.6402 12.7946C18.1002 13.4016 19.4559 14.2845 20.6031 15.4432C20.7074 15.5536 20.7074 15.7743 20.6031 15.8847C20.4988 15.995 20.3424 15.995 20.2381 15.9398C19.6645 15.4984 19.0388 15.057 18.3609 14.7259C17.683 14.3396 17.0052 14.0637 16.3273 13.7879C14.9194 13.2912 13.4594 13.0153 11.9993 13.0153C10.5393 13.0153 9.07927 13.2912 7.72352 13.7327C7.04565 13.9534 6.36778 14.2845 5.68991 14.6707C5.01204 15.0018 4.38631 15.4432 3.81272 15.9398C3.70843 16.0502 3.49986 15.995 3.39558 15.8847C3.29129 15.7743 3.29129 15.6088 3.39558 15.4984Z"
           fill="white"

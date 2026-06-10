@@ -1,6 +1,6 @@
-import { keyframes } from "@emotion/react"
-import styled from "@emotion/styled"
-import { Badge, Box } from "@mui/material"
+import { keyframes } from '@emotion/react'
+import styled from '@emotion/styled'
+import { Badge, Box } from '@mui/material'
 
 const shake = keyframes`
 0% {
@@ -38,32 +38,32 @@ const shake = keyframes`
   }`
 
 const NotificationIconContainer = styled(Badge, {
-  shouldForwardProp: (prop) => prop !== "active",
+  shouldForwardProp: prop => prop !== 'active'
 })<{ active: boolean }>(({ active, theme }) => ({
   ...(active
     ? {
         animation: `${shake} 0.8s`,
-        animationIterationCount: 4,
+        animationIterationCount: 4
       }
     : {}),
-  "&:hover": {
-    backgroundColor: "transparent",
+  '&:hover': {
+    backgroundColor: 'transparent'
   },
-  "& .MuiBadge-badge": {
-    transform: "scale(0.8) translate(40%, 60%)",
+  '& .MuiBadge-badge': {
+    transform: 'scale(0.8) translate(40%, 60%)'
   },
-  [theme.breakpoints.down("sm")]: {
-    marginLeft: theme.spacing(1),
-  },
+  [theme.breakpoints.down('sm')]: {
+    marginLeft: theme.spacing(1)
+  }
 }))
 
 const NotificationIconWrapper = styled(Box)(({ theme }) => ({
-  height: "30.625px",
-  "&:hover": {
+  height: '30.625px',
+  '&:hover': {
     backgroundColor: theme.palette.action.hover,
-    borderRadius: "50%",
-    cursor: "pointer",
-  },
+    borderRadius: '50%',
+    cursor: 'pointer'
+  }
 }))
 
 export { NotificationIconContainer, NotificationIconWrapper }

@@ -1,14 +1,11 @@
-import { ReactNode } from "react"
+import { ReactNode } from 'react'
 
 type BaseRow = {
   key: string
   borderColor?: string
 }
 
-type ResponsiveWidth =
-  | string
-  | number
-  | { mobile?: string | number; desktop?: string | number }
+type ResponsiveWidth = string | number | { mobile?: string | number; desktop?: string | number }
 
 type Column<T extends BaseRow> = {
   id: string

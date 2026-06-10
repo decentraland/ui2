@@ -1,2 +1,2 @@
-export { AnimationControls } from "./AnimationControls"
-export type { AnimationControlsProps } from "./AnimationControls.types"
+export { AnimationControls } from './AnimationControls'
+export type { AnimationControlsProps } from './AnimationControls.types'

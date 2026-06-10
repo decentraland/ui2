@@ -1,17 +1,10 @@
-import React from "react"
-import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon"
+import React from 'react'
+import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon'
 
 const EventStartedIcon = React.memo((props: SvgIconProps) => {
   return (
     <SvgIcon {...props}>
-      <svg
-        width="48"
-        height="48"
-        viewBox="0 0 48 48"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        {...props}
-      >
+      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
         <circle cx="24" cy="24" r="24" fill="url(#paint0_linear_602_11502)" />
         <path
           fillRule="evenodd"
@@ -24,14 +17,7 @@ const EventStartedIcon = React.memo((props: SvgIconProps) => {
           fill="#FCFCFC"
         />
         <defs>
-          <linearGradient
-            id="paint0_linear_602_11502"
-            x1="0"
-            y1="0"
-            x2="48"
-            y2="48"
-            gradientUnits="userSpaceOnUse"
-          >
+          <linearGradient id="paint0_linear_602_11502" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
             <stop stopColor="#438FFF" />
             <stop offset="1" stopColor="#2969C7" />
           </linearGradient>

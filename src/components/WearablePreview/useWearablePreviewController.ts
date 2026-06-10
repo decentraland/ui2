@@ -1,12 +1,6 @@
-import { useEffect, useRef, useState } from "react"
-import {
-  IPreviewController,
-  PreviewMessageType,
-} from "@dcl/schemas/dist/dapps/preview"
-import {
-  createController,
-  isControllerReady,
-} from "./WearablePreview.controller"
+import { useEffect, useRef, useState } from 'react'
+import { IPreviewController, PreviewMessageType } from '@dcl/schemas/dist/dapps/preview'
+import { createController, isControllerReady } from './WearablePreview.controller'
 
 export const useWearablePreviewController = (
   previewId: string,
@@ -39,27 +33,22 @@ export const useWearablePreviewController = (
     // Store contentWindow reference for stable comparison
     const iframeWindow = iframe.contentWindow
     if (!iframeWindow) {
-      console.error(
-        `Iframe contentWindow is not accessible for id="${previewId}"`
-      )
+      console.error(`Iframe contentWindow is not accessible for id="${previewId}"`)
       return
     }
 
     // Listen for the LOAD message to know when controller is ready
     const handleMessage = (event: MessageEvent) => {
       // Verify message is from our iframe and controller is actually ready
-      if (
-        event.data?.type === PreviewMessageType.LOAD &&
-        isControllerReady(previewId)
-      ) {
+      if (event.data?.type === PreviewMessageType.LOAD && isControllerReady(previewId)) {
         setIsReady(true)
       }
     }
 
-    window.addEventListener("message", handleMessage)
+    window.addEventListener('message', handleMessage)
 
     return () => {
-      window.removeEventListener("message", handleMessage)
+      window.removeEventListener('message', handleMessage)
       setIsReady(false)
       controllerRef.current = null
     }

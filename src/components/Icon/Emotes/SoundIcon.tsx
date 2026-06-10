@@ -1,16 +1,10 @@
-import React from "react"
-import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon"
+import React from 'react'
+import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon'
 
 const SoundIcon = React.memo((props: SvgIconProps) => {
   return (
     <SvgIcon {...props}>
-      <svg
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
           d="M16.5217 8.40576C16.5217 7.44526 17.3004 6.66663 18.2609 6.66663C19.2214 6.66663 20 7.44526 20 8.40576V15.5942C20 16.5547 19.2214 17.3333 18.2609 17.3333C17.3004 17.3333 16.5217 16.5547 16.5217 15.5942V8.40576Z"
           fill="white"

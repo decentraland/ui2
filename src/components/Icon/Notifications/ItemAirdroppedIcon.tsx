@@ -1,5 +1,5 @@
-import React from "react"
-import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon"
+import React from 'react'
+import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon'
 
 const ItemAirdroppedIcon = React.memo((props: SvgIconProps) => {
   return (
@@ -11,14 +11,7 @@ const ItemAirdroppedIcon = React.memo((props: SvgIconProps) => {
           fill="#FCFCFC"
         />
         <defs>
-          <linearGradient
-            id="paint0_linear_32_9727"
-            x1="0"
-            y1="0"
-            x2="24.6316"
-            y2="24.6316"
-            gradientUnits="userSpaceOnUse"
-          >
+          <linearGradient id="paint0_linear_32_9727" x1="0" y1="0" x2="24.6316" y2="24.6316" gradientUnits="userSpaceOnUse">
             <stop stopColor="#FF4BED" />
             <stop offset="1" stopColor="#AF2BA2" />
           </linearGradient>

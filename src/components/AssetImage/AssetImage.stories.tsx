@@ -1,51 +1,51 @@
-import { Rarity } from "@dcl/schemas"
-import { AssetImage } from "./AssetImage"
-import { item } from "../../data/item"
-import { AssetImageProps } from "./AssetImage.types"
-import { AssetImageContainer } from "./AssetImage.stories.styled"
-import type { Meta, StoryObj } from "@storybook/react"
+import { Rarity } from '@dcl/schemas'
+import { AssetImage } from './AssetImage'
+import { item } from '../../data/item'
+import { AssetImageProps } from './AssetImage.types'
+import { AssetImageContainer } from './AssetImage.stories.styled'
+import type { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<AssetImageProps> = {
   component: AssetImage,
-  title: "Decentraland UI/Asset Image",
-  tags: ["autodocs"],
+  title: 'Decentraland UI/Asset Image',
+  tags: ['autodocs'],
   parameters: {
-    layout: "centered",
+    layout: 'centered'
   },
   argTypes: {
     rarity: {
-      control: "select",
+      control: 'select',
       options: Rarity.getRarities(),
       defaultValue: item.rarity,
-      description: "The rarity of the asset",
+      description: 'The rarity of the asset'
     },
     name: {
-      control: "text",
+      control: 'text',
       defaultValue: item.name,
-      description: "The name of the asset",
+      description: 'The name of the asset'
     },
     src: {
-      control: "text",
+      control: 'text',
       defaultValue: item.thumbnail,
-      description: "The source of the asset",
-    },
+      description: 'The source of the asset'
+    }
   },
-  render: (args) => (
+  render: args => (
     <AssetImageContainer>
       <AssetImage {...args} />
     </AssetImageContainer>
-  ),
+  )
 }
 
 type Story = StoryObj<AssetImageProps>
 
 const Default: Story = {
-  name: "Default",
+  name: 'Default',
   args: {
     src: item.thumbnail,
     name: item.name,
-    rarity: item.rarity,
-  },
+    rarity: item.rarity
+  }
 }
 
 // eslint-disable-next-line import/no-default-export

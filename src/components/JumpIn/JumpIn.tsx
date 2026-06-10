@@ -1,31 +1,24 @@
-import React, { useCallback, useState } from "react"
-import { Typography } from "@mui/material"
-import { launchDesktopApp } from "../../modules/jumpIn"
-import { JumpInIcon, LocationIcon } from "../Icon"
-import { DownloadModal } from "../Modal/DownloadModal"
-import { JumpInEventType, JumpInProps } from "./JumpIn.types"
-import {
-  LocationIconContainer,
-  StyledContainer,
-  StyledIcon,
-  StyledJumpInButton,
-  StyledJumpInLink,
-  StyledPosition,
-} from "./JumpIn.styled"
+import React, { useCallback, useState } from 'react'
+import { Typography } from '@mui/material'
+import { launchDesktopApp } from '../../modules/jumpIn'
+import { JumpInIcon, LocationIcon } from '../Icon'
+import { DownloadModal } from '../Modal/DownloadModal'
+import { JumpInEventType, JumpInProps } from './JumpIn.types'
+import { LocationIconContainer, StyledContainer, StyledIcon, StyledJumpInButton, StyledJumpInLink, StyledPosition } from './JumpIn.styled'
 
-const DEFAULT_DOWNLOAD_URL = "https://decentraland.org/download"
+const DEFAULT_DOWNLOAD_URL = 'https://decentraland.org/download'
 
 const JumpIn = React.memo((props: JumpInProps) => {
   const {
     position,
     compact,
     loading,
-    buttonText = "Jump In",
+    buttonText = 'Jump In',
     downloadUrl = DEFAULT_DOWNLOAD_URL,
     modalProps,
     desktopAppOptions = {},
     hideIcon = false,
-    onTrack,
+    onTrack
   } = props
 
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -38,11 +31,9 @@ const JumpIn = React.memo((props: JumpInProps) => {
       const hasLauncher = await launchDesktopApp(desktopAppOptions)
 
       onTrack?.({
-        type: hasLauncher
-          ? JumpInEventType.JUMP_IN
-          : JumpInEventType.OPEN_DOWNLOAD_MODAL,
+        type: hasLauncher ? JumpInEventType.JUMP_IN : JumpInEventType.OPEN_DOWNLOAD_MODAL,
         url: hasLauncher ? undefined : downloadUrl,
-        has_launcher: hasLauncher,
+        has_launcher: hasLauncher
       })
 
       !hasLauncher && setIsModalOpen(true)
@@ -50,53 +41,29 @@ const JumpIn = React.memo((props: JumpInProps) => {
     [onTrack, downloadUrl, desktopAppOptions]
   )
 
-  const handleDownloadClick = useCallback(
-    (e: React.MouseEvent<HTMLButtonElement>) => {
-      e.stopPropagation()
-      e.preventDefault()
+  const handleDownloadClick = useCallback(() => {
+    onTrack?.({
+      type: JumpInEventType.DOWNLOAD,
+      url: downloadUrl,
+      has_launcher: false
+    })
+  }, [onTrack, downloadUrl])
 
-      onTrack?.({
-        type: JumpInEventType.DOWNLOAD,
-        url: downloadUrl,
-        has_launcher: false,
-      })
-
-      window.open(downloadUrl, "_blank")
-    },
-    [onTrack, downloadUrl]
-  )
-
-  if (props.variant === "button") {
+  if (props.variant === 'button') {
     return (
       <>
-        <StyledJumpInButton
-          {...props.buttonProps}
-          onClick={handleClick}
-          disabled={loading}
-          size="small"
-          variant="contained"
-        >
+        <StyledJumpInButton {...props.buttonProps} onClick={handleClick} disabled={loading} size="small" variant="contained">
           <span>{buttonText}</span>
           {!hideIcon && <JumpInIcon />}
         </StyledJumpInButton>
-        <DownloadModal
-          {...modalProps}
-          open={isModalOpen}
-          onClose={() => setIsModalOpen(false)}
-          onDownloadClick={handleDownloadClick}
-        />
+        <DownloadModal {...modalProps} open={isModalOpen} onClose={() => setIsModalOpen(false)} onDownloadClick={handleDownloadClick} />
       </>
     )
   }
 
   return (
     <>
-      <StyledJumpInLink
-        {...props.linkProps}
-        onClick={handleClick}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <StyledJumpInLink {...props.linkProps} onClick={handleClick} target="_blank" rel="noopener noreferrer">
         <StyledContainer>
           <StyledPosition compact={compact}>
             {position && (
@@ -111,12 +78,7 @@ const JumpIn = React.memo((props: JumpInProps) => {
           </StyledIcon>
         </StyledContainer>
       </StyledJumpInLink>
-      <DownloadModal
-        {...modalProps}
-        open={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        onDownloadClick={handleDownloadClick}
-      />
+      <DownloadModal {...modalProps} open={isModalOpen} onClose={() => setIsModalOpen(false)} onDownloadClick={handleDownloadClick} />
     </>
   )
 })

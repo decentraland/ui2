@@ -1,2 +1,2 @@
-export * from "./Mana"
-export * from "./Mana.types"
+export * from './Mana'
+export * from './Mana.types'

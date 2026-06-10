@@ -1,16 +1,10 @@
-import React from "react"
-import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon"
+import React from 'react'
+import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon'
 
 const PermissionRevokedIcon = React.memo((props: SvgIconProps) => {
   return (
     <SvgIcon {...props}>
-      <svg
-        width="48"
-        height="48"
-        viewBox="0 0 48 48"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="24" cy="24" r="24" fill="url(#paint0_linear_668_7472)" />
         <path
           d="M25.8755 17.0248C25.8755 18.1436 25.0364 19.0497 24.0005 19.0497C22.9646 19.0497 22.1256 18.1436 22.1256 17.0248C22.1256 15.9061 22.9646 15 24.0005 15C25.0364 15 25.8755 15.9061 25.8755 17.0248Z"
@@ -33,14 +27,7 @@ const PermissionRevokedIcon = React.memo((props: SvgIconProps) => {
           fill="white"
         />
         <defs>
-          <linearGradient
-            id="paint0_linear_668_7472"
-            x1="-1.26316"
-            y1="1.26316"
-            x2="48"
-            y2="48"
-            gradientUnits="userSpaceOnUse"
-          >
+          <linearGradient id="paint0_linear_668_7472" x1="-1.26316" y1="1.26316" x2="48" y2="48" gradientUnits="userSpaceOnUse">
             <stop stopColor="#FF4B6B" />
             <stop offset="1" stopColor="#9B2020" />
           </linearGradient>
