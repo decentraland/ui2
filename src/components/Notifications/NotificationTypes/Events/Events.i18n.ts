@@ -115,24 +115,24 @@ const eventRejectedI18n = {
 const eventDeletedI18n = {
   en: {
     description: {
-      start: 'Your event',
-      end: 'has been deleted by an administrator.'
+      start: 'Your hangout',
+      end: 'has been deleted successfully!'
     },
-    title: 'Event deleted'
+    title: 'Hangout Deleted successfully'
   },
   es: {
     description: {
-      start: 'Tu evento',
-      end: 'ha sido eliminado por un administrador.'
+      start: 'Tu hangout',
+      end: 'ha sido eliminado con éxito!'
     },
-    title: 'Evento eliminado'
+    title: 'Hangout eliminado con éxito'
   },
   zh: {
     description: {
-      start: '您的活动',
-      end: '已被管理员删除'
+      start: '您的 hangout',
+      end: '已成功删除！'
     },
-    title: '活动已删除'
+    title: 'Hangout 已成功删除'
   }
 } as const
 
