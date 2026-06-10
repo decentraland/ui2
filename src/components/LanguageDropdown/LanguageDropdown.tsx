@@ -54,8 +54,10 @@ const LanguageDropdown = React.memo((props: LanguageDropdownProps) => {
         }}
         open={open}
         onClose={handleClose}
-        MenuListProps={{
-          'aria-labelledby': 'language-button'
+        slotProps={{
+          list: {
+            'aria-labelledby': 'language-button'
+          }
         }}
       >
         {languages.map(language => (

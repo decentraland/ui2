@@ -68,7 +68,7 @@ const Basic: Story = {
 
 const Variants: Story = {
   render: args => (
-    <Box display="flex" gap={2}>
+    <Box sx={{ display: 'flex', gap: 2 }}>
       <Button {...args} variant="contained">
         Contained
       </Button>
@@ -102,7 +102,7 @@ const Variants: Story = {
 
 const Colors: Story = {
   render: args => (
-    <Box display="flex" gap={2} flexWrap="wrap">
+    <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
       <Button {...args} color="primary">
         Primary
       </Button>
@@ -148,7 +148,7 @@ const Colors: Story = {
 
 const Sizes: Story = {
   render: args => (
-    <Box display="flex" gap={2} alignItems="center">
+    <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
       <Button {...args} size="small">
         Small
       </Button>
@@ -186,7 +186,7 @@ const Loading: Story = {
     children: 'Loading'
   },
   render: args => (
-    <Box display="flex" gap={2}>
+    <Box sx={{ display: 'flex', gap: 2 }}>
       <Button {...args} variant="contained" />
       <Button {...args} variant="outlined" />
       <Button {...args} variant="text" />
@@ -218,7 +218,7 @@ const Disabled: Story = {
     children: 'Disabled'
   },
   render: args => (
-    <Box display="flex" gap={2}>
+    <Box sx={{ display: 'flex', gap: 2 }}>
       <Button {...args} variant="contained" />
       <Button {...args} variant="outlined" />
       <Button {...args} variant="text" />

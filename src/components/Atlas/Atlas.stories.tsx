@@ -1,4 +1,3 @@
-import { ArgTypes, Title } from '@storybook/addon-docs/blocks'
 import styled from '@emotion/styled'
 import { getTiles } from './util'
 import { Atlas, AtlasProps, Coord, Layer } from './index'
@@ -180,14 +179,6 @@ const meta: Meta<AtlasProps> = {
     }
   },
   parameters: {
-    docs: {
-      page: () => (
-        <>
-          <Title />
-          <ArgTypes />
-        </>
-      )
-    },
     layout: 'centered',
     canvas: true
   },

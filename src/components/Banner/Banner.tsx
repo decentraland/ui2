@@ -62,14 +62,14 @@ export const Banner: React.FC<BannerProps> = (props: BannerProps) => {
   return (
     <BannerContainer background={bannerBackgroundImage}>
       <Content>
-        <Title variant="h1" textAlign={titleAlignment}>
+        <Title variant="h1" sx={{ textAlign: titleAlignment }}>
           {title}
         </Title>
 
-        <Text textAlign={textAlignment}>{text ? <ContentfulRichText document={text} /> : null}</Text>
+        <Text sx={{ textAlign: textAlignment }}>{text ? <ContentfulRichText document={text} /> : null}</Text>
 
         {fields.showButton[ContentfulLocale.enUS] && fields.buttonLink?.[ContentfulLocale.enUS] && fields.buttonsText?.[locale] ? (
-          <ButtonContainer justifyContent={buttonAlignment}>
+          <ButtonContainer sx={{ justifyContent: buttonAlignment }}>
             <Button onClick={onClick} href={fields.buttonLink[ContentfulLocale.enUS]} variant="contained" disableElevation>
               {fields.buttonsText[locale]}
             </Button>

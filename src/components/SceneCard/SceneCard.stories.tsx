@@ -282,14 +282,14 @@ const BadgeVariations: Story = {
         avatar={exampleAvatar}
         withShadow
         leftBadge={
-          <Typography variant="caption" fontWeight="bold">
+          <Typography variant="caption" sx={{ fontWeight: 'bold' }}>
             TOP
           </Typography>
         }
         rightBadge={
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
             <Typography variant="caption">⭐</Typography>
-            <Typography variant="caption" fontWeight="bold">
+            <Typography variant="caption" sx={{ fontWeight: 'bold' }}>
               4.8
             </Typography>
           </Box>
@@ -313,7 +313,7 @@ const BadgeVariations: Story = {
         avatar={exampleAvatar}
         withShadow
         leftBadge={
-          <Typography variant="caption" fontWeight="bold" sx={{ fontSize: '10px' }}>
+          <Typography variant="caption" sx={{ fontSize: '10px', fontWeight: 'bold' }}>
             NEW
           </Typography>
         }
@@ -364,7 +364,7 @@ const RealWorldExamples: Story = {
         avatar={exampleAvatar}
         withShadow
         leftBadge={
-          <Typography variant="caption" fontWeight="bold" sx={{ fontSize: '10px' }}>
+          <Typography variant="caption" sx={{ fontSize: '10px', fontWeight: 'bold' }}>
             NEW
           </Typography>
         }
@@ -498,7 +498,7 @@ const ShowOnHoverVariations: Story = {
         borderColor={gradient.bronze}
         withShadow
         leftBadge={
-          <Typography variant="caption" fontWeight="bold" sx={{ fontSize: '10px' }}>
+          <Typography variant="caption" sx={{ fontSize: '10px', fontWeight: 'bold' }}>
             NEW
           </Typography>
         }
