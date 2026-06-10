@@ -2,7 +2,7 @@ import { MobileDownloadModal } from './MobileDownloadModal'
 import { MobileDownloadModalProps } from './MobileDownloadModal.types'
 import type { Meta, StoryObj } from '@storybook/react'
 
-const meta: Meta<MobileDownloadModalProps> = {
+const meta = {
   title: 'Decentraland UI/Mobile Download Modal',
   component: MobileDownloadModal,
   tags: ['autodocs'],
@@ -20,7 +20,7 @@ const meta: Meta<MobileDownloadModalProps> = {
       description: 'Controls the visibility of the modal',
       table: {
         type: { summary: 'boolean' },
-        defaultValue: { summary: false }
+        defaultValue: { summary: 'false' }
       }
     },
     title: {
@@ -57,7 +57,7 @@ const meta: Meta<MobileDownloadModalProps> = {
   args: {
     open: false
   }
-} satisfies Meta<typeof MobileDownloadModal>
+} satisfies Meta<MobileDownloadModalProps>
 
 type Story = StoryObj<typeof meta>
 

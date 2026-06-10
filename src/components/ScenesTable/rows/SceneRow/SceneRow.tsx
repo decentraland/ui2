@@ -27,7 +27,7 @@ const SceneRow = memo((props: SceneRowProps) => {
           {creator && (
             <MobileAvatarContainer>
               <AvatarFace size="tiny" avatar={creator} />
-              <Typography component="span" fontSize="12px">
+              <Typography component="span" sx={{ fontSize: '12px' }}>
                 By{' '}
               </Typography>
               <MobileAvatarName href={`https://decentraland.org/profile/accounts/${creator.ethAddress}`}>{creator.name}</MobileAvatarName>

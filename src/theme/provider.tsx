@@ -1,7 +1,6 @@
 import React, { ReactNode } from 'react'
-import { Experimental_CssVarsProvider as CssVarsProvider } from '@mui/material/styles'
+import { ThemeProvider as MuiThemeProvider, type Theme } from '@mui/material/styles'
 import { CssBaseline } from '@mui/material'
-import type { Theme } from './types'
 
 type ThemeProviderProps = {
   theme: Theme
@@ -9,10 +8,10 @@ type ThemeProviderProps = {
 }
 
 const ThemeProvider = React.memo((props: ThemeProviderProps) => (
-  <CssVarsProvider theme={props.theme}>
+  <MuiThemeProvider theme={props.theme}>
     <CssBaseline />
     {props.children}
-  </CssVarsProvider>
+  </MuiThemeProvider>
 ))
 
 export type { ThemeProviderProps }

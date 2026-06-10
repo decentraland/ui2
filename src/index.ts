@@ -66,7 +66,6 @@ export {
   GlobalStyles,
   Grid,
   Grow,
-  Hidden,
   Icon,
   IconButton,
   ImageList,
@@ -144,7 +143,6 @@ export {
   Toolbar,
   Tooltip,
   Typography,
-  Unstable_Grid2,
   Unstable_TrapFocus,
   useAutocomplete,
   useMediaQuery,
@@ -158,7 +156,10 @@ export { useTheme } from '@emotion/react'
 export { emotionReact, emotionStyled, emotionCache }
 export * from './components/Address'
 export * as dclAddressUtils from './components/AddressField/utils'
+export * from './components/AssetImage'
+export * from './components/Atlas'
 export * from './components/AvatarFace'
+export * as dclButton from './components/Button'
 export * from './components/Blockie'
 export * from './components/ChainSelector'
 export * from './components/UserLabel'

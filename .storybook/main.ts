@@ -1,47 +1,50 @@
 import type { StorybookConfig } from '@storybook/react-webpack5'
 
-// white all posible options for StorybookConfig
-// https://storybook.js.org/docs/react/configure/typescript#mainjs-configuration
-
 const config: StorybookConfig = {
-  stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
-  addons: [
-    '@storybook/addon-links',
-    {
-      name: '@storybook/addon-essentials',
-      options: {
-        toolbars: false,
-        outline: false
-      }
-    },
-    '@storybook/addon-themes',
-    {
-      name: '@storybook/addon-storysource',
-      options: {
-        loaderOptions: {
-          injectStoryParameters: false
-        }
-      }
-    }
-  ],
+  stories: ['../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
+
+  addons: ['@storybook/addon-links', '@storybook/addon-themes', '@storybook/addon-docs', '@storybook/addon-webpack5-compiler-babel'],
+
   framework: {
     name: '@storybook/react-webpack5',
     options: {}
   },
+
+  babel: async options => ({
+    ...options,
+    plugins: [...(options.plugins ?? []), '@emotion/babel-plugin']
+  }),
+
+  webpackFinal: async config => {
+    if (config.module?.rules) {
+      config.module.rules.push({
+        test: /\.(ts|tsx)$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: [
+                ['@babel/preset-env', { targets: 'defaults' }],
+                '@babel/preset-typescript',
+                ['@babel/preset-react', { runtime: 'automatic' }]
+              ],
+              plugins: ['@emotion/babel-plugin']
+            }
+          }
+        ]
+      })
+    }
+    return config
+  },
+
   typescript: {
     reactDocgen: 'react-docgen-typescript',
-    reactDocgenTypescriptOptions: {
-      compilerOptions: {
-        allowSyntheticDefaultImports: false,
-        esModuleInterop: false
-      },
-      shouldExtractLiteralValuesFromEnum: true,
-      shouldRemoveUndefinedFromOptional: true,
-      propFilter: prop => (prop.parent ? !/node_modules\/(?!@mui)/.test(prop.parent.fileName) : true)
-    }
+    check: false,
+    checkOptions: {}
   },
+
   docs: {
-    autodocs: 'tag',
     defaultName: 'Documentation'
   }
 }

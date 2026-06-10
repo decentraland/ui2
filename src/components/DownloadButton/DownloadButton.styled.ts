@@ -7,7 +7,7 @@ import { WindowsIcon } from '../Icon/WindowsIcon'
 const DownloadButtonStyled = styled(Button)(props => {
   const { theme } = props
   return {
-    '&.MuiButton-sizeMedium.MuiButton-containedPrimary': {
+    '&.MuiButton-sizeMedium.MuiButton-contained.MuiButton-colorPrimary': {
       height: '46px',
       fontSize: '14px',
       fontWeight: 600,
@@ -18,7 +18,7 @@ const DownloadButtonStyled = styled(Button)(props => {
         marginLeft: '8px'
       }
     },
-    '&.MuiButton-sizeMedium.MuiButton-containedPrimary:not(.Mui-disabled):not(.Mui-focusVisible):hover': {
+    '&.MuiButton-sizeMedium.MuiButton-contained.MuiButton-colorPrimary:not(.Mui-disabled):not(.Mui-focusVisible):hover': {
       backgroundColor: theme.palette.primary.main,
       color: 'white'
     },

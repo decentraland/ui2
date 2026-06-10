@@ -3,7 +3,7 @@ import { DOWNLOAD_URLS } from '../../../modules/downloadUrls'
 import { DownloadModalProps } from './DownloadModal.types'
 import type { Meta, StoryObj } from '@storybook/react'
 
-const meta: Meta<DownloadModalProps> = {
+const meta = {
   title: 'Decentraland UI/Download Modal',
   component: DownloadModal,
   tags: ['autodocs'],
@@ -43,8 +43,11 @@ const meta: Meta<DownloadModalProps> = {
     open: {
       control: 'boolean'
     }
+  },
+  args: {
+    onClose: () => undefined
   }
-} satisfies Meta<typeof DownloadModal>
+} satisfies Meta<DownloadModalProps>
 
 type Story = StoryObj<typeof meta>
 

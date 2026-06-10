@@ -27,10 +27,10 @@ const meta: Meta<typeof BaseFemaleIcon> = {
   title: 'Decentraland UI/Icons/Wearables',
   component: BaseFemaleIcon,
   parameters: {
-    layout: 'centered',
-    backgrounds: {
-      default: 'dark'
-    }
+    layout: 'centered'
+  },
+  globals: {
+    backgrounds: { value: 'dark' }
   },
   tags: ['autodocs']
 }

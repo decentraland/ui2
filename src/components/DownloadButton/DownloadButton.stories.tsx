@@ -74,7 +74,7 @@ const Basic: Story = {
 const WithOS: Story = {
   name: 'With OS Icons',
   render: () => (
-    <Box display="flex" gap={2}>
+    <Box sx={{ display: 'flex', gap: 2 }}>
       <DownloadButton href={links!.Windows.amd64} endIcon={<DownloadButtonWindowsIcon />} onClick={() => {}} />
       <DownloadButton href={links!.macOS.arm64} endIcon={<DownloadButtonAppleIcon />} onClick={() => {}} />
     </Box>
