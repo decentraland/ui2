@@ -15,7 +15,7 @@ const CommonButtonStyle = styled(Button)({
   borderRadius: '14px',
   padding: '8px 10px',
   color: 'green',
-  '&.MuiButton-sizeMedium.MuiButton-containedSecondary': {
+  '&.MuiButton-sizeMedium.MuiButton-contained.MuiButton-colorSecondary': {
     opacity: '1',
     '&:not(.Mui-disabled):not(.Mui-focusVisible):not(:hover)': {
       color: textOnNeutral.gray1,
@@ -27,7 +27,7 @@ const CommonButtonStyle = styled(Button)({
       background: neutral.gray0
     }
   },
-  '& span.MuiButton-icon.MuiButton-startIcon.MuiButton-iconSizeMedium': {
+  '& span.MuiButton-icon.MuiButton-startIcon': {
     '& svg': {
       fontSize: '28px'
     }
@@ -36,7 +36,7 @@ const CommonButtonStyle = styled(Button)({
 
 const SelectorButton = styled(CommonButtonStyle)(({ theme }) => ({
   [theme.breakpoints.down('sm')]: {
-    '&.MuiButton-sizeMedium.MuiButton-containedSecondary': {
+    '&.MuiButton-sizeMedium.MuiButton-contained.MuiButton-colorSecondary': {
       paddingLeft: '0',
       paddingRight: '0',
       minWidth: '50px'

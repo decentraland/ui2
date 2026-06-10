@@ -5,11 +5,10 @@ import { CssBaseline } from '@mui/material'
 type ThemeProviderProps = {
   theme: Theme
   children: ReactNode
-  defaultMode?: 'light' | 'dark' | 'system'
 }
 
 const ThemeProvider = React.memo((props: ThemeProviderProps) => (
-  <MuiThemeProvider theme={props.theme} defaultMode={props.defaultMode}>
+  <MuiThemeProvider theme={props.theme}>
     <CssBaseline />
     {props.children}
   </MuiThemeProvider>

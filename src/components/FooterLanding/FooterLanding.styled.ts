@@ -56,21 +56,21 @@ const IconButton = styled(Button)(({ theme }) => ({
   cursor: 'pointer',
   justifyContent: 'flex-start',
   marginBottom: theme.spacing(0.5),
-  '&.MuiButton-sizeMedium.MuiButton-textSecondary:not(.Mui-disabled):not(.Mui-focusVisible):not(:hover)': {
+  '&.MuiButton-sizeMedium.MuiButton-text.MuiButton-colorSecondary:not(.Mui-disabled):not(.Mui-focusVisible):not(:hover)': {
     color: theme.palette.text.primary,
     textTransform: 'capitalize',
     '& .MuiButton-startIcon svg.MuiSvgIcon-root': {
       color: theme.palette.text.secondary
     }
   },
-  '&.MuiButton-sizeMedium.MuiButton-textSecondary:not(.Mui-disabled):not(.Mui-focusVisible):hover': {
+  '&.MuiButton-sizeMedium.MuiButton-text.MuiButton-colorSecondary:not(.Mui-disabled):not(.Mui-focusVisible):hover': {
     textTransform: 'capitalize'
   },
   '&:hover': {
     backgroundColor: 'transparent'
   },
   [theme.breakpoints.down('xs')]: {
-    '&.MuiButton-sizeMedium.MuiButton-textSecondary:not(.Mui-disabled):not(.Mui-focusVisible):not(:hover)': {
+    '&.MuiButton-sizeMedium.MuiButton-text.MuiButton-colorSecondary:not(.Mui-disabled):not(.Mui-focusVisible):not(:hover)': {
       fontSize: '24px',
       fontWeight: 700,
       lineHeight: '32px',

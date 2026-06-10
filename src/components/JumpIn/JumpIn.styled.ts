@@ -60,7 +60,7 @@ const StyledJumpInButton = styled(Button)({
   padding: '0 16px',
 
   // This custom class selector is for increasing specificity to override the default font size and weight
-  '&&.MuiButton-sizeSmall.MuiButton-containedPrimary': {
+  '&&.MuiButton-sizeSmall.MuiButton-contained.MuiButton-colorPrimary': {
     fontSize: '13px',
     fontWeight: 600
   },

@@ -1,7 +1,7 @@
 import { Avatar } from '@dcl/schemas'
 import HistoryRoundedIcon from '@mui/icons-material/HistoryRounded'
 import styled from '@emotion/styled'
-import { Box, ListItemIcon, Menu, MenuItem, Paper, Typography } from '@mui/material'
+import { Box, ListItemIcon, Menu, MenuItem, MenuList, Paper, Typography } from '@mui/material'
 import ManDefault from '../../../Assets/man-default1.png'
 
 interface AvatarPreviewProps {
@@ -162,7 +162,7 @@ const MenuInfoUnclaimedTypography = styled('span')(props => {
   }
 })
 
-const ActionsWrapper = styled(Box)(props => {
+const ActionsWrapper = styled(MenuList)(props => {
   const { theme } = props
   return {
     height: '330px',
@@ -170,6 +170,7 @@ const ActionsWrapper = styled(Box)(props => {
     flexDirection: 'column',
     justifyContent: 'flex-start',
     margin: '0 55px 0 0',
+    padding: 0,
     [theme!.breakpoints.down('sm')]: {
       margin: '0'
     }

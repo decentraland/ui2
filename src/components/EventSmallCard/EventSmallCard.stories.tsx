@@ -13,7 +13,10 @@ const meta: Meta<typeof EventSmallCard> = {
   component: EventSmallCard,
   parameters: {
     layout: 'padded',
-    backgrounds: { default: 'dark', values: [{ name: 'dark', value: '#1A0A2E' }] }
+    backgrounds: { options: { dark: { name: 'dark', value: '#1A0A2E' } } }
+  },
+  globals: {
+    backgrounds: { value: 'dark' }
   },
   tags: ['autodocs']
 }

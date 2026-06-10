@@ -156,10 +156,7 @@ const meta: Meta<typeof ScenesTable> = {
   component: ScenesTable,
   tags: ['autodocs'],
   parameters: {
-    layout: 'fullscreen',
-    globals: {
-      backgrounds: { value: 'red' }
-    }
+    layout: 'fullscreen'
   },
   decorators: [
     Story => (

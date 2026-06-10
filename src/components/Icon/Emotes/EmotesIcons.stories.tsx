@@ -9,10 +9,10 @@ const meta: Meta<typeof MuteIcon> = {
   title: 'Decentraland UI/Icons/Emotes',
   component: MuteIcon,
   parameters: {
-    layout: 'centered',
-    backgrounds: {
-      default: 'dark'
-    }
+    layout: 'centered'
+  },
+  globals: {
+    backgrounds: { value: 'dark' }
   },
   tags: ['autodocs']
 }

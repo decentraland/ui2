@@ -45,7 +45,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
   MuiButton: {
     styleOverrides: {
       root: {
-        '&.MuiButton-sizeLarge.MuiButton-containedPrimary': {
+        '&.MuiButton-sizeLarge.MuiButton-contained.MuiButton-colorPrimary': {
           fontFeatureSettings: "'liga' off, 'clig' off",
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.9375rem',
@@ -86,7 +86,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             boxShadow: 'none'
           }
         },
-        '&.MuiButton-sizeLarge.MuiButton-containedInherit': {
+        '&.MuiButton-sizeLarge.MuiButton-contained.MuiButton-colorInherit': {
           fontFeatureSettings: "'liga' off, 'clig' off",
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.9375rem',
@@ -132,7 +132,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-action-disabled)'
           }
         },
-        '&.MuiButton-sizeLarge.MuiButton-containedInherit (white)': {
+        '&.MuiButton-sizeLarge.MuiButton-contained.MuiButton-colorInherit (white)': {
           fontFeatureSettings: "'liga' off, 'clig' off",
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.9375rem',
@@ -178,7 +178,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-action-disabled)'
           }
         },
-        '&.MuiButton-sizeLarge.MuiButton-containedSecondary': {
+        '&.MuiButton-sizeLarge.MuiButton-contained.MuiButton-colorSecondary': {
           fontFeatureSettings: "'liga' off, 'clig' off",
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.9375rem',
@@ -220,7 +220,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             boxShadow: 'none'
           }
         },
-        '&.MuiButton-sizeLarge.MuiButton-containedError': {
+        '&.MuiButton-sizeLarge.MuiButton-contained.MuiButton-colorError': {
           fontFeatureSettings: "'liga' off, 'clig' off",
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.9375rem',
@@ -266,7 +266,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-action-disabled)'
           }
         },
-        '&.MuiButton-sizeLarge.MuiButton-containedWarning': {
+        '&.MuiButton-sizeLarge.MuiButton-contained.MuiButton-colorWarning': {
           fontFeatureSettings: "'liga' off, 'clig' off",
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.9375rem',
@@ -312,7 +312,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-action-disabled)'
           }
         },
-        '&.MuiButton-sizeLarge.MuiButton-containedInfo': {
+        '&.MuiButton-sizeLarge.MuiButton-contained.MuiButton-colorInfo': {
           fontFeatureSettings: "'liga' off, 'clig' off",
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.9375rem',
@@ -358,7 +358,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-action-disabled)'
           }
         },
-        '&.MuiButton-sizeLarge.MuiButton-containedSuccess': {
+        '&.MuiButton-sizeLarge.MuiButton-contained.MuiButton-colorSuccess': {
           fontFeatureSettings: "'liga' off, 'clig' off",
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.9375rem',
@@ -404,7 +404,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-action-disabled)'
           }
         },
-        '&.MuiButton-sizeMedium.MuiButton-containedPrimary': {
+        '&.MuiButton-sizeMedium.MuiButton-contained.MuiButton-colorPrimary': {
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.875rem',
           fontStyle: 'normal',
@@ -444,7 +444,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             boxShadow: 'var(--mui-shadows-2)'
           }
         },
-        '&.MuiButton-sizeMedium.MuiButton-containedInherit': {
+        '&.MuiButton-sizeMedium.MuiButton-contained.MuiButton-colorInherit': {
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.875rem',
           fontStyle: 'normal',
@@ -489,7 +489,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             opacity: '1'
           }
         },
-        '&.MuiButton-sizeMedium.MuiButton-containedInherit (white)': {
+        '&.MuiButton-sizeMedium.MuiButton-contained.MuiButton-colorInherit (white)': {
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.875rem',
           fontStyle: 'normal',
@@ -534,7 +534,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             opacity: '1'
           }
         },
-        '&.MuiButton-sizeMedium.MuiButton-containedSecondary': {
+        '&.MuiButton-sizeMedium.MuiButton-contained.MuiButton-colorSecondary': {
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.875rem',
           fontStyle: 'normal',
@@ -575,7 +575,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             boxShadow: 'var(--mui-shadows-2)'
           }
         },
-        '&.MuiButton-sizeMedium.MuiButton-containedError': {
+        '&.MuiButton-sizeMedium.MuiButton-contained.MuiButton-colorError': {
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.875rem',
           fontStyle: 'normal',
@@ -620,7 +620,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             opacity: '1'
           }
         },
-        '&.MuiButton-sizeMedium.MuiButton-containedWarning': {
+        '&.MuiButton-sizeMedium.MuiButton-contained.MuiButton-colorWarning': {
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.875rem',
           fontStyle: 'normal',
@@ -665,7 +665,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             opacity: '1'
           }
         },
-        '&.MuiButton-sizeMedium.MuiButton-containedInfo': {
+        '&.MuiButton-sizeMedium.MuiButton-contained.MuiButton-colorInfo': {
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.875rem',
           fontStyle: 'normal',
@@ -710,7 +710,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             opacity: '1'
           }
         },
-        '&.MuiButton-sizeMedium.MuiButton-containedSuccess': {
+        '&.MuiButton-sizeMedium.MuiButton-contained.MuiButton-colorSuccess': {
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.875rem',
           fontStyle: 'normal',
@@ -755,7 +755,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             opacity: '1'
           }
         },
-        '&.MuiButton-sizeSmall.MuiButton-containedPrimary': {
+        '&.MuiButton-sizeSmall.MuiButton-contained.MuiButton-colorPrimary': {
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.8125rem',
           fontStyle: 'normal',
@@ -795,7 +795,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             boxShadow: 'var(--mui-shadows-2)'
           }
         },
-        '&.MuiButton-sizeSmall.MuiButton-containedInherit': {
+        '&.MuiButton-sizeSmall.MuiButton-contained.MuiButton-colorInherit': {
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.8125rem',
           fontStyle: 'normal',
@@ -840,7 +840,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             opacity: '1'
           }
         },
-        '&.MuiButton-sizeSmall.MuiButton-containedInherit (white)': {
+        '&.MuiButton-sizeSmall.MuiButton-contained.MuiButton-colorInherit (white)': {
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.8125rem',
           fontStyle: 'normal',
@@ -885,7 +885,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             opacity: '1'
           }
         },
-        '&.MuiButton-sizeSmall.MuiButton-containedSecondary': {
+        '&.MuiButton-sizeSmall.MuiButton-contained.MuiButton-colorSecondary': {
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.8125rem',
           fontStyle: 'normal',
@@ -926,7 +926,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             boxShadow: 'var(--mui-shadows-2)'
           }
         },
-        '&.MuiButton-sizeSmall.MuiButton-containedError': {
+        '&.MuiButton-sizeSmall.MuiButton-contained.MuiButton-colorError': {
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.8125rem',
           fontStyle: 'normal',
@@ -971,7 +971,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             opacity: '1'
           }
         },
-        '&.MuiButton-sizeSmall.MuiButton-containedWarning': {
+        '&.MuiButton-sizeSmall.MuiButton-contained.MuiButton-colorWarning': {
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.8125rem',
           fontStyle: 'normal',
@@ -1016,7 +1016,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             opacity: '1'
           }
         },
-        '&.MuiButton-sizeSmall.MuiButton-containedInfo': {
+        '&.MuiButton-sizeSmall.MuiButton-contained.MuiButton-colorInfo': {
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.8125rem',
           fontStyle: 'normal',
@@ -1061,7 +1061,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             opacity: '1'
           }
         },
-        '&.MuiButton-sizeSmall.MuiButton-containedSuccess': {
+        '&.MuiButton-sizeSmall.MuiButton-contained.MuiButton-colorSuccess': {
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.8125rem',
           fontStyle: 'normal',
@@ -1106,7 +1106,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             opacity: '1'
           }
         },
-        '&.MuiButton-sizeLarge.MuiButton-outlinedPrimary': {
+        '&.MuiButton-sizeLarge.MuiButton-outlined.MuiButton-colorPrimary': {
           fontFeatureSettings: "'liga' off, 'clig' off",
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.9375rem',
@@ -1134,7 +1134,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-action-disabled)'
           }
         },
-        '&.MuiButton-sizeLarge.MuiButton-outlinedInherit': {
+        '&.MuiButton-sizeLarge.MuiButton-outlined.MuiButton-colorInherit': {
           fontFeatureSettings: "'liga' off, 'clig' off",
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.9375rem',
@@ -1183,7 +1183,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-action-disabled)'
           }
         },
-        '&.MuiButton-sizeLarge.MuiButton-outlinedInherit (white)': {
+        '&.MuiButton-sizeLarge.MuiButton-outlined.MuiButton-colorInherit (white)': {
           fontFeatureSettings: "'liga' off, 'clig' off",
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.9375rem',
@@ -1214,7 +1214,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-action-disabled)'
           }
         },
-        '&.MuiButton-sizeLarge.MuiButton-outlinedSecondary': {
+        '&.MuiButton-sizeLarge.MuiButton-outlined.MuiButton-colorSecondary': {
           fontFeatureSettings: "'liga' off, 'clig' off",
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.9375rem',
@@ -1246,7 +1246,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-action-disabled)'
           }
         },
-        '&.MuiButton-sizeLarge.MuiButton-outlinedError': {
+        '&.MuiButton-sizeLarge.MuiButton-outlined.MuiButton-colorError': {
           fontFeatureSettings: "'liga' off, 'clig' off",
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.9375rem',
@@ -1277,7 +1277,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-action-disabled)'
           }
         },
-        '&.MuiButton-sizeLarge.MuiButton-outlinedWarning': {
+        '&.MuiButton-sizeLarge.MuiButton-outlined.MuiButton-colorWarning': {
           fontFeatureSettings: "'liga' off, 'clig' off",
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.9375rem',
@@ -1308,7 +1308,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-action-disabled)'
           }
         },
-        '&.MuiButton-sizeLarge.MuiButton-outlinedInfo': {
+        '&.MuiButton-sizeLarge.MuiButton-outlined.MuiButton-colorInfo': {
           fontFeatureSettings: "'liga' off, 'clig' off",
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.9375rem',
@@ -1339,7 +1339,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-action-disabled)'
           }
         },
-        '&.MuiButton-sizeLarge.MuiButton-outlinedSuccess': {
+        '&.MuiButton-sizeLarge.MuiButton-outlined.MuiButton-colorSuccess': {
           fontFeatureSettings: "'liga' off, 'clig' off",
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.9375rem',
@@ -1370,7 +1370,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-action-disabled)'
           }
         },
-        '&.MuiButton-sizeMedium.MuiButton-outlinedPrimary': {
+        '&.MuiButton-sizeMedium.MuiButton-outlined.MuiButton-colorPrimary': {
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.875rem',
           fontStyle: 'normal',
@@ -1397,7 +1397,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-primary-main)'
           }
         },
-        '&.MuiButton-sizeMedium.MuiButton-outlinedInherit': {
+        '&.MuiButton-sizeMedium.MuiButton-outlined.MuiButton-colorInherit': {
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.875rem',
           fontStyle: 'normal',
@@ -1445,7 +1445,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             boxShadow: 'none'
           }
         },
-        '&.MuiButton-sizeMedium.MuiButton-outlinedInherit (white)': {
+        '&.MuiButton-sizeMedium.MuiButton-outlined.MuiButton-colorInherit (white)': {
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.875rem',
           fontStyle: 'normal',
@@ -1475,7 +1475,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-common-white_states-main)'
           }
         },
-        '&.MuiButton-sizeMedium.MuiButton-outlinedSecondary': {
+        '&.MuiButton-sizeMedium.MuiButton-outlined.MuiButton-colorSecondary': {
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.875rem',
           fontStyle: 'normal',
@@ -1506,7 +1506,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-secondary-outlinedColor)'
           }
         },
-        '&.MuiButton-sizeMedium.MuiButton-outlinedError': {
+        '&.MuiButton-sizeMedium.MuiButton-outlined.MuiButton-colorError': {
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.875rem',
           fontStyle: 'normal',
@@ -1536,7 +1536,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-error-main)'
           }
         },
-        '&.MuiButton-sizeMedium.MuiButton-outlinedWarning': {
+        '&.MuiButton-sizeMedium.MuiButton-outlined.MuiButton-colorWarning': {
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.875rem',
           fontStyle: 'normal',
@@ -1566,7 +1566,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-warning-main)'
           }
         },
-        '&.MuiButton-sizeMedium.MuiButton-outlinedInfo': {
+        '&.MuiButton-sizeMedium.MuiButton-outlined.MuiButton-colorInfo': {
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.875rem',
           fontStyle: 'normal',
@@ -1596,7 +1596,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-info-main)'
           }
         },
-        '&.MuiButton-sizeMedium.MuiButton-outlinedSuccess': {
+        '&.MuiButton-sizeMedium.MuiButton-outlined.MuiButton-colorSuccess': {
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.875rem',
           fontStyle: 'normal',
@@ -1626,7 +1626,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-success-main)'
           }
         },
-        '&.MuiButton-sizeSmall.MuiButton-outlinedPrimary': {
+        '&.MuiButton-sizeSmall.MuiButton-outlined.MuiButton-colorPrimary': {
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.8125rem',
           fontStyle: 'normal',
@@ -1653,7 +1653,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-primary-main)'
           }
         },
-        '&.MuiButton-sizeSmall.MuiButton-outlinedInherit': {
+        '&.MuiButton-sizeSmall.MuiButton-outlined.MuiButton-colorInherit': {
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.8125rem',
           fontStyle: 'normal',
@@ -1701,7 +1701,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             boxShadow: 'none'
           }
         },
-        '&.MuiButton-sizeSmall.MuiButton-outlinedInherit (white)': {
+        '&.MuiButton-sizeSmall.MuiButton-outlined.MuiButton-colorInherit (white)': {
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.8125rem',
           fontStyle: 'normal',
@@ -1731,7 +1731,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-common-white_states-main)'
           }
         },
-        '&.MuiButton-sizeSmall.MuiButton-outlinedSecondary': {
+        '&.MuiButton-sizeSmall.MuiButton-outlined.MuiButton-colorSecondary': {
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.8125rem',
           fontStyle: 'normal',
@@ -1762,7 +1762,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-secondary-outlinedColor)'
           }
         },
-        '&.MuiButton-sizeSmall.MuiButton-outlinedError': {
+        '&.MuiButton-sizeSmall.MuiButton-outlined.MuiButton-colorError': {
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.8125rem',
           fontStyle: 'normal',
@@ -1792,7 +1792,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-error-main)'
           }
         },
-        '&.MuiButton-sizeSmall.MuiButton-outlinedWarning': {
+        '&.MuiButton-sizeSmall.MuiButton-outlined.MuiButton-colorWarning': {
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.8125rem',
           fontStyle: 'normal',
@@ -1822,7 +1822,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-warning-main)'
           }
         },
-        '&.MuiButton-sizeSmall.MuiButton-outlinedInfo': {
+        '&.MuiButton-sizeSmall.MuiButton-outlined.MuiButton-colorInfo': {
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.8125rem',
           fontStyle: 'normal',
@@ -1852,7 +1852,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-info-main)'
           }
         },
-        '&.MuiButton-sizeSmall.MuiButton-outlinedSuccess': {
+        '&.MuiButton-sizeSmall.MuiButton-outlined.MuiButton-colorSuccess': {
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.8125rem',
           fontStyle: 'normal',
@@ -1882,7 +1882,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-success-main)'
           }
         },
-        '&.MuiButton-sizeMedium.MuiButton-textPrimary': {
+        '&.MuiButton-sizeMedium.MuiButton-text.MuiButton-colorPrimary': {
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.875rem',
           fontStyle: 'normal',
@@ -1909,7 +1909,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-action-disabled)'
           }
         },
-        '&.MuiButton-sizeMedium.MuiButton-textInherit': {
+        '&.MuiButton-sizeMedium.MuiButton-text.MuiButton-colorInherit': {
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.875rem',
           fontStyle: 'normal',
@@ -1939,7 +1939,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-action-disabled)'
           }
         },
-        '&.MuiButton-sizeMedium.MuiButton-textInherit (white)': {
+        '&.MuiButton-sizeMedium.MuiButton-text.MuiButton-colorInherit (white)': {
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.875rem',
           fontStyle: 'normal',
@@ -1969,7 +1969,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-action-disabled)'
           }
         },
-        '&.MuiButton-sizeMedium.MuiButton-textSecondary': {
+        '&.MuiButton-sizeMedium.MuiButton-text.MuiButton-colorSecondary': {
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.875rem',
           fontStyle: 'normal',
@@ -1999,7 +1999,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-action-disabled)'
           }
         },
-        '&.MuiButton-sizeMedium.MuiButton-textError': {
+        '&.MuiButton-sizeMedium.MuiButton-text.MuiButton-colorError': {
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.875rem',
           fontStyle: 'normal',
@@ -2029,7 +2029,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-action-disabled)'
           }
         },
-        '&.MuiButton-sizeMedium.MuiButton-textWarning': {
+        '&.MuiButton-sizeMedium.MuiButton-text.MuiButton-colorWarning': {
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.875rem',
           fontStyle: 'normal',
@@ -2059,7 +2059,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-action-disabled)'
           }
         },
-        '&.MuiButton-sizeMedium.MuiButton-textInfo': {
+        '&.MuiButton-sizeMedium.MuiButton-text.MuiButton-colorInfo': {
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.875rem',
           fontStyle: 'normal',
@@ -2089,7 +2089,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-action-disabled)'
           }
         },
-        '&.MuiButton-sizeMedium.MuiButton-textSuccess': {
+        '&.MuiButton-sizeMedium.MuiButton-text.MuiButton-colorSuccess': {
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.875rem',
           fontStyle: 'normal',
@@ -2119,7 +2119,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-action-disabled)'
           }
         },
-        '&.MuiButton-sizeLarge.MuiButton-textPrimary': {
+        '&.MuiButton-sizeLarge.MuiButton-text.MuiButton-colorPrimary': {
           fontFeatureSettings: "'liga' off, 'clig' off",
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.9375rem',
@@ -2147,7 +2147,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-action-disabled)'
           }
         },
-        '&.MuiButton-sizeLarge.MuiButton-textInherit': {
+        '&.MuiButton-sizeLarge.MuiButton-text.MuiButton-colorInherit': {
           fontFeatureSettings: "'liga' off, 'clig' off",
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.9375rem',
@@ -2178,7 +2178,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-action-disabled)'
           }
         },
-        '&.MuiButton-sizeLarge.MuiButton-textInherit (white)': {
+        '&.MuiButton-sizeLarge.MuiButton-text.MuiButton-colorInherit (white)': {
           fontFeatureSettings: "'liga' off, 'clig' off",
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.9375rem',
@@ -2209,7 +2209,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-action-disabled)'
           }
         },
-        '&.MuiButton-sizeLarge.MuiButton-textSecondary': {
+        '&.MuiButton-sizeLarge.MuiButton-text.MuiButton-colorSecondary': {
           fontFeatureSettings: "'liga' off, 'clig' off",
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.9375rem',
@@ -2240,7 +2240,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-action-disabled)'
           }
         },
-        '&.MuiButton-sizeLarge.MuiButton-textError': {
+        '&.MuiButton-sizeLarge.MuiButton-text.MuiButton-colorError': {
           fontFeatureSettings: "'liga' off, 'clig' off",
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.9375rem',
@@ -2271,7 +2271,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-action-disabled)'
           }
         },
-        '&.MuiButton-sizeLarge.MuiButton-textWarning': {
+        '&.MuiButton-sizeLarge.MuiButton-text.MuiButton-colorWarning': {
           fontFeatureSettings: "'liga' off, 'clig' off",
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.9375rem',
@@ -2302,7 +2302,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-action-disabled)'
           }
         },
-        '&.MuiButton-sizeLarge.MuiButton-textInfo': {
+        '&.MuiButton-sizeLarge.MuiButton-text.MuiButton-colorInfo': {
           fontFeatureSettings: "'liga' off, 'clig' off",
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.9375rem',
@@ -2333,7 +2333,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-action-disabled)'
           }
         },
-        '&.MuiButton-sizeLarge.MuiButton-textSuccess': {
+        '&.MuiButton-sizeLarge.MuiButton-text.MuiButton-colorSuccess': {
           fontFeatureSettings: "'liga' off, 'clig' off",
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.9375rem',
@@ -2364,7 +2364,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-action-disabled)'
           }
         },
-        '&.MuiButton-sizeSmall.MuiButton-textPrimary': {
+        '&.MuiButton-sizeSmall.MuiButton-text.MuiButton-colorPrimary': {
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.8125rem',
           fontStyle: 'normal',
@@ -2391,7 +2391,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-action-disabled)'
           }
         },
-        '&.MuiButton-sizeSmall.MuiButton-textInherit': {
+        '&.MuiButton-sizeSmall.MuiButton-text.MuiButton-colorInherit': {
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.8125rem',
           fontStyle: 'normal',
@@ -2421,7 +2421,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-action-disabled)'
           }
         },
-        '&.MuiButton-sizeSmall.MuiButton-textInherit (white)': {
+        '&.MuiButton-sizeSmall.MuiButton-text.MuiButton-colorInherit (white)': {
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.8125rem',
           fontStyle: 'normal',
@@ -2451,7 +2451,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-action-disabled)'
           }
         },
-        '&.MuiButton-sizeSmall.MuiButton-textSecondary': {
+        '&.MuiButton-sizeSmall.MuiButton-text.MuiButton-colorSecondary': {
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.8125rem',
           fontStyle: 'normal',
@@ -2481,7 +2481,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-action-disabled)'
           }
         },
-        '&.MuiButton-sizeSmall.MuiButton-textError': {
+        '&.MuiButton-sizeSmall.MuiButton-text.MuiButton-colorError': {
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.8125rem',
           fontStyle: 'normal',
@@ -2511,7 +2511,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-action-disabled)'
           }
         },
-        '&.MuiButton-sizeSmall.MuiButton-textWarning': {
+        '&.MuiButton-sizeSmall.MuiButton-text.MuiButton-colorWarning': {
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.8125rem',
           fontStyle: 'normal',
@@ -2541,7 +2541,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-action-disabled)'
           }
         },
-        '&.MuiButton-sizeSmall.MuiButton-textInfo': {
+        '&.MuiButton-sizeSmall.MuiButton-text.MuiButton-colorInfo': {
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.8125rem',
           fontStyle: 'normal',
@@ -2571,7 +2571,7 @@ export const components = (palette: Palette): Components<Omit<Theme, 'components
             color: 'var(--mui-palette-action-disabled)'
           }
         },
-        '&.MuiButton-sizeSmall.MuiButton-textSuccess': {
+        '&.MuiButton-sizeSmall.MuiButton-text.MuiButton-colorSuccess': {
           fontFamily: 'Inter, Helvetica, Arial, sans-serif',
           fontSize: '0.8125rem',
           fontStyle: 'normal',

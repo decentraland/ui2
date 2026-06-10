@@ -26,7 +26,7 @@ const ManaBalancesWrapper = styled('div')(props => {
 const GetCreditsButton = styled(Button)(props => {
   const { theme } = props
   return {
-    '&.MuiButton-root.MuiButton-textPrimary': {
+    '&.MuiButton-root.MuiButton-text.MuiButton-colorPrimary': {
       fontSize: theme!.typography.caption.fontSize,
       padding: 0,
       marginRight: '4px',
