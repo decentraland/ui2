@@ -118,7 +118,7 @@ const eventDeletedI18n = {
       start: 'Your hangout',
       end: 'has been deleted successfully!'
     },
-    title: 'Hangout Deleted successfully'
+    title: 'Hangout deleted successfully'
   },
   es: {
     description: {
