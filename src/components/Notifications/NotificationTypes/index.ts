@@ -28,6 +28,7 @@ import {
   RewardDelayedNotification,
   RewardInProgressNotification
 } from './Reward'
+import { FriendshipAcceptedNotification, FriendshipRequestNotification } from './Social'
 import {
   StreamingKeyExpiredNotification,
   StreamingKeyResetNotification,
@@ -59,6 +60,8 @@ export {
   EventRejectedNotification,
   EventsStartedNotification,
   EventsStartsSoonNotification,
+  FriendshipAcceptedNotification,
+  FriendshipRequestNotification,
   GiftNotification,
   TipNotification,
   GovernanceAnnouncementNotification,

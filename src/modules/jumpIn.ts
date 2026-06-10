@@ -4,6 +4,8 @@ type JumpInOptions = {
   position?: string
   realm?: string
   communityId?: string
+  /** Target Explorer environment (e.g. "zone", "prod"). Forwarded as `dclenv` in the deep link. */
+  dclenv?: string
   timeoutMs?: number
   userAgentData?: AdvancedNavigatorUAData
 }
@@ -16,6 +18,7 @@ function buildDecentralandUrl(opts: JumpInOptions) {
   if (opts.position) params.set('position', opts.position)
   if (opts.realm) params.set('realm', opts.realm)
   if (opts.communityId) params.set('community', opts.communityId)
+  if (opts.dclenv) params.set('dclenv', opts.dclenv)
   return `decentraland://?${params.toString()}`
 }
 
