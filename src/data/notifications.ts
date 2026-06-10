@@ -13,6 +13,7 @@ import {
   CreditsCompleteYourWeeklyGoalsNotificationProps,
   CreditsDoNotMissOutNotificationProps,
   EventApprovedNotificationProps,
+  EventDeletedNotificationProps,
   EventRejectedNotificationProps,
   EventsStartedNotificationProps,
   EventsStartsSoonNotificationProps,
@@ -205,6 +206,21 @@ const eventRejectedNotificationData: EventRejectedNotificationProps = {
   id: NotificationType.EVENT_REJECTED,
   read: false,
   type: NotificationType.EVENT_REJECTED,
+  address: '0x6b347a82fcac4e6a38d1fc40e3631bd8f9495e9f',
+  timestamp: new Date().getTime(),
+  metadata: {
+    title: 'Decentraland Events',
+    image: 'https://events-assets-099ac00.decentraland.org/poster/083771e26666f90b.jpg',
+    myHangouts: 'https://decentraland.org/whats-on?tab=my'
+  },
+  created_at: '2023-11-29T12:51:00.600Z',
+  updated_at: '2023-11-29T12:51:00.600Z'
+}
+
+const eventDeletedNotificationData: EventDeletedNotificationProps = {
+  id: NotificationType.EVENT_DELETED,
+  read: false,
+  type: NotificationType.EVENT_DELETED,
   address: '0x6b347a82fcac4e6a38d1fc40e3631bd8f9495e9f',
   timestamp: new Date().getTime(),
   metadata: {
@@ -831,6 +847,7 @@ const allTypeOfNotifications = [
   creditsExpireSoonReminderNotificationData,
   eventApprovedNotificationData,
   eventRejectedNotificationData,
+  eventDeletedNotificationData,
   eventStartedNotificationData,
   eventStartsSoonFutureStartNotificationData,
   eventStartsSoonPastStartNotificationData,
@@ -881,6 +898,7 @@ export {
   creditsExpireSoonReminderNotificationData,
   eventApprovedNotificationData,
   eventRejectedNotificationData,
+  eventDeletedNotificationData,
   eventStartedNotificationData,
   eventStartsSoonFutureStartNotificationData,
   eventStartsSoonPastStartNotificationData,
