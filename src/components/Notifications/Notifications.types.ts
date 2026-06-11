@@ -343,15 +343,26 @@ type EventRejectedMetadataProps = {
   myHangouts: string
 }
 
+type EventDeletedMetadataProps = {
+  image: string
+  title: string
+  description?: string
+  reason?: string
+  myHangouts: string
+}
+
 type EventApprovedNotificationProps = RawDecentralandNotification<NotificationType.EVENT_APPROVED, EventApprovedMetadataProps>
 
 type EventRejectedNotificationProps = RawDecentralandNotification<NotificationType.EVENT_REJECTED, EventRejectedMetadataProps>
+
+type EventDeletedNotificationProps = RawDecentralandNotification<NotificationType.EVENT_DELETED, EventDeletedMetadataProps>
 
 type EventsNotificationsProps =
   | EventsStartsSoonNotificationProps
   | EventsStartedNotificationProps
   | EventApprovedNotificationProps
   | EventRejectedNotificationProps
+  | EventDeletedNotificationProps
 
 // Streaming Notifications
 
@@ -482,6 +493,7 @@ export type {
   EventsStartedNotificationProps,
   EventApprovedNotificationProps,
   EventRejectedNotificationProps,
+  EventDeletedNotificationProps,
   StreamingKeyResetNotificationProps,
   StreamingKeyRevokeNotificationProps,
   StreamingKeyExpiredNotificationProps,

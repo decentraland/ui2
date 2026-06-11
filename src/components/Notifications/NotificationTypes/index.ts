@@ -5,7 +5,13 @@ import {
   CreditsExpireIn24HrsReminderNotification,
   CreditsExpireSoonReminderNotification
 } from './Credits'
-import { EventApprovedNotification, EventRejectedNotification, EventsStartedNotification, EventsStartsSoonNotification } from './Events'
+import {
+  EventApprovedNotification,
+  EventDeletedNotification,
+  EventRejectedNotification,
+  EventsStartedNotification,
+  EventsStartsSoonNotification
+} from './Events'
 import {
   GovernanceAnnouncementNotification,
   GovernanceAuthoredProposalFinishedNotification,
@@ -58,6 +64,7 @@ export {
   CreditsExpireSoonReminderNotification,
   EventApprovedNotification,
   EventRejectedNotification,
+  EventDeletedNotification,
   EventsStartedNotification,
   EventsStartsSoonNotification,
   FriendshipAcceptedNotification,
