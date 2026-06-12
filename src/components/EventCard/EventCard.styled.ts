@@ -218,6 +218,10 @@ const AvatarTextContainer = styled(Box)({
 const AvatarLink = styled(Link)(({ theme }) => ({
   textDecoration: 'none',
   fontWeight: theme.typography.fontWeightBold,
+  // When rendered without href (e.g. when a parent supplies onAvatarClick),
+  // the browser strips the link affordance; restore the pointer cursor so the
+  // interaction stays obvious.
+  cursor: 'pointer',
   '&:hover': {
     textDecoration: 'none'
   }
