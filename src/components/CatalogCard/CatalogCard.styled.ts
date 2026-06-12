@@ -1,6 +1,6 @@
 import { Rarity } from '@dcl/schemas'
 import styled, { CSSObject } from '@emotion/styled'
-import { Box, Card, CardContent, Typography } from '@mui/material'
+import { Box, Card, CardContent, Theme, Typography } from '@mui/material'
 import { Address } from '../../components/Address'
 import { neutral } from '../../theme/colors'
 import { hexToRgba } from '../../utils/colors'
@@ -82,7 +82,7 @@ const AssetAddress = styled(Address)({
 // height IS the row's natural height, so the image shrink always matches the revealed
 // content — and the reveal animates smoothly without hardcoding any height.
 // Below `sm` (touch) the action/extra rows are always visible, as before.
-const CatalogItemInformationContainer = styled(Box)(({ theme }) => ({
+const hoverRevealRowStyles = (theme: Theme): CSSObject => ({
   width: '100%',
   [theme.breakpoints.up('sm')]: {
     display: 'grid',
@@ -91,7 +91,9 @@ const CatalogItemInformationContainer = styled(Box)(({ theme }) => ({
     pointerEvents: 'none',
     transition: 'grid-template-rows 0.3s ease-in-out, opacity 0.3s ease-in-out'
   }
-}))
+})
+
+const CatalogItemInformationContainer = styled(Box)(({ theme }) => hoverRevealRowStyles(theme))
 
 const CatalogItemInformationContent = styled(Box)(({ theme }) => ({
   display: 'flex',
@@ -116,16 +118,7 @@ const PriceText = styled(Typography)({
   lineHeight: 'normal'
 })
 
-const ExtraInformationContainer = styled(Box)(({ theme }) => ({
-  width: '100%',
-  [theme.breakpoints.up('sm')]: {
-    display: 'grid',
-    gridTemplateRows: '0fr',
-    opacity: 0,
-    pointerEvents: 'none',
-    transition: 'grid-template-rows 0.3s ease-in-out, opacity 0.3s ease-in-out'
-  }
-}))
+const ExtraInformationContainer = styled(Box)(({ theme }) => hoverRevealRowStyles(theme))
 
 const ExtraInformationContent = styled(Box)(({ theme }) => ({
   [theme.breakpoints.up('sm')]: {

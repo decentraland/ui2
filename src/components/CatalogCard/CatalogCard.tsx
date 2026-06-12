@@ -1,5 +1,5 @@
-import React, { useCallback, useMemo, useRef } from 'react'
-import { Network, Rarity } from '@dcl/schemas'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
+import { Network } from '@dcl/schemas'
 import { Typography } from '@mui/material'
 import { CatalogCardPrice } from './CatalogCardPrice'
 import { useAssetPreviewPlayer } from '../../components/AssetPreviewPlayer'
@@ -51,13 +51,22 @@ const CatalogCard = React.memo((props: CatalogCardProps) => {
   // (touch taps would race the card's navigation click).
   const containerRef = useRef<HTMLDivElement | null>(null)
   const assetPreviewPlayer = useAssetPreviewPlayer()
-  const supportsHover = useMemo(() => typeof window !== 'undefined' && window.matchMedia('(hover: hover) and (pointer: fine)').matches, [])
+  const [supportsHover, setSupportsHover] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia('(hover: hover) and (pointer: fine)').matches
+  )
+  // Pointer capability can change at runtime (tablet keyboard detach, external mouse).
+  useEffect(() => {
+    const mql = window.matchMedia('(hover: hover) and (pointer: fine)')
+    const handler = (event: MediaQueryListEvent) => setSupportsHover(event.matches)
+    mql.addEventListener('change', handler)
+    return () => mql.removeEventListener('change', handler)
+  }, [])
   const canPreviewAsset = Boolean(hoverPreviewUrn && assetPreviewPlayer && supportsHover)
   const handlePreviewHoverEnter = useCallback(() => {
     if (!assetPreviewPlayer || !hoverPreviewUrn) return
     const imageEl = containerRef.current?.querySelector<HTMLElement>('[data-role="catalog-card-image"]')
     if (!imageEl) return
-    assetPreviewPlayer.show(imageEl, { urn: hoverPreviewUrn, network: asset.network as Network, rarity: asset.rarity as Rarity })
+    assetPreviewPlayer.show(imageEl, { urn: hoverPreviewUrn, network: asset.network, rarity: asset.rarity })
   }, [assetPreviewPlayer, hoverPreviewUrn, asset.network, asset.rarity])
   const handlePreviewHoverLeave = useCallback(() => {
     assetPreviewPlayer?.hide()
@@ -95,9 +104,7 @@ const CatalogCard = React.memo((props: CatalogCardProps) => {
         <BadgeRow data-role={bottomAction ? 'catalog-card-badge-row' : undefined}>
           <RarityBadgeSlot data-role="catalog-card-rarity">
             {subduedRarity ? (
-              <CatalogRarityChip rarity={asset.rarity as Rarity}>
-                {(i18n ?? rarityBadgeI18nDefault).rarities[asset.rarity]}
-              </CatalogRarityChip>
+              <CatalogRarityChip rarity={asset.rarity}>{(i18n ?? rarityBadgeI18nDefault).rarities[asset.rarity]}</CatalogRarityChip>
             ) : (
               <RarityBadge square rarity={asset.rarity} i18n={i18n} />
             )}
