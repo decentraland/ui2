@@ -12,6 +12,22 @@ type CatalogCardProps = {
   price?: string
   owners?: string
   i18n?: RarityBadgeI18N
+  /** Replaces the default `<AssetAddress>` below the title. Pass `null` to hide it entirely. */
+  creatorSlot?: React.ReactNode
+  /** Fade out the RarityBadge while the card is hovered (lets `bottomAction` take its visual slot). */
+  hideRarityOnHover?: boolean
+  /** Shadow style on hover. `'glow'` uses the whats-on Live/Upcoming spotlight; `'default'` keeps the legacy depth shadow. */
+  hoverShadow?: 'default' | 'glow'
+  /** Full-width block revealed at the bottom of the card on hover (e.g. a "BUY" button). */
+  bottomAction?: React.ReactNode
+  /** Always-visible badges rendered next to the RarityBadge (e.g. wearable category + body shape icons). */
+  infoBadges?: React.ReactNode
+  /** When true, skips the hover reveal of `ExtraInformationContainer` / `CatalogItemInformationContainer` / `bottomAction` so the card visuals stay static. Useful when the card itself is the action target and no `bottomAction` needs room. */
+  disableInfoExpansion?: boolean
+  /** When true, renders the rarity tag as a subdued pastel chip (rgba bg + light text) instead of the default solid `<RarityBadge>`. Matches the Figma marketplace-card spec for profile/equipped contexts. Opt-in to avoid touching every existing consumer. */
+  subduedRarity?: boolean
+  /** URN of the asset to preview on hover: emotes are played by the avatar, wearables are shown worn by it. Requires an `<AssetPreviewPlayerProvider enabled>` above; without one (or on touch devices) the card stays static. */
+  hoverPreviewUrn?: string
 }
 
 export { CatalogCardProps }
