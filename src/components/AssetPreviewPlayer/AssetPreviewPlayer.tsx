@@ -4,18 +4,18 @@ import { Network, PreviewMessageType, Rarity, sendMessage } from '@dcl/schemas'
 import { PreviewOptions } from '@dcl/schemas/dist/dapps/preview'
 import { CircularProgress } from '@mui/material'
 import { WearablePreview } from '../WearablePreview'
-import { EmotePreviewPlayerContextValue, EmotePreviewPlayerProviderProps, EmotePreviewSource } from './EmotePreviewPlayer.types'
-import { PlayerOverlay, SpinnerContainer } from './EmotePreviewPlayer.styled'
+import { AssetPreviewPlayerContextValue, AssetPreviewPlayerProviderProps, AssetPreviewSource } from './AssetPreviewPlayer.types'
+import { PlayerOverlay, SpinnerContainer } from './AssetPreviewPlayer.styled'
 
-const PREVIEW_IFRAME_ID = 'emote-preview-player-iframe'
+const PREVIEW_IFRAME_ID = 'asset-preview-player-iframe'
 const DEFAULT_PEER_URL = 'https://peer.decentraland.org'
 const DEFAULT_MARKETPLACE_SERVER_URL = 'https://marketplace-api.decentraland.org'
 
-const EmotePreviewPlayerContext = createContext<EmotePreviewPlayerContextValue | null>(null)
+const AssetPreviewPlayerContext = createContext<AssetPreviewPlayerContextValue | null>(null)
 
 /** Returns the player controls, or `null` when no enabled provider is mounted above. */
-function useEmotePreviewPlayer(): EmotePreviewPlayerContextValue | null {
-  return useContext(EmotePreviewPlayerContext)
+function useAssetPreviewPlayer(): AssetPreviewPlayerContextValue | null {
+  return useContext(AssetPreviewPlayerContext)
 }
 
 type PreviewEnvConfig = {
@@ -24,7 +24,7 @@ type PreviewEnvConfig = {
   marketplaceServerUrl: string
 }
 
-const sourceToOptions = (src: EmotePreviewSource, env: PreviewEnvConfig): PreviewOptions => {
+const sourceToOptions = (src: AssetPreviewSource, env: PreviewEnvConfig): PreviewOptions => {
   const base: PreviewOptions = {
     profile: env.profile,
     peerUrl: env.peerUrl,
@@ -43,11 +43,11 @@ const sourceToOptions = (src: EmotePreviewSource, env: PreviewEnvConfig): Previe
 }
 
 /**
- * The iframe only rebuilds (and therefore only emits LOAD) when the emote identity
+ * The iframe only rebuilds (and therefore only emits LOAD) when the asset identity
  * changes — tracking it by key keeps the spinner honest on re-hovers of an
- * already-rendered emote (marketplace PR #2648).
+ * already-rendered asset (marketplace PR #2648).
  */
-const keyOf = (src: EmotePreviewSource): string => {
+const keyOf = (src: AssetPreviewSource): string => {
   if (src.urn) {
     return `urn:${src.urn}`
   }
@@ -61,33 +61,34 @@ type OverlayRect = { top: number; left: number; width: number; height: number }
 
 /**
  * Single pre-warmed `WearablePreview` iframe shared by every card: it boots hidden,
- * gets repositioned over the hovered card image and receives each emote via
+ * gets repositioned over the hovered card image and receives each asset via
  * `postMessage(UPDATE)` — never one iframe per card (marketplace PRs #2640/#2648).
+ * Emotes are played by the avatar; wearables are rendered worn by the avatar.
  */
-function EmotePreviewPlayerProvider({
+function AssetPreviewPlayerProvider({
   enabled,
   peerUrl = DEFAULT_PEER_URL,
   marketplaceServerUrl = DEFAULT_MARKETPLACE_SERVER_URL,
   profile = 'default',
   dev = false,
   children
-}: EmotePreviewPlayerProviderProps) {
+}: AssetPreviewPlayerProviderProps) {
   const [isVisible, setIsVisible] = useState(false)
   const [isControllable, setIsControllable] = useState(false)
-  const [isEmoteLoading, setIsEmoteLoading] = useState(false)
+  const [isAssetLoading, setIsAssetLoading] = useState(false)
   const [rect, setRect] = useState<OverlayRect | null>(null)
   const [overlayRarity, setOverlayRarity] = useState<Rarity>(Rarity.COMMON)
 
   const targetRef = useRef<HTMLElement | null>(null)
   const hasInitiallyLoadedRef = useRef(false)
-  const pendingSourceRef = useRef<EmotePreviewSource | null>(null)
+  const pendingSourceRef = useRef<AssetPreviewSource | null>(null)
   const currentKeyRef = useRef<string | null>(null)
   const loadedKeyRef = useRef<string | null>(null)
 
   const envConfig = useMemo<PreviewEnvConfig>(() => ({ profile, peerUrl, marketplaceServerUrl }), [profile, peerUrl, marketplaceServerUrl])
 
   const dispatchUpdate = useCallback(
-    (src: EmotePreviewSource): boolean => {
+    (src: AssetPreviewSource): boolean => {
       const iframe = document.getElementById(PREVIEW_IFRAME_ID) as HTMLIFrameElement | null
       if (!iframe?.contentWindow) {
         return false
@@ -99,15 +100,15 @@ function EmotePreviewPlayerProvider({
   )
 
   const show = useCallback(
-    (target: HTMLElement, source: EmotePreviewSource) => {
+    (target: HTMLElement, source: AssetPreviewSource) => {
       targetRef.current = target
       setOverlayRarity(source.rarity ?? Rarity.COMMON)
       setIsVisible(true)
       const key = keyOf(source)
       currentKeyRef.current = key
-      // If this emote is already rendered in the iframe the UPDATE won't trigger a
+      // If this asset is already rendered in the iframe the UPDATE won't trigger a
       // rebuild (no LOAD will follow), so don't show a spinner that would never clear.
-      setIsEmoteLoading(key !== loadedKeyRef.current)
+      setIsAssetLoading(key !== loadedKeyRef.current)
       if (!isControllable || !dispatchUpdate(source)) {
         pendingSourceRef.current = source
       }
@@ -116,7 +117,7 @@ function EmotePreviewPlayerProvider({
   )
 
   const hide = useCallback(() => {
-    // Keep loadedKeyRef so re-hovering the same emote stays instant.
+    // Keep loadedKeyRef so re-hovering the same asset stays instant.
     targetRef.current = null
     setIsVisible(false)
     setRect(null)
@@ -153,11 +154,11 @@ function EmotePreviewPlayerProvider({
       return
     }
     loadedKeyRef.current = currentKeyRef.current
-    setIsEmoteLoading(false)
+    setIsAssetLoading(false)
   }, [])
 
   const handlePreviewError = useCallback(() => {
-    setIsEmoteLoading(false)
+    setIsAssetLoading(false)
   }, [])
 
   // A hover that raced the iframe boot is flushed as soon as it becomes controllable.
@@ -179,12 +180,12 @@ function EmotePreviewPlayerProvider({
       targetRef.current = null
       setIsControllable(false)
       setIsVisible(false)
-      setIsEmoteLoading(false)
+      setIsAssetLoading(false)
       setRect(null)
     }
   }, [enabled])
 
-  const contextValue = useMemo<EmotePreviewPlayerContextValue | null>(() => (enabled ? { show, hide } : null), [enabled, show, hide])
+  const contextValue = useMemo<AssetPreviewPlayerContextValue | null>(() => (enabled ? { show, hide } : null), [enabled, show, hide])
 
   const [lightColor, regularColor] = Rarity.getGradient(overlayRarity)
   const overlayStyle: React.CSSProperties | undefined =
@@ -199,14 +200,14 @@ function EmotePreviewPlayerProvider({
       : undefined
 
   return (
-    <EmotePreviewPlayerContext.Provider value={contextValue}>
+    <AssetPreviewPlayerContext.Provider value={contextValue}>
       {children}
       {enabled
         ? createPortal(
             <PlayerOverlay visible={Boolean(isVisible && rect)} style={overlayStyle} aria-hidden>
               <WearablePreview
                 id={PREVIEW_IFRAME_ID}
-                profile="default"
+                profile={profile}
                 peerUrl={peerUrl}
                 marketplaceServerUrl={marketplaceServerUrl}
                 background={Rarity.getColor(Rarity.COMMON)}
@@ -216,7 +217,7 @@ function EmotePreviewPlayerProvider({
                 onLoad={handlePreviewLoad}
                 onError={handlePreviewError}
               />
-              {isEmoteLoading ? (
+              {isAssetLoading ? (
                 <SpinnerContainer>
                   <CircularProgress size={28} />
                 </SpinnerContainer>
@@ -225,8 +226,8 @@ function EmotePreviewPlayerProvider({
             document.body
           )
         : null}
-    </EmotePreviewPlayerContext.Provider>
+    </AssetPreviewPlayerContext.Provider>
   )
 }
 
-export { EmotePreviewPlayerProvider, useEmotePreviewPlayer, PREVIEW_IFRAME_ID }
+export { AssetPreviewPlayerProvider, useAssetPreviewPlayer, PREVIEW_IFRAME_ID }

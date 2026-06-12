@@ -22,12 +22,12 @@ type CatalogCardProps = {
   bottomAction?: React.ReactNode
   /** Always-visible badges rendered next to the RarityBadge (e.g. wearable category + body shape icons). */
   infoBadges?: React.ReactNode
-  /** When true, skips the hover reveal of `ExtraInformationContainer` / `CatalogItemInformationContainer` so the card visuals stay static. Useful when the card itself is the action target and no `bottomAction` needs room. */
+  /** When true, skips the hover reveal of `ExtraInformationContainer` / `CatalogItemInformationContainer` / `bottomAction` so the card visuals stay static. Useful when the card itself is the action target and no `bottomAction` needs room. */
   disableInfoExpansion?: boolean
   /** When true, renders the rarity tag as a subdued pastel chip (rgba bg + light text) instead of the default solid `<RarityBadge>`. Matches the Figma marketplace-card spec for profile/equipped contexts. Opt-in to avoid touching every existing consumer. */
   subduedRarity?: boolean
-  /** URN of the emote to animate on hover. Requires an `<EmotePreviewPlayerProvider enabled>` above; without one (or on touch devices) the card stays static. */
-  emotePreviewUrn?: string
+  /** URN of the asset to preview on hover: emotes are played by the avatar, wearables are shown worn by it. Requires an `<AssetPreviewPlayerProvider enabled>` above; without one (or on touch devices) the card stays static. */
+  hoverPreviewUrn?: string
 }
 
 export { CatalogCardProps }

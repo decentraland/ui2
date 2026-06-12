@@ -8,7 +8,9 @@ import styled from '@emotion/styled'
  */
 const PlayerOverlay = styled('div')<{ visible: boolean }>(({ visible }) => ({
   position: 'fixed',
-  zIndex: 100,
+  // Above MUI dialogs (zIndex.modal = 1300) so cards hovered inside a profile/event
+  // modal still get their preview; pointer-events stays none so nothing is blocked.
+  zIndex: 1600,
   borderRadius: 10,
   overflow: 'hidden',
   // Clicks fall through to the card underneath (navigation keeps working).

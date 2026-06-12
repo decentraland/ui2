@@ -1,7 +1,8 @@
-import { Button, Typography } from '@mui/material'
+import { Network, Rarity } from '@dcl/schemas'
+import { Box, Button, Typography } from '@mui/material'
 import { CatalogCard } from './CatalogCard'
 import { item } from '../../data/item'
-import { EmotePreviewPlayerProvider } from '../EmotePreviewPlayer'
+import { AssetPreviewPlayerProvider } from '../AssetPreviewPlayer'
 import { BaseFemaleIcon, BaseMaleIcon, MintIcon, UnisexIcon, UpperBodyIcon } from '../Icon'
 import { i18n as rarityBadgeI18n } from '../RarityBadge/RarityBadge.i18n'
 import { CatalogCardProps } from './CatalogCard.types'
@@ -148,7 +149,6 @@ const WithBottomActionAndInfoBadges: Story = {
     action: null,
     extraInformation: null,
     i18n: rarityBadgeI18n,
-    hideRarityOnHover: true,
     hoverShadow: 'glow',
     infoBadges: (
       <>
@@ -186,7 +186,7 @@ const StaticHoverNoExpansion: Story = {
 }
 
 const SubduedRarityNoPrice: Story = {
-  name: 'Figma 94:36542 — MyAssets (subdued rarity, no price)',
+  name: 'Subdued rarity (no price)',
   args: {
     withShadow: false,
     imageSrc: item.thumbnail,
@@ -206,36 +206,108 @@ const SubduedRarityNoPrice: Story = {
   }
 }
 
-const ANIMATED_EMOTE_URN = 'urn:decentraland:matic:collections-v2:0xfbc9b2cff58dcc29dab28e2af7eac80c9012fe02:2'
+// Real prod catalog items so the hover preview resolves against the live peer: the
+// thumbnail, the urn and the asset metadata all belong to the SAME item (an emote card
+// must play that emote; a wearable card must dress the avatar with that wearable).
+type PreviewFixture = {
+  name: string
+  urn: string
+  rarity: Rarity
+  creator: string
+}
 
-const AnimatedEmoteOnHover: Story = {
-  name: 'Animated emote preview on hover',
-  args: {
-    withShadow: false,
-    price: '10',
-    imageSrc: item.thumbnail,
-    asset: { ...item, name: 'Black Beauty' },
-    action: null,
-    extraInformation: null,
-    i18n: rarityBadgeI18n,
-    subduedRarity: true,
-    hoverShadow: 'glow',
-    emotePreviewUrn: ANIMATED_EMOTE_URN
+const peerThumbnail = (urn: string): string => `https://peer.decentraland.org/lambdas/collections/contents/${urn}/thumbnail`
+
+const EMOTE_FIXTURES: PreviewFixture[] = [
+  {
+    name: 'Building Castles in the Sky',
+    urn: 'urn:decentraland:matic:collections-v2:0xedabe0283a5f87c2ca3d9a6326781c9125d6e556:0',
+    rarity: Rarity.MYTHIC,
+    creator: '0x4a6767c70796be741453cc6b74f0567eb886614d'
   },
-  render: args => (
-    <EmotePreviewPlayerProvider enabled>
-      <CatalogCard {...args} />
-    </EmotePreviewPlayerProvider>
-  )
+  {
+    name: 'Jack Frost Sad Boi',
+    urn: 'urn:decentraland:matic:collections-v2:0x1d30377fe076d67f573179a6800d5cff1d5b3187:0',
+    rarity: Rarity.LEGENDARY,
+    creator: '0xb5658530f22c1009e1b920fa657f6ce21564f974'
+  },
+  {
+    name: 'Say Hello, Friend',
+    urn: 'urn:decentraland:matic:collections-v2:0x145d8f54194283a6ae71ad4316040d4c13633194:1',
+    rarity: Rarity.EPIC,
+    creator: '0x9990a41efb8a6176199ee2676cf08f5424adf0fd'
+  }
+]
+
+const WEARABLE_FIXTURES: PreviewFixture[] = [
+  {
+    name: 'Grill Angel',
+    urn: 'urn:decentraland:matic:collections-v2:0x7dd2c14796d6a411439f3ed465071fb1626084a8:0',
+    rarity: Rarity.LEGENDARY,
+    creator: '0xdb760099f0f3359131e08716848f23c014d35b9e'
+  },
+  {
+    name: 'Calaca Headphones',
+    urn: 'urn:decentraland:matic:collections-v2:0x6bcc21bc566ca5359fc79bdea1b41c9aacc75bbe:1',
+    rarity: Rarity.EPIC,
+    creator: '0x8b4221b34efeb8f4ba874cf07d7f6c456c5cc347'
+  },
+  {
+    name: 'Sneakers Viva La Calaca',
+    urn: 'urn:decentraland:matic:collections-v2:0x4fde0297c458e7a0bc35f07c015f322ca31b459e:1',
+    rarity: Rarity.RARE,
+    creator: '0x8b4221b34efeb8f4ba874cf07d7f6c456c5cc347'
+  }
+]
+
+const renderHoverPreviewGrid = (fixtures: PreviewFixture[]) => (
+  <AssetPreviewPlayerProvider enabled>
+    <Box display="flex" gap={2}>
+      {fixtures.map(fixture => (
+        <CatalogCard
+          key={fixture.urn}
+          asset={{
+            id: fixture.urn,
+            url: '/',
+            name: fixture.name,
+            rarity: fixture.rarity,
+            network: Network.MATIC,
+            creator: fixture.creator
+          }}
+          imageSrc={peerThumbnail(fixture.urn)}
+          action={null}
+          extraInformation={null}
+          notForSale={false}
+          withShadow={false}
+          price="10"
+          i18n={rarityBadgeI18n}
+          subduedRarity
+          hoverShadow="glow"
+          hoverPreviewUrn={fixture.urn}
+        />
+      ))}
+    </Box>
+  </AssetPreviewPlayerProvider>
+)
+
+const EmotePlayOnHover: Story = {
+  name: 'Emotes: avatar plays them on hover',
+  render: () => renderHoverPreviewGrid(EMOTE_FIXTURES)
+}
+
+const WearableTryOnHover: Story = {
+  name: 'Wearables: avatar wears them on hover',
+  render: () => renderHoverPreviewGrid(WEARABLE_FIXTURES)
 }
 
 // eslint-disable-next-line import/no-default-export
 export default meta
 export {
-  AnimatedEmoteOnHover,
   Default,
+  EmotePlayOnHover,
   StaticHoverNoExpansion,
   SubduedRarityNoPrice,
+  WearableTryOnHover,
   WithBottomActionAndInfoBadges,
   WithInfoBadges,
   WithInfoBadgesBaseFemale,

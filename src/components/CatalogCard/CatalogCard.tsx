@@ -2,7 +2,7 @@ import React, { useCallback, useMemo, useRef } from 'react'
 import { Network, Rarity } from '@dcl/schemas'
 import { Typography } from '@mui/material'
 import { CatalogCardPrice } from './CatalogCardPrice'
-import { useEmotePreviewPlayer } from '../../components/EmotePreviewPlayer'
+import { useAssetPreviewPlayer } from '../../components/AssetPreviewPlayer'
 import { RarityBadge } from '../../components/RarityBadge'
 import { i18n as rarityBadgeI18nDefault } from '../../components/RarityBadge/RarityBadge.i18n'
 import { CatalogCardProps } from './CatalogCard.types'
@@ -16,8 +16,10 @@ import {
   CardContentContainer,
   CatalogCardContainer,
   CatalogItemInformationContainer,
+  CatalogItemInformationContent,
   CatalogRarityChip,
   ExtraInformationContainer,
+  ExtraInformationContent,
   InfoBadgesContainer,
   RarityBadgeSlot
 } from './CatalogCard.styled'
@@ -40,25 +42,26 @@ const CatalogCard = React.memo((props: CatalogCardProps) => {
     infoBadges,
     disableInfoExpansion,
     subduedRarity,
-    emotePreviewUrn
+    hoverPreviewUrn
   } = props
   const showDefaultCreator = creatorSlot === undefined && asset.network === Network.MATIC
-  // Animated emote preview on hover (marketplace PRs #2640/#2648): only when the consumer
-  // provided the emote urn, an enabled EmotePreviewPlayerProvider is mounted above, and the
-  // pointer actually hovers (touch taps would race the card's navigation click).
+  // Live asset preview on hover (marketplace PRs #2640/#2648): emotes are played by the
+  // avatar, wearables are shown worn by it. Only when the consumer provided the urn, an
+  // enabled AssetPreviewPlayerProvider is mounted above, and the pointer actually hovers
+  // (touch taps would race the card's navigation click).
   const containerRef = useRef<HTMLDivElement | null>(null)
-  const emotePreviewPlayer = useEmotePreviewPlayer()
+  const assetPreviewPlayer = useAssetPreviewPlayer()
   const supportsHover = useMemo(() => typeof window !== 'undefined' && window.matchMedia('(hover: hover) and (pointer: fine)').matches, [])
-  const canPreviewEmote = Boolean(emotePreviewUrn && emotePreviewPlayer && supportsHover)
-  const handleEmoteHoverEnter = useCallback(() => {
-    if (!emotePreviewPlayer || !emotePreviewUrn) return
-    const imageEl = containerRef.current?.querySelector<HTMLElement>('.AssetImageContainer')
+  const canPreviewAsset = Boolean(hoverPreviewUrn && assetPreviewPlayer && supportsHover)
+  const handlePreviewHoverEnter = useCallback(() => {
+    if (!assetPreviewPlayer || !hoverPreviewUrn) return
+    const imageEl = containerRef.current?.querySelector<HTMLElement>('[data-role="catalog-card-image"]')
     if (!imageEl) return
-    emotePreviewPlayer.show(imageEl, { urn: emotePreviewUrn, network: asset.network as Network, rarity: asset.rarity as Rarity })
-  }, [emotePreviewPlayer, emotePreviewUrn, asset.network, asset.rarity])
-  const handleEmoteHoverLeave = useCallback(() => {
-    emotePreviewPlayer?.hide()
-  }, [emotePreviewPlayer])
+    assetPreviewPlayer.show(imageEl, { urn: hoverPreviewUrn, network: asset.network as Network, rarity: asset.rarity as Rarity })
+  }, [assetPreviewPlayer, hoverPreviewUrn, asset.network, asset.rarity])
+  const handlePreviewHoverLeave = useCallback(() => {
+    assetPreviewPlayer?.hide()
+  }, [assetPreviewPlayer])
   return (
     <CatalogCardContainer
       ref={containerRef}
@@ -66,24 +69,30 @@ const CatalogCard = React.memo((props: CatalogCardProps) => {
       hideRarityOnHover={hideRarityOnHover}
       hoverShadow={hoverShadow}
       disableInfoExpansion={disableInfoExpansion}
-      onMouseEnter={canPreviewEmote ? handleEmoteHoverEnter : undefined}
-      onMouseLeave={canPreviewEmote ? handleEmoteHoverLeave : undefined}
+      onMouseEnter={canPreviewAsset ? handlePreviewHoverEnter : undefined}
+      onMouseLeave={canPreviewAsset ? handlePreviewHoverLeave : undefined}
     >
-      <AssetImageContainer className="AssetImageContainer" name={asset.name} rarity={asset.rarity} src={imageSrc} />
+      <AssetImageContainer data-role="catalog-card-image" name={asset.name} rarity={asset.rarity} src={imageSrc} />
       <CardContentContainer>
         <AssetHeaderContainer>
           <AssetTitle variant="body1">{asset.name}</AssetTitle>
           {showDefaultCreator ? <AssetAddress value={asset.creator} /> : creatorSlot}
         </AssetHeaderContainer>
-        <CatalogItemInformationContainer className="CatalogItemInformationContainer">
-          <Typography variant="body2">{action}</Typography>
-          {actionIcon}
-        </CatalogItemInformationContainer>
+        {action || actionIcon ? (
+          <CatalogItemInformationContainer className="CatalogItemInformationContainer" data-role="catalog-card-reveal">
+            <CatalogItemInformationContent>
+              <Typography variant="body2">{action}</Typography>
+              {actionIcon}
+            </CatalogItemInformationContent>
+          </CatalogItemInformationContainer>
+        ) : null}
         {price ? <CatalogCardPrice price={price} asset={asset} /> : owners}
-        {extraInformation && (
-          <ExtraInformationContainer className="ExtraInformationContainer">{extraInformation}</ExtraInformationContainer>
-        )}
-        <BadgeRow>
+        {extraInformation ? (
+          <ExtraInformationContainer className="ExtraInformationContainer" data-role="catalog-card-reveal">
+            <ExtraInformationContent>{extraInformation}</ExtraInformationContent>
+          </ExtraInformationContainer>
+        ) : null}
+        <BadgeRow data-role={bottomAction ? 'catalog-card-badge-row' : undefined}>
           <RarityBadgeSlot data-role="catalog-card-rarity">
             {subduedRarity ? (
               <CatalogRarityChip rarity={asset.rarity as Rarity}>
@@ -95,8 +104,8 @@ const CatalogCard = React.memo((props: CatalogCardProps) => {
           </RarityBadgeSlot>
           {infoBadges ? <InfoBadgesContainer>{infoBadges}</InfoBadgesContainer> : null}
         </BadgeRow>
-        {bottomAction ? <BottomActionContainer data-role="catalog-card-bottom-action">{bottomAction}</BottomActionContainer> : null}
       </CardContentContainer>
+      {bottomAction ? <BottomActionContainer data-role="catalog-card-bottom-action">{bottomAction}</BottomActionContainer> : null}
     </CatalogCardContainer>
   )
 })
