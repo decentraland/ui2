@@ -27,6 +27,13 @@ interface EventCardProps {
   onClick?: () => void
   /** Custom handler for the Jump In button. When provided, clicking the button calls this instead of the card's onClick */
   onJumpInClick?: () => void
+  /**
+   * Custom handler for the avatar/creator name. When provided, the avatar row becomes a button:
+   * click calls this instead of navigating to the legacy `decentraland.org/profile/accounts/<addr>`
+   * URL, and the card-level click handler is suppressed via stopPropagation (so you don't get the
+   * card's jump-in action firing in a second tab alongside the profile navigation).
+   */
+  onAvatarClick?: () => void
   /** When true, clicking the card redirects to /auth instead of the jump-in URL */
   redirectToAuth?: boolean
   /** When true, the location chip is not shown on hover */
