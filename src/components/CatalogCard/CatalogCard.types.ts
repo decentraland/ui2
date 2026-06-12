@@ -26,6 +26,8 @@ type CatalogCardProps = {
   disableInfoExpansion?: boolean
   /** When true, renders the rarity tag as a subdued pastel chip (rgba bg + light text) instead of the default solid `<RarityBadge>`. Matches the Figma marketplace-card spec for profile/equipped contexts. Opt-in to avoid touching every existing consumer. */
   subduedRarity?: boolean
+  /** URN of the emote to animate on hover. Requires an `<EmotePreviewPlayerProvider enabled>` above; without one (or on touch devices) the card stays static. */
+  emotePreviewUrn?: string
 }
 
 export { CatalogCardProps }

@@ -1,6 +1,7 @@
 import { Button, Typography } from '@mui/material'
 import { CatalogCard } from './CatalogCard'
 import { item } from '../../data/item'
+import { EmotePreviewPlayerProvider } from '../EmotePreviewPlayer'
 import { BaseFemaleIcon, BaseMaleIcon, MintIcon, UnisexIcon, UpperBodyIcon } from '../Icon'
 import { i18n as rarityBadgeI18n } from '../RarityBadge/RarityBadge.i18n'
 import { CatalogCardProps } from './CatalogCard.types'
@@ -184,6 +185,59 @@ const StaticHoverNoExpansion: Story = {
   }
 }
 
+const SubduedRarityNoPrice: Story = {
+  name: 'Figma 94:36542 — MyAssets (subdued rarity, no price)',
+  args: {
+    withShadow: false,
+    imageSrc: item.thumbnail,
+    asset: item,
+    action: null,
+    extraInformation: null,
+    i18n: rarityBadgeI18n,
+    subduedRarity: true,
+    hoverShadow: 'glow',
+    disableInfoExpansion: true,
+    infoBadges: (
+      <>
+        <UpperBodyIcon fontSize="small" titleAccess="upper_body" />
+        <UnisexIcon fontSize="small" titleAccess="unisex" />
+      </>
+    )
+  }
+}
+
+const ANIMATED_EMOTE_URN = 'urn:decentraland:matic:collections-v2:0xfbc9b2cff58dcc29dab28e2af7eac80c9012fe02:2'
+
+const AnimatedEmoteOnHover: Story = {
+  name: 'Animated emote preview on hover',
+  args: {
+    withShadow: false,
+    price: '10',
+    imageSrc: item.thumbnail,
+    asset: { ...item, name: 'Black Beauty' },
+    action: null,
+    extraInformation: null,
+    i18n: rarityBadgeI18n,
+    subduedRarity: true,
+    hoverShadow: 'glow',
+    emotePreviewUrn: ANIMATED_EMOTE_URN
+  },
+  render: args => (
+    <EmotePreviewPlayerProvider enabled>
+      <CatalogCard {...args} />
+    </EmotePreviewPlayerProvider>
+  )
+}
+
 // eslint-disable-next-line import/no-default-export
 export default meta
-export { Default, StaticHoverNoExpansion, WithBottomActionAndInfoBadges, WithInfoBadges, WithInfoBadgesBaseFemale, WithInfoBadgesBaseMale }
+export {
+  AnimatedEmoteOnHover,
+  Default,
+  StaticHoverNoExpansion,
+  SubduedRarityNoPrice,
+  WithBottomActionAndInfoBadges,
+  WithInfoBadges,
+  WithInfoBadgesBaseFemale,
+  WithInfoBadgesBaseMale
+}

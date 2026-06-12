@@ -2,14 +2,25 @@ import { Rarity } from '@dcl/schemas'
 import styled from '@emotion/styled'
 import { Box, Card, CardContent, Typography } from '@mui/material'
 import { Address } from '../../components/Address'
+import { neutral } from '../../theme/colors'
 import { hexToRgba } from '../../utils/colors'
 import { AssetImage } from '../AssetImage'
 import { CatalogCardProps } from './CatalogCard.types'
 
-const AssetImageContainer = styled(AssetImage)(({ theme }) => ({
-  borderRadius: `${theme.spacing(1)} ${theme.spacing(1)} 0 0`,
+// Figma 94:36542 (MarketplaceCards) — flat rarity surface (replaces the legacy radial
+// gradient) with the thumbnail rendered as a fixed centered square and a soft drop shadow.
+const AssetImageContainer = styled(AssetImage)(({ theme, rarity }) => ({
+  borderRadius: '12px 12px 0 0',
   height: theme.spacing(26),
   transition: 'height 0.3s ease-in-out',
+  backgroundImage: 'none',
+  backgroundColor: Rarity.getColor(rarity),
+  '& img': {
+    width: '68%',
+    height: '68%',
+    objectFit: 'contain',
+    filter: 'drop-shadow(1px 4px 5px rgba(0, 0, 0, 0.10))'
+  },
   [theme.breakpoints.down('sm')]: {
     height: theme.spacing(15)
   }
@@ -21,6 +32,12 @@ const CardContentContainer = styled(CardContent)(({ theme }) => ({
   flexDirection: 'column',
   flexFlow: 'column nowrap',
   alignItems: 'flex-start',
+  // Figma 94:36542 Info section — translucent black over the page bg, hairline gray-2
+  // border on the three open sides and 12px bottom rounding.
+  backgroundColor: 'rgba(0, 0, 0, 0.4)',
+  border: `1px solid ${neutral.gray2}`,
+  borderTop: 'none',
+  borderRadius: '0 0 12px 12px',
   // Keep gap tight — the card has a fixed height (theme.spacing(45)) and the
   // hover state reveals action + extraInformation + bottomAction inside that
   // same height. Larger gaps make AssetTitle overflow the top edge. Specific
@@ -40,20 +57,25 @@ const AssetHeaderContainer = styled(Box)({
   maxWidth: '100%'
 })
 
+// Figma 94:36542 — Inter SemiBold 14, line 1.57, soft white
 const AssetTitle = styled(Typography)({
   fontWeight: 600,
+  fontSize: 14,
+  lineHeight: 1.57,
+  color: neutral.softWhite,
   textOverflow: 'ellipsis',
   overflow: 'hidden',
   whiteSpace: 'nowrap',
   maxWidth: '100%'
 })
 
-const AssetAddress = styled(Address)(({ theme }) => ({
-  fontSize: theme.typography.body2.fontSize,
-  fontWeight: theme.typography.body2.fontWeight,
-  lineHeight: theme.typography.body2.lineHeight,
-  color: theme.palette.text.secondary
-}))
+// Figma 94:36542 — "By <creator>" row: Inter Regular 12, gray-2
+const AssetAddress = styled(Address)({
+  fontSize: 12,
+  fontWeight: 400,
+  lineHeight: 1.43,
+  color: neutral.gray2
+})
 
 const CatalogItemInformationContainer = styled(Box)(({ theme }) => ({
   flex: 1,
@@ -72,6 +94,13 @@ const CatalogCardPriceContainer = styled(Box)({
   flex: 1,
   display: 'flex',
   alignItems: 'center'
+})
+
+// Figma 94:36542 — price value: Inter SemiBold ~21, white
+const PriceText = styled(Typography)({
+  fontSize: 20,
+  fontWeight: 600,
+  lineHeight: 'normal'
 })
 
 const ExtraInformationContainer = styled(Box)(({ theme }) => ({
@@ -153,7 +182,13 @@ const CatalogCardContainer = styled(Card, {
   return {
     height: theme.spacing(45),
     transition: 'transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out, height 0.1s ease-in-out',
-    borderRadius: theme.spacing(1),
+    // Figma 94:36542 — 12px rounding and a transparent card body: the image section paints
+    // the flat rarity color and the info section its own translucent black, so the page
+    // background shows through the hairline border corners.
+    borderRadius: 12,
+    backgroundColor: 'transparent',
+    backgroundImage: 'none',
+    boxShadow: 'none',
     width: theme.spacing(36),
     maxWidth: '100%',
     position: 'relative',
@@ -166,7 +201,8 @@ const CatalogCardContainer = styled(Card, {
       height: glow ? theme.spacing(45) : theme.spacing(46),
       transform: glow ? 'translateY(-4px)' : 'none',
       padding: theme.spacing(0),
-      borderRadius: theme.spacing(1),
+      borderRadius: 12,
+      backgroundColor: glow ? 'rgba(255, 255, 255, 0.02)' : 'transparent',
       boxShadow: glow
         ? '0px 2px 12px 12px rgba(255, 255, 255, 0.3)'
         : withShadow
@@ -205,6 +241,7 @@ export {
   CatalogCardContainer,
   AssetImageContainer,
   CatalogCardPriceContainer,
+  PriceText,
   AssetHeaderContainer,
   CardContentContainer,
   AssetAddress,

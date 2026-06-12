@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useCallback, useMemo, useRef } from 'react'
 import { Network, Rarity } from '@dcl/schemas'
 import { Typography } from '@mui/material'
 import { CatalogCardPrice } from './CatalogCardPrice'
+import { useEmotePreviewPlayer } from '../../components/EmotePreviewPlayer'
 import { RarityBadge } from '../../components/RarityBadge'
 import { i18n as rarityBadgeI18nDefault } from '../../components/RarityBadge/RarityBadge.i18n'
 import { CatalogCardProps } from './CatalogCard.types'
@@ -38,15 +39,35 @@ const CatalogCard = React.memo((props: CatalogCardProps) => {
     bottomAction,
     infoBadges,
     disableInfoExpansion,
-    subduedRarity
+    subduedRarity,
+    emotePreviewUrn
   } = props
   const showDefaultCreator = creatorSlot === undefined && asset.network === Network.MATIC
+  // Animated emote preview on hover (marketplace PRs #2640/#2648): only when the consumer
+  // provided the emote urn, an enabled EmotePreviewPlayerProvider is mounted above, and the
+  // pointer actually hovers (touch taps would race the card's navigation click).
+  const containerRef = useRef<HTMLDivElement | null>(null)
+  const emotePreviewPlayer = useEmotePreviewPlayer()
+  const supportsHover = useMemo(() => typeof window !== 'undefined' && window.matchMedia('(hover: hover) and (pointer: fine)').matches, [])
+  const canPreviewEmote = Boolean(emotePreviewUrn && emotePreviewPlayer && supportsHover)
+  const handleEmoteHoverEnter = useCallback(() => {
+    if (!emotePreviewPlayer || !emotePreviewUrn) return
+    const imageEl = containerRef.current?.querySelector<HTMLElement>('.AssetImageContainer')
+    if (!imageEl) return
+    emotePreviewPlayer.show(imageEl, { urn: emotePreviewUrn, network: asset.network as Network, rarity: asset.rarity as Rarity })
+  }, [emotePreviewPlayer, emotePreviewUrn, asset.network, asset.rarity])
+  const handleEmoteHoverLeave = useCallback(() => {
+    emotePreviewPlayer?.hide()
+  }, [emotePreviewPlayer])
   return (
     <CatalogCardContainer
+      ref={containerRef}
       withShadow={withShadow}
       hideRarityOnHover={hideRarityOnHover}
       hoverShadow={hoverShadow}
       disableInfoExpansion={disableInfoExpansion}
+      onMouseEnter={canPreviewEmote ? handleEmoteHoverEnter : undefined}
+      onMouseLeave={canPreviewEmote ? handleEmoteHoverLeave : undefined}
     >
       <AssetImageContainer className="AssetImageContainer" name={asset.name} rarity={asset.rarity} src={imageSrc} />
       <CardContentContainer>
