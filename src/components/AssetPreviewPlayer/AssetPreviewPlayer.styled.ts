@@ -6,11 +6,15 @@ import styled from '@emotion/styled'
  * origin hidden via `clip-path` — NOT `visibility: hidden`, which can pause the
  * iframe's render loop and defeat the pre-warming.
  */
-const PlayerOverlay = styled('div')<{ visible: boolean }>(({ visible }) => ({
+const PlayerOverlay = styled('div')<{ visible: boolean; overlayZIndex?: number }>(({ visible, overlayZIndex }) => ({
   position: 'fixed',
-  // Above MUI dialogs (zIndex.modal = 1300) so cards hovered inside a profile/event
-  // modal still get their preview; pointer-events stays none so nothing is blocked.
-  zIndex: 1600,
+  // Default sits above page content but BELOW app chrome — the MUI `appBar` (1100),
+  // `modal` (1300), `snackbar` (1400) and `tooltip` (1500) layers — so the floating
+  // preview never covers a fixed navbar, an open dialog or a toast. `pointer-events`
+  // stays none so nothing is blocked. When the previewed card itself lives inside a
+  // modal, the consumer passes a higher `overlayZIndex` (e.g. above 1300) so the
+  // preview floats over that modal's own content.
+  zIndex: overlayZIndex ?? 1050,
   borderRadius: 10,
   overflow: 'hidden',
   // Clicks fall through to the card underneath (navigation keeps working).

@@ -71,6 +71,7 @@ function AssetPreviewPlayerProvider({
   marketplaceServerUrl = DEFAULT_MARKETPLACE_SERVER_URL,
   profile = 'default',
   dev = false,
+  overlayZIndex,
   children
 }: AssetPreviewPlayerProviderProps) {
   const [isVisible, setIsVisible] = useState(false)
@@ -204,7 +205,7 @@ function AssetPreviewPlayerProvider({
       {children}
       {enabled
         ? createPortal(
-            <PlayerOverlay visible={Boolean(isVisible && rect)} style={overlayStyle} aria-hidden>
+            <PlayerOverlay visible={Boolean(isVisible && rect)} overlayZIndex={overlayZIndex} style={overlayStyle} aria-hidden>
               <WearablePreview
                 id={PREVIEW_IFRAME_ID}
                 profile={profile}
