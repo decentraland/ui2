@@ -99,3 +99,5 @@ export function launchDesktopApp(opts: JumpInOptions = {}): Promise<boolean> {
     }
   })
 }
+
+export type { JumpInOptions }
