@@ -1,4 +1,5 @@
 import { ButtonProps, LinkProps } from '@mui/material'
+import { JumpInOptions } from '../../modules/jumpIn'
 import { DownloadModalProps } from '../Modal/DownloadModal/DownloadModal.types'
 
 enum JumpInEventType {
@@ -30,12 +31,12 @@ type JumpInBaseProps = {
   hideIcon?: boolean
   /** Props for the download modal */
   modalProps: Omit<DownloadModalProps, 'open' | 'onClose'>
-  /** Options for the desktop app */
-  desktopAppOptions?: {
-    position?: string
-    realm?: string
-    communityId?: string
-  }
+  /**
+   * Options forwarded to the desktop app deep link. Subset of `JumpInOptions`
+   * so `dclenv` and `scene-console` reach `launchDesktopApp` without the type
+   * drifting from the module it feeds.
+   */
+  desktopAppOptions?: Pick<JumpInOptions, 'position' | 'realm' | 'communityId' | 'dclenv' | 'sceneConsole'>
 }
 
 type JumpInProps = JumpInBaseProps &
