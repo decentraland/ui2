@@ -66,7 +66,7 @@ const meta = {
     },
     desktopAppOptions: {
       control: 'object',
-      description: 'Options for the desktop app (position, realm)'
+      description: 'Options forwarded to the desktop app deep link (position, realm, communityId, dclenv, sceneConsole)'
     },
     onTrack: {
       action: 'onTrack',
@@ -177,6 +177,28 @@ const IconHidden: Story = {
   }
 }
 
+const WithDeepLinkOptions: Story = {
+  args: {
+    variant: 'button',
+    buttonText: 'Jump In',
+    modalProps: defaultModalProps,
+    desktopAppOptions: {
+      position: '10,20',
+      realm: 'my-world.dcl.eth',
+      dclenv: 'zone',
+      sceneConsole: 'true'
+    }
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Forwards deep-link options to the desktop app: `position`/`realm` for the destination, `dclenv` for the target Explorer environment, and `sceneConsole` to open the in-scene console on launch.'
+      }
+    }
+  }
+}
+
 const AllVariants: Story = {
   args: {
     variant: 'button',
@@ -202,4 +224,4 @@ const AllVariants: Story = {
 // eslint-disable-next-line import/no-default-export
 export default meta
 
-export { Button, ButtonLoading, Link, CompactLink, WorldLink, CustomModal, WithTracking, IconHidden, AllVariants }
+export { Button, ButtonLoading, Link, CompactLink, WorldLink, CustomModal, WithTracking, IconHidden, WithDeepLinkOptions, AllVariants }

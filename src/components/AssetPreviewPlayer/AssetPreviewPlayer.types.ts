@@ -34,6 +34,14 @@ type AssetPreviewPlayerProviderProps = {
   profile?: string
   /** Forwarded to the preview iframe (zone assets). */
   dev?: boolean
+  /**
+   * z-index of the floating preview overlay. Defaults to `1050` — above page content
+   * but below app chrome (MUI `appBar` 1100 / `modal` 1300 / `snackbar` 1400 /
+   * `tooltip` 1500) — so the preview never covers a fixed navbar, dialog or toast.
+   * When the previewed cards live inside a modal, pass a value above the modal layer
+   * (e.g. `1600`) so the preview floats over that modal's content.
+   */
+  overlayZIndex?: number
   children: React.ReactNode
 }
 
