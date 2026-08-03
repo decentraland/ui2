@@ -4,7 +4,7 @@ import type { NavbarI18n } from './Navbar.types'
 const DEFAULT_I18N: NavbarI18n = {
   signIn: 'SIGN IN',
   signingIn: 'SIGNING IN...',
-  whatsOn: 'Explore',
+  whatsOn: "What's On",
   shop: 'Shop',
   shopAll: 'Shop All',
   wearables: 'Wearables',
@@ -16,6 +16,7 @@ const DEFAULT_I18N: NavbarI18n = {
   createInDecentraland: 'Create in Decentraland',
   publishWearablesEmotes: 'Publish Wearables & Emotes',
   publishLand: 'Manage Land',
+  creatorDocumentation: 'Creator Documentation',
   learn: 'Learn',
   getStarted: 'Get Started',
   startCreating: 'Start Creating',
@@ -84,7 +85,8 @@ function buildMenuConfig(): MenuConfig {
       items: [
         { label: 'createInDecentraland', url: createUrl },
         { label: 'publishWearablesEmotes', url: `${builderUrl}/collections` },
-        { label: 'publishLand', url: `${builderUrl}/land` }
+        { label: 'publishLand', url: `${builderUrl}/land` },
+        { label: 'creatorDocumentation', url: 'https://docs.decentraland.org/creator', isExternal: true }
       ]
     },
     learn: {

@@ -17,6 +17,7 @@ type NavbarI18n = {
   createInDecentraland: string
   publishWearablesEmotes: string
   publishLand: string
+  creatorDocumentation: string
   learn: string
   getStarted: string
   startCreating: string
