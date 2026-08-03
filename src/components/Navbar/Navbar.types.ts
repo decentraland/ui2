@@ -57,6 +57,11 @@ type NavbarProps = {
   creditsBalance?: { balance: number; expiresAt: number }
   /** Called when the user clicks the credits balance */
   onClickCredits?: () => void
+  /** Shop credits balance (whole credits) to display in the navbar top bar.
+   *  Consumer pre-converts (e.g. cents -> credits). undefined hides the chip. */
+  shopCreditsBalance?: number
+  /** Called when the user clicks the shop credits balance (e.g. open the top-up flow) */
+  onClickShopCredits?: () => void
   /** Called when the user card panel is toggled open or closed.
    *  Consumers can use this to close other panels (e.g. notifications). */
   onToggleUserCard?: (isOpen: boolean) => void

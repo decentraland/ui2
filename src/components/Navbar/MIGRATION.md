@@ -25,8 +25,11 @@ type NavbarProps = {
   onSelectChain?: (chain: ChainId) => void
   manaBalances?: Partial<Record<Network, number>>
   onClickBalance?: (network: Network) => void
+  showManaBalancesInNavbar?: boolean
   creditsBalance?: { balance: number; expiresAt: number }
   onClickCredits?: () => void
+  shopCreditsBalance?: number
+  onClickShopCredits?: () => void
   onToggleUserCard?: (isOpen: boolean) => void
   onClickSignIn: () => void
   onClickSignOut: () => void
@@ -71,6 +74,14 @@ Credits display is built into the Navbar. Pass the data:
 <Navbar creditsBalance={{ balance: 4200, expiresAt: Date.now() + 86400000 * 30 }} onClickCredits={() => navigateToCredits()} />
 ```
 
+### Shop Credits Balance
+
+Shop credits (the USD-pegged shop currency) render as a separate chip, distinct from marketplace credits. Pass whole credits — the consumer pre-converts (e.g. cents → credits); `undefined` hides the chip, `0` renders as "0". Like the MANA chips (and unlike marketplace credits), it has no hover tooltip:
+
+```tsx
+<Navbar shopCreditsBalance={500} onClickShopCredits={() => navigateToTopUp()} />
+```
+
 ### Chain Selector & MANA Balance
 
 These render inside the user card panel (not in the top bar):
@@ -83,6 +94,12 @@ These render inside the user card panel (not in the top bar):
   manaBalances={{ [Network.ETHEREUM]: 1234, [Network.MATIC]: 5678 }}
   onClickBalance={network => openAccount(network)}
 />
+```
+
+Set `showManaBalancesInNavbar` to render the MANA balances in the navbar top bar (next to the credits chips) instead of inside the user card panel:
+
+```tsx
+<Navbar showManaBalancesInNavbar manaBalances={{ [Network.MATIC]: 5678 }} />
 ```
 
 ### URLs

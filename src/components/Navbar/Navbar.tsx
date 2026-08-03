@@ -1,7 +1,7 @@
 import { memo, useCallback, useEffect, useRef, useState } from 'react'
 import { Network } from '@dcl/schemas/dist/dapps/network'
 import { formatBalance } from './formatBalance'
-import { CloseIcon, DclLogo, HamburgerIcon, ManaEthInlineIcon, ManaMaticInlineIcon } from './icons'
+import { CloseIcon, DclLogo, HamburgerIcon, ManaEthInlineIcon, ManaMaticInlineIcon, ShopCreditsIcon } from './icons'
 import { MobileMenu } from './MobileMenu'
 import { DEFAULT_I18N } from './Navbar.defaults'
 import { NavLinks } from './NavLinks'
@@ -13,7 +13,8 @@ import {
   CreditsTooltip,
   NavbarBalancesStack,
   NavbarManaBalanceButton,
-  NavbarManaBalancesGroup
+  NavbarManaBalancesGroup,
+  ShopCreditsBalanceButton
 } from './Credits.styled'
 import { HamburgerButton, LogoLink, NavbarLeft, NavbarRight, NavbarRightGroup, NavbarRoot, SignInButton } from './Navbar.styled'
 import type { DropdownSection } from './Navbar.defaults'
@@ -40,6 +41,8 @@ const Navbar = memo(function Navbar({
   showManaBalancesInNavbar = false,
   creditsBalance,
   onClickCredits,
+  shopCreditsBalance,
+  onClickShopCredits,
   activePage,
   onToggleUserCard,
   onClickSignIn,
@@ -170,7 +173,7 @@ const Navbar = memo(function Navbar({
         <NavbarRight>
           {isSignedIn && (
             <NavbarRightGroup>
-              {(creditsBalance || (showManaBalancesInNavbar && manaBalances)) && (
+              {(creditsBalance || shopCreditsBalance !== undefined || (showManaBalancesInNavbar && manaBalances)) && (
                 <NavbarBalancesStack>
                   {creditsBalance && (
                     <CreditsBalanceButton onClick={onClickCredits} aria-label={`${formatBalance(creditsBalance.balance)} credits`}>
@@ -207,6 +210,13 @@ const Navbar = memo(function Navbar({
                         </NavbarManaBalanceButton>
                       )}
                     </NavbarManaBalancesGroup>
+                  )}
+
+                  {shopCreditsBalance !== undefined && (
+                    <ShopCreditsBalanceButton onClick={onClickShopCredits} aria-label={`${formatBalance(shopCreditsBalance)} shop credits`}>
+                      <ShopCreditsIcon />
+                      {formatBalance(shopCreditsBalance)}
+                    </ShopCreditsBalanceButton>
                   )}
                 </NavbarBalancesStack>
               )}

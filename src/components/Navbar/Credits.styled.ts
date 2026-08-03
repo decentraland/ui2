@@ -70,6 +70,12 @@ const CreditsTooltip = styled('div')({
   zIndex: 10
 })
 
+/** Shop credits chip — inherits the credits chip's hover/tooltip/focus/breakpoint sizing;
+ *  distinctness comes from the icon, not a second accent color. */
+const ShopCreditsBalanceButton = styled(CreditsBalanceButton)({
+  color: colors.neutral.softWhite
+})
+
 const NavbarManaBalancesGroup = styled('div')({
   display: 'flex',
   alignItems: 'center',
@@ -137,4 +143,11 @@ const NavbarBalancesStack = styled('div')({
   }
 })
 
-export { CreditsBalanceButton, CreditsTooltip, NavbarBalancesStack, NavbarManaBalanceButton, NavbarManaBalancesGroup }
+export {
+  CreditsBalanceButton,
+  CreditsTooltip,
+  NavbarBalancesStack,
+  NavbarManaBalanceButton,
+  NavbarManaBalancesGroup,
+  ShopCreditsBalanceButton
+}
