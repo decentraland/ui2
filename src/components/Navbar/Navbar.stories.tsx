@@ -217,7 +217,7 @@ const MarketplaceExample: Story = {
   }
 }
 
-const MarketplaceWithManaInNavbar: Story = {
+const ShopWithManaInNavbar: Story = {
   args: {
     isSignedIn: true,
     address: '0xe3fc7040653768efb2941a6c26fdb868ed36ca99',
@@ -236,8 +236,9 @@ const MarketplaceWithManaInNavbar: Story = {
     manaBalances: { [Network.ETHEREUM]: 1234, [Network.MATIC]: 5678 },
     onClickBalance: (network: Network) => console.log('Clicked balance', network),
     showManaBalancesInNavbar: true,
-    creditsBalance: { balance: 4200, expiresAt: Date.now() + 86400000 * 30 },
-    onClickCredits: () => console.log('Credits clicked'),
+    // Only ONE credits balance, because no app has both. `creditsBalance` is the marketplace's
+    // MANA-pegged, expiring credits (see MarketplaceExample) and `shopCreditsBalance` is the shop's
+    // USD ones — passing both here drew two identical C marks side by side, a state nothing can reach.
     shopCreditsBalance: 500,
     onClickShopCredits: () => console.log('Shop credits clicked'),
     onClickSignIn: () => console.log('Sign In clicked'),
@@ -303,4 +304,4 @@ const CustomI18n: Story = {
   )
 }
 
-export { SignedOut, SignedIn, WithNotifications, MarketplaceExample, MarketplaceWithManaInNavbar, ShopExample, CustomI18n }
+export { SignedOut, SignedIn, WithNotifications, MarketplaceExample, ShopWithManaInNavbar, ShopExample, CustomI18n }
