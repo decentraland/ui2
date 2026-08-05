@@ -4,7 +4,7 @@ import type { NavbarI18n } from './Navbar.types'
 const DEFAULT_I18N: NavbarI18n = {
   signIn: 'SIGN IN',
   signingIn: 'SIGNING IN...',
-  whatsOn: "What's On",
+  whatsOn: 'Explore',
   shop: 'Shop',
   shopAll: 'Shop All',
   wearables: 'Wearables',
@@ -56,12 +56,11 @@ type MenuConfig = {
  * environment (zone for dev, today for staging, org for production).
  */
 function buildMenuConfig(): MenuConfig {
-  const marketplaceUrl = config.get('MARKETPLACE_URL')
+  const shopUrl = config.get('SHOP_URL')
   const builderUrl = config.get('BUILDER_URL')
   const eventsUrl = config.get('EVENTS_URL')
   const createUrl = config.get('CREATE_URL')
   const blogUrl = config.get('BLOG_URL')
-  const namesUrl = config.get('MARKETPLACE_NAMES_URL')
   const landsUrl = config.get('MARKETPLACE_LANDS_URL')
 
   return {
@@ -72,10 +71,11 @@ function buildMenuConfig(): MenuConfig {
     shop: {
       label: 'shop',
       items: [
-        { label: 'shopAll', url: marketplaceUrl },
-        { label: 'wearables', url: `${marketplaceUrl}/browse?assetType=item&section=wearables&status=on_sale` },
-        { label: 'emotes', url: `${marketplaceUrl}/browse?assetType=item&section=emotes&status=on_sale` },
-        { label: 'names', url: namesUrl },
+        { label: 'shopAll', url: shopUrl },
+        { label: 'wearables', url: `${shopUrl}/items?category=wearable` },
+        { label: 'emotes', url: `${shopUrl}/items?category=emote` },
+        { label: 'names', url: `${shopUrl}/items?category=names` },
+        // LAND has no category in the shop, so it stays on the marketplace.
         { label: 'land', url: landsUrl },
         { label: 'merch', url: 'https://store.decentraland.org/', isExternal: true }
       ]
