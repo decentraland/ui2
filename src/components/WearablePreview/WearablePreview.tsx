@@ -3,11 +3,11 @@ import { PreviewMessagePayload, PreviewMessageType, PreviewOptions, sendMessage 
 import equal from 'deep-equal'
 import { createController } from './WearablePreview.controller'
 import { config } from '../../config'
-import { createDebounce } from '../../lib/debounce'
 import { WearablePreviewProps, WearablePreviewState } from './WearablePreview.types'
 import { StyledWearablePreview } from './WearablePreview.styled'
 
-const debounce = createDebounce()
+// How long prop changes are coalesced before being pushed to the iframe.
+const UPDATE_DEBOUNCE_MS = 500
 
 const safeEncodeParam = (key: string, value: unknown): string => {
   if (value === undefined || value === null || value === '') {
@@ -41,6 +41,10 @@ const WearablePreview = (props: WearablePreviewProps) => {
 
   const iframeRef = useRef<HTMLIFrameElement>(null)
   const lastOptionsRef = useRef<PreviewOptions | null>(null)
+  // The `src` built below encodes every option as a query param, so a freshly loaded document already
+  // has them applied. This holds the src those options were delivered by, so an update is only sent for
+  // what the URL did not already say (see the effect that seeds `lastOptionsRef`).
+  const deliveredUrlRef = useRef<string | null>(null)
 
   const url = useMemo(() => {
     const {
@@ -295,6 +299,17 @@ const WearablePreview = (props: WearablePreviewProps) => {
     }
   }, [handleMessage])
 
+  // Treat the options the current `src` encodes as already delivered. Without this the FIRST update is
+  // always dispatched — `sendUpdate` skips its comparison while `lastOptionsRef` is still empty — and it
+  // repeats what the URL had just said. The preview app rebuilds its scene from scratch on any update, so
+  // that redundant message costs a second full load: the avatar appears, vanishes and loads again. A
+  // `blob` is the exception, since it cannot travel in a query param.
+  useEffect(() => {
+    if (props.blob || deliveredUrlRef.current === url) return
+    deliveredUrlRef.current = url
+    lastOptionsRef.current = options
+  }, [url, options, props.blob])
+
   useEffect(() => {
     // if there's a blob in the props, it can't be passed via URL, so we send it via postMessage
     if (props.blob) {
@@ -302,8 +317,12 @@ const WearablePreview = (props: WearablePreviewProps) => {
     }
   }, [props.blob, handleUpdate])
 
+  // Debounced per instance. A module-level timer gave every WearablePreview on the page one shared slot,
+  // so two previews cancelled each other's pending update and the survivor was pushed out by each
+  // unrelated render. Cleared on unmount too, so an update can't fire against a detached iframe.
   useEffect(() => {
-    debounce(handleUpdate, 500)
+    const timeout = setTimeout(handleUpdate, UPDATE_DEBOUNCE_MS)
+    return () => clearTimeout(timeout)
   }, [handleUpdate])
 
   if (props.tokenId && props.itemId) {
