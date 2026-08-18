@@ -1,11 +1,22 @@
 import React from 'react'
 import { ContentfulLocale } from '@dcl/schemas'
 import CircularProgress from '@mui/material/CircularProgress'
-import { getAssetUrl } from '../../modules/contentful'
+import { getAssetAspectRatio, getAssetUrl } from '../../modules/contentful'
 import { useTabletAndBelowMediaQuery } from '../Media'
 import { ContentfulRichText } from './ContentfulRichText'
 import { BannerProps, LowercasedAlignment } from './Banner.types'
-import { BannerContainer, Button, ButtonContainer, Content, LoadingContainer, Logo, Text, Title } from './Banner.styled'
+import {
+  BackgroundSizer,
+  BannerContainer,
+  Button,
+  ButtonContainer,
+  Content,
+  Layout,
+  LoadingContainer,
+  Logo,
+  Text,
+  Title
+} from './Banner.styled'
 import type { Property } from 'csstype'
 
 const convertAlignmentToFlex = (alignment: Property.TextAlign) => {
@@ -39,11 +50,9 @@ export const Banner: React.FC<BannerProps> = (props: BannerProps) => {
   }
 
   // Build the parameters based on the size of the screen
-  const bannerBackgroundImage = getAssetUrl(
-    assets,
-    ContentfulLocale.enUS,
-    isMobileOrTablet ? fields.mobileBackground[ContentfulLocale.enUS] : fields.fullSizeBackground[ContentfulLocale.enUS]
-  )
+  const background = isMobileOrTablet ? fields.mobileBackground[ContentfulLocale.enUS] : fields.fullSizeBackground[ContentfulLocale.enUS]
+  const bannerBackgroundImage = getAssetUrl(assets, ContentfulLocale.enUS, background)
+  const bannerAspectRatio = getAssetAspectRatio(assets, ContentfulLocale.enUS, background)
   const title = isMobileOrTablet ? fields.mobileTitle[locale] : fields.desktopTitle[locale]
   const titleAlignment = (
     isMobileOrTablet ? fields.mobileTitleAlignment[ContentfulLocale.enUS] : fields.desktopTitleAlignment[ContentfulLocale.enUS]
@@ -59,26 +68,31 @@ export const Banner: React.FC<BannerProps> = (props: BannerProps) => {
     )?.toLowerCase() as LowercasedAlignment
   )
 
+  const isCopyCentered = titleAlignment === 'center' || textAlignment === 'center'
+
   return (
     <BannerContainer background={bannerBackgroundImage}>
-      <Content>
-        <Title variant="h1" textAlign={titleAlignment}>
-          {title}
-        </Title>
+      {bannerAspectRatio ? <BackgroundSizer aspectRatio={bannerAspectRatio} /> : null}
+      <Layout>
+        <Content constrainedWidth={!isCopyCentered}>
+          <Title variant="h1" textAlign={titleAlignment}>
+            {title}
+          </Title>
 
-        <Text textAlign={textAlignment}>{text ? <ContentfulRichText document={text} /> : null}</Text>
+          <Text textAlign={textAlignment}>{text ? <ContentfulRichText document={text} /> : null}</Text>
 
-        {fields.showButton[ContentfulLocale.enUS] && fields.buttonLink?.[ContentfulLocale.enUS] && fields.buttonsText?.[locale] ? (
-          <ButtonContainer justifyContent={buttonAlignment}>
-            <Button onClick={onClick} href={fields.buttonLink[ContentfulLocale.enUS]} variant="contained" disableElevation>
-              {fields.buttonsText[locale]}
-            </Button>
-          </ButtonContainer>
-        ) : null}
-      </Content>
-      {fields.logo && fields.logo[ContentfulLocale.enUS] && (
-        <Logo src={getAssetUrl(assets, ContentfulLocale.enUS, fields.logo[ContentfulLocale.enUS])} alt="Banner logo" />
-      )}
+          {fields.showButton[ContentfulLocale.enUS] && fields.buttonLink?.[ContentfulLocale.enUS] && fields.buttonsText?.[locale] ? (
+            <ButtonContainer justifyContent={buttonAlignment}>
+              <Button onClick={onClick} href={fields.buttonLink[ContentfulLocale.enUS]} variant="contained" disableElevation>
+                {fields.buttonsText[locale]}
+              </Button>
+            </ButtonContainer>
+          ) : null}
+        </Content>
+        {fields.logo && fields.logo[ContentfulLocale.enUS] && (
+          <Logo src={getAssetUrl(assets, ContentfulLocale.enUS, fields.logo[ContentfulLocale.enUS])} alt="Banner logo" />
+        )}
+      </Layout>
     </BannerContainer>
   )
 }
