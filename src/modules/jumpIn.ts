@@ -8,6 +8,8 @@ type JumpInOptions = {
   dclenv?: string
   /** When "true", enables the scene console (backtick key) on launch. Forwarded as `scene-console` in the deep link. */
   sceneConsole?: string
+  /** When "true", allows multiple Explorer instances to run simultaneously. Forwarded as `multi-instance` in the deep link. */
+  multiInstance?: string
   timeoutMs?: number
   userAgentData?: AdvancedNavigatorUAData
 }
@@ -22,6 +24,7 @@ function buildDecentralandUrl(opts: JumpInOptions) {
   if (opts.communityId) params.set('community', opts.communityId)
   if (opts.dclenv) params.set('dclenv', opts.dclenv)
   if (opts.sceneConsole) params.set('scene-console', opts.sceneConsole)
+  if (opts.multiInstance) params.set('multi-instance', opts.multiInstance)
   return `decentraland://?${params.toString()}`
 }
 
