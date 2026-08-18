@@ -9,28 +9,52 @@ const LoadingContainer = styled(Box)({
   width: '100%'
 })
 
+const BANNER_AREA = 'banner'
+
 const BannerContainer = styled(Box, {
-  shouldForwardProp: prop => prop !== 'background' && prop !== 'aspectRatio'
+  shouldForwardProp: prop => prop !== 'background'
 })<{
   background: string
-  aspectRatio?: number
 }>(props => {
-  const { theme, background, aspectRatio } = props
+  const { background } = props
 
   return {
     width: '100%',
     overflow: 'hidden',
+    // The sizer and the layout share a single grid area, so the row ends up as tall as the taller of
+    // the two: never shorter than the artwork, never shorter than the content.
+    display: 'grid',
+    gridTemplateAreas: `"${BANNER_AREA}"`,
+    backgroundImage: `url(${background})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center'
+  }
+})
+
+// The background is painted with `cover`, so a banner shorter than its artwork crops it. This gives the
+// grid row a floor at the artwork's own ratio without ever clipping content that needs more room.
+const BackgroundSizer = styled(Box, {
+  shouldForwardProp: prop => prop !== 'aspectRatio'
+})<{
+  aspectRatio: number
+}>(props => ({
+  gridArea: BANNER_AREA,
+  alignSelf: 'start',
+  width: '100%',
+  aspectRatio: `${props.aspectRatio}`,
+  pointerEvents: 'none'
+}))
+
+const Layout = styled(Box)(props => {
+  const { theme } = props
+
+  return {
+    gridArea: BANNER_AREA,
     display: 'flex',
     padding: '2rem',
     justifyContent: 'space-between',
     flexDirection: 'row',
-    backgroundImage: `url(${background})`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
     alignItems: 'center',
-    // Reserve the artwork's own ratio so `cover` has nothing to crop. `fit-content` keeps taller
-    // content (long copy, a button) from being clipped when it needs more room than the artwork.
-    ...(aspectRatio ? { aspectRatio: `${aspectRatio}`, minHeight: 'fit-content' } : {}),
     [theme.breakpoints.down('sm')]: {
       flexDirection: 'column-reverse'
     }
@@ -123,4 +147,4 @@ const Button = styled(MuiButton)({
   minWidth: '300px'
 })
 
-export { LoadingContainer, BannerContainer, Content, ContentWrapper, Logo, Title, Text, ButtonContainer, Button }
+export { LoadingContainer, BannerContainer, BackgroundSizer, Layout, Content, ContentWrapper, Logo, Title, Text, ButtonContainer, Button }
