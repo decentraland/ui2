@@ -17,7 +17,7 @@
   "CONTENTFUL_SPACE_ID": "ea2ybdmmn1kv",
   "CONTENTFUL_ENV": "master",
   "CONTENTFUL_NAVBAR_ENTRY_ID": "18g1DzIyBxvu0steSwKyQr",
-  "CONTENTFUL_CONTENTFUL_CDN_URL": "https://cms.decentraland.org",
+  "CONTENTFUL_CONTENTFUL_CDN_URL": "https://cms-api.decentraland.org",
   "MARKETPLACE_NAMES_URL": "https://decentraland.today/marketplace/names/claim",
   "MARKETPLACE_LANDS_URL": "https://decentraland.today/marketplace/lands",
   "MARKETPLACE_MY_ASSETS_URL": "https://decentraland.today/marketplace/account",
