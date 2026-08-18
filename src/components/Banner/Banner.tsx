@@ -1,7 +1,7 @@
 import React from 'react'
 import { ContentfulLocale } from '@dcl/schemas'
 import CircularProgress from '@mui/material/CircularProgress'
-import { getAssetUrl } from '../../modules/contentful'
+import { getAssetAspectRatio, getAssetUrl } from '../../modules/contentful'
 import { useTabletAndBelowMediaQuery } from '../Media'
 import { ContentfulRichText } from './ContentfulRichText'
 import { BannerProps, LowercasedAlignment } from './Banner.types'
@@ -39,11 +39,11 @@ export const Banner: React.FC<BannerProps> = (props: BannerProps) => {
   }
 
   // Build the parameters based on the size of the screen
-  const bannerBackgroundImage = getAssetUrl(
-    assets,
-    ContentfulLocale.enUS,
-    isMobileOrTablet ? fields.mobileBackground[ContentfulLocale.enUS] : fields.fullSizeBackground[ContentfulLocale.enUS]
-  )
+  const background = isMobileOrTablet ? fields.mobileBackground[ContentfulLocale.enUS] : fields.fullSizeBackground[ContentfulLocale.enUS]
+  const bannerBackgroundImage = getAssetUrl(assets, ContentfulLocale.enUS, background)
+  // The background is painted with `cover`, so a banner shorter than the artwork crops it. Letting the
+  // artwork's own ratio drive the height keeps the composition the designer uploaded intact.
+  const bannerAspectRatio = getAssetAspectRatio(assets, ContentfulLocale.enUS, background)
   const title = isMobileOrTablet ? fields.mobileTitle[locale] : fields.desktopTitle[locale]
   const titleAlignment = (
     isMobileOrTablet ? fields.mobileTitleAlignment[ContentfulLocale.enUS] : fields.desktopTitleAlignment[ContentfulLocale.enUS]
@@ -59,9 +59,11 @@ export const Banner: React.FC<BannerProps> = (props: BannerProps) => {
     )?.toLowerCase() as LowercasedAlignment
   )
 
+  const isCopyCentered = titleAlignment === 'center' || textAlignment === 'center'
+
   return (
-    <BannerContainer background={bannerBackgroundImage}>
-      <Content>
+    <BannerContainer background={bannerBackgroundImage} aspectRatio={bannerAspectRatio}>
+      <Content constrainedWidth={!isCopyCentered}>
         <Title variant="h1" textAlign={titleAlignment}>
           {title}
         </Title>

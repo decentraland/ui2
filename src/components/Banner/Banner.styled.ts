@@ -10,11 +10,12 @@ const LoadingContainer = styled(Box)({
 })
 
 const BannerContainer = styled(Box, {
-  shouldForwardProp: prop => prop !== 'background'
+  shouldForwardProp: prop => prop !== 'background' && prop !== 'aspectRatio'
 })<{
   background: string
+  aspectRatio?: number
 }>(props => {
-  const { theme, background } = props
+  const { theme, background, aspectRatio } = props
 
   return {
     width: '100%',
@@ -27,6 +28,9 @@ const BannerContainer = styled(Box, {
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     alignItems: 'center',
+    // Reserve the artwork's own ratio so `cover` has nothing to crop. `fit-content` keeps taller
+    // content (long copy, a button) from being clipped when it needs more room than the artwork.
+    ...(aspectRatio ? { aspectRatio: `${aspectRatio}`, minHeight: 'fit-content' } : {}),
     [theme.breakpoints.down('sm')]: {
       flexDirection: 'column-reverse'
     }
@@ -40,13 +44,24 @@ const ContentWrapper = styled(Box)({
   marginRight: '20px'
 })
 
-const Content = styled(Box)(props => {
-  const { theme } = props
+const Content = styled(Box, {
+  shouldForwardProp: prop => prop !== 'constrainedWidth'
+})<{ constrainedWidth?: boolean }>(props => {
+  const { theme, constrainedWidth } = props
 
   return {
     display: 'flex',
     flexDirection: 'column',
     gap: '0.1rem',
+    // Side aligned copy sits next to the subject of the artwork, so keep it in its own half instead of
+    // letting it stretch across the whole banner. Centered copy uses the banner as its canvas.
+    ...(constrainedWidth
+      ? {
+          [theme.breakpoints.up('sm')]: {
+            maxWidth: '50%'
+          }
+        }
+      : {}),
     [theme.breakpoints.down('sm')]: {
       padding: '1rem'
     }
