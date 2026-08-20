@@ -5,7 +5,9 @@ import type { Network } from '@dcl/schemas/dist/dapps/network'
 type NavbarI18n = {
   signIn: string
   signingIn: string
-  whatsOn: string
+  discover: string
+  events: string
+  places: string
   shop: string
   shopAll: string
   wearables: string
@@ -67,7 +69,7 @@ type NavbarProps = {
    *  Consumers can use this to close other panels (e.g. notifications). */
   onToggleUserCard?: (isOpen: boolean) => void
   /** When set, the matching navigation tab receives a visual highlight. */
-  activePage?: 'whatsOn' | 'shop' | 'create' | 'learn'
+  activePage?: 'discover' | 'shop' | 'create' | 'learn'
   onClickSignIn: () => void
   onClickSignOut: () => void
 }

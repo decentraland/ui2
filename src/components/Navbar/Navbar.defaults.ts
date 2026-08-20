@@ -4,7 +4,9 @@ import type { NavbarI18n } from './Navbar.types'
 const DEFAULT_I18N: NavbarI18n = {
   signIn: 'SIGN IN',
   signingIn: 'SIGNING IN...',
-  whatsOn: 'Explore',
+  discover: 'Discover',
+  events: 'Events',
+  places: 'Places',
   shop: 'Shop',
   shopAll: 'Shop All',
   wearables: 'Wearables',
@@ -45,7 +47,7 @@ type MenuSection = {
 }
 
 type MenuConfig = {
-  whatsOn: MenuSection
+  discover: MenuSection
   shop: MenuSection
   create: MenuSection
   learn: MenuSection
@@ -59,14 +61,18 @@ function buildMenuConfig(): MenuConfig {
   const shopUrl = config.get('SHOP_URL')
   const builderUrl = config.get('BUILDER_URL')
   const eventsUrl = config.get('EVENTS_URL')
+  const placesUrl = config.get('PLACES_URL')
   const createUrl = config.get('CREATE_URL')
   const blogUrl = config.get('BLOG_URL')
   const landsUrl = config.get('MARKETPLACE_LANDS_URL')
 
   return {
-    whatsOn: {
-      label: 'whatsOn',
-      url: eventsUrl
+    discover: {
+      label: 'discover',
+      items: [
+        { label: 'events', url: eventsUrl },
+        { label: 'places', url: placesUrl }
+      ]
     },
     shop: {
       label: 'shop',
@@ -128,7 +134,7 @@ function getUserMenuItems(): UserMenuItem[] {
   return _userMenuItems
 }
 
-const DROPDOWN_SECTIONS = ['shop', 'create'] as const
+const DROPDOWN_SECTIONS = ['discover', 'shop', 'create'] as const
 type DropdownSection = (typeof DROPDOWN_SECTIONS)[number]
 
 export { DEFAULT_I18N, DROPDOWN_SECTIONS, getMenuConfig, getUserMenuItems }
