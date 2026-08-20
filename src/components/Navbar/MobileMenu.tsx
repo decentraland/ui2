@@ -31,10 +31,6 @@ const MobileMenu = memo(function MobileMenu({ open, onClose, i18n }: MobileMenuP
     <>
       <MobileMenuOverlay open={open} onClick={onClose} />
       <MobileMenuPanel open={open} role="navigation" aria-label="Mobile navigation">
-        <MobileMenuItem>
-          <MobileMenuLink href={menuConfig.whatsOn.url}>{i18n[menuConfig.whatsOn.label]}</MobileMenuLink>
-        </MobileMenuItem>
-
         {DROPDOWN_SECTIONS.map(section => {
           const config = menuConfig[section]
           const isExpanded = mobileAccordion === section

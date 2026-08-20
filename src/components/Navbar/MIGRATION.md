@@ -15,7 +15,7 @@ type NavbarProps = {
   isSignedIn: boolean
   isSigningIn?: boolean
   isLoadingProfile?: boolean
-  activePage?: 'whatsOn' | 'shop' | 'create' | 'learn'
+  activePage?: 'discover' | 'shop' | 'create' | 'learn'
   address?: string
   avatar?: { name?: string; avatar?: { snapshots?: { face256?: string; body?: string } } }
   i18n?: Partial<NavbarI18n>
@@ -38,16 +38,16 @@ type NavbarProps = {
 
 ### Key Differences
 
-| Old API                                           | New API                                                   |
-| ------------------------------------------------- | --------------------------------------------------------- |
-| `activePage: NavbarPages`                         | `activePage?: 'whatsOn' \| 'shop' \| 'create' \| 'learn'` |
-| `submenuItems: NavbarSubmenuProps`                | Menu items are hardcoded from `config.get()`              |
-| `i18nNavbar`, `i18nUserMenu`, `i18nChainSelector` | Single `i18n?: Partial<NavbarI18n>` with English defaults |
-| `notifications` data object                       | `notificationSlot?: ReactNode` (consumer renders)         |
-| `chains`, `selectedChain` as direct props         | Same — `selectedChain?`, `chains?`, `onSelectChain?`      |
-| `manaBalances` via UserMenu                       | `manaBalances?` as direct prop                            |
-| `onClickNavbarItem` callback                      | Removed — links navigate directly                         |
-| `onClickBalance`, `onClickOpen`                   | `onClickBalance?`, `onClickCredits?`                      |
+| Old API                                           | New API                                                    |
+| ------------------------------------------------- | ---------------------------------------------------------- |
+| `activePage: NavbarPages`                         | `activePage?: 'discover' \| 'shop' \| 'create' \| 'learn'` |
+| `submenuItems: NavbarSubmenuProps`                | Menu items are hardcoded from `config.get()`               |
+| `i18nNavbar`, `i18nUserMenu`, `i18nChainSelector` | Single `i18n?: Partial<NavbarI18n>` with English defaults  |
+| `notifications` data object                       | `notificationSlot?: ReactNode` (consumer renders)          |
+| `chains`, `selectedChain` as direct props         | Same — `selectedChain?`, `chains?`, `onSelectChain?`       |
+| `manaBalances` via UserMenu                       | `manaBalances?` as direct prop                             |
+| `onClickNavbarItem` callback                      | Removed — links navigate directly                          |
+| `onClickBalance`, `onClickOpen`                   | `onClickBalance?`, `onClickCredits?`                       |
 
 ### Notification Slot Pattern
 

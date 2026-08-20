@@ -16,7 +16,7 @@ interface NavLinksProps {
   desktopDropdown: DropdownSection | null
   onOpenDropdown: (section: DropdownSection) => void
   onScheduleCloseDropdown: () => void
-  activePage?: 'whatsOn' | 'shop' | 'create' | 'learn'
+  activePage?: 'discover' | 'shop' | 'create' | 'learn'
   i18n: NavbarI18n
 }
 
@@ -24,10 +24,6 @@ const NavLinks = memo(function NavLinks({ desktopDropdown, onOpenDropdown, onSch
   const menuConfig = getMenuConfig()
   return (
     <DesktopTabList>
-      <DesktopTabLink href={menuConfig.whatsOn.url} className={activePage === 'whatsOn' ? 'active' : undefined}>
-        {i18n[menuConfig.whatsOn.label]}
-      </DesktopTabLink>
-
       {DROPDOWN_SECTIONS.map(section => (
         <DesktopDropdownWrapper key={section} onMouseEnter={() => onOpenDropdown(section)} onMouseLeave={onScheduleCloseDropdown}>
           <DesktopTabWithDropdown
