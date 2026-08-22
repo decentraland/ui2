@@ -42,10 +42,21 @@ const EventCard = memo((props: EventCardProps) => {
     leftBadgeTransparent = false,
     onClick,
     onJumpInClick,
+    onAvatarClick,
     redirectToAuth = false,
     hideLocation = false,
     loading = false
   } = props
+
+  const handleAvatarClick = useCallback(
+    (e: React.MouseEvent) => {
+      if (!onAvatarClick) return
+      e.preventDefault()
+      e.stopPropagation()
+      onAvatarClick()
+    },
+    [onAvatarClick]
+  )
 
   const isWorld = coordinates?.includes('.dcl.eth')
   const jumpInUrl = isWorld ? `https://decentraland.org/jump?realm=${coordinates}` : `https://decentraland.org/jump?position=${coordinates}`
@@ -114,7 +125,15 @@ const EventCard = memo((props: EventCardProps) => {
                     <AvatarFace size="small" avatar={avatar} />
                     <AvatarTextContainer>
                       <Typography variant="body2">
-                        by <AvatarLink href={`https://decentraland.org/profile/accounts/${avatar.ethAddress}`}>{avatar.name}</AvatarLink>
+                        by{' '}
+                        <AvatarLink
+                          href={onAvatarClick ? undefined : `https://decentraland.org/profile/accounts/${avatar.ethAddress}`}
+                          onClick={onAvatarClick ? handleAvatarClick : undefined}
+                          role={onAvatarClick ? 'button' : undefined}
+                          tabIndex={onAvatarClick ? 0 : undefined}
+                        >
+                          {avatar.name}
+                        </AvatarLink>
                       </Typography>
                     </AvatarTextContainer>
                   </AvatarContainer>
