@@ -1,11 +1,11 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import React, { useCallback, useMemo, useState } from 'react'
 import { AdvancedNavigatorUAData, useAdvancedUserAgentData } from '@dcl/hooks'
 import Download from '@mui/icons-material/Download'
 import { config } from '../../config'
 import { CDNSource, getCDNRelease } from '../../modules/cdnReleases'
 import { triggerFileDownload } from '../../modules/file'
 import { addQueryParamsToUrlString, updateUrlWithLastValue } from '../../modules/url'
-import { setUserAgentArchitectureDefaultByOs } from '../../modules/userAgent'
+import { resolveUserAgentDataForOs } from '../../modules/userAgent'
 import { DownloadButtonProps, DownloadOption, OperativeSystem } from './DownloadButton.types'
 import {
   DownloadButtonAppleIcon,
@@ -58,17 +58,19 @@ const DownloadButton = React.memo((props: DownloadButtonProps) => {
   } = props
   const [isDownloading, setIsDownloading] = useState(false)
 
-  const [isLoadingUserAgentData, userAgentData] = useAdvancedUserAgentData()
+  const [isLoadingUserAgentData, detectedUserAgentData] = useAdvancedUserAgentData()
 
   const windowSearchParams = typeof window !== 'undefined' ? new URLSearchParams(window.location.search) : undefined
   const searchParams = new URLSearchParams(windowSearchParams)
   const os = searchParams.get('os')
 
-  useEffect(() => {
-    if (userAgentData && os) {
-      setUserAgentArchitectureDefaultByOs(userAgentData, os as OperativeSystem)
-    }
-  }, [userAgentData, os])
+  // `?os=` (the "Also available on…" links) is an explicit platform request, so
+  // it overrides detection — but by deriving a new object, never by mutating the
+  // one `useAdvancedUserAgentData` hands out. That object is a module-level cache
+  // shared by every consumer in the session; mutating it leaked the override
+  // everywhere with no way back, and left this component's memoized icon and
+  // href on the old platform while the click handler used the new one.
+  const userAgentData = useMemo(() => resolveUserAgentDataForOs(detectedUserAgentData, os), [detectedUserAgentData, os])
 
   const defaultDownloadOption: DownloadOption | null = useMemo(() => {
     const links = cdnLinks || getCDNRelease(CDNSource.LAUNCHER)
