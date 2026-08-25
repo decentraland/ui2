@@ -21,6 +21,57 @@ const GLASS_BORDER = '0.5px solid #5E5B67'
 const GLASS_SHADOW = '0 2px 20px 16px rgba(0, 0, 0, 0.25)'
 const GLASS_BLUR = 'blur(12.5px)'
 
+/**
+ * Per-scheme tokens for the navbar bar itself. Only the bar flips with the
+ * color scheme: the panels hanging off it (dropdowns, mobile menu, user card,
+ * notifications) stay on the dark glass surface in both schemes, which is what
+ * the light design specifies.
+ */
+const NAVBAR_SCHEMES = {
+  dark: {
+    backdropMobile: 'rgba(22, 21, 24, 0.75)',
+    backdropDesktop: 'rgba(22, 21, 24, 0.4)',
+    text: colors.neutral.gray5,
+    textStrong: colors.neutral.white,
+    overlaySoft: 'rgba(255, 255, 255, 0.08)',
+    overlay: 'rgba(255, 255, 255, 0.1)',
+    overlayHover: 'rgba(255, 255, 255, 0.15)',
+    overlayActive: 'rgba(255, 255, 255, 0.2)',
+    signInBorder: colors.neutral.softWhite,
+    signInBorderHover: 'rgba(255, 255, 255, 0.7)',
+    signInText: colors.neutral.softWhite,
+    signInActive: 'rgba(255, 255, 255, 0.12)',
+    creditsAccent: '#A0ABFF'
+  },
+  light: {
+    backdropMobile: 'rgba(255, 255, 255, 0.75)',
+    backdropDesktop: 'rgba(255, 255, 255, 0.4)',
+    text: colors.neutral.softBlack2,
+    textStrong: colors.neutral.softBlack1,
+    overlaySoft: 'rgba(22, 21, 24, 0.06)',
+    overlay: 'rgba(22, 21, 24, 0.1)',
+    overlayHover: 'rgba(22, 21, 24, 0.15)',
+    overlayActive: 'rgba(22, 21, 24, 0.2)',
+    signInBorder: colors.neutral.softBlack2,
+    signInBorderHover: 'rgba(22, 21, 24, 0.7)',
+    signInText: colors.neutral.softBlack2,
+    signInActive: 'rgba(22, 21, 24, 0.12)',
+    // The credits accent is a one-off periwinkle with no light counterpart in
+    // the design file; this is the same hue darkened until it reads on the
+    // light bar. Needs design sign-off if the chip ever gets specced.
+    creditsAccent: '#3C51DD'
+  }
+} as const
+
+type NavbarSchemeInput = { palette?: { mode?: 'light' | 'dark' } }
+
+/**
+ * Resolve the navbar tokens for the active color scheme. `palette.mode` is the
+ * only reliable signal here: under `CssVarsProvider` the theme's
+ * `palette.colorScheme` stays `light` even for the dark theme.
+ */
+const navbarScheme = ({ palette }: NavbarSchemeInput = {}) => (palette?.mode === 'light' ? NAVBAR_SCHEMES.light : NAVBAR_SCHEMES.dark)
+
 const avatarPulse = keyframes({
   '0%': { opacity: 1 },
   '50%': { opacity: 0.5 },
@@ -46,7 +97,7 @@ const bellShake = keyframes({
   '75%': { transform: 'rotate(4deg)' }
 })
 
-const NavbarRoot = styled('nav')({
+const NavbarRoot = styled('nav')(({ theme }) => ({
   position: 'fixed',
   top: 0,
   left: 0,
@@ -69,7 +120,7 @@ const NavbarRoot = styled('nav')({
     right: 0,
     bottom: 0,
     zIndex: -1,
-    background: 'rgba(22, 21, 24, 0.75)',
+    background: navbarScheme(theme).backdropMobile,
     boxShadow: NAV_SHADOW,
     backdropFilter: 'saturate(1.8) blur(20px)',
     WebkitBackdropFilter: 'saturate(1.8) blur(20px)',
@@ -83,10 +134,10 @@ const NavbarRoot = styled('nav')({
     height: 92,
     padding: '16px 54px',
     '&::before': {
-      background: 'rgba(22, 21, 24, 0.4)'
+      background: navbarScheme(theme).backdropDesktop
     }
   }
-})
+}))
 
 const NavbarLeft = styled('div')({
   display: 'flex',
@@ -137,24 +188,24 @@ const LogoLink = styled('a')({
   }
 })
 
-const HamburgerButton = styled('button')({
+const HamburgerButton = styled('button')(({ theme }) => ({
   all: 'unset',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
   width: 40,
   height: 40,
-  backgroundColor: 'rgba(255, 255, 255, 0.1)',
+  backgroundColor: navbarScheme(theme).overlay,
   borderRadius: 8,
-  color: colors.neutral.white,
+  color: navbarScheme(theme).textStrong,
   cursor: 'pointer',
   flexShrink: 0,
   transition: 'background-color 0.15s ease',
   '&:hover': {
-    backgroundColor: 'rgba(255, 255, 255, 0.15)'
+    backgroundColor: navbarScheme(theme).overlayHover
   },
   '&:active': {
-    backgroundColor: 'rgba(255, 255, 255, 0.2)'
+    backgroundColor: navbarScheme(theme).overlayActive
   },
   '&:focus-visible': {
     outline: `2px solid ${colors.base.primary}`,
@@ -163,16 +214,16 @@ const HamburgerButton = styled('button')({
   [DESKTOP_BREAKPOINT]: {
     display: 'none'
   }
-})
+}))
 
-const SignInButton = styled('button')({
+const SignInButton = styled('button')(({ theme }) => ({
   all: 'unset',
   boxSizing: 'border-box',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
   padding: '8px 22px',
-  border: `1px solid ${colors.neutral.softWhite}`,
+  border: `1px solid ${navbarScheme(theme).signInBorder}`,
   borderRadius: 6,
   fontFamily: FONT_FAMILY,
   fontWeight: 600,
@@ -180,16 +231,16 @@ const SignInButton = styled('button')({
   lineHeight: '24px',
   letterSpacing: 0.46,
   textTransform: 'uppercase' as const,
-  color: colors.neutral.softWhite,
+  color: navbarScheme(theme).signInText,
   cursor: 'pointer',
   whiteSpace: 'nowrap',
   transition: 'background-color 0.15s ease, border-color 0.15s ease',
   '&:hover': {
-    backgroundColor: 'rgba(255, 255, 255, 0.08)',
-    borderColor: 'rgba(255, 255, 255, 0.7)'
+    backgroundColor: navbarScheme(theme).overlaySoft,
+    borderColor: navbarScheme(theme).signInBorderHover
   },
   '&:active': {
-    backgroundColor: 'rgba(255, 255, 255, 0.12)'
+    backgroundColor: navbarScheme(theme).signInActive
   },
   '&:disabled': {
     opacity: 0.5,
@@ -199,8 +250,9 @@ const SignInButton = styled('button')({
     outline: `2px solid ${colors.base.primary}`,
     outlineOffset: 2
   }
-})
+}))
 
+export type { NavbarSchemeInput }
 export {
   DESKTOP_BREAKPOINT,
   FONT_FAMILY,
@@ -219,5 +271,6 @@ export {
   Z_INDEX,
   avatarPulse,
   bellShake,
+  navbarScheme,
   slideDown
 }
