@@ -239,7 +239,7 @@ const BellIcon = memo(function BellIcon(props: IconProps) {
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
       <path
         d="M12 21.75C13.1 21.75 14 20.85 14 19.75H10C10 20.85 10.89 21.75 12 21.75ZM18 15.75V10.75C18 7.68 16.36 5.11 13.5 4.43V3.75C13.5 2.92 12.83 2.25 12 2.25C11.17 2.25 10.5 2.92 10.5 3.75V4.43C7.63 5.11 6 7.67 6 10.75V15.75L4 17.75V18.75H20V17.75L18 15.75Z"
-        fill="#FCFCFC"
+        fill="currentColor"
       />
     </svg>
   )
@@ -412,7 +412,7 @@ const ManaMaticInlineIcon = memo(function ManaMaticInlineIcon(props: IconProps) 
         fillRule="evenodd"
         clipRule="evenodd"
         d="M12 0L24 12L12 24L0 12L12 0ZM12.0002 3.36001L20.6402 12L12.0002 20.64L3.36023 12L12.0002 3.36001ZM12.0009 16.32C14.3868 16.32 16.3209 14.3859 16.3209 12C16.3209 9.61415 14.3868 7.68002 12.0009 7.68002C9.61507 7.68002 7.68094 9.61415 7.68094 12C7.68094 14.3859 9.61507 16.32 12.0009 16.32Z"
-        fill="#FCFCFC"
+        fill="currentColor"
       />
     </svg>
   )
