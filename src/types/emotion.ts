@@ -1,5 +1,6 @@
 import '@emotion/react'
 import { Theme as MUITheme } from '@mui/material'
+import type { NavbarTokens } from '../theme/colorSchemes'
 import type { Rarity } from '@dcl/schemas'
 
 declare module '@emotion/react' {
@@ -8,6 +9,7 @@ declare module '@emotion/react' {
       icon: string
       rarities: Record<Rarity, string>
       raritiesText: Record<Rarity, string>
+      _components: { navbar: NavbarTokens }
     }
   }
 }

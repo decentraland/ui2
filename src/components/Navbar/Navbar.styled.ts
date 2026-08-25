@@ -1,6 +1,8 @@
 import { keyframes } from '@emotion/react'
 import styled from '@emotion/styled'
 import * as colors from '../../theme/colors'
+import { navbar as navbarTokens } from '../../theme/colorSchemes'
+import type { NavbarTokens } from '../../theme/colorSchemes'
 
 const FONT_FAMILY = 'Inter, Helvetica, Arial, sans-serif'
 
@@ -21,56 +23,15 @@ const GLASS_BORDER = '0.5px solid #5E5B67'
 const GLASS_SHADOW = '0 2px 20px 16px rgba(0, 0, 0, 0.25)'
 const GLASS_BLUR = 'blur(12.5px)'
 
-/**
- * Per-scheme tokens for the navbar bar itself. Only the bar flips with the
- * color scheme: the panels hanging off it (dropdowns, mobile menu, user card,
- * notifications) stay on the dark glass surface in both schemes, which is what
- * the light design specifies.
- */
-const NAVBAR_SCHEMES = {
-  dark: {
-    backdropMobile: 'rgba(22, 21, 24, 0.75)',
-    backdropDesktop: 'rgba(22, 21, 24, 0.4)',
-    text: colors.neutral.gray5,
-    textStrong: colors.neutral.white,
-    overlaySoft: 'rgba(255, 255, 255, 0.08)',
-    overlay: 'rgba(255, 255, 255, 0.1)',
-    overlayHover: 'rgba(255, 255, 255, 0.15)',
-    overlayActive: 'rgba(255, 255, 255, 0.2)',
-    signInBorder: colors.neutral.softWhite,
-    signInBorderHover: 'rgba(255, 255, 255, 0.7)',
-    signInText: colors.neutral.softWhite,
-    signInActive: 'rgba(255, 255, 255, 0.12)',
-    creditsAccent: '#A0ABFF'
-  },
-  light: {
-    backdropMobile: 'rgba(255, 255, 255, 0.75)',
-    backdropDesktop: 'rgba(255, 255, 255, 0.4)',
-    text: colors.neutral.softBlack2,
-    textStrong: colors.neutral.softBlack1,
-    overlaySoft: 'rgba(22, 21, 24, 0.06)',
-    overlay: 'rgba(22, 21, 24, 0.1)',
-    overlayHover: 'rgba(22, 21, 24, 0.15)',
-    overlayActive: 'rgba(22, 21, 24, 0.2)',
-    signInBorder: colors.neutral.softBlack2,
-    signInBorderHover: 'rgba(22, 21, 24, 0.7)',
-    signInText: colors.neutral.softBlack2,
-    signInActive: 'rgba(22, 21, 24, 0.12)',
-    // The credits accent is a one-off periwinkle with no light counterpart in
-    // the design file; this is the same hue darkened until it reads on the
-    // light bar. Needs design sign-off if the chip ever gets specced.
-    creditsAccent: '#3C51DD'
-  }
-} as const
-
-type NavbarSchemeInput = { palette?: { mode?: 'light' | 'dark' } }
+type NavbarSchemeInput = { palette?: { _components?: { navbar?: NavbarTokens } } }
 
 /**
- * Resolve the navbar tokens for the active color scheme. `palette.mode` is the
- * only reliable signal here: under `CssVarsProvider` the theme's
- * `palette.colorScheme` stays `light` even for the dark theme.
+ * Navbar tokens for the active color scheme. The values live in
+ * `theme/colorSchemes.ts` alongside the rest of the palette; this only reads
+ * them, falling back to the dark set when the navbar is rendered outside a
+ * ThemeProvider and there is no palette to read.
  */
-const navbarScheme = ({ palette }: NavbarSchemeInput = {}) => (palette?.mode === 'light' ? NAVBAR_SCHEMES.light : NAVBAR_SCHEMES.dark)
+const navbarScheme = ({ palette }: NavbarSchemeInput = {}) => palette?._components?.navbar ?? navbarTokens.dark
 
 const avatarPulse = keyframes({
   '0%': { opacity: 1 },
