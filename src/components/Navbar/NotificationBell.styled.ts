@@ -16,7 +16,7 @@ const BellButton = styled('button')(({ theme }) => ({
   justifyContent: 'center',
   width: 24,
   height: 24,
-  color: navbarScheme(theme).textStrong,
+  color: navbarScheme(theme).controlText,
   cursor: 'pointer',
   flexShrink: 0,
   borderRadius: 4,

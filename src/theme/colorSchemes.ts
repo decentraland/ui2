@@ -2,6 +2,24 @@ import { PaletteOptions } from '@mui/material'
 import { neutral, rarity, rarityLightTheme } from './colors'
 import { hexToRgba } from '../utils/colors'
 
+type NavbarTokenName =
+  | 'backdropMobile'
+  | 'backdropDesktop'
+  | 'text'
+  | 'textStrong'
+  | 'overlaySoft'
+  | 'overlay'
+  | 'overlayHover'
+  | 'overlayActive'
+  | 'signInBorder'
+  | 'signInBorderHover'
+  | 'signInText'
+  | 'signInActive'
+  | 'controlText'
+  | 'creditsAccent'
+
+type NavbarTokens = Readonly<Record<NavbarTokenName, string>>
+
 /**
  * Navbar surface tokens. Only the bar flips with the color scheme: the panels
  * that hang off it (tab dropdowns, mobile menu, user card, notification panel)
@@ -16,7 +34,7 @@ const navbar = {
     backdropDesktop: 'rgba(255, 255, 255, 0.4)',
     text: neutral.softBlack2,
     textStrong: neutral.softBlack1,
-    overlaySoft: 'rgba(22, 21, 24, 0.06)',
+    overlaySoft: 'rgba(22, 21, 24, 0.08)',
     overlay: 'rgba(22, 21, 24, 0.1)',
     overlayHover: 'rgba(22, 21, 24, 0.15)',
     overlayActive: 'rgba(22, 21, 24, 0.2)',
@@ -24,6 +42,7 @@ const navbar = {
     signInBorderHover: 'rgba(22, 21, 24, 0.7)',
     signInText: neutral.softBlack2,
     signInActive: 'rgba(22, 21, 24, 0.12)',
+    controlText: neutral.softBlack1,
     // The credits accent is a one-off periwinkle with no light counterpart in
     // the design file; this is the same hue darkened until it reads on the
     // light bar. Needs design sign-off if the chip ever gets specced.
@@ -42,11 +61,12 @@ const navbar = {
     signInBorderHover: 'rgba(255, 255, 255, 0.7)',
     signInText: neutral.softWhite,
     signInActive: 'rgba(255, 255, 255, 0.12)',
+    // softWhite, not white: the bell glyph and the balance chips painted
+    // #FCFCFC before they were themed. Keeps dark output byte-identical.
+    controlText: neutral.softWhite,
     creditsAccent: '#A0ABFF'
   }
-} as const
-
-type NavbarTokens = (typeof navbar)[keyof typeof navbar]
+} as const satisfies Record<'light' | 'dark', NavbarTokens>
 
 const colorSchemas = {
   light: {

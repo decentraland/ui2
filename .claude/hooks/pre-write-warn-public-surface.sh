@@ -20,6 +20,15 @@ target=$(jq -r '.tool_input.file_path // empty' <<<"$payload")
 # MultiEdit carries one .new_string per edit.
 written=$(jq -r '[.tool_input.content, .tool_input.new_string, (.tool_input.edits[]?.new_string)] | map(select(. != null)) | join("\n")' <<<"$payload")
 
+# Combined haystack for content checks: an incremental Edit only carries its own
+# replacement string, so a light:/dark: pair that arrives in two edits would
+# never be seen. Pair the new text with what is already on disk.
+haystack="$written"
+if [ -f "$target" ]; then
+  haystack="$written
+$(cat "$target")"
+fi
+
 project_dir="${CLAUDE_PROJECT_DIR:-$(pwd)}"
 rel="${target#"$project_dir"/}"
 
@@ -79,8 +88,8 @@ case "$rel" in
     # store. Deliberately does NOT match a bare 'palette.mode' ternary: that is
     # the incumbent pattern in EventCard / EventSmallCard / SceneCard /
     # CatalogCard, and warning on it would make this hook noise.
-    if printf '%s' "$written" | grep -qE '(^|[^A-Za-z_])light:[[:space:]]*\{' &&
-      printf '%s' "$written" | grep -qE '(^|[^A-Za-z_])dark:[[:space:]]*\{'; then
+    if printf '%s' "$haystack" | grep -qE '(^|[^A-Za-z_])light:[[:space:]]*\{' &&
+      printf '%s' "$haystack" | grep -qE '(^|[^A-Za-z_])dark:[[:space:]]*\{'; then
       warn "This edit looks like a per-scheme (light/dark) token store inside a component.
   Design values belong in src/theme/colorSchemes.ts under palette._components.<component>,
   typed in src/types/emotion.ts; the component then reads them off the theme inside styled().

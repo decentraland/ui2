@@ -9,7 +9,11 @@ declare module '@emotion/react' {
       icon: string
       rarities: Record<Rarity, string>
       raritiesText: Record<Rarity, string>
-      _components: { navbar: NavbarTokens }
+      // Optional on purpose: `Theme` is re-exported from src/index.ts, so making
+      // this required would break any consumer that builds a Theme-shaped value
+      // (CLAUDE.md §12 — never tighten an existing public type). Read it with
+      // optional chaining and a fallback.
+      _components?: { navbar: NavbarTokens }
     }
   }
 }

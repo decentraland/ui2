@@ -73,7 +73,7 @@ const CreditsTooltip = styled('div')({
 /** Shop credits chip — inherits the credits chip's hover/tooltip/focus/breakpoint sizing;
  *  distinctness comes from the icon, not a second accent color. */
 const ShopCreditsBalanceButton = styled(CreditsBalanceButton)(({ theme }) => ({
-  color: navbarScheme(theme).textStrong
+  color: navbarScheme(theme).controlText
 }))
 
 const NavbarManaBalancesGroup = styled('div')({
@@ -93,7 +93,7 @@ const NavbarManaBalanceButton = styled('button')<{ clickable?: boolean }>(({ cli
   display: 'flex',
   alignItems: 'center',
   cursor: clickable ? 'pointer' : 'default',
-  color: navbarScheme(theme).textStrong,
+  color: navbarScheme(theme).controlText,
   fontFamily: 'Inter, Helvetica, Arial, sans-serif',
   fontWeight: 400,
   flexShrink: 0,

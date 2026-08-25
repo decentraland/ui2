@@ -23,15 +23,21 @@ const GLASS_BORDER = '0.5px solid #5E5B67'
 const GLASS_SHADOW = '0 2px 20px 16px rgba(0, 0, 0, 0.25)'
 const GLASS_BLUR = 'blur(12.5px)'
 
-type NavbarSchemeInput = { palette?: { _components?: { navbar?: NavbarTokens } } }
+type NavbarSchemeInput = { palette?: { mode?: 'light' | 'dark'; _components?: { navbar?: NavbarTokens } } }
 
 /**
  * Navbar tokens for the active color scheme. The values live in
  * `theme/colorSchemes.ts` alongside the rest of the palette; this only reads
- * them, falling back to the dark set when the navbar is rendered outside a
- * ThemeProvider and there is no palette to read.
+ * them.
+ *
+ * Two fallbacks, in order. A palette carrying no `_components` at all still
+ * honours `palette.mode` — that covers the navbar rendered outside
+ * DclThemeProvider, a consumer's own MUI theme, and MUI's stock
+ * `colorSchemes.dark` (`extendTheme` files the DCL palette under
+ * `colorSchemes.light`). Only a palette with neither lands on the dark set.
  */
-const navbarScheme = ({ palette }: NavbarSchemeInput = {}) => palette?._components?.navbar ?? navbarTokens.dark
+const navbarScheme = ({ palette }: NavbarSchemeInput = {}) =>
+  palette?._components?.navbar ?? (palette?.mode === 'light' ? navbarTokens.light : navbarTokens.dark)
 
 const avatarPulse = keyframes({
   '0%': { opacity: 1 },
@@ -58,47 +64,50 @@ const bellShake = keyframes({
   '75%': { transform: 'rotate(4deg)' }
 })
 
-const NavbarRoot = styled('nav')(({ theme }) => ({
-  position: 'fixed',
-  top: 0,
-  left: 0,
-  right: 0,
-  zIndex: Z_INDEX.navbar,
-  fontFamily: FONT_FAMILY,
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  boxSizing: 'border-box',
-  // The navbar's own blur is on a ::before pseudo-element so that child
-  // dropdowns can have their own independent backdrop-filter. Nested
-  // backdrop-filter elements don't compose in CSS - the child would blur
-  // the parent's already-blurred content instead of the page behind.
-  '&::before': {
-    content: '""',
-    position: 'absolute',
+const NavbarRoot = styled('nav')(({ theme }) => {
+  const scheme = navbarScheme(theme)
+  return {
+    position: 'fixed',
     top: 0,
     left: 0,
     right: 0,
-    bottom: 0,
-    zIndex: -1,
-    background: navbarScheme(theme).backdropMobile,
-    boxShadow: NAV_SHADOW,
-    backdropFilter: 'saturate(1.8) blur(20px)',
-    WebkitBackdropFilter: 'saturate(1.8) blur(20px)',
-    transition: 'background 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease'
-  },
-  [MOBILE_BREAKPOINT]: {
-    height: 64,
-    padding: '12px 16px'
-  },
-  [DESKTOP_BREAKPOINT]: {
-    height: 92,
-    padding: '16px 54px',
+    zIndex: Z_INDEX.navbar,
+    fontFamily: FONT_FAMILY,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    boxSizing: 'border-box',
+    // The navbar's own blur is on a ::before pseudo-element so that child
+    // dropdowns can have their own independent backdrop-filter. Nested
+    // backdrop-filter elements don't compose in CSS - the child would blur
+    // the parent's already-blurred content instead of the page behind.
     '&::before': {
-      background: navbarScheme(theme).backdropDesktop
+      content: '""',
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      zIndex: -1,
+      background: scheme.backdropMobile,
+      boxShadow: NAV_SHADOW,
+      backdropFilter: 'saturate(1.8) blur(20px)',
+      WebkitBackdropFilter: 'saturate(1.8) blur(20px)',
+      transition: 'background 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease'
+    },
+    [MOBILE_BREAKPOINT]: {
+      height: 64,
+      padding: '12px 16px'
+    },
+    [DESKTOP_BREAKPOINT]: {
+      height: 92,
+      padding: '16px 54px',
+      '&::before': {
+        background: scheme.backdropDesktop
+      }
     }
   }
-}))
+})
 
 const NavbarLeft = styled('div')({
   display: 'flex',
@@ -149,69 +158,75 @@ const LogoLink = styled('a')({
   }
 })
 
-const HamburgerButton = styled('button')(({ theme }) => ({
-  all: 'unset',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  width: 40,
-  height: 40,
-  backgroundColor: navbarScheme(theme).overlay,
-  borderRadius: 8,
-  color: navbarScheme(theme).textStrong,
-  cursor: 'pointer',
-  flexShrink: 0,
-  transition: 'background-color 0.15s ease',
-  '&:hover': {
-    backgroundColor: navbarScheme(theme).overlayHover
-  },
-  '&:active': {
-    backgroundColor: navbarScheme(theme).overlayActive
-  },
-  '&:focus-visible': {
-    outline: `2px solid ${colors.base.primary}`,
-    outlineOffset: 2
-  },
-  [DESKTOP_BREAKPOINT]: {
-    display: 'none'
+const HamburgerButton = styled('button')(({ theme }) => {
+  const scheme = navbarScheme(theme)
+  return {
+    all: 'unset',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 40,
+    height: 40,
+    backgroundColor: scheme.overlay,
+    borderRadius: 8,
+    color: scheme.textStrong,
+    cursor: 'pointer',
+    flexShrink: 0,
+    transition: 'background-color 0.15s ease',
+    '&:hover': {
+      backgroundColor: scheme.overlayHover
+    },
+    '&:active': {
+      backgroundColor: scheme.overlayActive
+    },
+    '&:focus-visible': {
+      outline: `2px solid ${colors.base.primary}`,
+      outlineOffset: 2
+    },
+    [DESKTOP_BREAKPOINT]: {
+      display: 'none'
+    }
   }
-}))
+})
 
-const SignInButton = styled('button')(({ theme }) => ({
-  all: 'unset',
-  boxSizing: 'border-box',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  padding: '8px 22px',
-  border: `1px solid ${navbarScheme(theme).signInBorder}`,
-  borderRadius: 6,
-  fontFamily: FONT_FAMILY,
-  fontWeight: 600,
-  fontSize: 15,
-  lineHeight: '24px',
-  letterSpacing: 0.46,
-  textTransform: 'uppercase' as const,
-  color: navbarScheme(theme).signInText,
-  cursor: 'pointer',
-  whiteSpace: 'nowrap',
-  transition: 'background-color 0.15s ease, border-color 0.15s ease',
-  '&:hover': {
-    backgroundColor: navbarScheme(theme).overlaySoft,
-    borderColor: navbarScheme(theme).signInBorderHover
-  },
-  '&:active': {
-    backgroundColor: navbarScheme(theme).signInActive
-  },
-  '&:disabled': {
-    opacity: 0.5,
-    pointerEvents: 'none' as const
-  },
-  '&:focus-visible': {
-    outline: `2px solid ${colors.base.primary}`,
-    outlineOffset: 2
+const SignInButton = styled('button')(({ theme }) => {
+  const scheme = navbarScheme(theme)
+  return {
+    all: 'unset',
+    boxSizing: 'border-box',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '8px 22px',
+    border: `1px solid ${scheme.signInBorder}`,
+    borderRadius: 6,
+    fontFamily: FONT_FAMILY,
+    fontWeight: 600,
+    fontSize: 15,
+    lineHeight: '24px',
+    letterSpacing: 0.46,
+    textTransform: 'uppercase' as const,
+    color: scheme.signInText,
+    cursor: 'pointer',
+    whiteSpace: 'nowrap',
+    transition: 'background-color 0.15s ease, border-color 0.15s ease',
+    '&:hover': {
+      backgroundColor: scheme.overlaySoft,
+      borderColor: scheme.signInBorderHover
+    },
+    '&:active': {
+      backgroundColor: scheme.signInActive
+    },
+    '&:disabled': {
+      opacity: 0.5,
+      pointerEvents: 'none' as const
+    },
+    '&:focus-visible': {
+      outline: `2px solid ${colors.base.primary}`,
+      outlineOffset: 2
+    }
   }
-}))
+})
 
 export type { NavbarSchemeInput }
 export {
