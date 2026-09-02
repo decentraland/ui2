@@ -41,12 +41,14 @@ const HoverActions = styled(Box)(({ theme }) => ({
 
 const EventSmallCardContainer = styled(Box, {
   shouldForwardProp: prop => prop !== 'disableHover'
-})<{ disableHover?: boolean }>(({ theme, disableHover }) => ({
+})<{ disableHover?: boolean }>(({ theme, disableHover, onClick }) => ({
   display: 'flex',
   flexDirection: 'row',
   borderRadius: theme.spacing(2),
   overflow: 'hidden',
-  cursor: 'pointer',
+  // Only a card that does something is offered as clickable, matching the
+  // role/tabIndex the component attaches on the same condition.
+  cursor: onClick ? 'pointer' : 'default',
   height: 140,
   minWidth: 300,
   maxWidth: 430,

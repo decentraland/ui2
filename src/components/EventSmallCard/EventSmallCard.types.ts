@@ -15,7 +15,10 @@ interface EventSmallCardProps {
   creatorAvatarUrl?: string
   /** Solid color behind the (often transparent) avatar face, and the fill of the no-avatar dot */
   creatorAvatarBackgroundColor?: string
-  /** Word before the creator name. Defaults to English "by"; pass a translation. */
+  /**
+   * Word before the creator name. Defaults to the English "by", so any
+   * localized consumer has to pass its own translation on every render.
+   */
   byLabel?: string
   /** Time label shown in the bottom pill (e.g. "Starts in 10 mins") */
   timeLabel?: string
