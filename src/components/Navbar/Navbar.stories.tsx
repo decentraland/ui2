@@ -254,9 +254,7 @@ const ShopWithManaInNavbar: Story = {
     manaBalances: { [Network.ETHEREUM]: 1234, [Network.MATIC]: 5678 },
     onClickBalance: (network: Network) => console.log('Clicked balance', network),
     showManaBalancesInNavbar: true,
-    // Only ONE credits balance, because no app has both. `creditsBalance` is the marketplace's
-    // MANA-pegged, expiring credits (see MarketplaceExample) and `shopCreditsBalance` is the shop's
-    // USD ones — passing both here drew two identical C marks side by side, a state nothing can reach.
+    // Just the shop balance here; BothCreditsExample covers the marketplace's two-currency row.
     shopCreditsBalance: 500,
     onClickShopCredits: () => console.log('Shop credits clicked'),
     onClickSignIn: () => console.log('Sign In clicked'),
@@ -301,6 +299,39 @@ const ShopExample: Story = {
   )
 }
 
+/**
+ * The row the marketplace actually renders today: MANA-pegged credits, both MANA balances and the
+ * shop's USD credits, all at once. dapps reads both credits figures out of the same credits-server
+ * response, so any app wired for either gets both. This story exists because the assumption that no
+ * app had both is what let two identical C marks ship side by side.
+ */
+const BothCreditsExample: Story = {
+  args: {
+    isSignedIn: true,
+    address: '0xe3fc7040653768efb2941a6c26fdb868ed36ca99',
+    avatar: exampleAvatar,
+    activePage: 'shop',
+    manaBalances: { [Network.ETHEREUM]: 0, [Network.MATIC]: 71 },
+    onClickBalance: (network: Network) => console.log('Clicked balance', network),
+    showManaBalancesInNavbar: true,
+    creditsBalance: { balance: 12, expiresAt: Date.now() + 86400000 * 7 },
+    onClickCredits: () => console.log('Credits clicked'),
+    shopCreditsBalance: 47,
+    onClickShopCredits: () => console.log('Shop credits clicked'),
+    onClickSignIn: () => console.log('Sign In clicked'),
+    onClickSignOut: () => console.log('Sign Out clicked')
+  }
+}
+
+/** The same row with the MANA-pegged grant spent down to nothing: that chip drops out entirely
+ *  rather than reading "0". */
+const SpentCreditsExample: Story = {
+  args: {
+    ...BothCreditsExample.args,
+    creditsBalance: { balance: 0, expiresAt: 0 }
+  }
+}
+
 const CustomI18n: Story = {
   args: {
     isSignedIn: false,
@@ -322,4 +353,14 @@ const CustomI18n: Story = {
   )
 }
 
-export { SignedOut, SignedIn, WithNotifications, MarketplaceExample, ShopWithManaInNavbar, ShopExample, CustomI18n }
+export {
+  SignedOut,
+  SignedIn,
+  WithNotifications,
+  MarketplaceExample,
+  ShopWithManaInNavbar,
+  ShopExample,
+  BothCreditsExample,
+  SpentCreditsExample,
+  CustomI18n
+}
