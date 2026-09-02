@@ -101,7 +101,9 @@ const EventSmallCard = memo(
               </TimePill>
             )
           )}
-          {hoverActions && <HoverActions data-role="hover-actions">{hoverActions}</HoverActions>}
+          {/* With the hover lift disabled there is no rule that can reveal these,
+              so rendering them would only add a node nobody can reach. */}
+          {hoverActions && !disableHover && <HoverActions data-role="hover-actions">{hoverActions}</HoverActions>}
         </TextBlock>
       </EventSmallCardContainer>
     )

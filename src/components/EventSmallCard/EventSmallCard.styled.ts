@@ -40,7 +40,12 @@ const HoverActions = styled(Box)(({ theme }) => ({
   // screen wide enough to keep the actions rendered) taps the buttons instead
   // of the card.
   pointerEvents: 'none',
-  transition: 'opacity 0.2s ease, transform 0.2s ease',
+  // opacity alone leaves the buttons in the accessibility tree and in Tab
+  // order, so a screen reader announces actions nobody can see. visibility
+  // interpolates discretely in the useful direction: it turns visible at the
+  // start of the reveal and stays visible for the whole fade out.
+  visibility: 'hidden',
+  transition: 'opacity 0.2s ease, transform 0.2s ease, visibility 0.2s',
   flexWrap: 'nowrap'
 }))
 
@@ -73,7 +78,8 @@ const EventSmallCardContainer = styled(Box, {
     '&:hover [data-role="hover-actions"], &:focus-within [data-role="hover-actions"]': {
       opacity: 1,
       transform: 'translateY(0)',
-      pointerEvents: 'auto'
+      pointerEvents: 'auto',
+      visibility: 'visible'
     },
     '&:hover [data-role="time-pill"], &:focus-within [data-role="time-pill"]': {
       opacity: 0
