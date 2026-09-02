@@ -216,6 +216,10 @@ const Navbar = memo(function Navbar({
                     </NavbarManaBalancesGroup>
                   )}
 
+                  {/* This chip still renders at zero, unlike the MANA-pegged one above, and the asymmetry is
+                      deliberate rather than an oversight. That balance is granted, so most visitors have none
+                      and a "0" there is pure noise; this one is the shop's own currency and was scoped to keep
+                      showing an empty balance. Do not reconcile them into false consistency. */}
                   {shopCreditsBalance !== undefined && (
                     <ShopCreditsBalanceButton onClick={onClickShopCredits} aria-label={`${formatBalance(shopCreditsBalance)} shop credits`}>
                       <ShopCreditsIcon />
