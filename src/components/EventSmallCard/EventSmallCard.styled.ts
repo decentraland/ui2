@@ -16,6 +16,13 @@ const TimePill = styled(Box)(({ theme }) => ({
   transition: 'opacity 0.2s ease'
 }))
 
+const BottomPillSlot = styled(Box)({
+  width: 'fit-content',
+  maxWidth: '100%',
+  minWidth: 0,
+  transition: 'opacity 0.2s ease'
+})
+
 const HoverActions = styled(Box)(({ theme }) => ({
   position: 'absolute',
   bottom: 0,
@@ -66,12 +73,16 @@ const EventSmallCardContainer = styled(Box, {
   }
 }))
 
-const ThumbnailWrapper = styled(Box)({
+const ThumbnailWrapper = styled(Box, {
+  shouldForwardProp: prop => prop !== 'fallbackColor'
+})<{ fallbackColor?: string }>(({ fallbackColor }) => ({
+  position: 'relative',
   width: '42%',
   height: 140,
   flexShrink: 0,
-  overflow: 'hidden'
-})
+  overflow: 'hidden',
+  ...(fallbackColor && { backgroundColor: fallbackColor })
+}))
 
 const Thumbnail = styled('img')({
   width: '100%',
@@ -79,6 +90,21 @@ const Thumbnail = styled('img')({
   objectFit: 'cover',
   display: 'block'
 })
+
+// Badge layer over the cover. Badges sit top-left and stay click-through so the
+// whole card keeps taking the click.
+const ThumbnailOverlay = styled(Box)(({ theme }) => ({
+  position: 'absolute',
+  inset: 0,
+  display: 'flex',
+  alignItems: 'flex-start',
+  gap: theme.spacing(0.5),
+  padding: theme.spacing(1),
+  pointerEvents: 'none',
+  '& > *': {
+    pointerEvents: 'auto'
+  }
+}))
 
 const TextBlock = styled(Box)(({ theme }) => ({
   display: 'flex',
@@ -125,20 +151,25 @@ const MobileAction = styled(Box)(({ theme }) => ({
   }
 }))
 
-const AvatarImg = styled('img')(({ theme }) => ({
+const AvatarImg = styled('img', {
+  shouldForwardProp: prop => prop !== 'backgroundColor'
+})<{ backgroundColor?: string }>(({ theme, backgroundColor }) => ({
   width: 19,
   height: 19,
   borderRadius: '50%',
   border: `1.4px solid ${theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0.15)'}`,
   flexShrink: 0,
-  objectFit: 'cover'
+  objectFit: 'cover',
+  ...(backgroundColor && { backgroundColor })
 }))
 
-const AvatarFallback = styled(Box)(({ theme }) => ({
+const AvatarFallback = styled(Box, {
+  shouldForwardProp: prop => prop !== 'backgroundColor'
+})<{ backgroundColor?: string }>(({ theme, backgroundColor }) => ({
   width: 19,
   height: 19,
   borderRadius: '50%',
-  backgroundColor: theme.palette.success.dark,
+  backgroundColor: backgroundColor ?? theme.palette.success.dark,
   border: `1.4px solid ${theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0.15)'}`,
   flexShrink: 0
 }))
@@ -175,6 +206,7 @@ const TimeLabel = styled(Typography)(({ theme }) => ({
 export {
   AvatarFallback,
   AvatarImg,
+  BottomPillSlot,
   ContentTop,
   CreatorName,
   CreatorNameHighlight,
@@ -185,6 +217,7 @@ export {
   MobileAction,
   TextBlock,
   Thumbnail,
+  ThumbnailOverlay,
   ThumbnailWrapper,
   TimeLabel,
   TimePill,
