@@ -35,6 +35,11 @@ const HoverActions = styled(Box)(({ theme }) => ({
   gap: theme.spacing(0.5),
   opacity: 0,
   transform: 'translateY(8px)',
+  // Invisible actions must not take the pointer: this layer covers the bottom
+  // of the text panel, so without it a pointer that never hovers (a touch
+  // screen wide enough to keep the actions rendered) taps the buttons instead
+  // of the card.
+  pointerEvents: 'none',
   transition: 'opacity 0.2s ease, transform 0.2s ease',
   flexWrap: 'nowrap'
 }))
@@ -54,16 +59,23 @@ const EventSmallCardContainer = styled(Box, {
   maxWidth: 430,
   backgroundColor: theme.palette.mode === 'dark' ? 'rgba(0, 0, 0, 0.3)' : 'rgba(0, 0, 0, 0.05)',
   transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+  '&:focus-visible': {
+    outline: `2px solid ${theme.palette.primary.main}`,
+    outlineOffset: 2
+  },
+  // Focus reveals the same way hover does, so the actions are reachable by
+  // keyboard and are never focused while invisible.
   ...(!disableHover && {
-    '&:hover': {
+    '&:hover, &:focus-within': {
       transform: 'translateY(-4px)',
       boxShadow: theme.palette.mode === 'dark' ? HOVER_SHADOW : HOVER_SHADOW_LIGHT
     },
-    '&:hover [data-role="hover-actions"]': {
+    '&:hover [data-role="hover-actions"], &:focus-within [data-role="hover-actions"]': {
       opacity: 1,
-      transform: 'translateY(0)'
+      transform: 'translateY(0)',
+      pointerEvents: 'auto'
     },
-    '&:hover [data-role="time-pill"]': {
+    '&:hover [data-role="time-pill"], &:focus-within [data-role="time-pill"]': {
       opacity: 0
     }
   }),

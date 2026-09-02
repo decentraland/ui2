@@ -64,7 +64,9 @@ const EventSmallCard = memo(
       >
         {hasThumbnail && (
           <ThumbnailWrapper fallbackColor={imageFallbackColor}>
-            {image && !coverFailed && <Thumbnail src={image} alt={title} loading="lazy" onError={() => setCoverFailed(true)} />}
+            {/* Decorative: the title it would repeat is right there in the card,
+                and alt={title} put it in the accessible name twice. */}
+            {image && !coverFailed && <Thumbnail src={image} alt="" loading="lazy" onError={() => setCoverFailed(true)} />}
             {thumbnailOverlay && <ThumbnailOverlay>{thumbnailOverlay}</ThumbnailOverlay>}
           </ThumbnailWrapper>
         )}
