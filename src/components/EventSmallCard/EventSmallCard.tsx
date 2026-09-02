@@ -64,7 +64,9 @@ const EventSmallCard = memo(
       >
         {hasThumbnail && (
           <ThumbnailWrapper fallbackColor={imageFallbackColor}>
-            {image && !coverFailed && <Thumbnail src={image} alt={title} loading="lazy" onError={() => setCoverFailed(true)} />}
+            {/* Decorative: the title it would repeat is right there in the card,
+                and alt={title} put it in the accessible name twice. */}
+            {image && !coverFailed && <Thumbnail src={image} alt="" loading="lazy" onError={() => setCoverFailed(true)} />}
             {thumbnailOverlay && <ThumbnailOverlay>{thumbnailOverlay}</ThumbnailOverlay>}
           </ThumbnailWrapper>
         )}
@@ -99,7 +101,9 @@ const EventSmallCard = memo(
               </TimePill>
             )
           )}
-          {hoverActions && <HoverActions data-role="hover-actions">{hoverActions}</HoverActions>}
+          {/* With the hover lift disabled there is no rule that can reveal these,
+              so rendering them would only add a node nobody can reach. */}
+          {hoverActions && !disableHover && <HoverActions data-role="hover-actions">{hoverActions}</HoverActions>}
         </TextBlock>
       </EventSmallCardContainer>
     )
