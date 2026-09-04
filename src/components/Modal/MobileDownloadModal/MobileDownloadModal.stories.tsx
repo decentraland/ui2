@@ -10,7 +10,7 @@ const meta: Meta<MobileDownloadModalProps> = {
     layout: 'centered',
     docs: {
       description: {
-        component: 'MobileDownloadModal prompts mobile users to download the Decentraland app from the App Store or Google Play.'
+        component: 'MobileDownloadModal prompts mobile users to download the Decentraland app.'
       }
     }
   },
@@ -23,27 +23,12 @@ const meta: Meta<MobileDownloadModalProps> = {
         defaultValue: { summary: false }
       }
     },
-    title: {
-      control: 'text',
-      description: 'Modal title text',
-      table: {
-        type: { summary: 'string' }
-      }
-    },
-    description: {
-      control: 'text',
-      description: 'Modal description text',
-      table: {
-        type: { summary: 'string' }
-      }
-    },
-    badgeSize: {
+    platform: {
       control: 'radio',
-      options: ['small', 'large'],
-      description: 'Size of the store badges',
+      options: ['android', 'ios'],
+      description: 'Target mobile platform',
       table: {
-        type: { summary: '"small" | "large"' },
-        defaultValue: { summary: 'large' }
+        type: { summary: '"android" | "ios"' }
       }
     },
     onClose: {
@@ -61,38 +46,21 @@ const meta: Meta<MobileDownloadModalProps> = {
 
 type Story = StoryObj<typeof meta>
 
-const Default: Story = {
+const AndroidPlatform: Story = {
   args: {
-    title: 'Download Decentraland to Jump In',
-    description: "To jump in, you'll need to download the Decentraland app",
+    platform: 'android',
     open: true
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: 'Default modal with standard messaging and large store badges'
-      }
-    }
   }
 }
 
-const SmallBadges: Story = {
+const IOSPlatform: Story = {
   args: {
-    title: 'Get the Mobile App',
-    description: 'Experience Decentraland on your phone',
-    badgeSize: 'small',
+    platform: 'ios',
     open: true
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: 'Modal with small store badges'
-      }
-    }
   }
 }
 
 // eslint-disable-next-line import/no-default-export
 export default meta
 
-export { Default, SmallBadges }
+export { AndroidPlatform, IOSPlatform }
