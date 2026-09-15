@@ -1,9 +1,11 @@
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth'
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
+import LocationOnIcon from '@mui/icons-material/LocationOn'
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone'
 import { EventSmallCard } from './EventSmallCard'
 import sceneThumbnail from '../../Assets/scene-thumbnail.png'
-import { ActionIconButton, StoryColumn, StoryContainer, StoryGrid } from './EventSmallCard.stories.styled'
+import { BadgeGroup, LiveBadge, UserCountBadge } from '../Badges'
+import { ActionIconButton, StoryColumn, StoryContainer, StoryGrid, WideCta } from './EventSmallCard.stories.styled'
 import type { Meta, StoryObj } from '@storybook/react'
 
 const AVATAR_URL = 'https://profile-images.decentraland.org/entities/bafkreietha7mzh7q3lk4j236vut2znwqhbiapihg46p6yrv3j4lbwlzd34/face.png'
@@ -170,6 +172,76 @@ const AvatarFallback: Story = {
   )
 }
 
+const WithThumbnailOverlay: Story = {
+  render: () => (
+    <StoryContainer>
+      <EventSmallCard
+        image={sceneThumbnail}
+        title="Badges Over The Cover"
+        creatorName="alelevyyyy"
+        creatorAvatarUrl={AVATAR_URL}
+        timeLabel="Starts in 10 mins"
+        thumbnailOverlay={
+          <BadgeGroup>
+            <LiveBadge />
+            <UserCountBadge count={42} />
+          </BadgeGroup>
+        }
+      />
+    </StoryContainer>
+  )
+}
+
+const WithCustomBottomPill: Story = {
+  render: () => (
+    <StoryContainer>
+      <EventSmallCard
+        image={sceneThumbnail}
+        title="Location Instead Of A Time"
+        creatorName="alelevyyyy"
+        creatorAvatarUrl={AVATAR_URL}
+        bottomPill={
+          <ActionIconButton size="small" disableRipple>
+            <LocationOnIcon fontSize="small" />
+          </ActionIconButton>
+        }
+        hoverActions={<WideCta type="button">Jump in</WideCta>}
+      />
+    </StoryContainer>
+  )
+}
+
+const WithTranslatedByLabel: Story = {
+  render: () => (
+    <StoryContainer>
+      <EventSmallCard
+        image={sceneThumbnail}
+        title="Creador Traducido"
+        creatorName="alelevyyyy"
+        creatorAvatarUrl={AVATAR_URL}
+        byLabel="por"
+        timeLabel="Empieza en 10 min"
+      />
+    </StoryContainer>
+  )
+}
+
+const WithBrokenCover: Story = {
+  render: () => (
+    <StoryContainer>
+      <EventSmallCard
+        image="https://example.com/does-not-exist.png"
+        imageFallbackColor="#3d2f52"
+        title="Cover That Fails To Load"
+        creatorName="alelevyyyy"
+        creatorAvatarUrl={AVATAR_URL}
+        creatorAvatarBackgroundColor="#ff2d55"
+        timeLabel="Starts in 10 mins"
+      />
+    </StoryContainer>
+  )
+}
+
 const DisabledHover: Story = {
   render: () => (
     <StoryContainer>
@@ -200,6 +272,10 @@ export {
   LongTitle,
   WithAction,
   WithHoverActions,
+  WithThumbnailOverlay,
+  WithCustomBottomPill,
+  WithTranslatedByLabel,
+  WithBrokenCover,
   TwoCards,
   Grid,
   AvatarFallback,

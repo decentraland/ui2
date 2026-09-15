@@ -25,4 +25,20 @@ const ActionIconButton = styled(MuiIconButton)(({ theme }) => ({
   color: theme.palette.text.primary
 }))
 
-export { ActionIconButton, StoryColumn, StoryContainer, StoryGrid }
+const WideCta = styled('button')(({ theme }) => ({
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  width: '100%',
+  height: 33,
+  border: 'none',
+  borderRadius: theme.spacing(1),
+  backgroundColor: theme.palette.primary.main,
+  color: theme.palette.primary.contrastText,
+  fontSize: 13,
+  fontWeight: 600,
+  textTransform: 'uppercase',
+  cursor: 'pointer'
+}))
+
+export { ActionIconButton, StoryColumn, StoryContainer, StoryGrid, WideCta }

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { ChainId } from '@dcl/schemas'
 import { Network } from '@dcl/schemas/dist/dapps/network'
+import { useTheme } from '@mui/material'
 import { BellIcon } from './icons'
 import { Navbar } from './Navbar'
 import {
@@ -108,19 +109,36 @@ const NotificationDemo = ({ isOpen, onToggle }: { isOpen?: boolean; onToggle?: (
   )
 }
 
-const PageContent = () => (
-  <div
-    style={{
-      paddingTop: 92,
-      minHeight: '200vh',
-      background: 'linear-gradient(180deg, #1a0a2e 0%, #0a0a0a 100%)',
-      padding: '120px 40px 40px'
-    }}
-  >
-    <div style={{ color: 'white', fontSize: 32, fontWeight: 700, marginBottom: 8 }}>Page Content</div>
-    <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: 16, maxWidth: 500 }}>Scroll down to test navbar behavior.</div>
-  </div>
-)
+// The navbar is translucent and blurs whatever sits behind it, so the page
+// underneath has to follow the active theme -- a hardcoded dark backdrop makes
+// the light navbar impossible to judge. The colour stripes run under the fixed
+// bar on purpose: they are what makes the translucency and the blur visible.
+const PageContent = () => {
+  const theme = useTheme()
+  const isLight = theme.palette.mode === 'light'
+  return (
+    <div
+      style={{
+        position: 'relative',
+        minHeight: '200vh',
+        background: isLight ? 'linear-gradient(180deg, #F4EDFA 0%, #FFFFFF 100%)' : 'linear-gradient(180deg, #1a0a2e 0%, #0a0a0a 100%)',
+        padding: '120px 40px 40px'
+      }}
+    >
+      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, display: 'flex', height: 140 }}>
+        {['#FF2D55', '#A524B3', '#FFBC5B', '#34CE77', '#438FFF'].map(color => (
+          <div key={color} style={{ flex: 1, background: color, opacity: 0.9 }} />
+        ))}
+      </div>
+      <div style={{ position: 'relative', color: theme.palette.text.primary, fontSize: 32, fontWeight: 700, marginBottom: 8 }}>
+        Page Content
+      </div>
+      <div style={{ position: 'relative', color: theme.palette.text.secondary, fontSize: 16, maxWidth: 500 }}>
+        Scroll down to test navbar behavior.
+      </div>
+    </div>
+  )
+}
 
 const SignedOut: Story = {
   args: {

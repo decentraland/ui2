@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 import * as colors from '../../theme/colors'
-import { DESKTOP_BREAKPOINT, GLASS_BG, GLASS_BLUR, GLASS_BORDER, GLASS_SHADOW, slideDown } from './Navbar.styled'
+import { DESKTOP_BREAKPOINT, GLASS_BG, GLASS_BLUR, GLASS_BORDER, GLASS_SHADOW, navbarScheme, slideDown } from './Navbar.styled'
+import type { NavbarSchemeInput } from './Navbar.styled'
 
 const DesktopTabList = styled('div')({
   display: 'none',
@@ -11,69 +12,50 @@ const DesktopTabList = styled('div')({
   }
 })
 
-const DesktopTab = styled('button')({
-  all: 'unset',
-  display: 'flex',
-  alignItems: 'center',
-  gap: 4,
-  padding: '8px 24px',
-  fontFamily: 'Inter, Helvetica, Arial, sans-serif',
-  fontWeight: 400,
-  fontSize: 16,
-  color: colors.neutral.gray5,
-  cursor: 'pointer',
-  borderRadius: 8,
-  whiteSpace: 'nowrap',
-  transition: 'background-color 0.15s ease, color 0.15s ease',
-  '&:hover': {
-    color: colors.neutral.white,
-    backgroundColor: 'rgba(255, 255, 255, 0.08)',
-    textShadow: '0 0 0.5px currentColor, 0 0 0.5px currentColor'
-  },
-  '&.active': {
-    color: colors.neutral.white,
-    textShadow: '0 0 0.5px currentColor, 0 0 0.5px currentColor'
-  },
-  '&:focus-visible': {
-    outline: `2px solid ${colors.base.primary}`,
-    outlineOffset: 2
-  },
+/** Shared look for the desktop tabs, whether they render as a button or a link. */
+const tabStyles = (theme: NavbarSchemeInput) => {
+  const scheme = navbarScheme(theme)
+  return {
+    all: 'unset' as const,
+    display: 'flex',
+    alignItems: 'center',
+    gap: 4,
+    padding: '8px 24px',
+    fontFamily: 'Inter, Helvetica, Arial, sans-serif',
+    fontWeight: 400,
+    fontSize: 16,
+    color: scheme.text,
+    cursor: 'pointer',
+    borderRadius: 8,
+    whiteSpace: 'nowrap' as const,
+    transition: 'background-color 0.15s ease, color 0.15s ease',
+    '&:hover': {
+      color: scheme.textStrong,
+      backgroundColor: scheme.overlaySoft,
+      textShadow: '0 0 0.5px currentColor, 0 0 0.5px currentColor'
+    },
+    '&.active': {
+      color: scheme.textStrong,
+      textShadow: '0 0 0.5px currentColor, 0 0 0.5px currentColor'
+    },
+    '&:focus-visible': {
+      outline: `2px solid ${colors.base.primary}`,
+      outlineOffset: 2
+    }
+  }
+}
+
+const DesktopTab = styled('button')(({ theme }) => ({
+  ...tabStyles(theme),
   '& svg': {
     width: 20,
     height: 20,
     transition: 'transform 0.2s ease',
     flexShrink: 0
   }
-})
+}))
 
-const DesktopTabLink = styled('a')({
-  all: 'unset',
-  display: 'flex',
-  alignItems: 'center',
-  gap: 4,
-  padding: '8px 24px',
-  fontFamily: 'Inter, Helvetica, Arial, sans-serif',
-  fontWeight: 400,
-  fontSize: 16,
-  color: colors.neutral.gray5,
-  cursor: 'pointer',
-  borderRadius: 8,
-  whiteSpace: 'nowrap',
-  transition: 'background-color 0.15s ease, color 0.15s ease',
-  '&:hover': {
-    color: colors.neutral.white,
-    backgroundColor: 'rgba(255, 255, 255, 0.08)',
-    textShadow: '0 0 0.5px currentColor, 0 0 0.5px currentColor'
-  },
-  '&.active': {
-    color: colors.neutral.white,
-    textShadow: '0 0 0.5px currentColor, 0 0 0.5px currentColor'
-  },
-  '&:focus-visible': {
-    outline: `2px solid ${colors.base.primary}`,
-    outlineOffset: 2
-  }
-})
+const DesktopTabLink = styled('a')(({ theme }) => tabStyles(theme))
 
 const DesktopTabWithDropdown = styled(DesktopTab)({
   paddingRight: 16

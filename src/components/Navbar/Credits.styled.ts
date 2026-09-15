@@ -1,15 +1,15 @@
 import styled from '@emotion/styled'
 import * as colors from '../../theme/colors'
-import { DESKTOP_BREAKPOINT, MOBILE_BREAKPOINT } from './Navbar.styled'
+import { DESKTOP_BREAKPOINT, MOBILE_BREAKPOINT, navbarScheme } from './Navbar.styled'
 
-const CreditsBalanceButton = styled('button')({
+const CreditsBalanceButton = styled('button')(({ theme }) => ({
   all: 'unset',
   position: 'relative',
   display: 'flex',
   alignItems: 'center',
   gap: 4,
   cursor: 'pointer',
-  color: '#A0ABFF',
+  color: navbarScheme(theme).creditsAccent,
   fontFamily: 'Inter, Helvetica, Arial, sans-serif',
   fontWeight: 600,
   flexShrink: 0,
@@ -45,7 +45,7 @@ const CreditsBalanceButton = styled('button')({
       height: 20
     }
   }
-})
+}))
 
 const CreditsTooltip = styled('div')({
   position: 'absolute',
@@ -72,9 +72,9 @@ const CreditsTooltip = styled('div')({
 
 /** Shop credits chip — inherits the credits chip's hover/tooltip/focus/breakpoint sizing;
  *  distinctness comes from the icon, not a second accent color. */
-const ShopCreditsBalanceButton = styled(CreditsBalanceButton)({
-  color: colors.neutral.softWhite
-})
+const ShopCreditsBalanceButton = styled(CreditsBalanceButton)(({ theme }) => ({
+  color: navbarScheme(theme).controlText
+}))
 
 const NavbarManaBalancesGroup = styled('div')({
   display: 'flex',
@@ -88,12 +88,12 @@ const NavbarManaBalancesGroup = styled('div')({
   }
 })
 
-const NavbarManaBalanceButton = styled('button')<{ clickable?: boolean }>(({ clickable }) => ({
+const NavbarManaBalanceButton = styled('button')<{ clickable?: boolean }>(({ clickable, theme }) => ({
   all: 'unset',
   display: 'flex',
   alignItems: 'center',
   cursor: clickable ? 'pointer' : 'default',
-  color: colors.neutral.softWhite,
+  color: navbarScheme(theme).controlText,
   fontFamily: 'Inter, Helvetica, Arial, sans-serif',
   fontWeight: 400,
   flexShrink: 0,

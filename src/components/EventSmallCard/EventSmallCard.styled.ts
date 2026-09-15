@@ -16,6 +16,13 @@ const TimePill = styled(Box)(({ theme }) => ({
   transition: 'opacity 0.2s ease'
 }))
 
+const BottomPillSlot = styled(Box)({
+  width: 'fit-content',
+  maxWidth: '100%',
+  minWidth: 0,
+  transition: 'opacity 0.2s ease'
+})
+
 const HoverActions = styled(Box)(({ theme }) => ({
   position: 'absolute',
   bottom: 0,
@@ -28,33 +35,53 @@ const HoverActions = styled(Box)(({ theme }) => ({
   gap: theme.spacing(0.5),
   opacity: 0,
   transform: 'translateY(8px)',
-  transition: 'opacity 0.2s ease, transform 0.2s ease',
+  // Invisible actions must not take the pointer: this layer covers the bottom
+  // of the text panel, so without it a pointer that never hovers (a touch
+  // screen wide enough to keep the actions rendered) taps the buttons instead
+  // of the card.
+  pointerEvents: 'none',
+  // opacity alone leaves the buttons in the accessibility tree and in Tab
+  // order, so a screen reader announces actions nobody can see. visibility
+  // interpolates discretely in the useful direction: it turns visible at the
+  // start of the reveal and stays visible for the whole fade out.
+  visibility: 'hidden',
+  transition: 'opacity 0.2s ease, transform 0.2s ease, visibility 0.2s',
   flexWrap: 'nowrap'
 }))
 
 const EventSmallCardContainer = styled(Box, {
   shouldForwardProp: prop => prop !== 'disableHover'
-})<{ disableHover?: boolean }>(({ theme, disableHover }) => ({
+})<{ disableHover?: boolean }>(({ theme, disableHover, onClick }) => ({
   display: 'flex',
   flexDirection: 'row',
   borderRadius: theme.spacing(2),
   overflow: 'hidden',
-  cursor: 'pointer',
+  // Only a card that does something is offered as clickable, matching the
+  // role/tabIndex the component attaches on the same condition.
+  cursor: onClick ? 'pointer' : 'default',
   height: 140,
   minWidth: 300,
   maxWidth: 430,
   backgroundColor: theme.palette.mode === 'dark' ? 'rgba(0, 0, 0, 0.3)' : 'rgba(0, 0, 0, 0.05)',
   transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+  '&:focus-visible': {
+    outline: `2px solid ${theme.palette.primary.main}`,
+    outlineOffset: 2
+  },
+  // Focus reveals the same way hover does, so the actions are reachable by
+  // keyboard and are never focused while invisible.
   ...(!disableHover && {
-    '&:hover': {
+    '&:hover, &:focus-within': {
       transform: 'translateY(-4px)',
       boxShadow: theme.palette.mode === 'dark' ? HOVER_SHADOW : HOVER_SHADOW_LIGHT
     },
-    '&:hover [data-role="hover-actions"]': {
+    '&:hover [data-role="hover-actions"], &:focus-within [data-role="hover-actions"]': {
       opacity: 1,
-      transform: 'translateY(0)'
+      transform: 'translateY(0)',
+      pointerEvents: 'auto',
+      visibility: 'visible'
     },
-    '&:hover [data-role="time-pill"]': {
+    '&:hover [data-role="time-pill"], &:focus-within [data-role="time-pill"]': {
       opacity: 0
     }
   }),
@@ -66,12 +93,16 @@ const EventSmallCardContainer = styled(Box, {
   }
 }))
 
-const ThumbnailWrapper = styled(Box)({
+const ThumbnailWrapper = styled(Box, {
+  shouldForwardProp: prop => prop !== 'fallbackColor'
+})<{ fallbackColor?: string }>(({ fallbackColor }) => ({
+  position: 'relative',
   width: '42%',
   height: 140,
   flexShrink: 0,
-  overflow: 'hidden'
-})
+  overflow: 'hidden',
+  ...(fallbackColor && { backgroundColor: fallbackColor })
+}))
 
 const Thumbnail = styled('img')({
   width: '100%',
@@ -79,6 +110,21 @@ const Thumbnail = styled('img')({
   objectFit: 'cover',
   display: 'block'
 })
+
+// Badge layer over the cover. Badges sit top-left and stay click-through so the
+// whole card keeps taking the click.
+const ThumbnailOverlay = styled(Box)(({ theme }) => ({
+  position: 'absolute',
+  inset: 0,
+  display: 'flex',
+  alignItems: 'flex-start',
+  gap: theme.spacing(0.5),
+  padding: theme.spacing(1),
+  pointerEvents: 'none',
+  '& > *': {
+    pointerEvents: 'auto'
+  }
+}))
 
 const TextBlock = styled(Box)(({ theme }) => ({
   display: 'flex',
@@ -125,20 +171,25 @@ const MobileAction = styled(Box)(({ theme }) => ({
   }
 }))
 
-const AvatarImg = styled('img')(({ theme }) => ({
+const AvatarImg = styled('img', {
+  shouldForwardProp: prop => prop !== 'backgroundColor'
+})<{ backgroundColor?: string }>(({ theme, backgroundColor }) => ({
   width: 19,
   height: 19,
   borderRadius: '50%',
   border: `1.4px solid ${theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0.15)'}`,
   flexShrink: 0,
-  objectFit: 'cover'
+  objectFit: 'cover',
+  ...(backgroundColor && { backgroundColor })
 }))
 
-const AvatarFallback = styled(Box)(({ theme }) => ({
+const AvatarFallback = styled(Box, {
+  shouldForwardProp: prop => prop !== 'backgroundColor'
+})<{ backgroundColor?: string }>(({ theme, backgroundColor }) => ({
   width: 19,
   height: 19,
   borderRadius: '50%',
-  backgroundColor: theme.palette.success.dark,
+  backgroundColor: backgroundColor ?? theme.palette.success.dark,
   border: `1.4px solid ${theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0.15)'}`,
   flexShrink: 0
 }))
@@ -175,6 +226,7 @@ const TimeLabel = styled(Typography)(({ theme }) => ({
 export {
   AvatarFallback,
   AvatarImg,
+  BottomPillSlot,
   ContentTop,
   CreatorName,
   CreatorNameHighlight,
@@ -185,6 +237,7 @@ export {
   MobileAction,
   TextBlock,
   Thumbnail,
+  ThumbnailOverlay,
   ThumbnailWrapper,
   TimeLabel,
   TimePill,

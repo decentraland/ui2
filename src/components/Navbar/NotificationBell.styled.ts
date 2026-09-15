@@ -6,9 +6,9 @@
  */
 import styled from '@emotion/styled'
 import * as colors from '../../theme/colors'
-import { MOBILE_BREAKPOINT, bellShake, slideDown } from './Navbar.styled'
+import { MOBILE_BREAKPOINT, bellShake, navbarScheme, slideDown } from './Navbar.styled'
 
-const BellButton = styled('button')({
+const BellButton = styled('button')(({ theme }) => ({
   all: 'unset',
   position: 'relative',
   display: 'flex',
@@ -16,7 +16,7 @@ const BellButton = styled('button')({
   justifyContent: 'center',
   width: 24,
   height: 24,
-  color: colors.neutral.white,
+  color: navbarScheme(theme).controlText,
   cursor: 'pointer',
   flexShrink: 0,
   borderRadius: 4,
@@ -32,7 +32,7 @@ const BellButton = styled('button')({
     width: 24,
     height: 24
   }
-})
+}))
 
 const NotificationBadge = styled('span')({
   position: 'absolute',
