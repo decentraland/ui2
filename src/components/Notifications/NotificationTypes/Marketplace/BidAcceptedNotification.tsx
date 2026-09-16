@@ -20,6 +20,7 @@ const BidAcceptedNotification = React.memo((props: CommonNotificationProps<BidAc
       locale={locale}
       notification={notification}
       title={bidAcceptedI18n[locale].title}
+      descriptionHref={notification.metadata.link}
       description={
         <>
           {bidAcceptedI18n[locale].description.start}{' '}

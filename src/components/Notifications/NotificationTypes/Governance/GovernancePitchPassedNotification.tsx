@@ -19,6 +19,7 @@ const GovernancePitchPassedNotification = React.memo((props: CommonNotificationP
           {governancePitchPassedI18n[locale].title.end}
         </>
       }
+      descriptionHref={notification.metadata.link}
       description={
         <>
           {governancePitchPassedI18n[locale].description.start}{' '}

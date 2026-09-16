@@ -19,6 +19,7 @@ const GovernanceCoauthorRequestedNotification = React.memo(
             {governanceCoauthorRequestedI18n[locale].title} <SpanHighlighted>{notification.metadata.proposalTitle}</SpanHighlighted>
           </>
         }
+        descriptionHref={notification.metadata.link}
         description={
           <>
             {governanceCoauthorRequestedI18n[locale].description.start}{' '}

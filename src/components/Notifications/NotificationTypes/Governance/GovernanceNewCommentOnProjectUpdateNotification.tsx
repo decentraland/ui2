@@ -19,6 +19,7 @@ const GovernanceNewCommentOnProjectUpdateNotification = React.memo(
             {governanceNewCommentOnProjectUpdateI18n[locale].title} <SpanHighlighted>{notification.metadata.proposalTitle}</SpanHighlighted>
           </>
         }
+        descriptionHref={notification.metadata.link}
         description={
           <>
             {governanceNewCommentOnProjectUpdateI18n[locale].description.start}{' '}
