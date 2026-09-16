@@ -19,6 +19,9 @@ const NotificationItemContainer = styled('div', {
   },
   ...(clickable && {
     position: 'relative',
+    /* The anchor that carries the navigation only covers the title's own box; the rest of the row is
+       reached through its stretched ::after, which is a pseudo-element and gets no cursor of its own. */
+    cursor: 'pointer',
     transition: 'background-color 0.15s ease',
     '&:hover': {
       backgroundColor: theme.palette.action.hover

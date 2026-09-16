@@ -9,7 +9,7 @@ import { ImageContainer, ManaButtonContainer } from './Mana.styled'
 const ManaButton = React.memo((props: Omit<ManaProps, 'showTooltip'>) => {
   const { children, size, network, primary, color, ...rest } = props
   return (
-    <ManaButtonContainer fontSize={size} {...rest}>
+    <ManaButtonContainer fontSize={size} color={color} {...rest}>
       <ImageContainer primary={primary} color={color}>
         {!network || network !== Network.MATIC ? (
           <ManaEthIcon fontSize={size || 'inherit'} />
