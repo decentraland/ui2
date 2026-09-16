@@ -21,7 +21,7 @@ const NotificationItemContainer = styled('div', {
     position: 'relative',
     transition: 'background-color 0.15s ease',
     '&:hover': {
-      backgroundColor: 'rgba(255, 255, 255, 0.06)'
+      backgroundColor: theme.palette.action.hover
     }
   })
 }))
