@@ -13,6 +13,7 @@ const GovernanceProposalEnactedNotification = React.memo((props: CommonNotificat
       locale={locale}
       notification={notification}
       title={governanceProposalEnactedI18n[locale].title}
+      descriptionHref={notification.metadata.link}
       description={
         <>
           {governanceProposalEnactedI18n[locale].description.start}{' '}

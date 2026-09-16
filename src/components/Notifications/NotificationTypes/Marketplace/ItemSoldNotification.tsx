@@ -16,6 +16,7 @@ const ItemSoldNotification = React.memo((props: CommonNotificationProps<ItemSold
       locale={locale}
       notification={notification}
       title={itemSoldI18n[locale].title}
+      descriptionHref={notification.metadata.link}
       description={
         <>
           {itemSoldI18n[locale].description}{' '}

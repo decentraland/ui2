@@ -1,7 +1,7 @@
 import React from 'react'
 import { NotificationItem } from './NotificationItem'
 import { NotificationLocale } from '../Notifications.types'
-import { NotificationItemDescription, NotificationItemTitle } from './NotificationItem.styled'
+import { NotificationItemDescription, NotificationItemTitle, NotificationItemTitleLink } from './NotificationItem.styled'
 import type { NotificationItemImageProps } from '../NotificationItemImage'
 
 type ReadableNotification = {
@@ -21,11 +21,19 @@ function NotificationItemTextComponent<N extends ReadableNotification>(props: No
   const { description, descriptionHref, locale, notification, title, ...imageProps } = props
 
   return (
-    <NotificationItem {...imageProps} timestamp={notification.timestamp} isNew={!notification.read} locale={locale}>
-      <NotificationItemTitle>{title}</NotificationItemTitle>
-      <NotificationItemDescription href={descriptionHref} color="inherit" underline="none">
-        {description}
-      </NotificationItemDescription>
+    <NotificationItem
+      {...imageProps}
+      timestamp={notification.timestamp}
+      isNew={!notification.read}
+      locale={locale}
+      clickable={!!descriptionHref}
+    >
+      {descriptionHref ? (
+        <NotificationItemTitleLink href={descriptionHref}>{title}</NotificationItemTitleLink>
+      ) : (
+        <NotificationItemTitle>{title}</NotificationItemTitle>
+      )}
+      <NotificationItemDescription>{description}</NotificationItemDescription>
     </NotificationItem>
   )
 }

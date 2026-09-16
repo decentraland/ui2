@@ -18,6 +18,7 @@ const GovernanceVotingEndedVoterNotification = React.memo((props: CommonNotifica
           {governanceVotingEndedVoterI18n[locale].title} <SpanHighlighted>{notification.metadata.proposalTitle}</SpanHighlighted>
         </>
       }
+      descriptionHref={notification.metadata.link}
       description={
         <>
           <Link href={notification.metadata.link}>{governanceVotingEndedVoterI18n[locale].description.link_text}</Link>{' '}

@@ -13,6 +13,7 @@ const WorldsMissingResourcesNotification = React.memo((props: CommonNotification
       locale={locale}
       notification={notification}
       title={worldsMissingResourcesI18n[locale].title}
+      descriptionHref={notification.metadata.url}
       description={
         <>
           {worldsMissingResourcesI18n[locale].description.start}{' '}

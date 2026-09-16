@@ -13,6 +13,7 @@ const LandRentalEndedNotification = React.memo((props: CommonNotificationProps<L
       locale={locale}
       notification={notification}
       title={landRentalEndedI18n[locale].title}
+      descriptionHref={notification.metadata.link}
       description={
         <>
           {landRentalEndedI18n[locale].description.start}{' '}

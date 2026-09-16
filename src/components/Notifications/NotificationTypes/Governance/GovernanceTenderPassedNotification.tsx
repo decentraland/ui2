@@ -19,6 +19,7 @@ const GovernanceTenderPassedNotification = React.memo((props: CommonNotification
           {governanceTenderPassedI18n[locale].title.end}
         </>
       }
+      descriptionHref={notification.metadata.link}
       description={
         <>
           {governanceTenderPassedI18n[locale].description.start}{' '}

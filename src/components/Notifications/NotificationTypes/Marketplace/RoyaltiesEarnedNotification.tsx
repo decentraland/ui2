@@ -20,6 +20,7 @@ const RoyaltiesEarnedNotification = React.memo((props: CommonNotificationProps<R
       locale={locale}
       notification={notification}
       title={royaltiesEarnedI18n[locale].title}
+      descriptionHref={notification.metadata.link}
       description={
         <>
           {royaltiesEarnedI18n[locale].description.start}{' '}

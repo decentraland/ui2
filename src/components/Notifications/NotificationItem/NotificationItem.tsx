@@ -12,11 +12,11 @@ import {
 } from './NotificationItem.styled'
 
 const NotificationItem = React.memo((props: React.PropsWithChildren<NotificationItemProps>) => {
-  const { image, imageBackgroundColor, badgeIcon, timestamp, isNew, children, locale } = props
+  const { image, imageBackgroundColor, badgeIcon, timestamp, isNew, children, locale, clickable } = props
   const usedLocale = locale === 'en' ? enUS : locale === 'es' ? es : zhCN
 
   return (
-    <NotificationItemContainer>
+    <NotificationItemContainer clickable={clickable}>
       <NotificationItemImageContainer>
         <NotificationItemImage image={image} imageBackgroundColor={imageBackgroundColor} badgeIcon={badgeIcon} />
       </NotificationItemImageContainer>

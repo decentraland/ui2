@@ -14,6 +14,7 @@ const StreamingNotification = React.memo((props: StreamingCommonNotificationProp
       locale={locale}
       notification={notification}
       title={i18n[locale].title}
+      descriptionHref={notification.metadata.url}
       description={replaceWithValues(i18n[locale].description, {
         place: notification.metadata.isWorld ? (
           <Link href={notification.metadata.url} target="_blank" rel="noreferrer">

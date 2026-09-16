@@ -13,6 +13,7 @@ const WorldsAccessRestrictedNotification = React.memo((props: CommonNotification
       locale={locale}
       notification={notification}
       title={worldsAccessRestrictedI18n[locale].title}
+      descriptionHref={notification.metadata.url}
       description={
         <>
           {worldsAccessRestrictedI18n[locale].description.start}{' '}
