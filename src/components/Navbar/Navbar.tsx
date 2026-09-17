@@ -1,12 +1,11 @@
 import { memo, useCallback, useEffect, useRef, useState } from 'react'
 import { Network } from '@dcl/schemas/dist/dapps/network'
 import { formatBalance } from './formatBalance'
-import { CloseIcon, DclLogo, HamburgerIcon, ManaEthInlineIcon, ManaMaticInlineIcon, ShopCreditsIcon } from './icons'
+import { CloseIcon, DclLogo, HamburgerIcon, ManaCreditsIcon, ManaEthInlineIcon, ManaMaticInlineIcon, ShopCreditsIcon } from './icons'
 import { MobileMenu } from './MobileMenu'
 import { DEFAULT_I18N } from './Navbar.defaults'
 import { NavLinks } from './NavLinks'
 import { UserCardPanel } from './UserCardPanel'
-import { CreditsIcon } from '../Icon/CreditsIcon'
 import type { NavbarI18n, NavbarProps } from './Navbar.types'
 import {
   CreditsBalanceButton,
@@ -49,6 +48,11 @@ const Navbar = memo(function Navbar({
   onClickSignOut
 }: NavbarProps) {
   const i18n: NavbarI18n = { ...DEFAULT_I18N, ...i18nPartial }
+
+  // A zero credits balance is not information: the chip would read "0" over a tooltip promising it
+  // expires in 0 days, since an empty balance carries no expiry either. These credits are granted,
+  // not bought, so having none is the normal state for most visitors.
+  const creditsToShow = creditsBalance && creditsBalance.balance > 0 ? creditsBalance : undefined
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [desktopDropdown, setDesktopDropdown] = useState<DropdownSection | null>(null)
@@ -173,14 +177,14 @@ const Navbar = memo(function Navbar({
         <NavbarRight>
           {isSignedIn && (
             <NavbarRightGroup>
-              {(creditsBalance || shopCreditsBalance !== undefined || (showManaBalancesInNavbar && manaBalances)) && (
+              {(creditsToShow || shopCreditsBalance !== undefined || (showManaBalancesInNavbar && manaBalances)) && (
                 <NavbarBalancesStack>
-                  {creditsBalance && (
-                    <CreditsBalanceButton onClick={onClickCredits} aria-label={`${formatBalance(creditsBalance.balance)} credits`}>
-                      <CreditsIcon />
-                      {formatBalance(creditsBalance.balance)}
+                  {creditsToShow && (
+                    <CreditsBalanceButton onClick={onClickCredits} aria-label={`${formatBalance(creditsToShow.balance)} credits`}>
+                      <ManaCreditsIcon />
+                      {formatBalance(creditsToShow.balance)}
                       <CreditsTooltip className="credits-tooltip">
-                        {i18n.creditsExpiringIn.replace('{days}', String(daysUntil(creditsBalance.expiresAt)))}
+                        {i18n.creditsExpiringIn.replace('{days}', String(daysUntil(creditsToShow.expiresAt)))}
                         <br />
                         {i18n.creditsValueNote}
                       </CreditsTooltip>
@@ -212,6 +216,10 @@ const Navbar = memo(function Navbar({
                     </NavbarManaBalancesGroup>
                   )}
 
+                  {/* This chip still renders at zero, unlike the MANA-pegged one above, and the asymmetry is
+                      deliberate rather than an oversight. That balance is granted, so most visitors have none
+                      and a "0" there is pure noise; this one is the shop's own currency and was scoped to keep
+                      showing an empty balance. Do not reconcile them into false consistency. */}
                   {shopCreditsBalance !== undefined && (
                     <ShopCreditsBalanceButton onClick={onClickShopCredits} aria-label={`${formatBalance(shopCreditsBalance)} shop credits`}>
                       <ShopCreditsIcon />
