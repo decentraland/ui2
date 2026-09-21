@@ -137,12 +137,22 @@ const NavbarRight = styled('div')({
   }
 })
 
+/**
+ * The one gap between items in the navbar's right-hand row on desktop.
+ *
+ * Every item in that row is a sibling of the same rank to the eye: each balance chip, the bell, the
+ * avatar. They are only nested in groups for the mobile layout, where the balances stack vertically
+ * while the MANA pair stays side by side. Those groups used to bring their own gap, which is how the
+ * row ended up at 24 / 12 / 24 across a single line, so they read this instead.
+ */
+const NAVBAR_ROW_GAP_DESKTOP = 24
+
 const NavbarRightGroup = styled('div')({
   display: 'flex',
   alignItems: 'center',
   gap: 12,
   [DESKTOP_BREAKPOINT]: {
-    gap: 24
+    gap: NAVBAR_ROW_GAP_DESKTOP
   }
 })
 
@@ -240,6 +250,7 @@ export {
   LogoLink,
   MOBILE_BREAKPOINT,
   NavbarLeft,
+  NAVBAR_ROW_GAP_DESKTOP,
   NavbarRight,
   NavbarRightGroup,
   NavbarRoot,
