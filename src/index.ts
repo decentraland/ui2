@@ -193,6 +193,7 @@ export * from './components/EventCard'
 export * from './components/EventSmallCard'
 export * from './components/ScenesTable'
 export * from './components/Badges'
+export * from './components/Video'
 export * as dclTable from './components/Table'
 
 export * as dclNetworkUtils from './lib/network'
