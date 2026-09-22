@@ -1,4 +1,8 @@
-import { OperativeSystem } from '../components/DownloadButton'
+// Imported from the types module rather than the component barrel: the barrel
+// pulls DownloadButton (and React) back into this module's graph, which is both
+// a cycle (DownloadButton imports this file) and what made this module
+// impossible to unit test.
+import { OperativeSystem } from '../components/DownloadButton/DownloadButton.types'
 import { config } from '../config'
 
 enum CDNSource {
@@ -19,8 +23,20 @@ type CDNConfig = {
   }
 }
 const LAUNCHER_BASE_URL = 'https://explorer-artifacts.decentraland.org/launcher-rust'
-const LAUNCHER_LEGACY_BASE_URL = 'https://explorer-artifacts.decentraland.org/launcher/dcl'
 const AUTO_SIGNING_BASE_URL = config.get('AUTO_SIGNING_BASE_URL')
+
+// The macOS launcher dmg is a UNIVERSAL binary — verified 2026-08-03, `lipo
+// -archs` on the published artifact reports `x86_64 arm64` — so Intel and Apple
+// Silicon are served the same file and both run it natively. Intel used to be
+// pointed at the legacy Electron build named "Decentraland Outdated", which is
+// why that cohort never converted: 9 anons in July 2026, zero of whom reached
+// the world. Keep both architectures on one constant so they cannot drift apart
+// again.
+const LAUNCHER_MACOS_DMG = `${LAUNCHER_BASE_URL}/Decentraland_installer.dmg`
+// Identity-bound variant: the gateway bakes the attribution id into the same
+// universal installer, so Intel must use it too or those downloads become
+// unattributable in the funnel.
+const AUTO_SIGNING_MACOS_DMG = `${AUTO_SIGNING_BASE_URL}/:identityId/decentraland.dmg`
 
 const CDN_CONFIGS: Record<CDNSource, CDNConfig> = {
   [CDNSource.LAUNCHER]: {
@@ -29,8 +45,8 @@ const CDN_CONFIGS: Record<CDNSource, CDNConfig> = {
         amd64: `${LAUNCHER_BASE_URL}/Decentraland_installer.exe`
       },
       [OperativeSystem.MACOS]: {
-        amd64: `${LAUNCHER_LEGACY_BASE_URL}/Decentraland%20Outdated-mac-x64.dmg`,
-        arm64: `${LAUNCHER_BASE_URL}/Decentraland_installer.dmg`
+        amd64: LAUNCHER_MACOS_DMG,
+        arm64: LAUNCHER_MACOS_DMG
       }
     }
   },
@@ -40,8 +56,8 @@ const CDN_CONFIGS: Record<CDNSource, CDNConfig> = {
         amd64: `${AUTO_SIGNING_BASE_URL}/:identityId/decentraland.exe`
       },
       [OperativeSystem.MACOS]: {
-        amd64: `${LAUNCHER_LEGACY_BASE_URL}/Decentraland%20Outdated-mac-x64.dmg`,
-        arm64: `${AUTO_SIGNING_BASE_URL}/:identityId/decentraland.dmg`
+        amd64: AUTO_SIGNING_MACOS_DMG,
+        arm64: AUTO_SIGNING_MACOS_DMG
       }
     }
   }
