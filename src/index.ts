@@ -154,7 +154,7 @@ export {
 } from '@mui/material'
 export type { SvgIconProps, ModalProps, ButtonProps, LinkProps, SvgIconOwnProps } from '@mui/material'
 
-export { useTheme } from '@emotion/react'
+export { keyframes, useTheme } from '@emotion/react'
 export { emotionReact, emotionStyled, emotionCache }
 export * from './components/Address'
 export * as dclAddressUtils from './components/AddressField/utils'
