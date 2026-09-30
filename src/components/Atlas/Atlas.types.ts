@@ -5,7 +5,6 @@ enum AtlasColor {
   UNOWNED = '#09080A',
   PLAZA = '#70AC76',
   ROAD = '#716C7A',
-  DISTRICT = '#5054D4',
   ODD = '#110E13',
   EVEN = '#0D0B0E'
 }
