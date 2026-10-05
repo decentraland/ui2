@@ -3,6 +3,13 @@ import { LogoProps } from './Logo.types'
 import { LogoContainer } from './Logo.styled'
 
 const Logo = React.memo((props: LogoProps) => {
+  // Gradient ids must be unique per instance: with fixed ids, a second Logo (or a first one inside a
+  // `display: none` subtree) makes `url(#id)` resolve to another copy's gradient and the fill is lost.
+  const id = React.useId().replace(/:/g, '')
+  const circleGradientId = `${id}-circle`
+  const sailLeftGradientId = `${id}-sail-left`
+  const sailRightGradientId = `${id}-sail-right`
+
   return (
     <LogoContainer {...props}>
       <svg width="90" height="90" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -10,7 +17,7 @@ const Logo = React.memo((props: LogoProps) => {
           fillRule="evenodd"
           clipRule="evenodd"
           d="M45 89.9999C69.8528 89.9999 89.9999 69.8528 89.9999 45C89.9999 20.1472 69.8528 0 45 0C20.1472 0 0 20.1472 0 45C0 69.8528 20.1472 89.9999 45 89.9999Z"
-          fill="url(#paint0_linear_1_49380)"
+          fill={`url(#${circleGradientId})`}
         />
         <path
           fillRule="evenodd"
@@ -34,10 +41,10 @@ const Logo = React.memo((props: LogoProps) => {
           fillRule="evenodd"
           clipRule="evenodd"
           d="M31.8826 29.2496V62.9996H60.0075L31.8826 29.2496Z"
-          fill="url(#paint1_linear_1_49380)"
+          fill={`url(#${sailLeftGradientId})`}
         />
         <path fillRule="evenodd" clipRule="evenodd" d="M3.75757 62.9997H31.8826V29.2497L3.75757 62.9997Z" fill="white" />
-        <path fillRule="evenodd" clipRule="evenodd" d="M60.3675 47.25V72H81L60.3675 47.25Z" fill="url(#paint2_linear_1_49380)" />
+        <path fillRule="evenodd" clipRule="evenodd" d="M60.3675 47.25V72H81L60.3675 47.25Z" fill={`url(#${sailRightGradientId})`} />
         <path fillRule="evenodd" clipRule="evenodd" d="M39.7574 72H60.3674V47.25L39.7574 72Z" fill="white" />
         <path
           fillRule="evenodd"
@@ -52,15 +59,15 @@ const Logo = React.memo((props: LogoProps) => {
           fill="#FFC95B"
         />
         <defs>
-          <linearGradient id="paint0_linear_1_49380" x1="45" y1="-18.6396" x2="-18.6396" y2="45" gradientUnits="userSpaceOnUse">
+          <linearGradient id={circleGradientId} x1="45" y1="-18.6396" x2="-18.6396" y2="45" gradientUnits="userSpaceOnUse">
             <stop stopColor="#FF2D55" />
             <stop offset="1" stopColor="#FFBC5B" />
           </linearGradient>
-          <linearGradient id="paint1_linear_1_49380" x1="31.8731" y1="29.2497" x2="31.8731" y2="62.9996" gradientUnits="userSpaceOnUse">
+          <linearGradient id={sailLeftGradientId} x1="31.8731" y1="29.2497" x2="31.8731" y2="62.9996" gradientUnits="userSpaceOnUse">
             <stop stopColor="#A524B3" />
             <stop offset="1" stopColor="#FF2D55" />
           </linearGradient>
-          <linearGradient id="paint2_linear_1_49380" x1="60.3605" y1="47.25" x2="60.3605" y2="72" gradientUnits="userSpaceOnUse">
+          <linearGradient id={sailRightGradientId} x1="60.3605" y1="47.25" x2="60.3605" y2="72" gradientUnits="userSpaceOnUse">
             <stop stopColor="#A524B3" />
             <stop offset="1" stopColor="#FF2D55" />
           </linearGradient>
