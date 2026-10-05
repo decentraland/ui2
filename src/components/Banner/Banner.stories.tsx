@@ -114,6 +114,14 @@ const WithoutButton: Story = {
   }
 }
 
+// What the delivery API sends once a space stops requiring the title: the field is simply absent, whatever the
+// type says. The banner keeps everything else.
+const WithoutTitle: Story = {
+  args: {
+    fields: { ...baseFields, desktopTitle: undefined, mobileTitle: undefined } as unknown as BannerFields
+  }
+}
+
 const CenteredContent: Story = {
   args: {
     fields: {
@@ -169,4 +177,4 @@ const WithError: Story = {
 
 // eslint-disable-next-line import/no-default-export
 export default meta
-export { Default, WithoutLogo, WithoutButton, CenteredContent, RightAlignedContent, Localized, Loading, WithError }
+export { Default, WithoutLogo, WithoutButton, WithoutTitle, CenteredContent, RightAlignedContent, Localized, Loading, WithError }

@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import * as colors from '../../theme/colors'
-import { DESKTOP_BREAKPOINT, MOBILE_BREAKPOINT, navbarScheme } from './Navbar.styled'
+import { DESKTOP_BREAKPOINT, MOBILE_BREAKPOINT, NAVBAR_ROW_GAP_DESKTOP, navbarScheme } from './Navbar.styled'
 
 const CreditsBalanceButton = styled('button')(({ theme }) => ({
   all: 'unset',
@@ -76,6 +76,9 @@ const ShopCreditsBalanceButton = styled(CreditsBalanceButton)(({ theme }) => ({
   color: navbarScheme(theme).controlText
 }))
 
+/** Holds the two MANA chips together so they stay on one line when the balances stack on mobile.
+ *  On desktop there is no group to speak of: the chips are simply items in the row, so the wrapper
+ *  carries the row's own gap instead of a tighter one of its own. */
 const NavbarManaBalancesGroup = styled('div')({
   display: 'flex',
   alignItems: 'center',
@@ -84,7 +87,7 @@ const NavbarManaBalancesGroup = styled('div')({
     gap: 4
   },
   [DESKTOP_BREAKPOINT]: {
-    gap: 12
+    gap: NAVBAR_ROW_GAP_DESKTOP
   }
 })
 
@@ -139,7 +142,7 @@ const NavbarBalancesStack = styled('div')({
   [DESKTOP_BREAKPOINT]: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 24
+    gap: NAVBAR_ROW_GAP_DESKTOP
   }
 })
 
