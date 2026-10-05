@@ -35,6 +35,22 @@ const All: Story = {
   )
 }
 
+// A Logo mounted inside a hidden container (e.g. a closed loading overlay) must not affect the visible one.
+// Before each Logo got its own gradient ids, the visible Logo lost the fill of its circle here.
+const WithHiddenSibling: Story = {
+  render: () => (
+    <StoryContainer>
+      <div style={{ display: 'none' }}>
+        <Logo size="huge" />
+      </div>
+      <StoryItemContainer>
+        <h3>Visible Logo, hidden Logo mounted before it</h3>
+        <Logo size="massive" />
+      </StoryItemContainer>
+    </StoryContainer>
+  )
+}
+
 // eslint-disable-next-line import/no-default-export
 export default meta
-export { All }
+export { All, WithHiddenSibling }
