@@ -76,18 +76,51 @@ const creditsExpireSoonReminderI18n = {
   }
 } as const
 
+// Season grants, all from seasons that have ended: worded in the past tense, with no call to use them before they
+// expire, because this type was never shown before and these come up for the first time long after the fact.
 const creditsOnDemandGrantedI18n = {
   en: {
-    description: "Congrats! You've earned {amount} extra Credits for this season. Make sure to use them before they expire!",
-    title: 'Bonus Credits Unlocked!'
+    description: 'You received {amount} bonus Credits.',
+    title: 'Bonus Credits'
   },
   es: {
-    description: '¡Felicidades! Has ganado {amount} créditos adicionales para esta temporada. ¡Asegúrate de usarlos antes de que caduquen!',
-    title: '¡Créditos adicionales desbloqueados!'
+    description: 'Recibiste {amount} Créditos adicionales.',
+    title: 'Créditos adicionales'
   },
   zh: {
-    description: '恭喜！您已获得本赛季的{amount}额外积分。请务必在它们过期前使用！',
-    title: '奖励积分已解锁！'
+    description: '你收到了{amount}奖励积分。',
+    title: '奖励积分'
+  }
+} as const
+
+// Shop credits (USD) never expire and are spent in the Shop, unlike the season grants above.
+const creditsShopGrantedI18n = {
+  en: {
+    description: 'You received {amount} Credits. They never expire: spend them in the Shop.',
+    title: 'Credits added to your account'
+  },
+  es: {
+    description: 'Recibiste {amount} Créditos. No caducan: úsalos en el Shop.',
+    title: 'Créditos añadidos a tu cuenta'
+  },
+  zh: {
+    description: '你收到了{amount}积分。积分永不过期，可在 Shop 中使用。',
+    title: '积分已添加到你的账户'
+  }
+} as const
+
+const creditsStudioGiftI18n = {
+  en: {
+    description: '{studio} gifted you {amount} Credits. They never expire: spend them in the Shop.',
+    title: 'A gift from {studio}'
+  },
+  es: {
+    description: '{studio} te regaló {amount} Créditos. No caducan: úsalos en el Shop.',
+    title: 'Un regalo de {studio}'
+  },
+  zh: {
+    description: '{studio}送给你{amount}积分。积分永不过期，可在 Shop 中使用。',
+    title: '来自{studio}的礼物'
   }
 } as const
 
@@ -97,5 +130,7 @@ export {
   creditsDoNotMissOutI18n,
   creditsExpireIn24HrsReminderI18n,
   creditsExpireSoonReminderI18n,
-  creditsOnDemandGrantedI18n
+  creditsOnDemandGrantedI18n,
+  creditsShopGrantedI18n,
+  creditsStudioGiftI18n
 }

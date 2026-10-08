@@ -14,6 +14,9 @@ import {
   creditsDoNotMissOutNotificationData,
   creditsExpireIn24HrsReminderNotificationData,
   creditsExpireSoonReminderNotificationData,
+  creditsSeasonGrantedNotificationData,
+  creditsShopGrantedNotificationData,
+  creditsStudioGiftNotificationData,
   eventApprovedNotificationData,
   eventDeletedNotificationData,
   eventRejectedNotificationData,
@@ -212,7 +215,10 @@ const CreditsNotifications: Story = {
       creditsDoNotMissOutNotificationData,
       creditsClaimReminderNotificationData,
       creditsExpireSoonReminderNotificationData,
-      creditsExpireIn24HrsReminderNotificationData
+      creditsExpireIn24HrsReminderNotificationData,
+      creditsSeasonGrantedNotificationData,
+      creditsShopGrantedNotificationData,
+      creditsStudioGiftNotificationData
     ]
   }
 }
