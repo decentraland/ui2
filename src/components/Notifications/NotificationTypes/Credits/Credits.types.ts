@@ -31,7 +31,15 @@ type CreditsExpireIn24HrsReminderNotificationProps = RawDecentralandNotification
 
 type CreditsOnDemandGrantedNotificationProps = RawDecentralandNotification<
   NotificationType.CREDITS_ON_DEMAND_GRANTED,
-  { creditsGranted: number }
+  {
+    creditsGranted: number
+    /** `'USD'` for Shop credits, which never expire. Absent on a retired season grant. */
+    denomination?: string
+    /** The studio that gave them, on a studio's gift. */
+    studioName?: string
+    /** Where the notification leads: the Shop for Shop credits. */
+    link?: string
+  }
 >
 
 export type {

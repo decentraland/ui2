@@ -91,11 +91,44 @@ const creditsOnDemandGrantedI18n = {
   }
 } as const
 
+// Shop credits (USD) never expire and are spent in the Shop, unlike the season grants above.
+const creditsShopGrantedI18n = {
+  en: {
+    description: 'You received {amount} Credits. They never expire: spend them in the Shop.',
+    title: 'Credits added to your account'
+  },
+  es: {
+    description: 'Recibiste {amount} Créditos. No vencen: úsalos en el Shop.',
+    title: 'Recibiste Créditos'
+  },
+  zh: {
+    description: '你收到了{amount}积分。积分永不过期，可在商店中使用。',
+    title: '积分已添加到你的账户'
+  }
+} as const
+
+const creditsStudioGiftI18n = {
+  en: {
+    description: '{studio} gifted you {amount} Credits. They never expire: spend them in the Shop.',
+    title: 'A gift from {studio}'
+  },
+  es: {
+    description: '{studio} te regaló {amount} Créditos. No vencen: úsalos en el Shop.',
+    title: 'Un regalo de {studio}'
+  },
+  zh: {
+    description: '{studio}送给你{amount}积分。积分永不过期，可在商店中使用。',
+    title: '来自{studio}的礼物'
+  }
+} as const
+
 export {
   creditsClaimReminderI18n,
   creditsCompleteYourWeeklyGoalsI18n,
   creditsDoNotMissOutI18n,
   creditsExpireIn24HrsReminderI18n,
   creditsExpireSoonReminderI18n,
-  creditsOnDemandGrantedI18n
+  creditsOnDemandGrantedI18n,
+  creditsShopGrantedI18n,
+  creditsStudioGiftI18n
 }

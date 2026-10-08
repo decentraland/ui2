@@ -1,7 +1,8 @@
 import { NFTCategory, NotificationType, Rarity } from '@dcl/schemas'
 import {
   CreditsExpireIn24HrsReminderNotificationProps,
-  CreditsExpireSoonReminderNotificationProps
+  CreditsExpireSoonReminderNotificationProps,
+  CreditsOnDemandGrantedNotificationProps
 } from 'components/Notifications/NotificationTypes/Credits/Credits.types'
 import {
   BidAcceptedNotificationProps,
@@ -725,6 +726,36 @@ const creditsDoNotMissOutNotificationData: CreditsDoNotMissOutNotificationProps 
   metadata: {}
 }
 
+const creditsOnDemandGrantedNotificationData = (
+  id: string,
+  metadata: CreditsOnDemandGrantedNotificationProps['metadata']
+): CreditsOnDemandGrantedNotificationProps => ({
+  id,
+  type: NotificationType.CREDITS_ON_DEMAND_GRANTED,
+  address: '0x1234567890123456789012345678901234567890',
+  timestamp: new Date().getTime(),
+  read: false,
+  created_at: new Date().toISOString(),
+  updated_at: new Date().toISOString(),
+  metadata
+})
+
+// A retired season grant, a grant of Shop credits, and a studio's gift of Shop credits.
+const creditsSeasonGrantedNotificationData = creditsOnDemandGrantedNotificationData('credits-season-granted', {
+  creditsGranted: 50
+})
+const creditsShopGrantedNotificationData = creditsOnDemandGrantedNotificationData('credits-shop-granted', {
+  creditsGranted: 1250,
+  denomination: 'USD',
+  link: 'https://decentraland.org/shop'
+})
+const creditsStudioGiftNotificationData = creditsOnDemandGrantedNotificationData('credits-studio-gift', {
+  creditsGranted: 100,
+  denomination: 'USD',
+  studioName: 'Pixel Forge',
+  link: 'https://decentraland.org/shop'
+})
+
 const creditsExpireIn24HrsReminderNotificationData: CreditsExpireIn24HrsReminderNotificationProps = {
   id: NotificationType.CREDITS_REMINDER_USAGE_24_HOURS,
   type: NotificationType.CREDITS_REMINDER_USAGE_24_HOURS,
@@ -845,6 +876,9 @@ const allTypeOfNotifications = [
   creditsDoNotMissOutNotificationData,
   creditsExpireIn24HrsReminderNotificationData,
   creditsExpireSoonReminderNotificationData,
+  creditsSeasonGrantedNotificationData,
+  creditsShopGrantedNotificationData,
+  creditsStudioGiftNotificationData,
   eventApprovedNotificationData,
   eventRejectedNotificationData,
   eventDeletedNotificationData,
@@ -896,6 +930,9 @@ export {
   creditsDoNotMissOutNotificationData,
   creditsExpireIn24HrsReminderNotificationData,
   creditsExpireSoonReminderNotificationData,
+  creditsSeasonGrantedNotificationData,
+  creditsShopGrantedNotificationData,
+  creditsStudioGiftNotificationData,
   eventApprovedNotificationData,
   eventRejectedNotificationData,
   eventDeletedNotificationData,
