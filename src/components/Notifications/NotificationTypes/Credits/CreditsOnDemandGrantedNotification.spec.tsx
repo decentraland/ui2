@@ -82,6 +82,7 @@ describe('when rendering credits granted on demand', () => {
     ['a plain http address', 'http://decentraland.org/shop'],
     ['another site', 'https://example.com/shop'],
     ['a look-alike site', 'https://decentraland.org.example.com/shop'],
+    ['a subdomain', 'https://shop.decentraland.org/shop'],
     ['something that is not an address', 'not a url']
   ])('and their link is %s', (_label, link) => {
     it('should not link anywhere', () => {
@@ -100,11 +101,27 @@ describe('when rendering credits granted on demand', () => {
   })
 
   describe('and they are a retired season grant, which names no denomination', () => {
-    it('should keep the season copy', () => {
-      const markup = render(notificationWith({ creditsGranted: 50 }))
+    let markup: string
 
-      expect(markup).toContain('Bonus Credits Unlocked!')
-      expect(markup).toContain('earned 50 extra Credits for this season. Make sure to use them before they expire!')
+    beforeEach(() => {
+      markup = render(notificationWith({ creditsGranted: 50 }))
+    })
+
+    it('should say what was received, in the past tense', () => {
+      expect(markup).toContain('Bonus Credits')
+      expect(markup).toContain('You received 50 bonus Credits.')
+    })
+
+    it('should not ask to use them before they expire, as their season is over', () => {
+      expect({ expire: markup.includes('expire'), season: markup.includes('season') }).toEqual({ expire: false, season: false })
+    })
+  })
+
+  describe('and the grant is missing its amount', () => {
+    it('should render instead of failing the feed', () => {
+      const markup = render(notificationWith({ denomination: 'USD' } as CreditsOnDemandGrantedNotificationProps['metadata']))
+
+      expect(markup).toContain('You received 0 Credits.')
     })
   })
 
@@ -117,6 +134,12 @@ describe('when rendering credits granted on demand', () => {
         gift: expect.stringContaining('Pixel Forge te regaló 100 Créditos. No caducan: úsalos en el Shop.'),
         grant: expect.stringContaining('Créditos añadidos a tu cuenta')
       })
+    })
+
+    it('should write the amount the way the viewer reads numbers', () => {
+      const markup = render(notificationWith({ creditsGranted: 12500, denomination: 'USD' }), 'es')
+
+      expect(markup).toContain('Recibiste 12.500 Créditos.')
     })
   })
 })
