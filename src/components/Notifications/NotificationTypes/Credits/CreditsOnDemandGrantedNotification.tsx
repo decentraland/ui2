@@ -6,15 +6,30 @@ import { CommonNotificationProps } from '../../Notifications.types'
 import { replaceWithValues } from '../../utils'
 import { CreditsOnDemandGrantedNotificationProps } from './Credits.types'
 
+/** Decentraland's own sites: the only places a credits notification may link to. */
+const DECENTRALAND_HOSTS = ['decentraland.org', 'decentraland.zone', 'decentraland.today']
+
+const toDecentralandUrl = (link: string | undefined): string | undefined => {
+  if (!link) return undefined
+  try {
+    const url = new URL(link)
+    const ownHost = DECENTRALAND_HOSTS.some(host => url.hostname === host || url.hostname.endsWith(`.${host}`))
+    return url.protocol === 'https:' && ownHost ? url.toString() : undefined
+  } catch {
+    return undefined
+  }
+}
+
 /**
- * Credits granted on demand. Shop credits (`denomination: 'USD'`) never expire and are spent in the Shop, and a
- * studio's gift names the studio; a grant without a denomination is a retired season grant and keeps its copy.
+ * Credits granted on demand. Shop credits never expire and are spent in the Shop, and a studio's gift names the
+ * studio. They are told apart by their `denomination`: the retired season grants, which did expire, never carried
+ * one, so any denomination means Shop credits and never gets the "use them before they expire" copy.
  */
 const CreditsOnDemandGrantedNotification = React.memo((props: CommonNotificationProps<CreditsOnDemandGrantedNotificationProps>) => {
   const { notification, locale } = props
   const { creditsGranted, denomination, studioName, link } = notification.metadata
   const amount = creditsGranted.toLocaleString()
-  const isShopCredits = denomination === 'USD'
+  const isShopCredits = !!denomination
   const copy = !isShopCredits
     ? creditsOnDemandGrantedI18n[locale]
     : studioName
@@ -29,7 +44,7 @@ const CreditsOnDemandGrantedNotification = React.memo((props: CommonNotification
       notification={notification}
       title={replaceWithValues(copy.title, values)}
       description={replaceWithValues(copy.description, values)}
-      descriptionHref={isShopCredits && link?.startsWith('https://') ? link : undefined}
+      descriptionHref={isShopCredits ? toDecentralandUrl(link) : undefined}
     />
   )
 })

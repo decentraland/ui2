@@ -98,11 +98,11 @@ const creditsShopGrantedI18n = {
     title: 'Credits added to your account'
   },
   es: {
-    description: 'Recibiste {amount} Créditos. No vencen: úsalos en el Shop.',
-    title: 'Recibiste Créditos'
+    description: 'Recibiste {amount} Créditos. No caducan: úsalos en el Shop.',
+    title: 'Créditos añadidos a tu cuenta'
   },
   zh: {
-    description: '你收到了{amount}积分。积分永不过期，可在商店中使用。',
+    description: '你收到了{amount}积分。积分永不过期，可在 Shop 中使用。',
     title: '积分已添加到你的账户'
   }
 } as const
@@ -113,11 +113,11 @@ const creditsStudioGiftI18n = {
     title: 'A gift from {studio}'
   },
   es: {
-    description: '{studio} te regaló {amount} Créditos. No vencen: úsalos en el Shop.',
+    description: '{studio} te regaló {amount} Créditos. No caducan: úsalos en el Shop.',
     title: 'Un regalo de {studio}'
   },
   zh: {
-    description: '{studio}送给你{amount}积分。积分永不过期，可在商店中使用。',
+    description: '{studio}送给你{amount}积分。积分永不过期，可在 Shop 中使用。',
     title: '来自{studio}的礼物'
   }
 } as const

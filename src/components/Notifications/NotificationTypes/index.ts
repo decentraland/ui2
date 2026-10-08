@@ -3,7 +3,8 @@ import {
   CreditsCompleteYourWeeklyGoalsNotification,
   CreditsDoNotMissOutNotification,
   CreditsExpireIn24HrsReminderNotification,
-  CreditsExpireSoonReminderNotification
+  CreditsExpireSoonReminderNotification,
+  CreditsOnDemandGrantedNotification
 } from './Credits'
 import {
   EventApprovedNotification,
@@ -62,6 +63,7 @@ export {
   CreditsDoNotMissOutNotification,
   CreditsExpireIn24HrsReminderNotification,
   CreditsExpireSoonReminderNotification,
+  CreditsOnDemandGrantedNotification,
   EventApprovedNotification,
   EventRejectedNotification,
   EventDeletedNotification,

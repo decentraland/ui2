@@ -1,8 +1,8 @@
 import { NotificationType } from '@dcl/schemas'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 import { renderToStaticMarkup } from 'react-dom/server'
-import { CreditsOnDemandGrantedNotification } from './CreditsOnDemandGrantedNotification'
 import { NotificationLocale } from '../../Notifications.types'
+import { CURRENT_AVAILABLE_NOTIFICATIONS, NotificationComponentByType } from '../../utils'
 import { CreditsOnDemandGrantedNotificationProps } from './Credits.types'
 
 // The notifications' shared helpers pull in every notification type, and some read the app config, which loads an
@@ -20,14 +20,25 @@ const notificationWith = (metadata: CreditsOnDemandGrantedNotificationProps['met
   metadata
 })
 
-const render = (notification: CreditsOnDemandGrantedNotificationProps, locale: NotificationLocale = 'en') =>
-  renderToStaticMarkup(
+// Rendered the way the feed and the Shop's bell render it: looked up by its type. A component that is not
+// registered there is never shown, whatever its copy.
+const render = (notification: CreditsOnDemandGrantedNotificationProps, locale: NotificationLocale = 'en') => {
+  const Component = NotificationComponentByType[NotificationType.CREDITS_ON_DEMAND_GRANTED]
+  if (!Component) throw new Error('credits_on_demand_granted has no component in NotificationComponentByType')
+  return renderToStaticMarkup(
     <ThemeProvider theme={createTheme()}>
-      <CreditsOnDemandGrantedNotification notification={notification} locale={locale} />
+      <Component notification={notification} locale={locale} />
     </ThemeProvider>
   )
+}
+
+const linksTo = (markup: string) => markup.match(/<a [^>]*href="([^"]*)"/)?.[1]
 
 describe('when rendering credits granted on demand', () => {
+  it('should be one of the notifications the feed shows', () => {
+    expect(CURRENT_AVAILABLE_NOTIFICATIONS).toContain(NotificationType.CREDITS_ON_DEMAND_GRANTED)
+  })
+
   describe("and they are a studio's gift of Shop credits", () => {
     let markup: string
 
@@ -44,7 +55,7 @@ describe('when rendering credits granted on demand', () => {
     })
 
     it('should link to the Shop', () => {
-      expect(markup).toMatch(/<a [^>]*href="https:\/\/decentraland.org\/shop"/)
+      expect(linksTo(markup)).toBe('https://decentraland.org/shop')
     })
   })
 
@@ -57,14 +68,34 @@ describe('when rendering credits granted on demand', () => {
     })
   })
 
-  describe('and they are Shop credits whose link is not https', () => {
-    it('should not link anywhere', () => {
-      const markup = render(notificationWith({ creditsGranted: 100, denomination: 'USD', link: 'javascript:alert(1)' }))
+  describe('and their denomination is written another way', () => {
+    it('should still word them as Shop credits, never as credits that expire', () => {
+      const markup = render(notificationWith({ creditsGranted: 100, denomination: 'usd' }))
 
-      expect({ link: /<a [^>]*href=/.test(markup), script: markup.includes('javascript:') }).toEqual({
-        link: false,
-        script: false
-      })
+      expect(markup).toContain('They never expire')
+      expect(markup).not.toContain('before they expire')
+    })
+  })
+
+  describe.each([
+    ['a script', 'javascript:alert(1)'],
+    ['a plain http address', 'http://decentraland.org/shop'],
+    ['another site', 'https://example.com/shop'],
+    ['a look-alike site', 'https://decentraland.org.example.com/shop'],
+    ['something that is not an address', 'not a url']
+  ])('and their link is %s', (_label, link) => {
+    it('should not link anywhere', () => {
+      const markup = render(notificationWith({ creditsGranted: 100, denomination: 'USD', link }))
+
+      expect({ link: linksTo(markup), script: markup.includes('javascript:') }).toEqual({ link: undefined, script: false })
+    })
+  })
+
+  describe("and their link is on one of Decentraland's sites", () => {
+    it('should link there', () => {
+      const markup = render(notificationWith({ creditsGranted: 100, denomination: 'USD', link: 'https://decentraland.zone/shop' }))
+
+      expect(linksTo(markup)).toBe('https://decentraland.zone/shop')
     })
   })
 
@@ -78,11 +109,14 @@ describe('when rendering credits granted on demand', () => {
   })
 
   describe('and the viewer reads Spanish', () => {
-    it("should word a studio's gift in Spanish", () => {
-      const markup = render(notificationWith({ creditsGranted: 100, denomination: 'USD', studioName: 'Pixel Forge' }), 'es')
+    it("should word a studio's gift and a grant in Spanish", () => {
+      const gift = render(notificationWith({ creditsGranted: 100, denomination: 'USD', studioName: 'Pixel Forge' }), 'es')
+      const grant = render(notificationWith({ creditsGranted: 100, denomination: 'USD' }), 'es')
 
-      expect(markup).toContain('Un regalo de Pixel Forge')
-      expect(markup).toContain('Pixel Forge te regaló 100 Créditos. No vencen: úsalos en el Shop.')
+      expect({ gift, grant }).toEqual({
+        gift: expect.stringContaining('Pixel Forge te regaló 100 Créditos. No caducan: úsalos en el Shop.'),
+        grant: expect.stringContaining('Créditos añadidos a tu cuenta')
+      })
     })
   })
 })
