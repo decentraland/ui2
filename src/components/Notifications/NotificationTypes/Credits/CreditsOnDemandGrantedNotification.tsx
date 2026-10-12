@@ -1,6 +1,7 @@
 import React from 'react'
 import { creditsOnDemandGrantedI18n, creditsShopGrantedI18n, creditsStudioGiftI18n } from './Credits.i18n'
 import { CreditsIcon } from '../../../Icon/Notifications/CreditsIcon'
+import { ShopCreditsIcon } from '../../../Icon/Notifications/ShopCreditsIcon'
 import { NotificationItemText } from '../../NotificationItem'
 import { CommonNotificationProps } from '../../Notifications.types'
 import { replaceWithValues } from '../../utils'
@@ -34,15 +35,16 @@ const CreditsOnDemandGrantedNotification = React.memo((props: CommonNotification
     : studioName
       ? creditsStudioGiftI18n[locale]
       : creditsShopGrantedI18n[locale]
+  const description = creditsGranted === 1 ? copy.descriptionOne : copy.description
   const values = { amount, studio: studioName ?? '' }
 
   return (
     <NotificationItemText
-      image={<CreditsIcon width={48} height={48} />}
+      image={isShopCredits ? <ShopCreditsIcon width={48} height={48} /> : <CreditsIcon width={48} height={48} />}
       locale={locale}
       notification={notification}
       title={replaceWithValues(copy.title, values)}
-      description={replaceWithValues(copy.description, values)}
+      description={replaceWithValues(description, values)}
       descriptionHref={isShopCredits ? toDecentralandUrl(link) : undefined}
     />
   )
