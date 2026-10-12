@@ -23,7 +23,7 @@
   "MARKETPLACE_MY_ASSETS_URL": "https://decentraland.org/marketplace/account",
   "LANDING_CREATORS_URL": "https://decentraland.org/create/",
   "STUDIOS_URL": "https://studios.decentraland.org/",
-  "BUILDER_WEARABLE_EMOTES_URL": "https://decentraland.org/builder/collections",
+  "BUILDER_WEARABLE_EMOTES_URL": "https://decentraland.org/create/collections",
   "BUILDER_NAMES_URL": "https://decentraland.org/builder/names",
   "BUILDER_WORLDS_URL": "https://decentraland.org/builder/worlds?tab=dcl",
   "BUILDER_LAND_URL": "https://decentraland.org/builder/land",
