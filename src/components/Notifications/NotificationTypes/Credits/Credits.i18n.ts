@@ -81,14 +81,17 @@ const creditsExpireSoonReminderI18n = {
 const creditsOnDemandGrantedI18n = {
   en: {
     description: 'You received {amount} bonus Credits.',
+    descriptionOne: 'You received {amount} bonus Credit.',
     title: 'Bonus Credits'
   },
   es: {
     description: 'Recibiste {amount} Créditos adicionales.',
+    descriptionOne: 'Recibiste {amount} Crédito adicional.',
     title: 'Créditos adicionales'
   },
   zh: {
     description: '你收到了{amount}奖励积分。',
+    descriptionOne: '你收到了{amount}奖励积分。',
     title: '奖励积分'
   }
 } as const
@@ -97,14 +100,17 @@ const creditsOnDemandGrantedI18n = {
 const creditsShopGrantedI18n = {
   en: {
     description: 'You received {amount} Credits. They never expire: spend them in the Shop.',
+    descriptionOne: 'You received {amount} Credit. It never expires: spend it in the Shop.',
     title: 'Credits added to your account'
   },
   es: {
     description: 'Recibiste {amount} Créditos. No caducan: úsalos en el Shop.',
+    descriptionOne: 'Recibiste {amount} Crédito. No caduca: úsalo en el Shop.',
     title: 'Créditos añadidos a tu cuenta'
   },
   zh: {
     description: '你收到了{amount}积分。积分永不过期，可在 Shop 中使用。',
+    descriptionOne: '你收到了{amount}积分。积分永不过期，可在 Shop 中使用。',
     title: '积分已添加到你的账户'
   }
 } as const
@@ -112,14 +118,17 @@ const creditsShopGrantedI18n = {
 const creditsStudioGiftI18n = {
   en: {
     description: '{studio} gifted you {amount} Credits. They never expire: spend them in the Shop.',
+    descriptionOne: '{studio} gifted you {amount} Credit. It never expires: spend it in the Shop.',
     title: 'A gift from {studio}'
   },
   es: {
     description: '{studio} te regaló {amount} Créditos. No caducan: úsalos en el Shop.',
+    descriptionOne: '{studio} te regaló {amount} Crédito. No caduca: úsalo en el Shop.',
     title: 'Un regalo de {studio}'
   },
   zh: {
     description: '{studio}送给你{amount}积分。积分永不过期，可在 Shop 中使用。',
+    descriptionOne: '{studio}送给你{amount}积分。积分永不过期，可在 Shop 中使用。',
     title: '来自{studio}的礼物'
   }
 } as const

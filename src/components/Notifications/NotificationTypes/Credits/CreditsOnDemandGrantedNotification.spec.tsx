@@ -59,6 +59,29 @@ describe('when rendering credits granted on demand', () => {
     })
   })
 
+  describe('and they are a single Credit', () => {
+    it('should word it in the singular', () => {
+      const gift = render(notificationWith({ creditsGranted: 1, denomination: 'USD', studioName: 'Pixel Forge' }))
+      const grant = render(notificationWith({ creditsGranted: 1, denomination: 'USD' }), 'es')
+
+      expect({ gift, grant }).toEqual({
+        gift: expect.stringContaining('Pixel Forge gifted you 1 Credit. It never expires: spend it in the Shop.'),
+        grant: expect.stringContaining('Recibiste 1 Crédito. No caduca: úsalo en el Shop.')
+      })
+    })
+  })
+
+  describe('and they are drawn with an icon', () => {
+    const hasShopMark = (markup: string) => markup.includes('shop_credits_icon_gradient')
+
+    it("should show the Shop's credits mark for Shop credits and keep the season artwork for a season grant", () => {
+      const shop = render(notificationWith({ creditsGranted: 100, denomination: 'USD' }))
+      const season = render(notificationWith({ creditsGranted: 50 }))
+
+      expect({ shop: hasShopMark(shop), season: hasShopMark(season) }).toEqual({ shop: true, season: false })
+    })
+  })
+
   describe('and they are Shop credits with no studio', () => {
     it('should word them as credits added to the account', () => {
       const markup = render(notificationWith({ creditsGranted: 100, denomination: 'USD', link: 'https://decentraland.org/shop' }))
