@@ -90,7 +90,7 @@ function buildMenuConfig(): MenuConfig {
       label: 'create',
       items: [
         { label: 'createInDecentraland', url: createUrl },
-        { label: 'publishWearablesEmotes', url: `${builderUrl}/collections` },
+        { label: 'publishWearablesEmotes', url: config.get('BUILDER_WEARABLE_EMOTES_URL') },
         { label: 'publishLand', url: `${builderUrl}/land` },
         { label: 'creatorDocumentation', url: 'https://docs.decentraland.org/creator', isExternal: true }
       ]
