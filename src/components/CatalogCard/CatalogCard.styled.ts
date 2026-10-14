@@ -13,10 +13,10 @@ import { CatalogCardProps } from './CatalogCard.types'
 // the info section below doesn't need, so hover-revealed rows (bottomAction / action /
 // extraInformation) shrink the image by EXACTLY their own height — no fixed jump, and no
 // shrink at all when the card has nothing to reveal.
-const AssetImageContainer = styled(AssetImage)(({ rarity }) => ({
+const AssetImageContainer = styled(AssetImage)(({ theme, rarity }) => ({
   borderRadius: '12px 12px 0 0',
   backgroundImage: 'none',
-  backgroundColor: Rarity.getColor(rarity),
+  backgroundColor: theme.palette.rarities[rarity],
   flex: '1 1 auto',
   minHeight: 0,
   height: 'auto',
