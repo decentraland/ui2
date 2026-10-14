@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import type { Layer, TileMapProps } from 'react-tile-map'
 import CircularProgress from '@mui/material/CircularProgress'
-import { getColorByType, getTiles } from './util'
+import { getTileLayer, getTiles } from './util'
 import { createLazyComponent } from '../../utils/optionalDependency'
 import { AtlasColor, AtlasProps, AtlasStateProps } from './Atlas.types'
 
@@ -32,13 +32,7 @@ const Atlas = React.memo((props: AtlasProps) => {
     (x: number, y: number) => {
       const id = x + ',' + y
       if (resolvedTiles && id in resolvedTiles) {
-        const tile = resolvedTiles[id]
-        return {
-          color: getColorByType(tile.type),
-          top: tile.top,
-          left: tile.left,
-          topLeft: tile.topLeft
-        }
+        return getTileLayer(resolvedTiles[id], resolvedTiles)
       } else {
         return {
           color: (x + y) % 2 === 0 ? AtlasColor.ODD : AtlasColor.EVEN
