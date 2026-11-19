@@ -858,7 +858,7 @@ const tipNotificationDataWithCents: TipNotificationProps = {
   address: '0x6b347a82fcac4e6a38d1fc40e3631bd8f9495e9f',
   timestamp: new Date().getTime(),
   metadata: {
-    senderAddress: '0xd9B96B5dC720fC52BedE1EC3B40A930e15F70Ddd',
+    senderAddress: '0x1234567890123456789012345678901234567890',
     amount: '100.01'
   },
   created_at: '2023-11-29T12:51:00.600Z',

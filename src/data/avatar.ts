@@ -4,10 +4,10 @@ const avatar: Avatar = {
   hasClaimedName: true,
   description: 'My description',
   tutorialStep: 4095,
-  name: 'MotherHacker',
-  userId: '0xd9b96b5dc720fc52bede1ec3b40a930e15f70ddd',
+  name: 'TestUser',
+  userId: '0x1234567890123456789012345678901234567890',
   email: '',
-  ethAddress: '0xd9b96b5dc720fc52bede1ec3b40a930e15f70ddd',
+  ethAddress: '0x1234567890123456789012345678901234567890',
   version: 64,
   avatar: {
     bodyShape: 'urn:decentraland:off-chain:base-avatars:BaseMale',
